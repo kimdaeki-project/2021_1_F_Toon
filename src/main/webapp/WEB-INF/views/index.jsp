@@ -8,7 +8,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <!-- BootStrap -->    
     <link rel="icon" href="images/favicon.png" type="image/png">
-    <title>Eden Megazine</title>
+    <title>WebToon</title>
    
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="css/bootstrap.css">
@@ -40,16 +40,17 @@
                     </div>
                 </div>
                 <div class="col-6 col-lg-4 col-md-6 col-sm-6 logo-wrapper">
-                    <a href="index.html" class="logo">
-                        <img src="images/logo.png" alt="">
-                    </a>
+<!--                     <a href="index.html" class="logo"> -->
+<!--                         <img src="images/logo.png" alt=""> -->
+<!--                     </a> -->
+						<h2>WEBTOON PAGE</h2>
                 </div>
                 <div class="col-lg-4 col-md-6 col-sm-6 search-trigger">
                     <div class="right-button">
                         <ul>
                             <li><a id="search" href="javascript:void(0)"><i class="fas fa-search"></i></a></li>
-                            <li><a href="">About</a></li>
-                            <li><a href="">Subscribe</a></li>
+                            <li><a href="">Login</a></li>
+                            <li><a href="">Join</a></li>
                         </ul>
                     </div>
                 </div>
@@ -189,81 +190,6 @@
             </div>
         </div>
     </section>
-
-    <!--================Fullwidth block Area end =================-->
-
-
-    <!--================ First block section start =================-->      
-
-    <section class="first_block">
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-8 col-xl-6">
-                    <div class="single-blog row no-gutters style-four border_one">
-                        <div class="col-12 col-sm-5">
-                            <div class="thumb">
-                                <img class="img-fluid" src="images/magazine/5.jpg" alt="">
-                            </div>
-                        </div>
-                        <div class="col-12 col-sm-7">
-                            <div class="short_details">
-                                <div class="meta-top d-flex">
-                                    <a href="#">Tours & Travel</a>
-                                </div>
-                                <a class="d-block" href="single-blog.html">
-                                    <h4>Brought all day domi
-                                        nion appear from
-                                        subdue dominion
-                                    firmament over face</h4>
-                                </a>
-                                <div class="meta-bottom d-flex" >
-                                    <a href="#">March 12 , 2019 . </a>
-                                    <a class="dark_font" href="#">By Alen Mark</a>
-                                </div>
-                            </div>  
-                        </div>  
-                    </div>      
-                </div>
-
-                <div class="col-lg-4 col-xl-3">
-                    <div class="single-blog style_five">
-                        <div class="thumb">
-                            <img class="img-fluid" src="images/magazine/6.jpg" alt="">
-                        </div>
-                        <div class="short_details ">
-
-                            <div class="meta-top d-flex">
-                                <a href="#">Tours & Travel</a>
-                            </div>
-                            <a class="d-block" href="single-blog.html">
-                                <h4>Abundantly forth late
-                                appear fourth us.</h4>
-                            </a>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="col-lg-4 col-xl-3">
-                    <div class="single-blog style_five">
-                        <div class="thumb">
-                            <img class="img-fluid" src="images/magazine/7.jpg" alt="">
-                        </div>
-                        <div class="short_details ">
-
-                            <div class="meta-top d-flex">
-                                <a href="#">Tours & Travel</a>
-                            </div>
-                            <a class="d-block" href="single-blog.html">
-                                <h4>Abundantly forth late
-                                appear fourth us.</h4>
-                            </a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-    <!--================ First block section end =================-->  
 
     <!--================ Editors Picks section start =================-->  
 
