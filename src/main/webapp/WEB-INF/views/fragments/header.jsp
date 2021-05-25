@@ -27,7 +27,7 @@
                         <ul>
                             <li><a id="search" href="javascript:void(0)"><i class="fas fa-search"></i></a></li>
                             <li><a href="">Login</a></li>
-                            <li><a href="">Join</a></li>
+                            <li><a href="./member/join">Join</a></li>
                         </ul>
                     </div>
                 </div>
