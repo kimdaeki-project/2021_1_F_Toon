@@ -25,7 +25,7 @@ public class MemberController {
 	public void join(Model model) throws Exception {
 						//내용은 없는 빈 객체를 하나 보내줌
 		model.addAttribute("memberVO", new MemberVO());
-		System.out.println("S");
+		
 	}
 	@PostMapping("join")
 	public String join(@Valid MemberVO memberVO, Errors bindingResult)throws Exception{
@@ -33,7 +33,7 @@ public class MemberController {
 		if(bindingResult.hasErrors()) {
 			return "member/join";
 		}
-		System.out.println("Ss");
+	
 		return "redirect:/";
 		
 	}
