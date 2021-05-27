@@ -27,7 +27,7 @@
                         <ul>
                         	<c:if test="${empty member}">        
                             <li><a href="/member/login">Login</a></li>
-                            <li><a href="/member/join">Join</a></li>
+                            <li><a href="/member/memberJoinCheck">Join</a></li>
                             </c:if>
                             
                             <c:if test="${not empty member}">
@@ -37,7 +37,6 @@
                         </ul>
                         
 
-                        
                     </div>
                 </div>
             </div>

@@ -38,6 +38,7 @@ public class MemberController {
 		return "redirect:/";
 	}
 	
+	
 	@GetMapping("logout")
 	public String logout(HttpSession session)throws Exception{
 		
@@ -45,6 +46,9 @@ public class MemberController {
 		
 		return "redirect:../";
 	}
+	
+	@RequestMapping("memberJoinCheck")
+	public void memberJoinCheck()throws Exception{}
 	
 	@GetMapping("join")
 	public String setJoin()throws Exception{
