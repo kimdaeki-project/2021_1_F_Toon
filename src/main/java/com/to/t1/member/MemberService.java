@@ -7,12 +7,17 @@ import com.to.t1.member.MemberMapper;
 
 @Service
 public class MemberService {
+
 	@Autowired
 	private MemberMapper memberMapper;
-	
-	public MemberVO getLogin(MemberVO memberVO)throws Exception{
-	return memberMapper.getLogin(memberVO);
+
+	public int setJoin(MemberVO memberVO)throws Exception{
+		return memberMapper.setJoin(memberVO);
 	}
-	
-	
+
+	public MemberVO getLogin(MemberVO memberVO)throws Exception{
+		return memberMapper.getLogin(memberVO);
+	}
+
+
 }

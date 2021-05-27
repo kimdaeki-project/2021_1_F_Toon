@@ -26,7 +26,7 @@
 </head>
 <body>
 	<c:import url="./../fragments/header.jsp"></c:import>
-	<h1>zz</h1>
+	<h1>회원가입 페이지</h1>
 
 <script src="js/jquery-2.2.4.min.js"></script>
 <script src="js/popper.js"></script>

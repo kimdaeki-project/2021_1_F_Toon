@@ -17,25 +17,20 @@ import com.to.t1.member.MemberService;
 @Controller
 @RequestMapping("/member/**")
 public class MemberController {
-	
 	@Autowired
 	private MemberService memberService;
 	
-	@GetMapping("join")
-	public void join(Model model) throws Exception {
-						//내용은 없는 빈 객체를 하나 보내줌
-		model.addAttribute("memberVO", new MemberVO());
-		
+	@GetMapping("login")
+	public String getLogin()throws Exception{
+		System.out.println("sssss");
+		return "member/memberLogin";
 	}
-	@PostMapping("join")
-	public String join(@Valid MemberVO memberVO, Errors bindingResult)throws Exception{
-		
-		if(bindingResult.hasErrors()) {
-			return "member/join";
-		}
 	
-		return "redirect:/";
-		
+	@GetMapping("join")
+	public String setJoin()throws Exception{
+		System.out.println("sssss");
+		return "member/meberJoin";
 	}
+	
 
 }
