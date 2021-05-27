@@ -16,31 +16,7 @@ public class FileManager {
 	private ResourceLoader resourceLoader;
 	
 	public String save(MultipartFile multipartFile, String filePath)throws Exception{
-		//filePath : /resources/static/ 제외한 하위경로
-		
-		//1. 경로 설정
-		
-/**
- *  저장할 폴더가 시스템에 고정일 경우
- *  String path = "c:/files"
- *  File file = new File(path, filePath);		
- */
-		
-/**		
-		String path="classpath:/static/";
-		
-			ResourceLoader
-			classpath 경로를 받아오기위해 사용
-		
-		File file = new File(resourceLoader.getResource(path).getFile(), filePath);
-**/	
-		
-/**
- * ClassPathResource
- * classPath 경로를 받아오기위해 사용
- * ResourceLoader와 같지만 시작 경로에서 classpath를 제외
- * 	
- * **/		
+			
 		String path="static";
 		ClassPathResource classPathResource = new ClassPathResource(path);
 		File file = new File(classPathResource.getFile(), filePath);
@@ -51,15 +27,11 @@ public class FileManager {
 			file.mkdirs();
 		}
 		
-		//2. 저장할 파일명을 생성
 		String fileName = UUID.randomUUID().toString()+"_"+multipartFile.getOriginalFilename();
 		
 		file = new File(file, fileName);
-		
-		//transfer
 		multipartFile.transferTo(file);
-		//FileCopyUtils.copy(multipartFile.getBytes(), file);
-		
+			
 		return fileName;
 	}
 
