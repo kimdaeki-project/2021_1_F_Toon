@@ -9,10 +9,10 @@
 		<version>2.4.6</version>
 		<relativePath /> <!-- lookup parent from repository -->
 	</parent>
-	<groupId>com.iu</groupId>
-	<artifactId>s1</artifactId>
+	<groupId>com.to</groupId>
+	<artifactId>t1</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<name>SpringBoot_Mybatis_JSP</name>
+	<name>Toon</name>
 	<description>Demo project for Spring Boot</description>
 	<properties>
 		<java.version>11</java.version>
