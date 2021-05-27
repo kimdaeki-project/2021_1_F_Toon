@@ -8,9 +8,9 @@
 			insert into member (username, password, name, nickname, phone, email)
 			values * (#{username}, #{password}, #{name}, #{nickname}, #{phone}, #{email})
 		</insert>  
-		
 		<select id="getLogin" parameterType="MemberVO" resultType="MemberVO">
 			select * from member where username=#{username} and password=#{password}
 		</select>
+		
 			
    </mapper>

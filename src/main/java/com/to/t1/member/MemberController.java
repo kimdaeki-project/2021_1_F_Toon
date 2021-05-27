@@ -22,14 +22,13 @@ public class MemberController {
 	
 	@GetMapping("login")
 	public String getLogin()throws Exception{
-		System.out.println("sssss");
 		return "member/memberLogin";
 	}
 	
 	@GetMapping("join")
 	public String setJoin()throws Exception{
-		System.out.println("sssss");
-		return "member/meberJoin";
+		System.out.println("join");
+		return "member/memberJoin";
 	}
 	
 
