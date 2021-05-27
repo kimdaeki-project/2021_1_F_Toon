@@ -30,7 +30,7 @@
 	
 		<h2 class="mt-4">회원가입</h2>
 
-		<form id="frm" action="./memberJoin" method="post" enctype="multipart/form-data">
+		<form id="frm" action="./join" method="post" enctype="multipart/form-data">
 			<div class="form-group">
 				<label for="id">ID</label> 
 				<input type="text" class="form-control"	id="id" name="username">

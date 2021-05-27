@@ -10,6 +10,7 @@ import org.springframework.validation.Errors;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.multipart.MultipartFile;
 
 import com.to.t1.member.MemberVO;
 import com.to.t1.member.MemberService;
@@ -31,5 +32,11 @@ public class MemberController {
 		return "member/memberJoin";
 	}
 	
+	@PostMapping("join")
+	public String setJoin(MemberVO memberVO, MultipartFile avatar)throws Exception{
+		int result = memberService.setJoin(memberVO, avatar);
+		
+		return "redirect:../";
+	}
 
 }
