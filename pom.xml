@@ -23,6 +23,12 @@
 			<groupId>org.apache.tomcat.embed</groupId>
 			<artifactId>tomcat-embed-jasper</artifactId>
 		</dependency>
+		
+		<!-- jsp 시큐리티 명령어 -->
+		<dependency>
+				<groupId>org.springframework.security</groupId>
+				<artifactId>spring-security-taglibs</artifactId>
+		</dependency>
 
 		<!-- jstl -->
 		<dependency>
