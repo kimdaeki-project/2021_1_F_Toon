@@ -1,18 +1,21 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>        
+	pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>     
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
-<c:import url="../template/bootStrap.jsp"></c:import>
+
 </head>
 <body>
-<c:import url="../template/header.jsp"></c:import>
+
 <div class="container">
 	
 			<h2>${board} List</h2>
+			<div class="media-content">
+      <img class="med-8x6" alt="새해 밤 평면 겨울 크리스마스 손으로 그린 ​​그림 디지털 페인팅 아트 일러스트 블루 포토샵 새해" width="768" height="579" data-id="5744815" data-optimize-for-bots="true" skip_resize="false" srcset="https://cdn.dribbble.com/users/393235/screenshots/5744815/new_year_night_by_www.digital-space.co.jpg?compress=1&amp;resize=300x225 300w, https://cdn.dribbble.com/users/393235/screenshots/5744815/new_year_night_by_www.digital-space.co.jpg?compress=1&amp;resize=400x300 400w, https://cdn.dribbble.com/users/393235/screenshots/5744815/new_year_night_by_www.digital-space.co.jpg?compress=1&amp;resize=600x450 600w, https://cdn.dribbble.com/users/393235/screenshots/5744815/new_year_night_by_www.digital-space.co.jpg?compress=1&amp;resize=800x600 800w" src="https://cdn.dribbble.com/users/393235/screenshots/5744815/new_year_night_by_www.digital-space.co.jpg?compress=1&amp;resize=400x300" sizes="auto">
+  </div>
 		
 		<table class="table">
 			<thead class="thead-dark">
@@ -26,7 +29,7 @@
 			</thead>
 			
 			<tbody>
-			<c:forEach items="${list}" var="dto" >
+			<c:forEach items="${list}" var="vo" >
 				<tr>
 					<td>${vo.num}</td>
 					<td><a href="./${board}Select?num=${vo.num}">

@@ -10,13 +10,10 @@
 <title>WebToon Notice List</title>
 </head>
 <body>
-	<!-- header -->
-	<div></div>
-	<!-- Jumbo -->
-	<div></div>
+
 	
 	<div class="container">
-		<h2 text="${board}"></h2>
+		<h2>${board}</h2>
 		
 		<!-- 검색 form -->
 		<div class=" d-flex justify-content-start">
@@ -58,44 +55,69 @@
 		    </tr>
 		  </thead>
 		  <tbody>
-		    <tr each="vo, state : ${list}">
-		      <th scope="row" text="${vo.num}"></th>
+		  <c:forEach = items="${list}" var="vo">
+		    <tr>
+		      <th scope="row">${vo.num}</th>
 		      				          <!--@{ |${board}select| } -->
-		      				          <!-- paramter 전송 @{URL주소(파라미터명=값, 파라미터명2=값2,...)}  -->
-		      <td if="${board != 'notice'}">  
-		      	<!-- th:if="${vo.depth != 0}" -->
-		      	<span if="${vo.depth != 0}" each="i : ${#numbers.sequence(1, vo.depth)}" >--</span>
-		      	<a href="#" href="@{select(num=${vo.num})}" text="${vo.title}">Mark</a>
+		      
+		      <c:if test="${board != 'notice'}">   			          <!-- paramter 전송 @{URL주소(파라미터명=값, 파라미터명2=값2,...)}  -->
+		      <td> 
+		     <!--  	<span if="${vo.depth != 0}" each="i : ${#numbers.sequence(1, vo.depth)}" >--</span> -->
+		    	<c:catch>
+				<c:forEach begin="1" end="${vo.depth}">--</c:forEach>
+				</c:catch>
+		      	<a href="#" href="./{select(num=${vo.num})}">${vo.title}</a>
 		      </td>
-		      <td unless="${board != 'notice'}">
-		      	<a href="#" href="@{select(num=${vo.num})}" text="${vo.title}">Mark</a>
+		      </c:if>
+		      <c:unless="${board != 'notice'}">
+		      <td >
+		      	<a href="./{select(num=${vo.num})}" >${vo.title}</a>
 		      </td>
-		      <td text="${vo.writer}">Otto</td>
-		      <td text="${vo.regDate}">@mdo</td>
-		      <td text="${vo.hit}"></td>
-		      <td text="${state.index}"></td> <!-- 인덱스 번호 0 부터 시작 -->
+		      </c:unless>
+		      <td>${vo.writer}</td>
+		      <td>${vo.regDate}</td>
+		      <td>${vo.hit}</td>
+		      
 		    </tr>
+		    </c:forEach>
 		   </tbody>
 		 </table> 
-		 <div if="${session.member != null}">
-		 	<a href="#" if="${board =='notice' and session.member.username=='admin'}"  class="btn btn-primary" href="@{./insert}">WRITE</a>
-		 	<a href="#" if="${board !='notice'}"  class="btn btn-primary" href="@{./insert}">WRITE</a>
+		 <c:if="${session.member != null}">
+		 <div >
+		 <c:if="${board =='notice' and session.member.username=='admin'}" >
+		 	<a href="#" class="btn btn-primary" href="./insert">WRITE</a>
+		 	</c:if>
+		 	<c:if="${board !='notice'}">
+		 	<a href="#" class="btn btn-primary" href="./insert">WRITE</a>
+		 	</c:if>
+		 	</c:if>
 		 </div>
 	</div>
 	
 	<div class="container d-flex justify-content-center">
 		  <ul class="pagination">
 		  
-		  	<li classappend="${pager.pre? 'disable':'active'}"  class="page-item">
-		  		<a if="${pager.pre}" class="page-link pager" href="#" title="${pager.startNum-1}">Previous</a>
+		  <c:classappend="${pager.pre? 'disable':'active'}">
+		  	<li class="page-item">
+		  	<c:if="${pager.pre}">
+		  		<a class="page-link pager" href="#" title="${pager.startNum-1}">Previous</a>
+		  		</c:if>
 		  		<!-- if else ==> if unless 
 		  			 unless 사용시에도 조건식은 사용
 		  			 if문에 사용한 조건식과동일한 조건식 사용
 		  		-->
-		  		<span unless="${pager.pre}" class="page-link">Previous</span>
-		  	</li>
-		    <li class="page-item" each="i : ${#numbers.sequence(pager.startNum, pager.lastNum)}"><a class="page-link pager" href="#" text="${i}" title="${i}">Previous</a></li>
-		    <li th:if="${pager.next}" class="page-item"><a class="page-link" href="#" title="${pager.lastNum+1}" >Next</a></li>
+		  		<c:unless="${pager.pre}">
+		  		<span  class="page-link">Previous</span>
+				</c:unless>
+		  	</c:classappend>
+		    <c:forEach begin="${pager.startNum}" end="${pager.lastNum}" var="i">
+	   
+	    <li class="page-item"><a class="page-link p" href="#" title="${i}">${i}</a></li>
+	   </c:forEach>
+	   
+	    <c:if test="${pager.next}">
+	    <li class="page-item"><a class="page-link p" href="#" title="${pager.lastNum+1}">Next</a></li>
+	    </c:if>
 		  </ul>
 	</div>
 	<div class="media-content">
@@ -105,7 +127,7 @@
 	<!-- footer -->
 	<div></div>
 
-<script type="text/javascript" src=""></script>
+
 
 </body>
 </html>
