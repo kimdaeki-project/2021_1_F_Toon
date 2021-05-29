@@ -54,6 +54,36 @@ public class MemberController {
 	public void myPage()throws Exception{
 	}
 	
+	@RequestMapping("searchId") 
+	public void searchId()throws Exception{
+//		String message = "아이디와 핸드폰 불일치";
+//		model.addAttribute("msg", message);
+	}
+	
+	@PostMapping("searchId")
+	public String searchId(MemberVO memberVO,Model model)throws Exception{
+		memberVO = memberService.searchId(memberVO);
+
+		String message = "아이디와 핸드폰 불일치";
+		String messageType = "N";
+		
+		if(memberVO.getUsername() == null) {
+			message="이름과 핸드폰 불일치";
+			messageType="Y";
+		} else {
+			message="아이디는 " + memberVO.getUsername();
+			messageType="Y";
+		}
+		
+		model.addAttribute("msg", message);
+		model.addAttribute("messageType", messageType);
+		
+		System.out.println(memberVO.getUsername());
+		System.out.println(message);
+		
+		return "member/memberLogin";
+	}
+	
 	@RequestMapping("memberJoinCheck")
 	public void memberJoinCheck()throws Exception{}
 	

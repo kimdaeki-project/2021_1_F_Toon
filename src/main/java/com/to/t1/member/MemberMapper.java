@@ -19,4 +19,6 @@ public interface MemberMapper {
 	
 	public int memberDelete(MemberVO memberVO)throws Exception;
 	
+	public MemberVO searchId(MemberVO memberVO)throws Exception;
+	
 }

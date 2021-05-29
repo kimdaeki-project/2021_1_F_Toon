@@ -23,6 +23,14 @@
     <!-- main css -->
     <link rel="stylesheet" href="../css/style.css">
     <link rel="stylesheet" href="../css/responsive.css">
+    
+    <script type="text/javascript">
+		
+		if('${messageType}' == 'Y'){
+			alert('${msg}');
+		}
+		
+	</script>
 </head>
 <body>
 	<c:import url="./../fragments/header.jsp"></c:import>
@@ -45,8 +53,10 @@
 				<input type="checkbox" class="form-check-input" id="exampleCheck1">
 				<label class="form-check-label" for="exampleCheck1">Check me out</label>
 			</div>
-			<button type="submit" class="btn btn-primary">Submit</button>
+			<button type="submit" class="btn btn-primary">로그인</button>
 		</form>
+		
+		<a href="/member/searchId">ID 찾기</a> <a href="#">비밀번호 찾기</a> <a href="/member/memberJoinCheck">회원가입</a>
 
 <script src="js/jquery-2.2.4.min.js"></script>
 <script src="js/popper.js"></script>

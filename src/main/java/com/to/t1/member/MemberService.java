@@ -56,5 +56,8 @@ public class MemberService {
 		boolean check = fileManager.delete("member", joinFileVO.getFileName(), session);
 		return memberMapper.memberDelete(memberVO);
 	}
-
+	
+	public MemberVO searchId(MemberVO memberVO)throws Exception{
+		return memberMapper.searchId(memberVO);
+	}
 }

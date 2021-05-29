@@ -29,13 +29,16 @@
 	<h2>수정ㅋ</h2>
 	<form action="memberUpdate" method="post">
 		ID <input type="text" name="username" readonly="readonly" value="${member.username}"><br>
+		<c:if test="${member.joinFileVO.fileName eq null}"><img alt="" src="../images/member.jpg"></c:if>
+		<c:if test="${member.joinFileVO.fileName ne null}"><h3><img alt="" src="../upload/member/${member.joinFileVO.fileName}"></h3></c:if>
+		<input type="file" class="form-control etc"	id="avatar" name="avatar" >
 		PW <input type="password" name="password" value="${member.password}"><br>
 		Name <input type="text" name="name" value="${member.name}"><br>
 		닉네임 <input type="text" name="nickname" value="${member.nickname}"><br>
 		Phone <input type="text" name="phone" value="${member.phone}"><br>
 		Email <input type="text" name="email" value="${member.email}"><br>
 		
-		<button>Update</button>
+		<button class="btn btn-info">Update</button>
 	</form>
 	
 	

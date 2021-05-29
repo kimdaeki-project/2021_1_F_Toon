@@ -78,7 +78,7 @@
 			</div>
 				
 			<div class="form-group">
-				<label for="avatar">Avatar</label> 
+				<label for="avatar">사진 등록</label> 
 				<input type="file" class="form-control etc"	id="avatar" name="avatar">
 			</div>	
 				
