@@ -14,9 +14,36 @@
 			values(#{username}, #{fileName}, #{oriName})
 		</insert>
 		
-		<select id="getLogin" parameterType="MemberVO" resultType="MemberVO">
-			select * from member where username=#{username} and password=#{password}
+<!-- 		<select id="getLogin" parameterType="MemberVO" resultType="MemberVO"> -->
+<!-- 			select * from member where username=#{username} and password=#{password} -->
+<!-- 		</select> -->
+		
+		<select id="getLogin" parameterType="MemberVO" resultMap="memberLoginResult">
+			select M.*, MF.fileName 
+			from member M left join joinfiles MF
+			on M.username = MF.username
+			where
+			M.username=#{username} and M.password=#{password}
 		</select>
+		
+		<resultMap type="MemberVO" id="memberLoginResult">
+		<id property="username" column="username" />
+		<result property="password" column="password"/>
+		<result property="name" column="name"/>
+		<result property="nickname" column="name"/>
+		<result property="phone" column="phone"/>
+		<result property="email" column="email"/>
+		<result property="point" column="point"/>
+		<association property="joinFileVO" javaType="JoinFileVO" resultMap="memberFileResult">
+		
+		</association>
+	</resultMap>
+	
+	<resultMap type="JoinFileVO" id="memberFileResult">
+			<id property="fileNum" column="fileNum"/>
+			<result property="fileName" column="fileName"/>
+			<result property="originName" column="originName"/>
+	</resultMap>
 		
 			
    </mapper>

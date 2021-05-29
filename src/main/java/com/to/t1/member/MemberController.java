@@ -31,6 +31,10 @@ public class MemberController {
 		
 		memberVO = memberService.getLogin(memberVO);
 		
+		System.out.println(memberVO.getEmail());
+		System.out.println(memberVO.getJoinFileVO());
+		
+//		System.out.println(memberVO.getJoinFileVO().getFileName());
 		if(memberVO != null) {
 			session.setAttribute("member", memberVO);
 		}
@@ -47,6 +51,11 @@ public class MemberController {
 		return "redirect:../";
 	}
 	
+	@RequestMapping("myPage") //MemberPage
+	public void myPage()throws Exception{
+		
+	}
+	
 	@RequestMapping("memberJoinCheck")
 	public void memberJoinCheck()throws Exception{}
 	
@@ -57,8 +66,8 @@ public class MemberController {
 	}
 	
 	@PostMapping("join")
-	public String setJoin(MemberVO memberVO, MultipartFile avatar)throws Exception{
-		int result = memberService.setJoin(memberVO, avatar);
+	public String setJoin(MemberVO memberVO, MultipartFile avatar, HttpSession session)throws Exception{
+		int result = memberService.setJoin(memberVO, avatar, session);
 		
 		return "redirect:../";
 	}

@@ -1,5 +1,6 @@
 package com.to.t1.member;
 
+import javax.servlet.http.HttpSession;
 import javax.tools.JavaFileManager;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -17,7 +18,7 @@ public class MemberService {
 	@Autowired
 	private FileManager fileManager;
 
-	public int setJoin(MemberVO memberVO, MultipartFile multipartFile)throws Exception{
+	public int setJoin(MemberVO memberVO, MultipartFile multipartFile, HttpSession session)throws Exception{
 		int result = memberMapper.setJoin(memberVO);
 		String filePath= "upload/member/";
 		if(multipartFile.getSize() != 0) {
@@ -36,6 +37,10 @@ public class MemberService {
 	}
 
 	public MemberVO getLogin(MemberVO memberVO)throws Exception{
+	
+		//MemberFileDTO memberFileDTO = memberDAO.memberLoginFile(memberDTO);
+		//memberDTO.setMemberFileDTO(memberFileDTO);
+	
 		return memberMapper.getLogin(memberVO);
 	}
 

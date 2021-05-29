@@ -31,7 +31,7 @@
                             </c:if>
                             
                             <c:if test="${not empty member}">
-                            <li><a href="/member/page">MY PAGE</a></li>
+                            <li><a href="/member/myPage">MY PAGE</a></li>
                             <li><a href="/member/logout">LOGOUT</a></li>
                             </c:if>
                         </ul>

@@ -22,6 +22,7 @@ public class FileManager {
 		File file = new File(classPathResource.getFile(), filePath);
 		
 		System.out.println(file.getAbsolutePath());
+		System.out.println(file.getPath());
 		
 		if(!file.exists()) {
 			file.mkdirs();
