@@ -14,16 +14,24 @@
 			values(#{username}, #{fileName}, #{oriName})
 		</insert>
 		
-<!-- 		<select id="getLogin" parameterType="MemberVO" resultType="MemberVO"> -->
-<!-- 			select * from member where username=#{username} and password=#{password} -->
-<!-- 		</select> -->
-		
 		<select id="getLogin" parameterType="MemberVO" resultMap="memberLoginResult">
 			select M.*, MF.fileName 
 			from member M left join joinfiles MF
 			on M.username = MF.username
 			where
 			M.username=#{username} and M.password=#{password}
+		</select>
+		
+		<update id="memberUpdate" parameterType="MemberVO">
+			update member set password=#{password}, name=#{name}, nickname=#{nickname}, phone=#{phone}, email=#{email} where username=#{username}
+		</update>
+
+		<delete id="memberDelete" parameterType="MemberVO">
+			delete from member where username=#{username}
+		</delete>
+		
+		<select id="getJoinFile" parameterType="MemberVO" resultType="JoinFileVO">
+			select fileName from joinfiles where username=#{username}
 		</select>
 		
 		<resultMap type="MemberVO" id="memberLoginResult">
@@ -42,7 +50,7 @@
 	<resultMap type="JoinFileVO" id="memberFileResult">
 			<id property="fileNum" column="fileNum"/>
 			<result property="fileName" column="fileName"/>
-			<result property="originName" column="originName"/>
+			<result property="oriName" column="oriName"/>
 	</resultMap>
 		
 			

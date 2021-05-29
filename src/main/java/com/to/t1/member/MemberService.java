@@ -23,13 +23,13 @@ public class MemberService {
 		String filePath= "upload/member/";
 		if(multipartFile.getSize() != 0) {
 			
-		String fileName= fileManager.save(multipartFile, filePath);
-		System.out.println(fileName);
-		JoinFileVO joinFileVO = new JoinFileVO();
-		joinFileVO.setFileName(fileName);
-		joinFileVO.setOriName(multipartFile.getOriginalFilename());
-		joinFileVO.setUsername(memberVO.getUsername());
-		result = memberMapper.setJoinFile(joinFileVO);
+			String fileName= fileManager.save(multipartFile, filePath);
+			System.out.println(fileName);
+			JoinFileVO joinFileVO = new JoinFileVO();
+			joinFileVO.setFileName(fileName);
+			joinFileVO.setOriName(multipartFile.getOriginalFilename());
+			joinFileVO.setUsername(memberVO.getUsername());
+			result = memberMapper.setJoinFile(joinFileVO);
 		}
 		System.out.println("service");
 		return result;
@@ -37,12 +37,24 @@ public class MemberService {
 	}
 
 	public MemberVO getLogin(MemberVO memberVO)throws Exception{
-	
-		//MemberFileDTO memberFileDTO = memberDAO.memberLoginFile(memberDTO);
-		//memberDTO.setMemberFileDTO(memberFileDTO);
-	
 		return memberMapper.getLogin(memberVO);
 	}
 
+	public int memberUpdate(MemberVO memberVO)throws Exception{
+		return memberMapper.memberUpdate(memberVO);
+	}
+	
+//	public int memberDelete(MemberVO memberVO)throws Exception{
+//		return memberMapper.memberDelete(memberVO);
+//	}
+	
+	public int memberDelete(MemberVO memberVO, HttpSession session)throws Exception{
+		JoinFileVO joinFileVO = memberMapper.getJoinFile(memberVO);
+		System.out.println(joinFileVO);	
+		System.out.println(joinFileVO.getFileName());
+	
+		boolean check = fileManager.delete("member", joinFileVO.getFileName(), session);
+		return memberMapper.memberDelete(memberVO);
+	}
 
 }

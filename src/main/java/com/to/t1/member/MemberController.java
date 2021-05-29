@@ -33,8 +33,7 @@ public class MemberController {
 		
 		System.out.println(memberVO.getEmail());
 		System.out.println(memberVO.getJoinFileVO());
-		
-//		System.out.println(memberVO.getJoinFileVO().getFileName());
+
 		if(memberVO != null) {
 			session.setAttribute("member", memberVO);
 		}
@@ -51,9 +50,8 @@ public class MemberController {
 		return "redirect:../";
 	}
 	
-	@RequestMapping("myPage") //MemberPage
+	@RequestMapping("myPage") 
 	public void myPage()throws Exception{
-		
 	}
 	
 	@RequestMapping("memberJoinCheck")
@@ -72,4 +70,27 @@ public class MemberController {
 		return "redirect:../";
 	}
 
+	@RequestMapping("memberUpdate")
+	public void memberUpdate()throws Exception{}
+	
+	@PostMapping("memberUpdate")
+	public String memberUpdate(MemberVO memberVO, HttpSession session)throws Exception{
+		int result = memberService.memberUpdate(memberVO);
+		
+		if(result>0) {
+			session.setAttribute("member", memberVO);
+		}
+		return "redirect:../";
+	}
+	
+	@RequestMapping("memberDelete")
+	public String memberDelete(HttpSession session)throws Exception{
+		MemberVO memberVo =(MemberVO)session.getAttribute("member");
+		int result = memberService.memberDelete(memberVo, session);
+		
+		session.invalidate();
+		
+		return "redirect:../";
+	}
+	
 }

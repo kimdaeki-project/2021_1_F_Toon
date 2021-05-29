@@ -26,18 +26,19 @@
 </head>
 <body>
 	<c:import url="./../fragments/header.jsp"></c:import>
+	<h2>수정ㅋ</h2>
+	<form action="memberUpdate" method="post">
+		ID <input type="text" name="username" readonly="readonly" value="${member.username}"><br>
+		PW <input type="password" name="password" value="${member.password}"><br>
+		Name <input type="text" name="name" value="${member.name}"><br>
+		닉네임 <input type="text" name="nickname" value="${member.nickname}"><br>
+		Phone <input type="text" name="phone" value="${member.phone}"><br>
+		Email <input type="text" name="email" value="${member.email}"><br>
+		
+		<button>Update</button>
+	</form>
 	
-	<h1>회원정보</h1>
-	<h3><img alt="" src="../upload/member/${member.joinFileVO.fileName}"></h3>
-
-	<h3>아이디: ${member.username}</h3>
-	<h3>이름: ${member.name}</h3>
-	<h3>닉네임: ${member.nickname}</h3>
-	<h3>핸드폰: ${member.phone}</h3>
-	<h3>이메일: ${member.email}</h3>
-	<h3>내 포인트: ${member.point}point</h3>
 	
-	<a href="./memberUpdate" class="btn btn-info" role="button">내 정보 수정</a>
-	<a href="./memberDelete" class="btn btn-danger" role="button">회원 탈퇴</a>
+	
 </body>
 </html>
