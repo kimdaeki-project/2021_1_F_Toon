@@ -5,17 +5,77 @@
 <html>
 <head>
 <meta charset="UTF-8">
+ <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="../css/bootstrap.css">
+    <link rel="stylesheet" href="../css/themify-icons.css">
+    <link rel="stylesheet" href="../css/flaticon.css">
+    <link rel="stylesheet" href="../css/all.min.css">
+    <link rel="stylesheet" href="../css/animate.css">
+    <link rel="stylesheet" href="../css/magnific-popup.css">
+   
+    <!-- main css -->
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="../css/responsive.css">
+    
+    <style type="text/css">
+    body {
+    	background-image: url('../images/toon-notice.jpg');
+    	background-size: 1000px;
+    }
+    
+    </style>
 <title>Insert title here</title>
 
 </head>
 <body>
+<!--================ Start header Top Area =================-->
+    <section class="header-top">
+        <div class="container">
+            <div class="row align-items-center justify-content-between">
+                <div class="col-6 col-lg-4">
+                    <div class="float-left">
+                        <ul class="header_social">
+                            <li><a href="#"><i class="ti-facebook"></i></a></li>
+                            <li><a href="#"><i class="ti-twitter"></i></a></li>
+                            <li><a href="#"><i class="ti-instagram"></i></a></li>
+                            <li><a href="#"><i class="ti-skype"></i></a></li>
+                            <li><a href="#"><i class="ti-vimeo"></i></a></li>
+                        </ul>   
+                    </div>
+                </div>
+                <div class="col-6 col-lg-4 col-md-6 col-sm-6 logo-wrapper">
+<!--                     <a href="index.html" class="logo"> -->
+<!--                         <img src="images/logo.png" alt=""> -->
+<!--                     </a> -->
+						<h2>WEBTOON PAGE</h2>
+                </div>
+                <div class="col-lg-4 col-md-6 col-sm-6 search-trigger">
+                    <div class="right-button">
+                        <ul>
+                            <li><a id="search" href="javascript:void(0)"><i class="fas fa-search"></i></a></li>
+                            <li><a href="">Login</a></li>
+                            <li><a href="">Join</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+                <div class="search_input" id="search_input_box">
+            <div class="container ">
+                <form class="d-flex justify-content-between search-inner">
+                    <input type="text" class="form-control" id="search_input" placeholder="Search Here">
+                    <button type="submit" class="btn"></button>
+                    <span class="ti-close" id="close_search" title="Close Search"></span>
+                </form>
+            </div>
+        </div>
+    </section>
+    <!--================ End header top Area =================-->
+        
 
-<div class="container">
+<div class="container1">
 	
-			<h2>${board} List</h2>
-			<div class="media-content">
-      <img class="med-8x6" alt="새해 밤 평면 겨울 크리스마스 손으로 그린 ​​그림 디지털 페인팅 아트 일러스트 블루 포토샵 새해" width="768" height="579" data-id="5744815" data-optimize-for-bots="true" skip_resize="false" srcset="https://cdn.dribbble.com/users/393235/screenshots/5744815/new_year_night_by_www.digital-space.co.jpg?compress=1&amp;resize=300x225 300w, https://cdn.dribbble.com/users/393235/screenshots/5744815/new_year_night_by_www.digital-space.co.jpg?compress=1&amp;resize=400x300 400w, https://cdn.dribbble.com/users/393235/screenshots/5744815/new_year_night_by_www.digital-space.co.jpg?compress=1&amp;resize=600x450 600w, https://cdn.dribbble.com/users/393235/screenshots/5744815/new_year_night_by_www.digital-space.co.jpg?compress=1&amp;resize=800x600 800w" src="https://cdn.dribbble.com/users/393235/screenshots/5744815/new_year_night_by_www.digital-space.co.jpg?compress=1&amp;resize=400x300" sizes="auto">
-  </div>
+			
 		
 		<table class="table">
 			<thead class="thead-dark">
