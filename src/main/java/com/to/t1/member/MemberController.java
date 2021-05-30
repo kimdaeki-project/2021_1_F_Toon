@@ -56,10 +56,12 @@ public class MemberController {
 	
 	@RequestMapping("searchId") 
 	public void searchId()throws Exception{
-//		String message = "아이디와 핸드폰 불일치";
-//		model.addAttribute("msg", message);
 	}
 	
+	@RequestMapping("searchPw") 
+	public void searchPw()throws Exception{
+	}
+
 	@PostMapping("searchId")
 	public String searchId(MemberVO memberVO,Model model)throws Exception{
 		memberVO = memberService.searchId(memberVO);

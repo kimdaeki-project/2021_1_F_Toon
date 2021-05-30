@@ -56,7 +56,7 @@
 			<button type="submit" class="btn btn-primary">로그인</button>
 		</form>
 		
-		<a href="/member/searchId">ID 찾기</a> <a href="#">비밀번호 찾기</a> <a href="/member/memberJoinCheck">회원가입</a>
+		<a href="/member/searchId">ID 찾기</a> <a href="/member/searchPw">비밀번호 찾기</a> <a href="/member/memberJoinCheck">회원가입</a>
 
 <script src="js/jquery-2.2.4.min.js"></script>
 <script src="js/popper.js"></script>
