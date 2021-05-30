@@ -73,7 +73,7 @@ public class MemberController {
 			message="이름과 핸드폰 불일치";
 			messageType="Y";
 		} else {
-			message="아이디는 " + memberVO.getUsername();
+			message="회원님의 아이디는 " + memberVO.getUsername()+" 입니다.";
 			messageType="Y";
 		}
 		
