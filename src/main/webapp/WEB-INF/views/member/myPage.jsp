@@ -25,7 +25,7 @@
 </head>
 <body>
 	<c:import url="./../fragments/header.jsp"></c:import>
-	
+
 	<h1>회원정보</h1>
 	<c:if test="${member.joinFileVO.fileName eq null}"><img alt="" src="../images/member.jpg"></c:if>
 	<c:if test="${member.joinFileVO.fileName ne null}"><h3><img alt="" src="../upload/member/${member.joinFileVO.fileName}"></h3></c:if>
@@ -39,5 +39,6 @@
 	
 	<a href="./memberUpdate" class="btn btn-info" role="button">내 정보 수정</a>
 	<a href="./memberDelete" class="btn btn-danger" role="button">회원 탈퇴</a>
+
 </body>
 </html>

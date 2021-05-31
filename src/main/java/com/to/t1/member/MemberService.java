@@ -60,4 +60,8 @@ public class MemberService {
 	public MemberVO searchId(MemberVO memberVO)throws Exception{
 		return memberMapper.searchId(memberVO);
 	}
+	
+	public MemberVO searchPw(MemberVO memberVO)throws Exception{
+		return memberMapper.searchPw(memberVO);
+	}
 }

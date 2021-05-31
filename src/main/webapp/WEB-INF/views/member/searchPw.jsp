@@ -31,8 +31,8 @@
 	
 	<form id="frm" action="./searchPw" method="post">
 			<div class="form-group">
-				<label for="name">이름</label> 
-				<input type="text" class="form-control etc"	id="name" name="name">
+				<label for="username">ID</label> 
+				<input type="text" class="form-control etc"	id="username" name="username">
 		
 			</div>	
 			

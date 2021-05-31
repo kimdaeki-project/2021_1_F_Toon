@@ -18,6 +18,10 @@
 			select username from member where name=#{name} and phone=#{phone}
 		</select>
 		
+		<select id="searchPw"  parameterType="MemberVO" resultType="MemberVO">
+			select password from member where username=#{username} and phone=#{phone}
+		</select>
+		
 		<select id="getLogin" parameterType="MemberVO" resultMap="memberLoginResult">
 			select M.*, MF.fileName 
 			from member M left join joinfiles MF

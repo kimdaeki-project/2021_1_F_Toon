@@ -58,15 +58,11 @@ public class MemberController {
 	public void searchId()throws Exception{
 	}
 	
-	@RequestMapping("searchPw") 
-	public void searchPw()throws Exception{
-	}
-
 	@PostMapping("searchId")
 	public String searchId(MemberVO memberVO,Model model)throws Exception{
 		memberVO = memberService.searchId(memberVO);
 
-		String message = "아이디와 핸드폰 불일치";
+		String message = "이름과 핸드폰 불일치";
 		String messageType = "N";
 		
 		if(memberVO.getUsername() == null) {
@@ -85,6 +81,35 @@ public class MemberController {
 		
 		return "member/memberLogin";
 	}
+	
+	@RequestMapping("searchPw") 
+	public void searchPw()throws Exception{
+	}
+	
+	@PostMapping("searchPw")
+	public String searchPw(MemberVO memberVO,Model model)throws Exception{
+		memberVO = memberService.searchPw(memberVO);
+		String message = "아이디와 핸드폰 불일치";
+		String messageType = "N";
+		
+		if(memberVO.getPassword() == null) {
+			message="아이디와 핸드폰 불일치";
+			messageType="Y";
+		} else {
+			
+			message="회원님의 비밀번호는 " + memberVO.getPassword()+" 입니다.";
+			messageType="Y";
+		}
+		
+		model.addAttribute("msg", message);
+		model.addAttribute("messageType", messageType);
+		
+		System.out.println(memberVO.getUsername());
+		System.out.println(message);
+		
+		return "member/memberLogin";
+	}
+	
 	
 	@RequestMapping("memberJoinCheck")
 	public void memberJoinCheck()throws Exception{}
