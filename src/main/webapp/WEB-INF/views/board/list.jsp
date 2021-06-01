@@ -18,13 +18,21 @@
     <link rel="stylesheet" href="../css/responsive.css">
     
     <style type="text/css">
-    body {
-    	background-image: url('../images/toon-notice.jpg');
-    	background-size: 1000px;
-    }
+     .back {
+    	background-image: url('../images/toon-notice5.PNG');
+    	background-size : 2000px;
+    	border-style: solid;
+    	border-color: #98DFFF;
+     }
+     .thead {
+     	background-color: #F9FFFF;
+     	border-style: solid;
+     	border-color: #98DFFF;
+     }
+  
     
     </style>
-<title>Insert title here</title>
+<title>WEBTOON NOTICE PAGE</title>
 
 </head>
 <body>
@@ -72,21 +80,21 @@
     </section>
     <!--================ End header top Area =================-->
         
+<div class="back">
+<div class="container">
 
-<div class="container1">
-	
-			
-		
 		<table class="table">
-			<thead class="thead-dark">
+			
+			<thead class="thead">
 				<tr>
-					<th>NUM</th>
-					<th>TITLE</th>
-					<th>WRITER</th>
-					<th>DATE</th>
-					<th>HIT</th>
+					<th>번호</th>
+					<th>제목</th>
+					<th>작성자</th>
+					<th>작성일</th>
+					<th>조회수</th>
 				</tr>
 			</thead>
+			
 			
 			<tbody>
 			<c:forEach items="${list}" var="vo" >
@@ -131,19 +139,22 @@
 		<input type="hidden" name="curPage" value="1" id="curPage">
 	  <div class="input-group-prepend">
 	   <select class="form-control" name="kind" id="kind" >
-	    <option class="sel">Title</option>
-	    <option class="sel">Contents</option>
-	    <option class="sel">Writer</option>
+	    <option class="sel">제목</option>
+	    <option class="sel">내용</option>
+	    <option class="sel">작성자</option>
 	  </select>
 	  </div>
 	  <input type="text" class="form-control" name="search" id="search" value="${pager.search}" placeholder="">
 	    <div class="input-group-append">
-	    <button class="btn btn-success" type="submit">Search</button>
+	    <button class="btn btn-secondary" type="submit">검색</button>
 	  </div>
 	 </form> 
+	 
 	</div> 
+	<a href="./${board}Insert" class="btn btn-secondary"  role="button">작성</a>
+	</div>
   
-  <a href="./${board}Insert" class="btn  btn-primary" role="button">Write</a>
+  
 <script type="text/javascript">
 	let kind= '${pager.kind}';//Title, Writer, Contents
 	$(".sel").each(function() {
@@ -158,15 +169,7 @@
 		$("#curPage").val(curPage);
 		let search= '${pager.search}';
 		$("#frm").submit();
-		
-		
-		/* $("#curPage").val(curPage);
-		$("#kind").val('${pager.kind}');
-		$("#search").val(${pager.search}');
-		$("#frm").submit(); */
-		
-		//location.href="./${board}List?curPage="+curPage+"&kind=${pager.kind}&search=${pager.search}";
-		
+
 	});
 </script>  
 </div>
