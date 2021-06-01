@@ -9,25 +9,16 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <!-- BootStrap -->    
 <!--     <link rel="icon" href="images/favicon.png" type="image/png">  위에 로고-->
-    <c:import url="./../fragments/bootstrap.jsp"></c:import>
+    <c:import url="../fragments/bootstrap.jsp"></c:import>
     <title>WebToon</title>
     
 <!--     summer note -->
 <!-- 	<link href="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote-bs4.min.css" rel="stylesheet"> -->
 <!-- 	<script src="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote-bs4.min.js"></script> -->
 <!-- 	<!-- ----------- --> -->
+
+    <link rel="stylesheet" href="/css/header.css">
    
-    <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="../css/bootstrap.css">
-    <link rel="stylesheet" href="../css/themify-icons.css">
-    <link rel="stylesheet" href="../css/flaticon.css">
-    <link rel="stylesheet" href="../css/all.min.css">
-    <link rel="stylesheet" href="../css/animate.css">
-    <link rel="stylesheet" href="../css/magnific-popup.css">
-   
-    <!-- main css -->
-    <link rel="stylesheet" href="../css/style.css">
-    <link rel="stylesheet" href="../css/responsive.css">
     
     <style type="text/css">
    .r1{
@@ -41,7 +32,7 @@
 
 </head>
 <body>
-	<c:import url="./../fragments/header.jsp"></c:import>
+	<c:import url="../fragments/header.jsp"></c:import>
 	<div class="container mt-2">
 	
 		<h2 class="mt-4">회원가입</h2>

@@ -9,23 +9,13 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <!-- BootStrap -->    
 <!--     <link rel="icon" href="images/favicon.png" type="image/png">  위에 로고-->
-    <c:import url="./../fragments/bootstrap.jsp"></c:import>
+    <c:import url="../fragments/bootstrap.jsp"></c:import>
     <title>WebToon</title>
    
-    <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="../css/bootstrap.css">
-    <link rel="stylesheet" href="../css/themify-icons.css">
-    <link rel="stylesheet" href="../css/flaticon.css">
-    <link rel="stylesheet" href="../css/all.min.css">
-    <link rel="stylesheet" href="../css/animate.css">
-    <link rel="stylesheet" href="../css/magnific-popup.css">
-   
-    <!-- main css -->
-    <link rel="stylesheet" href="../css/style.css">
-    <link rel="stylesheet" href="../css/responsive.css">
+     <link rel="stylesheet" href="/css/header.css">
 </head>
 <body>
-	<c:import url="./../fragments/header.jsp"></c:import>
+	<c:import url="../fragments/header.jsp"></c:import>
 	<h2>수정ㅋ</h2>
 	<form action="memberUpdate" method="post">
 		ID <input type="text" name="username" readonly="readonly" value="${member.username}"><br>
