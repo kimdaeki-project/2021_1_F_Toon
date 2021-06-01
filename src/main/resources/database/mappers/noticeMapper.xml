@@ -27,25 +27,26 @@
    		<select id="getList" resultType="NoticeVO" parameterType="Pager">
 			select * from notice
 			<include refid="searcher"></include>
-			order by num desc
+			order by boNum desc
 			limit #{startRow}, #{perPage}
 			<!-- limit 시작index번호(0부터시작), 갯수 --> 
    		</select>
    		
 		<select id="getTotalCount" parameterType="Pager" resultType="java.lang.Long">
-   			select count(num) from notice
+   			select count(boNum) from notice
    			<include refid="searcher"></include>
    		</select>
    		
    		<select id="getSelect" resultMap="selectResult" parameterType="BoardVO">
 			SELECT N.*, NF.* from
 			notice N left join noticeFiles NF
-			on N.num = NF.num
-			WHERE N.num=#{num}
+			on N.boNum = NF.boNum
+			WHERE N.boNum=#{boNum}
    		</select>
    		
    		<resultMap type="NoticeVO" id="selectResult">
-   			<id column="num" property="num"/>
+   			<id column="boNum" property="boNum"/>
+   			<result column="ntKinds" property="ntKinds"/>
    			<result column="title" property="title"/>
    			<result column="writer" property="writer"/>
    			<result column="contents" property="contents"/>
@@ -59,24 +60,24 @@
    		</resultMap>
    		
    		<update id="setHitUpdate" parameterType="BoardVO">
-   			update notice set hit=hit+1 where num=#{num}
+   			update notice set hit=hit+1 where boNum=#{boNum}
    		</update>
    		
-   		<insert id="setInsert" parameterType="BoardVO" useGeneratedKeys="true" keyProperty="num">
-   			insert into notice values(#{num}, #{title}, #{writer},#{contents}, now(), 0)
+   		<insert id="setInsert" parameterType="BoardVO" useGeneratedKeys="true" keyProperty="boNum">
+   			insert into notice values(#{boNum}, #{title}, #{writer},#{contents}, now(), 0)
    		</insert>
    		
    		<insert id="setFileInsert" parameterType="BoardFileVO">
-   			insert into noticeFiles (num, filename, oriname)
-   			values (#{num}, #{fileName}, #{oriName})
+   			insert into noticeFiles (boNum, filename, oriname)
+   			values (#{boNum}, #{fileName}, #{oriName})
    		</insert>
    		
    		<update id="setUpdate" parameterType="BoardVO">
-   			update notice set title=#{title}, contents=#{contents} where num=#{num}
+   			update notice set title=#{title}, contents=#{contents} where boNum=#{boNum}
    		</update>
    		
    		<delete id="setDelete" parameterType="BoardVO">
-   			delete from notice where num=#{num}
+   			delete from notice where boNum=#{boNum}
    		</delete>
    
    </mapper>

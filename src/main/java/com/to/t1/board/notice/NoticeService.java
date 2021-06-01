@@ -30,8 +30,8 @@ public class NoticeService implements BoardService {
 	public List<BoardVO> getList(Pager pager) throws Exception {
 		// TODO Auto-generated method stub
 		pager.makeRow();
-		//Long totalCount = noticeMapper.getTotalCount(pager);
-		//pager.makeNum(totalCount);
+		Long totalCount = noticeMapper.getTotalCount(pager);
+		pager.makeNum(totalCount);
 		return noticeMapper.getList(pager);
 	}
 
@@ -65,7 +65,7 @@ public class NoticeService implements BoardService {
 			BoardFileVO boardFileVO = new BoardFileVO();
 			boardFileVO.setFileName(fileName);
 			boardFileVO.setOriName(multipartFile.getOriginalFilename());
-			boardFileVO.setNum(boardVO.getNum());
+			boardFileVO.setBoNum(boardVO.getBoNum());
 			noticeMapper.setFileInsert(boardFileVO);
 		}
 		

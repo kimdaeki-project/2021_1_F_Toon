@@ -17,6 +17,7 @@ import org.springframework.web.servlet.ModelAndView;
 
 import com.to.t1.board.BoardFileVO;
 import com.to.t1.board.BoardVO;
+import com.to.t1.member.MemberVO;
 //import com.to.t1.member.MemberVO;
 import com.to.t1.util.Pager;
 
@@ -76,27 +77,27 @@ public class NoticeController {
 		return mv;
 	}
 	
-//	@GetMapping("insert")
-//	public String setInsert(Model model, HttpSession session)throws Exception{
-//		model.addAttribute("vo", new BoardVO());
-//		model.addAttribute("action", "insert");
-//		
-//		Object obj = session.getAttribute("member");
-//		MemberVO memberVO = null;
-//		String path="redirect:/member/login";
-//		//if(obj != null) {}
-//		if(obj instanceof MemberVO) {
-//			memberVO = (MemberVO)obj;
-//			
-//			if(memberVO.getUsername().equals("admin")) {
-//				path="board/form";
-//			}
-//		}	
+	@GetMapping("insert")
+	public String setInsert(Model model, HttpSession session)throws Exception{
+		model.addAttribute("vo", new BoardVO());
+		model.addAttribute("action", "insert");
+		
+		Object obj = session.getAttribute("member");
+		MemberVO memberVO = null;
+		String path="redirect:/member/login";
+		//if(obj != null) {}
+		if(obj instanceof MemberVO) {
+			memberVO = (MemberVO)obj;
+			
+			if(memberVO.getUsername().equals("admin")) {
+				path="board/insert";
+			}
+		}	
 		
 		
 		
-//		return path;
-//	}
+		return path;
+	}
 	
 	@PostMapping("insert")
 	public String setInsert(BoardVO boardVO, MultipartFile [] files)throws Exception{
@@ -115,7 +116,7 @@ public class NoticeController {
 		boardVO = noticeService.getSelect(boardVO);
 		model.addAttribute("vo", boardVO);
 		model.addAttribute("action", "update");
-		return "board/form";
+		return "board/update";
 		
 	}
 	

@@ -57,7 +57,7 @@ public class QnaService implements BoardService{
 			BoardFileVO boardFileVO = new BoardFileVO();
 			boardFileVO.setFileName(fileName);
 			boardFileVO.setOriName(multipartFile.getOriginalFilename());
-			boardFileVO.setNum(boardVO.getNum());
+			boardFileVO.setBoNum(boardVO.getBoNum());
 			qnaMapper.setFileInsert(boardFileVO);
 		}
 		return result;
@@ -100,7 +100,7 @@ public class QnaService implements BoardService{
 			BoardFileVO boardFileVO = new BoardFileVO();
 			boardFileVO.setFileName(fileName);
 			boardFileVO.setOriName(multipartFile.getOriginalFilename());
-			boardFileVO.setNum(boardVO.getNum());
+			boardFileVO.setBoNum(boardVO.getBoNum());
 			qnaMapper.setFileInsert(boardFileVO);
 		}
 		return result;

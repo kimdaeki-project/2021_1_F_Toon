@@ -6,11 +6,11 @@
 <head>
 <meta charset="UTF-8">
 <!-- Required meta tags -->
-    <meta charset="utf-8">
+    
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <!-- BootStrap -->    
 <!--     <link rel="icon" href="images/favicon.png" type="image/png">  위에 로고-->
-    <c:import url="./fragments/bootstrap.jsp"></c:import>
+    <c:import url="../fragments/bootstrap.jsp"></c:import>
     
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="css/bootstrap.css">
@@ -43,7 +43,7 @@
 
 </head>
 <body>
-<c:import url="./fragments/header.jsp"></c:import>
+<c:import url="../fragments/header.jsp"></c:import>
         
 <div class="back">
 <div class="container">
@@ -53,6 +53,7 @@
 			<thead class="thead">
 				<tr>
 					<th>번호</th>
+					<th>공지종류</th>
 					<th>제목</th>
 					<th>작성자</th>
 					<th>작성일</th>
@@ -64,14 +65,15 @@
 			<tbody>
 			<c:forEach items="${list}" var="vo" >
 				<tr>
-					<td>${vo.num}</td>
-					<td><a href="./${board}Select?num=${vo.num}">
+					<td>${vo.boNum}</td>
+					<td><a href="./${board}Select?num=${vo.boNum}">
 					
 					<c:catch>
 					<c:forEach begin="1" end="${vo.depth}">--</c:forEach>
 					</c:catch>
 					${vo.title}
 					</a></td>
+					<td>${vo.ntKinds}</td>
 					<td>${vo.writer}</td>
 					<td>${vo.regDate}</td>
 					<td>${vo.hit}</td>
@@ -104,6 +106,7 @@
 		<input type="hidden" name="curPage" value="1" id="curPage">
 	  <div class="input-group-prepend">
 	   <select class="form-control" name="kind" id="kind" >
+	   	<option class="sel">공지종류</option>
 	    <option class="sel">제목</option>
 	    <option class="sel">내용</option>
 	    <option class="sel">작성자</option>
@@ -116,7 +119,7 @@
 	 </form> 
 	 
 	</div> 
-	<a href="./${board}Insert" class="btn btn-secondary"  role="button">작성</a>
+	<a href="./insert" class="btn btn-secondary"  role="button">작성</a>
 	</div>
   
   
