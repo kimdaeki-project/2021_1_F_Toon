@@ -23,6 +23,17 @@
     <!-- main css -->
     <link rel="stylesheet" href="../css/style.css">
     <link rel="stylesheet" href="../css/responsive.css">
+    
+    <style type="text/css">
+   .r1{
+      color: red;
+   }
+   
+   .r2{
+      color: blue;
+   }
+</style>
+
 </head>
 <body>
 	<c:import url="./../fragments/header.jsp"></c:import>
@@ -32,8 +43,8 @@
 
 		<form id="frm" action="./join" method="post" enctype="multipart/form-data">
 			<div class="form-group">
-				<label for="id">ID</label> 
-				<input type="text" class="form-control"	id="id" name="username">
+				<label for="username">ID</label> 
+				<input type="text" class="form-control"	id="username" name="username">
 				<h4 id="idCheckResult"></h4>
 			
 				<!-- ID 는 6글자 이상 -->			
@@ -47,7 +58,7 @@
 			</div>
 			
 			<div class="form-group">
-				<label for="pw">Password</label> 
+				<label for="pw">Password 확인</label> 
 				<input type="password" class="form-control" id="pw2" name="password">
 					<!-- PW 두개는 일치 -->
 			</div>
@@ -103,5 +114,7 @@
 <script src="js/jquery.validate.min.js"></script>
 <script src="js/mail-script.js"></script>
 <script src="js/theme.js"></script>
+<script type="text/javascript" src="../js/memberJoin.js"></script>
+									
 </body>
 </html>
