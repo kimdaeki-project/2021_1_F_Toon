@@ -26,10 +26,7 @@
 </head>
 <body class="header-fixed">
 <c:import url="./../fragments/header.jsp"></c:import>
-   <h1>Here is Admin Page</h1>
-    <!-- partial -->
-    
-    <div class="page-body">
+	<div class="page-body">
       <!-- partial:partials/_sidebar.html -->
       <div class="sidebar">
         <div class="user-profile">
@@ -37,15 +34,15 @@
             <img class="profile-img img-lg rounded-circle" src="../assets/images/profile/male/image_1.png" alt="profile image">
           </div>
           <div class="info-wrapper">
-            <p class="user-name">Allen Clerk</p>
-            <h6 class="display-income">$3,400,00</h6>
+            <p class="user-name">Admin</p>
+            <h6 class="display-income">여기에 총 액</h6>
           </div>
         </div>
         <ul class="navigation-menu">
           <li class="nav-category-divider">MAIN</li>
           <li>
             <a href="index.html">
-              <span class="link-title">Dashboard</span>
+              <span class="link-title">관리자페이지</span>
               <i class="mdi mdi-gauge link-icon"></i>
             </a>
           </li>
