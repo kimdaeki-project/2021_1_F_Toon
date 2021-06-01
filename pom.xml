@@ -24,11 +24,26 @@
 			<artifactId>tomcat-embed-jasper</artifactId>
 		</dependency>
 		
+<<<<<<< HEAD
 		<!-- jsp 시큐리티 명령어 -->
 		<dependency>
 				<groupId>org.springframework.security</groupId>
 				<artifactId>spring-security-taglibs</artifactId>
 		</dependency>
+=======
+			<!-- https://mvnrepository.com/artifact/commons-fileupload/commons-fileupload -->
+			<dependency>
+				<groupId>commons-fileupload</groupId>
+				<artifactId>commons-fileupload</artifactId>
+				<version>1.4</version>
+			</dependency>
+			
+			<!-- https://mvnrepository.com/artifact/org.springframework.boot/spring-boot-starter-security -->
+<!-- 		<dependency> -->
+<!--    		 <groupId>org.springframework.boot</groupId> -->
+<!--     		<artifactId>spring-boot-starter-security</artifactId> -->
+<!-- 		</dependency> -->
+>>>>>>> hyelin
 
 		<!-- jstl -->
 		<dependency>

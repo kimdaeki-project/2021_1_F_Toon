@@ -25,10 +25,18 @@
                 <div class="col-lg-4 col-md-6 col-sm-6 search-trigger">
                     <div class="right-button">
                         <ul>
-                            <li><a id="search" href="javascript:void(0)"><i class="fas fa-search"></i></a></li>
-                            <li><a href="">Login</a></li>
-                            <li><a href="">Join</a></li>
+                        	<c:if test="${empty member}">        
+                            <li><a href="/member/login">Login</a></li>
+                            <li><a href="/member/memberJoinCheck">Join</a></li>
+                            </c:if>
+                            
+                            <c:if test="${not empty member}">
+                            <li><a href="/member/myPage">MY PAGE</a></li>
+                            <li><a href="/member/logout">LOGOUT</a></li>
+                            </c:if>
                         </ul>
+                        
+
                     </div>
                 </div>
             </div>
