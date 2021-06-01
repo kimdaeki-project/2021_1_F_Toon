@@ -1,4 +1,4 @@
-let username = document.getElementById("username");
+let id = document.getElementById("id");
 let pw = document.getElementById("pw");
 let pw2 = document.getElementById("pw2");
 let btn = document.getElementById("btn");
@@ -13,11 +13,19 @@ let etcResult=true		   // name, email, phone 결과
 
 // PW EQUAL CHECK **********************************
 pw2.addEventListener("blur", function(){
+	let message  = "비밀번호가 일치합니다.";
+	let c = "r2";
+	
 	if(pw.value != pw2.value){
 		pw2.value="";
+		message= "비밀번호가 일치하지 않습니다."
+		c= "r1";
 	}else {
 		pwEqualResult=true;
 	}
+	
+	pwResult2.innerHTML=message;
+	pwResult2.setAttribute("class", c);
 });
 
 pw.addEventListener("change", function(){
@@ -31,6 +39,7 @@ pw.addEventListener("blur", function(){
 	let message = "8글자 미만입니다";
 	let c = "r1";
 	if(pw.value.length>7){
+		
 		message = "8글자 이상입니다"
 		c= "r2";
 		pwCheckResult=true;
@@ -78,11 +87,16 @@ btn.addEventListener("click", function(){
 	}
 });
 
+$("#id").summernote({
+			
+			placeholder: 'write here...',
+			
+});
 
 // Id 중복 확인
-$("#username").blur(function(){
-   let id = $("#username").val();
-   $.get("./memberIdCheck?username="+id, function(result){
+$("#id").blur(function(){
+   let id = $("#id").val();
+   $.get("./memberIdCheck?id="+id, function(result){
 	  result = result.trim();
 	  let str = "사용가능한 ID 입니다.";
 	  if(result=='0'){

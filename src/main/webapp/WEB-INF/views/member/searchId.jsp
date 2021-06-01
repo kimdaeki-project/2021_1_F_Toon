@@ -39,7 +39,7 @@
 			
 			<div class="form-group">
 				<label for="phone">Phone</label> 
-				<input type="text" class="form-control etc"	id="phone" name="phone">
+				<input type="text" class="form-control etc"	id="phone" name="phone" placeholder="- 제외 하고 입력하세요">
 			</div>		
 			
 				<input type="submit" id="btn" value="아이디 찾기" class="btn btn-primary" >

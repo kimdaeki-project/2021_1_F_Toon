@@ -11,6 +11,11 @@
 <!--     <link rel="icon" href="images/favicon.png" type="image/png">  위에 로고-->
     <c:import url="./../fragments/bootstrap.jsp"></c:import>
     <title>WebToon</title>
+    
+<!--     summer note -->
+<!-- 	<link href="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote-bs4.min.css" rel="stylesheet"> -->
+<!-- 	<script src="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote-bs4.min.js"></script> -->
+<!-- 	<!-- ----------- --> -->
    
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="../css/bootstrap.css">
@@ -43,23 +48,26 @@
 
 		<form id="frm" action="./join" method="post" enctype="multipart/form-data">
 			<div class="form-group">
-				<label for="username">ID</label> 
-				<input type="text" class="form-control"	id="username" name="username">
+				<label for="id">ID</label> 
+				<input type="text" class="form-control"	id="id" name="id" >
 				<h4 id="idCheckResult"></h4>
+				<h4 id="idResult"></h4>	
 			
 				<!-- ID 는 6글자 이상 -->			
 			</div>
 			
 			<div class="form-group">
 				<label for="pw">Password</label>
-				 <input type="password"	class="form-control" id="pw" name="password1">
+				 <input type="password"	class="form-control" id="pw" name="pw1">
+				 
 					<h4 id="pwResult"></h4>
 					<!-- PW는 8글자 이상 -->
 			</div>
 			
 			<div class="form-group">
 				<label for="pw">Password 확인</label> 
-				<input type="password" class="form-control" id="pw2" name="password">
+				<input type="password" class="form-control" id="pw2" name="pw">
+					<h4 id="pwResult2"></h4>
 					<!-- PW 두개는 일치 -->
 			</div>
 			
@@ -78,7 +86,7 @@
 		
 			<div class="form-group">
 				<label for="phone">Phone</label> 
-				<input type="text" class="form-control etc"	id="phone" name="phone">
+				<input type="text" class="form-control etc"	id="phone" name="phone" placeholder="- 제외 하고 입력하세요">
 				<!-- 비어 있으면 X -->
 			</div>			
 			
@@ -92,8 +100,7 @@
 				<label for="avatar">사진 등록</label> 
 				<input type="file" class="form-control etc"	id="avatar" name="avatar">
 			</div>	
-				
-						
+		
 			<input type="submit" id="btn" value="JOIN" class="btn btn-primary" >
 			
 		</form>
