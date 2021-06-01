@@ -26,6 +26,7 @@
 <!-- this is AdminPage --> 
 <c:import url="./../fragments/header.jsp"></c:import>
 <h1>Here is admin Page</h1>
+<h1>Here is admin Page</h1>
 </body>
 
 </html>

@@ -16,9 +16,11 @@ public class AdminController {
 	public String adminHome(Model model) {
 		return "admin/adminPage";
 	}
+	//탬플릿 임시용 
 	@GetMapping("test")
 	public String admintest(Model model) {
 		return "admin/test";
 	}
+	
 	
 }
