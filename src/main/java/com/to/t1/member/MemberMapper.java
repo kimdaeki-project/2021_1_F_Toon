@@ -23,4 +23,6 @@ public interface MemberMapper {
 	
 	public MemberVO searchPw(MemberVO memberVO)throws Exception;
 	
+	public MemberVO memberIdCheck(MemberVO memberVO)throws Exception;
+	
 }

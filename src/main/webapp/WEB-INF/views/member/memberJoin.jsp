@@ -52,14 +52,12 @@
 				<input type="text" class="form-control"	id="id" name="id" >
 				<h4 id="idCheckResult"></h4>
 				<h4 id="idResult"></h4>	
-			
 				<!-- ID 는 6글자 이상 -->			
 			</div>
 			
 			<div class="form-group">
 				<label for="pw">Password</label>
 				 <input type="password"	class="form-control" id="pw" name="pw1">
-				 
 					<h4 id="pwResult"></h4>
 					<!-- PW는 8글자 이상 -->
 			</div>
@@ -74,26 +72,26 @@
 			<div class="form-group">
 				<label for="name">이름</label> 
 				<input type="text" class="form-control etc"	id="name" name="name">
-				<!-- 비어 있으면 X -->
+				
 			</div>	
 			
 			<div class="form-group">
 				<label for="nickname">닉네임</label> 
 				<input type="text" class="form-control etc"	id="nickname" name="nickname">
-				<!-- 비어 있으면 X -->
+				
 			</div>	
 			
 		
 			<div class="form-group">
 				<label for="phone">Phone</label> 
-				<input type="text" class="form-control etc"	id="phone" name="phone" placeholder="- 제외 하고 입력하세요">
-				<!-- 비어 있으면 X -->
+				<input type="number" class="form-control etc" id="phone" name="phone" placeholder="- 제외 하고 입력하세요">
+				
 			</div>			
 			
 			<div class="form-group">
 				<label for="email">Email</label> 
 				<input type="text" class="form-control etc"	id="email" name="email">
-				<!-- 비어 있으면 X -->
+				
 			</div>
 				
 			<div class="form-group">

@@ -5,8 +5,8 @@ let btn = document.getElementById("btn");
 let etc = document.getElementsByClassName("etc");
 
 let idCheckResult = false; // id check 결과
-let pwCheckResult = false; // pw check 결과
-let pwEqualResult = false; // pw equal 결과
+let pwCheckResult = false; 
+let pwEqualResult = false; 
 let etcResult=true		   // name, email, phone 결과
 
 
@@ -87,11 +87,6 @@ btn.addEventListener("click", function(){
 	}
 });
 
-$("#id").summernote({
-			
-			placeholder: 'write here...',
-			
-});
 
 // Id 중복 확인
 $("#id").blur(function(){

@@ -82,6 +82,20 @@ public class MemberController {
 		return "member/memberLogin";
 	}
 	
+	@GetMapping("memberIdCheck")
+	public String memberIdCheck(MemberVO memberVO, Model model)throws Exception{
+		memberVO = memberService.memberIdCheck(memberVO);
+		String result = "0";
+		if(memberVO==null) {
+			result="1";
+		}
+		
+		model.addAttribute("result", result);
+		
+		return "common/ajaxResult";
+		
+	}
+	
 	@RequestMapping("searchPw") 
 	public void searchPw()throws Exception{
 	}

@@ -17,6 +17,10 @@ public class MemberService {
 	
 	@Autowired
 	private FileManager fileManager;
+	
+	public MemberVO memberIdCheck(MemberVO memberVO)throws Exception{
+		return memberMapper.memberIdCheck(memberVO);
+	}
 
 	public int setJoin(MemberVO memberVO, MultipartFile multipartFile, HttpSession session)throws Exception{
 		int result = memberMapper.setJoin(memberVO);
