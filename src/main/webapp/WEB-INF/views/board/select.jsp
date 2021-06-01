@@ -9,7 +9,7 @@
 
 </head>
 <body>
-
+<c:import url="./fragments/header.jsp"></c:import>
 
 <div class="container">
 	<h1>${board} Select Page</h1>

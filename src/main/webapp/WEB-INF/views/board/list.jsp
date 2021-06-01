@@ -5,17 +5,24 @@
 <html>
 <head>
 <meta charset="UTF-8">
- <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="../css/bootstrap.css">
-    <link rel="stylesheet" href="../css/themify-icons.css">
-    <link rel="stylesheet" href="../css/flaticon.css">
-    <link rel="stylesheet" href="../css/all.min.css">
-    <link rel="stylesheet" href="../css/animate.css">
-    <link rel="stylesheet" href="../css/magnific-popup.css">
+<!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <!-- BootStrap -->    
+<!--     <link rel="icon" href="images/favicon.png" type="image/png">  위에 로고-->
+    <c:import url="./fragments/bootstrap.jsp"></c:import>
+    
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="css/bootstrap.css">
+    <link rel="stylesheet" href="css/themify-icons.css">
+    <link rel="stylesheet" href="css/flaticon.css">
+    <link rel="stylesheet" href="css/all.min.css">
+    <link rel="stylesheet" href="css/animate.css">
+    <link rel="stylesheet" href="css/magnific-popup.css">
    
     <!-- main css -->
-    <link rel="stylesheet" href="../css/style.css">
-    <link rel="stylesheet" href="../css/responsive.css">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/responsive.css">
     
     <style type="text/css">
      .back {
@@ -36,49 +43,7 @@
 
 </head>
 <body>
-<!--================ Start header Top Area =================-->
-    <section class="header-top">
-        <div class="container">
-            <div class="row align-items-center justify-content-between">
-                <div class="col-6 col-lg-4">
-                    <div class="float-left">
-                        <ul class="header_social">
-                            <li><a href="#"><i class="ti-facebook"></i></a></li>
-                            <li><a href="#"><i class="ti-twitter"></i></a></li>
-                            <li><a href="#"><i class="ti-instagram"></i></a></li>
-                            <li><a href="#"><i class="ti-skype"></i></a></li>
-                            <li><a href="#"><i class="ti-vimeo"></i></a></li>
-                        </ul>   
-                    </div>
-                </div>
-                <div class="col-6 col-lg-4 col-md-6 col-sm-6 logo-wrapper">
-<!--                     <a href="index.html" class="logo"> -->
-<!--                         <img src="images/logo.png" alt=""> -->
-<!--                     </a> -->
-						<h2>WEBTOON PAGE</h2>
-                </div>
-                <div class="col-lg-4 col-md-6 col-sm-6 search-trigger">
-                    <div class="right-button">
-                        <ul>
-                            <li><a id="search" href="javascript:void(0)"><i class="fas fa-search"></i></a></li>
-                            <li><a href="">Login</a></li>
-                            <li><a href="">Join</a></li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-        </div>
-                <div class="search_input" id="search_input_box">
-            <div class="container ">
-                <form class="d-flex justify-content-between search-inner">
-                    <input type="text" class="form-control" id="search_input" placeholder="Search Here">
-                    <button type="submit" class="btn"></button>
-                    <span class="ti-close" id="close_search" title="Close Search"></span>
-                </form>
-            </div>
-        </div>
-    </section>
-    <!--================ End header top Area =================-->
+<c:import url="./fragments/header.jsp"></c:import>
         
 <div class="back">
 <div class="container">

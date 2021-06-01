@@ -20,7 +20,7 @@
 
 </head>
 <body>
-	
+	<c:import url="./fragments/header.jsp"></c:import>
 
 	<div class="container">
 		<h2>${board}form</h2>
