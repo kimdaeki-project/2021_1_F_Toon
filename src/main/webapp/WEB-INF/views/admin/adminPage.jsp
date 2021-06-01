@@ -7,17 +7,16 @@
  <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
   
-    <c:import url="./../fragments/bootstrap.jsp"></c:import>
+    <c:import url="../fragments/bootstrap.jsp"></c:import>
     <title>WebToon</title>
-    
+     <!-- header.css -->
     <link rel="stylesheet" href="../css/header.css">
-
-    
+    <!-- body.css -->
     <link rel="stylesheet" href="../css/mypage/style.css">
     
 </head>
 <body class="header-fixed">
-<c:import url="./../fragments/header.jsp"></c:import>
+<c:import url="../fragments/header.jsp"></c:import>
 	<div class="page-body">
       <!-- partial:partials/_sidebar.html -->
       <div class="sidebar">
