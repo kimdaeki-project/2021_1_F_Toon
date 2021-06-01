@@ -9,17 +9,9 @@
   
     <c:import url="./../fragments/bootstrap.jsp"></c:import>
     <title>WebToon</title>
-     <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="../css/bootstrap.css">
-    <link rel="stylesheet" href="../css/themify-icons.css">
-    <link rel="stylesheet" href="../css/flaticon.css">
-    <link rel="stylesheet" href="../css/all.min.css">
-    <link rel="stylesheet" href="../css/animate.css">
-    <link rel="stylesheet" href="../css/magnific-popup.css">
-   
-    <!-- main css -->
-    <link rel="stylesheet" href="../css/style.css">
-    <link rel="stylesheet" href="../css/responsive.css">
+    
+    <link rel="stylesheet" href="../css/header.css">
+
     
     <link rel="stylesheet" href="../css/mypage/style.css">
     
@@ -34,67 +26,88 @@
             <img class="profile-img img-lg rounded-circle" src="../assets/images/profile/male/image_1.png" alt="profile image">
           </div>
           <div class="info-wrapper">
-            <p class="user-name">Admin</p>
-            <h6 class="display-income">여기에 총 액</h6>
+            <p class="user-name">관리자</p>
+            <h6 class="display-income">ADMIN</h6>
           </div>
         </div>
         <ul class="navigation-menu">
-          <li class="nav-category-divider">MAIN</li>
-          <li>
-            <a href="index.html">
-              <span class="link-title">관리자페이지</span>
-              <i class="mdi mdi-gauge link-icon"></i>
-            </a>
-          </li>
-          <li>
-            <a href="#sample-pages" data-toggle="collapse" aria-expanded="false">
-              <span class="link-title">Sample Pages</span>
-              <i class="mdi mdi-flask link-icon"></i>
-            </a>
-            <ul class="collapse navigation-submenu" id="sample-pages">
-              <li>
-                <a href="pages/sample-pages/login_1.html" target="_blank">Login</a>
-              </li>
-              <li>
-                <a href="pages/sample-pages/error_2.html" target="_blank">Error</a>
-              </li>
-            </ul>
-          </li>
-          <li>
-            <a href="#ui-elements" data-toggle="collapse" aria-expanded="false">
-              <span class="link-title">UI Elements</span>
-              <i class="mdi mdi-bullseye link-icon"></i>
-            </a>
-            <ul class="collapse navigation-submenu" id="ui-elements">
-              <li>
-                <a href="pages/ui-components/buttons.html">Buttons</a>
-              </li>
-              <li>
-                <a href="pages/ui-components/tables.html">Tables</a>
-              </li>
-              <li>
-                <a href="pages/ui-components/typography.html">Typography</a>
-              </li>
-            </ul>
-          </li>
-          <li>
-            <a href="pages/forms/form-elements.html">
-              <span class="link-title">Forms</span>
+          <li class="nav-category-divider">Management</li>
+          
+           <li>
+            <a href="#sales_inquiry" data-toggle="collapse" aria-expanded="false">
+              <span class="link-title">매출관리</span>
               <i class="mdi mdi-clipboard-outline link-icon"></i>
             </a>
+             <ul class="collapse navigation-submenu" id="sales_inquiry">
+              <li>
+                <a href="pages/sample-pages/login_1.html" target="_blank">전체 매출조회</a>
+              </li>
+              <li>
+                <a href="pages/sample-pages/error_2.html" target="_blank">웹툰 별 매출조회</a>
+              </li>
+            </ul>
           </li>
+          
+          <li>
+            <a href="#payment_manage" data-toggle="collapse" aria-expanded="false">
+              <span class="link-title">결제관리</span>
+              <i class="mdi mdi-clipboard-outline link-icon"></i>
+            </a>
+             <ul class="collapse navigation-submenu" id="payment_manage">
+              <li>
+                <a href="pages/sample-pages/login_1.html" target="_blank">결제내역 조회</a>
+              </li>
+              <li>
+                <a href="pages/sample-pages/error_2.html" target="_blank">환불 관리</a>
+              </li>
+            </ul>
+          </li>
+          
+          <li>
+            <a href="#select_member" data-toggle="collapse" aria-expanded="false">
+              <span class="link-title">회원 관리</span>
+              <i class="mdi mdi-flask link-icon"></i>
+            </a>
+            <ul class="collapse navigation-submenu" id="select_member">
+              <li>
+                <a href="pages/sample-pages/login_1.html" target="_blank">회원 조회</a>
+              </li>
+              <li>
+                <a href="pages/sample-pages/error_2.html" target="_blank">작가 조회</a>
+              </li>
+              <li>
+                <a href="pages/sample-pages/error_2.html" target="_blank">경고 회원 조회</a>
+              </li>
+            </ul>
+          </li>
+          
+          <li>
+            <a href="#select_toon" data-toggle="collapse" aria-expanded="false">
+              <span class="link-title">작품관리</span>
+              <i class="mdi mdi-flask2 link-icon"></i>
+            </a>
+            <ul class="collapse navigation-submenu" id="select_toon">
+            
+              <li>
+                <a href="pages/sample-pages/login_1.html" target="_blank">작품 조회</a>
+              </li>
+              <li>
+                <a href="pages/sample-pages/error_2.html" target="_blank">작품 등록</a>
+              </li>
+              <li>
+                <a href="pages/sample-pages/error_2.html" target="_blank">웹툰 수정 승인</a>
+              </li>
+            </ul>
+          </li>
+          
           <li>
             <a href="pages/charts/chartjs.html">
-              <span class="link-title">Charts</span>
+              <span class="link-title">QNA, 공지사항 관리</span>
               <i class="mdi mdi-chart-donut link-icon"></i>
             </a>
           </li>
-          <li>
-            <a href="pages/icons/material-icons.html">
-              <span class="link-title">Icons</span>
-              <i class="mdi mdi-flower-tulip-outline link-icon"></i>
-            </a>
-          </li>
+          
+          
           <li class="nav-category-divider">DOCS</li>
           <li>
             <a href="../docs/docs.html">
@@ -493,27 +506,14 @@
           </div>
         </div>
         <!-- content viewport ends -->
-        <!-- partial:partials/_footer.html -->
-        <footer class="footer">
-          <div class="row">
-            <div class="col-sm-6 text-center text-sm-right order-sm-1">
-              <ul class="text-gray">
-                <li><a href="#">Terms of use</a></li>
-                <li><a href="#">Privacy Policy</a></li>
-              </ul>
-            </div>
-            <div class="col-sm-6 text-center text-sm-left mt-3 mt-sm-0">
-              <small class="text-muted d-block">Copyright © 2019 <a href="http://www.uxcandy.co" target="_blank">UXCANDY</a>. All rights reserved</small>
-              <small class="text-gray mt-2">Handcrafted With <i class="mdi mdi-heart text-danger"></i></small>
-            </div>
-          </div>
-        </footer>
+       
         <!-- partial -->
       </div>
       <!-- page content ends -->
     </div>
     <!--page body ends -->
     <!-- SCRIPT LOADING START FORM HERE /////////////-->
+    
     <!-- plugins:js -->
     <script src="../assets/vendors/js/core.js"></script>
     <!-- endinject -->
