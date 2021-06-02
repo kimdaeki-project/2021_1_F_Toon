@@ -12,6 +12,7 @@ import org.springframework.mail.SimpleMailMessage;
 import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.validation.Errors;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -136,15 +137,21 @@ public class MemberController {
 	public void memberJoinCheck()throws Exception{}
 
 	@GetMapping("join")
-	public String setJoin()throws Exception{
+	public String setJoin(Model model)throws Exception{
 		System.out.println("join");
+		model.addAttribute("memberVO", new MemberVO());
 		return "member/memberJoin";
 	}
 
 	@PostMapping("join")
-	public String setJoin(MemberVO memberVO, MultipartFile avatar, HttpSession session)throws Exception{
+	public String setJoin(@Valid MemberVO memberVO, BindingResult bindingResult, MultipartFile avatar, HttpSession session)throws Exception{
 		int result = memberService.setJoin(memberVO, avatar, session);
-
+			
+		if(bindingResult.hasErrors()) {
+			return "member/memberJoin";
+			
+		} 
+		
 		return "redirect:../";
 	}
 

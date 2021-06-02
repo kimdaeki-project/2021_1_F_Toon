@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -30,6 +31,10 @@
 .r2 {
 	color: blue;
 }
+
+.c1 {
+	color:red;
+}
 </style>
 
 </head>
@@ -39,57 +44,63 @@
 
 		<h2 class="mt-4">회원가입</h2>
 
-		<form id="frm" action="./join" method="post"
-			enctype="multipart/form-data">
+		<form:form id="frm" modelAttribute="memberVO" action="./join" method="post" enctype="multipart/form-data">
 			<div class="form-group">
-				<label for="id">ID</label> <input type="text" class="form-control" id="id" name="id">
+				<label for="id">ID</label> 
+				<form:input class="form-control" id="id" path="username"></form:input>
 				<h4 id="idCheckResult"></h4>
 				<h4 id="idResult"></h4>
+				<form:errors path="username" class="c1"></form:errors>
 				<!-- ID 는 6글자 이상 -->
 			</div>
 
 			<div class="form-group">
-				<label for="pw">Password</label> <input type="password" class="form-control" id="pw" name="pw1">
+				<label for="pw">Password</label> 
+				<input type="password" class="form-control" id="pw" path="password" />
 				<h4 id="pwResult"></h4>
+				<form:errors path="password" class="c1"></form:errors>
 				<!-- PW는 8글자 이상 -->
 			</div>
 
 			<div class="form-group">
-				<label for="pw">Password 확인</label> <input type="password" class="form-control" id="pw2" name="pw">
+				<label for="pw">Password 확인</label> 
+				<form:password class="form-control" id="pw2" path="password"/>
 				<h4 id="pwResult2"></h4>
 				<!-- PW 두개는 일치 -->
 			</div>
 
 			<div class="form-group">
-				<label for="name">이름</label> <input type="text"
-					class="form-control etc" id="name" name="name">
-
+				<label for="name">이름</label> 
+				<form:input class="form-control etc" id="name" path="name"/>
+				<form:errors path="name" class="c1"></form:errors>
 			</div>
 
 			<div class="form-group">
-				<label for="nickname">닉네임</label> <input type="text"
-					class="form-control etc" id="nickname" name="nickname">
-
+				<label for="nickname">닉네임</label> 
+				<form:input class="form-control etc" id="nickname" path="nickname"/>
+				 <form:errors path="nickname" class="c1"></form:errors>
 			</div>
 
 
 			<div class="form-group">
-				<label for="phone">Phone</label> <input type="number"class="form-control etc" id="phone" name="phone" placeholder="- 제외 하고 입력하세요">
-
+				<label for="phone">Phone</label> 
+				<form:input class="form-control etc" id="phone" path="phone" placeholder="- 제외 하고 입력하세요"/>
+				 <form:errors path="phone" class="c1"></form:errors>
 			</div>
 
 			<div class="form-group">
             <label for="email">이메일</label> 
-            <input class="form-control" id="email" path="email" />
+            <form:input class="form-control" id="email" path="email"/>
             <button id = "CheckMail" type="button" class="sendMail" onclick="sendMail()" style="border: 1px solid black;">인증번호받기</button>                               
-            <form:errors path="email"></form:errors>
+            <form:errors path="email" class="c1"></form:errors>
 
 			<div class="form-group">
-				<label for="avatar">사진 등록</label> <input type="file" class="form-control etc" id="avatar" name="avatar">
+				<label for="avatar">사진 등록(선택)</label> 
+				<input type="file" class="form-control etc" id="avatar" name="avatar">
 			</div>
 
 				<input type="submit" id="btn" value="JOIN" class="btn btn-primary">
-		</form>
+		</form:form>
 
 	</div>
 
