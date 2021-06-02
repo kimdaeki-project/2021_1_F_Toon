@@ -83,7 +83,6 @@
             <input class="form-control" id="email" path="email" />
             <button id = "CheckMail" type="button" class="sendMail" onclick="sendMail()" style="border: 1px solid black;">인증번호받기</button>                               
             <form:errors path="email"></form:errors>
-			<br>
 
 			<div class="form-group">
 				<label for="avatar">사진 등록</label> <input type="file" class="form-control etc" id="avatar" name="avatar">
