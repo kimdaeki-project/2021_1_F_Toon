@@ -42,61 +42,56 @@
         <ul class="navigation-menu">
           <li class="nav-category-divider">MAIN</li>
           <li>
-            <a href="index.html">
+            <a href="/member/myPage">
               <h4><span class="link-title">내정보 수정</span></h4>
               <i class="mdi mdi-gauge link-icon"></i>
             </a>
           </li>
-          <li>
-            <a href="#sample-pages" data-toggle="collapse" aria-expanded="false">
-              <h4><span class="link-title">Sample Pages</span></h4>
-              <i class="mdi mdi-flask link-icon"></i>
-            </a>
-            <ul class="collapse navigation-submenu" id="sample-pages">
-              <li>
-                <a href="pages/sample-pages/login_1.html" target="_blank">Login</a>
-              </li>
-              <li>
-                <a href="pages/sample-pages/error_2.html" target="_blank">Error</a>
-              </li>
-            </ul>
-          </li>
+         
           <li>
             <a href="#ui-elements" data-toggle="collapse" aria-expanded="false">
-              <h4><span class="link-title">UI Elements</span></h4>
+              <h4><span class="link-title">웹툰</span></h4>
               <i class="mdi mdi-bullseye link-icon"></i>
             </a>
             <ul class="collapse navigation-submenu" id="ui-elements">
               <li>
-                <a href="pages/ui-components/buttons.html">Buttons</a>
+                <a href="pages/ui-components/buttons.html">최근 본 웹툰</a>
               </li>
               <li>
-                <a href="pages/ui-components/tables.html">Tables</a>
+                <a href="pages/ui-components/tables.html">관심 웹툰</a>
               </li>
               <li>
-                <a href="pages/ui-components/typography.html">Typography</a>
+                <a href="pages/ui-components/typography.html">소장 웹툰</a>
+              </li>
+            </ul>
+          </li>
+          <li>
+            <a href="#sample-pages" data-toggle="collapse" aria-expanded="false">
+              <h4><span class="link-title">댓글</span></h4>
+              <i class="mdi mdi-flask link-icon"></i>
+            </a>
+            <ul class="collapse navigation-submenu" id="sample-pages">
+              <li>
+                <a href="pages/sample-pages/login_1.html" target="_blank">내 댓글 조회</a>
+              </li>
+              <li>
+                <a href="pages/sample-pages/error_2.html" target="_blank">신고한 댓글 조회</a>
               </li>
             </ul>
           </li>
           <li>
             <a href="pages/forms/form-elements.html">
-             <h4> <span class="link-title">Forms</span></h4>
+             <h4> <span class="link-title">충전하기</span></h4>
               <i class="mdi mdi-clipboard-outline link-icon"></i>
             </a>
           </li>
           <li>
             <a href="pages/charts/chartjs.html">
-              <h4><span class="link-title">Charts</span></h4>
+              <h4><span class="link-title">작가등록</span></h4>
               <i class="mdi mdi-chart-donut link-icon"></i>
             </a>
           </li>
-          <li>
-            <a href="pages/icons/material-icons.html">
-              <h4><span class="link-title">Icons</span></h4>
-              <i class="mdi mdi-flower-tulip-outline link-icon"></i>
-            </a>
-          </li>
-        
+ 
         </ul>
         
       </div>

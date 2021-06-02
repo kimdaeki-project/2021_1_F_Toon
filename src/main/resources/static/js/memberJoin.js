@@ -102,3 +102,31 @@ $("#id").blur(function(){
 
    });
 });
+
+//이메일
+function sendMail(){
+   var email = $("#email").val(); //사용자의 이메일 입력값.
+   var test = email.indexOf("@");
+   
+   if (email == "") {
+      alert("메일 주소가 입력되지 않았습니다.");
+   }else if(test==-1){
+      
+      alert("메일 형식이 잘못되었습니다.");
+   } 
+   else {
+      $.ajax({
+         type : 'GET',
+         url : 'CheckMail',
+         data : {
+            "mail" : email,
+         },
+         contentType: "application/json; charset=utf-8;",
+         dataType :'json',
+
+      });
+      alert("인증번호가 전송되었습니다.") 
+      isCertification=true; //추후 인증 여부를 알기위한 값
+   }
+      
+}
