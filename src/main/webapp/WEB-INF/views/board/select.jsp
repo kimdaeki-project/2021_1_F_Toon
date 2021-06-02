@@ -9,52 +9,29 @@
 
 </head>
 <body>
-<c:import url="./fragments/header.jsp"></c:import>
+<c:import url="../fragments/header.jsp"></c:import>
 
 <div class="container">
 	<h1>${board} Select Page</h1>
-	<h3>Title : ${vo.title}</h3>
-	<h3>Writer : ${vo.writer}</h3>
-	<h3>Contents : ${vo.contents}</h3>
+	<h3>Title : ${vo.noticeTitle}</h3>
+	<h3>Writer : ${vo.username}</h3>
+	<h3>Contents : ${vo.noticeContents}</h3>
 	<div>
 	<c:forEach items="${vo.boardFiles}" var="file">
-		<a href="../resources/upload/${board}/${file.fileName}">${file.origineName}</a>
+		<a href="../resources/upload/${board}/${file.fileName}">${file.oriName}</a>
 	</c:forEach>
 	</div>
 	
-	<!-- 댓글 리스트 -->
-	<div id="comments" title="${vo.num}">
-		
-	
-	</div>
-	
-	<div>
-		<div class="form-group">
-  			<label for="usr">작성자</label>
-  			<input type="text" class="form-control" id="writer">
-		</div>
-	
-		<div class="form-group">
-  			<label for="comment">내용</label>
-  			<textarea class="form-control" rows="5" id="contents"></textarea>
-		</div>
-		
-		<button type="button" class="btn btn-success" id="write">작성</button>
-	</div>
-	
-	
-	
-	
-	<a href="./${board}Update?num=${vo.num}" class="btn btn-danger">수정</a>
+	<a href="./${board}Update?boNum=${vo.boNum}" class="btn btn-danger">수정</a>
 	<a href="#" id="del" class="btn btn-info">Delete</a>
 	
 	
 	<c:if test="${board ne 'notice'}">
-	<a href="./${board}Reply?num=${vo.num}" class="btn btn-primary">댓글</a>
+	<a href="./${board}Reply?boNum=${vo.boNum}" class="btn btn-primary">댓글</a>
 	</c:if>
 	
 	<form action="./${board}Delete" id="frm" method="get">
-		<input type="hidden" name="num" value="${vo.num}">
+		<input type="hidden" name="num" value="${vo.boNum}">
 	</form>
 	
 

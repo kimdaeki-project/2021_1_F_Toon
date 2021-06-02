@@ -52,7 +52,6 @@
 			
 			<thead class="thead">
 				<tr>
-					<th>번호</th>
 					<th>공지종류</th>
 					<th>제목</th>
 					<th>작성자</th>
@@ -63,20 +62,21 @@
 			
 			
 			<tbody>
-			<c:forEach items="${list}" var="vo" >
+			<c:forEach items="${noticeList}" var="vo" >
 				<tr>
 					<td>${vo.boNum}</td>
-					<td><a href="./${board}Select?num=${vo.boNum}">
+					<td>${vo.noticeKinds}</td>
+					<td><a href="./${board}Select?boNum=${vo.boNum}">
 					
 					<c:catch>
 					<c:forEach begin="1" end="${vo.depth}">--</c:forEach>
 					</c:catch>
-					${vo.title}
+					${vo.noticeTitle}
 					</a></td>
-					<td>${vo.ntKinds}</td>
-					<td>${vo.writer}</td>
-					<td>${vo.regDate}</td>
-					<td>${vo.hit}</td>
+					<td>${vo.username}</td>
+					<td>${vo.noticeContents}</td>
+					<td>${vo.createdDate}</td>
+					<td>${vo.noticeHit}</td>
 				</tr>
 			</c:forEach>
 			</tbody>
@@ -102,7 +102,7 @@
 	  </ul>
 	  
 	<div class="input-group mt-3 mb-3">
-	<form id="frm" action="./${board}List" class="form-inline">
+	<form id="frm" action="./noticelist" class="form-inline">
 		<input type="hidden" name="curPage" value="1" id="curPage">
 	  <div class="input-group-prepend">
 	   <select class="form-control" name="kind" id="kind" >

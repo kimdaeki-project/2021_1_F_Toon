@@ -20,14 +20,14 @@
 
 </head>
 <body>
-	<c:import url="./fragments/header.jsp"></c:import>
+	<c:import url="../fragments/header.jsp"></c:import>
 
 	<div class="container">
 		<h2>${board}form</h2>
 		<form id="frm" action="./insert" method="post" enctype="multipart/form-data">
 			<div class="form-group">
 				<label for="writer">작성자</label> <input type="text"
-					readonly="readonly" value="${member.id}"
+					readonly="readonly" value="${member.username}"
 					class="form-control myCheck" id="writer" name="writer">
 			</div>
 			<div class="form-group">

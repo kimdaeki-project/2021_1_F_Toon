@@ -15,6 +15,7 @@ public class MemberVO {
 	private String email;
 	private long point;
 	private JoinFileVO joinFileVO;
+	
 	public String getUsername() {
 		return username;
 	}

@@ -14,10 +14,10 @@
  <div class="container">
  <h2>${board} Reply form</h2>
   <form id="frm" action="./reply" method="post">
-  	<input type="hidden" name="num" value="${param.num}">
+  	<input type="hidden" name="boNum" value="${param.boNum}">
     <div class="form-group">
       <label for="writer">작성자</label>
-      <input type="text" readonly="readonly" value="${member.id}" class="form-control" id="writer" name="writer">
+      <input type="text" readonly="readonly" value="${member.username}" class="form-control" id="writer" name="writer">
     </div>
     <div class="form-group">
       <label for="title">제목</label>

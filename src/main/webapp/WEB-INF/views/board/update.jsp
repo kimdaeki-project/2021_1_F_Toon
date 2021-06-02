@@ -19,24 +19,24 @@
  <div class="container">
  <h2>${board} Update form</h2>
   <form id="frm" action="./update" method="post" enctype="multipart/form-data">
-  	<input type="hidden" name="num" value="${param.num}">
+  	<input type="hidden" name="boNum" value="${param.boNum}">
     <div class="form-group">
-      <label for="writer">작성자</label>
-      <input type="text" readonly="readonly" value="${vo.writer}" class="form-control" id="writer" name="writer">
+      <label for="username">작성자</label>
+      <input type="text" readonly="readonly" value="${vo.username}" class="form-control" id="username" name="username">
     </div>
     <div class="form-group">
-      <label for="title">제목</label>
-      <input type="text" class="form-control" id="title" name="title" value="${vo.title}">
+      <label for="noticeTitle">제목</label>
+      <input type="text" class="form-control" id="noticeTitle" name="noticeTitle" value="${vo.noticeTitle}">
     </div>
     
     <div class="form-group">
-      <label for="contents">내용</label>
-      <textarea class="form-control" rows="5" id="contents" name="contents">${vo.contents}</textarea>
+      <label for="noticeContents">내용</label>
+      <textarea class="form-control" rows="5" id="noticeContents" name="noticeContents">${vo.noticeContents}</textarea>
     </div>
     
     <c:forEach items="${vo.boardFiles}" var="file">
     	<div>
-    		<span>${file.origineName}</span><span class="fileDelete" title="${file.fileNum}">X</span>
+    		<span>${file.oriName}</span><span class="fileDelete" title="${file.fileNum}">X</span>
     	</div>
     </c:forEach>
     

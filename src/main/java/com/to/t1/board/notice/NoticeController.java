@@ -18,7 +18,6 @@ import org.springframework.web.servlet.ModelAndView;
 import com.to.t1.board.BoardFileVO;
 import com.to.t1.board.BoardVO;
 import com.to.t1.member.MemberVO;
-//import com.to.t1.member.MemberVO;
 import com.to.t1.util.Pager;
 
 @Controller
@@ -59,13 +58,13 @@ public class NoticeController {
 		System.out.println("FilePath : "+filePath);
 		
 		List<BoardVO> ar = noticeService.getList(pager);
-		model.addAttribute("list", ar);
+		model.addAttribute("noticeList", ar);
 		model.addAttribute("pager", pager);
 		System.out.println(pager.getStartNum());
 		System.out.println(pager.getLastNum());
 		
 		// /board/list.html
-		return "board/list";
+		return "board/noticeList";
 	}
 	
 	@GetMapping("select")
@@ -108,7 +107,7 @@ public class NoticeController {
 		
 		int result = noticeService.setInsert(boardVO, files);
 		
-		return "redirect:./list";
+		return "redirect:./noticeList";
 	}
 	
 	@GetMapping("update")
@@ -125,7 +124,7 @@ public class NoticeController {
 		
 		int result = noticeService.setUpdate(boardVO);
 		
-		return "redirect:./list";
+		return "redirect:./noticeList";
 	}
 	
 	@GetMapping("delete")
@@ -133,7 +132,7 @@ public class NoticeController {
 		
 		int result = noticeService.setDelete(boardVO);
 		
-		return "redirect:./list";
+		return "redirect:./noticeList";
 	}
 	
 
