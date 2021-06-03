@@ -1,0 +1,15 @@
+@charset "UTF-8";
+
+/* Bootstrap CSS */  
+@import url('bootstrap.css');
+@import url('themify-icons.css');
+@import url('flaticon.css');
+@import url('all.min.css');
+@import url('animate.css');
+@import url('magnific-popup.css');
+
+/* main css */
+@import url('style.css');
+@import url('responsive.css');
+
+

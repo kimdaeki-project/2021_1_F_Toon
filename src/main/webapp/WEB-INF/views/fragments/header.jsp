@@ -6,15 +6,7 @@
         <div class="container">
             <div class="row align-items-center justify-content-between">
                 <div class="col-6 col-lg-4">
-                    <div class="float-left">
-                        <ul class="header_social">
-                            <li><a href="#"><i class="ti-facebook"></i></a></li>
-                            <li><a href="#"><i class="ti-twitter"></i></a></li>
-                            <li><a href="#"><i class="ti-instagram"></i></a></li>
-                            <li><a href="#"><i class="ti-skype"></i></a></li>
-                            <li><a href="#"><i class="ti-vimeo"></i></a></li>
-                        </ul>   
-                    </div>
+               
                 </div>
                 <div class="col-6 col-lg-4 col-md-6 col-sm-6 logo-wrapper">
 <!--                     <a href="index.html" class="logo"> -->
@@ -67,18 +59,17 @@
                     <!-- Collect the nav links, forms, and other content for toggling -->
                     <div class="collapse navbar-collapse offset" id="navbarSupportedContent">
                         <ul class="nav navbar-nav menu_nav ml-auto mr-auto">
-                            <li class="nav-item active"><a class="nav-link" href="index.html">Home</a></li> 
-                            <li class="nav-item"><a class="nav-link" href="category.html">Categories</a></li> 
-                            <li class="nav-item"><a class="nav-link" href="archive.html">Archive</a></li>    
+                            <li class="nav-item active"><a class="nav-link" href="/">Home</a></li> 
+                            <li class="nav-item"><a class="nav-link" href="/toon/toonDay">요일</a></li> 
+                            <li class="nav-item"><a class="nav-link" href="/toon/genre">장르</a></li>    
+                         	<li class="nav-item"><a class="nav-link" href="/toon/ranking">랭킹</a></li>
                             <li class="nav-item submenu dropdown">
-                                <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Blog</a>
+                                <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">완결</a>
                                 <ul class="dropdown-menu">
-                                    <li class="nav-item"><a class="nav-link" href="blog.html">Blog</a></li>
-                                    <li class="nav-item"><a class="nav-link" href="single-blog.html">Blog Details</a></li>
+                                    <li class="nav-item"><a class="nav-link" href="/toon/endKr">가나다</a></li>
+                                    <li class="nav-item"><a class="nav-link" href="/toon/endRe">최신</a></li>
                                 </ul>
-                            </li>
-                            <li class="nav-item"><a class="nav-link" href="blog.html">Latest news</a></li>
-                            <li class="nav-item"><a class="nav-link" href="contact.html">Contact us</a></li>         
+                            </li>     
                         </ul>
                     </div>
                 </div>

@@ -1,0 +1,24 @@
+@charset "UTF-8";
+
+.grid {
+	width: 1500px;
+	margin: 0 auto;
+
+}
+
+
+.grid-item {
+	widows: 200px;
+	height: 200px;
+	display: inline-block;	
+
+}
+
+.grid-item.a { background-color:  white;}
+.grid-item.b { background-color:  white;}
+.grid-item.c { background-color:  white;}
+.grid-item.d { background-color:  white;}
+.grid-item.e { background-color:  white;}
+.grid-item.f { background-color:  white;}
+.grid-item.g { background-color:  white;}
+
