@@ -5,7 +5,7 @@ import org.apache.ibatis.annotations.Mapper;
 import com.to.t1.member.MemberVO;
 
 @Mapper
-public interface MemberMapper {
+public interface MemberMapper { 
 
 	public int setJoin(MemberVO memberVO)throws Exception;
 	

@@ -10,5 +10,9 @@
 
 <h1>Pay Charge Page</h1>
 
+<form method="post" action="/kakaoPay">
+    <button>카카오페이로 결제하기</button>
+</form>
+
 </body>
 </html>

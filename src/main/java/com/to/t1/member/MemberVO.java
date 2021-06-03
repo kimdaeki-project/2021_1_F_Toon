@@ -1,7 +1,6 @@
 package com.to.t1.member;
 
 import com.to.t1.member.MemberVO;
-
 import lombok.Data;
 
 @Data
