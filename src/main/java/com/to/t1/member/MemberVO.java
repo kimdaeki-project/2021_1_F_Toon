@@ -11,11 +11,11 @@ import lombok.Data;
 
 @Data
 public class MemberVO {
-	@Size(min=6)
+	@Size(min=6, max=15, message ="아이디는 6글자에서 15글자 사이로 입력하세요")
 	@NotEmpty
 	private String username;
-	
-	@Size(min=8)
+
+	@Size(min=8, max=15, message ="비밀번호는 8글자에서 15글자 사이로 입력하세요")
 	@NotEmpty
 	private String password;
 	
@@ -25,7 +25,7 @@ public class MemberVO {
 	@NotEmpty
 	private String nickname;
 	
-	@NotEmpty(message = "- 제외하고 입력하세요")
+	@NotEmpty
 	private String phone;
 	@NotEmpty
 	@Email

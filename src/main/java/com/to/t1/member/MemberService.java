@@ -5,6 +5,7 @@ import javax.tools.JavaFileManager;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.validation.Errors;
 import org.springframework.web.multipart.MultipartFile;
 
 import com.to.t1.util.FileManager;
@@ -17,6 +18,18 @@ public class MemberService {
 	
 	@Autowired
 	private FileManager fileManager;
+	
+	
+//	public boolean memberError(MemberVO memberVO, Errors errors)throws Exception{
+//		boolean result = false;
+//		
+//		result = errors.hasErrors();
+//		if(!memberVO.getPassword().equals(memberVO.getPassword1())) {
+//			errors.rejectValue("password1", "memberVO.password.notEqual");
+//			result=true;
+//		}
+//		return result;	
+//	}
 	
 	public MemberVO memberIdCheck(MemberVO memberVO)throws Exception{
 		return memberMapper.memberIdCheck(memberVO);
