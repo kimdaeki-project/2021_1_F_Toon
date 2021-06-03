@@ -90,4 +90,9 @@ public class MemberService {
 	public MemberVO searchPw(MemberVO memberVO)throws Exception{
 		return memberMapper.searchPw(memberVO);
 	}
+	
+	public int pwUpdate(MemberVO memberVO)throws Exception{
+		return memberMapper.memberUpdate(memberVO);
+	}
+	
 }

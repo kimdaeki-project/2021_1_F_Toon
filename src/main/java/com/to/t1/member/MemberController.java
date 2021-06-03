@@ -19,6 +19,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
+import org.springframework.web.servlet.ModelAndView;
 
 import com.to.t1.member.MemberVO;
 import com.to.t1.member.MemberService;
@@ -48,7 +49,6 @@ public class MemberController {
 
 		return "redirect:/";
 	}
-
 
 	@GetMapping("logout")
 	public String logout(HttpSession session)throws Exception{
@@ -111,6 +111,8 @@ public class MemberController {
 	@PostMapping("searchPw")
 	public String searchPw(MemberVO memberVO,Model model)throws Exception{
 		memberVO = memberService.searchPw(memberVO);
+		int result = memberService.pwUpdate(memberVO);
+
 		String message = "아이디와 핸드폰 불일치";
 		String messageType = "N";
 
@@ -118,7 +120,7 @@ public class MemberController {
 			message="아이디와 핸드폰 불일치";
 			messageType="Y";
 		} else {
-
+			memberVO.setPassword("0000");
 			message="회원님의 비밀번호는 " + memberVO.getPassword()+" 입니다.";
 			messageType="Y";
 		}
@@ -144,15 +146,24 @@ public class MemberController {
 	}
 
 	@PostMapping("join")
-	public String setJoin(@Valid MemberVO memberVO, BindingResult bindingResult, MultipartFile avatar, HttpSession session)throws Exception{
+	public String setJoin(@Valid MemberVO memberVO,BindingResult bindingResult, MultipartFile avatar, HttpSession session, Model model, Errors errors)throws Exception{
 		int result = memberService.setJoin(memberVO, avatar, session);
-			
+		String message = "회원가입 실패";
+		String path="./memberJoin";
+		
 		if(bindingResult.hasErrors()) {
 			return "member/memberJoin";
 			
-		} 
+		} 	
 		
-		return "redirect:../";
+		if(result>0) {
+			message ="회원 가입 성공";
+			path="../";
+		}
+		
+		model.addAttribute("msg", message);
+		model.addAttribute("path", path);
+		return "common/commonResult";
 	}
 
 	@RequestMapping("memberUpdate")
@@ -169,13 +180,22 @@ public class MemberController {
 	}
 
 	@RequestMapping("memberDelete")
-	public String memberDelete(HttpSession session)throws Exception{
+	public ModelAndView memberDelete(HttpSession session)throws Exception{
 		MemberVO memberVo =(MemberVO)session.getAttribute("member");
+		ModelAndView mv = new ModelAndView();
 		int result = memberService.memberDelete(memberVo, session);
-
 		session.invalidate();
-
-		return "redirect:../";
+		
+		String message="삭제 실패";
+		String path = "./memberUpdate";
+		
+		if(result>0) {
+			message="삭제 성공";
+		}
+		mv.addObject("msg", message);
+		mv.addObject("path", path);
+		mv.setViewName("common/commonResult");
+		return mv;
 	}
 
 	   @GetMapping("CheckMail")

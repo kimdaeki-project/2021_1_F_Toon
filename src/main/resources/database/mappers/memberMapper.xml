@@ -38,6 +38,10 @@
 			update member set password=#{password}, name=#{name}, nickname=#{nickname}, phone=#{phone}, email=#{email} where username=#{username}
 		</update>
 
+		<update id="pwUpdate" parameterType="MemberVO">
+			update member set password=#{password} where username=#{username} and phone=#{phone}
+		</update>
+		
 		<delete id="memberDelete" parameterType="MemberVO">
 			delete from member where username=#{username}
 		</delete>
