@@ -1,22 +1,57 @@
 package com.to.t1.pay;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
+import lombok.extern.java.Log;
+
+@Log
 @Controller
 @RequestMapping("**/pay/**")
+
 public class PayController {
 //임시 컨트롤러
-	
-	//결제하기 
+	@Autowired
+	private PayService payService;
+	 
+	//페이지 이동하기 (임시)
 	@GetMapping("charge")
-	public String PayTest() throws Exception{
-		return "pay/payPage"; //JSP경로
+	public String PayTest(Model model) throws Exception{
+		//성공시 sucess페이지와 충전 완료 alert창 띄우고 임시로 sysout에 출력한다.
+		return "pay/payPage"; //return JSP경로
 	}
+	
+	
+    @GetMapping("kakaoPay")
+    public String kakaoPayGet() {
+        return "pay/chargeFail";
+    }
+    
+    @PostMapping("kakaoPay")
+    public String kakaoPay() {
+        log.info("kakaoPay post............................................");
+        
+        return "redirect:" + payService.kakaoPayReady();
+ 
+    }
+    
+    @GetMapping("/chargeSuccess")
+    public void kakaoPaySuccess(@RequestParam("pg_token") String pg_token, Model model) {
+    	
+    	log.info("kakaoPaySuccess get............................................");
+        log.info("kakaoPaySuccess pg_token : " + pg_token);
+        
+        model.addAttribute("info", payService.kakaoPayInfo(pg_token));
+        
+    }
+	
 	//환불하기
-	
-	
 }
-//REST API KEY : 29906aa653a9642b7fc25c36f20c8c30
+//Admin KEY : b869402576b56c83ad83badfa54958fd
 //web id : 	591949
+//Test cid :  'TC0ONETIME'
