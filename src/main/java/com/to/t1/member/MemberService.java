@@ -20,19 +20,28 @@ public class MemberService {
 	private FileManager fileManager;
 	
 	
-//	public boolean memberError(MemberVO memberVO, Errors errors)throws Exception{
-//		boolean result = false;
-//		
-//		result = errors.hasErrors();
+	public boolean memberError(MemberVO memberVO, Errors errors)throws Exception{
+		boolean result = false;
+		
+		result = errors.hasErrors();
 //		if(!memberVO.getPassword().equals(memberVO.getPassword1())) {
 //			errors.rejectValue("password1", "memberVO.password.notEqual");
 //			result=true;
 //		}
-//		return result;	
-//	}
+		
+		MemberVO checkMember = memberMapper.getUsername(memberVO);
+		if(checkMember !=null) {
+			errors.rejectValue("username", "member.id.equal");
+			result = true;
+		}
+		
+		return result;	
+	}
 	
-	public MemberVO memberIdCheck(MemberVO memberVO)throws Exception{
-		return memberMapper.memberIdCheck(memberVO);
+	
+	
+	public MemberVO getUsername(MemberVO memberVO)throws Exception{
+		return memberMapper.getUsername(memberVO);
 	}
 
 	public int setJoin(MemberVO memberVO, MultipartFile multipartFile, HttpSession session)throws Exception{

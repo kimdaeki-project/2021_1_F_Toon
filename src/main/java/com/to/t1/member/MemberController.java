@@ -92,7 +92,7 @@ public class MemberController {
 
 	@GetMapping("memberIdCheck")
 	public String memberIdCheck(MemberVO memberVO, Model model)throws Exception{
-		memberVO = memberService.memberIdCheck(memberVO);
+		memberVO = memberService.getUsername(memberVO);
 		String result = "0";
 		if(memberVO==null) {
 			result="1";
