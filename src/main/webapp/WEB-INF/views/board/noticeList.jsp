@@ -27,11 +27,18 @@
     <style type="text/css">
      .back {
     	background-image: url('../images/toon-notice5.PNG');
-    	background-size : 2000px;
+    	background-size : 3000px;
     	border-style: solid;
     	border-color: #98DFFF;
      }
      .thead {
+     	text-align: center;
+     	background-color: #EBFBFF;
+     	border-style: solid;
+     	border-color: #98DFFF;
+     }
+      .tbody {
+      	text-align: center;
      	background-color: #F9FFFF;
      	border-style: solid;
      	border-color: #98DFFF;
@@ -61,12 +68,12 @@
 			</thead>
 			
 			
-			<tbody>
+			<tbody class="tbody">
 			<c:forEach items="${noticeList}" var="vo" >
 				<tr>
-					<td>${vo.boNum}</td>
+					
 					<td>${vo.noticeKinds}</td>
-					<td><a href="./${board}Select?boNum=${vo.boNum}">
+					<td><a href="./select?boNum=${vo.boNum}">
 					
 					<c:catch>
 					<c:forEach begin="1" end="${vo.depth}">--</c:forEach>
@@ -74,7 +81,6 @@
 					${vo.noticeTitle}
 					</a></td>
 					<td>${vo.username}</td>
-					<td>${vo.noticeContents}</td>
 					<td>${vo.createdDate}</td>
 					<td>${vo.noticeHit}</td>
 				</tr>
@@ -88,7 +94,7 @@
 	  <ul class="pagination">
 	  
 	  <c:if test="${pager.pre}">	
-	    <li class="page-item"><a class="page-link p" href="#" title="${pager.startNum-1}">Previous</a></li>
+	    <li class="page-item"><a class="page-link p" href="#" title="${pager.startNum-1}">이전</a></li>
 	   </c:if>
 	   
 	   <c:forEach begin="${pager.startNum}" end="${pager.lastNum}" var="i">
@@ -97,7 +103,7 @@
 	   </c:forEach>
 	   
 	    <c:if test="${pager.next}">
-	    <li class="page-item"><a class="page-link p" href="#" title="${pager.lastNum+1}">Next</a></li>
+	    <li class="page-item"><a class="page-link p" href="#" title="${pager.lastNum+1}">다음</a></li>
 	    </c:if>
 	  </ul>
 	  
@@ -133,7 +139,7 @@
 	});
 	
 	$(".p").click(function () {
-		let curPage = $(this).attr("title");
+		let curPage = $(this).attr("noticeTitle");
 		$("#curPage").val(curPage);
 		let search= '${pager.search}';
 		$("#frm").submit();

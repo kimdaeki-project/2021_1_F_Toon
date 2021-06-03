@@ -53,7 +53,7 @@ public class NoticeController {
 	}
 	
 	// /notice/list
-	@GetMapping("list")
+	@GetMapping("noticeList")
 	public String getList(Model model, Pager pager)throws Exception{
 		System.out.println("FilePath : "+filePath);
 		

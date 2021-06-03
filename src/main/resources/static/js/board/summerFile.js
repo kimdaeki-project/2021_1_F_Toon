@@ -2,14 +2,14 @@
  * 
  */
 
-$("#contents").summernote({
+$("#noticeContents").summernote({
 			height:500,
-			placeholder: 'write here...',
+			placeholder: '작성하십시오',
 			callbacks: {
 				  onImageUpload: function(files) {
 				   // upload image to server and create imgNode...
 				   //$summernote.summernote('insertNode', imgNode);
-				   uploadFile(files)
+				   uploadFile(files);
 				   
 				  },// -- onImageUpload
 				onMediaDelete: function(files){
@@ -40,7 +40,7 @@ function uploadFile(files) {
 		contentType:false,
 		success:function(result){
 			fileName=result.trim();
-			$("#contents").summernote('insertImage', fileName);
+			$("#noticeContents").summernote('insertImage', fileName);
 		} 
 		
 	});		

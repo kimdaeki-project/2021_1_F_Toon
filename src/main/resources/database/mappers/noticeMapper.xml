@@ -8,16 +8,20 @@
    		<!-- 공통으로 사용하는 sql문 -->
    		<where>
 				<choose>
-					<when test="kind=='Writer'">
-						writer like concat('%', #{search}, '%')
+					<when test="kind=='username'">
+						username like concat('%', #{search}, '%')
 					</when>
 					
-					<when test="kind=='contents'">
-						contents like concat('%', #{search}, '%')
+					<when test="kind=='noticeContents'">
+						noticeContents like concat('%', #{search}, '%')
+					</when>
+					
+					<when test="kind=='noticeKinds'">
+						noticeKinds like concat('%', #{search}, '%')
 					</when>
 					
 					<otherwise>
-						title like concat('%', #{search}, '%')
+						noticeTitle like concat('%', #{search}, '%')
 					</otherwise>
 				</choose>
 			</where>
@@ -46,34 +50,34 @@
    		
    		<resultMap type="NoticeVO" id="selectResult">
    			<id column="boNum" property="boNum"/>
-   			<result column="ntKinds" property="ntKinds"/>
-   			<result column="title" property="title"/>
-   			<result column="writer" property="writer"/>
-   			<result column="contents" property="contents"/>
-   			<result column="regDate" property="regDate"/>
-   			<result column="hit" property="hit"/>
+   			<result column="noticeKinds" property="noticeKinds"/>
+   			<result column="noticeTitle" property="noticeTitle"/>
+   			<result column="username" property="username"/>
+   			<result column="noticeContents" property="noticeContents"/>
+   			<result column="createdDate" property="createdDate"/>
+   			<result column="noticeHit" property="noticeHit"/>
    			<collection property="files" javaType="java.util.List" ofType="BoardFileVO">
-   				<id column="filenum" property="fileNum"/>
+   				<id column="fileNum" property="fileNum"/>
    				<result column="fileName" property="fileName"/>
    				<result column="oriName" property="oriName"/>
    			</collection>
    		</resultMap>
    		
    		<update id="setHitUpdate" parameterType="BoardVO">
-   			update notice set hit=hit+1 where boNum=#{boNum}
+   			update notice set noticeHit=noticeHit+1 where boNum=#{boNum}
    		</update>
    		
    		<insert id="setInsert" parameterType="BoardVO" useGeneratedKeys="true" keyProperty="boNum">
-   			insert into notice values(#{boNum}, #{title}, #{writer},#{contents}, now(), 0)
+   			insert into notice values(#{boNum}, #{noticeKinds}, #{noticeTitle}, #{username},#{noticeContents}, now(), 0, #{noticeType})
    		</insert>
    		
    		<insert id="setFileInsert" parameterType="BoardFileVO">
-   			insert into noticeFiles (boNum, filename, oriname)
+   			insert into noticeFiles (boNum, fileName, oriName)
    			values (#{boNum}, #{fileName}, #{oriName})
    		</insert>
    		
    		<update id="setUpdate" parameterType="BoardVO">
-   			update notice set title=#{title}, contents=#{contents} where boNum=#{boNum}
+   			update notice set noticeKinds=#{noticeKinds}, noticeTitle=#{noticeTitle}, noticeContents=#{noticeContents} where boNum=#{boNum}
    		</update>
    		
    		<delete id="setDelete" parameterType="BoardVO">
