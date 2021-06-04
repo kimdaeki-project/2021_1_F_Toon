@@ -1,10 +1,10 @@
-package com.to.t1.pay;
+package com.to.t1.kaka0ppay;
 
 import java.util.Date;
 
 import lombok.Data;
 
-//결제 승인과 관련된 VO : 충전 영수증 역할을 한다.
+//결제 승인과 관련된 VO : 충전 결과 내역
 @Data
 public class PayApprovalVO {
 	

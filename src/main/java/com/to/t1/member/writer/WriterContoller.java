@@ -9,11 +9,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @RequestMapping("/writer/**")
 public class WriterContoller {
 	
-	@GetMapping("applywriter")
+	@GetMapping("addwriter")
 	public String writerFormPage(Model model) {
 		
 		return "writer/writerForm";
 	}
-	
-	
 }

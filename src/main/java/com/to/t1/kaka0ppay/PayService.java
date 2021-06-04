@@ -1,4 +1,4 @@
-package com.to.t1.pay;
+package com.to.t1.kaka0ppay;
 
 import java.net.URI;
 import java.net.URISyntaxException;
@@ -35,13 +35,13 @@ public class PayService {
 	        
 	        // 서버로 요청할 Body
 	        MultiValueMap<String, String> params = new LinkedMultiValueMap<String, String>();
-	        params.add("cid", "TC0ONETIME");
-	        params.add("partner_order_id", "Hyelin");
+	        params.add("cid", "TC0ONETIME"); //아직은 테스트 cid
+	        params.add("partner_order_id", "Hyelin"); 
 	        params.add("partner_user_id", "Hyelin");
-	        params.add("item_name", "충전3");
+	        params.add("item_name", "충전");
 	        params.add("quantity", "1");
-	        params.add("total_amount", "1000");
-	        params.add("tax_free_amount", "0");
+	        params.add("total_amount", "2200");
+	        params.add("tax_free_amount", "200");
 	        params.add("approval_url", "http://localhost:85/pay/chargeSuccess");
 	        params.add("cancel_url", "http://localhost:85/pay/chargeCancel");
 	        params.add("fail_url", "http://localhost:85/pay/chargeFail");
@@ -76,18 +76,18 @@ public class PayService {
 	 
 	        // 서버로 요청할 Header
 	        HttpHeaders headers = new HttpHeaders();
-	        headers.add("Authorization", "KakaoAK " + "b869402576b56c83ad83badfa54958fd");
+	        headers.add("Authorization", "KakaoPay " + "b869402576b56c83ad83badfa54958fd");
 	        headers.add("Accept", MediaType.APPLICATION_JSON_UTF8_VALUE);
 	        headers.add("Content-Type", MediaType.APPLICATION_FORM_URLENCODED_VALUE + ";charset=UTF-8");
 	 
 	        // 서버로 요청할 Body
 	        MultiValueMap<String, String> params = new LinkedMultiValueMap<String, String>();
-	        params.add("cid", "TC0ONETIME");
+	        params.add("cid", "TC0ONETIME"); //아직은 테스트 cid
 	        params.add("tid", PayReadyVO.getTid());
 	        params.add("partner_order_id", "1001");
 	        params.add("partner_user_id", "test");
 	        params.add("pg_token", pg_token);
-	        params.add("total_amount", "2100");
+	        params.add("total_amount", "2200");
 	        
 	        HttpEntity<MultiValueMap<String, String>> body = new HttpEntity<MultiValueMap<String, String>>(params, headers);
 	        
@@ -106,7 +106,11 @@ public class PayService {
 	            e.printStackTrace();
 	            return null;
 	        } 
+	        
 	    }
 
-	
 }
+
+//가맹점 식별 코드 imp51768187
+//REST API 키 8955862071146697
+
