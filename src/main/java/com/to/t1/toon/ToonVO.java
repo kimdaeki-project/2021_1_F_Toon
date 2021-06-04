@@ -1,11 +1,10 @@
-package com.to.t1.temp;
+package com.to.t1.toon;
 
 import lombok.Data;
-// 작품 추가를 위한 Table
 
 @Data
 public class ToonVO {
-	
+
 	private long toonNum;
 	private String toonTitle;
 	private String genre;
@@ -17,4 +16,6 @@ public class ToonVO {
 	private String titleImg;
 	private long ratingSum;
 	private long ratingPerson;
+	
+	
 }

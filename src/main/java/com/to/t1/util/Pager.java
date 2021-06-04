@@ -1,48 +1,48 @@
 package com.to.t1.util;
 
 public class Pager {
-	
 	private Long curPage;
 	private Long perPage;
 	
 	private Long startRow;
 	
+	//page
 	private Long startNum;
 	private Long lastNum;
 	
 	private boolean pre;
 	private boolean next;
 	
-
+	//search
 	private String kind;
 	private String search;
 	
 	public void makeNum(Long totalCount) {
 		int perBlock=5;
+		//1. totalCount
 		
-		
-		
+		//2. totalCount를 이용해서 totalPage수 구하기
 		Long totalPage = totalCount/this.getPerPage();
 		if(totalCount%this.getPerPage() != 0) {
 			totalPage++;
 		}
-		
+		//3. totalPage를 이용해서 totalBlock 수 구하기
 		Long totalBlock = totalPage / perBlock;
 		if(totalPage%perBlock !=0) {
 			totalBlock++;
 		}
 		
-		
+		//4. curPage를 이용해서 curBlock 구하기
 		Long curBlock = this.getCurPage() / perBlock;
 		if(this.curPage%perBlock !=0) {
 			curBlock++;
 		}
 		
-		
+		//5. curBlock를 이용해서 startNum, lastNum 구하기
 		this.startNum=(curBlock-1)*perBlock+1;
 		this.lastNum=curBlock*perBlock;
 
-		
+		//6. curBlock이 마지막(totalBlock)
 		this.pre=true;
 		this.next=true;
 		if(curBlock==totalBlock) {
@@ -59,7 +59,10 @@ public class Pager {
 	}
 	
 	public void makeRow() {
-		
+		// curPage 	 	startRow
+		// 1			0
+		// 2			10
+		// 3			20
 		this.startRow = (this.getCurPage()-1)*this.getPerPage(); 
 	}
 
@@ -156,6 +159,4 @@ public class Pager {
 		this.search = search;
 	}
 	
-	
-
 }
