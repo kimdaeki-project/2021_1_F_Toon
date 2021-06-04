@@ -51,9 +51,7 @@
 		<td align="right" ><img class="img-fluid" src="../images/webtoon/1mon/sin.jpg" alt=""  >
 		<p><a class="mon1" href="/">신의탑</a><br> 
 		<a class="mon1" href="/">SIU</a></p>	
-		<form action="">
-			<input type="hidden" >
-		</form>
+
 		</td>	
 	</tr>
 	
@@ -64,6 +62,9 @@
 		</td>
 		
 	</tr>
+
+	
+	
 	
 
 	

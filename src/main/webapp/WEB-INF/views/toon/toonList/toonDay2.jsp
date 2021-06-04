@@ -33,45 +33,23 @@
              </tr>
            
              </table>
-			</div>
+			</div>	
+	<br>
+	<br>
+	<br>
+
 	
-	<br>
-	<br>
-	<br>
-
-	<table class="table">
-			<thead class="thead-dark">
-				<tr>
-					<th>월요일</th>
-					<th>화요일</th>
-					<th>수요일</th>
-					<th>목요일</th>
-					<th>금요일</th>
-					<th>토요일</th>
-					<th>일요일</th>
-				</tr>
-			</thead>
-
-			<tbody>
-			
-			<c:forEach items="${list}" var="dto">
-					<tr>
-					<td></td>
-						<td><a href="./${board}Select?num=${dto.num}"> <c:catch>
-									<c:forEach begin="1" end="${dto.depth}">--</c:forEach>
-								</c:catch> ${dto.title}
-						</a></td>
-						<td>${toon.toonTitle}</td>
-						<td>${toon.writerId}</td>
-						
-						
-						
-					</tr>
-				</c:forEach>
-			</tbody>
-
-		</table>
-
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 
 
 </body>
