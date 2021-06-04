@@ -24,13 +24,20 @@ public class ToonController {
 	}
 	
 	@GetMapping("endKr")
-	public String end() {
+	public String endKr() {
 		return "toon/toonList/endKr";
 	}
 	
 	@GetMapping("endRe")
-	public String end2() {
+	public String endRe() {
 		return "toon/toonList/endRe";
 	}
+	
+	@GetMapping("dayList")
+	public String dayList() {
+		return "toon/toonList/dayList";
+	}
+	
+	
 	
 }

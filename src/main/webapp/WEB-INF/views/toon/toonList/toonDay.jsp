@@ -22,71 +22,110 @@
 	<c:import url="../../fragments/header.jsp"></c:import>
 	
 	
+	<div class="view_type">			
+             <table>
+             <tr >
+             	<td><a href="/">조회순</a></td>
+             
+              <p>	<td><a href="/">업데이트순</a></td>    </p>         
+                
+                <td><a href="/">별점순</a></td>
+             </tr>
+           
+             </table>
+			</div>
+	
+	<br>
+	<br>
+	<br>
 	
 <div class="grid">
 	
 	<div class="grid-item a">
+	
 	<table>
-	<th><h2>&emsp;&emsp;&emsp;<a href="/">월요일</a></h2></th>
+	
+	<tr><th><h2>&emsp;&emsp;&emsp;<a href="./toonList/dayList" class="mon" >월요일</a></h2></th><tr>
 	
 	<tr>
-		<td><img class="img-fluid" src="../images/webtoon/sin.jpg" alt="">
-		신의탑
-		SIU
+		<td align="right"><img class="img-fluid" src="../images/webtoon/1mon/sin.jpg" alt="" >
+
+		<p><a href="/">신의탑</a><br> 
+		<a href="/">SIU</a></p>
+		
+		</td>	
+	</tr>
+	
+	
+	
+	<tr>
+		<td align="right"><img class="img-fluid" src="../images/webtoon/1mon/cham.jpg" alt="">
+		<p><a href="/">참교육</a><br> 
+		<a href="/"> 채용택/한가람</a></p>
 		</td>
 		
 	</tr>
 	
-	<tr>
-		<td><img class="img-fluid" src="../images/webtoon/cham.jpg" alt="">
-		참교육
-		채용택/한가람
-		</td>
-		
-	</tr>
+	
 	
 
 	
 	</table>
+	
 	</div>
 
 
 
 	<div class="grid-item b">
 	<table>
-	<th><h2>&emsp;&emsp;&emsp;<a href="/">화요일</a></h2></th>
+	<th><h2>&emsp;&emsp;&emsp;<a href="./toonList/dayList" class="tue">화요일</a></h2></th>
+	
+	<tr>
+		<td align="right"><img class="img-fluid" src="../images/webtoon/2tue/여신.jpg" alt="" >
 
-	<tr id="신의탑">
+		<p><a href="/">여신강림</a><br> 
+		<a href="/">야옹이</a></p>
 		
-		<td>신의탑</td>
-		<td>SIU</td>
+		</td>	
 	</tr>
 	
-	<tr id="신의탑">
+	
+	
+	<tr>
+		<td align="right"><img class="img-fluid" src="../images/webtoon/2tue/바른.jpg" alt="">
+		<p><a href="/">바른 연애 길잡이</a><br> 
+		<a href="/"> 남수 </a></p>
+		</td>
 		
-		<td>신의탑</td>
-		<td>SIU</td>
 	</tr>
 	
-
+		
+	</tr>
 	</table>
 	</div>
 
 
 	<div class="grid-item c">
 	<table>
-	<th><h2>&emsp;&emsp;&emsp;<a href="/">수요일</a></h2></th>
+	<th><h2>&emsp;&emsp;&emsp;<a href="./toonList/dayList" class="wen">수요일</a></h2></th>
+	
+	<tr>
+		<td align="right"><img class="img-fluid" src="../images/webtoon/3wen/전지.jpg" alt="" >
 
-	<tr id="신의탑">
+		<p><a href="/">전지적 독자 시점</a><br> 
+		<a href="/">UMI / 슬리피-C</a></p>
 		
-		<td>신의탑</td>
-		<td>SIU</td>
+		</td>	
 	</tr>
 	
-	<tr id="신의탑">
+	
+	
+	<tr>
+		<td align="right"><img class="img-fluid" src="../images/webtoon/3wen/헬퍼.jpg" alt="">
+		<p><a href="/">헬퍼 2 : 킬베로스</a><br> 
+		<a href="/"> 삭 </a></p>
+		</td>
 		
-		<td>신의탑</td>
-		<td>SIU</td>
 	</tr>
 	
 
@@ -96,18 +135,25 @@
 
 	<div class="grid-item d">
 	<table>
-	<th><h2>&emsp;&emsp;&emsp;<a href="/">목요일</a></h2></th>
+	<th><h2>&emsp;&emsp;&emsp;<a href="./toonList/dayList" class="thu">목요일</a></h2></th>
+	
+	<tr>
+		<td align="right"><img class="img-fluid" src="../images/webtoon/4the/독립.jpg" alt="" >
 
-	<tr id="신의탑">
+		<p><a href="/">독립일기</a><br> 
+		<a href="/">자까</a></p>
 		
-		<td>신의탑</td>
-		<td>SIU</td>
+		</td>	
 	</tr>
 	
-	<tr id="신의탑">
+	
+	
+	<tr>
+		<td align="right"><img class="img-fluid" src="../images/webtoon/4the/복서.jpg" alt="">
+		<p><a href="/">더 복서</a><br> 
+		<a href="/"> 정지훈</a></p>
+		</td>
 		
-		<td>신의탑</td>
-		<td>SIU</td>
 	</tr>
 	
 
@@ -117,18 +163,25 @@
 	
 	<div class="grid-item e">
 	<table>
-	<th><h2>&emsp;&emsp;&emsp;<a href="/">금요일</a></h2></th>
+	<th><h2>&emsp;&emsp;&emsp;<a href="./toonList/dayList" class="fri">금요일</a></h2></th>
+	
+	<tr>
+		<td align="right"><img class="img-fluid" src="../images/webtoon/5fri/스쿨.jpg" alt="" >
 
-	<tr id="신의탑">
+		<p><a href="/">갓 오브 하이스쿨</a><br> 
+		<a href="/">박용제</a></p>
 		
-		<td>신의탑</td>
-		<td>SIU</td>
+		</td>	
 	</tr>
 	
-	<tr id="신의탑">
+	
+	
+	<tr>
+		<td align="right"><img class="img-fluid" src="../images/webtoon/5fri/외모.jpg" alt="">
+		<p><a href="/">외모지상주의</a><br> 
+		<a href="/"> 박태준</a></p>
+		</td>
 		
-		<td>신의탑</td>
-		<td>SIU</td>
 	</tr>
 	
 
@@ -138,18 +191,26 @@
 	
 	<div class="grid-item f">
 	<table>
-	<th><h2>&emsp;&emsp;&emsp;<a href="/">토요일</a></h2></th>
+	<th><h2>&emsp;&emsp;&emsp;<a href="./toonList/dayList" class="sat">토요일</a></h2></th>
+	
+	
+	<tr>
+		<td align="right"><img class="img-fluid" src="../images/webtoon/6sat/프리.jpg" alt="" >
 
-	<tr id="신의탑">
+		<p><a href="/">프리드로우</a><br> 
+		<a href="/">전선욱</a></p>
 		
-		<td>신의탑</td>
-		<td>SIU</td>
+		</td>	
 	</tr>
 	
-	<tr id="신의탑">
+	
+	
+	<tr>
+		<td align="right"><img class="img-fluid" src="../images/webtoon/6sat/호랑.jpg" alt="">
+		<p><a href="/">호랑이형님</a><br> 
+		<a href="/"> 이상규</a></p>
+		</td>
 		
-		<td>신의탑</td>
-		<td>SIU</td>
 	</tr>
 	
 
@@ -159,18 +220,25 @@
 	
 	<div class="grid-item g">
 	<table>
-	<th><h2>&emsp;&emsp;&emsp;<a href="/">일요일</a></h2></th>
+	<th><h2>&emsp;&emsp;&emsp;<a href="./toonList/dayList" class="sun">일요일</a></h2></th>
+	
+	<tr>
+		<td align="right"><img class="img-fluid" src="../images/webtoon/7sun/싸움.jpg" alt="" >
 
-	<tr id="신의탑">
+		<p><a href="/">싸움독학</a><br> 
+		<a href="/">박태준/김정현</a></p>
 		
-		<td>신의탑</td>
-		<td>SIU</td>
+		</td>	
 	</tr>
 	
-	<tr id="신의탑">
+	
+	
+	<tr>
+		<td align="right"><img class="img-fluid" src="../images/webtoon/7sun/영웅.jpg" alt="">
+		<p><a href="/">약한 영웅</a><br> 
+		<a href="/"> 서패스/김진석</a></p>
+		</td>
 		
-		<td>신의탑</td>
-		<td>SIU</td>
 	</tr>
 	
 
