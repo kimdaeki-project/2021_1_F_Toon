@@ -20,21 +20,16 @@
 
 <body>
 	<c:import url="../../fragments/header.jsp"></c:import>
-	
-	
+		
 	<div class="view_type">			
              <table>
              <tr >
-             	<td><a href="/">조회순</a></td>
-             
-              <p>	<td><a href="/">업데이트순</a></td>    </p>         
-                
+             	<td><a href="/">조회순</a></td>             
+              <p>	<td><a href="/">업데이트순</a></td>    </p>                        
                 <td><a href="/">별점순</a></td>
-             </tr>
-           
+             </tr>          
              </table>
 			</div>
-	
 	<br>
 	<br>
 	<br>
@@ -43,38 +38,33 @@
 	
 <div class="grid">
 	
-	<div class="grid-item a">
 	
-	<table>
 	
-	<tr align="center"><th><h2>&emsp;&emsp;&emsp;<a href="./toonList/dayList" class="mon" >월요일</a></h2></th><tr>
-	
-	<tr>
-		<td align="center"><img class="img-fluid" src="../../images/webtoon/1mon/sin.jpg" alt="" >
-
-		<p><a href="/">신의탑</a><br> 
-		<a href="/">SIU</a></p>
+	<ul class="grid-item a">
+		<li><h2><a href="./toonList/dayList" class="mon" >월요일 전체웹툰</a></h2></li>
 		
-		</td>	
-	</tr>
+	<li>
+		<div>
+<%-- 			<a href="./${?}Select?num=${toon.titleImg}"></a> --%>
+			<a href="/">${toon.toonTitle}</a> <br>
+			<a href="/">${toon.writerId}</a>
+			
+			
+		</div>
+	</li>
 	
 	
 	
-	<tr>
-		<td align="center"><img class="img-fluid" src="../../images/webtoon/1mon/cham.jpg" alt="">
-		<p><a href="/">참교육</a><br> 
-		<a href="/"> 채용택/한가람</a></p>
-		</td>
-		
-	</tr>
+	
+	
+	</ul>
 	
 	
 	
-
 	
-	</table>
 	
-	</div>
+	
+	
 
 
 </div>

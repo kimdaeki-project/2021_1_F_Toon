@@ -19,7 +19,7 @@
 	  left: 1230px;
 }
 
-.grid-item.a { background-color:  white;}
+.grid-item.a { background-color:  white; color: black;}
 .grid-item.b { background-color:  white;}
 .grid-item.c { background-color:  white;}
 .grid-item.d { background-color:  white;}
@@ -28,32 +28,43 @@
 .grid-item.g { background-color:  white;}
 
 
+
+
+.sin{
+	color: red;
+}
+
+
 .mon{
-	color: red; 
+	color: black; 
+}
+
+.mon1 {
+	color: black;
 }
 
 .tue{
-	color: orange;
+	color: black;
 }
 
 .wen {
-	color: yellow;
+	color: black;
 }
 
-.the {
-	color: green;
+.thu {
+	color: black;
 }
 
 .fri {
-	color: blue;
+	color: black;
 }
 
 .sat {
-	color: navy;
+	color: black;
 }
 
 .sun {
-	color: purple;
+	color: black;
 }
 
 

@@ -48,25 +48,22 @@
 	<tr><th><h2>&emsp;&emsp;&emsp;<a href="./toonList/dayList" class="mon" >월요일</a></h2></th><tr>
 	
 	<tr>
-		<td align="right"><img class="img-fluid" src="../images/webtoon/1mon/sin.jpg" alt="" >
-
-		<p><a href="/">신의탑</a><br> 
-		<a href="/">SIU</a></p>
-		
+		<td align="right" ><img class="img-fluid" src="../images/webtoon/1mon/sin.jpg" alt=""  >
+		<p><a class="mon1" href="/">신의탑</a><br> 
+		<a class="mon1" href="/">SIU</a></p>	
+		<form action="">
+			<input type="hidden" >
+		</form>
 		</td>	
 	</tr>
 	
-	
-	
 	<tr>
-		<td align="right"><img class="img-fluid" src="../images/webtoon/1mon/cham.jpg" alt="">
-		<p><a href="/">참교육</a><br> 
-		<a href="/"> 채용택/한가람</a></p>
+		<td align="right" ><img class="img-fluid" src="../images/webtoon/1mon/cham.jpg" alt="">
+		<p><a class="mon1" href="/">참교육</a><br> 
+		<a class="mon1" href="/"> 채용택/한가람</a></p>
 		</td>
 		
 	</tr>
-	
-	
 	
 
 	

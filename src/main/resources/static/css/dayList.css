@@ -1,7 +1,7 @@
 @charset "UTF-8";
 
 .grid {
-	width: 100px;
+	width: 300px;
 	margin: 0 auto;
 
 }
@@ -10,7 +10,7 @@
 .grid-item {
 	widows: 200px;
 	height: 200px;
-
+	display: inline-block;
 }
 
 .view_type {
@@ -19,36 +19,36 @@
 	  
 }
 
-.grid-item.a { background-color:  white;}
+.grid-item.a { background-color:  white; display: inline-block;}
 
 
 
 .mon{
-	color: red; 
+	color: black; 
 }
 
 .tue{
-	color: orange;
+	color: black;
 }
 
 .wen {
-	color: yellow;
+	color: black;
 }
 
 .the {
-	color: green;
+	color: black;
 }
 
 .fri {
-	color: blue;
+	color: black;
 }
 
 .sat {
-	color: navy;
+	color: black;
 }
 
 .sun {
-	color: purple;
+	color: black;
 }
 
 
