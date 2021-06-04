@@ -3,6 +3,7 @@ package com.to.t1.util;
 import java.io.File;
 import java.util.UUID;
 
+
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -14,6 +15,7 @@ import org.springframework.web.multipart.MultipartFile;
 
 @Component
 public class FileManager {
+
 	@Autowired
 	private ResourceLoader resourceLoader;
 	
@@ -40,13 +42,15 @@ public class FileManager {
 	}
 	
 	public String save(MultipartFile multipartFile, String filePath)throws Exception{
-			
+		
 		String path="static";
 		ClassPathResource classPathResource = new ClassPathResource(path);
 		File file = new File(classPathResource.getFile(), filePath);
 		
 		System.out.println(file.getAbsolutePath());
+
 		System.out.println(file.getPath());
+
 		
 		if(!file.exists()) {
 			file.mkdirs();
@@ -55,9 +59,16 @@ public class FileManager {
 		String fileName = UUID.randomUUID().toString()+"_"+multipartFile.getOriginalFilename();
 		
 		file = new File(file, fileName);
+
 		multipartFile.transferTo(file);
-			
+
+		
+		multipartFile.transferTo(file);
+		
+
 		return fileName;
 	}
+			
+
 
 }

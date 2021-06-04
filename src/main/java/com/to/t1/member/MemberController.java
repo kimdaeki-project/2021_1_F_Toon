@@ -18,6 +18,7 @@ import com.to.t1.member.MemberService;
 @Controller
 @RequestMapping("/member/**")
 public class MemberController {
+	
 	@Autowired
 	private MemberService memberService;
 	
