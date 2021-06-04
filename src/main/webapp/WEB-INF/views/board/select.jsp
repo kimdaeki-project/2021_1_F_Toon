@@ -36,6 +36,14 @@
      	border-style: solid;
      	border-color: #98DFFF;
      }
+     .featurette-divider {
+     	background-color : #3c3c3c;
+     }
+     #file1 {
+     	background-color : #F0FFF0;
+     	border-style: solid;
+     	border-color: #98DFFF;
+     }
      
     </style>
 
@@ -46,15 +54,11 @@
 <c:import url="../fragments/header.jsp"></c:import>
 <div class="back">
 <div class="container">
-
-
-	<h1>공지사항</h1>
 	
 	<table class="table">
 		<thead>
 			<tr style="text-align: center;">
-	    		<th>작성자 : ${vo.username}</th>
-	    		<th>작성일자 : ${vo.createdDate}</th>
+	    		<th>작성일 : ${vo.createdDate}</th>
 	    		<th>조회수 : ${vo.noticeHit}</th>
 	    		
 			</tr>
@@ -63,17 +67,15 @@
 				
 			<tr>
 			
-				<td colspan="2"><h3>${vo.noticeTitle}</h3></td>
-				<p>
-				<td>${vo.noticeContents}</td>
-				</p>
+				<td colspan="2"><h3>${vo.noticeTitle}</h3><hr class="featurette-divider">${vo.noticeContents}</td>
+					
 	    	</tr>
 	    
 		</tbody>
 		</thead>
 	
 	</table>
-	<div>
+	<div id="file1">
 	<c:forEach items="${vo.files}" var="file">
 		<a href="../upload/${board}/${file.fileName}">${file.oriName}</a>
 	</c:forEach>

@@ -22,4 +22,8 @@ public interface BoardMapper {
 	
 	public int setDelete(BoardVO boardVO) throws Exception;
 
+	public BoardFileVO getFileSelect(BoardFileVO boardFileVO)throws Exception;
+	
+	public int setFileDelete(BoardFileVO boardFileVO)throws Exception;
+	
 }

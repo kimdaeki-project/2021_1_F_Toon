@@ -12,7 +12,7 @@ $(".fileDelete").click(function(){
 	//noticeFileDelete
 	$.ajax({
 		url:"./fileDelete",
-		type: "GET",
+		type: "POST",
 		data: {fileNum:fileNum},//앞엔 파라미터명 뒤엔 변수명
 		success:function(result){
 			result = result.trim();

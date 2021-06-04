@@ -6,5 +6,6 @@ import com.to.t1.board.BoardMapper;
 
 @Mapper
 public interface NoticeMapper extends BoardMapper {
+
 	
 }

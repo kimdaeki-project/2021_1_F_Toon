@@ -31,7 +31,7 @@
 	
 	 .back {
     	background-image: url('../images/toon-notice5.PNG');
-    	background-size : 3000px;
+    	background-size : 6000px;
     	border-style: solid;
     	border-color: #98DFFF;
      }
@@ -42,8 +42,7 @@
      }
      #dd {
      	background-color: #F9FFFF;
-     	border-style: solid;
-     	border-color: #98DFFF;
+
      }
 	
 </style>
@@ -78,7 +77,7 @@
     	<div>
     		<span id="dd">${file.oriName}</span><span class="fileDelete" title="${file.fileNum}"><button class="btn btn-danger">X</button></span>
     	</div>
-    </c:forEach>
+    </c:forEach><br>
     
     <input type="button" id="add" value="ADD" class="btn btn-secondary">
 			

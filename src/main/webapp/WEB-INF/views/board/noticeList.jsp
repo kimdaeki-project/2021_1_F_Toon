@@ -27,7 +27,7 @@
     <style type="text/css">
      .back {
     	background-image: url('../images/toon-notice5.PNG');
-    	background-size : 3000px;
+    	background-size : 6000px;
     	border-style: solid;
     	border-color: #98DFFF;
      }

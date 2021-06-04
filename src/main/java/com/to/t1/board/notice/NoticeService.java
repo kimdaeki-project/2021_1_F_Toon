@@ -84,6 +84,16 @@ public class NoticeService implements BoardService {
 		return noticeMapper.setDelete(boardVO);
 	}
 	
+	@Override
+	public BoardFileVO getFileSelect(BoardFileVO boardFileVO) throws Exception {
+		// TODO Auto-generated method stub
+		return null;
+	}
+	@Override
+	public int setFileDelete(BoardFileVO boardFileVO) throws Exception {
+		// TODO Auto-generated method stub
+		return 0;
+	}
 	
 
 }

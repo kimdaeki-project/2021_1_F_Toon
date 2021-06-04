@@ -52,6 +52,28 @@ public class NoticeController {
 		return mv;
 	}
 	
+	@PostMapping("summerFileDelete")
+	public ModelAndView setSummerFileDelete(String fileName)throws Exception{
+		ModelAndView mv = new ModelAndView();
+		boolean result = noticeService.setSummerFileDelete(fileName);
+		mv.addObject("result", result);
+		mv.setViewName("common/ajaxResult");
+		return mv;
+	}
+	
+	@PostMapping("summerFileUpload")
+	public ModelAndView setSummerFileUpload(MultipartFile file)throws Exception{
+		ModelAndView mv = new ModelAndView();
+		System.out.println("Summer File Upload");
+		System.out.println(file.getOriginalFilename());
+		String fileName = noticeService.setSummerFileUpload(file);
+		fileName = "../resources/upload/notice/"+fileName;
+		mv.addObject("result", fileName);
+		mv.setViewName("common/ajaxResult");
+		
+		return mv;
+	}
+	
 	// /notice/list
 	@GetMapping("noticeList")
 	public String getList(Model model, Pager pager)throws Exception{
@@ -111,29 +133,43 @@ public class NoticeController {
 		return "redirect:./noticeList";
 	}
 	
-	@GetMapping("update")
-	public String setUpdate(BoardVO boardVO, Model model)throws Exception{
+	@GetMapping("fileDelete")
+	public ModelAndView setFileDelete(BoardFileVO boardFileVO)throws Exception{
+		ModelAndView mv = new ModelAndView();
+		int result = noticeService.setFileDelete(boardFileVO);
+		mv.addObject("result", result);
+		mv.setViewName("common/ajaxResult");
+		return mv;
+	}
+	
+	@PostMapping
+	public ModelAndView setUpdate(BoardVO boardVO, ModelAndView mv, MultipartFile [] files) throws Exception{
+		
+		int result = noticeService.setUpdate(boardVO, files);
+		
+		if(result>0) {
+			//성공하면 리스트로 이동
+			mv.setViewName("redirect:./noticeList");
+		}else {
+			//실패하면 수정실패 , 리스트로 이동
+			mv.addObject("msg", "수정 실패");
+			mv.addObject("path", "./noticeList");
+			mv.setViewName("common/commonResult");
+		}
+		
+		return mv;
+	}
+	
+	
+	@GetMapping
+	public ModelAndView setUpdate(BoardVO boardVO)throws Exception{
+		ModelAndView mv = new ModelAndView();
 		boardVO = noticeService.getSelect(boardVO);
-		model.addAttribute("vo", boardVO);
-		model.addAttribute("action", "update");
-		return "board/update";
 		
-	}
-	
-	@PostMapping("update")
-	public String setUpdate(BoardVO boardVO)throws Exception{
-		
-		int result = noticeService.setUpdate(boardVO);
-		
-		return "redirect:./noticeList";
-	}
-	
-	@PostMapping("delete")
-	public String setDelete(BoardVO boardVO)throws Exception{
-		
-		int result = noticeService.setDelete(boardVO);
-		
-		return "redirect:./noticeList";
+		mv.addObject("vo", boardVO);
+		mv.addObject("board", "notice");
+		mv.setViewName("board/update");
+		return mv;
 	}
 	
 
