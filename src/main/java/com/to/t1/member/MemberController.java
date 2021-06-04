@@ -99,9 +99,7 @@ public class MemberController {
 		}
 
 		model.addAttribute("result", result);
-
 		return "common/ajaxResult";
-
 	}
 
 	@RequestMapping("searchPw") 
@@ -111,7 +109,6 @@ public class MemberController {
 	@PostMapping("searchPw")
 	public String searchPw(MemberVO memberVO,Model model)throws Exception{
 		memberVO = memberService.searchPw(memberVO);
-		int result = memberService.pwUpdate(memberVO);
 
 		String message = "아이디와 핸드폰 불일치";
 		String messageType = "N";
@@ -120,7 +117,11 @@ public class MemberController {
 			message="아이디와 핸드폰 불일치";
 			messageType="Y";
 		} else {
-			memberVO.setPassword("0000");
+			int result = memberService.pwUpdate(memberVO);
+			if(result>0) {
+				memberVO.setPassword("0000");
+		}
+	
 			message="회원님의 비밀번호는 " + memberVO.getPassword()+" 입니다.";
 			messageType="Y";
 		}
@@ -186,11 +187,11 @@ public class MemberController {
 		int result = memberService.memberDelete(memberVo, session);
 		session.invalidate();
 		
-		String message="삭제 실패";
+		String message="회원가입 탈퇴 실패";
 		String path = "./memberUpdate";
 		
 		if(result>0) {
-			message="삭제 성공";
+			message="회원가입 탈퇴 성공";
 		}
 		mv.addObject("msg", message);
 		mv.addObject("path", path);

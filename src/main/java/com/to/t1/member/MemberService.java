@@ -32,6 +32,7 @@ public class MemberService {
 		MemberVO checkMember = memberMapper.getUsername(memberVO);
 		if(checkMember !=null) {
 			errors.rejectValue("username", "member.id.equal");
+			errors.rejectValue("username", "member.name.equal");
 			result = true;
 		}
 		
@@ -92,6 +93,7 @@ public class MemberService {
 	}
 	
 	public int pwUpdate(MemberVO memberVO)throws Exception{
+		System.out.println("zzzz");
 		return memberMapper.memberUpdate(memberVO);
 	}
 	
