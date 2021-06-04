@@ -8,7 +8,12 @@
  
   		<typeAlias type="com.to.t1.member.MemberVO" alias="MemberVO"/>
   		<typeAlias type="com.to.t1.member.JoinFileVO" alias="JoinFileVO"/>
+		<typeAlias type="com.to.t1.toon.ToonVO" alias="ToonVO"/>
+		<typeAlias type="com.to.t1.review.ReviewVO" alias="ReviewVO"/>
+		<typeAlias type="com.to.t1.toon.eachep.EachEpVO" alias="EachEpVO"/>
 
+		<typeAlias type="com.to.t1.util.Pager" alias="Pager"/>
+		<typeAlias type="java.lang.Long" alias="Long"/>
   	</typeAliases>
   
   </configuration>
