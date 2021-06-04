@@ -93,7 +93,17 @@
             <form:input class="form-control" id="email" path="email"/>
             <button id = "CheckMail" type="button" class="sendMail" onclick="sendMail()" style="border: 1px solid black;">인증번호받기</button>                               
             <form:errors path="email" class="c1"></form:errors>
-
+            
+           <div class="form-group">
+            <label for="emailNum">인증번호</label><br>
+            <form:input id="emailNum" type="text"  path="emailNum"/>
+            <button type="button" class="emailCheck"  onclick="emailCheck()" style="border: 1px solid black;">인증확인</button> 
+            <form:errors path="emailNum" class="c1"></form:errors>                                                            
+           
+            <!-- 비어 있으면 X -->
+         </div>
+			
+			
 			<div class="form-group">
 				<label for="avatar">사진 등록(선택)</label> 
 				<input type="file" class="form-control etc" id="avatar" name="avatar">

@@ -104,6 +104,8 @@ $("#id").blur(function(){
 });
 
 //이메일
+var CheckNum;
+
 function sendMail(){
    var email = $("#email").val(); //사용자의 이메일 입력값.
    var test = email.indexOf("@");
@@ -119,15 +121,35 @@ function sendMail(){
          type : 'GET',
          url : 'CheckMail',
          data : {
-            "mail" : email,
+            "email" : email,
          },
-         contentType: "application/json; charset=utf-8;",
-         dataType :'json',
+
+         dataType :'text',
+         
+         success : function(data) {
+              CheckNum = data;
+              alert(CheckNum);
+              
+          },   
+          error:function(requeest, status, error){
+             alert(error);
+          },
 
       });
-      alert("인증번호가 전송되었습니다.") 
-      isCertification=true; //추후 인증 여부를 알기위한 값
+      alert("인증번호가 전송되었습니다.")
+      
+      isCertification=false; //추후 인증 여부를 알기위한 값
    }
       
 }
 
+function emailCheck(){
+    var emailNum = $("#emailNum").val();
+       if (emailNum == CheckNum) {   //인증 키 값을 비교를 위해 텍스트인풋과 벨류를 비교
+         alert("인증성공");
+         isCertification = true;
+       } else {   
+          alert("인증실패");
+          isCertification = false;
+       }
+ };

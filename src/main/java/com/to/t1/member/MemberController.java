@@ -146,15 +146,15 @@ public class MemberController {
 	}
 
 	@PostMapping("join")
-	public String setJoin(@Valid MemberVO memberVO,BindingResult bindingResult, MultipartFile avatar, HttpSession session, Model model, Errors errors)throws Exception{
-		int result = memberService.setJoin(memberVO, avatar, session);
-		String message = "회원가입 실패";
-		String path="./memberJoin";
+	public String setJoin(@Valid MemberVO memberVO,Errors errors, MultipartFile avatar, HttpSession session, Model model)throws Exception{
 		
-		if(bindingResult.hasErrors()) {
+		if(memberService.memberError(memberVO, errors)) {
 			return "member/memberJoin";
 			
 		} 	
+		int result = memberService.setJoin(memberVO, avatar, session);
+		String message = "회원가입 실패";
+		String path="./memberJoin";
 		
 		if(result>0) {
 			message ="회원 가입 성공";
@@ -200,13 +200,11 @@ public class MemberController {
 
 	   @GetMapping("CheckMail")
 	   @ResponseBody
-	   public Map<String, Object> SendMail(String mail, HttpSession session) {
-	      Map<String, Object> map = new HashMap<>();
+	   public String SendMail(Model model,String email, HttpSession session) {
 	      Random random = new Random();
 	      String key = "";
-
 	      SimpleMailMessage message = new SimpleMailMessage();
-	      message.setTo(mail); // 스크립트에서 보낸 메일을 받을 사용자 이메일 주소
+	      message.setTo(email); // 스크립트에서 보낸 메일을 받을 사용자 이메일 주소
 	      // 입력 키를 위한 코드
 	      for (int i = 0; i < 3; i++) {
 	         int index = random.nextInt(25) + 65; // A~Z까지 랜덤 알파벳 생성
@@ -214,13 +212,13 @@ public class MemberController {
 	      }
 	      int numIndex = random.nextInt(8999) + 1000; // 4자리 정수를 생성
 	      key += numIndex;
-	      message.setSubject("인증번호 입력을 위한 메일 전송");
-	      message.setText("웹툰 인증번호입니다.\n"+"인증 번호 : "+key);
+	      message.setSubject("TOON 인증번호");
+	      message.setText("TOON 인증번호입니다.\n"+"인증 번호 : "+key);
 	      javaMailSender.send(message);
-	      map.put("key", key);
-//	      session.setAttribute("key", key);
-	      System.out.println(map);
-	      return map;
+	      model.addAttribute("key", key);
+	      System.out.println(key);
+	      
+	      return key;
 	   }
 }
 

@@ -30,6 +30,10 @@ public class MemberVO {
 	@NotEmpty
 	@Email
 	private String email;
+	
+	@NotEmpty
+	private String emailNum;
+	
 	private long point;
 	private JoinFileVO joinFileVO;
 }
