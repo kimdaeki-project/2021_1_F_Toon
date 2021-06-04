@@ -7,7 +7,7 @@ $(".fileDelete").click(function(){
 	let check = confirm("삭제하십니까?"); //확인창
 	
 	if(check){
-	let fileNum = $(this).attr("noticeTitle");
+	let fileNum = $(this).attr("title");
 	let obj = $(this);
 	//noticeFileDelete
 	$.ajax({

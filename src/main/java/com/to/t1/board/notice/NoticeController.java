@@ -100,6 +100,7 @@ public class NoticeController {
 	
 	@PostMapping("insert")
 	public String setInsert(BoardVO boardVO, MultipartFile [] files)throws Exception{
+		
 //		System.out.println(files.length);
 //		for(MultipartFile f : files) {
 //			System.out.println(f.getOriginalFilename());
@@ -127,7 +128,7 @@ public class NoticeController {
 		return "redirect:./noticeList";
 	}
 	
-	@GetMapping("delete")
+	@PostMapping("delete")
 	public String setDelete(BoardVO boardVO)throws Exception{
 		
 		int result = noticeService.setDelete(boardVO);

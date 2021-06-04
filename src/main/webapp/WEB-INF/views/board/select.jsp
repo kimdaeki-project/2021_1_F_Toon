@@ -62,8 +62,11 @@
 				<tbody class="select">
 				
 			<tr>
+			
 				<td colspan="2"><h3>${vo.noticeTitle}</h3></td>
-				<td colspan="3" style="padding:3em">${vo.noticeContents}</td>
+				<p>
+				<td>${vo.noticeContents}</td>
+				</p>
 	    	</tr>
 	    
 		</tbody>
@@ -72,11 +75,11 @@
 	</table>
 	<div>
 	<c:forEach items="${vo.files}" var="file">
-		<a href="../resources/upload/${board}/${file.fileName}">${file.oriName}</a>
+		<a href="../upload/${board}/${file.fileName}">${file.oriName}</a>
 	</c:forEach>
 	</div>
 	
-	<a href="./${board}Update?boNum=${vo.boNum}" class="btn btn-danger">수정</a>
+	<a href="./update?boNum=${vo.boNum}" class="btn btn-danger">수정</a>
 	<a href="#" id="del" class="btn btn-info">삭제</a>
 	
 	
@@ -84,7 +87,7 @@
 	<a href="./${board}Reply?boNum=${vo.boNum}" class="btn btn-primary">댓글</a>
 	</c:if>
 	
-	<form action="./${board}Delete" id="frm" method="get">
+	<form action="./delete" id="frm" method="get">
 		<input type="hidden" name="boNum" value="${vo.boNum}">
 	</form>
 	</div>

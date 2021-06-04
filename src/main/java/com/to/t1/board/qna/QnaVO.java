@@ -41,4 +41,14 @@ public class QnaVO extends BoardVO {
 	}
 
 	private List<BoardFileVO> files;
+
+	public List<BoardFileVO> getFiles() {
+		return files;
+	}
+
+	public void setFiles(List<BoardFileVO> files) {
+		this.files = files;
+	}
+	
+	
 }

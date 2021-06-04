@@ -75,8 +75,8 @@
 			</div>
 
 			<div class="form-group">
-				<label for="noticeContents">내용</label>
-				<textarea class="form-control myCheck" rows="5" id="noticeContents"
+				<label for="contents">내용</label>
+				<textarea class="form-control myCheck" rows="5" id="contents"
 					name="noticeContents"></textarea>
 			</div>
 
@@ -101,78 +101,11 @@
 			</div>
 		</div>
 	</div>
-<script type="text/javascript">
-$("#btn").click(function(){
+
+
+	<script type="text/javascript" src="../js/board/boardInsert.js"></script>
+	<script type="text/javascript" src="../js/board/fileAdd.js"></script>
 	
-	let result = true;
-	
-	$(".myCheck").each(function(s1, s2){
-		console.log(s1);
-		console.log($(s2).val());
-		console.log($(this).val());
-		if($(this).val()==""){
-			result = false;
-		}
-	});
-	
-	if(result) {
-		$("#frm").submit(); 
-	}else {
-		alert("필수 요소를 입력하세염");
-	}
-	
-});
-
-$("#noticeContents").summernote({
-	height:500,
-	placeholder: '작성하십시오',
-	callbacks: {
-		  onImageUpload: function(files) {
-		   // upload image to server and create imgNode...
-		   //$summernote.summernote('insertNode', imgNode);
-		   uploadFile(files);
-		   
-		  },// -- onImageUpload
-		onMediaDelete: function(files){
-			deleteFile(files);
-		}
-	}// -- callbacks
-});
-
-function deleteFile(files) {
-let fileName = $(files[0]).attr("src");
-fileName = fileName.substring(fileName.lastIndexOf('/')+1);
-$.post("summerFileDelete", {fileName:fileName}, function(result){ //./ 현위치 ../ 한단계 위 아무것도없다 그러면 현위치랑같다
-console.log(result);
-});
-}
-
-function uploadFile(files) {
-const formData = new FormData();//Form 태그 생성
-formData.append('file', files[0]); //input type="file" name="file" 요거를 인폼안에 넣었다
-let fileName="";
-$.ajax({
-type: "POST",
-url: "./summerFileUpload",
-data:formData,
-enctype:"multipart/form-data",
-cache:false,
-processData:false,
-contentType:false,
-success:function(result){
-	fileName=result.trim();
-	$("#noticeContents").summernote('insertImage', fileName);
-} 
-
-});		
-}
-
-
-</script>
-
-	<script type="text/javascript" src="../../../resources/static/js/board/boardInsert.js"></script>
-	<script type="text/javascript" src="../../../resources/static/js/board/fileAdd.js"></script>
-	<script type="text/javascript" src="../../../resources/static/js/board/summerFile.js"></script>
 	
 </body>
 </html>

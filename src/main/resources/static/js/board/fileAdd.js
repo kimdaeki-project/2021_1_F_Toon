@@ -2,11 +2,11 @@
  * 
  */
 
-let count=$("#files").attr("noticeTitle");
+let count=$("#files").attr("title");
 $("#add").click(function(){
 	if(count < 5){
 		let contents = $("#sample").html();
-		$("#files").append(noticeContents);
+		$("#files").append(contents);
 		count++;//count=count+1;
 	}else {
 		alert("최대 5개만 가능");

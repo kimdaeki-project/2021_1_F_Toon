@@ -16,4 +16,54 @@ public class BoardVO {
 	private Long noticeHit;
 	private Long noticeType;
 	
+	public Long getBoNum() {
+		return boNum;
+	}
+	public void setBoNum(Long boNum) {
+		this.boNum = boNum;
+	}
+	public String getNoticeKinds() {
+		return noticeKinds;
+	}
+	public void setNoticeKinds(String noticeKinds) {
+		this.noticeKinds = noticeKinds;
+	}
+	public String getNoticeTitle() {
+		return noticeTitle;
+	}
+	public void setNoticeTitle(String noticeTitle) {
+		this.noticeTitle = noticeTitle;
+	}
+	public String getUsername() {
+		return username;
+	}
+	public void setUsername(String username) {
+		this.username = username;
+	}
+	public String getNoticeContents() {
+		return noticeContents;
+	}
+	public void setNoticeContents(String noticeContents) {
+		this.noticeContents = noticeContents;
+	}
+	public Date getCreatedDate() {
+		return createdDate;
+	}
+	public void setCreatedDate(Date createdDate) {
+		this.createdDate = createdDate;
+	}
+	public Long getNoticeHit() {
+		return noticeHit;
+	}
+	public void setNoticeHit(Long noticeHit) {
+		this.noticeHit = noticeHit;
+	}
+	public Long getNoticeType() {
+		return noticeType;
+	}
+	public void setNoticeType(Long noticeType) {
+		this.noticeType = noticeType;
+	}
+	
+	
 }
