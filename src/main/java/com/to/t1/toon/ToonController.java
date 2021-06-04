@@ -23,14 +23,9 @@ public class ToonController {
 		return "toon/toonList/ranking";
 	}
 	
-	@GetMapping("endKr")
+	@GetMapping("end")
 	public String endKr() {
-		return "toon/toonList/endKr";
-	}
-	
-	@GetMapping("endRe")
-	public String endRe() {
-		return "toon/toonList/endRe";
+		return "toon/toonList/end";
 	}
 	
 	@GetMapping("dayList")
