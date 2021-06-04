@@ -94,7 +94,7 @@ public class MemberService {
 	
 	public int pwUpdate(MemberVO memberVO)throws Exception{
 		System.out.println("zzzz");
-		return memberMapper.memberUpdate(memberVO);
+		return memberMapper.pwUpdate(memberVO);
 	}
 	
 }

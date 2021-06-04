@@ -83,7 +83,7 @@ btn.addEventListener("click", function(){
 		let frm = document.getElementById("frm");
 		frm.submit();
 	}else {
-		alert("필수 항목을 입력하세요");
+		swal("필수 항목을 입력하세요");
 	}
 });
 
@@ -111,10 +111,10 @@ function sendMail(){
    var test = email.indexOf("@");
    
    if (email == "") {
-      alert("메일 주소가 입력되지 않았습니다.");
+      swal("메일 주소가 입력되지 않았습니다.", "You clicked the button!" , "warning");
    }else if(test==-1){
       
-      alert("메일 형식이 잘못되었습니다.");
+      swal("메일 형식이 잘못되었습니다.", "You clicked the button!" , "warning");
    } 
    else {
       $.ajax({
@@ -136,34 +136,22 @@ function sendMail(){
           },
 
       });
-      alert("인증번호가 전송되었습니다.")
+      swal("인증번호가 전송되었습니다.")
       
       //추후 인증 여부를 알기위한 값
    }
       
 }
-
- $("#join_btn").click(function(){
-   //
-   alert("zz");
-   if(isCertification==false){
-      alert("메일 인증이 되지않았습니다.")
-   }
-   else{
-      $("#joinForm").submit();
-     }
-}); 
+ 
 
 function emailCheck(){
     var emailNum = $("#emailNum").val();
        if (emailNum == CheckNum) {   //인증 키 값을 비교를 위해 텍스트인풋과 벨류를 비교
-         alert("인증성공");
+         swal("인증성공!", "You clicked the button!", "success")
          isCertification = true;
        } else {   
-          alert("인증실패");
+          swal("인증실패","You clicked the button!" , "warning");
           isCertification = false;
        }
  };
  
-     
-   

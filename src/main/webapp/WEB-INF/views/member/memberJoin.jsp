@@ -111,7 +111,7 @@
 		</form:form>
 
 	</div>
-
+	
 	<script src="js/jquery-2.2.4.min.js"></script>
 	<script src="js/popper.js"></script>
 	<script src="js/bootstrap.min.js"></script>
@@ -127,19 +127,19 @@
 	<script src="js/mail-script.js"></script>
 	<script src="js/theme.js"></script>
 	<script type="text/javascript" src="../js/memberJoin.js"></script>
-	
 	<script type="text/javascript">
 	var isCertification = false;
 	 $("#join_btn").click(function(){
 		  
 		   if(isCertification==false){
-		      alert("메일 인증이 되지않았습니다.")
+		      swal("메일 인증이 되지않았습니다.","You clicked the button!" , "warning");
 		   }
 		   else{
 		      $("#joinForm").submit();
 		     }
 		}); 
 	</script>
-
+	<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+	
 </body>
 </html>

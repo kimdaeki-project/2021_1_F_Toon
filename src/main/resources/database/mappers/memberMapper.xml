@@ -39,7 +39,7 @@
 		</update>
 
 		<update id="pwUpdate" parameterType="MemberVO">
-			update member set PASSWORD='0000' where username=#{username}
+			update member set PASSWORD=#{password} where username=#{username}
 		</update>
 		
 		<delete id="memberDelete" parameterType="MemberVO">

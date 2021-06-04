@@ -108,29 +108,24 @@ public class MemberController {
 
 	@PostMapping("searchPw")
 	public String searchPw(MemberVO memberVO,Model model)throws Exception{
-		memberVO = memberService.searchPw(memberVO);
-
+		
+		MemberVO memberVO2 = memberService.searchPw(memberVO);
 		String message = "아이디와 핸드폰 불일치";
 		String messageType = "N";
 
-		if(memberVO.getPassword() == null) {
+		if(memberVO2.getPassword() == null) {
 			message="아이디와 핸드폰 불일치";
 			messageType="Y";
 		} else {
+			memberVO.setPassword("0000");
 			int result = memberService.pwUpdate(memberVO);
-			if(result>0) {
-				memberVO.setPassword("0000");
-		}
 	
-			message="회원님의 비밀번호는 " + memberVO.getPassword()+" 입니다.";
+			message="회원님의 비밀번호는 " + memberVO.getPassword()+" 으로 초기화 되었습니다.";
 			messageType="Y";
 		}
 
 		model.addAttribute("msg", message);
 		model.addAttribute("messageType", messageType);
-
-		System.out.println(memberVO.getUsername());
-		System.out.println(message);
 
 		return "member/memberLogin";
 	}
