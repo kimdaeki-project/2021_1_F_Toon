@@ -44,7 +44,7 @@
 
 		<h2 class="mt-4">회원가입</h2>
 
-		<form:form id="frm" modelAttribute="memberVO" action="./join" method="post" enctype="multipart/form-data">
+		<form:form id="joinForm" modelAttribute="memberVO" action="./join" method="post" enctype="multipart/form-data">
 			<div class="form-group">
 				<label for="id">ID</label> 
 				<form:input class="form-control" id="id" path="username"></form:input>
@@ -102,14 +102,12 @@
            
             <!-- 비어 있으면 X -->
          </div>
-			
-			
 			<div class="form-group">
 				<label for="avatar">사진 등록(선택)</label> 
 				<input type="file" class="form-control etc" id="avatar" name="avatar">
 			</div>
-
-				<input type="submit" id="btn" value="JOIN" class="btn btn-primary">
+			
+				<input type="button" value="JOIN" id="join_btn" class="btn btn-primary">		
 		</form:form>
 
 	</div>
@@ -129,6 +127,19 @@
 	<script src="js/mail-script.js"></script>
 	<script src="js/theme.js"></script>
 	<script type="text/javascript" src="../js/memberJoin.js"></script>
+	
+	<script type="text/javascript">
+	var isCertification = false;
+	 $("#join_btn").click(function(){
+		  
+		   if(isCertification==false){
+		      alert("메일 인증이 되지않았습니다.")
+		   }
+		   else{
+		      $("#joinForm").submit();
+		     }
+		}); 
+	</script>
 
 </body>
 </html>

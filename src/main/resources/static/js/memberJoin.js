@@ -3,7 +3,7 @@ let pw = document.getElementById("pw");
 let pw2 = document.getElementById("pw2");
 let btn = document.getElementById("btn");
 let etc = document.getElementsByClassName("etc");
-
+var isCertification = false;
 let idCheckResult = false; // id check 결과
 let pwCheckResult = false; 
 let pwEqualResult = false; 
@@ -138,10 +138,21 @@ function sendMail(){
       });
       alert("인증번호가 전송되었습니다.")
       
-      isCertification=false; //추후 인증 여부를 알기위한 값
+      //추후 인증 여부를 알기위한 값
    }
       
 }
+
+ $("#join_btn").click(function(){
+   //
+   alert("zz");
+   if(isCertification==false){
+      alert("메일 인증이 되지않았습니다.")
+   }
+   else{
+      $("#joinForm").submit();
+     }
+}); 
 
 function emailCheck(){
     var emailNum = $("#emailNum").val();
@@ -153,3 +164,6 @@ function emailCheck(){
           isCertification = false;
        }
  };
+ 
+     
+   
