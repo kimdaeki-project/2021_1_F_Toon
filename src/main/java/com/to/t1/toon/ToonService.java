@@ -10,6 +10,7 @@ import com.to.t1.util.Pager;
 
 @Service
 public class ToonService {
+	
 	@Autowired
 	private ToonMapper toonMapper;
 	
