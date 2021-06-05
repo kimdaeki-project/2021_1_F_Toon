@@ -67,7 +67,7 @@ public class NoticeController {
 		System.out.println("Summer File Upload");
 		System.out.println(file.getOriginalFilename());
 		String fileName = noticeService.setSummerFileUpload(file);
-		fileName = "../resources/upload/notice/"+fileName;
+		fileName = "../upload/notice/"+fileName;
 		mv.addObject("result", fileName);
 		mv.setViewName("common/ajaxResult");
 		
@@ -99,10 +99,11 @@ public class NoticeController {
 	}
 	
 	@GetMapping("insert")
-	public String setInsert(Model model, HttpSession session)throws Exception{
-		model.addAttribute("vo", new BoardVO());
-		model.addAttribute("action", "insert");
+	public String setInsert(ModelAndView mv, HttpSession session)throws Exception{
+			mv.setViewName("board/insert");
+			mv.addObject("board", "notice");
 		
+			
 		Object obj = session.getAttribute("member");
 		MemberVO memberVO = null;
 		String path="redirect:/member/login";
@@ -121,14 +122,26 @@ public class NoticeController {
 	}
 	
 	@PostMapping("insert")
-	public String setInsert(BoardVO boardVO, MultipartFile [] files)throws Exception{
-		
-//		System.out.println(files.length);
-//		for(MultipartFile f : files) {
-//			System.out.println(f.getOriginalFilename());
-//		}
+	public String setInsert(BoardVO boardVO, MultipartFile [] files, Model model)throws Exception{
 		
 		int result = noticeService.setInsert(boardVO, files);
+		
+		String message="등록 실패";
+		
+		if(result>0) {
+			message="등록 성공";
+		}
+		model.addAttribute("msg", message);
+		model.addAttribute("path", "./noticeList");
+		
+		
+		return "common/commonResult";
+	}
+	
+	@PostMapping("delete")
+	public String setDelete(BoardVO boardVO)throws Exception{
+		
+		int result = noticeService.setDelete(boardVO);
 		
 		return "redirect:./noticeList";
 	}
@@ -142,7 +155,18 @@ public class NoticeController {
 		return mv;
 	}
 	
-	@PostMapping
+	@GetMapping("update")
+	public ModelAndView setUpdate(BoardVO boardVO)throws Exception{
+		ModelAndView mv = new ModelAndView();
+		boardVO = noticeService.getSelect(boardVO);
+		
+		mv.addObject("vo", boardVO);
+		mv.addObject("board", "notice");
+		mv.setViewName("board/update");
+		return mv;
+	}
+	
+	@PostMapping("update")
 	public ModelAndView setUpdate(BoardVO boardVO, ModelAndView mv, MultipartFile [] files) throws Exception{
 		
 		int result = noticeService.setUpdate(boardVO, files);
@@ -161,16 +185,7 @@ public class NoticeController {
 	}
 	
 	
-	@GetMapping
-	public ModelAndView setUpdate(BoardVO boardVO)throws Exception{
-		ModelAndView mv = new ModelAndView();
-		boardVO = noticeService.getSelect(boardVO);
-		
-		mv.addObject("vo", boardVO);
-		mv.addObject("board", "notice");
-		mv.setViewName("board/update");
-		return mv;
-	}
+
 	
 
 }

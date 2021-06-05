@@ -27,6 +27,10 @@
 			</where>
    		</sql>
    		
+   		<select id="getFileSelect" parameterType="BoardFileVO" resultType="BoardFileVO">
+		select * from noticeFiles where fileNum=#{fileNum}
+		</select>
+   		
    		
    		<select id="getList" resultType="NoticeVO" parameterType="Pager">
 			select * from notice
@@ -75,6 +79,10 @@
    			insert into noticeFiles (boNum, fileName, oriName)
    			values (#{boNum}, #{fileName}, #{oriName})
    		</insert>
+   		
+   		<delete id="setFileDelete" parameterType="BoardFileVO">
+		delete noticeFiles where fileNum=#{fileNum}
+		</delete>
    		
    		<update id="setUpdate" parameterType="BoardVO">
    			update notice set noticeKinds=#{noticeKinds}, noticeTitle=#{noticeTitle}, noticeContents=#{noticeContents} where boNum=#{boNum}

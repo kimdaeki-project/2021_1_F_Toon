@@ -2,6 +2,8 @@ package com.to.t1.board.notice;
 
 import java.util.List;
 
+import javax.servlet.http.HttpSession;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
@@ -11,7 +13,7 @@ import org.springframework.web.multipart.MultipartFile;
 import com.to.t1.board.BoardFileVO;
 import com.to.t1.board.BoardService;
 import com.to.t1.board.BoardVO;
-import com.to.t1.util.FileManager;
+import com.to.t1.util.BoFileManager;
 import com.to.t1.util.Pager;
 
 @Service
@@ -21,7 +23,9 @@ public class NoticeService implements BoardService {
 	@Autowired
 	private NoticeMapper noticeMapper;
 	@Autowired
-	private FileManager fileManager;
+	private BoFileManager boFileManager;
+	@Autowired
+	private HttpSession session;
 	
 	@Value("${board.notice.filePath}")
 	private String filePath;
@@ -60,7 +64,7 @@ public class NoticeService implements BoardService {
 			if(multipartFile.getSize()==0) {
 				continue;
 			}
-			String fileName= fileManager.save(multipartFile, filePath);
+			String fileName= boFileManager.save(multipartFile, filePath, session);
 			System.out.println(fileName);
 			BoardFileVO boardFileVO = new BoardFileVO();
 			boardFileVO.setFileName(fileName);
@@ -73,7 +77,7 @@ public class NoticeService implements BoardService {
 	}
 
 	@Override
-	public int setUpdate(BoardVO boardVO) throws Exception {
+	public int setUpdate(BoardVO boardVO, MultipartFile [] files) throws Exception {
 		// TODO Auto-generated method stub
 		return noticeMapper.setUpdate(boardVO);
 	}
@@ -84,16 +88,29 @@ public class NoticeService implements BoardService {
 		return noticeMapper.setDelete(boardVO);
 	}
 	
-	@Override
-	public BoardFileVO getFileSelect(BoardFileVO boardFileVO) throws Exception {
-		// TODO Auto-generated method stub
-		return null;
-	}
+	
 	@Override
 	public int setFileDelete(BoardFileVO boardFileVO) throws Exception {
-		// TODO Auto-generated method stub
-		return 0;
+		//fileName을 print
+				//1. 조회
+				boardFileVO = noticeMapper.getFileSelect(boardFileVO);
+				//2. table 삭제
+				int result = noticeMapper.setFileDelete(boardFileVO);
+				//3. HDD 삭제
+				if(result > 0) {
+					boFileManager.delete("notice", boardFileVO.getFileName(), session);
+				}
+				return result;
 	}
-	
+	@Override
+	public boolean setSummerFileDelete(String fileName) throws Exception {
+		boolean result = boFileManager.delete("notice", fileName, session);
+		return result;
+	}
+	@Override
+	public String setSummerFileUpload(MultipartFile file) throws Exception {
+		String fileName = boFileManager.save(file,"notice", session);
+		return fileName;
+	}
 
 }

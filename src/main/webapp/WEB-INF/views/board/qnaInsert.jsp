@@ -80,11 +80,11 @@
 					name="noticeContents"></textarea>
 			</div>
 
-			<input type="button" id="add" value="파일추가" class="btn btn-secondary"><br>
+			<input type="button" id="add" value="ADD" class="btn btn-danger">
 			
-			<div id="files" title="0"></div><br>
+			<div id="files" title="0"></div>
 
-			<input type="button" id="btn" value="등록" class="btn btn-secondary">
+			<input type="button" id="btn" value="WRITE" class="btn btn-primary">
 		</form>
 	</div>
 	

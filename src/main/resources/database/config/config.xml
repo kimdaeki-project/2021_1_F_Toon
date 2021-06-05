@@ -16,6 +16,8 @@
   		
   		<typeAlias type="com.to.t1.util.Pager" alias="Pager"/>
   		
+  		<typeAlias type="java.lang.Long" alias="Long"/>
+  		
   	</typeAliases>
   
   </configuration>

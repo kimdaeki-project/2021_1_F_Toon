@@ -52,10 +52,8 @@
 			
 			<thead class="thead">
 				<tr>
-					<th>번호</th>
-					<th>질문종류</th>
 					<th>제목</th>
-					<th>작성자</th>
+					<th>ID</th>
 					<th>작성일</th>
 					<th>조회수</th>
 				</tr>
@@ -63,21 +61,20 @@
 			
 			
 			<tbody>
-			<c:forEach items="${noticelist}" var="vo" >
+			<c:forEach items="${qnaList}" var="vo" >
 				<tr>
 					<td>${vo.boNum}</td>
-					<td><a href="./${board}Select?boNum=${vo.boNum}">
+					<td><a href="./select?boNum=${vo.boNum}">
 					
 					<c:catch>
 					<c:forEach begin="1" end="${vo.depth}">--</c:forEach>
 					</c:catch>
-					${vo.noticeTitle}
+					${vo.qnaTitle}
 					</a></td>
-					<td>${vo.noticeKinds}</td>
 					<td>${vo.username}</td>
-					<td>${vo.noticeContents}</td>
+					<td>${vo.qnaContents}</td>
 					<td>${vo.createdDate}</td>
-					<td>${vo.noticeHit}</td>
+					<td>${vo.qnaHit}</td>
 				</tr>
 			</c:forEach>
 			</tbody>
@@ -103,13 +100,11 @@
 	  </ul>
 	  
 	<div class="input-group mt-3 mb-3">
-	<form id="frm" action="./${board}List" class="form-inline">
+	<form id="frm" action="./qnaList" class="form-inline">
 		<input type="hidden" name="curPage" value="1" id="curPage">
 	  <div class="input-group-prepend">
-	   <select class="form-control" name="kind" id="kind" >
-	   	<option class="sel">공지종류</option>
+	   <select class="form-control" name="kind" id="kind"> 
 	    <option class="sel">제목</option>
-	    <option class="sel">내용</option>
 	    <option class="sel">작성자</option>
 	  </select>
 	  </div>

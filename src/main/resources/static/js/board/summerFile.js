@@ -3,7 +3,7 @@
  */
 $("#contents").summernote({
 			height:500,
-			placeholder: 'write here...',
+			placeholder: '작성하세요',
 			callbacks: {
 				onImageUpload: function(files) {
 				   // upload image to server and create imgNode...

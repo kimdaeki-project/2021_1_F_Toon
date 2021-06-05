@@ -8,9 +8,10 @@ $("#btn").click(function(){
 	let contents = $("#contents").val().length != 0;*/ //id로 가져올때 쓰는것
 	let result = true;
 	
-	$(".myCheck").each(function(s1, s2){
+	$(".myCheck").each(function(s1, s2, s3){
 		console.log(s1);
 		console.log($(s2).val());
+		console.log($(s3).val());
 		console.log($(this).val());
 		if($(this).val()==""){
 			result = false;

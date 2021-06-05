@@ -26,7 +26,7 @@
     <style type="text/css">
      .back {
     	background-image: url('../images/toon-notice5.PNG');
-    	background-size : 6000px;
+    	background-size : 3000px;
     	border-style: solid;
     	border-color: #98DFFF;
      }
@@ -83,8 +83,8 @@
 	</c:forEach>
 	</div>
 	
-	<a href="./update?boNum=${vo.boNum}" class="btn btn-secondary">수정</a>
-	<a href="#" id="del" class="btn btn-secondary">삭제</a>
+	<a href="./update?boNum=${vo.boNum}" class="btn btn-danger">수정</a>
+	<a href="#" id="del" class="btn btn-info">삭제</a>
 	
 	
 	<c:if test="${board ne 'notice'}">

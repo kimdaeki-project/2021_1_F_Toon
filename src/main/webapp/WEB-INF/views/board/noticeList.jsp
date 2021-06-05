@@ -108,17 +108,15 @@
 	  </ul>
 	  
 	<div class="input-group mt-3 mb-3">
-	<form id="frm" action="./noticelist" class="form-inline">
+	<form id="frm" action="./noticeList" class="form-inline">
 		<input type="hidden" name="curPage" value="1" id="curPage">
 	  <div class="input-group-prepend">
 	   <select class="form-control" name="kind" id="kind" >
 	   	<option class="sel">공지종류</option>
 	    <option class="sel">제목</option>
-	    <option class="sel">내용</option>
-	    <option class="sel">작성자</option>
 	  </select>
 	  </div>
-	  <input type="text" class="form-control" name="search" id="search" value="${pager.search}" placeholder="">
+	  <input type="text" class="form-control" name="search" id="search" value="${pager.search}" placeholder="입력하세요">
 	    <div class="input-group-append">
 	    <button class="btn btn-secondary" type="submit">검색</button>
 	  </div>
@@ -139,7 +137,7 @@
 	});
 	
 	$(".p").click(function () {
-		let curPage = $(this).attr("noticeTitle");
+		let curPage = $(this).attr("title");
 		$("#curPage").val(curPage);
 		let search= '${pager.search}';
 		$("#frm").submit();

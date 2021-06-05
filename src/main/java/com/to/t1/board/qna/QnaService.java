@@ -3,6 +3,8 @@ package com.to.t1.board.qna;
 import java.sql.SQLException;
 import java.util.List;
 
+import javax.servlet.http.HttpSession;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -11,7 +13,7 @@ import org.springframework.web.multipart.MultipartFile;
 import com.to.t1.board.BoardFileVO;
 import com.to.t1.board.BoardService;
 import com.to.t1.board.BoardVO;
-import com.to.t1.util.FileManager;
+import com.to.t1.util.BoFileManager;
 import com.to.t1.util.Pager;
 @Service
 public class QnaService implements BoardService{
@@ -19,7 +21,29 @@ public class QnaService implements BoardService{
 	@Autowired
 	private QnaMapper qnaMapper;
 	@Autowired
-	private FileManager fileManager;
+	private BoFileManager boFileManager;
+	@Autowired
+	private HttpSession session;
+	
+	
+	public int setReply(QnaVO qnaVO)throws Exception{
+		//부모글의 ref, step, depth 조회
+		BoardVO boardVO = qnaMapper.getSelect(qnaVO);
+		QnaVO parent = (QnaVO)boardVO;
+		System.out.println(parent.getRef());
+		System.out.println(parent.getStep());
+		System.out.println(parent.getDepth());
+		
+		qnaVO.setRef(parent.getRef());
+		qnaVO.setStep(parent.getStep()+1);
+		qnaVO.setDepth(parent.getDepth()+1);
+		
+		int result = qnaMapper.setReplyUpdate(parent);
+		result = qnaMapper.setReply(qnaVO);
+		
+		return result;
+	}
+	
 	
 	@Override
 	public List<BoardVO> getList(Pager pager) throws Exception {
@@ -52,7 +76,7 @@ public class QnaService implements BoardService{
 			if(multipartFile.getSize()==0) {
 				continue;
 			}
-			String fileName= fileManager.save(multipartFile, filePath);
+			String fileName= boFileManager.save(multipartFile, filePath, session);
 			System.out.println(fileName);
 			BoardFileVO boardFileVO = new BoardFileVO();
 			boardFileVO.setFileName(fileName);
@@ -64,7 +88,7 @@ public class QnaService implements BoardService{
 	}
 
 	@Override
-	public int setUpdate(BoardVO boardVO) throws Exception {
+	public int setUpdate(BoardVO boardVO, MultipartFile [] files) throws Exception {
 		// TODO Auto-generated method stub
 		return qnaMapper.setUpdate(boardVO);
 	}
@@ -95,7 +119,7 @@ public class QnaService implements BoardService{
 			if(multipartFile.getSize()==0) {
 				continue;
 			}
-			String fileName= fileManager.save(multipartFile, filePath);
+			String fileName= boFileManager.save(multipartFile, filePath, session);
 			System.out.println(fileName);
 			BoardFileVO boardFileVO = new BoardFileVO();
 			boardFileVO.setFileName(fileName);
@@ -106,6 +130,21 @@ public class QnaService implements BoardService{
 		return result;
 	}
 	
+	@Override
+	public int setFileDelete(BoardFileVO boardFileVO) throws Exception {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+	@Override
+	public boolean setSummerFileDelete(String fileName) throws Exception {
+		// TODO Auto-generated method stub
+		return false;
+	}
+	@Override
+	public String setSummerFileUpload(MultipartFile file) throws Exception {
+		// TODO Auto-generated method stub
+		return null;
+	}
 	
 
 }

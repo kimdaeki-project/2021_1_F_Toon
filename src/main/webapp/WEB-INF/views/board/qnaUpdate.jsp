@@ -24,6 +24,11 @@
     <link rel="stylesheet" href="css/responsive.css">
 <title>Insert title here</title>
 
+<!-- summernote  -->
+<link href="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote-bs4.min.css" rel="stylesheet">
+<script src="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote-bs4.min.js"></script>
+<!-- ------------ -->
+
 <style type="text/css">
 	#sample {
 		display: none;
@@ -103,7 +108,7 @@
 
 <script type="text/javascript" src="../js/board/boardUpdate.js"></script>
 <script type="text/javascript" src="../js/board/fileAdd.js"></script>
-
+<script type="text/javascript" src="../js/board/summerFile.js"></script>
 
 </body>
 </html>
