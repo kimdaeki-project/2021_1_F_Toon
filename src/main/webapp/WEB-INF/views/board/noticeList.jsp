@@ -53,8 +53,9 @@
 <c:import url="../fragments/header.jsp"></c:import>
         
 <div class="back">
-<div class="container">
-
+<div class="container"><br>
+	<h2><p><span style="border-radius: 5em; padding: 0.6em 1em; background: #EBFBFF; 
+	box-shadow: 1px 2px 10px rgba(0,0,0,0.2);  margin-left: 5px;">공 지 사 항</span></p></h2><br>
 		<table class="table">
 			
 			<thead class="thead">

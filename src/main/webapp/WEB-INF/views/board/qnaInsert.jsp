@@ -24,21 +24,21 @@
     
     <style type="text/css">
      .back {
-    	background-image: url('../images/toon-notice5.PNG');
-    	background-size : 3000px;
+    	background-image: url('../images/toon-qna1.PNG');
+    	background-size : 500px;
     	border-style: solid;
-    	border-color: #98DFFF;
+    	border-color: #FFE150;
      }
      #frm {
-     	background-color: #F9FFFF;
+     	background-color: #FFFF96;
      	border-style: solid;
-     	border-color: #98DFFF;
+     	border-color: #FFE150;
      }
   
     
     </style>
 
-<title>공지사항 작성</title>
+<title>질문 작성</title>
 
 
 <!-- summernote  -->
@@ -55,14 +55,11 @@
 <body>
 	<c:import url="../fragments/header.jsp"></c:import>
 <div class="back">
-	<div class="container">
-		<h2>공지사항작성</h2>
-		<form id="frm" action="./insert" method="post" enctype="multipart/form-data">
-	
-			<div class="form-group">
-				<label for="noticeKinds">공지종류</label> <input type="text"
-					class="form-control myCheck" id="noticeKinds" name="noticeKinds">
-			</div>
+	<div class="container"><br>
+		<h2><p><span style="border-radius: 15px 15px 15px 0; border: 3px solid #FFE150; 
+		padding: 0.5em 0.6em; color: black; background-color:#FFFF96; ">질문 작성</span></p></h2><br>
+		
+		<form id="frm" action="./qnaInsert" method="post" enctype="multipart/form-data">
 	
 			<div class="form-group">
 				<label for="username">작성자</label> <input type="text"
@@ -70,21 +67,21 @@
 					class="form-control myCheck" id="username" name="username">
 			</div>
 			<div class="form-group">
-				<label for="noticeTitle">제목</label> <input type="text"
-					class="form-control myCheck" id="noticeTitle" name="noticeTitle">
+				<label for="qnaTitle">제목</label> <input type="text"
+					class="form-control myCheck" id="qnaTitle" name="qnaTitle">
 			</div>
 
 			<div class="form-group">
 				<label for="contents">내용</label>
 				<textarea class="form-control myCheck" rows="5" id="contents"
-					name="noticeContents"></textarea>
+					name="qnaContents"></textarea>
 			</div>
 
-			<input type="button" id="add" value="ADD" class="btn btn-danger">
+			<input type="button" id="add" value="파일추가" class="btn btn-warning">
 			
-			<div id="files" title="0"></div>
+			<div id="files" title="0"></div><br>
 
-			<input type="button" id="btn" value="WRITE" class="btn btn-primary">
+			<input type="button" id="btn" value="등록" class="btn btn-warning">
 		</form>
 	</div>
 	

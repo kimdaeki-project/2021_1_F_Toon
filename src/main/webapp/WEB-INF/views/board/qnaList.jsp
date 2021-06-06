@@ -26,16 +26,24 @@
     
     <style type="text/css">
      .back {
-    	background-image: url('../images/toon-notice5.PNG');
-    	background-size : 2000px;
+    	background-image: url('../images/toon-qna1.PNG');
+    	background-size : 500px;
     	border-style: solid;
-    	border-color: #98DFFF;
+    	border-color: #FFE150;
      }
      .thead {
-     	background-color: #F9FFFF;
+    	text-align: center;
+     	background-color: #FFFF96;
      	border-style: solid;
-     	border-color: #98DFFF;
+     	border-color: #FFE150;
      }
+     .tbody {
+      	text-align: center;
+     	background-color: #FAFAD2;
+     	border-style: solid;
+     	border-color: #FFE150;
+     }
+
   
     
     </style>
@@ -46,8 +54,9 @@
 <c:import url="../fragments/header.jsp"></c:import>
         
 <div class="back">
-<div class="container">
-
+<div class="container"><br>
+		<h2><p><span style="border-radius: 15px 15px 15px 0; border: 3px solid #FFE150; 
+		padding: 0.5em 0.6em; color: black; background-color:#FFFF96; ">질문/답변</span></p></h2><br>
 		<table class="table">
 			
 			<thead class="thead">
@@ -60,19 +69,22 @@
 			</thead>
 			
 			
-			<tbody>
+			<tbody class="tbody">
 			<c:forEach items="${qnaList}" var="vo" >
 				<tr>
-					<td>${vo.boNum}</td>
-					<td><a href="./select?boNum=${vo.boNum}">
+	
+					<td><a href="./qnaSelect?boNum=${vo.boNum}">
+					
+					
 					
 					<c:catch>
-					<c:forEach begin="1" end="${vo.depth}">--</c:forEach>
+					<c:forEach begin="1" end="${vo.depth}">
+					&#x279C;
+					</c:forEach>
 					</c:catch>
 					${vo.qnaTitle}
 					</a></td>
 					<td>${vo.username}</td>
-					<td>${vo.qnaContents}</td>
 					<td>${vo.createdDate}</td>
 					<td>${vo.qnaHit}</td>
 				</tr>
@@ -86,7 +98,7 @@
 	  <ul class="pagination">
 	  
 	  <c:if test="${pager.pre}">	
-	    <li class="page-item"><a class="page-link p" href="#" title="${pager.startNum-1}">Previous</a></li>
+	    <li class="page-item"><a class="page-link p" href="#" title="${pager.startNum-1}">이전</a></li>
 	   </c:if>
 	   
 	   <c:forEach begin="${pager.startNum}" end="${pager.lastNum}" var="i">
@@ -95,7 +107,7 @@
 	   </c:forEach>
 	   
 	    <c:if test="${pager.next}">
-	    <li class="page-item"><a class="page-link p" href="#" title="${pager.lastNum+1}">Next</a></li>
+	    <li class="page-item"><a class="page-link p" href="#" title="${pager.lastNum+1}">다음</a></li>
 	    </c:if>
 	  </ul>
 	  
@@ -110,15 +122,14 @@
 	  </div>
 	  <input type="text" class="form-control" name="search" id="search" value="${pager.search}" placeholder="">
 	    <div class="input-group-append">
-	    <button class="btn btn-secondary" type="submit">검색</button>
+	    <button class="btn btn-warning" type="submit">검색</button>
 	  </div>
 	 </form> 
 	 
 	</div> 
-	<a href="./insert" class="btn btn-secondary"  role="button">작성</a>
+	<a href="./qnaInsert" class="btn btn-warning"  role="button">작성</a>
 	</div>
-  
-  
+
 <script type="text/javascript">
 	let kind= '${pager.kind}';//Title, Writer, Contents
 	$(".sel").each(function() {

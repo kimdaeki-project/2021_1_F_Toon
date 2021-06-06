@@ -24,10 +24,6 @@
     <link rel="stylesheet" href="css/responsive.css">
 <title>Insert title here</title>
 
-<!-- summernote  -->
-<link href="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote-bs4.min.css" rel="stylesheet">
-<script src="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote-bs4.min.js"></script>
-<!-- ------------ -->
 
 <style type="text/css">
 	#sample {
@@ -35,15 +31,16 @@
 	}
 	
 	 .back {
-    	background-image: url('../images/toon-notice5.PNG');
-    	background-size : 6000px;
+    	background-image: url('../images/toon-qna1.PNG');
+    	background-size : 500px;
     	border-style: solid;
-    	border-color: #98DFFF;
+    	border-color: #FFE150;
      }
      #frm {
-     	background-color: #F9FFFF;
+    	
+     	background-color: #FFFF96;
      	border-style: solid;
-     	border-color: #98DFFF;
+     	border-color: #FFE150;
      }
      #dd {
      	background-color: #F9FFFF;
@@ -56,27 +53,23 @@
 <c:import url="../fragments/header.jsp"></c:import>
  <div class="back">
  <div class="container">
- <h2>공지사항 수정</h2>
+ <h2>질문 수정</h2>
   <form id="frm" action="./update" method="post" enctype="multipart/form-data">
   	<input type="hidden" name="boNum" value="${param.boNum}">
     <div class="form-group">
       <label for="username">작성자</label>
       <input type="text" readonly="readonly" value="${vo.username}" class="form-control" id="username" name="username">
     </div>
-    <div class="form-group">
-      <label for="noticeKinds">공지종류</label>
-      <input type="text" class="form-control" id="noticeKinds" name="noticeKinds" value="${vo.noticeKinds}">
-    </div>
     
     <div class="form-group">
-      <label for="noticeTitle">제목</label>
-      <input type="text" class="form-control" id="noticeTitle" name="noticeTitle" value="${vo.noticeTitle}">
+      <label for="qnaTitle">제목</label>
+      <input type="text" class="form-control" id="qnaTitle" name="qnaTitle" value="${vo.qnaTitle}">
     </div>
     
     <div class="form-group">
 				<label for="contents">내용</label>
 				<textarea class="form-control myCheck" rows="5" id="contents"
-					name="noticeContents"></textarea>
+					name="qnaContents"></textarea>
 			</div>
     
     <c:forEach items="${vo.files}" var="file">
@@ -85,11 +78,11 @@
     	</div>
     </c:forEach><br>
     
-    <input type="button" id="add" value="ADD" class="btn btn-secondary">
+    <input type="button" id="add" value="파일추가" class="btn btn-warning">
 			
 	<div id="files" title="${vo.files.size()}"></div><br>
     
-    <input type="submit" id="btn" value="UPDATE" class="btn btn-secondary">
+    <input type="submit" id="btn" value="수정" class="btn btn-warning">
   </form>
 </div>
 </div>
@@ -108,7 +101,7 @@
 
 <script type="text/javascript" src="../js/board/boardUpdate.js"></script>
 <script type="text/javascript" src="../js/board/fileAdd.js"></script>
-<script type="text/javascript" src="../js/board/summerFile.js"></script>
+
 
 </body>
 </html>

@@ -15,9 +15,10 @@ public class QnaVO extends BoardVO {
 	private Long ref;
 	private Long step;
 	private Long depth;
+
 	
 	public Long getRef() {
-		return ref;
+		return ref; 
 	}
 
 	public void setRef(Long ref) {

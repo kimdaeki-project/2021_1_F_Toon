@@ -24,17 +24,18 @@
     <link rel="stylesheet" href="css/responsive.css">
     
     <style type="text/css">
+    
      .back {
-    	background-image: url('../images/toon-notice5.PNG');
-    	background-size : 3000px;
+    	background-image: url('../images/toon-qna1.PNG');
+    	background-size : 500px;
     	border-style: solid;
-    	border-color: #98DFFF;
+    	border-color: #FFE150;
      }
      .select {
      	text-align: center;
-     	background-color: #F9FFFF;
+     	background-color: #FFFF96;
      	border-style: solid;
-     	border-color: #98DFFF;
+     	border-color: #FFE150;
      }
      .featurette-divider {
      	background-color : #3c3c3c;
@@ -42,7 +43,7 @@
      #file1 {
      	background-color : #F0FFF0;
      	border-style: solid;
-     	border-color: #98DFFF;
+     	border-color: #FFE150;
      }
      
     </style>
@@ -53,13 +54,14 @@
 <body>
 <c:import url="../fragments/header.jsp"></c:import>
 <div class="back">
-<div class="container">
-	
+<div class="container"><br>
+	<h2><p><span style="border-radius: 15px 15px 15px 0; border: 3px solid #FFE150; 
+		padding: 0.5em 0.6em; color: black; background-color:#FFFF96; ">질 문</span></p></h2><br>
 	<table class="table">
 		<thead>
 			<tr style="text-align: center;">
 	    		<th>작성일 : ${vo.createdDate}</th>
-	    		<th>조회수 : ${vo.noticeHit}</th>
+	    		<th>조회수 : ${vo.qnaHit}</th>
 	    		
 			</tr>
 			
@@ -67,7 +69,7 @@
 				
 			<tr>
 			
-				<td colspan="2"><h3>${vo.noticeTitle}</h3><hr class="featurette-divider">${vo.noticeContents}</td>
+				<td colspan="2"><h3>${vo.qnaTitle}</h3><hr class="featurette-divider">${vo.qnaContents}</td>
 					
 	    	</tr>
 	    
@@ -83,13 +85,13 @@
 	</c:forEach>
 	</div>
 	
-	<a href="./update?boNum=${vo.boNum}" class="btn btn-danger">수정</a>
-	<a href="#" id="del" class="btn btn-info">삭제</a>
+	<a href="./qnaUpdate?boNum=${vo.boNum}" class="btn btn-warning">수정</a>
+	<a href="#" id="del" class="btn btn-warning">삭제</a>
 	
 	
-	<c:if test="${board ne 'notice'}">
-	<a href="./${board}Reply?boNum=${vo.boNum}" class="btn btn-primary">댓글</a>
-	</c:if>
+	
+	<a href="./reply?boNum=${vo.boNum}" class="btn btn-warning">답변</a>
+	
 	
 	<form action="./delete" id="frm" method="get">
 		<input type="hidden" name="boNum" value="${vo.boNum}">

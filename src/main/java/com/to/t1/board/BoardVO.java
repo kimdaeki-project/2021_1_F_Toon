@@ -16,6 +16,10 @@ public class BoardVO {
 	private Long noticeHit;
 	private Long noticeType;
 	
+	private String qnaTitle;
+	private String qnaContents;
+	private String qnaHit;
+	
 	public Long getBoNum() {
 		return boNum;
 	}
