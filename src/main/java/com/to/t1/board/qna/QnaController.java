@@ -47,7 +47,7 @@ public class QnaController {
 		ModelAndView mv = new ModelAndView();
 		boardVO = qnaService.getSelect(boardVO);
 		mv.addObject("board", "qna");
-		mv.addObject("dto", boardVO);
+		mv.addObject("vo", boardVO);
 		mv.setViewName("board/select");
 		return mv;
 	}
@@ -56,7 +56,7 @@ public class QnaController {
 	public ModelAndView getList(Pager pager)throws Exception{
 		ModelAndView mv = new ModelAndView();
 		List<BoardVO> ar = qnaService.getList(pager);
-		mv.addObject("list", ar);
+		mv.addObject("qnaList", ar);
 		mv.addObject("board", "qna");
 		mv.addObject("pager", pager);
 		mv.setViewName("board/qnaList");
@@ -86,11 +86,11 @@ public class QnaController {
 		ModelAndView mv = new ModelAndView();
 		int result = qnaService.setDelete(boardVO);
 		
-		String message = "삭제 실패";
+		String message = "qna 삭제 실패";
 		String path="./qnaList";
 		
 		if(result>0) {
-			message= "삭제 성공";
+			message= "qna 삭제 성공";
 		}
 		
 		mv.addObject("msg", message);
@@ -101,7 +101,7 @@ public class QnaController {
 		return mv;
 	}
 	
-	@PostMapping("update")
+	@PostMapping("qnaUpdate")
 	public ModelAndView setUpdate(BoardVO boardVO, ModelAndView mv, MultipartFile [] files)throws Exception{
 		
 		int result = qnaService.setUpdate(boardVO, files);
@@ -118,7 +118,7 @@ public class QnaController {
 		return mv;
 	}
 	
-	@GetMapping("update")
+	@GetMapping("qnaUpdate")
 	public ModelAndView setUpdate(BoardVO boardVO)throws Exception{
 		ModelAndView mv = new ModelAndView();
 		boardVO = qnaService.getSelect(boardVO);

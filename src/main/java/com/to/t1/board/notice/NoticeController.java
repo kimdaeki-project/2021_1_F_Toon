@@ -64,7 +64,7 @@ public class NoticeController {
 	@PostMapping("summerFileUpload")
 	public ModelAndView setSummerFileUpload(MultipartFile file)throws Exception{
 		ModelAndView mv = new ModelAndView();
-		System.out.println("Summer File Upload");
+		System.out.println("썸머 파일 업로드");
 		System.out.println(file.getOriginalFilename());
 		String fileName = noticeService.setSummerFileUpload(file);
 		fileName = "../upload/notice/"+fileName;
@@ -76,17 +76,21 @@ public class NoticeController {
 	
 	// /notice/list
 	@GetMapping("noticeList")
-	public String getList(Model model, Pager pager)throws Exception{
+	public ModelAndView getList(Pager pager)throws Exception{
+		ModelAndView mv = new ModelAndView();
+		System.out.println(pager.getCurPage());
 		System.out.println("FilePath : "+filePath);
 		
 		List<BoardVO> ar = noticeService.getList(pager);
-		model.addAttribute("noticeList", ar);
-		model.addAttribute("pager", pager);
+		
+		mv.addObject("noticeList", ar);
+		mv.setViewName("board/noticeList");
+		mv.addObject("board", "notice");
+		mv.addObject("pager", pager);
 		System.out.println(pager.getStartNum());
 		System.out.println(pager.getLastNum());
 		
-		// /board/list.html
-		return "board/noticeList";
+		return mv;
 	}
 	
 	@GetMapping("select")
@@ -99,7 +103,8 @@ public class NoticeController {
 	}
 	
 	@GetMapping("insert")
-	public String setInsert(ModelAndView mv, HttpSession session)throws Exception{
+	public String setInsert(HttpSession session)throws Exception{
+		 ModelAndView mv = new ModelAndView();
 			mv.setViewName("board/insert");
 			mv.addObject("board", "notice");
 		

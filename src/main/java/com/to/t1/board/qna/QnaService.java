@@ -16,6 +16,7 @@ import com.to.t1.board.BoardVO;
 import com.to.t1.util.BoFileManager;
 import com.to.t1.util.Pager;
 @Service
+@Transactional(rollbackFor = Exception.class)
 public class QnaService implements BoardService{
 
 	@Autowired
@@ -49,7 +50,8 @@ public class QnaService implements BoardService{
 	public List<BoardVO> getList(Pager pager) throws Exception {
 		pager.makeRow();
 		
-		//pager.makeNum(qnaMapper.getTotalCount(pager));
+		long totalCount = qnaMapper.getTotalCount(pager);
+		pager.makeNum(totalCount);
 		
 		return qnaMapper.getList(pager);
 	}
@@ -61,27 +63,19 @@ public class QnaService implements BoardService{
 	}
 
 	@Override
-	@Transactional(rollbackFor = Exception.class)
+	
 	public int setInsert(BoardVO boardVO, MultipartFile[] files) throws Exception {
-		//1. qna table insert
+	
 		int result = qnaMapper.setInsert(boardVO);
 		
-		//2. qna Ref update
-		result = qnaMapper.setRefUpdate(boardVO);
-		
-		//3. File Save
-		String filePath= "upload/qna/";
-		
-		for(MultipartFile multipartFile:files) {
-			if(multipartFile.getSize()==0) {
-				continue;
-			}
-			String fileName= boFileManager.save(multipartFile, filePath, session);
-			System.out.println(fileName);
+		for(MultipartFile mf : files) {
 			BoardFileVO boardFileVO = new BoardFileVO();
-			boardFileVO.setFileName(fileName);
-			boardFileVO.setOriName(multipartFile.getOriginalFilename());
+			String fileName= boFileManager.save("qna", mf, session);
+			
 			boardFileVO.setBoNum(boardVO.getBoNum());
+			boardFileVO.setFileName(fileName);
+			boardFileVO.setOriName(mf.getOriginalFilename());
+			
 			qnaMapper.setFileInsert(boardFileVO);
 		}
 		return result;
@@ -102,49 +96,18 @@ public class QnaService implements BoardService{
 		return qnaMapper.setDelete(boardVO);
 	}
 	
-	@Transactional(rollbackFor = Exception.class)
-	public int setReplyInsert(BoardVO boardVO, MultipartFile [] files)throws Exception{
-		//boardVO.num = 부모의 글번호
-		
-		//1. step update
-		int result = qnaMapper.setReplyUpdate(boardVO);
-		
-		//2. reply insert
-		result = qnaMapper.setReplyInsert(boardVO);
-		
-		//3. File Hdd에 저장
-		String filePath= "upload/qna/";
-		
-		for(MultipartFile multipartFile:files) {
-			if(multipartFile.getSize()==0) {
-				continue;
-			}
-			String fileName= boFileManager.save(multipartFile, filePath, session);
-			System.out.println(fileName);
-			BoardFileVO boardFileVO = new BoardFileVO();
-			boardFileVO.setFileName(fileName);
-			boardFileVO.setOriName(multipartFile.getOriginalFilename());
-			boardFileVO.setBoNum(boardVO.getBoNum());
-			qnaMapper.setFileInsert(boardFileVO);
+	@Override
+	public int setFileDelete(BoardFileVO boardFileVO) throws Exception {
+		//fileName을 print
+		//1. 조회
+		boardFileVO = qnaMapper.getFileSelect(boardFileVO);
+		//2. table 삭제
+		int result = qnaMapper.setFileDelete(boardFileVO);
+		//3. HDD 삭제
+		if(result > 0) {
+			boFileManager.delete("qna", boardFileVO.getFileName(), session);
 		}
 		return result;
 	}
-	
-	@Override
-	public int setFileDelete(BoardFileVO boardFileVO) throws Exception {
-		// TODO Auto-generated method stub
-		return 0;
-	}
-	@Override
-	public boolean setSummerFileDelete(String fileName) throws Exception {
-		// TODO Auto-generated method stub
-		return false;
-	}
-	@Override
-	public String setSummerFileUpload(MultipartFile file) throws Exception {
-		// TODO Auto-generated method stub
-		return null;
-	}
-	
 
 }

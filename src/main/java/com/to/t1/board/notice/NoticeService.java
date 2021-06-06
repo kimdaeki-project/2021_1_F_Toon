@@ -47,29 +47,25 @@ public class NoticeService implements BoardService {
 	}
 
 	@Override
-	@Transactional(rollbackFor = Exception.class)
 	public int setInsert(BoardVO boardVO, MultipartFile [] files) throws Exception {
-		// TODO Auto-generated method stub
+		
+		
+		
+		
+		
+		
 		int result = noticeMapper.setInsert(boardVO);
 		
-		//예외는 발생하지 않고 결과가 0이 나올경우 
-		//강제로 예외 발생
-		if(result<1) {
-			throw new Exception();
-		}
+		//글번호 찾기
 		
-		String filePath= this.filePath;
-		
-		for(MultipartFile multipartFile:files) {
-			if(multipartFile.getSize()==0) {
-				continue;
-			}
-			String fileName= boFileManager.save(multipartFile, filePath, session);
-			System.out.println(fileName);
+		for(MultipartFile mf : files) {
 			BoardFileVO boardFileVO = new BoardFileVO();
+			String fileName= boFileManager.save("notice", mf, session);
+			
+			
 			boardFileVO.setFileName(fileName);
-			boardFileVO.setOriName(multipartFile.getOriginalFilename());
-			boardFileVO.setBoNum(boardVO.getBoNum());
+			boardFileVO.setOriName(mf.getOriginalFilename());
+			
 			noticeMapper.setFileInsert(boardFileVO);
 		}
 		
@@ -78,7 +74,16 @@ public class NoticeService implements BoardService {
 
 	@Override
 	public int setUpdate(BoardVO boardVO, MultipartFile [] files) throws Exception {
-		// TODO Auto-generated method stub
+		for(MultipartFile multipartFile:files) {
+			BoardFileVO boardFileVO = new BoardFileVO();
+			//1. File들을 HDD에 저장
+			String fileName= boFileManager.save("notice", multipartFile, session);
+			boardFileVO.setFileName(fileName);
+			boardFileVO.setOriName(multipartFile.getOriginalFilename());
+			boardFileVO.setBoNum(boardVO.getBoNum());
+			//2. DB에 Insert
+			noticeMapper.setFileInsert(boardFileVO);
+		}
 		return noticeMapper.setUpdate(boardVO);
 	}
 
@@ -102,14 +107,15 @@ public class NoticeService implements BoardService {
 				}
 				return result;
 	}
-	@Override
+
 	public boolean setSummerFileDelete(String fileName) throws Exception {
 		boolean result = boFileManager.delete("notice", fileName, session);
 		return result;
 	}
-	@Override
-	public String setSummerFileUpload(MultipartFile file) throws Exception {
-		String fileName = boFileManager.save(file,"notice", session);
+	
+	public String setSummerFileUpload(MultipartFile file)throws Exception{
+		
+		String fileName = boFileManager.save("notice", file, session);
 		return fileName;
 	}
 
