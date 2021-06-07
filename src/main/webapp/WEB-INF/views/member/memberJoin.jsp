@@ -1,12 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-
-<!-- jsp page 선언부에 spring message를 사용할 수 있도록 선언 -->
-<%@ taglib prefix="spring" uri="http://www.springframework.org/tags" %>
-
-<!-- Spring Form tag를 사용할 수 있도록 선언 -->  
-<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
+    <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+    <%@ taglib prefix="spring" uri="http://www.springframework.org/tags" %>
+    <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -14,8 +10,8 @@
 <meta charset="utf-8">
 <meta name="viewport"
 	content="width=device-width, initial-scale=1, shrink-to-fit=no">
-<!-- BootStrap -->
-<!--     <link rel="icon" href="images/favicon.png" type="image/png">  위에 로고-->
+
+
 <c:import url="../fragments/bootstrap.jsp"></c:import>
 <title>WebToon</title>
 

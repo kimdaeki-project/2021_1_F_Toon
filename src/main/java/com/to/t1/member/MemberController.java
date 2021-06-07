@@ -249,8 +249,10 @@ public class MemberController {
 	   @GetMapping("CheckMail")
 	   @ResponseBody
 	   public String SendMail(Model model,String email, HttpSession session) {
+		  
 	      Random random = new Random();
 	      String key = "";
+	      System.out.println("왜안되냐 ㅠ");
 	      SimpleMailMessage message = new SimpleMailMessage();
 	      message.setTo(email); // 스크립트에서 보낸 메일을 받을 사용자 이메일 주소
 	      // 입력 키를 위한 코드
@@ -258,6 +260,7 @@ public class MemberController {
 	         int index = random.nextInt(25) + 65; // A~Z까지 랜덤 알파벳 생성
 	         key += (char) index;
 	      }
+	     
 	      int numIndex = random.nextInt(8999) + 1000; // 4자리 정수를 생성
 	      key += numIndex;
 	      message.setSubject("TOON 인증번호");

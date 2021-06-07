@@ -60,8 +60,6 @@ public class MemberService implements UserDetailsService {
 		return result;	
 	}
 	
-	
-	
 	public MemberVO getUsername(MemberVO memberVO)throws Exception{
 		return memberMapper.getUsername(memberVO);
 	}
