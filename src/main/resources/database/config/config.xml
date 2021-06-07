@@ -8,6 +8,7 @@
  
   		<typeAlias type="com.to.t1.member.MemberVO" alias="MemberVO"/>
   		<typeAlias type="com.to.t1.member.JoinFileVO" alias="JoinFileVO"/>
+  		<typeAlias type="com.to.t1.member.RoleVO" alias="RoleVO"/>
   		
   		<typeAlias type="com.to.t1.board.BoardVO" alias="BoardVO"/>
   		<typeAlias type="com.to.t1.board.BoardFileVO" alias="BoardFileVO"/>

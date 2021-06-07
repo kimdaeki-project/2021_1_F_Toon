@@ -4,6 +4,10 @@ import javax.servlet.http.HttpSession;
 import javax.tools.JavaFileManager;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.userdetails.UserDetails;
+import org.springframework.security.core.userdetails.UserDetailsService;
+import org.springframework.security.core.userdetails.UsernameNotFoundException;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.validation.Errors;
 import org.springframework.web.multipart.MultipartFile;
@@ -11,7 +15,7 @@ import org.springframework.web.multipart.MultipartFile;
 import com.to.t1.util.FileManager;
 
 @Service
-public class MemberService {
+public class MemberService implements UserDetailsService {
 
 	@Autowired
 	private MemberMapper memberMapper;
@@ -19,6 +23,16 @@ public class MemberService {
 	@Autowired
 	private FileManager fileManager;
 	
+	@Autowired
+	private PasswordEncoder passwordEncoder;
+	
+	@Override
+	public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
+		MemberVO memberVO = new MemberVO();
+		memberVO.setUsername(username);
+		memberVO = memberMapper.getLogin(memberVO);
+		return memberVO;
+	}
 	
 	public boolean memberError(MemberVO memberVO, Errors errors)throws Exception{
 		boolean result = false;
@@ -44,8 +58,13 @@ public class MemberService {
 	public MemberVO getUsername(MemberVO memberVO)throws Exception{
 		return memberMapper.getUsername(memberVO);
 	}
-
+	
 	public int setJoin(MemberVO memberVO, MultipartFile multipartFile, HttpSession session)throws Exception{
+		
+		memberVO.setPassword(passwordEncoder.encode(memberVO.getPassword()));
+		
+		memberVO.setEnabled(true);
+		
 		int result = memberMapper.setJoin(memberVO);
 		String filePath= "upload/member/";
 		if(multipartFile.getSize() != 0) {
@@ -63,9 +82,9 @@ public class MemberService {
 			
 	}
 
-	public MemberVO getLogin(MemberVO memberVO)throws Exception{
-		return memberMapper.getLogin(memberVO);
-	}
+//	public MemberVO getLogin(MemberVO memberVO)throws Exception{
+//		return memberMapper.getLogin(memberVO);
+//	}
 
 	public int memberUpdate(MemberVO memberVO)throws Exception{
 		return memberMapper.memberUpdate(memberVO);
