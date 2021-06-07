@@ -9,6 +9,7 @@ import org.springframework.security.config.annotation.web.configuration.WebSecur
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 
+
 @Configuration
 @EnableWebSecurity
 public class WebSecurityConfig extends WebSecurityConfigurerAdapter{
@@ -35,26 +36,45 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter{
 
 	@Override
 	protected void configure(HttpSecurity http) throws Exception {
-		// url에 따른 로그인, 권한 설정
+		// URL에 따른 로그인, 권한 설정
 		http
-		.cors().and()
-		.csrf().disable()
-		.authorizeRequests()
-		.antMatchers("/").permitAll()
-
-		.antMatchers("member/memberJoinCheck").permitAll()
-		.antMatchers("/member/**").hasAnyRole("ADMIN", "MEMBER")
-		.antMatchers("/admin")
-		.hasRole("ADMIN") //로그인한 유정중 admin만
-		.anyRequest().authenticated()
-		.and()
-		.formLogin()
-		.loginPage("/member/login")
-		.defaultSuccessUrl("/member/memberLoginResult")
-		.permitAll()
-		.and()
-		
-		;
+			//권한 에러 발생(403)
+			//사용하지 않으면 기본 제공 에러 처리 방법 사용
+			.exceptionHandling()
+//				.accessDeniedPage("/member/error") //error page URL
+//				.accessDeniedHandler(new SecurityException())//error 처리 class
+				.and()
+			.cors().and()
+			.csrf().disable()
+			.authorizeRequests()
+				.antMatchers("/").permitAll()
+//				.antMatchers("/qna/list").permitAll()
+//				.antMatchers("/qna/**").hasAnyRole("ADMIN", "MEMBER")
+				.antMatchers("/member/join").permitAll()
+				.antMatchers("/member/memberJoinCheck").permitAll()
+				.antMatchers("/member/searchId").permitAll()
+				.antMatchers("/member/searchPw").permitAll()
+				.antMatchers("/member/**").hasAnyRole("ADMIN", "MEMBER")
+				.anyRequest().authenticated()
+				.and()
+			.formLogin()
+				
+				//로그인페이지를 따로 만들지 않아도 기본 내장된 폼으로 이동
+				//개발자가 만든 로그인폼을 사용하려면 다음과 같이 작성
+				.loginPage("/member/login")
+				.defaultSuccessUrl("/member/memberLoginResult")
+				//Login 실패 처리
+//				.failureUrl("/member/loginFail")
+//				.failureHandler(new LoginFail())
+				.permitAll()
+				.and()
+			.logout()
+				.logoutUrl("/member/logout")
+				.logoutSuccessUrl("/")
+				.invalidateHttpSession(true)
+				.deleteCookies("JSESSIONID")
+				.permitAll()
+				;
 
 	}
 
