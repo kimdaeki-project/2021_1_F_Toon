@@ -128,10 +128,10 @@ function sendMail(){
          
          success : function(data) {
               CheckNum = data;
-              alert(CheckNum);
+           alert(CheckNum);
               
           },   
-          error:function(requeest, status, error){
+          error:function(request, status, error){
              alert(error);
           },
 
@@ -143,7 +143,6 @@ function sendMail(){
       
 }
  
-
 function emailCheck(){
     var emailNum = $("#emailNum").val();
        if (emailNum == CheckNum) {   //인증 키 값을 비교를 위해 텍스트인풋과 벨류를 비교

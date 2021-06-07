@@ -249,10 +249,10 @@ public class MemberController {
 	   @GetMapping("CheckMail")
 	   @ResponseBody
 	   public String SendMail(Model model,String email, HttpSession session) {
-		  
+		  System.out.println("왜안되냐 ㅠ");
 	      Random random = new Random();
 	      String key = "";
-	      System.out.println("왜안되냐 ㅠ");
+	     
 	      SimpleMailMessage message = new SimpleMailMessage();
 	      message.setTo(email); // 스크립트에서 보낸 메일을 받을 사용자 이메일 주소
 	      // 입력 키를 위한 코드

@@ -29,6 +29,39 @@
   
 
     <!--================Fullwidth block Area =================-->
+    
+    	<div class="container">
+		<h1>
+			<!-- 로그인 상태 또는 사용자가 익명사용자 -->
+			<sec:authorize access="isAuthenticated()">
+				로그인 성공 상태
+			</sec:authorize>
+			<!-- 로그인 하지 않은 상태 -->
+			<sec:authorize access="!isAuthenticated()">
+				로그인 하지 않은 상태
+			</sec:authorize>
+			
+			<sec:authorize access="hasRole('ROLE_ADMIN')">
+				관리자
+			</sec:authorize>
+			
+			
+			<sec:authentication property="principal.username"/>님 환영
+			<sec:authentication property="principal.name"/>님 환영
+			
+		</h1>
+	
+	
+	
+		<!-- spring:message code="properties의 key" -->
+							<!-- code(key)가 없는 경우 기본 메세지 출력하는 text 속성 -->
+		<h1><spring:message code="hello1234" text="default message"></spring:message></h1>
+		<h1><spring:message code="hello"></spring:message></h1>
+		<h1><spring:message code="board.notice.list.welcome"></spring:message></h1>
+																			<!-- 어떤 것으로 분리할 것인지 입력/ 앞에 ,로 분리 했으므로 ,를 입력 -->
+		<h1><spring:message code="user.welcome" arguments="${user}, ${msg}" argumentSeparator=","></spring:message></h1>
+	</div>
+   
 
     <section class="fullwidth-block area-padding-bottom">
         <div class="container-fluid">
