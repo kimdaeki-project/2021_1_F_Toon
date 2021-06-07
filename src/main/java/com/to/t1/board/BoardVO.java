@@ -18,7 +18,7 @@ public class BoardVO {
 	
 	private String qnaTitle;
 	private String qnaContents;
-	private String qnaHit;
+	private Long qnaHit;
 	
 	public Long getBoNum() {
 		return boNum;

@@ -72,8 +72,8 @@
 			</div>
 
 			<div class="form-group">
-				<label for="contents">내용</label>
-				<textarea class="form-control myCheck" rows="5" id="contents"
+				<label for="qnaContents">내용</label>
+				<textarea class="form-control myCheck" rows="5" id="qnaContents"
 					name="qnaContents"></textarea>
 			</div>
 
@@ -102,7 +102,7 @@
 
 	<script type="text/javascript" src="../js/board/boardInsert.js"></script>
 	<script type="text/javascript" src="../js/board/fileAdd.js"></script>
-	<script type="text/javascript" src="../js/board/summerFile.js"></script>
+	<script type="text/javascript" src="../js/board/qnaSummerFile.js"></script>
 	
 </body>
 </html>

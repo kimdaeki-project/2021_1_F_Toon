@@ -81,7 +81,11 @@ public class QnaService implements BoardService{
 	@Transactional(rollbackFor = Exception.class)
 	public int setReplyInsert(BoardVO boardVO, MultipartFile [] files)throws Exception{
 		//boardVO.num = 부모의 글번호
-		
+		System.out.println(boardVO.getQnaTitle());
+		System.out.println(boardVO.getQnaContents());
+		System.out.println(boardVO.getUsername());
+		System.out.println(boardVO.getBoNum());
+		System.out.println("----여기까지 확인-------");
 		//1. step update
 		int result = qnaMapper.setReplyUpdate(boardVO);
 		

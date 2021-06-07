@@ -1,7 +1,7 @@
 /**
  * 
  */
-$("#noticeContents").summernote({
+$("#qnaContents").summernote({
 			height:500,
 			placeholder: '작성하세요',
 			callbacks: {
@@ -41,7 +41,7 @@ function uploadFile(files) {
 		contentType:false,
 		success:function(result){
 			fileName=result.trim();
-			$("#noticeContents").summernote('insertImage', fileName);
+			$("#qnaContents").summernote('insertImage', fileName);
 		} 
 		
 	});		

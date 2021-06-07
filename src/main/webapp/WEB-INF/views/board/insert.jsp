@@ -75,8 +75,8 @@
 			</div>
 
 			<div class="form-group">
-				<label for="contents">내용</label>
-				<textarea class="form-control myCheck" rows="5" id="contents"
+				<label for="noticeContents">내용</label>
+				<textarea class="form-control myCheck" rows="5" id="noticeContents"
 					name="noticeContents"></textarea>
 			</div>
 

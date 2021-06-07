@@ -48,6 +48,8 @@
 		padding: 0.5em 0.6em; color: black; background-color:#FFFF96; ">답변 작성</span></p></h2><br>
 		
 		<form id="frm" action="./reply" method="post" enctype="multipart/form-data">
+		
+			<input type="hidden" name="boNum" value="${param.boNum}">
 	
 			<div class="form-group">
 				<label for="username">작성자</label> <input type="text"
