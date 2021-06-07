@@ -54,8 +54,8 @@
         
 <div class="back">
 <div class="container"><br>
-	<h2><p><span style="border-radius: 5em; padding: 0.6em 1em; background: #EBFBFF; 
-	box-shadow: 1px 2px 10px rgba(0,0,0,0.2);  margin-left: 5px;">공 지 사 항</span></p></h2><br>
+	<h2><p><span style="border-radius: 15px 15px 15px 0; border: 3px solid #98DFFF; 
+		padding: 0.5em 0.6em; color: black; background-color:#EBFBFF; ">공지사항</span></p></h2><br>
 		<table class="table">
 			
 			<thead class="thead">
@@ -146,5 +146,6 @@
 	});
 </script>  
 </div>
+<c:import url="../fragments/footer.jsp"></c:import>
 </body>
 </html>

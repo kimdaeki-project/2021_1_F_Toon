@@ -74,9 +74,9 @@
     </div>
     
     <div class="form-group">
-				<label for="contents">내용</label>
-				<textarea class="form-control myCheck" rows="5" id="contents"
-					name="noticeContents"></textarea>
+				<label for="noticeContents">내용</label>
+				<textarea class="form-control myCheck" rows="5" id="noticeContents"
+					name="noticeContents">${vo.noticeContents}</textarea>
 			</div>
     
     <c:forEach items="${vo.files}" var="file">
@@ -99,6 +99,7 @@
 				<input type="file"  id="inputGroupFile04"
 					class="form-control-file border" name="files">
 			</div>
+			
 			<div class="input-group-append delete">
 				<input class="btn btn-outline-secondary" type="button"
 					id="inputGroupFileAddon04" value="Delete">

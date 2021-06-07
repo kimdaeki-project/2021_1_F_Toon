@@ -67,9 +67,9 @@
     </div>
     
     <div class="form-group">
-				<label for="contents">내용</label>
-				<textarea class="form-control myCheck" rows="5" id="contents"
-					name="qnaContents"></textarea>
+				<label for="qnaContents">내용</label>
+				<textarea class="form-control myCheck" rows="5" id="qnaContents"
+					name="qnaContents">${vo.qnaContents}</textarea>
 			</div>
     
     <c:forEach items="${vo.files}" var="file">
