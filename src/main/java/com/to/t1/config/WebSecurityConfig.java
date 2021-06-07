@@ -44,6 +44,8 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter{
 
 		.antMatchers("member/memberJoinCheck").permitAll()
 		.antMatchers("/member/**").hasAnyRole("ADMIN", "MEMBER")
+		.antMatchers("/admin")
+		.hasRole("ADMIN") //로그인한 유정중 admin만
 		.anyRequest().authenticated()
 		.and()
 		.formLogin()
@@ -51,17 +53,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter{
 		.defaultSuccessUrl("/member/memberLoginResult")
 		.permitAll()
 		.and()
-
-
-		.authorizeRequests()
-		.antMatchers("/")
-		.permitAll() //누구나 허용
-
-
-		.antMatchers("/member")
-		.authenticated() //로그인한 유저만 허용
-		.antMatchers("/admin")
-		.hasRole("ADMIN") //로그인한 유정중 admin만
+		
 		;
 
 	}
