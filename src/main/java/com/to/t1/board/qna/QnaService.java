@@ -91,6 +91,9 @@ public class QnaService implements BoardService{
 		//3. File Hdd에 저장
 		String filePath= "upload/qna/";
 		
+		if(files != null) {
+			
+		}else
 		for(MultipartFile multipartFile:files) {
 			if(multipartFile.getSize()==0) {
 				continue;
@@ -104,6 +107,7 @@ public class QnaService implements BoardService{
 			qnaMapper.setFileInsert(boardFileVO);
 		}
 		return result;
+	
 	}
 	@Override
 	public int setFileDelete(BoardFileVO boardFileVO) throws Exception {
