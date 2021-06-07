@@ -95,8 +95,12 @@ public class QnaController {
 	
 	@PostMapping("reply")
 	public String setReplyInsert(BoardVO boardVO, MultipartFile [] files)throws Exception{
-		int result = qnaService.setReplyInsert(boardVO, files);
 		
+		int result = qnaService.setReplyInsert(boardVO, files);
+		System.out.println(boardVO.getQnaTitle());
+		System.out.println(boardVO.getQnaContents());
+		System.out.println(boardVO.getUsername());
+		System.out.println(boardVO.getBoNum());
 		return "redirect:./qnaList";
 	}	
 	

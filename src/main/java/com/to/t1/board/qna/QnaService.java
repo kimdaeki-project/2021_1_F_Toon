@@ -92,8 +92,6 @@ public class QnaService implements BoardService{
 		String filePath= "upload/qna/";
 		
 		if(files != null) {
-			
-		}else
 		for(MultipartFile multipartFile:files) {
 			if(multipartFile.getSize()==0) {
 				continue;
@@ -106,8 +104,9 @@ public class QnaService implements BoardService{
 			boardFileVO.setBoNum(boardVO.getBoNum());
 			qnaMapper.setFileInsert(boardFileVO);
 		}
+		
+		}
 		return result;
-	
 	}
 	@Override
 	public int setFileDelete(BoardFileVO boardFileVO) throws Exception {
