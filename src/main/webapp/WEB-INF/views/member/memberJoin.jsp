@@ -13,7 +13,7 @@
 
 
 <c:import url="../fragments/bootstrap.jsp"></c:import>
-<title>WebToon</title>
+<title>회원가입</title>
 
 <!--     summer note -->
 <!-- 	<link href="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote-bs4.min.css" rel="stylesheet"> -->

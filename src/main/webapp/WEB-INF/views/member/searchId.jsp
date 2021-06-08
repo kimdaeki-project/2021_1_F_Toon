@@ -10,7 +10,7 @@
     <!-- BootStrap -->    
 <!--     <link rel="icon" href="images/favicon.png" type="image/png">  위에 로고-->
     <c:import url="../fragments/bootstrap.jsp"></c:import>
-    <title>WebToon</title>
+    <title>SEARCHID</title>
    	<link rel="stylesheet" href="style.css">
    	
    	<script src="https://kit.fontawesome.com/51db22a717.js" crossorigin="anonymous"></script>

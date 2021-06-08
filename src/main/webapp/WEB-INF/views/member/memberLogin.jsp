@@ -56,14 +56,14 @@
                 <div class="login-input-container">
                     <div class="login-input-wrap input-id">
                         <i class="far fa-envelope"></i>
-                        <input placeholder="Username" type="text" id="id" name="username" aria-describedby="idlHelp">
+                        <input placeholder="Username" type="text" id="id" value="ZZZZZZZZZ" name="username" aria-describedby="idlHelp">
                         <small id="idlHelp"	class="form-text text-muted">
 							We'll never share your email with anyone else.
 						</small>
                     </div>
                     <div class="login-input-wrap input-password">
                         <i class="fas fa-key"></i>
-                        <input placeholder="Password" type="password" id="pw" name="password">
+                        <input placeholder="Password" type="password" value="ZZZZZZZZ" id="pw" name="password">
                     </div>
                     <div class="form-group form-check">
 						<input type="checkbox" class="form-check-input" id="exampleCheck1">

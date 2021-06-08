@@ -19,6 +19,8 @@ import lombok.Data;
 
 @Data
 public class MemberVO implements UserDetails {
+	
+
 	@Size(min=6, max=15, message ="아이디는 6글자에서 15글자 사이로 입력하세요")
 	@NotEmpty
 	private String username;
@@ -62,6 +64,12 @@ public class MemberVO implements UserDetails {
 		return authorities;
 	}
 
+	@Override
+	public boolean isEnabled() {
+		// TODO Auto-generated method stub
+		return true;
+	}
+	
 	@Override
 	public boolean isAccountNonExpired() {
 		// TODO Auto-generated method stub

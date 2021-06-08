@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -20,7 +21,7 @@
     <link rel="stylesheet" href="css/animate.css">
     <link rel="stylesheet" href="css/magnific-popup.css">
    
-    <!-- main css -->
+    main css
     <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="css/responsive.css">
 </head>
@@ -35,6 +36,8 @@
 			<!-- 로그인 상태 또는 사용자가 익명사용자 -->
 			<sec:authorize access="isAuthenticated()">
 				로그인 성공 상태
+				<sec:authentication property="principal.username"/>님 환영
+				<sec:authentication property="principal.name"/>님 환영
 			</sec:authorize>
 			<!-- 로그인 하지 않은 상태 -->
 			<sec:authorize access="!isAuthenticated()">
@@ -46,8 +49,7 @@
 			</sec:authorize>
 			
 			
-			<sec:authentication property="principal.username"/>님 환영
-			<sec:authentication property="principal.name"/>님 환영
+			
 			
 		</h1>
 	
@@ -691,7 +693,7 @@ Copyright &copy;<script>document.write(new Date().getFullYear());</script> All r
 
 <!-- Optional JavaScript -->
 <!-- jQuery first, then Popper.js, then Bootstrap JS -->
-d
+
 <script src="js/jquery-2.2.4.min.js"></script>
 <script src="js/popper.js"></script>
 <script src="js/bootstrap.min.js"></script>

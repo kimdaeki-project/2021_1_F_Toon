@@ -9,7 +9,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
   
     <c:import url="../fragments/bootstrap.jsp"></c:import>
-    <title>WebToon</title>
+    <title>UPDATE</title>
    
      <link rel="stylesheet" href="/css/header.css">
      <!-- plugins:css -->
