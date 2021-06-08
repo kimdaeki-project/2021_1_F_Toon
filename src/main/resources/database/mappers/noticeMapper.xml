@@ -81,7 +81,7 @@
    		</insert>
    		
    		<delete id="setFileDelete" parameterType="BoardFileVO">
-		delete noticeFiles where fileNum=#{fileNum}
+			delete from noticeFiles where fileNum=#{fileNum}
 		</delete>
    		
    		<update id="setUpdate" parameterType="BoardVO">

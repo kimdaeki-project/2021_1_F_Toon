@@ -11,10 +11,24 @@
 
 
 <c:import url="./fragments/bootstrap.jsp"></c:import>
+
 <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=a20cd5f8a90665593bce8fe4ee970b80"></script>
 
+<link rel="stylesheet" href="${pageContext.request.contextPath}/css/header.css">
+
 <title></title>
+
 <style type="text/css">
+		.come{
+		position: relative;
+        left: 850px;
+        top: -490px;
+		}
+		.come2{
+		position: relative;
+        left: 850px;
+        top: -390px;
+		}
 
 </style>
 
@@ -27,6 +41,21 @@
 <div class="container">
 <h2>회사 위치</h2>
 <div id="map" style="width:600px;height:500px;"></div>
+</div>
+
+<div class="come">
+	<h2>오시는 길</h2>
+	<p>경기도 고양시 행신동 소원로 157 소만마을 612-1307</p>
+</div>
+
+<div class="come2">
+	<h2>교통편</h2>
+	<p>지하철 : 경의중앙선 행신역 하차(2번 출구) -> 소만 6단지 방향 도보로 7분</p>
+	<p>버스 : 행신역 정류장 하차 -> 소만 6단지 방향 도보로 7분</p>
+	<p>-버스노선-</p>
+	<p>일반 : 11, 72, 97, 850, 82</p>
+	<p>좌석 : 85, 870, 921, 871</p>
+	<p>마을 : 021, 023, 024A, 024B, 030</p>
 </div>
 
 <script type="text/javascript">

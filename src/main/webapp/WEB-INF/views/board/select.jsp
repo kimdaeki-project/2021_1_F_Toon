@@ -10,18 +10,8 @@
     <!-- BootStrap -->    
 <!--     <link rel="icon" href="images/favicon.png" type="image/png">  위에 로고-->
     <c:import url="../fragments/bootstrap.jsp"></c:import>
-    
-    <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="css/bootstrap.css">
-    <link rel="stylesheet" href="css/themify-icons.css">
-    <link rel="stylesheet" href="css/flaticon.css">
-    <link rel="stylesheet" href="css/all.min.css">
-    <link rel="stylesheet" href="css/animate.css">
-    <link rel="stylesheet" href="css/magnific-popup.css">
    
-    <!-- main css -->
-    <link rel="stylesheet" href="css/style.css">
-    <link rel="stylesheet" href="css/responsive.css">
+   <link rel="stylesheet" href="${pageContext.request.contextPath}/css/header.css">
     
     <style type="text/css">
      .back {
@@ -53,7 +43,9 @@
 <body>
 <c:import url="../fragments/header.jsp"></c:import>
 <div class="back">
-<div class="container">
+<div class="container"><br>
+	<h2><p><span style="border-radius: 15px 15px 15px 0; border: 3px solid #98DFFF; 
+		padding: 0.5em 0.6em; color: black; background-color:#EBFBFF; ">공지사항/내용</span></p></h2><br>
 	
 	<table class="table">
 		<thead>
