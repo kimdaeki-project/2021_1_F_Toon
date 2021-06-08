@@ -31,7 +31,7 @@ public class MemberService implements UserDetailsService {
 	@Autowired
 	private PasswordEncoder passwordEncoder;
 	
-	@Override
+	@Override 
 	public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
 		MemberVO memberVO = new MemberVO();
 		memberVO.setUsername(username);
@@ -110,13 +110,18 @@ public class MemberService implements UserDetailsService {
 //		return memberMapper.memberDelete(memberVO);
 //	}
 	
-	public int memberDelete(MemberVO memberVO, HttpSession session)throws Exception{
-		JoinFileVO joinFileVO = memberMapper.getJoinFile(memberVO);
-		System.out.println(joinFileVO);	
-		System.out.println(joinFileVO.getFileName());
-	
-		boolean check = fileManager.delete("member", joinFileVO.getFileName(), session);
-		return memberMapper.memberDelete(memberVO);
+	public int memberDelete(String username, HttpSession session, MemberVO memberVO)throws Exception{
+		JoinFileVO joinFileVO = memberMapper.getJoinFile(username, memberVO);
+		System.out.println("!!!!!!!!!!!!!!!!!");
+		//사진이 없는데 사진을 지울려니깐 안되는거같은데
+		if(joinFileVO == null) {
+			
+		}else {
+			boolean check = fileManager.delete("member", joinFileVO.getFileName(), session);
+		}
+		//이게없음 그러니깐 쿼리를 타도 안되지
+//		System.out.println(memberVO.getUsername());
+		return memberMapper.memberDelete(username);
 	}
 	
 	public MemberVO searchId(MemberVO memberVO)throws Exception{

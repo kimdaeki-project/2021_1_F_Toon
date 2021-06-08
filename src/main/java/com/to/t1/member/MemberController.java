@@ -40,13 +40,15 @@ public class MemberController {
 
 	@GetMapping("login")
 	public String getLogin()throws Exception{
+		System.out.println("ㄴㅅㅄㅇㅈㄴㄹㅈㄷㄹㄴㅇㄻㅂㄷㄱㄹㅇ");
 		return "member/memberLogin";
 	}
 	
 	@PostMapping("memberLogin")
 	public String getLogin(HttpServletRequest request)throws Exception{
 		System.out.println("Message : "+ request.getAttribute("message"));
-		return "member/memberLogin";
+		
+		return "member/memberLogin"; 
 	}
 	
 	@GetMapping("loginFail")
@@ -233,17 +235,19 @@ public class MemberController {
 	}
 
 	@RequestMapping("memberDelete")
-	public ModelAndView memberDelete(HttpSession session)throws Exception{
-		MemberVO memberVo =(MemberVO)session.getAttribute("member");
+	public ModelAndView memberDelete(HttpSession session, String username)throws Exception{
+		MemberVO memberVo =(MemberVO)session.getAttribute("member"); 
 		ModelAndView mv = new ModelAndView();
-		int result = memberService.memberDelete(memberVo, session);
+		
+		int result = memberService.memberDelete(username, session, memberVo);
 		session.invalidate();
 		
 		String message="회원가입 탈퇴 실패";
-		String path = "./memberUpdate";
+		String path = "../";
 		
 		if(result>0) {
 			message="회원가입 탈퇴 성공";
+			
 		}
 		mv.addObject("msg", message);
 		mv.addObject("path", path);

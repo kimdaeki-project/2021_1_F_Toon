@@ -13,13 +13,13 @@ public interface MemberMapper {
 	
 	public int setJoinFile(JoinFileVO joinFileVO)throws Exception;
 	
-	public JoinFileVO getJoinFile(MemberVO memberVO)throws Exception;
+	public JoinFileVO getJoinFile(String username, MemberVO memberVO)throws Exception;
 	
 	public MemberVO getLogin(MemberVO memberVO);
 	
 	public int memberUpdate(MemberVO memberVO)throws Exception;
 	
-	public int memberDelete(MemberVO memberVO)throws Exception;
+	public int memberDelete(String username)throws Exception;
 	
 	public MemberVO searchId(MemberVO memberVO)throws Exception;
 	

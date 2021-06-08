@@ -101,7 +101,7 @@
            <h1>회원정보</h1>
     <sec:authorize access="isAuthenticated()">       	
 
-	<h3>${member.joinFileVO.fileName}RR</h3>
+	<h3>${member.joinFileVO.fileName} </h3>
 	
 	<h3>아이디: <sec:authentication property="principal.username"/></h3>
 	<h3>이름: <sec:authentication property="principal.name"/></h3>
@@ -111,8 +111,13 @@
 	<h3>내 포인트: <sec:authentication property="principal.point"/>point</h3>
 	</sec:authorize>
 	
-	<a href="./memberUpdate" class="btn btn-info" role="button">내 정보 수정</a>
-	<a href="./memberDelete" class="btn btn-danger" role="button">회원 탈퇴</a></p>
+	<!-- 이렇게 해서 값 넘김 알지 저건? URL 주소뒤에 값 넘기는거 업데이트도 똑같이 하면될듯 ㅇㅈ? -->
+	<!-- 삭제 안되는건 아까말했듯이 참조된 테이블 있어서 안되는거니깐 회원탈퇴할때 참조된 테이블 다지우고 사진도 마찬가지고 ㅇㅋ?꿍 뀨뀨까까 잔다 뾰뾰뿅 근데 ㄱㄷ -->
+	<sec:authorize access="isAuthenticated()">
+		<a href="./memberUpdate" class="btn btn-info" role="button">내 정보 수정</a>
+		<a href="./memberDelete?username=<sec:authentication property="principal.username"/>" class="btn btn-danger" id="sunghyun" role="button">회원 탈퇴</a>
+	</sec:authorize>
+	</p>
         <div class="page-content-wrapper-inner">
           <div class="content-viewport">
             <div class="row">
@@ -129,7 +134,16 @@
     <script src="../assets/js/charts/chartjs.addon.js"></script>
     <script src="../assets/js/template.js"></script>
     <script src="../assets/js/dashboard.js"></script>
-
-
+    
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+    <script type="text/javascript" src="../js/mypage.js"></script>
+	<script type="text/javascript">	
+	 $("#sunghyun").click(function(){
+		
+		alert("아왜안대는거야진짜루")
+	 }); 
+	</script>
+	
+	
 </body>
 </html>
