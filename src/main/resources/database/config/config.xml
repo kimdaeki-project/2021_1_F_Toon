@@ -20,6 +20,11 @@
   		<typeAlias type="com.to.t1.board.qna.QnaVO" alias="QnaVO"/>
   		
   		
+  		<typeAlias type="com.to.t1.ticket.OrderTicketVO" alias="OrderTicketVO"/>
+  		<typeAlias type="com.to.t1.ticket.UseTicketVO" alias="UseTicketVO"/>
+  		<typeAlias type="com.to.t1.ticket.ToonTicketVO" alias="ToonTicketVO"/>
+		
+		
 		<typeAlias type="com.to.t1.util.Pager" alias="Pager"/>
 		<typeAlias type="java.lang.Long" alias="Long"/>
   		

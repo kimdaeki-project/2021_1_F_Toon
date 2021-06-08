@@ -14,4 +14,7 @@
 	<update id="deleteScore" parameterType="ToonVO">
 		
 	</update>
+	
+	
+
 </mapper>
