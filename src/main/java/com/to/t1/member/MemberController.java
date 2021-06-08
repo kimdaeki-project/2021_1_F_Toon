@@ -112,10 +112,15 @@ public class MemberController {
 		return "redirect:../";
 	}
 
-	@RequestMapping("myPage") 
+	@GetMapping("myPage") 
 	public void myPage()throws Exception{
 	}
 
+	@PostMapping("myPage") 
+	public void myPage(MemberVO memberVO,Model model)throws Exception{
+		
+	}
+	
 	@RequestMapping("searchId") 
 	public void searchId()throws Exception{
 	}
@@ -174,7 +179,7 @@ public class MemberController {
 			memberVO.setPassword("0000");
 			int result = memberService.pwUpdate(memberVO);
 	
-			message="회원님의 비밀번호는 " + memberVO.getPassword()+" 으로 초기화 되었습니다.";
+			message="회원님의 비밀번호는 (0000)"+memberVO.getPassword()+" 으로 초기화 되었습니다.";
 			messageType="Y";
 		}
 
@@ -271,5 +276,6 @@ public class MemberController {
 	      
 	      return key;
 	   }
+	   
 }
 

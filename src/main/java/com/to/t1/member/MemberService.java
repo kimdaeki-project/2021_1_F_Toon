@@ -128,11 +128,14 @@ public class MemberService implements UserDetailsService {
 	}
 	
 	public int pwUpdate(MemberVO memberVO)throws Exception{
-		System.out.println("zzzz");
 		System.out.println(memberVO.getPassword());
 		memberVO.setPassword(passwordEncoder.encode(memberVO.getPassword()));
 		System.out.println(memberVO.getPassword());
 		return memberMapper.pwUpdate(memberVO);
+	}
+	
+	public JoinFileVO myPage(MemberVO memberVO)throws Exception{
+		return memberMapper.myPage(memberVO);
 	}
 	
 }
