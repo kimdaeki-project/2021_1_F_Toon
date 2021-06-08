@@ -26,56 +26,56 @@ public class QnaController {
 		return "qna";
 	}
 	
-	@GetMapping("list")
+	@GetMapping("qnaList")
 	public String getList(Pager pager, Model model)throws Exception{
 		List<BoardVO> ar = qnaService.getList(pager);
-		model.addAttribute("list", ar);
+		model.addAttribute("qnaList", ar);
 		model.addAttribute("pager", pager);
 		for(BoardVO boardVO :ar) {
 			QnaVO qnaVO = (QnaVO)boardVO;
 			System.out.println(qnaVO.getDepth());
 		}
-		return "board/list";
+		return "board/qnaList";
 	}
 	
-	@GetMapping("select")
+	@GetMapping("qnaSelect")
 	public ModelAndView getSelect(BoardVO boardVO)throws Exception{
 		ModelAndView mv = new ModelAndView();
 		boardVO = qnaService.getSelect(boardVO);
 		mv.addObject("vo", boardVO);
-		mv.setViewName("board/select");
+		mv.setViewName("board/qnaSelect");
 		return mv;
 	}	
 	
-	@GetMapping("insert")
+	@GetMapping("qnaInsert")
 	public String setInsert(Model model)throws Exception{
 		model.addAttribute("vo", new BoardVO());
-		model.addAttribute("action", "insert");
-		return "board/form";
+		model.addAttribute("action", "qnaInsert");
+		return "board/qnaInsert";
 	}
 	
-	@PostMapping("insert")
+	@PostMapping("qnaInsert")
 	public String setInsert(BoardVO boardVO, MultipartFile [] files)throws Exception{
 		int result = qnaService.setInsert(boardVO, files);
 		
-		return "redirect:./list";
+		return "redirect:./qnaList";
 	}
 
-	@GetMapping("update")
+	@GetMapping("qnaUpdate")
 	public String setUpdate(BoardVO boardVO, Model model)throws Exception{
 		boardVO = qnaService.getSelect(boardVO);
 		model.addAttribute("vo", boardVO);
-		model.addAttribute("action", "update");
-		return "board/form";
+		model.addAttribute("action", "qnaUpdate");
+		return "board/qnaUpdate";
 		
 	}
 	
-	@PostMapping("update")
-	public String setUpdate(BoardVO boardVO)throws Exception{
+	@PostMapping("qnaUpdate")
+	public String setUpdate(BoardVO boardVO, MultipartFile [] files)throws Exception{
 		
-		int result = qnaService.setUpdate(boardVO);
+		int result = qnaService.setUpdate(boardVO, files);
 		
-		return "redirect:./list";
+		return "redirect:./qnaList";
 	}
 	
 	@GetMapping("delete")
@@ -83,21 +83,29 @@ public class QnaController {
 		
 		int result = qnaService.setDelete(boardVO);
 		
-		return "redirect:./list";
+		return "redirect:./qnaList";
 	}
 
 	@GetMapping("reply")
 	public String setReplyInsert(BoardVO boardVO, Model model)throws Exception{
 		model.addAttribute("vo", boardVO);
 		model.addAttribute("action", "reply");
-		return "board/form";
+		return "board/reply";
 	}
 	
 	@PostMapping("reply")
 	public String setReplyInsert(BoardVO boardVO, MultipartFile [] files)throws Exception{
-		int result = qnaService.setReplyInsert(boardVO, files);
 		
-		return "redirect:./list";
-	}
-}
+		int result = qnaService.setReplyInsert(boardVO, files);
 	
+		return "redirect:./qnaList";
+	}	
+	
+	
+	
+	
+	
+	
+	
+	
+}

@@ -22,5 +22,11 @@ public class HomeController {
 		
 		return "index";
 	}
+	
+	@GetMapping("companyMap")
+	public String companyMap(Model model) {
+		
+		return "companyMap";
+	}
 
 }

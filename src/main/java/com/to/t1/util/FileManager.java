@@ -24,6 +24,7 @@ public class FileManager {
 //		String path = session.getServletContext().getRealPath("upload/"+name);
 		
 		String filePath= "upload/member/";
+		filePath = "upload/notice/";
 		
 		String path="static";
 		ClassPathResource classPathResource = new ClassPathResource(path);
@@ -61,10 +62,10 @@ public class FileManager {
 		file = new File(file, fileName);
 
 		multipartFile.transferTo(file);
-
+		System.out.println("나오니");
 		
-		multipartFile.transferTo(file);
-		
+	//	multipartFile.transferTo(file);
+	//	System.out.println("나오니2");
 
 		return fileName;
 	}

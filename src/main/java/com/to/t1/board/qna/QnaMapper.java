@@ -10,6 +10,7 @@ public interface QnaMapper extends BoardMapper {
 	
 	public int setReplyInsert(BoardVO boardVO)throws Exception;
 	
+	
 	public int setReplyUpdate(BoardVO boardVO)throws Exception;
 	
 	public int setRefUpdate(BoardVO boardVO)throws Exception;

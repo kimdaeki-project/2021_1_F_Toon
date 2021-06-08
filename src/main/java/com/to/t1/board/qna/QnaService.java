@@ -25,7 +25,7 @@ public class QnaService implements BoardService{
 	public List<BoardVO> getList(Pager pager) throws Exception {
 		pager.makeRow();
 		
-		//pager.makeNum(qnaMapper.getTotalCount(pager));
+		pager.makeNum(qnaMapper.getTotalCount(pager));
 		
 		return qnaMapper.getList(pager);
 	}
@@ -57,14 +57,14 @@ public class QnaService implements BoardService{
 			BoardFileVO boardFileVO = new BoardFileVO();
 			boardFileVO.setFileName(fileName);
 			boardFileVO.setOriName(multipartFile.getOriginalFilename());
-			boardFileVO.setNum(boardVO.getNum());
+			boardFileVO.setBoNum(boardVO.getBoNum());
 			qnaMapper.setFileInsert(boardFileVO);
 		}
 		return result;
 	}
 
 	@Override
-	public int setUpdate(BoardVO boardVO) throws Exception {
+	public int setUpdate(BoardVO boardVO, MultipartFile[] files) throws Exception {
 		// TODO Auto-generated method stub
 		return qnaMapper.setUpdate(boardVO);
 	}
@@ -81,7 +81,11 @@ public class QnaService implements BoardService{
 	@Transactional(rollbackFor = Exception.class)
 	public int setReplyInsert(BoardVO boardVO, MultipartFile [] files)throws Exception{
 		//boardVO.num = 부모의 글번호
-		
+		System.out.println(boardVO.getQnaTitle());
+		System.out.println(boardVO.getQnaContents());
+		System.out.println(boardVO.getUsername());
+		System.out.println(boardVO.getBoNum());
+		System.out.println("----여기까지 확인-------");
 		//1. step update
 		int result = qnaMapper.setReplyUpdate(boardVO);
 		
@@ -91,6 +95,7 @@ public class QnaService implements BoardService{
 		//3. File Hdd에 저장
 		String filePath= "upload/qna/";
 		
+		if(files != null) {
 		for(MultipartFile multipartFile:files) {
 			if(multipartFile.getSize()==0) {
 				continue;
@@ -100,12 +105,18 @@ public class QnaService implements BoardService{
 			BoardFileVO boardFileVO = new BoardFileVO();
 			boardFileVO.setFileName(fileName);
 			boardFileVO.setOriName(multipartFile.getOriginalFilename());
-			boardFileVO.setNum(boardVO.getNum());
+			boardFileVO.setBoNum(boardVO.getBoNum());
 			qnaMapper.setFileInsert(boardFileVO);
+		}
+		
 		}
 		return result;
 	}
-	
+	@Override
+	public int setFileDelete(BoardFileVO boardFileVO) throws Exception {
+		// TODO Auto-generated method stub
+		return 0;
+	}
 	
 
 }
