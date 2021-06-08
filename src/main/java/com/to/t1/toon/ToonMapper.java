@@ -24,4 +24,8 @@ public interface ToonMapper {
 	public long setDelete(ToonVO toonVO)throws Exception;
 	
 	public List<ToonVO> toonDay(ToonVO toonVO)throws Exception;
+	public List<ToonVO> genre(ToonVO toonVO)throws Exception;
+	public List<ToonVO> ranking(ToonVO toonVO)throws Exception;
+	public List<ToonVO> end(ToonVO toonVO)throws Exception;
+	
 }

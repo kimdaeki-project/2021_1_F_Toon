@@ -16,12 +16,66 @@
    
    
     <link rel="stylesheet" href="../css/header.css">
+    <link rel="stylesheet" href="../css/genre.css">
   
 </head>
 <body>
 	<c:import url="../../fragments/header.jsp"></c:import>
 
+	<div class="view_type">			
+             <table>
+             <tr >
+             	<td><a href="/">조회순</a></td>
+             
+              <p><td><a href="/">업데이트순</a></td></p>         
+                
+                <td><a href="/">별점순</a></td>
+             </tr>
+           
+             </table>
+			</div>
+	<br>
+	<br>	
 
+<div class="toon">
+		
+		
+		<div class="action"> <a href="${pageContext.request.contextPath}/toon/toonList/genre=${action}">액션</a>
+			<ul>
+		<c:forEach items="${action}" var="action">
+			<li> <img width=100px height=100px src= ${action.titleImg}> </li>
+			<li>${action.toonTitle} /${action.writerID} </li>
+		</c:forEach>
+		</ul>
+		
+		</div>
+					
+		
+		<div class="school"> <a href="${pageContext.request.contextPath}/toon/toonList/genre=${school}">학원</a>
+	
+		</div>	
+				
+		
+		<div class="romance"> <a href="${pageContext.request.contextPath}/toon/toonList/genre=${romance}">로맨스</a>
+	
+		</div>
+				
+		
+		<div class="fantasy"> <a href="${pageContext.request.contextPath}/toon/toonList/genre=${fantasy}">판타지</a>
+		
+		</div>		
+		
+		
+		<div class="thriller"> <a href="${pageContext.request.contextPath}/toon/toonList/genre=${thriller}">스릴러</a>
+		
+		</div>
+				
+		
+		<div class="comedy"> <a href="${pageContext.request.contextPath}/toon/toonList/genre=${comedy}">코미디</a>
+		
+		</div>
+				
+	</div>
 
 
 

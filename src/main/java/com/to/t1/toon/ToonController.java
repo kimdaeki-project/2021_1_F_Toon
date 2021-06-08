@@ -71,9 +71,21 @@ public class ToonController {
 	}
 	
 	@GetMapping("genre")
-	public String genre() {
-		return "toon/toonList/genre";
+	public ModelAndView genre(ToonVO toonVO)throws Exception {
+		ModelAndView mv = new ModelAndView();
+		
+		toonVO.setGenre("action");
+		List<ToonVO> at = toonService.genre(toonVO);
+		
+		mv.addObject("action", at);
+		
+		mv.setViewName("toon/toonList/genre");
+		
+		return mv;
 	}
+	
+	
+	
 	
 	@GetMapping("ranking")
 	public String ranking() {

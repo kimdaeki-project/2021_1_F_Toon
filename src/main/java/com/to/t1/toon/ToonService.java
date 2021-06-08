@@ -34,6 +34,17 @@ public class ToonService {
 		return toonMapper.toonDay(toonVO);
 	}
 	
+	public List<ToonVO> genre(ToonVO toonVO) throws Exception{
+		return toonMapper.genre(toonVO);
+	}
+	
+	public List<ToonVO> ranking(ToonVO toonVO) throws Exception{
+		return toonMapper.ranking(toonVO);
+	}
+	
+	public List<ToonVO> end(ToonVO toonVO) throws Exception{
+		return toonMapper.end(toonVO);
+	}
 
 	
 }
