@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -35,8 +36,8 @@
 			<c:if test="${member.joinFileVO.fileName ne null}"><img width=180px height=200px alt="" src="../upload/member/${member.joinFileVO.fileName}"></c:if>
           </div>
           <div class="info-wrapper">
-            <p class="user-name">${member.name}님</p>
-            <h6 class="display-income">${member.point}point</h6>
+            <p class="user-name"><sec:authentication property="principal.name"/>님</p>
+            <h6 class="display-income"><sec:authentication property="principal.point"/>point</h6>
           </div>
         </div>
         <ul class="navigation-menu">
@@ -98,14 +99,17 @@
       <!-- partial -->
       <div class="page-content-wrapper">
            <h1>회원정보</h1>
+    <sec:authorize access="isAuthenticated()">       	
+
+	<h3>${member.joinFileVO.fileName}RR</h3>
 	
-	<h1>${member.joinFileVO.fileName}</h1>
-	<h3>아이디: ${member.username}</h3>
-	<h3>이름: ${member.name}</h3>
-	<h3>닉네임: ${member.nickname}</h3>
-	<h3>핸드폰: ${member.phone}</h3>
-	<h3>이메일: ${member.email}</h3>
-	<h3>내 포인트: ${member.point}point</h3>
+	<h3>아이디: <sec:authentication property="principal.username"/></h3>
+	<h3>이름: <sec:authentication property="principal.name"/></h3>
+	<h3>닉네임: <sec:authentication property="principal.nickname"/></h3>
+	<h3>핸드폰: <sec:authentication property="principal.phone"/></h3>
+	<h3>이메일: <sec:authentication property="principal.email"/></h3>
+	<h3>내 포인트: <sec:authentication property="principal.point"/>point</h3>
+	</sec:authorize>
 	
 	<a href="./memberUpdate" class="btn btn-info" role="button">내 정보 수정</a>
 	<a href="./memberDelete" class="btn btn-danger" role="button">회원 탈퇴</a></p>

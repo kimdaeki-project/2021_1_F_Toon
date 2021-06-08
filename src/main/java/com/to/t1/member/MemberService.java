@@ -69,7 +69,9 @@ public class MemberService implements UserDetailsService {
 		
 		//0. 사전 작업
 		//a. password 암호화
+		System.out.println(memberVO.getPassword());
 		memberVO.setPassword(passwordEncoder.encode(memberVO.getPassword()));
+		System.out.println(memberVO.getPassword());
 		//b. 사용자 계정 활성화
 		memberVO.setEnabled(true);
 
@@ -127,6 +129,9 @@ public class MemberService implements UserDetailsService {
 	
 	public int pwUpdate(MemberVO memberVO)throws Exception{
 		System.out.println("zzzz");
+		System.out.println(memberVO.getPassword());
+		memberVO.setPassword(passwordEncoder.encode(memberVO.getPassword()));
+		System.out.println(memberVO.getPassword());
 		return memberMapper.pwUpdate(memberVO);
 	}
 	

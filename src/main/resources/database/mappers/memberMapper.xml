@@ -15,6 +15,10 @@
 			values (#{username}, (select id from role where roleName=#{roleName}))
 		</insert>
 		
+		<select id="myPage" parameterType="MemberVO" resultType="JoinFileVO">
+			SELECT * FROM joinfiles WHERE username = #{username}
+		</select>
+		
 		<insert id="setJoinFile" parameterType="JoinFileVO">
 			insert into joinfiles (username, fileName, oriName) values(#{username}, #{fileName}, #{oriName})
 		</insert>

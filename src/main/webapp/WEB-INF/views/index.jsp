@@ -37,7 +37,6 @@
 			<sec:authorize access="isAuthenticated()">
 				로그인 성공 상태
 				<sec:authentication property="principal.username"/>님 환영
-				<sec:authentication property="principal.name"/>님 환영
 			</sec:authorize>
 			<!-- 로그인 하지 않은 상태 -->
 			<sec:authorize access="!isAuthenticated()">

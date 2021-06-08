@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags" %>
  <!--================ Start header Top Area =================-->
     <section class="header-top">
         <div class="container">
@@ -25,15 +26,19 @@
                 <div class="col-lg-4 col-md-6 col-sm-6 search-trigger">
                     <div class="right-button">
                         <ul>
-                        	<c:if test="${empty member}">        
+<%--                         	<c:if test="${empty member}">         --%>
+							<sec:authorize access="!isAuthenticated()">
                             <li><a href="/member/login">Login</a></li>
                             <li><a href="/member/memberJoinCheck">Join</a></li>
-                            </c:if>
+                            </sec:authorize>
+<%--                             </c:if> --%>
                             
-                            <c:if test="${not empty member}">
+<%--                             <c:if test="${not empty member}"> --%>
+							<sec:authorize access="hasRole('ROLE_MEMBER')">
                             <li><a href="/member/myPage">MY PAGE</a></li>
                             <li><a href="/member/logout">LOGOUT</a></li>
-                            </c:if>
+                            </sec:authorize>
+<%--                             </c:if> --%>
                         </ul>
                         
 
