@@ -74,14 +74,10 @@
 		<a href="../upload/${board}/${file.fileName}">${file.oriName}</a>
 	</c:forEach>
 	</div>
-	
+	 
 	<a href="./update?boNum=${vo.boNum}" class="btn btn-secondary">수정</a>
 	<a href="#" id="del" class="btn btn-secondary">삭제</a>
 	
-	
-	<c:if test="${board ne 'notice'}">
-	<a href="./${board}Reply?boNum=${vo.boNum}" class="btn btn-primary">댓글</a>
-	</c:if>
 	
 	<form action="./delete" id="frm" method="get">
 		<input type="hidden" name="boNum" value="${vo.boNum}">
@@ -106,6 +102,6 @@
 		}
 	});
 </script>
-
+<c:import url="../fragments/footer.jsp"></c:import>
 </body>
 </html>

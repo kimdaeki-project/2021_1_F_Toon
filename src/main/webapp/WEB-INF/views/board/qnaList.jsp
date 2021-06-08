@@ -15,23 +15,23 @@
     <link rel="stylesheet" href="${pageContext.request.contextPath}/css/header.css">
     
     <style type="text/css">
-     .back {
-    	background-image: url('../images/toon-qna1.PNG');
-    	background-size : 500px;
+   .back {
+    	
+    	background-size : 6000px;
     	border-style: solid;
-    	border-color: #FFE150;
+    	border-color: #98DFFF;
      }
      .thead {
-    	text-align: center;
-     	background-color: #FFFF96;
+     	text-align: center;
+     	background-color: #EBFBFF;
      	border-style: solid;
-     	border-color: #FFE150;
+     	border-color: #98DFFF;
      }
-     .tbody {
+      .tbody {
       	text-align: center;
-     	background-color: #FAFAD2;
+     	background-color: #F9FFFF;
      	border-style: solid;
-     	border-color: #FFE150;
+     	border-color: #98DFFF;
      }
 
   
@@ -45,8 +45,8 @@
         
 <div class="back">
 <div class="container"><br>
-		<h2><p><span style="border-radius: 15px 15px 15px 0; border: 3px solid #FFE150; 
-		padding: 0.5em 0.6em; color: black; background-color:#FFFF96; ">질문/답변</span></p></h2><br>
+		<h2><p><span style="border-radius: 15px 15px 15px 0; border: 3px solid #98DFFF; 
+		padding: 0.5em 0.6em; color: black; background-color:#EBFBFF; ">질문/답변</span></p></h2><br>
 		<table class="table">
 			
 			<thead class="thead">

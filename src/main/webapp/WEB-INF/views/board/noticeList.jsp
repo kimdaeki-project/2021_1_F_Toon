@@ -13,10 +13,24 @@
     <c:import url="../fragments/bootstrap.jsp"></c:import>
     
    <link rel="stylesheet" href="${pageContext.request.contextPath}/css/header.css">
-    
+   <link rel="stylesheet" href="${pageContext.request.contextPath}/css/main.css">
+   <link rel="stylesheet" href="${pageContext.request.contextPath}/css/util.css">
+   
+
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="vendor/bootstrap/css/bootstrap.min.css">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="fonts/font-awesome-4.7.0/css/font-awesome.min.css">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="vendor/animate/animate.css">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="vendor/select2/select2.min.css">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="vendor/perfect-scrollbar/perfect-scrollbar.css">
+   
     <style type="text/css">
      .back {
-    	background-image: url('../images/toon-notice5.PNG');
+    	
     	background-size : 6000px;
     	border-style: solid;
     	border-color: #98DFFF;
@@ -46,78 +60,97 @@
 <div class="container"><br>
 	<h2><p><span style="border-radius: 15px 15px 15px 0; border: 3px solid #98DFFF; 
 		padding: 0.5em 0.6em; color: black; background-color:#EBFBFF; ">공지사항</span></p></h2><br>
-		<table class="table">
-			
-			<thead class="thead">
-				<tr>
-					<th>공지종류</th>
-					<th>제목</th>
-					<th>작성자</th>
-					<th>작성일</th>
-					<th>조회수</th>
-				</tr>
-			</thead>
-			
-			
-			<tbody class="tbody">
-			<c:forEach items="${noticeList}" var="vo" >
-				<tr>
-					
-					<td>${vo.noticeKinds}</td>
-					<td><a href="./select?boNum=${vo.boNum}">
-					
-					<c:catch>
-					<c:forEach begin="1" end="${vo.depth}">--</c:forEach>
-					</c:catch>
-					${vo.noticeTitle}
-					</a></td>
-					<td>${vo.username}</td>
-					<td>${vo.createdDate}</td>
-					<td>${vo.noticeHit}</td>
-				</tr>
-			</c:forEach>
-			</tbody>
+	<div class="table100 ver1 m-b-110">
+					<div class="table100-head">
+						<table>
+							<thead>
+          						 <tr>
+               <th class="cell100 column2">공지종류</th>
+               <th class="cell100 column1">제목</th>
+               <th class="cell100 column3">작성자</th>
+               <th class="cell100 column4">작성일</th>
+               <th class="cell100 column5">조회수</th>
+           			 </tr>
+         </thead>
+
+						</table>
+					</div>
+
+					<div class="table100-body js-pscroll">
+						<table>
+							<tbody>
+							<c:forEach items="${noticeList}" var="vo" >
+            <tr>
+               
+               <td class="cell100 column2">${vo.noticeKinds}</td>
+               <td class="cell100 column1"><a href="./select?boNum=${vo.boNum}">
+               
+               ${vo.noticeTitle}
+               </a></td>
+               <td class="cell100 column3">${vo.username}</td>
+               <td class="cell100 column4">${vo.createdDate}</td>
+               <td class="cell100 column5">${vo.noticeHit}</td>
+            </tr>
+         </c:forEach>
+
+
+							
+							</tbody>
+						</table>
 		
-		</table>
-	</div>
+					</div>
+				</div>
+				
+				 <div class="container">
+     <ul class="pagination">
+     
+     <c:if test="${pager.pre}">   
+       <li class="page-item"><a class="page-link p" href="#" title="${pager.startNum-1}">이전</a></li>
+      </c:if>
+      
+      <c:forEach begin="${pager.startNum}" end="${pager.lastNum}" var="i">
+      
+       <li class="page-item"><a class="page-link p" href="#" title="${i}">${i}</a></li>
+      </c:forEach>
+      
+       <c:if test="${pager.next}">
+       <li class="page-item"><a class="page-link p" href="#" title="${pager.lastNum+1}">다음</a></li>
+       </c:if>
+     </ul>
+     
+   <div class="input-group mt-3 mb-3">
+   <form id="frm" action="./noticeList" class="form-inline">
+      <input type="hidden" name="curPage" value="1" id="curPage">
+     <div class="input-group-prepend">
+      <select class="form-control" name="kind" id="kind" >
+         <option class="sel">공지종류</option>
+       <option class="sel">제목</option>
+     </select>
+     </div>
+     <input type="text" class="form-control" name="search" id="search" value="${pager.search}" placeholder="입력하세요">
+       <div class="input-group-append">
+       <button class="btn btn-secondary" type="submit">검색</button>
+     </div>
+    </form> 
+    
+   </div> 
+   <a href="./insert" class="btn btn-secondary"  role="button">작성</a>
+   </div>
+  
+  <!--===============================================================================================-->	
+	<script src="vendor/jquery/jquery-3.2.1.min.js"></script>
+<!--===============================================================================================-->
+	<script src="vendor/bootstrap/js/popper.js"></script>
+	<script src="vendor/bootstrap/js/bootstrap.min.js"></script>
+<!--===============================================================================================-->
+	<script src="vendor/select2/select2.min.js"></script>
+<!--===============================================================================================-->
+	<script src="vendor/perfect-scrollbar/perfect-scrollbar.min.js"></script>
+
+<!--===============================================================================================-->
+	<script src="js/main.js"></script>
 	
-	<div class="container">
-	  <ul class="pagination">
-	  
-	  <c:if test="${pager.pre}">	
-	    <li class="page-item"><a class="page-link p" href="#" title="${pager.startNum-1}">이전</a></li>
-	   </c:if>
-	   
-	   <c:forEach begin="${pager.startNum}" end="${pager.lastNum}" var="i">
-	   
-	    <li class="page-item"><a class="page-link p" href="#" title="${i}">${i}</a></li>
-	   </c:forEach>
-	   
-	    <c:if test="${pager.next}">
-	    <li class="page-item"><a class="page-link p" href="#" title="${pager.lastNum+1}">다음</a></li>
-	    </c:if>
-	  </ul>
-	  
-	<div class="input-group mt-3 mb-3">
-	<form id="frm" action="./noticeList" class="form-inline">
-		<input type="hidden" name="curPage" value="1" id="curPage">
-	  <div class="input-group-prepend">
-	   <select class="form-control" name="kind" id="kind" >
-	   	<option class="sel">공지종류</option>
-	    <option class="sel">제목</option>
-	  </select>
-	  </div>
-	  <input type="text" class="form-control" name="search" id="search" value="${pager.search}" placeholder="입력하세요">
-	    <div class="input-group-append">
-	    <button class="btn btn-secondary" type="submit">검색</button>
-	  </div>
-	 </form> 
-	 
-	</div> 
-	<a href="./insert" class="btn btn-secondary"  role="button">작성</a>
-	</div>
-  
-  
+	
 <script type="text/javascript">
 	let kind= '${pager.kind}';//Title, Writer, Contents
 	$(".sel").each(function() {
@@ -133,6 +166,14 @@
 		let search= '${pager.search}';
 		$("#frm").submit();
 
+	});
+	
+	$('.js-pscroll').each(function(){
+		var ps = new PerfectScrollbar(this);
+
+		$(window).on('resize', function(){
+			ps.update();
+		})
 	});
 </script>  
 </div>

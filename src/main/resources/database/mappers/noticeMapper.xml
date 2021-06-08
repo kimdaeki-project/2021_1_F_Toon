@@ -72,12 +72,12 @@
    		</update>
    		
    		<insert id="setInsert" parameterType="BoardVO" useGeneratedKeys="true" keyProperty="boNum">
-   			insert into notice values(#{boNum}, #{noticeKinds}, #{noticeTitle}, #{username},#{noticeContents}, now(), 0, #{noticeType})
+   			insert into notice values(#{boNum}, #{noticeKinds}, #{noticeTitle}, #{username},#{noticeContents}, now(), 0)
    		</insert>
    		
    		<insert id="setFileInsert" parameterType="BoardFileVO">
-   			insert into noticeFiles (boNum, fileName, oriName)
-   			values (#{boNum}, #{fileName}, #{oriName})
+   			insert into noticeFiles (fileNum, boNum, fileName, oriName)
+   			values (#{fileNum}, #{boNum}, #{fileName}, #{oriName})
    		</insert>
    		
    		<delete id="setFileDelete" parameterType="BoardFileVO">

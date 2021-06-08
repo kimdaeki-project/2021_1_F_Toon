@@ -20,6 +20,24 @@ public class BoardVO {
 	private String qnaContents;
 	private Long qnaHit;
 	
+	public String getQnaTitle() {
+		return qnaTitle;
+	}
+	public void setQnaTitle(String qnaTitle) {
+		this.qnaTitle = qnaTitle;
+	}
+	public String getQnaContents() {
+		return qnaContents;
+	}
+	public void setQnaContents(String qnaContents) {
+		this.qnaContents = qnaContents;
+	}
+	public Long getQnaHit() {
+		return qnaHit;
+	}
+	public void setQnaHit(Long qnaHit) {
+		this.qnaHit = qnaHit;
+	}
 	public Long getBoNum() {
 		return boNum;
 	}

@@ -50,10 +50,6 @@ public class NoticeService implements BoardService {
 	public int setInsert(BoardVO boardVO, MultipartFile [] files) throws Exception {
 		
 		
-		
-		
-		
-		
 		int result = noticeMapper.setInsert(boardVO);
 		
 		//글번호 찾기
@@ -62,7 +58,7 @@ public class NoticeService implements BoardService {
 			BoardFileVO boardFileVO = new BoardFileVO();
 			String fileName= boFileManager.save("notice", mf, session);
 			
-			
+			boardFileVO.setBoNum(boardVO.getBoNum());
 			boardFileVO.setFileName(fileName);
 			boardFileVO.setOriName(mf.getOriginalFilename());
 			
