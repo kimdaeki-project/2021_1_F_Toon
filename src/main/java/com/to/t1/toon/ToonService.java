@@ -29,4 +29,11 @@ public class ToonService {
 	public long deleteScore(ReviewVO reviewVO) throws Exception{
 		return toonMapper.deleteScore(reviewVO);
 	}
+	
+	public List<ToonVO> toonDay(ToonVO toonVO) throws Exception{
+		return toonMapper.toonDay(toonVO);
+	}
+	
+
+	
 }

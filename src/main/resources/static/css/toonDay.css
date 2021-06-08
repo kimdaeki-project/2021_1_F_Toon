@@ -1,80 +1,59 @@
-@charset "UTF-8";
-
-.grid {
-	width: 1500px;
-	margin: 0 auto;
-
+.toon{
+    width: 90%;
+    margin: 10px auto;
 }
 
-
-.grid-item {
-	widows: 200px;
-	height: 200px;
-	display: inline-block;	
-
-}
-
-.view_type {
-	 position: absolute;
-	  left: 1230px;
-}
-
-.grid-item.a { background-color:  white; color: black;}
-.grid-item.b { background-color:  white;}
-.grid-item.c { background-color:  white;}
-.grid-item.d { background-color:  white;}
-.grid-item.e { background-color:  white;}
-.grid-item.f { background-color:  white;}
-.grid-item.g { background-color:  white;}
-
-
-
-
-.sin{
-	color: red;
-}
-
-
-.mon{
-	color: black; 
-}
-
-.mon1 {
-	color: black;
+.mon {
+    
+    float: left;
+    width:14%;
+    
 }
 
 .tue{
-	color: black;
+   
+    float: left;
+ 
+    width:14%;
 }
 
-.wen {
-	color: black;
-}
-
-.thu {
-	color: black;
-}
-
-.fri {
-	color: black;
-}
-
-.sat {
-	color: black;
-}
-
-.sun {
-	color: black;
+.wen{
+   
+    float: left;
+    width:14%;
+  
 }
 
 
+.the {
+   
+    float: left;
+    width:14%;
+   
+}
+
+.fri{
+  
+    float: left;
+  
+    width:14%;
+   
+}
+
+.sat{
+   
+    float: left;
+    width:14%;
+    
+}
 
 
-
-
-
-
-
+.sun{
+   
+    float: left;
+    width:14%;
+    
+}
 
 
 

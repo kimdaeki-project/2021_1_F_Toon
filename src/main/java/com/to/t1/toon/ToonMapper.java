@@ -22,4 +22,6 @@ public interface ToonMapper {
 	public long setInsert(ToonVO toonVO)throws Exception;
 	public long setUpdate(ToonVO toonVO)throws Exception;
 	public long setDelete(ToonVO toonVO)throws Exception;
+	
+	public List<ToonVO> toonDay(ToonVO toonVO)throws Exception;
 }
