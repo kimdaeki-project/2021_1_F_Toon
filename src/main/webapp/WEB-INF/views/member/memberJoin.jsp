@@ -21,7 +21,7 @@
 </head>
 <body>
 
-<form id="frm" action="./login"  method="post">
+<form:form id="joinForm" modelAttribute="memberVO" action="./join" method="post" enctype="multipart/form-data">
     <div class="page-container">
     
         <div class="login-form-container shadow">
@@ -30,19 +30,26 @@
          	
                 <div class="login-input-container">
                 	<h3 class="fas fa-user"> JOIN PAGE</h3>
+                	
                     <div class="login-input-wrap input-id">
                         <i class="far fa-envelope"></i>
-                        <input placeholder="Username" type="text" id="id" name="username" aria-describedby="idlHelp">
-                      
+                        <form:input placeholder="Username" type="text" id="id" path="username"></form:input>
+                      	<center><h5 id="idCheckResult"></h5></center>
+						<center><h5 id="idResult"></h5></center>
+						<form:errors path="username" class="c1"></form:errors>
                     </div>
+                    
                     <div class="login-input-wrap input-password">
                         <i class="fas fa-key"></i>
-                        <input placeholder="Password" type="password" id="pw" name="password">
+                        <input placeholder="Password" type="password" id="pw" path="password" />
+                        <center><h5 id="pwResult"></h5></center>
+						<form:errors path="password" class="c1"></form:errors>
                     </div>
                     
                      <div class="login-input-wrap input-password">
                         <i class="fas fa-key"></i>
-                        <input placeholder="Password" type="password" id="pw" name="password">
+                        <form:password placeholder="Password" id="pw2" path="password"/>
+                        <center><h5 id="pwResult2"></h5></center>
                     </div>
                     
                     <div class="login-input-wrap input-password">
@@ -97,38 +104,37 @@
             </div>
         </div>
     </div>
-	</form>
+	</form:form>
 
 
 
 	<div class="container mt-2">
 
-		<h2 class="mt-4">회원가입</h2>
 
 		<form:form id="joinForm" modelAttribute="memberVO" action="./join" method="post" enctype="multipart/form-data">
-			<div class="form-group">
-				<label for="id">ID</label> 
-				<form:input class="form-control" id="id" path="username"></form:input>
-				<h4 id="idCheckResult"></h4>
-				<h4 id="idResult"></h4>
-				<form:errors path="username" class="c1"></form:errors>
-				<!-- ID 는 6글자 이상 -->
-			</div>
+<!-- 			<div class="form-group"> -->
+<!-- 				<label for="id">ID</label>  -->
+<%-- 				<form:input class="form-control" id="id" path="username"></form:input> --%>
+<!-- 				<h4 id="idCheckResult"></h4> -->
+<!-- 				<h4 id="idResult"></h4> -->
+<%-- 				<form:errors path="username" class="c1"></form:errors> --%>
+<!-- 				ID 는 6글자 이상 -->
+<!-- 			</div> -->
 
-			<div class="form-group">
-				<label for="pw">Password</label> 
-				<input type="password" class="form-control" id="pw" path="password" />
-				<h4 id="pwResult"></h4>
-				<form:errors path="password" class="c1"></form:errors>
-				<!-- PW는 8글자 이상 -->
-			</div>
+<!-- 			<div class="form-group"> -->
+<!-- 				<label for="pw">Password</label>  -->
+<!-- 				<input type="password" class="form-control" id="pw" path="password" /> -->
+<!-- 				<h4 id="pwResult"></h4> -->
+<%-- 				<form:errors path="password" class="c1"></form:errors> --%>
+<!-- 				PW는 8글자 이상 -->
+<!-- 			</div> -->
 
-			<div class="form-group">
-				<label for="pw">Password 확인</label> 
-				<form:password class="form-control" id="pw2" path="password"/>
-				<h4 id="pwResult2"></h4>
-				<!-- PW 두개는 일치 -->
-			</div>
+<!-- 			<div class="form-group"> -->
+<!-- 				<label for="pw">Password 확인</label>  -->
+<%-- 				<form:password class="form-control" id="pw2" path="password"/> --%>
+<!-- 				<h4 id="pwResult2"></h4> -->
+<!-- 				PW 두개는 일치 -->
+<!-- 			</div> -->
 
 			<div class="form-group">
 				<label for="name">이름</label> 
