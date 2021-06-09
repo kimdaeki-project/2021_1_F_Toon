@@ -1,5 +1,6 @@
 package com.to.t1.member;
 
+import java.security.Principal;
 import java.util.Enumeration;
 import java.util.HashMap;
 import java.util.Map;
@@ -59,7 +60,7 @@ public class MemberController {
 	
 	@GetMapping("memberLoginResult")
 	public String memberLoginResult(HttpSession session, Authentication auth2)throws Exception{
-		
+		System.out.println("!!!!!!!!!!!!!!!!!!!!!");
 		//session의 속성명들 꺼내오기 
 		Enumeration<String> en = session.getAttributeNames();
 		
@@ -86,6 +87,7 @@ public class MemberController {
 		System.out.println("Principal : "+auth2.getPrincipal());
 		System.out.println("Authorities : "+auth2.getAuthorities());
 		System.out.println("===================================");
+		
 		
 		
 		System.out.println(obj);
@@ -115,8 +117,25 @@ public class MemberController {
 	}
 
 	@GetMapping("myPage") 
-	public void myPage()throws Exception{
+	public void myPage(MemberVO memberVO, HttpSession session, Authentication auth2)throws Exception{
+		
+		Enumeration<String> en = session.getAttributeNames();
+		
+		while(en.hasMoreElements()) {
+			System.out.println("Attribute Name : "+en.nextElement());
+		}
+		
+		//로그인 시 session의 속성명 : SPRING_SECURITY_CONTEXT
+		Object obj = session.getAttribute("SPRING_SECURITY_CONTEXT");
+		
+		SecurityContextImpl sc = (SecurityContextImpl)obj;
+		
+		Authentication auth= sc.getAuthentication();
+		
+		System.out.println("Z");
+		System.out.println(auth2.getPrincipal());
 	}
+
 
 	@PostMapping("getJoinFile") 
 	public void getJoinFile(MemberVO memberVO,Model model)throws Exception{

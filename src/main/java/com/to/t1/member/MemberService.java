@@ -41,9 +41,14 @@ public class MemberService implements UserDetailsService {
 		return memberVO;
 	}
 	
+	public JoinFileVO myPage(MemberVO memberVO)throws Exception{
+		return memberMapper.myPage(memberVO);
+	}
+	
 	public boolean memberError(MemberVO memberVO, Errors errors)throws Exception{
 		boolean result = false;
-		
+
+		System.out.println("앙앙앙앙앙");
 		result = errors.hasErrors();
 //		if(!memberVO.getPassword().equals(memberVO.getPassword1())) {
 //			errors.rejectValue("password1", "memberVO.password.notEqual");
