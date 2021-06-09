@@ -13,8 +13,8 @@
     <c:import url="../fragments/bootstrap.jsp"></c:import>
     
    <link rel="stylesheet" href="${pageContext.request.contextPath}/css/header.css">
-   <link rel="stylesheet" href="${pageContext.request.contextPath}/css/main.css">
-   <link rel="stylesheet" href="${pageContext.request.contextPath}/css/util.css">
+   <link rel="stylesheet" href="${pageContext.request.contextPath}/board/css/main.css">
+   <link rel="stylesheet" href="${pageContext.request.contextPath}/board/css/util.css">
    
 
 <!--===============================================================================================-->
@@ -137,7 +137,7 @@
    <a href="./insert" class="btn btn-secondary"  role="button">작성</a>
    </div>
   
-  <!--===============================================================================================-->	
+<!--===============================================================================================-->	
 	<script src="vendor/jquery/jquery-3.2.1.min.js"></script>
 <!--===============================================================================================-->
 	<script src="vendor/bootstrap/js/popper.js"></script>
@@ -146,11 +146,10 @@
 	<script src="vendor/select2/select2.min.js"></script>
 <!--===============================================================================================-->
 	<script src="vendor/perfect-scrollbar/perfect-scrollbar.min.js"></script>
-
 <!--===============================================================================================-->
 	<script src="js/main.js"></script>
-	
-	
+<!--===============================================================================================-->
+
 <script type="text/javascript">
 	let kind= '${pager.kind}';//Title, Writer, Contents
 	$(".sel").each(function() {
