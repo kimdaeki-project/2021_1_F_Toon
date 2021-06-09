@@ -73,33 +73,40 @@
             
                     <div class="login-input-wrap input-id">
                         <i class="far fa-id-badge"></i>
-                        <input placeholder="Username" type="text" id="id" name="username" aria-describedby="idlHelp">
-                       
+                        <form:input placeholder="NickName" type="text" id="nickname" path="nickname"/>
+                        <form:errors path="nickname" class="c1"></form:errors>
                     </div>
+      
                     <div class="login-input-wrap input-password">
                         <i class="fas fa-phone"></i>
-                        <input placeholder="Password" type="password" id="pw" name="password">
+                        <form:input placeholder="Phone" id="phone" path="phone"/>
+                        <form:errors path="phone" class="c1"></form:errors>
+                    </div>
+                        
+                    <div class="login-input-wrap input-password">
+                        <i class="fas fa-indent"></i>
+                        <form:input placeholder="E-mail" id="email" path="email"/> <button id = "CheckMail" type="button" class="sendMail" onclick="sendMail()" style="border: 1px solid blue;">Certification Number</button>
+                        <form:errors path="email" class="c1"></form:errors>
                     </div>
                     
                     <div class="login-input-wrap input-password">
                         <i class="fas fa-indent"></i>
-                        <input placeholder="Password" type="password" id="pw" name="password">
-                    </div>
-                    
-                    <div class="login-input-wrap input-password">
-                        <i class="fas fa-indent"></i>
-                        <input placeholder="Password" type="password" id="pw" name="password">
+                        <form:input placeholder="Certification Number"  id="emailNum" type="text"  path="emailNum"/>
+                        <button type="button" class="emailCheck"  onclick="emailCheck()" style="border: 1px solid blUE;">Authentication Check</button> 
+           				<form:errors path="emailNum" class="c1"></form:errors>    
                     </div>
                    
                     <div class="login-input-wrap input-password">
                         <i class="fas fa-file"></i>
-                        <input placeholder="Password" type="password" id="pw" name="password">
+                        <input type="file" placeholder="Photo Registration(Selection)"  id="avatar" name="avatar" >
                     </div>
                     
+			</div>
+                    
                    <div class="login-btn-wrap">
-                		<button type="submit" class="login-btn">Login</button>
+                		<input type="button" value="JOIN" class="login-btn" id="join_btn">	
                 	</div>
- 
+	
                 </div>  
             </div>
         </div>
@@ -108,10 +115,10 @@
 
 
 
-	<div class="container mt-2">
+<!-- 	<div class="container mt-2"> -->
 
 
-		<form:form id="joinForm" modelAttribute="memberVO" action="./join" method="post" enctype="multipart/form-data">
+<%-- 		<form:form id="joinForm" modelAttribute="memberVO" action="./join" method="post" enctype="multipart/form-data"> --%>
 <!-- 			<div class="form-group"> -->
 <!-- 				<label for="id">ID</label>  -->
 <%-- 				<form:input class="form-control" id="id" path="username"></form:input> --%>
@@ -142,42 +149,42 @@
 <%-- 				<form:errors path="name" class="c1"></form:errors> --%>
 <!-- 			</div> -->
 
-			<div class="form-group">
-				<label for="nickname">닉네임</label> 
-				<form:input class="form-control etc" id="nickname" path="nickname"/>
-				 <form:errors path="nickname" class="c1"></form:errors>
-			</div>
+<!-- 			<div class="form-group"> -->
+<!-- 				<label for="nickname">닉네임</label>  -->
+<%-- 				<form:input class="form-control etc" id="nickname" path="nickname"/> --%>
+<%-- 				 <form:errors path="nickname" class="c1"></form:errors> --%>
+<!-- 			</div> -->
 
+<!-- 			<div class="form-group"> -->
+<!-- 				<label for="phone">Phone</label>  -->
+<%-- 				<form:input class="form-control etc" id="phone" path="phone" placeholder="- 제외 하고 입력하세요"/> --%>
+<%-- 				 <form:errors path="phone" class="c1"></form:errors> --%>
+<!-- 			</div> -->
 
-			<div class="form-group">
-				<label for="phone">Phone</label> 
-				<form:input class="form-control etc" id="phone" path="phone" placeholder="- 제외 하고 입력하세요"/>
-				 <form:errors path="phone" class="c1"></form:errors>
-			</div>
-
-			<div class="form-group">
-            <label for="email">이메일</label> 
-            <form:input class="form-control" id="email" path="email"/>
-            <button id = "CheckMail" type="button" class="sendMail" onclick="sendMail()" style="border: 1px solid black;">인증번호받기</button>                               
-            <form:errors path="email" class="c1"></form:errors>
+<!-- 			<div class="form-group"> -->
+<!--             <label for="email">이메일</label>  -->
+<%--             <form:input class="form-control" id="email" path="email"/> --%>
+<!--             <button id = "CheckMail" type="button" class="sendMail" onclick="sendMail()" style="border: 1px solid black;">인증번호받기</button>                                -->
+<%--             <form:errors path="email" class="c1"></form:errors> --%>
             
-           <div class="form-group">
-            <label for="emailNum">인증번호</label><br>
-            <form:input id="emailNum" type="text"  path="emailNum"/>
-            <button type="button" class="emailCheck"  onclick="emailCheck()" style="border: 1px solid black;">인증확인</button> 
-            <form:errors path="emailNum" class="c1"></form:errors>                                                            
+<!--            <div class="form-group"> -->
+<!--             <label for="emailNum">인증번호</label><br> -->
+<%--             <form:input id="emailNum" type="text"  path="emailNum"/> --%>
+<!--             <button type="button" class="emailCheck"  onclick="emailCheck()" style="border: 1px solid black;">인증확인</button>  -->
+<%--             <form:errors path="emailNum" class="c1"></form:errors>                                                             --%>
            
-            <!-- 비어 있으면 X -->
-         </div>
-			<div class="form-group">
-				<label for="avatar">사진 등록(선택)</label> 
-				<input type="file" class="form-control etc" id="avatar" name="avatar">
-			</div>
+<!--             비어 있으면 X -->
+<!--          </div> -->
+         
+<!-- 			<div class="form-group"> -->
+<!-- 				<label for="avatar">사진 등록(선택)</label>  -->
+<!-- 				<input type="file" class="form-control etc" id="avatar" name="avatar"> -->
+<!-- 			</div> -->
 			
-				<input type="button" value="JOIN" id="join_btn" class="btn btn-primary">		
-		</form:form>
+<!-- 				<input type="button" value="JOIN" id="join_btn" class="btn btn-primary">		 -->
+<%-- 		</form:form> --%>
 
-	</div>
+<!-- 	</div> -->
 	
 	<script src="js/jquery-2.2.4.min.js"></script>
 	<script src="js/popper.js"></script>
