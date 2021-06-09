@@ -66,7 +66,7 @@
     align-items: center;
     color: white;
     background-image: 
-  radial-gradient(ellipse farthest-corner at 0 140%, rgb(255, 255, 255) 0%, (255, 255, 255)0%, #3585ff 70%);
+  radial-gradient(ellipse farthest-corner at 0 140%, rgb(255, 255, 255) 0%, (255, 255, 255)0%, rgb(255, 255, 255) 70%);
 }
 
 .login-form-right-side h1{
@@ -91,7 +91,7 @@
     align-items: center;
     padding:40px;
     background: rgb(255,255,255);
-background: linear-gradient(287deg, rgba(255,255,255,1) 0%, rgba(243,244,0,1) 0%, rgba(255,255,255,1) 100%);
+background: linear-gradient(287deg, rgba(255,255,255,1) 0%, rgb(255, 255, 255) 0%, rgba(255,255,255,1) 100%);
 }
 .login-form-left-side .login-top-wrap{
     display: flex;

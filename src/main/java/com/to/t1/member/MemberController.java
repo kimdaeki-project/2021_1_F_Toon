@@ -106,7 +106,7 @@ public class MemberController {
 //		return "redirect:/";
 //	}
 
-	@GetMapping("logout")
+	//@GetMapping("logout")
 	public String logout(HttpSession session)throws Exception{
 
 		session.invalidate();
@@ -244,7 +244,7 @@ public class MemberController {
 			
 		}
 		mv.addObject("msg", message);
-		mv.addObject("path", path);
+		mv.addObject("path", "./logout");
 		mv.setViewName("common/commonResult");
 		return mv;
 	}
