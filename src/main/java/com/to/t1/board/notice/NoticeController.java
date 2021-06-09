@@ -64,7 +64,7 @@ public class NoticeController {
 	@PostMapping("summerFileUpload")
 	public ModelAndView setSummerFileUpload(MultipartFile file)throws Exception{
 		ModelAndView mv = new ModelAndView();
-		System.out.println("썸머 파일 업로드");
+		System.out.println("썸머 notice 파일 업로드");
 		System.out.println(file.getOriginalFilename());
 		String fileName = noticeService.setSummerFileUpload(file);
 		fileName = "../upload/notice/"+fileName;

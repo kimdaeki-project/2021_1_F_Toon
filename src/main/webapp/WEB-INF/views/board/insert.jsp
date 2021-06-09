@@ -14,15 +14,15 @@
     
     <style type="text/css">
      .back {
-    	background-image: url('../images/toon-notice5.PNG');
-    	background-size : 3000px;
+
     	border-style: solid;
     	border-color: #98DFFF;
      }
      #frm {
-     	background-color: #F9FFFF;
+     	background-color: #F7F7F7;
      	border-style: solid;
-     	border-color: #98DFFF;
+     	border-color: #b4b4b4;
+     	border-radius: 15px 15px 15px 15px;
      }
   
     
@@ -44,42 +44,45 @@
 </head>
 <body>
 	<c:import url="../fragments/header.jsp"></c:import>
-<div class="back">
+
 	<div class="container"><br>
-	<h2><p><span style="border-radius: 15px 15px 15px 0; border: 3px solid #98DFFF; 
-		padding: 0.5em 0.6em; color: black; background-color:#EBFBFF; ">공지사항/작성</span></p></h2><br>
+	<h2>
+			<p>
+				<span
+					style="border-radius: 15px 15px 15px 15px; border: 3px solid #b4b4b4; padding: 0.5em 0.6em; color: black; background-color: #dcdcdc;">공지사항/작성</span>
+			</p>
+		</h2><br>
 		<form id="frm" action="./insert" method="post" enctype="multipart/form-data">
 	
 			<div class="form-group">
-				<label for="noticeKinds">공지종류</label> <input type="text"
+				<label for="noticeKinds">&nbsp;공지종류</label> <input type="text"
 					class="form-control myCheck" id="noticeKinds" name="noticeKinds">
 			</div>
 	
 			<div class="form-group">
-				<label for="username">작성자</label> <input type="text"
+				<label for="username">&nbsp;작성자</label> <input type="text"
 					readonly="readonly" value="${member.username}"
 					class="form-control myCheck" id="username" name="username">
 			</div>
 			<div class="form-group">
-				<label for="noticeTitle">제목</label> <input type="text"
+				<label for="noticeTitle">&nbsp;제목</label> <input type="text"
 					class="form-control myCheck" id="noticeTitle" name="noticeTitle">
 			</div>
 
 			<div class="form-group">
-				<label for="noticeContents">내용</label>
+				<label for="noticeContents">&nbsp;내용</label>
 				<textarea class="form-control myCheck" rows="5" id="noticeContents"
 					name="noticeContents"></textarea>
 			</div>
 
-			<input type="button" id="add" value="파일추가" class="btn btn-secondary"><br>
+			&nbsp;&nbsp;<input type="button" id="add" value="파일추가" class="btn btn-secondary"><br>
 			
 			<div id="files" title="0"></div><br>
 
-			<input type="button" id="btn" value="등록" class="btn btn-secondary">
+			&nbsp;&nbsp;<input type="button" id="btn" value="등록" class="btn btn-secondary">
 		</form>
 	</div>
 	
-	</div> <!-- 작성란까지 css 일단 파일부분이 안나와서 뺴고나옴 -->
 	<div id="sample">
 		<div class="input-group">
 			<div class="custom-file">
@@ -93,10 +96,10 @@
 		</div>
 	</div>
 
-
+	<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
 	<script type="text/javascript" src="../js/board/boardInsert.js"></script>
 	<script type="text/javascript" src="../js/board/fileAdd.js"></script>
 	<script type="text/javascript" src="../js/board/summerFile.js"></script>
-	
+	<c:import url="../fragments/footer.jsp"></c:import>
 </body>
 </html>

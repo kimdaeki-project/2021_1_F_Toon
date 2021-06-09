@@ -23,17 +23,19 @@
      }
      .select {
      	text-align: center;
-     	background-color: #FFFF96;
+     	background-color: #F7F7F7;
      	border-style: solid;
-     	border-color: #FFE150;
+     	border-color: #b4b4b4;
+     	border-radius: 15px 15px 15px 15px;
      }
      .featurette-divider {
      	background-color : #3c3c3c;
      }
      #file1 {
-     	background-color : #F0FFF0;
+     	background-color: #dcdcdc;
      	border-style: solid;
-     	border-color: #FFE150;
+     	border-color: #b4b4b4;
+     	border-radius: 15px 15px 15px 15px;
      }
      
     </style>
@@ -43,10 +45,14 @@
 </head>
 <body>
 <c:import url="../fragments/header.jsp"></c:import>
-<div class="back">
+
 <div class="container"><br>
-	<h2><p><span style="border-radius: 15px 15px 15px 0; border: 3px solid #FFE150; 
-		padding: 0.5em 0.6em; color: black; background-color:#FFFF96; ">질 문</span></p></h2><br>
+	<h2>
+		<p>
+				<span
+					style="border-radius: 15px 15px 15px 15px; border: 3px solid #b4b4b4; padding: 0.5em 0.6em; color: black; background-color: #dcdcdc;">질의응답/내용</span>
+			</p>
+		</h2><br>
 	<table class="table">
 		<thead>
 			<tr style="text-align: center;">
@@ -75,20 +81,18 @@
 	</c:forEach>
 	</div>
 	
-	<a href="./qnaUpdate?boNum=${vo.boNum}" class="btn btn-warning">수정</a>
-	<a href="#" id="del" class="btn btn-warning">삭제</a>
+	<a href="./qnaUpdate?boNum=${vo.boNum}" class="btn btn-secondary">수정</a>
 	
+	<a href="#" id="del" class="btn btn-secondary">삭제</a>
 	
-	
-	<a href="./reply?boNum=${vo.boNum}" class="btn btn-warning">답변</a>
-	
+	<a href="./reply?boNum=${vo.boNum}" class="btn btn-secondary">답변</a>
 	
 	<form action="./delete" id="frm" method="get">
 		<input type="hidden" name="boNum" value="${vo.boNum}">
 	</form>
 	</div>
 
-</div>
+
 
 <script type="text/javascript" src="../resources/js/board/comments.js"></script>
 <script type="text/javascript">
@@ -106,6 +110,6 @@
 		}
 	});
 </script>
-
+<c:import url="../fragments/footer.jsp"></c:import>
 </body>
 </html>

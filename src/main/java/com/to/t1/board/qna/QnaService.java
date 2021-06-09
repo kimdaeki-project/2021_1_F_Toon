@@ -3,6 +3,8 @@ package com.to.t1.board.qna;
 import java.sql.SQLException;
 import java.util.List;
 
+import javax.servlet.http.HttpSession;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -11,6 +13,7 @@ import org.springframework.web.multipart.MultipartFile;
 import com.to.t1.board.BoardFileVO;
 import com.to.t1.board.BoardService;
 import com.to.t1.board.BoardVO;
+import com.to.t1.util.BoFileManager;
 import com.to.t1.util.FileManager;
 import com.to.t1.util.Pager;
 @Service
@@ -20,6 +23,7 @@ public class QnaService implements BoardService{
 	private QnaMapper qnaMapper;
 	@Autowired
 	private FileManager fileManager;
+
 	
 	@Override
 	public List<BoardVO> getList(Pager pager) throws Exception {
@@ -81,11 +85,7 @@ public class QnaService implements BoardService{
 	@Transactional(rollbackFor = Exception.class)
 	public int setReplyInsert(BoardVO boardVO, MultipartFile [] files)throws Exception{
 		//boardVO.num = 부모의 글번호
-		System.out.println(boardVO.getQnaTitle());
-		System.out.println(boardVO.getQnaContents());
-		System.out.println(boardVO.getUsername());
-		System.out.println(boardVO.getBoNum());
-		System.out.println("----여기까지 확인-------");
+		
 		//1. step update
 		int result = qnaMapper.setReplyUpdate(boardVO);
 		
@@ -112,10 +112,36 @@ public class QnaService implements BoardService{
 		}
 		return result;
 	}
+	
+	@Autowired
+	private BoFileManager boFileManager;
+	@Autowired
+	private HttpSession session;
+	
 	@Override
 	public int setFileDelete(BoardFileVO boardFileVO) throws Exception {
 		// TODO Auto-generated method stub
-		return 0;
+		boardFileVO = qnaMapper.getFileSelect(boardFileVO);
+		//2. table 삭제
+		int result = qnaMapper.setFileDelete(boardFileVO);
+		//3. HDD 삭제
+		if(result > 0) {
+			boFileManager.delete("qna", boardFileVO.getFileName(), session);
+		}
+		return result;
+	}
+	
+	@Override
+	public boolean setSummerFileDelete(String fileName) throws Exception {
+		boolean result = boFileManager.delete("qna", fileName, session);
+		return result;
+	}
+	
+	@Override
+	public String setSummerFileUpload(MultipartFile file)throws Exception{
+		
+		String fileName = boFileManager.save("qna", file, session);
+		return fileName;
 	}
 	
 

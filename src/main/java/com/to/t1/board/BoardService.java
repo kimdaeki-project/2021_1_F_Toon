@@ -20,6 +20,10 @@ public interface BoardService {
 
 	public int setFileDelete(BoardFileVO boardFileVO)throws Exception;
 
+	public String setSummerFileUpload(MultipartFile file)throws Exception;
+	
+	public boolean setSummerFileDelete(String fileName) throws Exception;
+	
 }
 	
 

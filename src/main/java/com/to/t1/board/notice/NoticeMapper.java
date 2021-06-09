@@ -8,7 +8,5 @@ import com.to.t1.board.BoardMapper;
 @Mapper
 public interface NoticeMapper extends BoardMapper {
 
-	public BoardFileVO getFileSelect(BoardFileVO boardFileVO)throws Exception;
 
-	
 }
