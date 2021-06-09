@@ -47,7 +47,7 @@
 						</small>
                     </div>
                     <div class="login-input-wrap input-password">
-                        <i class="fas fa-key"></i>
+                        <i class="fas fa-phone"></i>
                         <input placeholder="Phone Number" type="text" id="phone" name="phone">
                     </div>
                      <small id="idlHelp" class="form-text text-muted">

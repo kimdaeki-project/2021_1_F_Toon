@@ -114,7 +114,7 @@
 	<!-- 이렇게 해서 값 넘김 알지 저건? URL 주소뒤에 값 넘기는거 업데이트도 똑같이 하면될듯 ㅇㅈ? -->
 	
 	<sec:authorize access="isAuthenticated()">
-		<a href="./memberUpdate" class="btn btn-info" role="button">내 정보 수정</a>
+		<a href="./memberUpdate" class="btn btn-info" role="button" onclick="if(!confirm('내 정보를 수정 하시겠습니까?')){return false;}">내 정보 수정</a>
 		<a href="./memberDelete?username=<sec:authentication property="principal.username"/>" class="btn btn-danger" id="sunghyun" role="button" onclick="if(!confirm('정말 탈퇴 하시겠습니까?')){return false;}">회원 탈퇴</a>
 	</sec:authorize>
 	</p>
@@ -126,6 +126,7 @@
            
               </div>
             </div>
+      </div>
       </div>
     </div>
     <script src="../assets/vendors/js/core.js"></script>

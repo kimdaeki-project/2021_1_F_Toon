@@ -107,7 +107,7 @@ public class MemberService implements UserDetailsService {
 	}
 
 	public int memberDelete(String username, HttpSession session, MemberVO memberVO)throws Exception{
-		JoinFileVO joinFileVO = memberMapper.getJoinFile(username, memberVO);
+		JoinFileVO joinFileVO = memberMapper.getJoinFile(memberVO);
 		System.out.println("!!!!!!!!!!!!!!!!!");
 		
 		if(joinFileVO == null) {
@@ -136,8 +136,8 @@ public class MemberService implements UserDetailsService {
 		return memberMapper.pwUpdate(memberVO);
 	}
 	
-	public JoinFileVO myPage(MemberVO memberVO)throws Exception{
-		return memberMapper.myPage(memberVO);
+	public JoinFileVO getJoinFile(MemberVO memberVO)throws Exception{
+		return memberMapper.getJoinFile(memberVO);
 	}
 	
 }

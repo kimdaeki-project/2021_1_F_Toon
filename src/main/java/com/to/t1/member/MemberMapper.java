@@ -13,7 +13,7 @@ public interface MemberMapper {
 	
 	public int setJoinFile(JoinFileVO joinFileVO)throws Exception;
 	
-	public JoinFileVO getJoinFile(String username, MemberVO memberVO)throws Exception;
+	public JoinFileVO getJoinFile(MemberVO memberVO)throws Exception;
 	
 	public MemberVO getLogin(MemberVO memberVO);
 	
@@ -31,6 +31,5 @@ public interface MemberMapper {
 	
 	public int setMemberRole(Map<String, String> map)throws Exception;
 	
-	public JoinFileVO myPage(MemberVO memberVO)throws Exception;
 
 }

@@ -118,9 +118,9 @@ public class MemberController {
 	public void myPage()throws Exception{
 	}
 
-	@PostMapping("myPage") 
-	public void myPage(MemberVO memberVO,Model model)throws Exception{
-		
+	@PostMapping("getJoinFile") 
+	public void getJoinFile(MemberVO memberVO,Model model)throws Exception{
+		model.addAttribute("pic", "pic");
 	}
 	
 	@GetMapping("searchId") 

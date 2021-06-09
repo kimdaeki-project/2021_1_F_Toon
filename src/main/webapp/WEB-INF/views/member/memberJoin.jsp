@@ -11,26 +11,96 @@
 
 <c:import url="../fragments/bootstrap.jsp"></c:import>
 <title>회원가입</title>
-
+<link rel="stylesheet" href="style.css">
+<script src="https://kit.fontawesome.com/51db22a717.js" crossorigin="anonymous"></script>
+<link href="https://fonts.googleapis.com/css2?family=Alata&display=swap" rel="stylesheet">
+<c:import url="../fragments/bootstrap.jsp"></c:import>
 <link rel="stylesheet" href="/css/header.css">
-
-<style type="text/css">
-.r1 {
-	color: red;
-}
-
-.r2 {
-	color: blue;
-}
-
-.c1 {
-	color:red;
-}
-</style>
+<link rel="stylesheet" href="/css/join.css">
 
 </head>
 <body>
-	<c:import url="../fragments/header.jsp"></c:import>
+
+<form id="frm" action="./login"  method="post">
+    <div class="page-container">
+    
+        <div class="login-form-container shadow">
+        
+            <div class="login-form-right-side">
+         	
+                <div class="login-input-container">
+                	<h3 class="fas fa-user"> JOIN PAGE</h3>
+                    <div class="login-input-wrap input-id">
+                        <i class="far fa-envelope"></i>
+                        <input placeholder="Username" type="text" id="id" name="username" aria-describedby="idlHelp">
+                      
+                    </div>
+                    <div class="login-input-wrap input-password">
+                        <i class="fas fa-key"></i>
+                        <input placeholder="Password" type="password" id="pw" name="password">
+                    </div>
+                    
+                     <div class="login-input-wrap input-password">
+                        <i class="fas fa-key"></i>
+                        <input placeholder="Password" type="password" id="pw" name="password">
+                    </div>
+                    
+                    <div class="login-input-wrap input-password">
+                        <i class="fas fa-user-circle"></i>
+                        <input placeholder="Password" type="password" id="pw" name="password">
+                    </div>
+					
+                    
+                </div>
+                <p>.</p>
+                <P></P>
+            </div>
+            
+            <div class="login-form-left-side">
+            	
+<!--                 <div class="login-top-wrap"> -->
+                
+<!--                 </div> -->
+              
+                <div class="login-input-container">
+            
+                    <div class="login-input-wrap input-id">
+                        <i class="far fa-id-badge"></i>
+                        <input placeholder="Username" type="text" id="id" name="username" aria-describedby="idlHelp">
+                       
+                    </div>
+                    <div class="login-input-wrap input-password">
+                        <i class="fas fa-phone"></i>
+                        <input placeholder="Password" type="password" id="pw" name="password">
+                    </div>
+                    
+                    <div class="login-input-wrap input-password">
+                        <i class="fas fa-indent"></i>
+                        <input placeholder="Password" type="password" id="pw" name="password">
+                    </div>
+                    
+                    <div class="login-input-wrap input-password">
+                        <i class="fas fa-indent"></i>
+                        <input placeholder="Password" type="password" id="pw" name="password">
+                    </div>
+                   
+                    <div class="login-input-wrap input-password">
+                        <i class="fas fa-file"></i>
+                        <input placeholder="Password" type="password" id="pw" name="password">
+                    </div>
+                    
+                   <div class="login-btn-wrap">
+                		<button type="submit" class="login-btn">Login</button>
+                	</div>
+ 
+                </div>  
+            </div>
+        </div>
+    </div>
+	</form>
+
+
+
 	<div class="container mt-2">
 
 		<h2 class="mt-4">회원가입</h2>
@@ -106,7 +176,6 @@
 	<script src="js/jquery-2.2.4.min.js"></script>
 	<script src="js/popper.js"></script>
 	<script src="js/bootstrap.min.js"></script>
-
 	<script src="js/stellar.js"></script>
 	<script src="js/jquery.magnific-popup.min.js"></script>
 	<script src="js/jquery.ajaxchimp.min.js"></script>
