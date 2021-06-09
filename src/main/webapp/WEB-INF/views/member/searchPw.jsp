@@ -26,7 +26,7 @@
                 <div class="top-logo-wrap">
                     
                 </div>
-                <h1>Do you want to retrieve your password?</h1>
+                <h1>Do you want to reset your password?</h1>
                 <p>In computer security, logging in is the process by which an individual gains access to a computer system by identifying and authenticating themselves.</p>
             </div>
             <div class="login-form-left-side">
@@ -41,7 +41,7 @@
                 <div class="login-input-container">
                     <div class="login-input-wrap input-id">
                         <i class="far fa-envelope"></i>
-                        <input placeholder="UserID" type="text" id="username" name="username" aria-describedby="idlHelp">
+                        <input placeholder="Username" type="text" id="username" name="username" aria-describedby="idlHelp">
                         <small id="idlHelp"	class="form-text text-muted">
 							We'll never share your email with anyone else.
 						</small>
@@ -56,11 +56,42 @@
                     
                 </div>
                 <div class="login-btn-wrap">
-                    <input type="submit" id="btn" value="Reset password" class="btn btn-primary" >
+                    <input type="button" id="btn" value="Reset password" class="btn btn-primary" >
                     <a href="/member/memberJoinCheck">Sign Up</a>
                 </div>
             </div>
         </div>
     </div>
+</form>
+
+	<script type="text/javascript">
+		$("#btn").click(function() {
+
+			var username = $("#username").val();
+			var phone = $("#phone").val();
+			if (phone == "" || username == "") {
+				swal("정보를 입력해주시기 바랍니다.", "You clicked the button!", "warning");
+			} else {
+				$.ajax({
+					type : 'POST',
+					url : 'searchPw',
+					data : {
+						phone : phone, //주는사람
+						username : username,
+					},
+
+					dataType : 'text',
+					success : function(data) {
+						msg = data;
+						swal(msg);
+						message = $("message").val("principal.password");
+					}
+
+				})
+			}
+
+		})
+	</script>
+	<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>    
 </body>
 </html>

@@ -21,8 +21,6 @@
 	
 </head>
 <body>
-
-	<form id="frm" action="./searchId"  method="post">
     <div class="page-container">
         <div class="login-form-container shadow">
             <div class="login-form-right-side">
@@ -47,7 +45,7 @@
                         <i class="far fa-envelope"></i>
                         <input placeholder="NAME" type="text" id="name" name="name" aria-describedby="idlHelp">
                         <small id="idlHelp"	class="form-text text-muted">
-							We'll never share your email with anyone else.
+							회원의 이름을 정확하게 입력하세요.
 						</small>
                     </div>
                     <div class="login-input-wrap input-password">
@@ -55,18 +53,49 @@
                         <input placeholder="Phone Number" id="phone" name="phone">
                     </div>
                     <small id="idlHelp"	class="form-text text-muted">
-							- 를 제외하고 입력하세요
+							- 를 제외하고 입력하세요.
 					</small>
                     
                 </div>
                 <div class="login-btn-wrap">
-                	<input type="submit" id="btn" value="Search Id" class="btn btn-primary" >
+                	<input type="button" id="btn" value="Search Id" class="btn btn-primary" >
                     <a href="/member/searchPw" >Forgot password?</a> <a href="/member/memberJoinCheck">Sign Up</a>
                 </div>
             </div>
         </div>
     </div>
-	</form>
 
+	
+<script type="text/javascript">
+
+	$("#btn").click(function() {
+		var name = $("#name").val();
+		var phone = $("#phone").val();
+		if (phone == "" || name == "") {
+			swal("정보를 입력해주시기 바랍니다.", "You clicked the button!", "warning");
+		} else {
+			$.ajax({
+				type : 'POST',
+				url : 'searchId',
+				data : {
+					phone : phone, //주는사람
+					name : name,
+				},
+
+				dataType : 'text',
+				success : function(data) {
+
+					msg = data;
+					swal(msg);
+					message = $("message").val("principal.username");
+
+				}
+
+			})
+		}
+
+	})
+</script>
+<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
 </body>
 </html>

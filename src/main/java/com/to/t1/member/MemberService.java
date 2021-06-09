@@ -105,21 +105,18 @@ public class MemberService implements UserDetailsService {
 	public int memberUpdate(MemberVO memberVO)throws Exception{
 		return memberMapper.memberUpdate(memberVO);
 	}
-	
-//	public int memberDelete(MemberVO memberVO)throws Exception{
-//		return memberMapper.memberDelete(memberVO);
-//	}
-	
+
 	public int memberDelete(String username, HttpSession session, MemberVO memberVO)throws Exception{
 		JoinFileVO joinFileVO = memberMapper.getJoinFile(username, memberVO);
 		System.out.println("!!!!!!!!!!!!!!!!!");
-		//사진이 없는데 사진을 지울려니깐 안되는거같은데
+		
 		if(joinFileVO == null) {
 			
 		}else {
 			boolean check = fileManager.delete("member", joinFileVO.getFileName(), session);
 		}
 		//이게없음 그러니깐 쿼리를 타도 안되지
+		
 //		System.out.println(memberVO.getUsername());
 		return memberMapper.memberDelete(username);
 	}

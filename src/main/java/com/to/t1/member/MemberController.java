@@ -40,7 +40,7 @@ public class MemberController {
 
 	@GetMapping("login")
 	public String getLogin()throws Exception{
-		System.out.println("ㄴㅅㅄㅇㅈㄴㄹㅈㄷㄹㄴㅇㄻㅂㄷㄱㄹㅇ");
+		System.out.println("로그인");
 		return "member/memberLogin";
 	}
 	
@@ -123,32 +123,28 @@ public class MemberController {
 		
 	}
 	
-	@RequestMapping("searchId") 
+	@GetMapping("searchId") 
 	public void searchId()throws Exception{
 	}
 
 	@PostMapping("searchId")
+    @ResponseBody
 	public String searchId(MemberVO memberVO,Model model)throws Exception{
 		memberVO = memberService.searchId(memberVO);
 
 		String message = "이름과 핸드폰 불일치";
-		String messageType = "N";
 
-		if(memberVO.getUsername() == null) {
+		if(memberVO == null) {
 			message="이름과 핸드폰 불일치";
-			messageType="Y";
+			
 		} else {
 			message="회원님의 아이디는 " + memberVO.getUsername()+" 입니다.";
-			messageType="Y";
 		}
 
 		model.addAttribute("msg", message);
-		model.addAttribute("messageType", messageType);
-
-		System.out.println(memberVO.getUsername());
 		System.out.println(message);
 
-		return "member/memberLogin";
+		return message;
 	}
 
 	@GetMapping("memberIdCheck")
@@ -163,32 +159,30 @@ public class MemberController {
 		return "common/ajaxResult";
 	}
 
-	@RequestMapping("searchPw") 
+	@GetMapping("searchPw") 
 	public void searchPw()throws Exception{
 	}
 
 	@PostMapping("searchPw")
+    @ResponseBody
 	public String searchPw(MemberVO memberVO,Model model)throws Exception{
 		
 		MemberVO memberVO2 = memberService.searchPw(memberVO);
 		String message = "아이디와 핸드폰 불일치";
-		String messageType = "N";
 
-		if(memberVO2.getPassword() == null) {
+		if(memberVO2 == null) {
 			message="아이디와 핸드폰 불일치";
-			messageType="Y";
+			
 		} else {
 			memberVO.setPassword("0000");
 			int result = memberService.pwUpdate(memberVO);
 	
 			message="회원님의 비밀번호는 (0000)"+memberVO.getPassword()+" 으로 초기화 되었습니다.";
-			messageType="Y";
 		}
 
 		model.addAttribute("msg", message);
-		model.addAttribute("messageType", messageType);
 
-		return "member/memberLogin";
+		return message;
 	}
 
 
