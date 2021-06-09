@@ -34,16 +34,20 @@
                     <div class="login-input-wrap input-id">
                         <i class="far fa-envelope"></i>
                         <form:input placeholder="Username" type="text" id="id" path="username"></form:input>
+                        <br>
+                        <form:errors path="username" class="c1"></form:errors>
                       	<center><h5 id="idCheckResult"></h5></center>
 						<center><h5 id="idResult"></h5></center>
-						<form:errors path="username" class="c1"></form:errors>
+						
                     </div>
                     
                     <div class="login-input-wrap input-password">
                         <i class="fas fa-key"></i>
                         <input placeholder="Password" type="password" id="pw" path="password" />
+                        <br>
+                        <form:errors path="password" class="c1"></form:errors>
                         <center><h5 id="pwResult"></h5></center>
-						<form:errors path="password" class="c1"></form:errors>
+						
                     </div>
                     
                      <div class="login-input-wrap input-password">
@@ -55,6 +59,7 @@
                     <div class="login-input-wrap input-password">
                         <i class="fas fa-user-circle"></i>
                         <form:input placeholder="name" id="name" path="name"/>
+                        <br>
                         <form:errors path="name" class="c1"></form:errors>
                     </div>	
                     
@@ -69,30 +74,32 @@
                 
 <!--                 </div> -->
               
-                <div class="login-input-container">
+                <div class="login-input-container" style="padding-top: 90px;">
             
                     <div class="login-input-wrap input-id">
                         <i class="far fa-id-badge"></i>
                         <form:input placeholder="NickName" type="text" id="nickname" path="nickname"/>
+                        <br>
                         <form:errors path="nickname" class="c1"></form:errors>
                     </div>
       
                     <div class="login-input-wrap input-password">
                         <i class="fas fa-phone"></i>
                         <form:input placeholder="Phone" id="phone" path="phone"/>
+                        <br>
                         <form:errors path="phone" class="c1"></form:errors>
                     </div>
                         
                     <div class="login-input-wrap input-password">
                         <i class="fas fa-indent"></i>
-                        <form:input placeholder="E-mail" id="email" path="email"/> <button id = "CheckMail" type="button" class="sendMail" onclick="sendMail()" style="border: 1px solid blue;">Certification Number</button>
+                        <form:input placeholder="E-mail" id="email" path="email"/> <button id = "CheckMail" type="button" class="sendMail" onclick="sendMail()"style="border: 1px solid blue;float: right;width: 50px;">전송</button>
                         <form:errors path="email" class="c1"></form:errors>
                     </div>
                     
                     <div class="login-input-wrap input-password">
                         <i class="fas fa-indent"></i>
                         <form:input placeholder="Certification Number"  id="emailNum" type="text"  path="emailNum"/>
-                        <button type="button" class="emailCheck"  onclick="emailCheck()" style="border: 1px solid blUE;" >Authentication Check</button> 
+                        <button type="button" class="emailCheck"  onclick="emailCheck()" style="border: 1px solid blue;float: right;width: 50px;">인증</button> 
            				<form:errors path="emailNum" class="c1"></form:errors>    
                     </div>
                    
@@ -104,7 +111,7 @@
 			</div>
                     
                    <div class="login-btn-wrap">
-                		<input type="button" value="JOIN" class="login-btn" id="join_btn">	
+                		<input type="button" value="JOIN" class="login-btn" id="join_btn" style="margin-top: 13px;">	
                 	</div>
 	
                 </div>  

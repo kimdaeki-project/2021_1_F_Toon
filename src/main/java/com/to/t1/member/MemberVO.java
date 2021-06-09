@@ -21,11 +21,10 @@ import lombok.Data;
 public class MemberVO implements UserDetails {
 	
 
-	@Size(min=6, max=15, message ="아이디는 6글자에서 15글자 사이로 입력하세요")
+	
 	@NotEmpty
 	private String username;
 
-	@Size(min=8, max=15, message ="비밀번호는 8글자에서 15글자 사이로 입력하세요")
 	@NotEmpty
 	private String password;
 	
