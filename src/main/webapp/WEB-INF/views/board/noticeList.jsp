@@ -13,20 +13,20 @@
     <c:import url="../fragments/bootstrap.jsp"></c:import>
     
    <link rel="stylesheet" href="${pageContext.request.contextPath}/css/header.css">
-   <link rel="stylesheet" href="${pageContext.request.contextPath}/board/css/main.css">
+   <link rel="stylesheet" href="${pageContext.request.contextPath}/css/board/main.css">
    <link rel="stylesheet" href="${pageContext.request.contextPath}/board/css/util.css">
    
 
 <!--===============================================================================================-->
-	<link rel="stylesheet" type="text/css" href="vendor/bootstrap/css/bootstrap.min.css">
+	<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/board/bootstrap.min.css">
 <!--===============================================================================================-->
-	<link rel="stylesheet" type="text/css" href="fonts/font-awesome-4.7.0/css/font-awesome.min.css">
+	<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/board/font-awesome.min.css">
 <!--===============================================================================================-->
-	<link rel="stylesheet" type="text/css" href="vendor/animate/animate.css">
+	<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/board/animate.css">
 <!--===============================================================================================-->
-	<link rel="stylesheet" type="text/css" href="vendor/select2/select2.min.css">
+	<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/board/select2.min.css">
 <!--===============================================================================================-->
-	<link rel="stylesheet" type="text/css" href="vendor/perfect-scrollbar/perfect-scrollbar.css">
+	<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/board/perfect-scrollbar.css">
    
     <style type="text/css">
      .back {
