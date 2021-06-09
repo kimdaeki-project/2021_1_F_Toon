@@ -54,9 +54,9 @@
                     
                     <div class="login-input-wrap input-password">
                         <i class="fas fa-user-circle"></i>
-                        <input placeholder="Password" type="password" id="pw" name="password">
-                    </div>
-					
+                        <form:input placeholder="name" id="name" path="name"/>
+                        <form:errors path="name" class="c1"></form:errors>
+                    </div>	
                     
                 </div>
                 <p>.</p>
@@ -136,11 +136,11 @@
 <!-- 				PW 두개는 일치 -->
 <!-- 			</div> -->
 
-			<div class="form-group">
-				<label for="name">이름</label> 
-				<form:input class="form-control etc" id="name" path="name"/>
-				<form:errors path="name" class="c1"></form:errors>
-			</div>
+<!-- 			<div class="form-group"> -->
+<!-- 				<label for="name">이름</label>  -->
+<%-- 				<form:input class="form-control etc" id="name" path="name"/> --%>
+<%-- 				<form:errors path="name" class="c1"></form:errors> --%>
+<!-- 			</div> -->
 
 			<div class="form-group">
 				<label for="nickname">닉네임</label> 
