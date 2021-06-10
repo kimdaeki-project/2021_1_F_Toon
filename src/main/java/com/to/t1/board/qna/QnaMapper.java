@@ -1,10 +1,13 @@
 package com.to.t1.board.qna;
 
+import java.util.List;
+
 import org.apache.ibatis.annotations.Mapper;
 
 import com.to.t1.board.BoardFileVO;
 import com.to.t1.board.BoardMapper;
 import com.to.t1.board.BoardVO;
+import com.to.t1.util.Pager;
 
 @Mapper
 public interface QnaMapper extends BoardMapper {
@@ -15,5 +18,6 @@ public interface QnaMapper extends BoardMapper {
 	
 	public int setRefUpdate(BoardVO boardVO)throws Exception;
 	
+	public BoardVO getManageSelect(BoardVO boardVO) throws Exception;
 	
 }

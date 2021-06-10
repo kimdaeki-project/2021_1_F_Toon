@@ -31,6 +31,14 @@
       select * from noticeFiles where fileNum=#{fileNum}
       </select>
          
+          <select id="getManageList" resultType="NoticeVO" parameterType="Pager">
+         select * from notice
+         <include refid="searcher"></include>
+         order by boNum desc
+         limit #{startRow}, #{perPage}
+         <!-- limit 시작index번호(0부터시작), 갯수 --> 
+         </select>
+         
          
          <select id="getList" resultType="NoticeVO" parameterType="Pager">
          select * from notice

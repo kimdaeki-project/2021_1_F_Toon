@@ -24,6 +24,14 @@ public class QnaService implements BoardService{
 	@Autowired
 	private FileManager fileManager;
 
+	@Override
+	public List<BoardVO> getManageList(Pager pager) throws Exception {
+		pager.makeRow();
+		
+		pager.makeNum(qnaMapper.getTotalCount(pager));
+		
+		return qnaMapper.getManageList(pager);
+	}
 	
 	@Override
 	public List<BoardVO> getList(Pager pager) throws Exception {
@@ -34,6 +42,11 @@ public class QnaService implements BoardService{
 		return qnaMapper.getList(pager);
 	}
 
+	public BoardVO getManageSelect(BoardVO boardVO) throws Exception {
+		qnaMapper.setHitUpdate(boardVO);
+		return qnaMapper.getManageSelect(boardVO);
+	}
+	
 	@Override
 	public BoardVO getSelect(BoardVO boardVO) throws Exception {
 		qnaMapper.setHitUpdate(boardVO);

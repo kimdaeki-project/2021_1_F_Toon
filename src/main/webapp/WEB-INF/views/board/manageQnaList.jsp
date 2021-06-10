@@ -39,7 +39,7 @@
   
     
     </style>
-<title>WEBTOON QNA PAGE</title>
+<title>관리자전용 질의응답 페이지</title>
 
 </head>
 <body>
@@ -50,7 +50,7 @@
 		<h2>
 			<p>
 				<span
-					style="border-radius: 15px 15px 15px 15px; border: 3px solid #b4b4b4; padding: 0.5em 0.6em; color: black; background-color: #dcdcdc;">질문/답변</span>
+					style="border-radius: 15px 15px 15px 15px; border: 3px solid #b4b4b4; padding: 0.5em 0.6em; color: black; background-color: #dcdcdc;">관리자/질문/답변</span>
 			</p>
 		</h2>
 		<br><br>
@@ -72,10 +72,10 @@
 			<div class="table100-body js-pscroll">
 				<table>
 					<tbody class="tbody">
-						 <c:forEach items="${qnaList}" var="vo" >
+						 <c:forEach items="${manageQnaList}" var="vo" >
             <tr>
    
-               <td class="cell100 column1"><a href="./qnaSelect?boNum=${vo.boNum}">
+               <td class="cell100 column1"><a href="./manageQnaSelect?boNum=${vo.boNum}">
                
                
                
@@ -154,6 +154,6 @@
 	});
 </script>  
 </div>
-<c:import url="../fragments/footer.jsp"></c:import>
+
 </body>
 </html>

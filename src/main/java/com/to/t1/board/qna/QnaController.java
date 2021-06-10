@@ -26,6 +26,19 @@ public class QnaController {
 		return "qna";
 	}
 	
+	@GetMapping("manageQnaList")
+	public String getManageList(Pager pager, Model model)throws Exception{
+		List<BoardVO> ar = qnaService.getManageList(pager);
+		model.addAttribute("manageQnaList", ar);
+		model.addAttribute("pager", pager);
+		for(BoardVO boardVO :ar) {
+			QnaVO qnaVO = (QnaVO)boardVO;
+			System.out.println(qnaVO.getDepth());
+		}
+		return "board/manageQnaList";
+	}
+	
+	
 	@GetMapping("qnaList")
 	public String getList(Pager pager, Model model)throws Exception{
 		List<BoardVO> ar = qnaService.getList(pager);
@@ -38,6 +51,15 @@ public class QnaController {
 		return "board/qnaList";
 	}
 	
+	@GetMapping("manageQnaSelect")
+	public ModelAndView getManageSelect(BoardVO boardVO)throws Exception{
+		ModelAndView mv = new ModelAndView();
+		boardVO = qnaService.getManageSelect(boardVO);
+		mv.addObject("vo", boardVO);
+		mv.setViewName("board/manageQnaSelect");
+		return mv;
+	}	
+	
 	@GetMapping("qnaSelect")
 	public ModelAndView getSelect(BoardVO boardVO)throws Exception{
 		ModelAndView mv = new ModelAndView();
@@ -45,7 +67,7 @@ public class QnaController {
 		mv.addObject("vo", boardVO);
 		mv.setViewName("board/qnaSelect");
 		return mv;
-	}	
+	}
 	
 	@GetMapping("qnaInsert")
 	public String setInsert(Model model)throws Exception{

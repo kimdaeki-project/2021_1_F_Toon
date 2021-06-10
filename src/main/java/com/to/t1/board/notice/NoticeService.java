@@ -31,6 +31,15 @@ public class NoticeService implements BoardService {
 	private String filePath;
 	
 	@Override
+	public List<BoardVO> getManageList(Pager pager) throws Exception {
+		// TODO Auto-generated method stub
+		pager.makeRow();
+		Long totalCount = noticeMapper.getTotalCount(pager);
+		pager.makeNum(totalCount);
+		return noticeMapper.getManageList(pager);
+	}
+	
+	@Override
 	public List<BoardVO> getList(Pager pager) throws Exception {
 		// TODO Auto-generated method stub
 		pager.makeRow();

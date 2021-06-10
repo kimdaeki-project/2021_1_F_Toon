@@ -92,6 +92,23 @@ public class NoticeController {
 		
 		return mv;
 	}
+	@GetMapping("manageNoticeList")
+	public ModelAndView getManageList(Pager pager)throws Exception{
+		ModelAndView mv = new ModelAndView();
+		System.out.println(pager.getCurPage());
+		System.out.println("FilePath : "+filePath);
+		
+		List<BoardVO> ar = noticeService.getManageList(pager);
+		
+		mv.addObject("manageNoticeList", ar);
+		mv.setViewName("board/manageNoticeList");
+		mv.addObject("board", "notice");
+		mv.addObject("pager", pager);
+		System.out.println(pager.getStartNum());
+		System.out.println(pager.getLastNum());
+		
+		return mv;
+	}
 	
 	@GetMapping("select")
 	public ModelAndView getSelect(BoardVO boardVO)throws Exception{
@@ -137,7 +154,7 @@ public class NoticeController {
 			message="등록 성공";
 		}
 		model.addAttribute("msg", message);
-		model.addAttribute("path", "./noticeList");
+		model.addAttribute("path", "./manageNoticeList");
 		
 		
 		return "common/commonResult";
@@ -178,11 +195,11 @@ public class NoticeController {
 		
 		if(result>0) {
 			//성공하면 리스트로 이동
-			mv.setViewName("redirect:./noticeList");
+			mv.setViewName("redirect:./manageNoticeList");
 		}else {
 			//실패하면 수정실패 , 리스트로 이동
 			mv.addObject("msg", "수정 실패");
-			mv.addObject("path", "./noticeList");
+			mv.addObject("path", "./manageNoticeList");
 			mv.setViewName("common/commonResult");
 		}
 		
