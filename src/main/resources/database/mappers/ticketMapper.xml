@@ -86,7 +86,6 @@
 			<result property="ratingPerson" column="ratingPerson"/>
 		</resultMap>
     	
-    	
     	<!-- 소장권 사용 내역 조회하기(회원) -->
     	<select id="getTicketUseList" parameterType="MemberVO" resultMap="selectUseTicketResult">
 	    	SELECT * 
@@ -94,9 +93,8 @@
 	    	JOIN USER03.eachep AS ep 
 	    	ON ut.epNum = ep.epNum 
 	    	WHERE ut.username = #{username} 
-	    	ORDER BY ep.toonNum ASC
+	    	ORDER BY ep.toonNum ASC 
     	</select>
-    	
     	<resultMap type="UseTicketVO" id="selectUseTicketResult">
     	<id property="username" column="username"/>
     	<id property="epNum" column="epNum"/>

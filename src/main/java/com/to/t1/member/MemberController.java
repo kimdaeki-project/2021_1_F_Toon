@@ -54,7 +54,7 @@ public class MemberController {
 	@RequestMapping("myPage") 
 	public void myPage()throws Exception{
 	}
-	
+	 
 	@RequestMapping("searchId") 
 	public void searchId()throws Exception{
 	}

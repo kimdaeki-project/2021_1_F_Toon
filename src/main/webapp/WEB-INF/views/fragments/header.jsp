@@ -31,12 +31,17 @@
                             </c:if>
                             
                             <c:if test="${not empty member}">
+                            <li class="nav-item dropdown">
+	                            	<a class="nav-link dropdown-toggle" 
+	                            	id="navbardrop" data-toggle="dropdown"> ${member.point}Point </a>
+	                        	<div class="dropdown-menu"> <div class="row">
+	                        	<a class="dropdown-item" 
+	                        	href="${pageContext.request.contextPath}/pay/charge">충전하기</a></div></div>
+	                       </li>
                             <li><a href="/member/myPage">MY PAGE</a></li>
                             <li><a href="/member/logout">LOGOUT</a></li>
                             </c:if>
                         </ul>
-                        
-
                     </div>
                 </div>
             </div>

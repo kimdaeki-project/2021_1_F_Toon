@@ -32,7 +32,7 @@ public class MemberService {
 			result = memberMapper.setJoinFile(joinFileVO);
 		}
 		System.out.println("service");
-		return result;
+		return result;  
 			
 	}
 

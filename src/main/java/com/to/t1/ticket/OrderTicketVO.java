@@ -12,6 +12,5 @@ public class OrderTicketVO {
 	private long toonNum;
 	private long usePoint;
 	private long totalcount;
-	private Timestamp orderTime;
-	
+	private Timestamp orderTime; //orderTime
 }
