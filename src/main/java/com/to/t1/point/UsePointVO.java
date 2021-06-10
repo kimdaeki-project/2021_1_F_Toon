@@ -1,4 +1,4 @@
-package com.to.t1.ticket;
+package com.to.t1.point;
 
 import java.sql.Timestamp;
 
@@ -7,7 +7,7 @@ import com.to.t1.toon.eachep.EachEpVO;
 import lombok.Data;
 
 @Data
-public class UseTicketVO {
+public class UsePointVO {
 	
 	//티켓 사용 내역 
 	private long userName;

@@ -1,11 +1,11 @@
-package com.to.t1.ticket;
+package com.to.t1.point;
 
 import java.sql.Timestamp;
 
 import lombok.Data;
 
 @Data
-public class OrderTicketVO {
+public class ChargePointVO {
 	
 	private long orderNum;
 	private String userName;

@@ -1,11 +1,11 @@
-package com.to.t1.ticket;
+package com.to.t1.point;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
 @RequestMapping("**/ticket/**")
-public class TicketController {
+public class PointController {
 //웹툰 이용권 관련 , 사용table: ticket , useTicket
 	
 	//소장권 사용 내역 조회
