@@ -58,7 +58,7 @@
 	
 			<div class="form-group">
 				<label for="username">&nbsp;작성자</label> <input type="text"
-					readonly="readonly" value="${member.username}"
+					readonly="readonly" value="principal.name"
 					class="form-control myCheck" id="username" name="username">
 			</div>
 			<div class="form-group">
