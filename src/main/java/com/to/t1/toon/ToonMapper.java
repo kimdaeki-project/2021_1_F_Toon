@@ -18,8 +18,8 @@ public interface ToonMapper {
 	public long deleteScore(ReviewVO reviewVO)throws Exception;
 	public long setHitUpdate(ToonVO toonVO)throws Exception;
 	
-	//미정 기능 사용시 controller, service 추가 요망
-	public long setInsert(ToonVO toonVO)throws Exception;
-	public long setUpdate(ToonVO toonVO)throws Exception;
-	public long setDelete(ToonVO toonVO)throws Exception;
+	//20210604:함수이름 변경(혜린)
+	public long setInsertToon(ToonVO toonVO)throws Exception;
+	public long setUpdateToon(ToonVO toonVO)throws Exception;
+	public long setDeleteToon(ToonVO toonVO)throws Exception;
 }

@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+    
+   <mapper namespace="com.to.t1.ticket.TicketMapper">
+		
+		<!-- 이미 기존의 이용권이 있는지 조회하기 (충전시 필요) -->
+		<select id="getTicketAlready" parameterType="ToonTicketVO" resultType="ToonTicketVO">
+			SELECT `username`, `toonNum`, `count` FROM `user03`.`toonticket` 
+			WHERE  `username`= #{username} AND `toonNum`=#{toonNum}
+		</select>
+		
+		<!-- 소장권 구입하기 (처음 산 경우) -->
+		<insert id="setBuyNewTicket" parameterType="ToonTicketVO">
+			INSERT INTO `user03`.`toonticket` (`username`, `toonNum`, `count`) 
+			VALUES (#{username}, #{toonNum}, #{count})
+		</insert>
+		
+		<!-- 소장권 구입하기 기존것에 추가) -->
+		<!-- -->
+		<update id="setBuyTicket" parameterType="ToonTicketVO">
+			UPDATE `user03`.`toonticket` SET `count`= (toonticket.count + #{count}) 
+			WHERE  `username`= #{username} AND `toonNum`=#{toonNum} 
+		</update>
+		<!-- 맴버 포인트 차감하기 -->
+		<update id="setUseMemberPoint" parameterType="ToonTicketVO">
+			UPDATE USER03.member SET member.point =(member.point - (200*#{count})) 
+			WHERE  member.username= #{username}
+		</update>
+		
+    	<!-- 티켓 구매 내역 작성하기 -->
+    	<insert id="setTBuyList" parameterType="UseTicketVO">
+    		INSERT INTO `user03`.`orderticket` (`username`, `toonNum`, `usePoint`, `totalcount`, `orderTime`) 
+    		VALUES (#{username}, #{toonNum}, (200*#{count}), #{count}, (now()))
+    	</insert>
+    		
+    		
+    		
+    	<!-- 소장권 사용하기 : 1개 사용 고정 -->
+    	<update id="setuseTicket" parameterType="ToonTicketVO">
+    		UPDATE `user03`.`toonticket` SET `count`=(toonticket.count - 1) 
+    		WHERE  `username`=#{username} AND `toonNum`= #{toonNum}
+    	</update>
+    		
+    	<!--  티켓 사용 내역 작성하기 -->
+    	<insert id="setTUseList" parameterType="UseTicketVO">
+    		INSERT INTO `user03`.`useticket` (`username`, `epNum`, `useDate`) 
+    		VALUES (#{username}, #{epNum}, (now()))
+    	</insert>
+    	
+    	
+    	<!-- 여기서 부터는 ResultMap사용 -->
+    	<!-- 소장권 구매내역 조회하기 (리스트)-->
+    	<select id="getBuyTicketList" parameterType="MemberVO" resultType="OrderTicketVO" >
+    		SELECT * FROM USER03.orderticket 
+    		WHERE orderticket.username = #{username} 
+    		ORDER BY orderticket.toonNum ASC 
+    	</select>
+    	
+    	<!-- 내 소장권 보유현황 조회하기(회원) -->
+    	<select id="getMemberTickets" parameterType="MemberVO" resultMap="selectTicketHave">
+    		SELECT *  FROM USER03.toonticket AS tt 
+    		JOIN user03.toon AS tl 
+    		ON tt.toonNum = tl.toonNum 
+    		WHERE tt.username = #{username} ORDER BY tl.toonNum DESC;
+    	</select>
+    	<resultMap type="ToonTicketVO" id="selectTicketHave">
+    		<id property="username" column="username"/>
+    		<result property="toonNum" column="toonNum"/>
+    		<result property="count" column="count"/>
+    		<association property="ToonVO" javaType="ToonVO" resultMap="ToonTicketResult">
+    		</association>
+    	</resultMap>
+    	<resultMap type="ToonVO" id="ToonTicketResult">
+			<id property="toonNum" column="toonNum"/>
+			<result property="toonTitle" column="toonTitle"/>
+			<result property="genre" column="genre"/>
+			<result property="writerID" column="writerID"/>
+			<result property="toonSum" column="toonSum"/>
+			<result property="totalHit" column="totalHit"/>
+			<result property="toonDay" column="toonDay"/>
+			<result property="state" column="state"/>
+			<result property="titleImg" column="titleImg"/>
+			<result property="ratingSum" column="ratingSum"/>
+			<result property="ratingPerson" column="ratingPerson"/>
+		</resultMap>
+    	
+    	<!-- 소장권 사용 내역 조회하기(회원) -->
+    	<select id="getTicketUseList" parameterType="MemberVO" resultMap="selectUseTicketResult">
+	    	SELECT * 
+	    	FROM USER03.useticket AS ut 
+	    	JOIN USER03.eachep AS ep 
+	    	ON ut.epNum = ep.epNum 
+	    	WHERE ut.username = #{username} 
+	    	ORDER BY ep.toonNum ASC 
+    	</select>
+    	<resultMap type="UseTicketVO" id="selectUseTicketResult">
+    	<id property="username" column="username"/>
+    	<id property="epNum" column="epNum"/>
+    	<result property="useDate" column="useDate"/>
+    	<association property="EachEpVO" javaType="EachEpVO" resultMap="eachEPResult"></association>
+    	</resultMap>
+    	
+    	<resultMap type="EachEpVO" id="eachEPResult">
+			<id property="epNum" column="epNum"/>
+			<result property="toonNum" column="toonNum"/>
+			<result property="eachEpNum" column="eachEpNum"/>
+			<result property="epSumImg" column="epSumImg"/>
+			<result property="epTitle" column="epTitle"/>
+			<result property="epDate" column="epDate"/>
+			<result property="epContentImg" column="epContentImg"/>
+			<result property="epHit" column="epHit"/>
+		</resultMap>
+		
+   </mapper>
