@@ -62,10 +62,6 @@ public class FileManager {
 
 		multipartFile.transferTo(file);
 
-		
-		multipartFile.transferTo(file);
-		
-
 		return fileName;
 	}
 			

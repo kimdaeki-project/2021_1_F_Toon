@@ -6,7 +6,7 @@ import lombok.Data;
 public class BoardFileVO {
 	
 	private Long fileNum;
-	private Long num;
+	private Long boNum;
 	private String fileName;
 	private String oriName;
 	
@@ -16,11 +16,11 @@ public class BoardFileVO {
 	public void setFileNum(Long fileNum) {
 		this.fileNum = fileNum;
 	}
-	public Long getNum() {
-		return num;
+	public Long getBoNum() {
+		return boNum;
 	}
-	public void setNum(Long num) {
-		this.num = num;
+	public void setBoNum(Long boNum) {
+		this.boNum = boNum;
 	}
 	public String getFileName() {
 		return fileName;
@@ -34,5 +34,7 @@ public class BoardFileVO {
 	public void setOriName(String oriName) {
 		this.oriName = oriName;
 	}
+	
+
 
 }

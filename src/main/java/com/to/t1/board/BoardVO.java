@@ -7,48 +7,85 @@ import lombok.Data;
 @Data
 public class BoardVO {
 	
-	private Long num;
-	private String title;
-	private String writer;
-	private String contents;
-	private Date regDate;
-	private Long hit;
+	private Long boNum;
+	private String noticeKinds;
+	private String noticeTitle;
+	private String username;
+	private String noticeContents;
+	private Date createdDate;
+	private Long noticeHit;
+	private Long noticeType;
 	
-	public Long getNum() {
-		return num;
+	private String qnaTitle;
+	private String qnaContents;
+	private Long qnaHit;
+	
+	public String getQnaTitle() {
+		return qnaTitle;
 	}
-	public void setNum(Long num) {
-		this.num = num;
+	public void setQnaTitle(String qnaTitle) {
+		this.qnaTitle = qnaTitle;
 	}
-	public String getTitle() {
-		return title;
+	public String getQnaContents() {
+		return qnaContents;
 	}
-	public void setTitle(String title) {
-		this.title = title;
+	public void setQnaContents(String qnaContents) {
+		this.qnaContents = qnaContents;
 	}
-	public String getWriter() {
-		return writer;
+	public Long getQnaHit() {
+		return qnaHit;
 	}
-	public void setWriter(String writer) {
-		this.writer = writer;
+	public void setQnaHit(Long qnaHit) {
+		this.qnaHit = qnaHit;
 	}
-	public String getContents() {
-		return contents;
+	public Long getBoNum() {
+		return boNum;
 	}
-	public void setContents(String contents) {
-		this.contents = contents;
+	public void setBoNum(Long boNum) {
+		this.boNum = boNum;
 	}
-	public Date getRegDate() {
-		return regDate;
+	public String getNoticeKinds() {
+		return noticeKinds;
 	}
-	public void setRegDate(Date regDate) {
-		this.regDate = regDate;
+	public void setNoticeKinds(String noticeKinds) {
+		this.noticeKinds = noticeKinds;
 	}
-	public Long getHit() {
-		return hit;
+	public String getNoticeTitle() {
+		return noticeTitle;
 	}
-	public void setHit(Long hit) {
-		this.hit = hit;
+	public void setNoticeTitle(String noticeTitle) {
+		this.noticeTitle = noticeTitle;
 	}
+	public String getUsername() {
+		return username;
+	}
+	public void setUsername(String username) {
+		this.username = username;
+	}
+	public String getNoticeContents() {
+		return noticeContents;
+	}
+	public void setNoticeContents(String noticeContents) {
+		this.noticeContents = noticeContents;
+	}
+	public Date getCreatedDate() {
+		return createdDate;
+	}
+	public void setCreatedDate(Date createdDate) {
+		this.createdDate = createdDate;
+	}
+	public Long getNoticeHit() {
+		return noticeHit;
+	}
+	public void setNoticeHit(Long noticeHit) {
+		this.noticeHit = noticeHit;
+	}
+	public Long getNoticeType() {
+		return noticeType;
+	}
+	public void setNoticeType(Long noticeType) {
+		this.noticeType = noticeType;
+	}
+	
 	
 }
