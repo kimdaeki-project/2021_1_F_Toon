@@ -32,9 +32,14 @@
                             <li><a href="/member/memberJoinCheck">Join</a></li>
                             </sec:authorize>
 <%--                             </c:if> --%>
+                            <sec:authorize access="hasRole('ROLE_ADMIN')">
                             
+                            <li><a href="/member/admin">ADMIN PAGE</a></li>
+                            <li><a href="/member/logout" onclick="if(!confirm('정말 로그아웃 하시겠습니까?')){return false;}">LOGOUT</a></li>
+                            </sec:authorize>
 <%--                             <c:if test="${not empty member}"> --%>
 							<sec:authorize access="hasRole('ROLE_MEMBER')">
+							<li> <sec:authentication property="principal.point"/>p</li>
                             <li><a href="/member/myPage">MY PAGE</a></li>
                             <li><a href="/member/logout" onclick="if(!confirm('정말 로그아웃 하시겠습니까?')){return false;}">LOGOUT</a></li>
                             </sec:authorize>
