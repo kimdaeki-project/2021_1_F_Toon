@@ -10,7 +10,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
   
     <c:import url="../fragments/bootstrap.jsp"></c:import>
-    <title>MYPAGE</title>
+    <title>Recent Toon</title>
    
      <link rel="stylesheet" href="/css/header.css">
      <!-- plugins:css -->
@@ -98,28 +98,10 @@
       </div>
       <!-- partial -->
       <div class="page-content-wrapper">
-           <h1>회원정보</h1>
-    <sec:authorize access="isAuthenticated()">       	
+           <h1>뀽</h1>
+  
+	
 
-	<h3>${member.joinFileVO.fileName} </h3>
-	
-	<h3>아이디: <sec:authentication property="principal.username"/></h3>
-	<h3>이름: <sec:authentication property="principal.name"/></h3>
-	<h3>닉네임: <sec:authentication property="principal.nickname"/></h3>
-	<h3>핸드폰: <sec:authentication property="principal.phone"/></h3>
-	<h3>이메일: <sec:authentication property="principal.email"/></h3>
-	<h3>내 포인트: <sec:authentication property="principal.point"/>point</h3>
-	</sec:authorize>
-	
-	<!-- 이렇게 해서 값 넘김 알지 저건? URL 주소뒤에 값 넘기는거 업데이트도 똑같이 하면될듯 ㅇㅈ? -->
-	
-	<sec:authorize access="isAuthenticated()">
-		<a href="./memberUpdate" class="btn btn-info" 
-		role="button" onclick="if(!confirm('내 정보를 수정 하시겠습니까?')){return false;}">내 정보 수정</a>
-		
-		<a href="./memberDelete?username=<sec:authentication property="principal.username"/>" class="btn btn-danger" 
-		id="sunghyun" role="button" onclick="if(!confirm('정말 탈퇴 하시겠습니까?')){return false;}">회원 탈퇴</a>
-	</sec:authorize>
 	</p>
         <div class="page-content-wrapper-inner">
           <div class="content-viewport">
