@@ -30,9 +30,9 @@
 				<ul>
 					<li><a
 						href="${pageContext.request.contextPath}/notice/noticeList"
-						target="_blank">공지사항</a></li>
+						>공지사항</a></li>
 					<li><a href="${pageContext.request.contextPath}/qna/qnaList"
-						target="_blank">질의응답</a></li>
+						>질의응답</a></li>
 				</ul>
 			</div>
 
