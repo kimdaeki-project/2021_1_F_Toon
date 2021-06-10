@@ -1,41 +1,57 @@
 package com.to.t1.point;
 
+import javax.servlet.http.HttpSession;
+
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import com.to.t1.member.MemberVO;
+
 @Controller
-@RequestMapping("**/ticket/**")
+@RequestMapping("**/point/**")
 public class PointController {
-//웹툰 이용권 관련 , 사용table: ticket , useTicket
+	
+	@Autowired
+	public PointService pointservice;
 	
 	//소장권 사용 내역 조회
 	
 	//가지고 있는 이용권 조회 (웹툰 이름과, 웹툰 이동url , 썸네일 사진, 보유 소장권 갯수 )
 	
 	//소장권 구입 (insert) 혹은 수정
-	public void buyTicket() throws Exception{
+	@GetMapping("chargePoint")
+	public String chargePoint(Model model, HttpSession httpSession,ChargePointVO chargePointVO) throws Exception{
 		
-		//1. 쿼리로 파라미터를 보내서 칼럼이 있는지 조회를 한다.
+		return "";
 		
-		//2.1이미 해당 웹툰 이용권을 구입했을 경우 (조회 칼럼 수가 1인 경우)
-		//맴버 userName과 toon으로 insert 문 실행
+	}
+	@PostMapping("usePoint/")
+	//이용권 사용, postMapping 사용 할 것 
+	public String usePoint(MemberVO memberVO,UsePointVO usePointVO, Model model)throws Exception{
+		String path = "/";
+		int result =pointservice.UsePoint(memberVO, usePointVO);
 		
-		//2.2처음구입하는 웹툰 이용권인 경우 (조회 칼럼수가 0인 경우)
-		//userName과 toonNum으로 update문 실행
-		
+		switch(result) {
+		case 0 : //결제 실패시 500문제 
+			break;
+		case 1 :  // 결제 성공시 
+			
+			model.addAttribute("UsePointVO",usePointVO);
+			
+			path = "view페이지로 이동할 것";
+			break;
+		case 3 : //금액이 모잘라서 충전을 해야하는 경우 :ChargePoint 컨트롤러 명령어 줄 것 
+			path ="charge페이지로 이동할 것";
+			break;
+		default : 
+			break;
+		}
+		return path;
 	}
 	
-	//이용권 사용 (update)
-	public void useTicket()throws Exception{
-		//0. 보유하고 있는 티켓이 있는지 조회
-		//1. 보유시,이용권 갯수 1개 차감, 구입내역에 기록한다
-		
-		//2. 미보유시, buyTicket페이지로 이동한다.
-		
-	}
-	//이용권 환불(삭제),관리자 전용
-	public void refundTicket()throws Exception{
-		
-	}
 	
 }

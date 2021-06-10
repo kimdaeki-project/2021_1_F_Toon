@@ -20,7 +20,7 @@
 	
 	<!-- 포인트 사용하기(1화 결제) 200p 차감하기 -->
 	<update id="setUsePoint" parameterType="UsePointVO">
-		UPDATE member SET point = (member.point - 200) WHERE  username =#{username}
+		UPDATE member SET point = (member.point - #{point}) WHERE  username =#{username}
 	</update>
 	<!-- 포인트 사용내역 작성하기 -->
 	<insert id="setUsePointList" parameterType="UsePointVO">
