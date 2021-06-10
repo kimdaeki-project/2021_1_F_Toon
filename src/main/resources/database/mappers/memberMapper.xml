@@ -86,7 +86,7 @@
 		</select>
 		
 		<resultMap type="MemberVO" id="memberLoginResult">
-		<id property="username" column="username" />
+		<id property="username" column="username"/>
 		<result property="password" column="password"/>
 		<result property="name" column="name"/>
 		<result property="nickname" column="name"/>
