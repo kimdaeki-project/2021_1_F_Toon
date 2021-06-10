@@ -23,10 +23,14 @@ public class HomeController {
 		return "index";
 	}
 	
-	@GetMapping("companyMap")
-	public String companyMap(Model model) {
-		
-		return "companyMap";
+	@GetMapping("/admin")
+	public void admin() {
+		System.out.println("admin!!!");
+	}
+	
+	@GetMapping("/member")
+	public void member() {
+		System.out.println("memberuser!!!");
 	}
 
 }

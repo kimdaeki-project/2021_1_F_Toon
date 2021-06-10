@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -8,36 +9,135 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
   
-    <c:import url="./../fragments/bootstrap.jsp"></c:import>
-    <title>WebToon</title>
+    <c:import url="../fragments/bootstrap.jsp"></c:import>
+    <title>MYPAGE</title>
    
-    <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="../css/bootstrap.css">
-    <link rel="stylesheet" href="../css/themify-icons.css">
-    <link rel="stylesheet" href="../css/flaticon.css">
-    <link rel="stylesheet" href="../css/all.min.css">
-    <link rel="stylesheet" href="../css/animate.css">
-    <link rel="stylesheet" href="../css/magnific-popup.css">
-   
-    <!-- main css -->
-    <link rel="stylesheet" href="../css/style.css">
-    <link rel="stylesheet" href="../css/responsive.css">
+     <link rel="stylesheet" href="/css/header.css">
+     <!-- plugins:css -->
+    <link rel="stylesheet" href="../assets/vendors/iconfonts/mdi/css/materialdesignicons.css">
+    <!-- endinject -->
+    <!-- vendor css for this page -->
+    <!-- End vendor css for this page -->
+    <!-- inject:css -->
+    <link rel="stylesheet" href="/css/mypage/style.css">
+    <!-- Layout style -->
+    <link rel="shortcut icon" href="../asssets/images/favicon.ico" />
 </head>
 <body>
-	<c:import url="./../fragments/header.jsp"></c:import>
+	<c:import url="../fragments/header.jsp"></c:import>	
+
+    <!-- partial -->
+    <div class="page-body">
+      <!-- partial:partials/_sidebar.html -->
+      <div class="sidebar">
+        <div class="user-profile">
+          <div class="display-avatar animated-avatar">
+            <c:if test="${member.joinFileVO.fileName eq null}"><img width=180px height=200px alt="" src="../images/member.jpg"></c:if>
+			<c:if test="${member.joinFileVO.fileName ne null}"><img width=180px height=200px alt="" src="../upload/member/${member.joinFileVO.fileName}"></c:if>
+          </div>
+          <div class="info-wrapper">
+            <p class="user-name"><sec:authentication property="principal.name"/>님</p>
+            <h6 class="display-income"><sec:authentication property="principal.point"/>point</h6>
+          </div>
+        </div>
+        <ul class="navigation-menu">
+          <li class="nav-category-divider">MAIN</li>
+          <li>
+            <a href="/member/myPage">
+              <h4><span class="link-title">내정보 수정</span></h4>
+              <i class="mdi mdi-gauge link-icon"></i>
+            </a>
+          </li>
+         
+          <li>
+            <a href="#ui-elements" data-toggle="collapse" aria-expanded="false">
+              <h4><span class="link-title">웹툰</span></h4>
+              <i class="mdi mdi-bullseye link-icon"></i>
+            </a>
+            <ul class="collapse navigation-submenu" id="ui-elements">
+              <li>
+                <a href="pages/ui-components/buttons.html">최근 본 웹툰</a>
+              </li>
+              <li>
+                <a href="pages/ui-components/tables.html">관심 웹툰</a>
+              </li>
+              <li>
+                <a href="pages/ui-components/typography.html">소장 웹툰</a>
+              </li>
+            </ul>
+          </li>
+          <li>
+            <a href="#sample-pages" data-toggle="collapse" aria-expanded="false">
+              <h4><span class="link-title">댓글</span></h4>
+              <i class="mdi mdi-flask link-icon"></i>
+            </a>
+            <ul class="collapse navigation-submenu" id="sample-pages">
+              <li>
+                <a href="pages/sample-pages/login_1.html" target="_blank">내 댓글 조회</a>
+              </li>
+              <li>
+                <a href="pages/sample-pages/error_2.html" target="_blank">신고한 댓글 조회</a>
+              </li>
+            </ul>
+          </li>
+          <li>
+            <a href="pages/forms/form-elements.html">
+             <h4> <span class="link-title">충전하기</span></h4>
+              <i class="mdi mdi-clipboard-outline link-icon"></i>
+            </a>
+          </li>
+          <li>
+            <a href="pages/charts/chartjs.html">
+              <h4><span class="link-title">작가등록</span></h4>
+              <i class="mdi mdi-chart-donut link-icon"></i>
+            </a>
+          </li>
+ 
+        </ul>
+        
+      </div>
+      <!-- partial -->
+      <div class="page-content-wrapper">
+           <h1>회원정보</h1>
+    <sec:authorize access="isAuthenticated()">       	
+
+	<h3>${member.joinFileVO.fileName} </h3>
 	
-	<h1>회원정보</h1>
-	<c:if test="${member.joinFileVO.fileName eq null}"><img alt="" src="../images/member.jpg"></c:if>
-	<c:if test="${member.joinFileVO.fileName ne null}"><h3><img alt="" src="../upload/member/${member.joinFileVO.fileName}"></h3></c:if>
-	<h1>${member.joinFileVO.fileName}</h1>
-	<h3>아이디: ${member.username}</h3>
-	<h3>이름: ${member.name}</h3>
-	<h3>닉네임: ${member.nickname}</h3>
-	<h3>핸드폰: ${member.phone}</h3>
-	<h3>이메일: ${member.email}</h3>
-	<h3>내 포인트: ${member.point}point</h3>
+	<h3>아이디: <sec:authentication property="principal.username"/></h3>
+	<h3>이름: <sec:authentication property="principal.name"/></h3>
+	<h3>닉네임: <sec:authentication property="principal.nickname"/></h3>
+	<h3>핸드폰: <sec:authentication property="principal.phone"/></h3>
+	<h3>이메일: <sec:authentication property="principal.email"/></h3>
+	<h3>내 포인트: <sec:authentication property="principal.point"/>point</h3>
+	</sec:authorize>
 	
-	<a href="./memberUpdate" class="btn btn-info" role="button">내 정보 수정</a>
-	<a href="./memberDelete" class="btn btn-danger" role="button">회원 탈퇴</a>
+	<!-- 이렇게 해서 값 넘김 알지 저건? URL 주소뒤에 값 넘기는거 업데이트도 똑같이 하면될듯 ㅇㅈ? -->
+	
+	<sec:authorize access="isAuthenticated()">
+		<a href="./memberUpdate" class="btn btn-info" role="button" onclick="if(!confirm('내 정보를 수정 하시겠습니까?')){return false;}">내 정보 수정</a>
+		<a href="./memberDelete?username=<sec:authentication property="principal.username"/>" class="btn btn-danger" id="sunghyun" role="button" onclick="if(!confirm('정말 탈퇴 하시겠습니까?')){return false;}">회원 탈퇴</a>
+	</sec:authorize>
+	</p>
+        <div class="page-content-wrapper-inner">
+          <div class="content-viewport">
+            <div class="row">
+              <div class="col-12 py-5">
+                <p class="text-gray">
+           
+              </div>
+            </div>
+      </div>
+      </div>
+    </div>
+    <script src="../assets/vendors/js/core.js"></script>
+    <script src="../assets/vendors/apexcharts/apexcharts.min.js"></script>
+    <script src="../assets/vendors/chartjs/Chart.min.js"></script>
+    <script src="../assets/js/charts/chartjs.addon.js"></script>
+    <script src="../assets/js/template.js"></script>
+    <script src="../assets/js/dashboard.js"></script>
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+    <script type="text/javascript" src="../js/mypage.js"></script>
+	
+	
 </body>
 </html>
