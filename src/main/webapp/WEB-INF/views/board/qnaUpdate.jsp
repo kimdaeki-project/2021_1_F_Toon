@@ -15,6 +15,10 @@
     
 <title>Insert title here</title>
 
+<!-- summernote  -->
+<link href="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote-bs4.min.css" rel="stylesheet">
+<script src="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote-bs4.min.js"></script>
+<!-- ------------ -->
 
 <style type="text/css">
 	#sample {
@@ -28,10 +32,10 @@
     	border-color: #FFE150;
      }
      #frm {
-    	
-     	background-color: #FFFF96;
+    	background-color: #F7F7F7;
      	border-style: solid;
-     	border-color: #FFE150;
+     	border-color: #b4b4b4;
+     	border-radius: 15px 15px 15px 15px;
      }
      #dd {
      	background-color: #F9FFFF;
@@ -42,23 +46,23 @@
 </head>
 <body>
 <c:import url="../fragments/header.jsp"></c:import>
- <div class="back">
+
  <div class="container">
  <h2>질문 수정</h2>
   <form id="frm" action="./update" method="post" enctype="multipart/form-data">
   	<input type="hidden" name="boNum" value="${param.boNum}">
     <div class="form-group">
-      <label for="username">작성자</label>
+      <label for="username">&nbsp;작성자</label>
       <input type="text" readonly="readonly" value="${vo.username}" class="form-control" id="username" name="username">
     </div>
     
     <div class="form-group">
-      <label for="qnaTitle">제목</label>
+      <label for="qnaTitle">&nbsp;제목</label>
       <input type="text" class="form-control" id="qnaTitle" name="qnaTitle" value="${vo.qnaTitle}">
     </div>
     
     <div class="form-group">
-				<label for="qnaContents">내용</label>
+				<label for="qnaContents">&nbsp;내용</label>
 				<textarea class="form-control myCheck" rows="5" id="qnaContents"
 					name="qnaContents">${vo.qnaContents}</textarea>
 			</div>
@@ -69,14 +73,14 @@
     	</div>
     </c:forEach><br>
     
-    <input type="button" id="add" value="파일추가" class="btn btn-warning">
+    &nbsp;&nbsp;<input type="button" id="add" value="파일추가" class="btn btn-secondary">
 			
 	<div id="files" title="${vo.files.size()}"></div><br>
     
-    <input type="submit" id="btn" value="수정" class="btn btn-warning">
+    &nbsp;&nbsp;<input type="submit" id="btn" value="수정" class="btn btn-secondary">
   </form>
 </div>
-</div>
+
 	<div id="sample">
 		<div class="input-group">
 			<div class="custom-file">
@@ -92,7 +96,7 @@
 
 <script type="text/javascript" src="../js/board/boardUpdate.js"></script>
 <script type="text/javascript" src="../js/board/fileAdd.js"></script>
-
-
+<script type="text/javascript" src="../js/board/qnaSummerFile.js"></script>
+<c:import url="../fragments/footer.jsp"></c:import>
 </body>
 </html>

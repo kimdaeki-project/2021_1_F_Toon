@@ -3,9 +3,7 @@
  */
 
 $("#btn").click(function(){
-	/*let writer = $("#writer").val() != "";
-	let title = $("#title").val().length != 0;
-	let contents = $("#contents").val().length != 0;*/ //id로 가져올때 쓰는것
+	
 	let result = true;
 	
 	$(".myCheck").each(function(s1, s2, s3){
@@ -20,8 +18,9 @@ $("#btn").click(function(){
 	
 	if(result) {
 		$("#frm").submit(); // ()에 아무것도 안쓰면 강제 이벤트 실행
+		swal("Good job!", "You clicked the button!", "success");
 	}else {
-		alert("필수 요소를 입력하세염");
+		swal("필수 요소를 입력하세요");
 	}
 	
 });

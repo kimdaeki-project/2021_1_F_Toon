@@ -78,7 +78,7 @@ public class QnaController {
 		return "redirect:./qnaList";
 	}
 	
-	@GetMapping("delete")
+	@PostMapping("delete")
 	public String setDelete(BoardVO boardVO)throws Exception{
 		
 		int result = qnaService.setDelete(boardVO);
@@ -102,7 +102,27 @@ public class QnaController {
 	}	
 	
 	
+	@PostMapping("summerFileDelete")
+	public ModelAndView setSummerFileDelete(String fileName)throws Exception{
+		ModelAndView mv = new ModelAndView();
+		boolean result = qnaService.setSummerFileDelete(fileName);
+		mv.addObject("result", result);
+		mv.setViewName("common/ajaxResult");
+		return mv;
+	}
 	
+	@PostMapping("summerFileUpload")
+	public ModelAndView setSummerFileUpload(MultipartFile file)throws Exception{
+		ModelAndView mv = new ModelAndView();
+		System.out.println("썸머 qna 파일 업로드");
+		System.out.println(file.getOriginalFilename());
+		String fileName = qnaService.setSummerFileUpload(file);
+		fileName = "../upload/qna/"+fileName;
+		mv.addObject("result", fileName);
+		mv.setViewName("common/ajaxResult");
+		
+		return mv;
+	}
 	
 	
 	

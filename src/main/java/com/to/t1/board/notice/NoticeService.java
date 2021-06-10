@@ -103,12 +103,14 @@ public class NoticeService implements BoardService {
 				}
 				return result;
 	}
-
+	
+	@Override
 	public boolean setSummerFileDelete(String fileName) throws Exception {
 		boolean result = boFileManager.delete("notice", fileName, session);
 		return result;
 	}
 	
+	@Override
 	public String setSummerFileUpload(MultipartFile file)throws Exception{
 		
 		String fileName = boFileManager.save("notice", file, session);

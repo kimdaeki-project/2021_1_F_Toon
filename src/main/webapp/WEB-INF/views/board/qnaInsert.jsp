@@ -20,9 +20,10 @@
     	border-color: #FFE150;
      }
      #frm {
-     	background-color: #FFFF96;
+     	background-color: #F7F7F7;
      	border-style: solid;
-     	border-color: #FFE150;
+     	border-color: #b4b4b4;
+     	border-radius: 15px 15px 15px 15px;
      }
   
     
@@ -44,38 +45,41 @@
 </head>
 <body>
 	<c:import url="../fragments/header.jsp"></c:import>
-<div class="back">
+
 	<div class="container"><br>
-		<h2><p><span style="border-radius: 15px 15px 15px 0; border: 3px solid #FFE150; 
-		padding: 0.5em 0.6em; color: black; background-color:#FFFF96; ">질문 작성</span></p></h2><br>
+		<h2>
+			<p>
+				<span
+					style="border-radius: 15px 15px 15px 15px; border: 3px solid #b4b4b4; padding: 0.5em 0.6em; color: black; background-color: #dcdcdc;">질문/작성</span>
+			</p>
+		</h2><br>
 		
 		<form id="frm" action="./qnaInsert" method="post" enctype="multipart/form-data">
 	
 			<div class="form-group">
-				<label for="username">작성자</label> <input type="text"
+				<label for="username">&nbsp;작성자</label> <input type="text"
 					readonly="readonly" value="${member.username}"
 					class="form-control myCheck" id="username" name="username">
 			</div>
 			<div class="form-group">
-				<label for="qnaTitle">제목</label> <input type="text"
+				<label for="qnaTitle">&nbsp;제목</label> <input type="text"
 					class="form-control myCheck" id="qnaTitle" name="qnaTitle">
 			</div>
 
 			<div class="form-group">
-				<label for="qnaContents">내용</label>
+				<label for="qnaContents">&nbsp;내용</label>
 				<textarea class="form-control myCheck" rows="5" id="qnaContents"
 					name="qnaContents"></textarea>
 			</div>
 
-			<input type="button" id="add" value="파일추가" class="btn btn-warning">
+			&nbsp;&nbsp;<input type="button" id="add" value="파일추가" class="btn btn-secondary">
 			
 			<div id="files" title="0"></div><br>
 
-			<input type="button" id="btn" value="등록" class="btn btn-warning">
+			&nbsp;&nbsp;<input type="button" id="btn" value="등록" class="btn btn-secondary">
 		</form>
 	</div>
 	
-	</div> <!-- 작성란까지 css 일단 파일부분이 안나와서 뺴고나옴 -->
 	<div id="sample">
 		<div class="input-group">
 			<div class="custom-file">
@@ -93,6 +97,6 @@
 	<script type="text/javascript" src="../js/board/boardInsert.js"></script>
 	<script type="text/javascript" src="../js/board/fileAdd.js"></script>
 	<script type="text/javascript" src="../js/board/qnaSummerFile.js"></script>
-	
+	<c:import url="../fragments/footer.jsp"></c:import>
 </body>
 </html>
