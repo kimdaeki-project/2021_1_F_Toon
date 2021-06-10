@@ -58,7 +58,7 @@ public class MemberService implements UserDetailsService {
 		MemberVO checkMember = memberMapper.getUsername(memberVO);
 		if(checkMember !=null) {
 			errors.rejectValue("username", "member.id.equal");
-			errors.rejectValue("username", "member.name.equal");
+//			errors.rejectValue("username", "member.name.equal");
 			result = true;
 		}
 		

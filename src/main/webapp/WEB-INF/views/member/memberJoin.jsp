@@ -92,14 +92,14 @@
                         
                     <div class="login-input-wrap input-password">
                         <i class="fas fa-indent"></i>
-                        <form:input placeholder="E-mail" id="email" path="email"/> <button id = "CheckMail" type="button" class="sendMail" onclick="sendMail()"style="border: 1px solid blue;float: right;width: 50px;">전송</button>
+                        <form:input placeholder="E-mail" id="email" path="email"/> <button id = "CheckMail" type="button" class="sendMail" onclick="sendMail()"style="border: 1px solid black;float: right;width: 50px;">전송</button>
                         <form:errors path="email" class="c1"></form:errors>
                     </div>
                     
                     <div class="login-input-wrap input-password">
                         <i class="fas fa-indent"></i>
                         <form:input placeholder="Certification Number"  id="emailNum" type="text"  path="emailNum"/>
-                        <button type="button" class="emailCheck"  onclick="emailCheck()" style="border: 1px solid blue;float: right;width: 50px;">인증</button> 
+                        <button type="button" class="emailCheck"  onclick="emailCheck()" style="border: 1px solid black;float: right;width: 50px;">인증</button> 
            				<form:errors path="emailNum" class="c1"></form:errors>    
                     </div>
                    
