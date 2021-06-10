@@ -13,14 +13,14 @@
 	<select id="toonDay" parameterType="ToonVO" resultType="ToonVO">
 		SELECT *
 		FROM toon
-		WHERE toonDay= #{toonDay} and state=0
+		WHERE toonDay=#{toonDay} AND state= 0
 		ORDER BY totalHit desc;
 	</select>
-	
+
 	<select id="genre" parameterType="ToonVO" resultType="ToonVO">
 		SELECT *
 		FROM toon
-		WHERE genre='action' AND state=0
+		WHERE genre=#{genre} AND state=0
 		ORDER BY totalHit DESC;
 	</select>
 	
@@ -31,7 +31,7 @@
 		ORDER BY totalHit DESC LIMIT 20;
 	</select>
 	
-	<select id="end" parameterType="ToonVO" resultType="ToonVO">
+	<select id="endRe" parameterType="ToonVO" resultType="ToonVO">
 		SELECT *
 		FROM toon
 		WHERE state=1

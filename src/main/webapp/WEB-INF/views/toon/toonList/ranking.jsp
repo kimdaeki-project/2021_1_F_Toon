@@ -21,6 +21,36 @@
 <body>
 	<c:import url="../../fragments/header.jsp"></c:import>
 
+<div class="view_type">			
+             <table>
+             <tr >
+             	<td><a href="/">조회순</a></td>
+             
+              <p><td><a href="/">업데이트순</a></td></p>         
+                
+                <td><a href="/">별점순</a></td>
+             </tr>
+           
+             </table>
+			</div>
+	<br>
+	<br>
+	
 
+	
+	<div class="rank">
+			<a
+				href="${pageContext.request.contextPath}/toon/toonList/ranking=${rank}">랭킹</a>
+			<ul>
+				<c:forEach items="${rank}" var="rank">
+					<li><img width=100px height=100px src=${rank.titleImg}>
+					</li>
+					<li>${rank.toonTitle}/${rank.nickname}</li>
+				</c:forEach>
+			</ul>
+		</div>
+	
+	
+	
 </body>
 </html>

@@ -55,13 +55,7 @@
                             <li class="nav-item"><a class="nav-link" href="/toon/toonDay">요일</a></li> 
                             <li class="nav-item"><a class="nav-link" href="/toon/genre">장르</a></li>    
                          	<li class="nav-item"><a class="nav-link" href="/toon/ranking">랭킹</a></li>
-                            <li class="nav-item submenu dropdown">
-                                <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">완결</a>
-                                <ul class="dropdown-menu">
-                                    <li class="nav-item"><a class="nav-link" href="/toon/endKr">가나다</a></li>
-                                    <li class="nav-item"><a class="nav-link" href="/toon/endRe">최신</a></li>
-                                </ul>
-                            </li>     
+                           	<li class="nav-item"><a class="nav-link" href="/toon/endRe">완결</a></li>
                         </ul>
                     </div>
                 </div>

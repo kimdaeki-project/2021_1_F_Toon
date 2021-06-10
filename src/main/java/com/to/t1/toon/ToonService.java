@@ -42,8 +42,8 @@ public class ToonService {
 		return toonMapper.ranking(toonVO);
 	}
 	
-	public List<ToonVO> end(ToonVO toonVO) throws Exception{
-		return toonMapper.end(toonVO);
+	public List<ToonVO> endRe(ToonVO toonVO) throws Exception{
+		return toonMapper.endRe(toonVO);
 	}
 
 	

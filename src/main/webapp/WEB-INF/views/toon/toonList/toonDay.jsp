@@ -43,8 +43,8 @@
 		<div class="mon">월요일
 			<ul>
 		<c:forEach items="${mt}" var="mt">
-			<li> <img width=100px height=100px src= ${mt.titleImg}> </li>
-			<li>${mt.toonTitle} /${mt.writerID} </li>
+			<li><a href="/"> <img width=100px height=100px src= ${mt.titleImg}></a> </li>
+			<li>${mt.toonTitle} /${mt.nickname} </li>
 		</c:forEach>
 		</ul>
 		</div>
@@ -55,7 +55,7 @@
 			<ul>
 		<c:forEach items="${tt}" var="tt">
 			<li> <img width=100px height=100px src= ${tt.titleImg}> </li>
-			<li>${tt.toonTitle} /${tt.writerID} </li>
+			<li>${tt.toonTitle} /${tt.nickname} </li>
 		</c:forEach>
 		</ul>
 		</div>	
@@ -66,7 +66,7 @@
 			<ul>
 		<c:forEach items="${wt}" var="wt">
 			<li> <img width=100px height=100px src= ${wt.titleImg}> </li>
-			<li>${wt.toonTitle} /${wt.writerID} </li>
+			<li>${wt.toonTitle} /${wt.nickname} </li>
 		</c:forEach>
 		</ul>
 		</div>
@@ -77,7 +77,7 @@
 			<ul>
 		<c:forEach items="${tt2}" var="tt2">
 			<li> <img width=100px height=100px src= ${tt2.titleImg}> </li>
-			<li>${tt2.toonTitle} /${tt2.writerID} </li>
+			<li>${tt2.toonTitle} /${tt2.nickname} </li>
 		</c:forEach>
 		</ul>
 		</div>
@@ -88,7 +88,7 @@
 			<ul>
 		<c:forEach items="${ft}" var="ft">
 			<li> <img width=100px height=100px src= ${ft.titleImg}> </li>
-			<li>${ft.toonTitle} /${ft.writerID} </li>
+			<li>${ft.toonTitle} /${ft.nickname} </li>
 		</c:forEach>
 		</ul>
 		</div>
@@ -99,7 +99,7 @@
 			<ul>
 		<c:forEach items="${st}" var="st">
 			<li> <img width=100px height=100px src= ${st.titleImg}> </li>
-			<li>${st.toonTitle} /${st.writerID} </li>
+			<li>${st.toonTitle} /${st.nickname} </li>
 		</c:forEach>
 		</ul>
 		</div>
@@ -109,7 +109,7 @@
 			<ul>
 		<c:forEach items="${st2}" var="st2">
 			<li> <img width=100px height=100px src= ${st2.titleImg}> </li>
-			<li>${st2.toonTitle} /${st2.writerID} </li>
+			<li>${st2.toonTitle} /${st2.nickname} </li>
 		</c:forEach>
 		</ul>
 		</div>

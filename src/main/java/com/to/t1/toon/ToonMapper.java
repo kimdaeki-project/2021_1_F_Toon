@@ -26,6 +26,6 @@ public interface ToonMapper {
 	public List<ToonVO> toonDay(ToonVO toonVO)throws Exception;
 	public List<ToonVO> genre(ToonVO toonVO)throws Exception;
 	public List<ToonVO> ranking(ToonVO toonVO)throws Exception;
-	public List<ToonVO> end(ToonVO toonVO)throws Exception;
+	public List<ToonVO> endRe(ToonVO toonVO)throws Exception;
 	
 }

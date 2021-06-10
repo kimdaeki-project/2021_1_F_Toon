@@ -75,10 +75,30 @@ public class ToonController {
 		ModelAndView mv = new ModelAndView();
 		
 		toonVO.setGenre("action");
-		List<ToonVO> at = toonService.genre(toonVO);
+		List<ToonVO> ac = toonService.genre(toonVO);
 		
-		mv.addObject("action", at);
+		toonVO.setGenre("school");
+		List<ToonVO> sc = toonService.genre(toonVO);
 		
+		toonVO.setGenre("romance");
+		List<ToonVO> ro = toonService.genre(toonVO);		
+		
+		toonVO.setGenre("fantasy");
+		List<ToonVO> fa = toonService.genre(toonVO);
+		
+		toonVO.setGenre("thriller");
+		List<ToonVO> th = toonService.genre(toonVO);
+		
+		toonVO.setGenre("comedy");
+		List<ToonVO> co = toonService.genre(toonVO);
+		
+		mv.addObject("action", ac);
+		mv.addObject("school", sc);
+		mv.addObject("romance", ro);		
+		mv.addObject("fantasy", fa);
+		mv.addObject("thriller", th);
+		mv.addObject("comedy", co);		
+
 		mv.setViewName("toon/toonList/genre");
 		
 		return mv;
@@ -88,13 +108,34 @@ public class ToonController {
 	
 	
 	@GetMapping("ranking")
-	public String ranking() {
-		return "toon/toonList/ranking";
+	public ModelAndView ranking(ToonVO toonVO)throws Exception {
+		ModelAndView mv = new ModelAndView();
+		
+		toonVO.setTotalHit(0);
+		List<ToonVO> ra = toonService.ranking(toonVO);
+		
+		mv.addObject("rank", ra);
+		
+		mv.setViewName("toon/toonList/ranking");
+		
+		return mv;
 	}
 	
-	@GetMapping("end")
-	public String endKr() {
-		return "toon/toonList/end";
+	
+	
+	@GetMapping("endRe")
+	public ModelAndView endKr(ToonVO toonVO)throws Exception {
+		ModelAndView mv = new ModelAndView();
+		
+		toonVO.setTotalHit(0);
+		List<ToonVO> en = toonService.endRe(toonVO);
+		
+		mv.addObject("end", en);
+		
+		mv.setViewName("toon/toonList/endRe");
+		
+		
+		return mv;
 	}
 	
 	@GetMapping("dayList")
