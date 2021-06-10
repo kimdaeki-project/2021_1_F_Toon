@@ -49,7 +49,7 @@
 				ON M.username=MR.username
 				INNER JOIN role R 
 				ON MR.id = R.id
-				WHERE M.username=#{username} 
+				WHERE M.username=#{username}
 		</select>
 		
 		

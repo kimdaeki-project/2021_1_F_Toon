@@ -13,4 +13,5 @@ public class ChargePointVO {
 	private long usePoint;
 	private long totalcount;
 	private Timestamp orderTime; //orderTime
+	
 }
