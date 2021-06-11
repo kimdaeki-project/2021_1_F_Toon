@@ -12,7 +12,7 @@ import com.to.t1.toon.ToonService;
 import com.to.t1.util.Pager;
 
 @Controller
-@RequestMapping("/toon/eachep/**")
+@RequestMapping("/toon/**")
 public class EachEpController {
 	@Autowired
 	private EachEpService eachEpService;
