@@ -12,7 +12,7 @@ import com.to.t1.toon.ToonService;
 import com.to.t1.util.Pager;
 
 @Controller
-@RequestMapping("/toon/eachep/**")
+@RequestMapping("/toon/**")
 public class EachEpController {
 	@Autowired
 	private EachEpService eachEpService;
@@ -23,7 +23,7 @@ public class EachEpController {
 	@GetMapping("eachEpList")
 	public void getList(Pager pager, Model model)throws Exception{
 		List<EachEpVO> list=eachEpService.getList(pager);
-		model.addAttribute("list", list);
+		model.addAttribute("epVO", list);
 		model.addAttribute("pager", pager);
 		model.addAttribute("listsize", list.size());
 	}
