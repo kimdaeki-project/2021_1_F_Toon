@@ -122,7 +122,7 @@ public class NoticeController {
 	@GetMapping("insert")
 	public String setInsert(HttpSession session)throws Exception{
 		 ModelAndView mv = new ModelAndView();
-			mv.setViewName("board/insert");
+			mv.setViewName("admin/insert");
 			mv.addObject("board", "notice");
 		
 			
@@ -133,8 +133,8 @@ public class NoticeController {
 		if(obj instanceof MemberVO) {
 			memberVO = (MemberVO)obj;
 			
-			if(memberVO.getUsername().equals("admin")) {
-				path="board/insert";
+			if(memberVO.getUsername().equals("33333333")) {
+				path="admin/insert";
 			}
 		}	
 		

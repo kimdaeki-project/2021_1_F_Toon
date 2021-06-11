@@ -114,9 +114,11 @@
             <ul class="collapse navigation-submenu" id="board_manage">
               <li>
                 <a href="${pageContext.request.contextPath}/notice/manageNoticeList" target="_blank">공지사항</a>
+               <button type="button" class="btn btn-default" onclick="noticePage()">공지사항</button>
               </li>
               <li>
                 <a href="${pageContext.request.contextPath}/qna/manageQnaList" target="_blank">질의응답</a>
+                 <button type="button" class="btn btn-default" onclick="qnaPage()">질의응답</button>
               </li>
             </ul>
           </li>
@@ -125,7 +127,7 @@
         
       </div>
       <!-- navEND -->
-      <div id="contents" class="display-income"> 
+      <div id="Context" class="display-income"> 
       	//페이지가 변해요?
       </div>
     </div>
@@ -145,5 +147,34 @@
     <script src="${pageContext.request.contextPath}/assets/js/template.js"></script>
     <script src="${pageContext.request.contextPath}/assets/js/dashboard.js"></script>
     <!-- endbuild -->
+    <script type="text/javascript">
+    	let div1 = document.getElementById('div1');
+    	
+    	.$("#button1").click(function(){
+    		$('#div1').css("display", "block");
+    		
+    	});
+    	
+    	
+    	
+    	
+    	
+
+    </script>
+    <script type="text/javascript">
+
+    function noticePage(){
+			
+        $("#Context").load("/notice/manageNoticeList");
+
+    };
+    
+    function qnaPage(){
+    
+        $("#Context").load("/qna/manageQnaList");
+    	
+    }
+	
+    </script>
   </body>
 </html>

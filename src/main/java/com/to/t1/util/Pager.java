@@ -20,7 +20,9 @@ public class Pager {
 	public void makeNum(Long totalCount) {
 		int perBlock=5;
 		//1. totalCount
-		
+		if(totalCount == 0) {
+			totalCount = 1L;
+		}
 		//2. totalCount를 이용해서 totalPage수 구하기
 		Long totalPage = totalCount/this.getPerPage();
 		if(totalCount%this.getPerPage() != 0) {

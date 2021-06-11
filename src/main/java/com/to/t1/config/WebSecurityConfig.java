@@ -69,8 +69,10 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter{
 				.antMatchers("/qna/qnaUpdate").hasAnyRole("ADMIN", "MEMBER")
 				.antMatchers("/qna/reply").hasAnyRole("ADMIN")
 				.antMatchers("/qna/qnaInsert").hasAnyRole("MEMBER")
-				.antMatchers("/notice/insert").hasAnyRole("ADMIN")
+				.antMatchers("/admin/insert").hasAnyRole("ADMIN", "MEMBER")
 				.antMatchers("/admin/test").hasAnyRole("ADMIN")
+				.antMatchers("/admin/manageNoticeList").hasAnyRole("ADMIN")
+				
 				
 				.anyRequest().authenticated()
 				.and()
