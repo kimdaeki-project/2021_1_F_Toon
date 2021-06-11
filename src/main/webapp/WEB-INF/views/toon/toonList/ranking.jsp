@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>    
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -16,6 +17,7 @@
    
    
     <link rel="stylesheet" href="../css/header.css">
+    <link rel="stylesheet" href="../css/ranking.css">
   
 </head>
 <body>
@@ -39,18 +41,75 @@
 
 	
 	<div class="rank">
-			<a
-				href="${pageContext.request.contextPath}/toon/toonList/ranking=${rank}">랭킹</a>
+	
+			<a href="${pageContext.request.contextPath}/toon/toonList/ranking=${rank}">랭킹</a>
 			<ul>
-				<c:forEach items="${rank}" var="rank">
-					<li><img width=100px height=100px src=${rank.titleImg}>
+			
+				<c:forEach items="${rank}" var="rank" begin="1" end="3" >
+					<li style="float: left;"><img width=100px height=100px src=${rank.titleImg}>
 					</li>
-					<li>${rank.toonTitle}/${rank.nickname}</li>
-				</c:forEach>
+					<td></td>
+					<li style="float: left;">${rank.toonTitle}/${rank.nickname}</li>
+				</c:forEach >
+			</ul>
+		</div>
+		
+	<br>
+	<br>
+	<br>	
+	<br>
+	
+	<div class="rank">
+	
+			<a href="${pageContext.request.contextPath}/toon/toonList/ranking=${rank}"></a>
+			<ul>
+			
+				<c:forEach items="${rank}" var="rank" begin="4" end="8" >
+					<li style="float: left;"><img width=100px height=100px src=${rank.titleImg}>
+					</li>
+					<td></td>
+					<li style="float: left;">${rank.toonTitle}/${rank.nickname}</li>
+				</c:forEach >
 			</ul>
 		</div>
 	
+	<br>
+	<br>
+	<br>	
+	<br>
 	
+	<div class="rank">
+	
+			<a href="${pageContext.request.contextPath}/toon/toonList/ranking=${rank}"></a>
+			<ul>
+			
+				<c:forEach items="${rank}" var="rank" begin="9" end="14" >
+					<li style="float: left;"><img width=100px height=100px src=${rank.titleImg}>
+					</li>
+					<td></td>
+					<li style="float: left;">${rank.toonTitle}/${rank.nickname}</li>
+				</c:forEach >
+			</ul>
+		</div>
+		
+	<br>
+	<br>
+	<br>	
+	<br>
+	
+	<div class="rank">
+	
+			<a href="${pageContext.request.contextPath}/toon/toonList/ranking=${rank}"></a>
+			<ul>
+			
+				<c:forEach items="${rank}" var="rank" begin="15" end="21" >
+					<li style="float: left;"><img width=100px height=100px src=${rank.titleImg}>
+					</li>
+					
+					<li style="float: left;">${rank.toonTitle}/${rank.nickname}</li>
+				</c:forEach >
+			</ul>
+		</div>	
 	
 </body>
 </html>

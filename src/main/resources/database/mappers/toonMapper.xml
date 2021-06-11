@@ -28,8 +28,9 @@
 		SELECT * 
 		FROM toon
 		WHERE state=0
-		ORDER BY totalHit DESC LIMIT 20;
+		ORDER BY totalHit DESC LIMIT 21;
 	</select>
+
 	
 	<select id="endRe" parameterType="ToonVO" resultType="ToonVO">
 		SELECT *

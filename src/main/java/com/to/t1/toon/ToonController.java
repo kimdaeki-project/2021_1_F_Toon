@@ -113,13 +113,17 @@ public class ToonController {
 		
 		toonVO.setTotalHit(0);
 		List<ToonVO> ra = toonService.ranking(toonVO);
+		toonVO.setTotalHit(0);
+		List<ToonVO> ra2 = toonService.ranking(toonVO);
 		
 		mv.addObject("rank", ra);
+		mv.addObject("rank2", ra2);
 		
 		mv.setViewName("toon/toonList/ranking");
 		
 		return mv;
 	}
+	
 	
 	
 	

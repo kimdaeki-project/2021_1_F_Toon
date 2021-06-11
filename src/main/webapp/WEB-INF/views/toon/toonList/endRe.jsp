@@ -38,8 +38,11 @@
 	<br>
 	
 
+
 	
 	<div class="end">
+		<c:set var="i" value="0" /> <c:set var="j" value="3" />
+	
 			<a
 				href="${pageContext.request.contextPath}/toon/toonList/end=${rank}">완결</a>
 			<ul>
