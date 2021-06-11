@@ -94,7 +94,6 @@ btn.addEventListener("click", function(){
 // Id 중복 확인
 function id11(){
   
-
  let id = $("#id").val();
  $.ajax({
       type : 'POST',
@@ -110,8 +109,6 @@ function id11(){
          swal(message);
            
        }
-
- 
 
    })
 };

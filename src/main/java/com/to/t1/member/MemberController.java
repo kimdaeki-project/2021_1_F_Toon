@@ -217,7 +217,7 @@ public class MemberController {
 		 if(memberVO==null) {
 			 message="아이디가 사용가능합니다.";
 		 }else {
-			 message="아이다가 중복됩니다.";
+			 message="아이디가 중복됩니다.";
 		 }
 		 
 		 return message;
@@ -286,7 +286,6 @@ public class MemberController {
 	   @GetMapping("CheckMail")
 	   @ResponseBody
 	   public String SendMail(Model model,String email, HttpSession session) {
-		  System.out.println("왜안되냐 ㅠ");
 	      Random random = new Random();
 	      String key = "";
 	     
@@ -309,6 +308,5 @@ public class MemberController {
 	      return key;
 	   }
 	  
-	   
 }
 
