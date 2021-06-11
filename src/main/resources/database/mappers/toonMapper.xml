@@ -11,32 +11,39 @@
 
 
 	<select id="toonDay" parameterType="ToonVO" resultType="ToonVO">
-		SELECT *
-		FROM toon
-		WHERE toonDay=#{toonDay} AND state= 0
-		ORDER BY totalHit desc;
+	SELECT *
+	FROM toon t JOIN
+	member m ON t.writerId = m.username
+	WHERE t.state=0 AND t.toonDay=#{toonVO.toonDay}
+	GROUP BY t.toonNum
+	ORDER BY t.totalHit DESC;
 	</select>
+	
+	
 
 	<select id="genre" parameterType="ToonVO" resultType="ToonVO">
-		SELECT *
-		FROM toon
-		WHERE genre=#{genre} AND state=0
-		ORDER BY totalHit DESC;
+	SELECT *
+	FROM toon t JOIN
+	member m ON t.writerId = m.username
+	WHERE genre=#{toonVO.genre} AND state=0
+	ORDER BY totalHit DESC;
 	</select>
 	
 	<select id="ranking" parameterType="ToonVO" resultType="ToonVO">
-		SELECT * 
-		FROM toon
-		WHERE state=0
-		ORDER BY totalHit DESC LIMIT 21;
+		SELECT *
+	FROM toon t JOIN
+	member m ON t.writerId = m.username
+	WHERE state=0
+	ORDER BY totalHit DESC LIMIT 21;
 	</select>
 
 	
 	<select id="endRe" parameterType="ToonVO" resultType="ToonVO">
 		SELECT *
-		FROM toon
-		WHERE state=1
-		ORDER BY totalHit DESC;
+	FROM toon t JOIN
+	member m ON t.writerId = m.username
+	WHERE state=1
+	ORDER BY totalHit DESC;	
 	</select>	
 	
 	
