@@ -32,4 +32,7 @@ public interface MemberMapper {
 	public int setMemberRole(Map<String, String> map)throws Exception;
 	
 	public JoinFileVO myPage(MemberVO memberVO)throws Exception;
+	
+	public MemberVO memberJoinCheck(MemberVO memberVO)throws Exception;
+
 }

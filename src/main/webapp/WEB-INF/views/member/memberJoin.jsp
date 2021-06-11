@@ -34,6 +34,7 @@
                     <div class="login-input-wrap input-id">
                         <i class="far fa-envelope"></i>
                         <form:input placeholder="Username" type="text" id="id" path="username"></form:input>
+                        <button type="button"  onclick="id11()" style="border: 1px solid black;float: right;width: 50px;">확인</button>
                         <br>
                         <form:errors path="username" class="c1"></form:errors>
                       	<center><h5 id="idCheckResult"></h5></center>

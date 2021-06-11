@@ -34,6 +34,10 @@
 			select username from member where name=#{name} and phone=#{phone}
 		</select>
 		
+		<select id="memberJoinCheck" parameterType="MemberVO" resultType="MemberVO">
+			select * from member where username=#{username}
+		</select>
+	
 		<select id="searchPw"  parameterType="MemberVO" resultType="MemberVO">
 			select password from member where username=#{username} and phone=#{phone}
 		</select>
@@ -102,6 +106,7 @@
 			<result property="fileName" column="fileName"/>
 			<result property="oriName" column="oriName"/>
 	</resultMap>
+		
 		
 			
    </mapper>

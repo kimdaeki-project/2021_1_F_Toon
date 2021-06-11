@@ -204,9 +204,24 @@ public class MemberController {
 		return message;
 	}
 
-
 	@RequestMapping("memberJoinCheck")
 	public void memberJoinCheck()throws Exception{}
+	
+	@PostMapping("memberJoinCheck")
+	@ResponseBody
+	public String memberJoinCheck(MemberVO memberVO)throws Exception{
+		 memberVO = memberService.memberJoinCheck(memberVO);
+		 
+		 String message="";
+		 
+		 if(memberVO==null) {
+			 message="아이디가 사용가능합니다.";
+		 }else {
+			 message="아이다가 중복됩니다.";
+		 }
+		 
+		 return message;
+	}
 
 	@GetMapping("join")
 	public String setJoin(@ModelAttribute MemberVO memberVO)throws Exception{
@@ -293,6 +308,7 @@ public class MemberController {
 	      
 	      return key;
 	   }
+	  
 	   
 }
 

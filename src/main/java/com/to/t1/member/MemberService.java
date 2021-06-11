@@ -145,4 +145,8 @@ public class MemberService implements UserDetailsService {
 		return memberMapper.getJoinFile(memberVO);
 	}
 	
+	public MemberVO memberJoinCheck(MemberVO memberVO)throws Exception{
+		return memberMapper.memberJoinCheck(memberVO);
+	}
+	
 }
