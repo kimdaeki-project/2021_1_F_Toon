@@ -57,7 +57,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter{
 				.antMatchers("/notice/noticeList").permitAll()
 				.antMatchers("/notice/select").permitAll()
 				.antMatchers("/qna/qnaList").permitAll()
-				
+
 				.antMatchers("/member/memberJoinCheck").permitAll()
 				.antMatchers("/member/searchId").permitAll()
 				.antMatchers("/member/searchPw").permitAll()
@@ -65,11 +65,14 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter{
 				.antMatchers("/member/**").hasAnyRole("ADMIN", "MEMBER")
 				
 				.antMatchers("/notice/select").hasAnyRole("ADMIN", "MEMBER")
+				
+				.antMatchers("/admin/insert").hasAnyRole("ADMIN", "MEMBER")
+				
 				.antMatchers("/qna/qnaSelect").hasAnyRole("ADMIN", "MEMBER")
 				.antMatchers("/qna/qnaUpdate").hasAnyRole("ADMIN", "MEMBER")
 				.antMatchers("/qna/reply").hasAnyRole("ADMIN")
 				.antMatchers("/qna/qnaInsert").hasAnyRole("MEMBER")
-				.antMatchers("/admin/insert").hasAnyRole("ADMIN", "MEMBER")
+				
 				.antMatchers("/admin/test").hasAnyRole("ADMIN")
 				.antMatchers("/admin/manageNoticeList").hasAnyRole("ADMIN")
 				
