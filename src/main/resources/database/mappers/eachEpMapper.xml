@@ -5,4 +5,23 @@
 
 <mapper namespace="com.to.t1.toon.eachep.EachEpMapper">
 
+	<select id="getList" resultType="EachEpVO">
+		SELECT te.* FROM
+		(SELECT t.*,e.epNum,e.eachEpNum,e.epSumImg,e.epTitle,e.epDate,e.epContentImg,e.epHit FROM toon t LEFT JOIN eachep e 
+		ON t.toonNum=e.toonNum WHERE t.toonNum=#{toonNum})te ORDER BY te.eachEpNum DESC
+		LIMIT #{startRow},#{perPage};
+	</select>
+	
+	<select id="getTotalCount" parameterType="Pager" resultType="Long">
+		SELECT COUNT(eachEpNum) FROM eachEp WHERE toonNum=#{toonNum};
+	</select>
+
+	<select id="getSelect" parameterType="EachEpVO" resultType="EachEpVO">
+		SELECT te.* FROM 
+		(SELECT t.*,e.epNum,e.eachEpNum,e.epSumImg,e.epTitle,e.epDate,e.epContentImg,e.epHit 
+		FROM toon t LEFT JOIN eachep e 
+		ON t.toonNum=e.toonNum WHERE t.toonNum=#{toonNum} AND e.epNum=#{epNum})te;
+	</select>
+	
+	
 </mapper>

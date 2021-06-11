@@ -159,4 +159,14 @@ public class Pager {
 		this.search = search;
 	}
 	
+	private long toonNum;
+
+	public long getToonNum() {
+		return toonNum;
+	}
+
+	public void setToonNum(long toonNum) {
+		this.toonNum = toonNum;
+	}
+	
 }

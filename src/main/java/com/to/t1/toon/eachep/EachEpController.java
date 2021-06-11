@@ -23,7 +23,7 @@ public class EachEpController {
 	@GetMapping("eachEpList")
 	public void getList(Pager pager, Model model)throws Exception{
 		List<EachEpVO> list=eachEpService.getList(pager);
-		model.addAttribute("list", list);
+		model.addAttribute("epVO", list);
 		model.addAttribute("pager", pager);
 		model.addAttribute("listsize", list.size());
 	}
