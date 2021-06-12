@@ -57,25 +57,22 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter{
 				.antMatchers("/notice/noticeList").permitAll()
 				.antMatchers("/notice/select").permitAll()
 				.antMatchers("/qna/qnaList").permitAll()
-
+				
 				.antMatchers("/member/memberJoinCheck").permitAll()
 				.antMatchers("/member/searchId").permitAll()
 				.antMatchers("/member/searchPw").permitAll()
 				.antMatchers("/member/CheckMail","/member/memberLoginResult").permitAll()
 				.antMatchers("/member/**").hasAnyRole("ADMIN", "MEMBER")
 				
+				.antMatchers("/member/memberJoinCheck").permitAll()
+				
 				.antMatchers("/notice/select").hasAnyRole("ADMIN", "MEMBER")
-				
-				.antMatchers("/admin/insert").hasAnyRole("ADMIN", "MEMBER")
-				
 				.antMatchers("/qna/qnaSelect").hasAnyRole("ADMIN", "MEMBER")
 				.antMatchers("/qna/qnaUpdate").hasAnyRole("ADMIN", "MEMBER")
 				.antMatchers("/qna/reply").hasAnyRole("ADMIN")
 				.antMatchers("/qna/qnaInsert").hasAnyRole("MEMBER")
-				
+				.antMatchers("/notice/insert").hasAnyRole("ADMIN")
 				.antMatchers("/admin/test").hasAnyRole("ADMIN")
-				.antMatchers("/admin/manageNoticeList").hasAnyRole("ADMIN")
-				
 				
 				.anyRequest().authenticated()
 				.and()

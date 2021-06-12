@@ -153,4 +153,3 @@ function emailCheck(){
           isCertification = false;
        }
  };
- 

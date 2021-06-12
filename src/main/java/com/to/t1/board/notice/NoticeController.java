@@ -37,42 +37,8 @@ public class NoticeController {
 	public String getBoard() {
 		return "notice";
 	}
+
 	
-	// /notice/fileDown
-	@GetMapping("fileDown")
-	public ModelAndView fileDown(String fileName, String oriName)throws Exception{
-		ModelAndView mv = new ModelAndView();
-		mv.addObject("fileName", fileName);
-		mv.addObject("oriName", oriName);
-		mv.addObject("filePath", filePath);
-		
-		// view의 이름은 Bean의 이름과 일치
-		mv.setViewName("down");
-		//  /fileDown.html
-		return mv;
-	}
-	
-	@PostMapping("summerFileDelete")
-	public ModelAndView setSummerFileDelete(String fileName)throws Exception{
-		ModelAndView mv = new ModelAndView();
-		boolean result = noticeService.setSummerFileDelete(fileName);
-		mv.addObject("result", result);
-		mv.setViewName("common/ajaxResult");
-		return mv;
-	}
-	
-	@PostMapping("summerFileUpload")
-	public ModelAndView setSummerFileUpload(MultipartFile file)throws Exception{
-		ModelAndView mv = new ModelAndView();
-		System.out.println("썸머 notice 파일 업로드");
-		System.out.println(file.getOriginalFilename());
-		String fileName = noticeService.setSummerFileUpload(file);
-		fileName = "../upload/notice/"+fileName;
-		mv.addObject("result", fileName);
-		mv.setViewName("common/ajaxResult");
-		
-		return mv;
-	}
 	
 	// /notice/list
 	@GetMapping("noticeList")
@@ -92,23 +58,6 @@ public class NoticeController {
 		
 		return mv;
 	}
-	@GetMapping("manageNoticeList")
-	public ModelAndView getManageList(Pager pager)throws Exception{
-		ModelAndView mv = new ModelAndView();
-		System.out.println(pager.getCurPage());
-		System.out.println("FilePath : "+filePath);
-		
-		List<BoardVO> ar = noticeService.getManageList(pager);
-		
-		mv.addObject("manageNoticeList", ar);
-		mv.setViewName("board/manageNoticeList");
-		mv.addObject("board", "notice");
-		mv.addObject("pager", pager);
-		System.out.println(pager.getStartNum());
-		System.out.println(pager.getLastNum());
-		
-		return mv;
-	}
 	
 	@GetMapping("select")
 	public ModelAndView getSelect(BoardVO boardVO)throws Exception{
@@ -118,77 +67,5 @@ public class NoticeController {
 		mv.setViewName("board/select");
 		return mv;
 	}
-	
-	@GetMapping("insert")
-	public void setInsert()throws Exception{
-		
-	}
-	
-	@PostMapping("insert")
-	public String setInsert(BoardVO boardVO, MultipartFile [] files, Model model)throws Exception{
-		
-		int result = noticeService.setInsert(boardVO, files);
-		
-		String message="등록 실패";
-		
-		if(result>0) {
-			message="등록 성공";
-		}
-		model.addAttribute("msg", message);
-		model.addAttribute("path", "./manageNoticeList");
-		
-		
-		return "common/commonResult";
-	}
-	
-	@PostMapping("delete")
-	public String setDelete(BoardVO boardVO)throws Exception{
-		
-		int result = noticeService.setDelete(boardVO);
-		
-		return "redirect:./noticeList";
-	}
-	
-	@GetMapping("fileDelete")
-	public ModelAndView setFileDelete(BoardFileVO boardFileVO)throws Exception{
-		ModelAndView mv = new ModelAndView();
-		int result = noticeService.setFileDelete(boardFileVO);
-		mv.addObject("result", result);
-		mv.setViewName("common/ajaxResult");
-		return mv;
-	}
-	
-	@GetMapping("update")
-	public ModelAndView setUpdate(BoardVO boardVO)throws Exception{
-		ModelAndView mv = new ModelAndView();
-		boardVO = noticeService.getSelect(boardVO);
-		
-		mv.addObject("vo", boardVO);
-		mv.addObject("board", "notice");
-		mv.setViewName("board/update");
-		return mv;
-	}
-	
-	@PostMapping("update")
-	public ModelAndView setUpdate(BoardVO boardVO, ModelAndView mv, MultipartFile [] files) throws Exception{
-		
-		int result = noticeService.setUpdate(boardVO, files);
-		
-		if(result>0) {
-			//성공하면 리스트로 이동
-			mv.setViewName("redirect:./manageNoticeList");
-		}else {
-			//실패하면 수정실패 , 리스트로 이동
-			mv.addObject("msg", "수정 실패");
-			mv.addObject("path", "./manageNoticeList");
-			mv.setViewName("common/commonResult");
-		}
-		
-		return mv;
-	}
-	
-	
-
-	
 
 }

@@ -100,28 +100,14 @@ public class AdminController {
 	}
 	
 	@GetMapping("insert")
-	public String setInsert(HttpSession session)throws Exception{
+	public ModelAndView setInsert(HttpSession session)throws Exception{
 		 ModelAndView mv = new ModelAndView();
 			mv.setViewName("admin/insert");
 			mv.addObject("admin", "admin");
 		
+			return mv;
 			
-		Object obj = session.getAttribute("member");
-		MemberVO memberVO = null;
-		String path="redirect:/member/login";
-		//if(obj != null) {}
-		if(obj instanceof MemberVO) {
-			memberVO = (MemberVO)obj;
-			
-			if(memberVO.getUsername().equals("33333333")) {
-				path="admin/insert";
-			}
 		}	
-		
-		
-		
-		return path;
-	}
 	
 	@PostMapping("insert")
 	public String setInsert(BoardVO boardVO, MultipartFile [] files, Model model)throws Exception{
