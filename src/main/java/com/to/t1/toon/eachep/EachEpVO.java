@@ -7,9 +7,13 @@ import lombok.Data;
 @Data
 public class EachEpVO {
 
-	private long username;
+	private long epNum;
 	private long toonNum;
 	private long eachEpNum;
-	private Date viewDate;
+	private String epSumImg;
+	private String epTitle;
+	private Date epDate;
+	private String epContentImg;
+	private long epHit;
 	
 }

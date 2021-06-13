@@ -5,6 +5,7 @@
     
    <mapper namespace="com.to.t1.member.MemberMapper">
    
+   
 		<insert id="setJoin" parameterType="MemberVO">
 			insert into member (username, password, name, nickname, phone, email, enabled)
 			values(#{username}, #{password}, #{name}, #{nickname}, #{phone}, #{email}, 1)

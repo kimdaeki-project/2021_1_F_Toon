@@ -98,7 +98,42 @@
       </div>
       <!-- partial -->
       <div class="page-content-wrapper">
-           <h1>뀽</h1>
+           <div class="container">	
+
+		<h2>최근본웹툰</h2>
+
+		<table class="table">
+			<thead class="thead-dark">
+				<tr>
+					<th>웹툰 이름</th>
+					<th>에피소드 이름</th>
+					<th>작가 이름</th>
+					<th>최근 본 날짜</th>
+				</tr>
+			</thead>
+
+			<tbody>
+			<c:forEach items="${list}" var="dto" >
+				<tr>
+					<td>${dto.viewDate}</td>
+<%-- 					<td><a href="./${board}Select?num=${dto.num}"> --%>
+					
+<%-- 					<c:catch> --%>
+<%-- 					<c:forEach begin="1" end="${dto.dept}">--</c:forEach> --%>
+<%-- 					</c:catch> --%>
+<%-- 					${dto.title} --%>
+<!-- 					</a></td> -->
+<%-- 					<td>${dto.writer}</td> --%>
+<%-- 					<td>${dto.regDate}</td> --%>
+<%-- 					<td>${dto.hit}</td> --%>
+				</tr>
+			</c:forEach>
+			
+			</tbody>
+
+		</table>
+	</div>
+           
   
 	
 
