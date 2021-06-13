@@ -41,7 +41,7 @@ public class MemberService implements UserDetailsService {
 		return memberVO;
 	}
 	
-	public JoinFileVO myPage(MemberVO memberVO)throws Exception{
+	public MemberVO myPage(MemberVO memberVO)throws Exception{
 		return memberMapper.myPage(memberVO);
 	}
 	

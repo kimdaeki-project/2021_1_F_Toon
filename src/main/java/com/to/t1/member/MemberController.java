@@ -117,23 +117,15 @@ public class MemberController {
 	}
 
 	@GetMapping("myPage") 
-	public void myPage(MemberVO memberVO, HttpSession session, Authentication auth2)throws Exception{
+	public String myPage(MemberVO memberVO, HttpSession session, Authentication auth2, Model model)throws Exception{
+		System.out.println(auth2.getPrincipal());
 		
-		Enumeration<String> en = session.getAttributeNames();
-		
-		while(en.hasMoreElements()) {
-			System.out.println("Attribute Name : "+en.nextElement());
-		}
-		
-		//로그인 시 session의 속성명 : SPRING_SECURITY_CONTEXT
-		Object obj = session.getAttribute("SPRING_SECURITY_CONTEXT");
-		
-		SecurityContextImpl sc = (SecurityContextImpl)obj;
-		
-		Authentication auth= sc.getAuthentication();
+		memberVO = memberService.myPage((MemberVO) auth2.getPrincipal());
+		model.addAttribute("memberVO", memberVO);
 		
 		System.out.println("Z");
-		System.out.println(auth2.getPrincipal());
+
+		return  "member/myPage";
 	}
 
 
@@ -250,18 +242,36 @@ public class MemberController {
 	}
 
 	@RequestMapping("memberUpdate")
-	public void memberUpdate()throws Exception{}
+	public String memberUpdate(MemberVO memberVO, HttpSession session, Authentication auth2, Model model)throws Exception{
+		System.out.println(auth2.getPrincipal());
+		
+		memberVO = memberService.myPage((MemberVO) auth2.getPrincipal());
+		model.addAttribute("memberVO", memberVO);
+		
+		System.out.println("Z");
 
-	@PostMapping("memberUpdate")
-	public String memberUpdate(MemberVO memberVO, HttpSession session)throws Exception{
-		int result = memberService.memberUpdate(memberVO);
-
-		if(result>0) {
-			session.setAttribute("member", memberVO);
-		}
-		return "redirect:../";
+		return  "member/memberUpdate";
 	}
 
+	@PostMapping("memberUpdate")
+	public String memberUpdate(MemberVO memberVO, Authentication auth2, HttpSession session, Model model)throws Exception{
+		System.out.println(memberVO);
+		int result = memberService.memberUpdate(memberVO);
+		memberVO = memberService.myPage(memberVO);
+		
+		String message = "정보 수정 실패하였습니다";
+		
+		
+		if(result>0) {
+			session.setAttribute("member", memberVO);
+			model.addAttribute("memberVO", memberVO);
+			message ="회원 가입 성공";
+		}
+		
+		model.addAttribute("msg", message);
+		return "member/myPage";
+	}
+	
 	@RequestMapping("memberDelete")
 	public ModelAndView memberDelete(HttpSession session, String username)throws Exception{
 		MemberVO memberVo =(MemberVO)session.getAttribute("member"); 

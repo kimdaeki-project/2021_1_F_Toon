@@ -32,8 +32,8 @@
       <div class="sidebar">
         <div class="user-profile">
           <div class="display-avatar animated-avatar">
-            <c:if test="${member.joinFileVO.fileName eq null}"><img width=180px height=200px alt="" src="../images/member.jpg"></c:if>
-			<c:if test="${member.joinFileVO.fileName ne null}"><img width=180px height=200px alt="" src="../upload/member/${member.joinFileVO.fileName}"></c:if>
+            <c:if test="${memberVO.joinFileVO.fileName eq null}"><img width=180px height=200px alt="" src="../images/member.jpg"></c:if>
+			<c:if test="${memberVO.joinFileVO.fileName ne null}"><img width=180px height=200px alt="" src="../upload/member/${memberVO.joinFileVO.fileName}"></c:if>
           </div>
           <div class="info-wrapper">
             <p class="user-name"><sec:authentication property="principal.name"/>님</p>
@@ -100,15 +100,13 @@
       <div class="page-content-wrapper">
            <h1>회원정보</h1>
     <sec:authorize access="isAuthenticated()">       	
-
-	<h3>${member.joinFileVO.fileName} </h3>
 	
 	<h3>아이디: <sec:authentication property="principal.username"/></h3>
-	<h3>이름: <sec:authentication property="principal.name"/></h3>
-	<h3>닉네임: <sec:authentication property="principal.nickname"/></h3>
-	<h3>핸드폰: <sec:authentication property="principal.phone"/></h3>
-	<h3>이메일: <sec:authentication property="principal.email"/></h3>
-	<h3>내 포인트: <sec:authentication property="principal.point"/>point</h3>
+	<h3>이름: ${memberVO.name}</h3>
+	<h3>닉네임: ${memberVO.nickname}</h3>
+	<h3>핸드폰: ${memberVO.phone}</h3>
+	<h3>이메일: ${memberVO.email}</h3>
+	<h3>내 포인트: ${memberVO.point}</h3>
 	</sec:authorize>
 	
 	<!-- 이렇게 해서 값 넘김 알지 저건? URL 주소뒤에 값 넘기는거 업데이트도 똑같이 하면될듯 ㅇㅈ? -->
