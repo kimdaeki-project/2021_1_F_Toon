@@ -21,7 +21,7 @@ $("#qnaContents").summernote({
 function deleteFile(files){
 	let fileName = $(files[0]).attr("src");
 	fileName = fileName.substring(fileName.lastIndexOf('/')+1);
-	$.post("summerFileDelete", {fileName:fileName}, function(result){
+	$.post("qnaSummerFileDelete", {fileName:fileName}, function(result){
 		console.log(result);
 	});
 }
@@ -33,7 +33,7 @@ function uploadFile(files) {
 	let fileName="";
 	$.ajax({
 		type: "POST",
-		url: "./summerFileUpload",
+		url: "./qnaSummerFileUpload",
 		data:formData,
 		enctype:"multipart/form-data",
 		cache:false,

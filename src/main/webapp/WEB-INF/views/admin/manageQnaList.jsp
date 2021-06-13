@@ -131,7 +131,7 @@
 					</div>
 				</form>
 			</div>
-			<a href="./qnaInsert" class="btn btn-secondary" role="button">작성</a>
+			<a href="./manageQnaInsert" class="btn btn-secondary" role="button">작성</a>
 		</div>
 
 	</div>

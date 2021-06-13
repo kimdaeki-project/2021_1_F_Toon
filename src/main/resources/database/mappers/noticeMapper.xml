@@ -59,7 +59,7 @@
          on N.boNum = NF.boNum
          WHERE N.boNum=#{boNum}
          </select>
-         
+
          <resultMap type="NoticeVO" id="selectResult">
             <id column="boNum" property="boNum"/>
             <result column="noticeKinds" property="noticeKinds"/>

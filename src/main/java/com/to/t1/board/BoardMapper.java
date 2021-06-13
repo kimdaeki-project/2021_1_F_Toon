@@ -7,9 +7,7 @@ import com.to.t1.util.Pager;
 public interface BoardMapper {
 	
 	public List<BoardVO> getList(Pager pager) throws Exception;
-	
-	public List<BoardVO> getManageList(Pager pager) throws Exception;
-	
+		
 	public Long getTotalCount(Pager pager) throws Exception;
 	
 	public BoardVO getSelect(BoardVO boardVO) throws Exception;

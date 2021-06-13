@@ -11,13 +11,16 @@ import com.to.t1.util.Pager;
 
 @Mapper
 public interface QnaMapper extends BoardMapper {
+
+	public List<BoardVO> getManageQnaList(Pager pager) throws Exception;
+	
+	public BoardVO getManageQnaSelect(BoardVO boardVO) throws Exception;
 	
 	public int setReplyInsert(BoardVO boardVO)throws Exception;
-		
+	
 	public int setReplyUpdate(BoardVO boardVO)throws Exception;
 	
 	public int setRefUpdate(BoardVO boardVO)throws Exception;
 	
-	public BoardVO getManageSelect(BoardVO boardVO) throws Exception;
-	
+	public int setQnaDelete(BoardVO boardVO) throws Exception;
 }

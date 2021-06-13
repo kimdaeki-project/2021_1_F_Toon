@@ -18,6 +18,8 @@ import org.springframework.web.servlet.ModelAndView;
 import com.to.t1.board.BoardFileVO;
 import com.to.t1.board.BoardVO;
 import com.to.t1.board.notice.NoticeService;
+import com.to.t1.board.qna.QnaService;
+import com.to.t1.board.qna.QnaVO;
 import com.to.t1.member.MemberVO;
 import com.to.t1.util.Pager;
 
@@ -89,13 +91,13 @@ public class AdminController {
 		return mv;
 	}
 	
-	@GetMapping("select")
+	@GetMapping("manageSelect")
 	public ModelAndView getSelect(BoardVO boardVO)throws Exception{
 		ModelAndView mv = new ModelAndView();
 		boardVO = noticeService.getSelect(boardVO);
 		mv.addObject("vo", boardVO);
 		mv.addObject("admin", "admin");
-		mv.setViewName("admin/select");
+		mv.setViewName("admin/manageSelect");
 		return mv;
 	}
 	
@@ -131,7 +133,7 @@ public class AdminController {
 		
 		int result = noticeService.setDelete(boardVO);
 		
-		return "redirect:./noticeList";
+		return "redirect:./manageNoticeList";
 	}
 	
 	@GetMapping("fileDelete")
@@ -172,9 +174,111 @@ public class AdminController {
 		return mv;
 	}
 	
+	@Autowired
+	private QnaService qnaService;
 	
+	@ModelAttribute("board")
+	public String getQnaBoard() {
+		return "qna";
+	}
+	
+	@GetMapping("manageQnaList")
+	public String getManageQnaList(Pager pager, Model model)throws Exception{
+		List<BoardVO> ar = qnaService.getManageQnaList(pager);
+		model.addAttribute("manageQnaList", ar);
+		model.addAttribute("pager", pager);
+		for(BoardVO boardVO :ar) {
+			QnaVO qnaVO = (QnaVO)boardVO;
+			System.out.println(qnaVO.getDepth());
+		}
+		return "admin/manageQnaList";
+	}
 
+	@GetMapping("manageQnaSelect")
+	public ModelAndView getManageQnaSelect(BoardVO boardVO)throws Exception{
+		ModelAndView mv = new ModelAndView();
+		boardVO = qnaService.getManageQnaSelect(boardVO);
+		mv.addObject("vo", boardVO);
+		mv.setViewName("admin/manageQnaSelect");
+		return mv;
+	}
 	
+	@GetMapping("manageQnaInsert")
+	public String setInsert(Model model)throws Exception{
+		model.addAttribute("vo", new BoardVO());
+		model.addAttribute("action", "manageQnaInsert");
+		return "admin/manageQnaInsert";
+	}
+	
+	@PostMapping("manageQnaInsert")
+	public String setInsert(BoardVO boardVO, MultipartFile [] files)throws Exception{
+		int result = qnaService.setInsert(boardVO, files);
+		
+		return "redirect:./manageQnaList";
+	}
+
+	@GetMapping("qnaUpdate")
+	public String setUpdate(BoardVO boardVO, Model model)throws Exception{
+		boardVO = qnaService.getSelect(boardVO);
+		model.addAttribute("vo", boardVO);
+		model.addAttribute("action", "qnaUpdate");
+		return "admin/qnaUpdate";
+		
+	}
+	
+	@PostMapping("qnaUpdate")
+	public String setUpdate(BoardVO boardVO, MultipartFile [] files)throws Exception{
+		
+		int result = qnaService.setUpdate(boardVO, files);
+		
+		return "redirect:./manageQnaList";
+	}
+	
+	@PostMapping("QnaDelete")
+	public String setQnaDelete(BoardVO boardVO) throws Exception{
+		
+		int result = qnaService.setQnaDelete(boardVO);
+		
+		return "redirect:./manageQnaList";
+	}
+
+	@GetMapping("reply")
+	public String setReplyInsert(BoardVO boardVO, Model model)throws Exception{
+		model.addAttribute("vo", boardVO);
+		model.addAttribute("action", "reply");
+		return "admin/reply";
+	}
+	
+	@PostMapping("reply")
+	public String setReplyInsert(BoardVO boardVO, MultipartFile [] files)throws Exception{
+		
+		int result = qnaService.setReplyInsert(boardVO, files);
+	
+		return "redirect:./manageQnaList";
+	}	
+	
+	
+	@PostMapping("qnaSummerFileDelete")
+	public ModelAndView setQnaSummerFileDelete(String fileName)throws Exception{
+		ModelAndView mv = new ModelAndView();
+		boolean result = qnaService.setQnaSummerFileDelete(fileName);
+		mv.addObject("result", result);
+		mv.setViewName("common/ajaxResult");
+		return mv;
+	}
+	
+	@PostMapping("qnaSummerFileUpload")
+	public ModelAndView setQnaSummerFileUpload(MultipartFile file)throws Exception{
+		ModelAndView mv = new ModelAndView();
+		System.out.println("썸머 qna 파일 업로드");
+		System.out.println(file.getOriginalFilename());
+		String fileName = qnaService.setQnaSummerFileUpload(file);
+		fileName = "../upload/qna/"+fileName;
+		mv.addObject("result", fileName);
+		mv.setViewName("common/ajaxResult");
+		
+		return mv;
+	}
 
 
 	

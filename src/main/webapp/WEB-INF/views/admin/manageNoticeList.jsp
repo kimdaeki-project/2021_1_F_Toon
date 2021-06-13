@@ -42,8 +42,6 @@
 
 </head>
 <body>
-	<c:import url="../fragments/header.jsp"></c:import>
-
 
 	<div class="container">
 		<br>
@@ -78,7 +76,7 @@
 
 								<td class="cell100 column2">${vo.noticeKinds}</td>
 								<td class="cell100 column1"><a
-									href="./select?boNum=${vo.boNum}"> ${vo.noticeTitle} </a></td>
+									href="./manageSelect?boNum=${vo.boNum}"> ${vo.noticeTitle}</a></td>
 								<td class="cell100 column3">${vo.username}</td>
 								<td class="cell100 column4">${vo.createdDate}</td>
 								<td class="cell100 column5">${vo.noticeHit}</td>
@@ -108,7 +106,7 @@
 			</ul>
 
 			<div class="input-group mt-3 mb-3">
-				<form id="frm" action="./noticeList" class="form-inline">
+				<form id="frm" action="./manageNoticeList" class="form-inline">
 					<input type="hidden" name="curPage" value="1" id="curPage">
 					<div class="input-group-prepend">
 						<select class="form-control" name="kind" id="kind">
