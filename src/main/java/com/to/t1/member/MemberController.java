@@ -260,16 +260,17 @@ public class MemberController {
 		memberVO = memberService.myPage(memberVO);
 		
 		String message = "정보 수정 실패하였습니다";
-		
+		String path = "../";
 		
 		if(result>0) {
 			session.setAttribute("member", memberVO);
 			model.addAttribute("memberVO", memberVO);
-			message ="회원 가입 성공";
+			message ="정보 수정 성공하였습니다.";
 		}
 		
 		model.addAttribute("msg", message);
-		return "member/myPage";
+		model.addAttribute("path", "./myPage");
+		return "common/commonResult";
 	}
 	
 	@RequestMapping("memberDelete")
@@ -290,6 +291,8 @@ public class MemberController {
 		mv.addObject("msg", message);
 		mv.addObject("path", "./logout");
 		mv.setViewName("common/commonResult");
+		
+		
 		return mv;
 	}
 
