@@ -5,6 +5,20 @@
 
 <mapper namespace="com.to.t1.toon.eachep.EachEpMapper">
 
+	<resultMap type="ToonVO" id="ToonVO">
+		<id property="toonNum" column="toonNum"/>
+    	<result property="toonTitle" column="toonTitle"/>
+    	<result property="genre" column="genre"/>
+      	<result property="writerID" column="writerID"/>      
+     	<result property="toonSum" column="toonSum"/>
+   	   	<result property="totalHit" column="totalHit"/>
+   	   	<result property="toonDay" column="toonDay"/>
+     	<result property="state" column="state"/>
+     	<result property="titleImg" column="titleImg"/>
+      	<result property="ratingSum" column="ratingSum"/>
+      	<result property="ratingPerson" column="ratingPerson"/>
+	</resultMap>
+
 	<select id="getList" resultType="EachEpVO">
 		SELECT te.* FROM
 		(SELECT t.*,e.epNum,e.eachEpNum,e.epSumImg,e.epTitle,e.epDate,e.epContentImg,e.epHit FROM toon t LEFT JOIN eachep e 

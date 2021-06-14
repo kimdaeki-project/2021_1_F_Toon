@@ -27,28 +27,28 @@
 		</thead>
 		
 		<tbody>
-		<c:forEach items="${epVO}" var="list">
+		<c:forEach items="${epVO}" var="epVO">
 			<tr>
 				<td class="imgalign">
-					<a href="/toon/eachEpList?toonNum=${list.toonNum}&epNum=${list.eachEpNum}" onclick="nclk_v2(event,'lst.img','${list.toonNum}','${list.eachEpNum}')">
-					<img alt="${list.toonSumImg}" 
-						src="${pageContext.request.contextPath}/resources/uploaded/toon/eachEp/${list.epSumImg}"
-						title="${list.eachEpNum}화" alt="${list.eachEpNum}화" width="71" height="41" 
+					<a href="/toon/eachEpSelect?toonNum=${epVO.toonNum}&epNum=${epVO.eachEpNum}" onclick="nclk_v2(event,'lst.img','${epVO.toonNum}','${epVO.eachEpNum}')">
+					<img alt="${epVO.epSumImg}" 
+						src="${pageContext.request.contextPath}/resources/uploaded/toon/eachEp/${epVO.epSumImg}"
+						title="${epVO.eachEpNum}화" alt="${epVO.eachEpNum}화" width="71" height="41" 
 						onERROR="this.src='https://ssl.pstatic.net/static/comic/images/migration/common/non71_41.gif'">
 						<span class="mask"></span>
 					</a>
 				</td>
 				<td class="title">
-				<a href="/toon/eachEpList?toonNum=${list.toonNum}&epNum=${list.eachEpNum}" onclick="nclk_v2(event,'lst.title','${list.toonNum}','${list.eachEpNum}')">
-				${list.eachEpNum}화</a>
+				<a href="/toon/eachEpList?toonNum=${epVO.toonNum}&epNum=${epVO.eachEpNum}" onclick="nclk_v2(event,'lst.title','${epVO.toonNum}','${epVO.eachEpNum}')">
+				${epVO.eachEpNum}화</a>
 				</td>
 				<td>
 					<div class="rating_type">
-						<span class="star"><em style="width:${toonVO.ratingSum}/${toonVO.ratingPerson}*10%">평점</em></span>
-						<strong>${toonVO.ratingSum}/${toonVO.ratingPerson}</strong>
+						<span class="star"><em style="width:${epVO.toonVO.ratingSum}/${epVO.toonVO.ratingPerson}*10%">평점</em></span>
+						<strong>${epVO.toonVO.ratingSum}/${epVO.toonVO.ratingPerson}</strong>
 					</div>
 				</td>
-				<td class="num"><span>${list.epDate}</span></td>
+				<td class="num"><span>${epVO.epDate}</span></td>
 			</tr>
 		</c:forEach>
 		</tbody>
