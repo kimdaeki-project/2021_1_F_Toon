@@ -123,7 +123,7 @@ public class MemberController {
 		memberVO = memberService.myPage((MemberVO) auth2.getPrincipal());
 		model.addAttribute("memberVO", memberVO);
 		
-		System.out.println("Z");
+		System.out.println("마이페이지 사진");
 
 		return  "member/myPage";
 	}
