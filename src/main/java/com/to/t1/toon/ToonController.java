@@ -40,7 +40,6 @@ public class ToonController {
 	}
 
 	@GetMapping("toonDay")
-
 	public ModelAndView toonDay(ToonVO toonVO,MemberVO memberVO) throws Exception {
 		ModelAndView mv = new ModelAndView();
 		
@@ -73,9 +72,85 @@ public class ToonController {
 		mv.addObject("ft", ft);
 		mv.addObject("st", st);
 		mv.addObject("st2", st2);
-		mv.setViewName("toon/toonList/toonDay");
+		mv.setViewName("toon/toonDay/toonDay");
 		return mv ;
 	}
+	
+	
+	@GetMapping("toonDayAver")
+	public ModelAndView toonDayAver(ToonVO toonVO, MemberVO memberVO)throws Exception{
+		ModelAndView mv = new ModelAndView();
+	
+		toonVO.setToonDay("mon");
+		List<ToonVO> mt = toonService.toonDayAver(toonVO,memberVO);
+		
+		toonVO.setToonDay("tue");
+		List<ToonVO> tt = toonService.toonDayAver(toonVO,memberVO);
+		
+		toonVO.setToonDay("wen");
+		List<ToonVO> wt = toonService.toonDayAver(toonVO,memberVO);
+		
+		toonVO.setToonDay("the");
+		List<ToonVO> tt2 = toonService.toonDayAver(toonVO,memberVO);
+		
+		toonVO.setToonDay("fri");
+		List<ToonVO> ft = toonService.toonDayAver(toonVO,memberVO);
+		
+		toonVO.setToonDay("sat");
+		List<ToonVO> st = toonService.toonDayAver(toonVO,memberVO);
+		
+		toonVO.setToonDay("sun");
+		List<ToonVO> st2 = toonService.toonDayAver(toonVO,memberVO);
+		
+		
+		mv.addObject("mt", mt);
+		mv.addObject("tt", tt);
+		mv.addObject("wt", wt);
+		mv.addObject("tt2", tt2);
+		mv.addObject("ft", ft);
+		mv.addObject("st", st);
+		mv.addObject("st2", st2);
+		mv.setViewName("toon/toonDay/toonDayAver");
+		return mv ;
+	}
+	
+	@GetMapping("toonDayRecent")
+	public ModelAndView toonDayRecent(ToonVO toonVO, MemberVO memberVO)throws Exception{
+		ModelAndView mv = new ModelAndView();
+	
+		toonVO.setToonDay("mon");
+		List<ToonVO> mt = toonService.toonDayRecent(toonVO,memberVO);
+		
+		toonVO.setToonDay("tue");
+		List<ToonVO> tt = toonService.toonDayRecent(toonVO,memberVO);
+		
+		toonVO.setToonDay("wen");
+		List<ToonVO> wt = toonService.toonDayRecent(toonVO,memberVO);
+		
+		toonVO.setToonDay("the");
+		List<ToonVO> tt2 = toonService.toonDayRecent(toonVO,memberVO);
+		
+		toonVO.setToonDay("fri");
+		List<ToonVO> ft = toonService.toonDayRecent(toonVO,memberVO);
+		
+		toonVO.setToonDay("sat");
+		List<ToonVO> st = toonService.toonDayRecent(toonVO,memberVO);
+		
+		toonVO.setToonDay("sun");
+		List<ToonVO> st2 = toonService.toonDayRecent(toonVO,memberVO);
+		
+		
+		mv.addObject("mt", mt);
+		mv.addObject("tt", tt);
+		mv.addObject("wt", wt);
+		mv.addObject("tt2", tt2);
+		mv.addObject("ft", ft);
+		mv.addObject("st", st);
+		mv.addObject("st2", st2);
+		mv.setViewName("toon/toonDay/toonDayRecent");
+		return mv ;
+	}
+	
 	
 	@GetMapping("genre")
 	public ModelAndView genre(ToonVO toonVO,MemberVO memberVO)throws Exception {
@@ -106,13 +181,78 @@ public class ToonController {
 		mv.addObject("thriller", th);
 		mv.addObject("comedy", co);		
 
-		mv.setViewName("toon/toonList/genre");
+		mv.setViewName("toon/genre/genre");
 		
 		return mv;
 	}
 	
+	@GetMapping("genreAver")
+	public ModelAndView genreAver(ToonVO toonVO,MemberVO memberVO)throws Exception {
+		ModelAndView mv = new ModelAndView();
+		
+		toonVO.setGenre("action");
+		List<ToonVO> ac = toonService.genreAver(toonVO,memberVO);
+		
+		toonVO.setGenre("school");
+		List<ToonVO> sc = toonService.genreAver(toonVO,memberVO);
+		
+		toonVO.setGenre("romance");
+		List<ToonVO> ro = toonService.genreAver(toonVO,memberVO);		
+		
+		toonVO.setGenre("fantasy");
+		List<ToonVO> fa = toonService.genreAver(toonVO,memberVO);
+		
+		toonVO.setGenre("thriller");
+		List<ToonVO> th = toonService.genreAver(toonVO,memberVO);
+		
+		toonVO.setGenre("comedy");
+		List<ToonVO> co = toonService.genreAver(toonVO,memberVO);
+		
+		mv.addObject("action", ac);
+		mv.addObject("school", sc);
+		mv.addObject("romance", ro);		
+		mv.addObject("fantasy", fa);
+		mv.addObject("thriller", th);
+		mv.addObject("comedy", co);		
+
+		mv.setViewName("toon/genre/genreAver");
+		
+		return mv;
+	}
 	
-	
+	@GetMapping("genreRecent")
+	public ModelAndView genreRecent(ToonVO toonVO,MemberVO memberVO)throws Exception {
+		ModelAndView mv = new ModelAndView();
+		
+		toonVO.setGenre("action");
+		List<ToonVO> ac = toonService.genreRecent(toonVO,memberVO);
+		
+		toonVO.setGenre("school");
+		List<ToonVO> sc = toonService.genreRecent(toonVO,memberVO);
+		
+		toonVO.setGenre("romance");
+		List<ToonVO> ro = toonService.genreRecent(toonVO,memberVO);		
+		
+		toonVO.setGenre("fantasy");
+		List<ToonVO> fa = toonService.genreRecent(toonVO,memberVO);
+		
+		toonVO.setGenre("thriller");
+		List<ToonVO> th = toonService.genreRecent(toonVO,memberVO);
+		
+		toonVO.setGenre("comedy");
+		List<ToonVO> co = toonService.genreRecent(toonVO,memberVO);
+		
+		mv.addObject("action", ac);
+		mv.addObject("school", sc);
+		mv.addObject("romance", ro);		
+		mv.addObject("fantasy", fa);
+		mv.addObject("thriller", th);
+		mv.addObject("comedy", co);		
+
+		mv.setViewName("toon/genre/genreRecent");
+		
+		return mv;
+	}
 	
 	@GetMapping("ranking")
 	public ModelAndView ranking(ToonVO toonVO,MemberVO memberVO)throws Exception {
@@ -126,12 +266,44 @@ public class ToonController {
 		mv.addObject("rank", ra);
 		mv.addObject("rank2", ra2);
 		
-		mv.setViewName("toon/toonList/ranking");
+		mv.setViewName("toon/ranking/ranking");
 		
 		return mv;
 	}
 	
+	@GetMapping("rankingAver")
+	public ModelAndView rankingAver(ToonVO toonVO,MemberVO memberVO)throws Exception {
+		ModelAndView mv = new ModelAndView();
+		
+		toonVO.setTotalHit(0);
+		List<ToonVO> ra = toonService.rankingAver(toonVO,memberVO);
+		toonVO.setTotalHit(0);
+		List<ToonVO> ra2 = toonService.rankingAver(toonVO,memberVO);
+		
+		mv.addObject("rank", ra);
+		mv.addObject("rank2", ra2);
+		
+		mv.setViewName("toon/ranking/rankingAver");
+		
+		return mv;
+	}
 	
+	@GetMapping("rankingRecent")
+	public ModelAndView rankingRecent(ToonVO toonVO,MemberVO memberVO)throws Exception {
+		ModelAndView mv = new ModelAndView();
+		
+		toonVO.setTotalHit(0);
+		List<ToonVO> ra = toonService.rankingRecent(toonVO,memberVO);
+		toonVO.setTotalHit(0);
+		List<ToonVO> ra2 = toonService.rankingRecent(toonVO,memberVO);
+		
+		mv.addObject("rank", ra);
+		mv.addObject("rank2", ra2);
+		
+		mv.setViewName("toon/ranking/rankingRecent");
+		
+		return mv;
+	}
 	
 	
 	@GetMapping("endRe")
@@ -142,16 +314,35 @@ public class ToonController {
 		List<ToonVO> en = toonService.endRe(toonVO,memberVO);
 		
 		mv.addObject("end", en);
-		
-		mv.setViewName("toon/toonList/endRe");
-		
+		mv.setViewName("toon/end/endRe");
 		
 		return mv;
 	}
 	
-	@GetMapping("dayList")
-	public String dayList() {
-		return "toon/toonList/dayList";
+	@GetMapping("endReAver")
+	public ModelAndView endKrAver(ToonVO toonVO,MemberVO memberVO)throws Exception {
+		ModelAndView mv = new ModelAndView();
+		
+		toonVO.setTotalHit(0);
+		List<ToonVO> en = toonService.endReAver(toonVO,memberVO);
+		
+		mv.addObject("end", en);
+		mv.setViewName("toon/end/endReAver");
+		
+		return mv;
+	}
+	
+	@GetMapping("endReRecent")
+	public ModelAndView endKrRecent(ToonVO toonVO,MemberVO memberVO)throws Exception {
+		ModelAndView mv = new ModelAndView();
+		
+		toonVO.setTotalHit(0);
+		List<ToonVO> en = toonService.endReRecent(toonVO,memberVO);
+		
+		mv.addObject("end", en);
+		mv.setViewName("toon/end/endReRecent");
+		
+		return mv;
 	}
 	
 	
