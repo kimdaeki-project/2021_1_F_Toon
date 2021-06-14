@@ -7,11 +7,8 @@ import lombok.Data;
 @Data
 public class ChargePointVO {
 	
-	private long orderNum;
-	private String userName;
-	private long toonNum;
-	private long usePoint;
-	private long totalcount;
-	private Timestamp orderTime; //orderTime
+	private String username;
+	private long point;
+	private Timestamp cDate; //orderTime
 	
 }

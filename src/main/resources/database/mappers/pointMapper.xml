@@ -11,7 +11,7 @@
 	</select>
 	<!-- 포인트 충전하기 (멤버 업데이트) -->
 	<update id="setChargePoint" parameterType="ChargePointVO">
-		UPDATE member SET point = (member.point + #{point}) WHERE  username =#{username}
+		UPDATE member SET point =(member.point + #{point}) WHERE username =#{username}
 	</update>
 	<!-- 포인트 사용 내역 작성하기 -->
 	<insert id="setChargePointList" parameterType="ChargePointVO">

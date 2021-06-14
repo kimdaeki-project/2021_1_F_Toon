@@ -1,9 +1,11 @@
 package com.to.t1.point;
 
 import java.util.List;
+import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import com.to.t1.member.MemberVO;
 
@@ -14,11 +16,22 @@ public class PointService {
 	private PointMapper pointMapper;
 	
 	//포인트 충전 
-	public int ChargePoint(ChargePointVO chargePointVO)throws Exception {
+	public int ChargePoint(@RequestParam Map<String, Object> param)throws Exception {
 		int result =0;
 		//포인트 충전과 내역 작성 
+		
+		//Json 데이터 가공하기 
+		ChargePointVO chargePointVO = new ChargePointVO();
+		String username = (String) param.get("username");
+		String spoint = (String)param.get("point");
+		long point = Integer.parseInt(spoint);
+		
+		chargePointVO.setUsername(username);
+		chargePointVO.setPoint(point);
+		
 		result = pointMapper.setChargePoint(chargePointVO);
 		result = pointMapper.setChargePointList(chargePointVO);
+		
 		return result;
 	}
 	//포인트 사용()
