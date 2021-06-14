@@ -95,7 +95,13 @@ btn.addEventListener("click", function(){
 function id11(){
   
  let id = $("#id").val();
- $.ajax({
+ let idTrim = $.trim(id);
+ 
+  if(idTrim.length>13||idTrim.length<6||id==null){
+      alert("아이디는 6글자 이상 12글자 이하로 만드십시오.")
+   }else{   
+	
+	$.ajax({
       type : 'POST',
       url : 'memberJoinCheck',
       data : {
@@ -111,6 +117,10 @@ function id11(){
        }
 
    })
+	
+	
+}
+ 
 };
 
 

@@ -8,7 +8,7 @@ public class ToonVO {
 	private long toonNum;
 	private String toonTitle;
 	private String genre;
-	private String writerID;
+	private String writerId;
 	private String toonSum;
 	private long totalHit;
 	private String toonDay;

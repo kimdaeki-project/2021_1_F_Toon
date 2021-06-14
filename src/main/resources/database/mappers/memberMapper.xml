@@ -39,8 +39,6 @@
 				M.username=#{username}
 		</select>
 		
-		
-
 		<select id="getUsername" parameterType="MemberVO" resultType="MemberVO">
 			select * from member where username=#{username}
 		</select>

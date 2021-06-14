@@ -281,11 +281,11 @@ public class MemberController {
 		int result = memberService.memberDelete(username, session, memberVo);
 		session.invalidate();
 		
-		String message="회원가입 탈퇴 실패";
+		String message="회원 탈퇴 실패";
 		String path = "../";
 		
 		if(result>0) {
-			message="회원가입 탈퇴 성공";
+			message="회원 탈퇴 성공";
 			
 		}
 		mv.addObject("msg", message);

@@ -43,7 +43,7 @@
 			<id property="toonNum" column="toonNum"/>
 			<result property="toonTitle" column="toonTitle"/>
 			<result property="genre" column="genre"/>
-			<result property="writerID" column="writerID"/>
+			<result property="writerId" column="writerId"/>
 			<result property="toonSum" column="toonSum"/>
 			<result property="totalHit" column="totalHit"/>
 			<result property="toonDay" column="toonDay"/>
