@@ -36,6 +36,8 @@
       		<result property="epDate" column="epDate"/>
       		<result property="epContentImg" column="epContentImg"/>
       		<result property="epHit" column="epHit"/>
+      		<result property="epRatingSum" column="epRatingSum"/>
+      		<result property="epRatingPerson" column="epRatingPerson"/>
       	</collection>
       	
 	</resultMap>

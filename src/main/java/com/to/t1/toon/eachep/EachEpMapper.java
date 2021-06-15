@@ -1,7 +1,5 @@
 package com.to.t1.toon.eachep;
 
-import java.util.List;
-
 import org.apache.ibatis.annotations.Mapper;
 
 import com.to.t1.toon.ToonVO;
