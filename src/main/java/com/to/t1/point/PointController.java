@@ -47,7 +47,7 @@ public class PointController {
 		
 		int result = pointservice.ChargePoint(param);
 		
-		return "index";
+		return "member/myPage";
 	}
 	
 //	//RESTAPI 검증
