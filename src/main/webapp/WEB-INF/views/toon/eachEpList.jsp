@@ -24,7 +24,7 @@
 			<h2>${toonVO.toonTitle}
 			<span class="wrt_nm">${toonVO.nickname}</span>
 			</h2>
-			<p>${toonVO.toonSum}</p>
+			<p><h2>${toonVO.toonSum}</h2></p>
 		<p class="detail_info"><span class="genre">장르 : ${toonVO.genre}</span></p>
 		<ul class="btn_group">
 		<li><a href="#" title="관심웹툰" class="book_maker on"><span>관심웹툰</span></a></li>

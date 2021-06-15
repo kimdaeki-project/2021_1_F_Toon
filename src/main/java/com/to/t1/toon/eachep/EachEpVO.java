@@ -18,5 +18,6 @@ public class EachEpVO {
 	private Date epDate;
 	private String epContentImg;
 	private long epHit;
-
+	private long epRatingSum;
+	private long epRaitngPerson;
 }
