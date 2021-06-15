@@ -2,14 +2,14 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
 <mapper namespace="com.to.t1.mypage.MypageMapper">
-	<select id="getList" resultType="RecentVO" parameterType="Pager" resultMap="recentResult">
+	<select id="getList" parameterType="Pager" resultMap="recentResult">
 		SELECT recenttoon.*,toon.toonTitle, eachep.epTitle, eachep.eachEpNum,
 		member.nickname, eachep.epSumImg
 		FROM recenttoon, eachep, toon, member
 		WHERE toon.writerId = member.username AND eachep.toonNum =
 		toon.toonNum AND recenttoon.epNum = eachep.epNum
 		AND recenttoon.username ='55555555'
-		ORDER BY recenttoon.viewDate DESC;
+		ORDER BY recenttoon.viewDate DESC
 
 		<!-- select * from notice -->
 		<!-- <include refid="searcher"></include> -->
@@ -18,25 +18,26 @@
 		<!-- limit 시작index번호(0부터시작), 갯수 -->
 	</select>
 	
-	<select id="getTotalCount" parameterType="Pager" resultMap="recentResult">
+	<select id="getTotalCount" parameterType="Pager" resultType="java.lang.Long">
 		SELECT count(*)
 		FROM recenttoon, eachep, toon, member
 		WHERE toon.writerId = member.username AND eachep.toonNum =
 		toon.toonNum AND recenttoon.epNum = eachep.epNum
 		AND recenttoon.username ='55555555'
-		ORDER BY recenttoon.viewDate DESC;
+		ORDER BY recenttoon.viewDate DESC
 	
 	</select>
 	
 	<resultMap type="RecentVO" id="recentResult">
 		<id property="username" column="username" />
+
 		<result property="toonNum" column="toonNum"/>
 		<result property="epNum" column="epNum"/>
 		<result property="viewDate" column="viewDate"/>
-
-		<association property="ToonVO" javaType="ToonVO" resultMap="toonResult"></association>
-		<association property="EachEpVO" javaType="EachEpVO" resultMap="eachEpResult"></association>
-		<association property="MemberVO" javaType="MemberVO" resultMap="memberResult"></association>
+		
+		<association property="toonVO" javaType="ToonVO" resultMap="toonResult"></association>
+		<association property="eachEpVO" javaType="EachEpVO" resultMap="eachEpResult"></association>
+		<association property="memberVO" javaType="MemberVO" resultMap="memberResult"></association>
 	</resultMap>
 
 		<resultMap type="ToonVO" id="toonResult">
