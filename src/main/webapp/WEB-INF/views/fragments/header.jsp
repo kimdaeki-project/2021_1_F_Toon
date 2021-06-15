@@ -9,11 +9,17 @@
                 <div class="col-6 col-lg-4">
                     <div class="float-left">
                         <ul class="header_social">
-                            <li><a href="#"><i class="ti-facebook"></i></a></li>
-                            <li><a href="#"><i class="ti-twitter"></i></a></li>
-                            <li><a href="#"><i class="ti-instagram"></i></a></li>
-                            <li><a href="#"><i class="ti-skype"></i></a></li>
-                            <li><a href="#"><i class="ti-vimeo"></i></a></li>
+<!--                             <li><a href="#"><i class="ti-facebook"></i></a></li> -->
+<!--                             <li><a href="#"><i class="ti-twitter"></i></a></li> -->
+<!--                             <li><a href="#"><i class="ti-instagram"></i></a></li> -->
+<!--                             <li><a href="#"><i class="ti-skype"></i></a></li> -->
+<!--                             <li><a href="#"><i class="ti-vimeo"></i></a></li> -->
+
+                            <sec:authorize access="hasRole('ROLE_ADMIN')">
+                            
+                            <li><a href="${pageContext.request.contextPath}/admin/adminPage">ADMIN PAGE</a></li>
+                           
+                            </sec:authorize>
                         </ul>   
                     </div>
                 </div>
@@ -32,14 +38,15 @@
                             <li><a href="/member/memberJoinCheck">Join</a></li>
                             </sec:authorize>
 <%--                             </c:if> --%>
-                            <sec:authorize access="hasRole('ROLE_ADMIN')">
                             
-                            <li><a href="${pageContext.request.contextPath}/admin/adminPage">ADMIN PAGE</a></li>
-                           
-                            </sec:authorize>
 <%--                             <c:if test="${not empty member}"> --%>
 							<sec:authorize access="hasRole('ROLE_MEMBER')">
-<%-- 							<li> ${memberVO.point}p</li> --%>
+							
+								<li class="nav-item dropdown"><a class="nav-link dropdown-toggle" href="#" id="navbardrop"data-toggle="dropdown">  <sec:authentication property="principal.name"/>님 </a>
+									<div class="dropdown-menu">
+										<a class="dropdown-item" href="${pageContext.request.contextPath}/point/charge">포인트 충전</a> 
+									</div>
+								</li>
                             <li><a href="/member/myPage">MY PAGE</a></li>
                             <li><a href="/member/logout" onclick="if(!confirm('정말 로그아웃 하시겠습니까?')){return false;}">LOGOUT</a></li>
                             </sec:authorize>
