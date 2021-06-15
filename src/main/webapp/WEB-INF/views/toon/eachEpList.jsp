@@ -12,6 +12,27 @@
 <body>
 <c:import url="../fragments/header.jsp"></c:import>
 	
+	<!-- 웹툰 소개 -->
+	<div class="comicinfo">
+		<div class="thumb">
+			<a href="#">
+				<img src="${toonVO.titleImg}">
+				<span class="mask"></span>
+				</a>
+		</div>
+		<div class="detail">
+			<h2>${toonVO.toonTitle}
+			<span class="wrt_nm">${toonVO.nickname}</span>
+			</h2>
+			<p>${toonVO.toonSum}</p>
+		<p class="detail_info"><span class="genre">장르 : ${toonVO.genre}</span></p>
+		<ul class="btn_group">
+		<li><a href="#" title="관심웹툰" class="book_maker on"><span>관심웹툰</span></a></li>
+		<li><a href="#" title="첫회보기" class="first"><span>첫회보기</span></a></li>
+		
+	</div>
+	
+	
 	<!-- 리스트 -->
 
 		<table cellpadding="0" cellspacing="0" class="viewList">
@@ -27,20 +48,18 @@
 		</thead>
 		
 		<tbody>
-		<c:forEach items="${epVO}" var="list">
+		<c:forEach items="${toonVO.eachEpVO}" var="eachEpVO">
 			<tr>
 				<td class="imgalign">
-					<a href="/toon/eachEpList?toonNum=${list.toonNum}&epNum=${list.eachEpNum}" onclick="nclk_v2(event,'lst.img','${list.toonNum}','${list.eachEpNum}')">
-					<img alt="${list.toonSumImg}" 
-						src="${pageContext.request.contextPath}/resources/uploaded/toon/eachEp/${list.epSumImg}"
-						title="${list.eachEpNum}화" alt="${list.eachEpNum}화" width="71" height="41" 
-						onERROR="this.src='https://ssl.pstatic.net/static/comic/images/migration/common/non71_41.gif'">
+					<a href="/toon/eachEpSelect?toonNum=${eachEpVO.toonNum}&epNum=${eachEpVO.eachEpNum}" >
+					<img src="${eachEpVO.epSumImg}"
+						title="${eachEpVO.eachEpNum}화" alt="${eachEpVO.eachEpNum}화" width="71" height="41">
 						<span class="mask"></span>
 					</a>
 				</td>
 				<td class="title">
-				<a href="/toon/eachEpList?toonNum=${list.toonNum}&epNum=${list.eachEpNum}" onclick="nclk_v2(event,'lst.title','${list.toonNum}','${list.eachEpNum}')">
-				${list.eachEpNum}화</a>
+				<a href="/toon/eachEpSelect?toonNum=${eachEpVO.toonNum}&epNum=${eachEpVO.eachEpNum}">
+				${eachEpVO.eachEpNum}화</a>
 				</td>
 				<td>
 					<div class="rating_type">
@@ -48,7 +67,7 @@
 						<strong>${toonVO.ratingSum}/${toonVO.ratingPerson}</strong>
 					</div>
 				</td>
-				<td class="num"><span>${list.epDate}</span></td>
+				<td class="num"><span>${eachEpVO.epDate}</span></td>
 			</tr>
 		</c:forEach>
 		</tbody>
@@ -63,7 +82,7 @@
 	   
 	  		 <c:forEach begin="${pager.startNum}" end="${pager.lastNum}" var="i">
 	   
-	   		 <li class="page-item"><a class="page-link p" href="#" title="${i}">${i}</a></li>
+	   		 <li class="page-item"><a class="page-link p" href="/toon/eachEpList?toonNum=${toonVO.toonNum}&curPage=${i}" title="${i}">${i}</a></li>
 	   		</c:forEach>
 	   
 	   		 <c:if test="${pager.next}">
@@ -71,8 +90,6 @@
 	   		 </c:if>
 	 		 </ul>
 		</div>
-
-
 
 </body>
 </html>

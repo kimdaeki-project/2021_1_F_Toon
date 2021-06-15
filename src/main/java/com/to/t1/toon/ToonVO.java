@@ -1,6 +1,10 @@
 package com.to.t1.toon;
 
+
+import java.util.List;
+
 import com.to.t1.member.MemberVO;
+import com.to.t1.toon.eachep.EachEpVO;
 
 import lombok.Data;
 
@@ -18,7 +22,7 @@ public class ToonVO {
 	private String titleImg;
 	private long ratingSum;
 	private long ratingPerson;
-	private MemberVO memberVO;
 	private String nickname;
+	private List<EachEpVO> eachEpVO;
 	
 }

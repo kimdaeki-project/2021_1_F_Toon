@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.to.t1.toon.ToonService;
+import com.to.t1.toon.ToonVO;
 import com.to.t1.util.Pager;
 
 @Controller
@@ -22,10 +23,9 @@ public class EachEpController {
 	
 	@GetMapping("eachEpList")
 	public void getList(Pager pager, Model model)throws Exception{
-		List<EachEpVO> list=eachEpService.getList(pager);
-		model.addAttribute("epVO", list);
+		ToonVO list=eachEpService.getList(pager);
+		model.addAttribute("toonVO", list);
 		model.addAttribute("pager", pager);
-		model.addAttribute("listsize", list.size());
 	}
 	
 	@GetMapping("eachEpSelect")
