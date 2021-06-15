@@ -20,7 +20,10 @@ import com.to.t1.board.BoardVO;
 import com.to.t1.board.notice.NoticeService;
 import com.to.t1.board.qna.QnaService;
 import com.to.t1.board.qna.QnaVO;
+import com.to.t1.member.MemberService;
 import com.to.t1.member.MemberVO;
+import com.to.t1.toon.ToonService;
+import com.to.t1.toon.ToonVO;
 import com.to.t1.util.Pager;
 
 @Controller
@@ -28,6 +31,8 @@ import com.to.t1.util.Pager;
 public class AdminController {
 // Admin 기능 : 1. [회원, 작품 ]조회 2. [작가, 작품]승인 
 //3. [충전액]환불 4. Notice와  QNA관리(x) 
+	@Autowired
+	private AdminService adminService;
 	
 	//일단 접촉은 해야지
 	@GetMapping("adminPage")
@@ -38,7 +43,154 @@ public class AdminController {
 	public String admintest(Model model) {
 		return "admin/test";
 	}
+	//작품
+	@Autowired
+	private ToonService toonService;
 	
+	@Autowired
+	private MemberService memberService;
+	
+	@GetMapping("manageToonList")
+	public ModelAndView getList(Pager pager)throws Exception{
+		ModelAndView mv = new ModelAndView();
+		List<ToonVO> list=toonService.getList();
+		mv.addObject("list", list);
+		mv.addObject("listsize", list.size());
+		mv.setViewName("admin/manageToonList");
+		mv.addObject("admin", "admin");
+		mv.addObject("pager", pager);
+		
+		return mv;
+	}
+	
+	@GetMapping("toonSelect")
+	public void getSelect(ToonVO toonVO)throws Exception{
+		ModelAndView mv = new ModelAndView();
+		toonVO= toonService.getSelect(toonVO);
+		mv.addObject("toonVO", toonVO);
+		
+	}
+
+	@GetMapping("toonDay")
+
+	public ModelAndView toonDay(ToonVO toonVO,MemberVO memberVO) throws Exception {
+		ModelAndView mv = new ModelAndView();
+		
+		toonVO.setToonDay("mon");
+		List<ToonVO> mt = toonService.toonDay(toonVO,memberVO);
+		
+		toonVO.setToonDay("tue");
+		List<ToonVO> tt = toonService.toonDay(toonVO,memberVO);
+		
+		toonVO.setToonDay("wen");
+		List<ToonVO> wt = toonService.toonDay(toonVO,memberVO);
+		
+		toonVO.setToonDay("the");
+		List<ToonVO> tt2 = toonService.toonDay(toonVO,memberVO);
+		
+		toonVO.setToonDay("fri");
+		List<ToonVO> ft = toonService.toonDay(toonVO,memberVO);
+		
+		toonVO.setToonDay("sat");
+		List<ToonVO> st = toonService.toonDay(toonVO,memberVO);
+		
+		toonVO.setToonDay("sun");
+		List<ToonVO> st2 = toonService.toonDay(toonVO,memberVO);
+		
+		
+		mv.addObject("mt", mt);
+		mv.addObject("tt", tt);
+		mv.addObject("wt", wt);
+		mv.addObject("tt2", tt2);
+		mv.addObject("ft", ft);
+		mv.addObject("st", st);
+		mv.addObject("st2", st2);
+		mv.setViewName("admin/manageToonList/toonDay");
+		return mv ;
+	}
+	
+	@GetMapping("genre")
+	public ModelAndView genre(ToonVO toonVO,MemberVO memberVO)throws Exception {
+		ModelAndView mv = new ModelAndView();
+		
+		toonVO.setGenre("action");
+		List<ToonVO> ac = toonService.genre(toonVO,memberVO);
+		
+		toonVO.setGenre("school");
+		List<ToonVO> sc = toonService.genre(toonVO,memberVO);
+		
+		toonVO.setGenre("romance");
+		List<ToonVO> ro = toonService.genre(toonVO,memberVO);		
+		
+		toonVO.setGenre("fantasy");
+		List<ToonVO> fa = toonService.genre(toonVO,memberVO);
+		
+		toonVO.setGenre("thriller");
+		List<ToonVO> th = toonService.genre(toonVO,memberVO);
+		
+		toonVO.setGenre("comedy");
+		List<ToonVO> co = toonService.genre(toonVO,memberVO);
+		
+		mv.addObject("action", ac);
+		mv.addObject("school", sc);
+		mv.addObject("romance", ro);		
+		mv.addObject("fantasy", fa);
+		mv.addObject("thriller", th);
+		mv.addObject("comedy", co);		
+
+		mv.setViewName("admin/manageToonList/genre");
+		
+		return mv;
+	}
+	
+	
+	
+	
+	@GetMapping("ranking")
+	public ModelAndView ranking(ToonVO toonVO,MemberVO memberVO)throws Exception {
+		ModelAndView mv = new ModelAndView();
+		
+		toonVO.setTotalHit(0);
+		List<ToonVO> ra = toonService.ranking(toonVO,memberVO);
+		toonVO.setTotalHit(0);
+		List<ToonVO> ra2 = toonService.ranking(toonVO,memberVO);
+		
+		mv.addObject("rank", ra);
+		mv.addObject("rank2", ra2);
+		
+		mv.setViewName("admin/manageToonList/ranking");
+		
+		return mv;
+	}
+	
+	
+	
+	
+	@GetMapping("endRe")
+	public ModelAndView endKr(ToonVO toonVO,MemberVO memberVO)throws Exception {
+		ModelAndView mv = new ModelAndView();
+		
+		toonVO.setTotalHit(0);
+		List<ToonVO> en = toonService.endRe(toonVO,memberVO);
+		
+		mv.addObject("end", en);
+		
+		mv.setViewName("admin/manageToonList/endRe");
+		
+		
+		return mv;
+	}
+	
+	@GetMapping("dayList")
+	public String dayList() {
+		return "admin/manageToonList/dayList";
+	}
+	
+	
+///////////////////////////////////////////////////////////////////////////////////////	
+///////////////////////////////////////////////////////////////////////////////////////	
+///////////////////////////////////////////////////////////////////////////////////////	
+	//공지사항,질의응답
 	@Autowired
 	private NoticeService noticeService;
 	
@@ -279,7 +431,7 @@ public class AdminController {
 		
 		return mv;
 	}
-
+	//공지사항,질의응답 끝
 
 	
 }

@@ -46,7 +46,7 @@
               </li>
               
               <li>
-                <a href="pages/sample-pages/login_1.html" target="_blank">작품 조회</a>
+                <a onclick="toonPage()">작품 조회</a>
               </li>
               <li>
                 <a href="pages/sample-pages/error_2.html" target="_blank">작품 등록</a>
@@ -151,12 +151,18 @@
     function noticePage(){
 			
         $("#contents").load("/admin/manageNoticeList");
-
+		
     };
     
     function qnaPage(){
     
         $("#contents").load("/admin/manageQnaList");
+    	
+    }
+    
+    function toonPage(){
+        
+        $("#contents").load("/admin/manageToonList");
     	
     }
 	

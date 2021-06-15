@@ -13,7 +13,6 @@ import org.springframework.web.multipart.MultipartFile;
 import com.to.t1.board.BoardFileVO;
 import com.to.t1.board.BoardService;
 import com.to.t1.board.BoardVO;
-import com.to.t1.member.admin.AdminMapper;
 import com.to.t1.util.BoFileManager;
 import com.to.t1.util.FileManager;
 import com.to.t1.util.Pager;
