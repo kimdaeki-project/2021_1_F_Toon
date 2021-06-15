@@ -56,7 +56,7 @@
             </a>
             <ul class="collapse navigation-submenu" id="ui-elements">
               <li>
-                <a href="../mypage/recentToon">최근 본 웹툰</a>
+                <a href="${pageContext.request.contextPath}/mypage/recentToon/?username=${memberVO.username}">최근 본 웹툰</a>
               </li>
               <li>
                 <a href="pages/ui-components/tables.html">관심 웹툰</a>

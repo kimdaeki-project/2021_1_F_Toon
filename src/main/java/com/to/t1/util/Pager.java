@@ -54,8 +54,6 @@ public class Pager {
 			this.pre=false;
 		}
 		
-		
-		
 	}
 	
 	public void makeRow() {

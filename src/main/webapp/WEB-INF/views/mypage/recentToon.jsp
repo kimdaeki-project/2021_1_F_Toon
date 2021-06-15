@@ -113,13 +113,13 @@
 			</thead>
 			
 			<tbody>
-			<c:forEach items="${list}" var="dto" >
+			<c:forEach items="${list}" var="list" >
 				<tr>
-					<td>${dto.eachEpVO.epSumImg}</td>
-					<td>${dto.toonVO.toonTitle}</td>
-					<td>${dto.eachEpVO.epTitle}</td>
-					<td>${dto.memberVO.nickname}</td>
-					<td>${dto.viewDate}</td>
+					<td>${list.eachEpVO.epSumImg}</td>
+					<td>${list.toonVO.toonTitle}</td>
+					<td>${list.eachEpVO.epTitle}</td>
+					<td>${list.memberVO.nickname}</td>
+					<td>${list.viewDate}</td>
 <%-- 					<td><a href="./${board}Select?num=${dto.num}"> --%>
 					
 <%-- 					<c:catch> --%>

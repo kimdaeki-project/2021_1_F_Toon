@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.to.t1.board.notice.NoticeService;
+import com.to.t1.member.MemberVO;
 import com.to.t1.util.Pager;
 
 @Controller
@@ -20,10 +21,9 @@ public class MypageController {
 	private MypageService mypageService;
 
 	@GetMapping("recentToon") 
-	public String getList(Pager pager, Model model)throws Exception{
-
+	public String getList(Pager pager, Model model,MemberVO memberVO)throws Exception{
 		
-		List<RecentVO> ar = mypageService.getList(pager);
+		List<RecentVO> ar = mypageService.getList(memberVO);
 		System.out.println(ar);
 		model.addAttribute("list", ar);
 		model.addAttribute("pager", pager);

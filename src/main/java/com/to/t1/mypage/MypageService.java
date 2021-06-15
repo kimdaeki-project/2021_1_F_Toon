@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.to.t1.member.MemberMapper;
+import com.to.t1.member.MemberVO;
 import com.to.t1.toon.ToonVO;
 import com.to.t1.util.Pager;
 
@@ -15,13 +16,14 @@ public class MypageService {
 	@Autowired
 	private MypageMapper mypageMapper;
 
-	public List<RecentVO> getList(Pager pager) throws Exception {
-	
+	public List<RecentVO> getList(MemberVO memberVO) throws Exception {
+		Pager pager = new Pager();
+		
 		pager.makeRow();
-		long totalCount = mypageMapper.getTotalCount(pager);
+		long totalCount = mypageMapper.getTotalCount(memberVO);
 		pager.makeNum(totalCount);
 	
-		return mypageMapper.getList(pager);
+		return mypageMapper.getList(memberVO);
 	}
 	
 	

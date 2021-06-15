@@ -10,8 +10,9 @@ import com.to.t1.util.Pager;
 @Mapper
 public interface MypageMapper {
 
-	public List<RecentVO> getList(Pager pager)throws Exception;
+	public List<RecentVO> getList(MemberVO memberVO)throws Exception;
 	
-	public long getTotalCount(Pager pager) throws Exception;
-
+	public long getTotalCount(MemberVO memberVO) throws Exception;
+	
+	
 }
