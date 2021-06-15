@@ -24,6 +24,10 @@ public class ToonController {
 	@Autowired
 	private MemberService memberService;
 	
+	
+	
+	
+	
 	@GetMapping("toonList")
 	public void getList(Pager pager, Model model)throws Exception{
 		List<ToonVO> list=toonService.getList();

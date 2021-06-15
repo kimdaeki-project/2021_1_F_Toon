@@ -115,6 +115,7 @@
 	ON t.writerId = m.username
 	JOIN eachep e ON t.toonNum = e.toonNum
 	WHERE state=1
+	GROUP BY t.toonNum 
 	ORDER BY max(e.epDate) DESC;
 	</select>	
 	

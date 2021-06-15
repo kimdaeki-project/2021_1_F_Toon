@@ -69,6 +69,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter{
 				.antMatchers("/toon/toonDay/toonDayAver").permitAll()
 				.antMatchers("/toon/toonDay/toonDayRecent").permitAll()
 				
+				
 				.antMatchers("/toon/genre/genre").permitAll()
 				.antMatchers("/toon/genre/genreAver").permitAll()
 				.antMatchers("/toon/genre/genreRecent").permitAll()
@@ -84,7 +85,10 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter{
 				
 				.antMatchers("/toon/toonDay/toonDay/eachEpList/**").permitAll()
 				.antMatchers("/toon/toonDay/toonDayAver/eachEpList/**").permitAll()
-				.antMatchers("/toon/toonDay/eachEpSelect/**").permitAll()
+				
+				.antMatchers("/toon/eachEpList/**").permitAll()
+				.antMatchers("/toon/eachEpSelect/**").permitAll()
+				
 				
 				.antMatchers("/notice/select").hasAnyRole("ADMIN", "MEMBER")
 				.antMatchers("/qna/qnaSelect").hasAnyRole("ADMIN", "MEMBER")
@@ -93,6 +97,10 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter{
 				.antMatchers("/qna/qnaInsert").hasAnyRole("MEMBER")
 				.antMatchers("/notice/insert").hasAnyRole("ADMIN")
 				.antMatchers("/admin/test").hasAnyRole("ADMIN")
+				
+				.antMatchers("/search/NewFile").permitAll()
+				.antMatchers("/search/NextFile").permitAll()
+				
 				
 				.anyRequest().authenticated()
 				.and()

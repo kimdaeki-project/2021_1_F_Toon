@@ -65,7 +65,7 @@
                             <li class="nav-item"><a class="nav-link" href="/toon/toonDay/toonDay">요일</a></li> 
                             <li class="nav-item"><a class="nav-link" href="/toon/genre/genre">장르</a></li>    
                          	<li class="nav-item"><a class="nav-link" href="/toon/ranking/ranking">랭킹</a></li>
-                           	<li class="nav-item"><a class="nav-link" href="/toon/endRe/endRe">완결</a></li>
+                           	<li class="nav-item"><a class="nav-link" href="/toon/end/endRe">완결</a></li>
                         </ul>
                     </div>
                 </div>
@@ -76,8 +76,8 @@
       <div class="search_input" id="search_input_box">
             <div class="container ">
                 <form class="d-flex justify-content-between search-inner">
-                    <input type="text" class="form-control" id="search_input" placeholder="Search Here">
-                    <button type="submit" class="btn"></button>
+                    <input type="text" class="form-control" id="search_input" placeholder="제목/작가로 검색하실수 있습니다" >
+                    <button type="submit" class="danger" href="/">검색하기</button>
                     <span class="ti-close" id="close_search" title="Close Search"></span>
                 </form>
             </div>

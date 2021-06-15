@@ -25,11 +25,11 @@
 <div class="view_type">			
              <table>
              <tr >
-             	<td><a href="/toon/end/eneRe">조회순</a></td>
+             	<td><a href="/toon/end/endRe">조회순</a></td>
              
-              <p><td><a href="/toon/end/eneReRecent">업데이트순</a></td></p>         
+              <p><td><a href="/toon/end/endReRecent">업데이트순</a></td></p>         
                 
-                <td><a href="/toon/end/eneReAver">별점순</a></td>
+                <td><a href="/toon/end/endReAver">별점순</a></td>
              </tr>
            
              </table>
@@ -81,7 +81,7 @@
 				href="${pageContext.request.contextPath}/toon/toonList/end=${rank}">완결</a>
 			<ul>
 				<c:forEach items="${end}" var="end">
-					<li><img width=100px height=100px src=${end.titleImg}>
+					<li><a href="/toon/eachEpList?toonNum=${end.toonNum}"><img width=100px height=100px src=${end.titleImg}>
 					</li>
 					<li>${end.toonTitle}/${end.nickname}</li>
 				</c:forEach>
