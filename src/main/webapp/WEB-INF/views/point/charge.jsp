@@ -9,9 +9,8 @@
 <script type="text/javascript" src="https://service.iamport.kr/js/iamport.payment-1.1.5.js"></script>
 <!--CSS관련 부트 스트랩  -->
 <!-- Required meta tags -->
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
     <!-- Bootstrap CSS 5.0 -->
     <title>charge point Page</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x" crossorigin="anonymous">
@@ -22,7 +21,7 @@
   <div class="row justify-content-md-center">
     <div class="col"></div>
     <div class="col-6"><!-- col2시작 -->
-    <form id="" action="" method="post">
+    <form>
     
     <!-- username -->
 	    <input id="user-name" value="<sec:authentication property="principal.username" />" readonly="readonly" hidden="hidden"/><!-- hidden="hidden" 추가 할 것 -->

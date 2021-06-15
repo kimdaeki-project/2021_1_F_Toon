@@ -16,6 +16,13 @@ public class AdminController {
 	public String adminHome(Model model) {
 		return "admin/adminPage";
 	}
+	
+	@GetMapping("addToon")
+	public String addToon()throws Exception {
+		return "admin/addToonForm";
+	}
+	
+	//test 접속 용도
 	@GetMapping("test")
 	public String admintest(Model model) {
 		return "admin/test";

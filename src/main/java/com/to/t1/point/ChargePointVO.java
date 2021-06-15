@@ -9,6 +9,6 @@ public class ChargePointVO {
 	
 	private String username;
 	private long point;
-	private Timestamp cDate; //orderTime
+	private Timestamp cDate; 
 	
 }

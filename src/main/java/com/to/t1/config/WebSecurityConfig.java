@@ -71,7 +71,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter{
 				.antMatchers("/qna/qnaInsert").hasAnyRole("MEMBER")
 				.antMatchers("/notice/insert").hasAnyRole("ADMIN")
 				.antMatchers("/admin/adminPage").hasAnyRole("ADMIN")
-				
+				.antMatchers("/admin/addToonForm").hasAnyRole("ADMIN")
 				.antMatchers("/charge/chargePointForm").hasAnyRole("ADMIN", "MEMBER","WRITER")
 				.anyRequest().authenticated()
 				.and()

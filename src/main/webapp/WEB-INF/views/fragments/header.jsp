@@ -34,7 +34,7 @@
 <%--                             </c:if> --%>
                             <sec:authorize access="hasRole('ROLE_ADMIN')">
                             
-                            <li><a href="/admin/test">ADMIN PAGE</a></li>
+                            <li><a href="${pageContext.request.contextPath}/admin/adminPage">ADMIN PAGE</a></li>
                            
                             </sec:authorize>
 <%--                             <c:if test="${not empty member}"> --%>

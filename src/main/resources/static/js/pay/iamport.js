@@ -43,7 +43,6 @@ $("#start-charge").click(function () {
 	
 	var IMP = window.IMP;
 	IMP.init('imp51768187');
-	//가맹점 식별코드
 	IMP.request_pay({
 	pg: 'html5_inicis', 
 	/* version 1.1.0부터 지원.
@@ -96,7 +95,7 @@ $("#start-charge").click(function () {
 	        msg += '결제 금액 : ' + rsp.paid_amount;
 	        msg += '카드 승인번호 : ' + rsp.apply_num;
 	        
-	        var params = {"username" : orderName,"point": rsp.paid_amount }
+	        var params = {"username" : orderName,"point": rsp.paid_amount}
 	        
 	        $.ajax({
 	        	type : 'POST',
@@ -116,16 +115,15 @@ $("#start-charge").click(function () {
 		        	// 위의 rsp.paid_amount 와 data.response.amount를 비교한후 로직 실행 (import 서버검증)
 		        	if(rsp.paid_amount == data.response.amount){
 			        	alert("결제 및 결제검증완료(아직)");
-			        	
-			        	
-		        	} else {
+			        } else {
 		        		alert("결제 실패");
-		        	}
+		        		}
 		        	});
-		        	} else {
-			 var msg = '결제에 실패하였습니다.';
-			 msg += '에러내용 : ' + rsp.error_msg;
-			 }
-			 alert(msg);
-		});
+		        	}
+		else {
+			var msg = '결제에 실패하였습니다.';
+			msg += '에러내용 : ' + rsp.error_msg;
+		}
+		alert(msg);
+	});
 });	

@@ -12,7 +12,7 @@
     <c:import url="../fragments/bootstrap.jsp"></c:import>
     <title>MYPAGE</title>
    
-     <link rel="stylesheet" href="/css/header.css">
+    <link rel="stylesheet" href="/css/header.css">
      <!-- plugins:css -->
     <link rel="stylesheet" href="../assets/vendors/iconfonts/mdi/css/materialdesignicons.css">
     <!-- endinject -->
@@ -81,7 +81,7 @@
             </ul>
           </li>
           <li>
-            <a href="pages/forms/form-elements.html">
+            <a href="${pageContext.request.contextPath}/point/charge">
              <h4> <span class="link-title">충전하기</span></h4>
               <i class="mdi mdi-clipboard-outline link-icon"></i>
             </a>

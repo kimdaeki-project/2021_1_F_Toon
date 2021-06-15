@@ -6,10 +6,10 @@
 <head>
  <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-  
     <c:import url="./../fragments/bootstrap.jsp"></c:import>
     <title>WebToon</title>
      <!-- Bootstrap CSS -->
+     
     <link rel="stylesheet" href="../css/bootstrap.css">
     <link rel="stylesheet" href="../css/themify-icons.css">
     <link rel="stylesheet" href="../css/flaticon.css">
@@ -23,7 +23,7 @@
     
 </head>
 <body class="header-fixed">
-<c:import url="../fragments/header.jsp"></c:import>
+<c:import url="./../fragments/header.jsp"></c:import>
 	<div class="page-body">
       <!-- partial:partials/_sidebar.html -->
       <div class="sidebar">
@@ -109,10 +109,7 @@
               </li>
             </ul>
           </li>
-          
-          
-          
-          
+          <!-- 새로운 각주  -->
           <li>
             <a href="pages/charts/chartjs.html">
               <span class="link-title">QNA, 공지사항 관리</span>
@@ -124,7 +121,7 @@
       </div>
       <!-- navEND -->
       <div id="contents" class="display-income"> 
-      	//페이지가 변해요?
+      	
       </div>
     </div>
     <!--page body ends -->
@@ -133,16 +130,14 @@
     
     <!-- plugins:js -->
     <script src="../assets/vendors/js/core.js"></script>
-    <!-- endinject -->
-    <!-- Vendor Js For This Page Ends-->
     <script src="../assets/vendors/apexcharts/apexcharts.min.js"></script>
     <script src="../assets/vendors/chartjs/Chart.min.js"></script>
     <script src="../assets/js/charts/chartjs.addon.js"></script>
-    <!-- Vendor Js For This Page Ends-->
-    <!-- build:js -->
     <script src="../assets/js/template.js"></script>
     <script src="../assets/js/dashboard.js"></script>
-    <!-- endbuild -->
+   
+    <script type="text/javascript" src="../js/adminpage/adminControl.js"></script>
+    
+ <!-- endbuild -->
 </body>
-
 </html>
