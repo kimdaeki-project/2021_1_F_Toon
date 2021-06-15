@@ -75,6 +75,8 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter{
 				.antMatchers("/admin/adminPage").hasAnyRole("ADMIN")
 				.antMatchers("/admin/addToonForm").hasAnyRole("ADMIN")
 				.antMatchers("/charge/chargePointForm").hasAnyRole("ADMIN", "MEMBER","WRITER")
+				.antMatchers("/admin/test").hasAnyRole("ADMIN")
+				.antMatchers("/mypage/recentToon").hasAnyRole("ADMIN", "MEMBER")
 				.anyRequest().authenticated()
 				.and()
 			.formLogin()
