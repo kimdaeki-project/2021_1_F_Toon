@@ -5,6 +5,7 @@
     
    <mapper namespace="com.to.t1.member.MemberMapper">
    
+   
 		<insert id="setJoin" parameterType="MemberVO">
 			insert into member (username, password, name, nickname, phone, email, enabled)
 			values(#{username}, #{password}, #{name}, #{nickname}, #{phone}, #{email}, 1)
@@ -20,12 +21,24 @@
 			values (#{username}, (select id from role where roleName=#{roleName}))
 		</insert>
 		
-		<select id="myPage" parameterType="MemberVO" resultType="JoinFileVO">
-			SELECT * FROM joinfiles WHERE username = #{username}
+<!-- 		<select id="myPage" parameterType="MemberVO" resultType="MemberVO"> -->
+		<select id="myPage" parameterType="MemberVO" resultMap="memberLoginResult">
+<!-- 			SELECT * FROM joinfiles WHERE username = #{username} -->
+			
+<!-- 			SELECT M.*, R.* -->
+<!-- 				FROM member M LEFT JOIN member_role MR -->
+<!-- 				ON M.username=MR.username -->
+<!-- 				INNER JOIN role R  -->
+<!-- 				ON MR.id = R.id -->
+<!-- 				WHERE M.username=#{username} -->
+				
+			select M.*, MF.fileName 
+				from member M left join joinfiles MF
+				on M.username = MF.username
+				where
+				M.username=#{username}
 		</select>
 		
-		
-
 		<select id="getUsername" parameterType="MemberVO" resultType="MemberVO">
 			select * from member where username=#{username}
 		</select>
@@ -34,6 +47,10 @@
 			select username from member where name=#{name} and phone=#{phone}
 		</select>
 		
+		<select id="memberJoinCheck" parameterType="MemberVO" resultType="MemberVO">
+			select * from member where username=#{username}
+		</select>
+	
 		<select id="searchPw"  parameterType="MemberVO" resultType="MemberVO">
 			select password from member where username=#{username} and phone=#{phone}
 		</select>
@@ -70,7 +87,7 @@
 		</resultMap>
 
 		<update id="memberUpdate" parameterType="MemberVO">
-			update member set password=#{password}, name=#{name}, nickname=#{nickname}, phone=#{phone}, email=#{email} where username=#{username}
+			update member set name=#{name}, nickname=#{nickname}, phone=#{phone}, email=#{email} where username=#{username}
 		</update>
 
 		<update id="pwUpdate" parameterType="MemberVO">
@@ -102,6 +119,7 @@
 			<result property="fileName" column="fileName"/>
 			<result property="oriName" column="oriName"/>
 	</resultMap>
+		
 		
 			
    </mapper>

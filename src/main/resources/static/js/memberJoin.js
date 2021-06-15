@@ -53,9 +53,12 @@ pw.addEventListener("blur", function(){
 
 // ID Check *********************************
 id.addEventListener("blur", function(){
+	
+	let id = $("#id").val();
+	let idTrim = $.trim(id);
 	let message = "6글자 미만입니다";
 	let c = "r1"
-	if(id.value.length>5){
+	if(idTrim.length>5){
 		message = "6글자 이상 입니다";
 		c = "r2";
 		idCheckResult=true;
@@ -89,19 +92,37 @@ btn.addEventListener("click", function(){
 
 
 // Id 중복 확인
-$("#id").blur(function(){
-   let id = $("#id").val();
-   $.get("./memberIdCheck?id="+id, function(result){
-	  result = result.trim();
-	  let str = "사용가능한 ID 입니다.";
-	  if(result=='0'){
-		str="중복 ID 입니다.";
-	}
+function id11(){
+  
+ let id = $("#id").val();
+ let idTrim = $.trim(id);
+ 
+  if(idTrim.length>13||idTrim.length<6||id==null){
+      alert("아이디는 6글자 이상 12글자 이하로 만드십시오.")
+   }else{   
 	
-	$("#idCheckResult").html(str);
+	$.ajax({
+      type : 'POST',
+      url : 'memberJoinCheck',
+      data : {
+         "username" : id,
+      },
+	
+	  dataType :'text',
+      
+      success : function(message) {
+        
+         swal(message);
+           
+       }
 
-   });
-});
+   })
+	
+	
+}
+ 
+};
+
 
 //이메일
 var CheckNum;
@@ -153,4 +174,5 @@ function emailCheck(){
           isCertification = false;
        }
  };
+
  

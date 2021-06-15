@@ -1,7 +1,7 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
- <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
+<%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -32,12 +32,12 @@
       <div class="sidebar">
         <div class="user-profile">
           <div class="display-avatar animated-avatar">
-            <c:if test="${member.joinFileVO.fileName eq null}"><img width=180px height=200px alt="" src="../images/member.jpg"></c:if>
-			<c:if test="${member.joinFileVO.fileName ne null}"><img width=180px height=200px alt="" src="../upload/member/${member.joinFileVO.fileName}"></c:if>
+            <c:if test="${memberVO.joinFileVO.fileName eq null}"><img width=180px height=200px alt="" src="../images/member.jpg"></c:if>
+			<c:if test="${memberVO.joinFileVO.fileName ne null}"><img width=180px height=200px alt="" src="../upload/member/${memberVO.joinFileVO.fileName}"></c:if>
           </div>
           <div class="info-wrapper">
-            <p class="user-name">${member.name}님</p>
-            <h6 class="display-income">${member.point}point</h6>
+            <p class="user-name"><sec:authentication property="principal.name"/>님</p>
+            <h6 class="display-income"><sec:authentication property="principal.point"/>point</h6>
           </div>
         </div>
         <ul class="navigation-menu">
@@ -100,16 +100,12 @@
       <div class="page-content-wrapper">
       <h2>수정ㅋ</h2>
 	<form action="memberUpdate" method="post">
-		ID <input type="text" name="username" readonly="readonly" value="${member.username}"><br>
-		<c:if test="${member.joinFileVO.fileName eq null}"><img alt="" src="../images/member.jpg"></c:if>
-		<c:if test="${member.joinFileVO.fileName ne null}"><h3><img alt="" src="../upload/member/${member.joinFileVO.fileName}"></h3></c:if>
-		<input type="file" class="form-control etc"	id="avatar" name="avatar" >
-		PW <input type="password" name="password" value="${member.password}"><br>
-		Name <input type="text" name="name" value="${member.name}"><br>
-		닉네임 <input type="text" name="nickname" value="${member.nickname}"><br>
-		Phone <input type="text" name="phone" value="${member.phone}"><br>
-		Email <input type="text" name="email" value="${member.email}"><br>
-		
+		ID <input type="text" name="username" readonly="readonly" value="<sec:authentication property="principal.username"/>"><br>
+		Name <input type="text" name="name" value= "${memberVO.name}"><br>
+		닉네임 <input type="text" name="nickname" value="${memberVO.nickname}"><br>
+		Phone <input type="text" name="phone" value= "${memberVO.phone}"><br>
+		Email <input type="text" name="email" value= "${memberVO.email}"><br>
+
 		<button class="btn btn-info">Update</button>
 	</form>
         <div class="page-content-wrapper-inner">
