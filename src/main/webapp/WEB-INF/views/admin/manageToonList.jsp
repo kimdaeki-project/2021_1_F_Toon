@@ -5,121 +5,159 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
 <!-- Required meta tags -->
-<meta charset="utf-8">
+
 <meta name="viewport"
 	content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <!-- BootStrap -->
 <!--     <link rel="icon" href="images/favicon.png" type="image/png">  위에 로고-->
 <c:import url="../fragments/bootstrap.jsp"></c:import>
-<title>WebToon</title>
+
+<link rel="stylesheet"
+	href="${pageContext.request.contextPath}/css/header.css">
+<link rel="stylesheet"
+	href="${pageContext.request.contextPath}/css/board/main.css">
+<link rel="stylesheet"
+	href="${pageContext.request.contextPath}/css/board/util.css">
 
 
-<link rel="stylesheet" href="../../css/header.css">
-<link rel="stylesheet" href="../../css/toonDay.css">
+<style type="text/css">
+.thead {
+	text-align: center;
+	font-weight: bold;
+	background-color: #dcdcdc;
+}
+
+.tbody {
+	text-align: center;
+}
+
+.back {
+	border-style: solid;
+	border: 1px solid #b4b4b4;
+	border-radius;
+}
+</style>
+<title>관리자전용 공지사항 페이지</title>
 
 </head>
 <body>
-	<c:import url="../fragments/header.jsp"></c:import>
 
-	<div class="view_type">
-		<table>
-			<tr>
-				<td><a href="/toon/toonDay/toonDay">조회순</a></td>
+	<div class="container">
+		<br>
+		<h2>
+			<p>
+				<span
+					style="border-radius: 15px 15px 15px 15px; border: 3px solid #b4b4b4; padding: 0.5em 0.6em; color: black; background-color: #dcdcdc;">관리자/공지사항</span>
+			</p>
+		</h2>
+		<br><br>
+		<div class="table100 ver5 m-b-110">
+			<div class="table100-head">
+				<table>
+					<thead class="thead">
+						<tr class="row100 head">
+							<th class="cell100 column2">작품고유번호</th>
+							<th class="cell100 column1">제목</th>
+							<th class="cell100 column2">장르</th>
+							<th class="cell100 column3">작가</th>
+							<th class="cell100 column2">작품요약</th>
+							<th class="cell100 column5">총 조회수</th>
+							<th class="cell100 column2">요일</th>
+							<th class="cell100 column2">여부</th>
+							<th class="cell100 column2">타이틀이미지</th>
+							<th class="cell100 column2">평점</th>
+							<th class="cell100 column2">평점(수)</th>
+						</tr>
+					</thead>
 
-				<p>
-				<td><a href="/toon/toonDay/toonDayRecent">업데이트순</a></td>
-				</p>
+				</table>
+			</div>
+			<br>
+			<div class="table100-body js-pscroll">
+				<table>
+					<tbody class="tbody">
+						<c:forEach items="${manageToonList}" var="vo">
+							<tr class="row100 body">
+								<td class="cell100 column2">${vo.toonNum}</td>
+								<td class="cell100 column1"><a
+									href="./manageToonSelect?toonNum=${vo.toonNum}"> ${vo.toonTitle}</a></td>
+								<td class="cell100 column2">${vo.genre}</td>
+								<td class="cell100 column3">${vo.writerId}</td>
+								<td class="cell100 column2">${vo.toonSum}</td>
+								<td class="cell100 column2">${vo.totalHit}</td>
+								<td class="cell100 column2">${vo.toonDay}</td>
+								<td class="cell100 column2">${vo.state}</td>
+								<td class="cell100 column2">${vo.titleImg}</td>
+								<td class="cell100 column4">${vo.ratingSum}</td>
+								<td class="cell100 column5">${vo.ratingPerson}</td>
+							</tr>
+						</c:forEach>
+					</tbody>
+				</table>
 
-				<td><a href="/toon/toonDay/toonDayAver">별점순</a></td>
-			</tr>
+			</div>
+			<ul class="pagination">
 
-		</table>
-	</div>
-	<br>
-	<br>
+				<c:if test="${pager.pre}">
+					<li class="page-item"><a class="page-link p" href="#"
+						title="${pager.startNum-1}">이전</a></li>
+				</c:if>
 
-	<div class="toon">
+				<c:forEach begin="${pager.startNum}" end="${pager.lastNum}" var="i">
 
+					<li class="page-item"><a class="page-link p" href="#"
+						title="${i}">${i}</a></li>
+				</c:forEach>
 
-		<!-- 월요일 ------------------------------------------------------>
-		<div class="mon">월요일
-			<ul>
-		<c:forEach items="${mt}" var="mt">
-			<li><a href="../toon/eachEpList?toonNum=${mt.toonNum}"> <img width=100px height=100px src=${mt.titleImg}></a></li>
-			<li>${mt.toonTitle} /${mt.nickname} </li>
-		</c:forEach>
-		</ul>
+				<c:if test="${pager.next}">
+					<li class="page-item"><a class="page-link p" href="#"
+						title="${pager.lastNum+1}">다음</a></li>
+				</c:if>
+			</ul>
+
+			<div class="input-group mt-3 mb-3">
+				<form id="frm" action="./manageNoticeList" class="form-inline">
+					<input type="hidden" name="curPage" value="1" id="curPage">
+					<div class="input-group-prepend">
+						<select class="form-control" name="kind" id="kind">
+							<option class="sel">공지종류</option>
+							<option class="sel">제목</option>
+						</select>
+					</div>
+					&nbsp;&nbsp; <input type="text" class="form-control" name="search"
+						id="search" value="${pager.search}" placeholder="입력하세요">
+					&nbsp;&nbsp;
+					<div class="input-group-append">
+						<button class="btn btn-secondary" type="submit">검색</button>
+					</div>
+				</form>
+			</div>
+			<a href="./insert" class="btn btn-secondary" role="button">작성</a>
 		</div>
-
-			<!-- 화요일 ------------------------------------------------------>
-		<div class="tue">화요일
-			<ul>
-		<c:forEach items="${tt}" var="tt">
-			<li><a href="/"> <img width=100px height=100px src=${tt.titleImg}></a></li>
-			<li>${tt.toonTitle} /${tt.nickname} </li>
-		</c:forEach>
-		</ul>
-		</div>	
-		
-		
-		<!-- 수요일 ------------------------------------------------------>
-		<div class="wen">수요일
-			<ul>
-		<c:forEach items="${wt}" var="wt">
-			<li><a href="/"> <img width=100px height=100px src=${wt.titleImg}></a></li>
-			<li>${wt.toonTitle} /${wt.nickname} </li>
-		</c:forEach>
-		</ul>
-		</div>
-		
-		
-		<!-- 목요일 ------------------------------------------------------>
-		<div class="the">목요일
-			<ul>
-		<c:forEach items="${tt2}" var="tt2">
-			<li><a href="/"> <img width=100px height=100px src=${tt2.titleImg}></a></li>
-			<li>${tt2.toonTitle} /${tt2.nickname} </li>
-		</c:forEach>
-		</ul>
-		</div>
-		
-		
-		<!-- 금요일 ------------------------------------------------------>
-		<div class="fri">금요일
-			<ul>
-		<c:forEach items="${ft}" var="ft">
-			<li><a href="/"> <img width=100px height=100px src=${ft.titleImg}></a></li>
-			<li>${ft.toonTitle} /${ft.nickname} </li>
-		</c:forEach>
-		</ul>
-		</div>
-		
-		
-		<!-- 화요일 ------------------------------------------------------>
-		<div class="sat">토요일
-			<ul>
-		<c:forEach items="${st}" var="st">
-			<li><a href="/"> <img width=100px height=100px src=${st.titleImg}></a></li>
-			<li>${st.toonTitle} /${st.nickname} </li>
-		</c:forEach>
-		</ul>
-		</div>
-		
-		
-		<div class="sun">일요일
-			<ul>
-		<c:forEach items="${st2}" var="st2">
-			<li><a href="/"> <img width=100px height=100px src=${st2.titleImg}></a></li>
-			<li>${st2.toonTitle} /${st2.nickname} </li>
-		</c:forEach>
-		</ul>
-		</div>
-		
-
 
 	</div>
 
+
+	<script type="text/javascript">
+	let kind= '${pager.kind}';//Title, Writer, Contents
+	$(".sel").each(function() {
+		let t = $(this).text();//Title, Writer, Contents
+		if(t == kind){
+			$(this).prop("selected", true);
+		}
+	});
+	
+	$(".p").click(function () {
+		let curPage = $(this).attr("title");
+		$("#curPage").val(curPage);
+		let search= '${pager.search}';
+		$("#frm").submit();
+
+	});
+	
+</script>
+
+	
 </body>
 </html>
