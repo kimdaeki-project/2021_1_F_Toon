@@ -22,6 +22,8 @@ public class MemberVO implements UserDetails {
 	
 
 	
+	private String toonDay;
+	
 	@NotEmpty
 	private String username;
 

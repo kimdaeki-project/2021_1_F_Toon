@@ -62,10 +62,10 @@
                     <div class="collapse navbar-collapse offset" id="navbarSupportedContent">
                         <ul class="nav navbar-nav menu_nav ml-auto mr-auto">
                             <li class="nav-item active"><a class="nav-link" href="/">Home</a></li> 
-                            <li class="nav-item"><a class="nav-link" href="/toon/toonDay">요일</a></li> 
-                            <li class="nav-item"><a class="nav-link" href="/toon/genre">장르</a></li>    
-                         	<li class="nav-item"><a class="nav-link" href="/toon/ranking">랭킹</a></li>
-                           	<li class="nav-item"><a class="nav-link" href="/toon/endRe">완결</a></li>
+                            <li class="nav-item"><a class="nav-link" href="/toon/toonDay/toonDay">요일</a></li> 
+                            <li class="nav-item"><a class="nav-link" href="/toon/genre/genre">장르</a></li>    
+                         	<li class="nav-item"><a class="nav-link" href="/toon/ranking/ranking">랭킹</a></li>
+                           	<li class="nav-item"><a class="nav-link" href="/toon/endRe/endRe">완결</a></li>
                         </ul>
                     </div>
                 </div>

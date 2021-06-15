@@ -65,12 +65,35 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter{
 				.antMatchers("/member/**").hasAnyRole("ADMIN", "MEMBER")
 				
 				
+<<<<<<< HEAD
 				.antMatchers("/toon/toonDay").permitAll()
 				.antMatchers("/toon/genre").permitAll()
 				.antMatchers("/toon/ranking").permitAll()
 				.antMatchers("/toon/endRe").permitAll()
 				.antMatchers("/toon/eachEpList/**").permitAll()
 				.antMatchers("/toon/eachEpSelect/**").permitAll()
+=======
+				.antMatchers("/toon/toonDay/toonDay").permitAll()
+				.antMatchers("/toon/toonDay/toonDayAver").permitAll()
+				.antMatchers("/toon/toonDay/toonDayRecent").permitAll()
+				
+				.antMatchers("/toon/genre/genre").permitAll()
+				.antMatchers("/toon/genre/genreAver").permitAll()
+				.antMatchers("/toon/genre/genreRecent").permitAll()
+				
+				.antMatchers("/toon/ranking/ranking").permitAll()
+				.antMatchers("/toon/ranking/rankingAver").permitAll()
+				.antMatchers("/toon/ranking/rankingRecent").permitAll()
+				
+				.antMatchers("/toon/end/endRe").permitAll()
+				.antMatchers("/toon/end/endReAver").permitAll()
+				.antMatchers("/toon/end/endReRecent").permitAll()
+				
+				
+				.antMatchers("/toon/toonDay/toonDay/eachEpList/**").permitAll()
+				.antMatchers("/toon/toonDay/toonDayAver/eachEpList/**").permitAll()
+				.antMatchers("/toon/toonDay/eachEpSelect/**").permitAll()
+>>>>>>> kyo
 				
 				.antMatchers("/notice/select").hasAnyRole("ADMIN", "MEMBER")
 				.antMatchers("/qna/qnaSelect").hasAnyRole("ADMIN", "MEMBER")

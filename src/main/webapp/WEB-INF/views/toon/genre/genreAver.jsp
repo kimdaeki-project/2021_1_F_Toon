@@ -16,8 +16,8 @@
 <title>WebToon</title>
 
 
-<link rel="stylesheet" href="../css/header.css">
-<link rel="stylesheet" href="../css/genre.css">
+<link rel="stylesheet" href="../../css/header.css">
+<link rel="stylesheet" href="../../css/genre.css">
 
 </head>
 <body>
@@ -26,15 +26,14 @@
 	<div class="view_type">
 		<table>
 			<tr>
-				<td><a href="/">조회순</a></td>
+				<td><a href="/toon/genre/genre">조회순</a></td>
 
 				<p>
-				<td><a href="/">업데이트순</a></td>
+				<td><a href="/toon/genre/genreRecent">업데이트순</a></td>
 				</p>
 
-				<td><a href="/">별점순</a></td>
+				<td><a href="/toon/genre/genreAver">별점순</a></td>
 			</tr>
-
 		</table>
 	</div>
 	<br>
