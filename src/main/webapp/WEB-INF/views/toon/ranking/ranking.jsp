@@ -46,7 +46,7 @@
 			<ul>
 			
 				<c:forEach items="${rank}" var="rank" begin="1" end="3" >
-					<li style="float: left;"><img width=100px height=100px src=${rank.titleImg}>
+					<li style="float: left;"><a href="/toon/eachEpList?toonNum=${rank.toonNum}"><img width=100px height=100px src=${rank.titleImg}>
 					</li>
 					<td></td>
 					<li style="float: left;">${rank.toonTitle}/${rank.nickname}</li>
@@ -65,7 +65,7 @@
 			<ul>
 			
 				<c:forEach items="${rank}" var="rank" begin="4" end="8" >
-					<li style="float: left;"><img width=100px height=100px src=${rank.titleImg}>
+					<li style="float: left;"><a href="/toon/eachEpList?toonNum=${rank.toonNum}"><img width=100px height=100px src=${rank.titleImg}>
 					</li>
 					<td></td>
 					<li style="float: left;">${rank.toonTitle}/${rank.nickname}</li>
@@ -84,7 +84,7 @@
 			<ul>
 			
 				<c:forEach items="${rank}" var="rank" begin="9" end="14" >
-					<li style="float: left;"><img width=100px height=100px src=${rank.titleImg}>
+					<li style="float: left;"><a href="/toon/eachEpList?toonNum=${rank.toonNum}"><img width=100px height=100px src=${rank.titleImg}>
 					</li>
 					<td></td>
 					<li style="float: left;">${rank.toonTitle}/${rank.nickname}</li>
@@ -103,7 +103,7 @@
 			<ul>
 			
 				<c:forEach items="${rank}" var="rank" begin="15" end="21" >
-					<li style="float: left;"><img width=100px height=100px src=${rank.titleImg}>
+					<li style="float: left;"><a href="/toon/eachEpList?toonNum=${rank.toonNum}"><img width=100px height=100px src=${rank.titleImg}>
 					</li>
 					
 					<li style="float: left;">${rank.toonTitle}/${rank.nickname}</li>

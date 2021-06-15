@@ -9,5 +9,7 @@ public class ToonApplication {
 	public static void main(String[] args) {
 		SpringApplication.run(ToonApplication.class, args);
 	}
+	
+	
 
 }

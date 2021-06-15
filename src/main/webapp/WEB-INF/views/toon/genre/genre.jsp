@@ -48,7 +48,7 @@
 				href="${pageContext.request.contextPath}/toon/toonList/genre=${action}">액션</a>
 			<ul>
 				<c:forEach items="${action}" var="action">
-					<li><img width=100px height=100px src=${action.titleImg}>
+					<li><a href="/toon/eachEpList?toonNum=${action.toonNum}"><img width=100px height=100px src=${action.titleImg}>
 					</li>
 					<li>${action.toonTitle}/${action.nickname}</li>
 				</c:forEach>
@@ -62,7 +62,7 @@
 				href="${pageContext.request.contextPath}/toon/toonList/genre=${school}">학원</a>
 			<ul>
 				<c:forEach items="${school}" var="school">
-					<li><img width=100px height=100px src=${school.titleImg}>
+					<li><a href="/toon/eachEpList?toonNum=${school.toonNum}"><img width=100px height=100px src=${school.titleImg}>
 					</li>
 					<li>${school.toonTitle}/${school.nickname}</li>
 				</c:forEach>
@@ -75,7 +75,7 @@
 				href="${pageContext.request.contextPath}/toon/toonList/genre=${romance}">로맨스</a>
 			<ul>
 				<c:forEach items="${romance}" var="romance">
-					<li><img width=100px height=100px src=${romance.titleImg}>
+					<li><a href="/toon/eachEpList?toonNum=${romance.toonNum}"><img width=100px height=100px src=${romance.titleImg}>
 					</li>
 					<li>${romance.toonTitle}/${romance.nickname}</li>
 				</c:forEach>
@@ -88,7 +88,7 @@
 				href="${pageContext.request.contextPath}/toon/toonList/genre=${fantasy}">판타지</a>
 			<ul>
 				<c:forEach items="${fantasy}" var="fantasy">
-					<li><img width=100px height=100px src=${fantasy.titleImg}>
+					<li><a href="/toon/eachEpList?toonNum=${fantasy.toonNum}"><img width=100px height=100px src=${fantasy.titleImg}>
 					</li>
 					<li>${fantasy.toonTitle}/${fantasy.nickname}</li>
 				</c:forEach>
@@ -101,7 +101,7 @@
 				href="${pageContext.request.contextPath}/toon/toonList/genre=${thriller}">스릴러</a>
 			<ul>
 				<c:forEach items="${thriller}" var="thriller">
-					<li><img width=100px height=100px src=${thriller.titleImg}>
+					<li><a href="/toon/eachEpList?toonNum=${thriller.toonNum}"><img width=100px height=100px src=${thriller.titleImg}>
 					</li>
 					<li>${thriller.toonTitle}/${thriller.nickname}</li>
 				</c:forEach>
@@ -114,7 +114,7 @@
 				href="${pageContext.request.contextPath}/toon/toonList/genre=${comedy}">코미디</a>
 			<ul>
 				<c:forEach items="${comedy}" var="comedy">
-					<li><img width=100px height=100px src=${comedy.titleImg}>
+					<li><a href="/toon/eachEpList?toonNum=${comedy.toonNum}"><img width=100px height=100px src=${comedy.titleImg}>
 					</li>
 					<li>${comedy.toonTitle}/${comedy.nickname}</li>
 				</c:forEach>
