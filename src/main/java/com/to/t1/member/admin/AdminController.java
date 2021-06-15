@@ -47,18 +47,135 @@ public class AdminController {
 	@Autowired
 	private ToonService toonService;
 	
+	@Value("${toon.toonFilePath}")
+	private String toonFilePath;
+	
+	@ModelAttribute("toon")
+	public String getToon() {
+		return "toon";
+	}
+	
 	@Autowired
 	private MemberService memberService;
 	
 	@GetMapping("manageToonList")
 	public ModelAndView getList(Pager pager)throws Exception{
 		ModelAndView mv = new ModelAndView();
+		System.out.println(pager.getCurPage());
+		System.out.println("ToonFilePath : "+toonFilePath);
+		
 		List<ToonVO> ar = toonService.getList();
 		mv.addObject("list", ar);
-		mv.addObject("listsize", ar.size());
 		mv.setViewName("admin/manageToonList");
 		mv.addObject("admin", "admin");
 		mv.addObject("pager", pager);
+		
+		return mv;
+	}
+	
+	@PostMapping("toonSummerFileDelete")
+	public ModelAndView setToonSummerFileDelete(String fileName)throws Exception{
+		ModelAndView mv = new ModelAndView();
+		boolean result = noticeService.setSummerFileDelete(fileName);
+		mv.addObject("result", result);
+		mv.setViewName("common/ajaxResult");
+		return mv;
+	}
+	
+	@PostMapping("toonSummerFileUpload")
+	public ModelAndView setToonSummerFileUpload(MultipartFile file)throws Exception{
+		ModelAndView mv = new ModelAndView();
+		System.out.println("썸머 notice 파일 업로드");
+		System.out.println(file.getOriginalFilename());
+		String fileName = noticeService.setSummerFileUpload(file);
+		fileName = "../upload/toon/"+fileName;
+		mv.addObject("result", fileName);
+		mv.setViewName("common/ajaxResult");
+		
+		return mv;
+	}
+	
+	
+	
+	@GetMapping("toonManageSelect")
+	public ModelAndView getSelect(BoardVO boardVO)throws Exception{
+		ModelAndView mv = new ModelAndView();
+		boardVO = noticeService.getSelect(boardVO);
+		mv.addObject("vo", boardVO);
+		mv.addObject("admin", "admin");
+		mv.setViewName("admin/manageSelect");
+		return mv;
+	}
+	
+	@GetMapping("insert")
+	public ModelAndView setInsert(HttpSession session)throws Exception{
+		 ModelAndView mv = new ModelAndView();
+			mv.setViewName("admin/insert");
+			mv.addObject("admin", "admin");
+		
+			return mv;
+			
+		}	
+	
+	@PostMapping("insert")
+	public String setInsert(BoardVO boardVO, MultipartFile [] files, Model model)throws Exception{
+		
+		int result = noticeService.setInsert(boardVO, files);
+		
+		String message="등록 실패";
+		
+		if(result>0) {
+			message="등록 성공";
+		}
+		model.addAttribute("msg", message);
+		model.addAttribute("path", "./manageNoticeList");
+		
+		
+		return "common/commonResult";
+	}
+	
+	@PostMapping("delete")
+	public String setDelete(BoardVO boardVO)throws Exception{
+		
+		int result = noticeService.setDelete(boardVO);
+		
+		return "redirect:./manageNoticeList";
+	}
+	
+	@GetMapping("fileDelete")
+	public ModelAndView setFileDelete(BoardFileVO boardFileVO)throws Exception{
+		ModelAndView mv = new ModelAndView();
+		int result = noticeService.setFileDelete(boardFileVO);
+		mv.addObject("result", result);
+		mv.setViewName("common/ajaxResult");
+		return mv;
+	}
+	
+	@GetMapping("update")
+	public ModelAndView setUpdate(BoardVO boardVO)throws Exception{
+		ModelAndView mv = new ModelAndView();
+		boardVO = noticeService.getSelect(boardVO);
+		
+		mv.addObject("vo", boardVO);
+		mv.addObject("admin", "admin");
+		mv.setViewName("admin/update");
+		return mv;
+	}
+	
+	@PostMapping("update")
+	public ModelAndView setUpdate(BoardVO boardVO, ModelAndView mv, MultipartFile [] files) throws Exception{
+		
+		int result = noticeService.setUpdate(boardVO, files);
+		
+		if(result>0) {
+			//성공하면 리스트로 이동
+			mv.setViewName("redirect:./manageNoticeList");
+		}else {
+			//실패하면 수정실패 , 리스트로 이동
+			mv.addObject("msg", "수정 실패");
+			mv.addObject("path", "./manageNoticeList");
+			mv.setViewName("common/commonResult");
+		}
 		
 		return mv;
 	}
