@@ -19,12 +19,12 @@ public class MypageService {
 	
 		pager.makeRow();
 		long totalCount = mypageMapper.getTotalCount(pager);
-		System.out.println("서비스");
 		pager.makeNum(totalCount);
-		System.out.println("서비스2");
+	
 		return mypageMapper.getList(pager);
-			
 	}
+	
+	
 	
 	
 }

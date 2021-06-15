@@ -4,6 +4,7 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
@@ -19,16 +20,15 @@ public class MypageController {
 	private MypageService mypageService;
 
 	@GetMapping("recentToon") 
-	public ModelAndView getList(Pager pager)throws Exception{
-		ModelAndView mv = new ModelAndView();
+	public String getList(Pager pager, Model model)throws Exception{
+
 		
 		List<RecentVO> ar = mypageService.getList(pager);
 		System.out.println(ar);
-		mv.addObject("list", ar);
-		mv.setViewName("mypage/recentToon");
-		mv.addObject("pager", pager);
+		model.addAttribute("list", ar);
+		model.addAttribute("pager", pager);
 		
-		return mv;
+		return "mypage/recentToon";
 	}
 	
 	

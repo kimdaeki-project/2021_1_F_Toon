@@ -1,5 +1,4 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags" %>
 <!DOCTYPE html>
@@ -105,16 +104,21 @@
 		<table class="table">
 			<thead class="thead-dark">
 				<tr>
+					<th>회차 섬네일</th>
 					<th>웹툰 이름</th>
 					<th>에피소드 이름</th>
 					<th>작가 이름</th>
 					<th>최근 본 날짜</th>
 				</tr>
 			</thead>
-
+			
 			<tbody>
 			<c:forEach items="${list}" var="dto" >
 				<tr>
+					<td>${dto.eachEpVO.epSumImg}</td>
+					<td>${dto.toonVO.toonTitle}</td>
+					<td>${dto.eachEpVO.epTitle}</td>
+					<td>${dto.memberVO.nickname}</td>
 					<td>${dto.viewDate}</td>
 <%-- 					<td><a href="./${board}Select?num=${dto.num}"> --%>
 					
