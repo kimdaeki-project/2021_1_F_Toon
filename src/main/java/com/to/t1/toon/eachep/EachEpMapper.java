@@ -4,12 +4,13 @@ import java.util.List;
 
 import org.apache.ibatis.annotations.Mapper;
 
+import com.to.t1.toon.ToonVO;
 import com.to.t1.util.Pager;
 
 @Mapper
 public interface EachEpMapper {
 
-	public List<EachEpVO> getList(Pager pager)throws Exception;
+	public ToonVO getList(Pager pager)throws Exception;
 	public Long getTotalCount(Pager pager)throws Exception;
 	public EachEpVO getSelect(EachEpVO eachEpVO)throws Exception;
 	

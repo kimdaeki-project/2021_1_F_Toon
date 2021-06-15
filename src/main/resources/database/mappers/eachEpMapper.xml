@@ -5,7 +5,16 @@
 
 <mapper namespace="com.to.t1.toon.eachep.EachEpMapper">
 
-	<resultMap type="ToonVO" id="ToonVO">
+
+	<select id="getList" parameterType="Pager" resultMap="getEachEp">
+		SELECT * FROM toon t LEFT JOIN member m 
+		ON t.writerId = m.username
+		JOIN eachep e ON t.toonNum = e.toonNum
+		WHERE e.toonNum=#{toonNum} ORDER BY e.eachEpNum DESC
+		LIMIT #{startRow},#{perPage}
+	</select>
+	
+	<resultMap type="ToonVO" id="getEachEp">
 		<id property="toonNum" column="toonNum"/>
     	<result property="toonTitle" column="toonTitle"/>
     	<result property="genre" column="genre"/>
@@ -17,24 +26,29 @@
      	<result property="titleImg" column="titleImg"/>
       	<result property="ratingSum" column="ratingSum"/>
       	<result property="ratingPerson" column="ratingPerson"/>
+      	<result property="nickname" column="nickname"/>
+      	<collection property="eachEpVO" javaType="java.util.List" ofType="EachEpVO">
+      		<id column="t" property="a"/>
+      		<result property="epNum" column="epNum"/>
+      		<result property="eachEpNum" column="eachEpNum"/>
+      		<result property="epSumImg" column="epSumImg"/>
+      		<result property="epTitle" column="epTitle"/>
+      		<result property="epDate" column="epDate"/>
+      		<result property="epContentImg" column="epContentImg"/>
+      		<result property="epHit" column="epHit"/>
+      	</collection>
+      	
 	</resultMap>
-
-	<select id="getList" resultType="EachEpVO">
-		SELECT te.* FROM
-		(SELECT t.*,e.epNum,e.eachEpNum,e.epSumImg,e.epTitle,e.epDate,e.epContentImg,e.epHit FROM toon t LEFT JOIN eachep e 
-		ON t.toonNum=e.toonNum WHERE t.toonNum=#{toonNum})te ORDER BY te.eachEpNum DESC
-		LIMIT #{startRow},#{perPage};
-	</select>
 	
 	<select id="getTotalCount" parameterType="Pager" resultType="Long">
-		SELECT COUNT(eachEpNum) FROM eachEp WHERE toonNum=#{toonNum};
+		SELECT COUNT(eachEpNum) FROM eachEp WHERE toonNum=#{toonNum}
 	</select>
 
 	<select id="getSelect" parameterType="EachEpVO" resultType="EachEpVO">
 		SELECT te.* FROM 
 		(SELECT t.*,e.epNum,e.eachEpNum,e.epSumImg,e.epTitle,e.epDate,e.epContentImg,e.epHit 
 		FROM toon t LEFT JOIN eachep e 
-		ON t.toonNum=e.toonNum WHERE t.toonNum=#{toonNum} AND e.epNum=#{epNum})te;
+		ON t.toonNum=e.toonNum WHERE t.toonNum=#{toonNum} AND e.epNum=#{epNum})te
 	</select>
 	
 	
