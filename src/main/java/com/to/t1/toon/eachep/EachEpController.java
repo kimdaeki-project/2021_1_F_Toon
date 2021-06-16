@@ -1,7 +1,5 @@
 package com.to.t1.toon.eachep;
 
-import java.util.List;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -30,7 +28,9 @@ public class EachEpController {
 	
 	@GetMapping("eachEpSelect")
 	public void getSelect(EachEpVO eachEpVO, Model model)throws Exception{
-		eachEpVO= eachEpService.getSelect(eachEpVO);
-		model.addAttribute("eachEpVO", eachEpVO);
+		ToonVO list= eachEpService.getSelect(eachEpVO);
+		model.addAttribute("toonVO", list);
+		model.addAttribute("title", list.getEachEpVO().size());
+		System.out.println(list.getEachEpVO().size());
 	}
 }

@@ -36,20 +36,27 @@
       		<result property="epDate" column="epDate"/>
       		<result property="epContentImg" column="epContentImg"/>
       		<result property="epHit" column="epHit"/>
+      		<result property="epRatingSum" column="epRatingSum"/>
+      		<result property="epRatingPerson" column="epRatingPerson"/>
       	</collection>
-      	
 	</resultMap>
 	
 	<select id="getTotalCount" parameterType="Pager" resultType="Long">
 		SELECT COUNT(eachEpNum) FROM eachEp WHERE toonNum=#{toonNum}
 	</select>
 
-	<select id="getSelect" parameterType="EachEpVO" resultType="EachEpVO">
-		SELECT te.* FROM 
-		(SELECT t.*,e.epNum,e.eachEpNum,e.epSumImg,e.epTitle,e.epDate,e.epContentImg,e.epHit 
-		FROM toon t LEFT JOIN eachep e 
-		ON t.toonNum=e.toonNum WHERE t.toonNum=#{toonNum} AND e.epNum=#{epNum})te
+	<select id="getSelect" parameterType="ToonVO" resultMap="getEachEp">
+		SELECT * FROM toon t LEFT JOIN member m 
+		ON t.writerId = m.username
+		JOIN eachep e ON t.toonNum = e.toonNum
+		WHERE e.toonNum=#{toonNum} AND e.epNum=#{epNum}		
 	</select>
 	
+	<update id="setHitUpdate" parameterType="EachEpVO">
+		update eachEp set epHit=epHit+1 where toonNum=#{toonNum} AND epNum=#{epNum}
+	</update>
 	
+	
+	
+
 </mapper>

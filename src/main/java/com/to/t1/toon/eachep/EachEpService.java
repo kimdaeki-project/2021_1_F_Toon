@@ -1,7 +1,5 @@
 package com.to.t1.toon.eachep;
 
-import java.util.List;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -29,9 +27,11 @@ public class EachEpService {
 		return eachEpMapper.getList(pager);	
 	}
 	
-	public EachEpVO getSelect(EachEpVO eachEpVO)throws Exception{
+	public ToonVO getSelect(EachEpVO eachEpVO)throws Exception{
 		eachEpMapper.setHitUpdate(eachEpVO);
-		return eachEpMapper.getSelect(eachEpVO);
+		ToonVO toonVO=eachEpMapper.getSelect(eachEpVO);
+		
+		return toonVO;
 	}
 	
 	

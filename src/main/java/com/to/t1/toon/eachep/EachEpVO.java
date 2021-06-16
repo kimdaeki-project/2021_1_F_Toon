@@ -2,9 +2,6 @@ package com.to.t1.toon.eachep;
 
 import java.sql.Date;
 
-import com.to.t1.member.MemberVO;
-import com.to.t1.toon.ToonVO;
-
 import lombok.Data;
 
 @Data
@@ -19,5 +16,5 @@ public class EachEpVO {
 	private String epContentImg;
 	private long epHit;
 	private long epRatingSum;
-	private long epRaitngPerson;
+	private long epRatingPerson;
 }
