@@ -72,10 +72,6 @@
             </collection>
          </resultMap>
          
-         <update id="setHitUpdate" parameterType="ToonVO">
-            update toon set totalHit=totalHit+1 where toonNum=#{toonNum}
-         </update>
-         
          <insert id="setInsert" parameterType="ToonVO" useGeneratedKeys="true" keyProperty="toonNum">
             insert into toon values(#{toonNum}, #{toonTitle}, #{genre}, #{writerId}, #{toonSum}, 0, #{toonDay}, #{titleImg}, #{ratingSum}, #{ratingPerson})
          </insert>

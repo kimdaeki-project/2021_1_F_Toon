@@ -76,7 +76,7 @@ public class AdminController {
 	@PostMapping("toonSummerFileDelete")
 	public ModelAndView setToonSummerFileDelete(String fileName)throws Exception{
 		ModelAndView mv = new ModelAndView();
-		boolean result = noticeService.setSummerFileDelete(fileName);
+		boolean result = adminService.setToonSummerFileDelete(fileName);
 		mv.addObject("result", result);
 		mv.setViewName("common/ajaxResult");
 		return mv;
@@ -85,9 +85,9 @@ public class AdminController {
 	@PostMapping("toonSummerFileUpload")
 	public ModelAndView setToonSummerFileUpload(MultipartFile file)throws Exception{
 		ModelAndView mv = new ModelAndView();
-		System.out.println("썸머 notice 파일 업로드");
+		System.out.println("썸머 toon 파일 업로드");
 		System.out.println(file.getOriginalFilename());
-		String fileName = noticeService.setSummerFileUpload(file);
+		String fileName = adminService.setToonSummerFileUpload(file);
 		fileName = "../upload/toon/"+fileName;
 		mv.addObject("result", fileName);
 		mv.setViewName("common/ajaxResult");
@@ -97,30 +97,30 @@ public class AdminController {
 	
 	
 	
-	@GetMapping("toonManageSelect")
-	public ModelAndView getSelect(BoardVO boardVO)throws Exception{
+	@GetMapping("manageToonSelect")
+	public ModelAndView getManageToonSelect(ToonVO toonVO)throws Exception{
 		ModelAndView mv = new ModelAndView();
-		boardVO = noticeService.getSelect(boardVO);
-		mv.addObject("vo", boardVO);
+		toonVO = adminService.getManageToonSelect(toonVO);
+		mv.addObject("vo", toonVO);
 		mv.addObject("admin", "admin");
-		mv.setViewName("admin/manageSelect");
+		mv.setViewName("admin/manageToonSelect");
 		return mv;
 	}
 	
-	@GetMapping("insert")
-	public ModelAndView setInsert(HttpSession session)throws Exception{
+	@GetMapping("manageToonInsert")
+	public ModelAndView setManageToonInsert(HttpSession session)throws Exception{
 		 ModelAndView mv = new ModelAndView();
-			mv.setViewName("admin/insert");
+			mv.setViewName("admin/manageToonInsert");
 			mv.addObject("admin", "admin");
 		
 			return mv;
 			
 		}	
 	
-	@PostMapping("insert")
-	public String setInsert(BoardVO boardVO, MultipartFile [] files, Model model)throws Exception{
+	@PostMapping("manageToonInsert")
+	public String setManageToonInsert(ToonVO toonVO, MultipartFile [] files, Model model)throws Exception{
 		
-		int result = noticeService.setInsert(boardVO, files);
+		int result = adminService.setManageToonInsert(toonVO, files);
 		
 		String message="등록 실패";
 		
@@ -128,52 +128,52 @@ public class AdminController {
 			message="등록 성공";
 		}
 		model.addAttribute("msg", message);
-		model.addAttribute("path", "./manageNoticeList");
+		model.addAttribute("path", "./manageToonList");
 		
 		
 		return "common/commonResult";
 	}
 	
-	@PostMapping("delete")
-	public String setDelete(BoardVO boardVO)throws Exception{
+	@PostMapping("manageToonDelete")
+	public String setManageToonDelete(ToonVO toonVO)throws Exception{
 		
-		int result = noticeService.setDelete(boardVO);
+		int result = adminService.setManageToonDelete(toonVO);
 		
 		return "redirect:./manageNoticeList";
 	}
 	
-	@GetMapping("fileDelete")
-	public ModelAndView setFileDelete(BoardFileVO boardFileVO)throws Exception{
+	@GetMapping("toonFileDelete")
+	public ModelAndView setToonFileDelete(AdminFileVO adminFileVO)throws Exception{
 		ModelAndView mv = new ModelAndView();
-		int result = noticeService.setFileDelete(boardFileVO);
+		int result = adminService.setToonFileDelete(adminFileVO);
 		mv.addObject("result", result);
 		mv.setViewName("common/ajaxResult");
 		return mv;
 	}
 	
-	@GetMapping("update")
-	public ModelAndView setUpdate(BoardVO boardVO)throws Exception{
+	@GetMapping("manageToonUpdate")
+	public ModelAndView setManageToonUpdate(ToonVO toonVO)throws Exception{
 		ModelAndView mv = new ModelAndView();
-		boardVO = noticeService.getSelect(boardVO);
+		toonVO = adminService.getManageToonSelect(toonVO);
 		
-		mv.addObject("vo", boardVO);
+		mv.addObject("vo", toonVO);
 		mv.addObject("admin", "admin");
-		mv.setViewName("admin/update");
+		mv.setViewName("admin/manageToonUpdate");
 		return mv;
 	}
 	
-	@PostMapping("update")
-	public ModelAndView setUpdate(BoardVO boardVO, ModelAndView mv, MultipartFile [] files) throws Exception{
+	@PostMapping("manageToonUpdate")
+	public ModelAndView setManageToonUpdate(ToonVO toonVO, ModelAndView mv, MultipartFile [] files) throws Exception{
 		
-		int result = noticeService.setUpdate(boardVO, files);
+		int result = adminService.setManageToonUpdate(toonVO, files);
 		
 		if(result>0) {
 			//성공하면 리스트로 이동
-			mv.setViewName("redirect:./manageNoticeList");
+			mv.setViewName("redirect:./manageToonList");
 		}else {
 			//실패하면 수정실패 , 리스트로 이동
 			mv.addObject("msg", "수정 실패");
-			mv.addObject("path", "./manageNoticeList");
+			mv.addObject("path", "./manageToonList");
 			mv.setViewName("common/commonResult");
 		}
 		
