@@ -47,8 +47,6 @@ public class AdminController {
 	@Autowired
 	private ToonService toonService;
 	
-	@Value("${toon.toonFilePath}")
-	private String toonFilePath;
 	
 	@ModelAttribute("toon")
 	public String getToon() {
@@ -59,12 +57,11 @@ public class AdminController {
 	private MemberService memberService;
 	
 	@GetMapping("manageToonList")
-	public ModelAndView getList(Pager pager)throws Exception{
+	public ModelAndView getManageToonList(Pager pager)throws Exception{
 		ModelAndView mv = new ModelAndView();
 		System.out.println(pager.getCurPage());
-		System.out.println("ToonFilePath : "+toonFilePath);
 		
-		List<ToonVO> ar = toonService.getList();
+		List<ToonVO> ar = adminService.getManageToonList(pager);
 		mv.addObject("list", ar);
 		mv.setViewName("admin/manageToonList");
 		mv.addObject("admin", "admin");

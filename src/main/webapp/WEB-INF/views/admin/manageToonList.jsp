@@ -38,7 +38,7 @@
 	border-radius;
 }
 </style>
-<title>관리자전용 공지사항 페이지</title>
+<title>관리자전용 작품 페이지</title>
 
 </head>
 <body>
@@ -117,11 +117,13 @@
 			</ul>
 
 			<div class="input-group mt-3 mb-3">
-				<form id="frm" action="./manageNoticeList" class="form-inline">
+				<form id="frm" action="./manageToonList" class="form-inline">
 					<input type="hidden" name="curPage" value="1" id="curPage">
 					<div class="input-group-prepend">
 						<select class="form-control" name="kind" id="kind">
-							<option class="sel">공지종류</option>
+							<option class="sel">작가</option>
+							<option class="sel">장르</option>
+							<option class="sel">요약내용</option>
 							<option class="sel">제목</option>
 						</select>
 					</div>

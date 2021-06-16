@@ -29,9 +29,7 @@ public class AdminService {
 	@Autowired
 	private HttpSession session;
 
-	@Value("${toon.toonFilePath}")
-	private String toonFilePath;
-
+	
 	public List<ToonVO> getManageToonList(Pager pager) throws Exception {
 		
 		pager.makeRow();

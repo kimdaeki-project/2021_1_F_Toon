@@ -52,29 +52,49 @@
 					style="border-radius: 15px 15px 15px 15px; border: 3px solid #b4b4b4; padding: 0.5em 0.6em; color: black; background-color: #dcdcdc;">공지사항/작성</span>
 			</p>
 		</h2><br>
-		<form id="frm" action="./manageToonInsert" method="post" enctype="multipart/form-data">
+		<form id="frm" action="./insert" method="post" enctype="multipart/form-data">
 	
 			<div class="form-group">
-				<label for="noticeKinds">&nbsp;공지종류</label> <input type="text"
-					class="form-control myCheck" id="noticeKinds" name="noticeKinds">
+				<label for="toonTitle">&nbsp;제목</label> <input type="text"
+					class="form-control myCheck" id="toonTitle" name="toonTitle">
 			</div>
-
 			<div class="form-group">
-				<label for="username">&nbsp;작성자</label> <input type="text"
+				<label for="genre">&nbsp;장르</label> <input type="text"
+					class="form-control myCheck" id="genre" name="genre">
+			</div>
+			<div class="form-group">
+				<label for="writerId">&nbsp;작성자</label> <input type="text"
 					readonly="readonly" value="principal.name"
-					class="form-control myCheck" id="username" name="username">
+					class="form-control myCheck" id="writerId" name="writerId">
 			</div>
+			
 			<div class="form-group">
-				<label for="noticeTitle">&nbsp;제목</label> <input type="text"
-					class="form-control myCheck" id="noticeTitle" name="noticeTitle">
+				<label for="toonSum">&nbsp;요약내용</label>
+				<textarea class="form-control myCheck" rows="5" id="toonSum"
+					name="toonSum"></textarea>
+			</div>
+			
+			<div class="form-group">
+				<label for="toonDay">&nbsp;요일</label> <input type="text"
+					class="form-control myCheck" id="toonDay" name="toonDay">
 			</div>
 
 			<div class="form-group">
-				<label for="noticeContents">&nbsp;내용</label>
-				<textarea class="form-control myCheck" rows="5" id="noticeContents"
-					name="noticeContents"></textarea>
+				<label for="titleImg">&nbsp;타이틀이미지</label>
+				<textarea class="form-control myCheck" rows="5" id="titleImg"
+					name="titleImg"></textarea>
 			</div>
-
+			
+			<div class="form-group">
+				<label for="ratingSum">&nbsp;평점</label> <input type="text"
+					class="form-control myCheck" id="ratingSum" name="ratingSum">
+			</div>
+			
+			<div class="form-group">
+				<label for="ratingPerson">&nbsp;평점(수)</label> <input type="text"
+					class="form-control myCheck" id="ratingPerson" name="ratingPerson">
+			</div>
+			
 			&nbsp;&nbsp;<input type="button" id="add" value="파일추가" class="btn btn-secondary"><br>
 			
 			<div id="files" title="0"></div><br>
