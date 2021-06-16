@@ -120,8 +120,8 @@
         
       </div>
       <!-- navEND -->
-      <div id="contents" class="display-income"> 
-      	
+      <div>
+      	<canvas id="myChart"></canvas>
       </div>
     </div>
     <!--page body ends -->
@@ -129,15 +129,12 @@
     <!-- SCRIPT LOADING START FORM HERE /////////////-->
     
     <!-- plugins:js -->
-    <script src="../assets/vendors/js/core.js"></script>
-    <script src="../assets/vendors/apexcharts/apexcharts.min.js"></script>
-    <script src="../assets/vendors/chartjs/Chart.min.js"></script>
-    <script src="../assets/js/charts/chartjs.addon.js"></script>
-    <script src="../assets/js/template.js"></script>
-    <script src="../assets/js/dashboard.js"></script>
-   
-    <script type="text/javascript" src="../js/adminpage/adminControl.js"></script>
     
+    <!-- chart.js -->
+<!--     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script> -->
+    <!-- 직접 작성한 js  -->
+    <script type="text/javascript" src="../js/admin/adminControl.js"></script>
+    <script type="text/javascript" src="../js/admin/chart.js"></script>
  <!-- endbuild -->
 </body>
 </html>

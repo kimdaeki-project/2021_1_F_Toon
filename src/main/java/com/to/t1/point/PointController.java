@@ -47,7 +47,8 @@ public class PointController {
 		
 		int result = pointservice.ChargePoint(param);
 		
-		return "index";
+		return "index"; //이건 실행 안되는 걸로판명.
+		
 	}
 	
 //	//RESTAPI 검증

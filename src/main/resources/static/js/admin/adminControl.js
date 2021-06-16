@@ -2,4 +2,4 @@
  * 
  */
  
- alert("adminControl Connected");
+// alert("adminControl Connected");
