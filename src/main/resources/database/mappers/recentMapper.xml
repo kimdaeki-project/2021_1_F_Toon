@@ -4,7 +4,7 @@
 <mapper namespace="com.to.t1.mypage.MypageMapper">
 	
 	
-	<select id="getTotalCount" parameterType="MemberVO" resultType="java.lang.Long">
+	<select id="getTotalCount" parameterType="RecentVO" resultType="java.lang.Long">
 		SELECT count(*)
 		FROM recenttoon, eachep, toon, member
 		WHERE toon.writerId = member.username AND eachep.toonNum =
@@ -21,13 +21,19 @@
 		WHERE toon.writerId = member.username AND eachep.toonNum = toon.toonNum  AND recenttoon.epNum = eachep.epNum 
 		AND recenttoon.username = #{username} 
 		ORDER BY recenttoon.viewDate DESC
-
-		<!-- select * from notice -->
-		<!-- <include refid="searcher"></include> -->
-		<!-- order by boNum desc -->
-		<!-- limit #{startRow}, #{perPage} -->
-		<!-- limit 시작index번호(0부터시작), 갯수 -->
+		limit #{startRow}, #{perPage}
+		
 	</select>
+	
+<!--          <select id="getList" resultType="NoticeVO" parameterType="Pager"> -->
+<!--          select * from notice -->
+<!--          <include refid="searcher"></include> -->
+<!--          order by boNum desc -->
+<!--          limit #{startRow}, #{perPage} -->
+<!--          limit 시작index번호(0부터시작), 갯수  -->
+<!--          </select> -->
+	
+	
 	
 	<select id="getList2" parameterType="RecentVO" resultMap="recentResult">
 		SELECT favoritetoon.*, toon.toonTitle, toon.genre, toon.titleImg, toon.toonDay, member.nickname
