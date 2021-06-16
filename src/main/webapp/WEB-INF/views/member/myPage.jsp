@@ -37,7 +37,7 @@
           </div>
           <div class="info-wrapper">
             <p class="user-name"><sec:authentication property="principal.name"/>님</p>
-            <h6 class="display-income"><sec:authentication property="principal.point"/>point</h6>
+            <h6 class="display-income">${memberVO.point}point</h6>
           </div>
         </div>
         <ul class="navigation-menu">

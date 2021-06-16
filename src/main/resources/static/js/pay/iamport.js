@@ -105,7 +105,7 @@ $("#start-charge").click(function () {
 	        	success : function(data) {
 					alert("결제 및 결제검증완료(아직)");
 			        alert("포인트 적립 완료 ");
-					location.href="/";
+					location.href="../member/myPage";
 				}, error: function(request, status, error) {
 					alert("ajax전송 실패");
 					alert("포인트 적립 실패 ");
