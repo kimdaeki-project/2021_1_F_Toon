@@ -14,7 +14,8 @@
 	
 	</select>
 	
-	<select id="getList" parameterType="MemberVO" resultMap="recentResult">
+	<select id="getList" parameterType="RecentVO" resultMap="recentResult">
+<!-- 		SELECT * FROM recenttoon -->
 		SELECT recenttoon.*,toon.toonTitle, eachep.epTitle, eachep.eachEpNum,eachep.epSumImg, member.nickname 
 		FROM recenttoon, eachep, toon, member 
 		WHERE toon.writerId = member.username AND eachep.toonNum = toon.toonNum  AND recenttoon.epNum = eachep.epNum 
@@ -28,12 +29,12 @@
 		<!-- limit 시작index번호(0부터시작), 갯수 -->
 	</select>
 	
-	<select id="getList2" parameterType="MemberVO" resultMap="recentResult">
+	<select id="getList2" parameterType="RecentVO" resultMap="recentResult">
 		SELECT favoritetoon.*, toon.toonTitle, toon.genre, toon.titleImg, toon.toonDay, member.nickname
 		FROM favoritetoon, toon, member
 		WHERE toon.writerId = member.username AND favoritetoon.toonNum = toon.toonNum and
-		favoritetoon.likeClick='1' AND favoritetoon.username='55555555' 
-		ORDER BY favoritetoon.likeDate DESC;
+		favoritetoon.likeClick='1' AND favoritetoon.username=#{username} 
+		ORDER BY favoritetoon.likeDate DESC
 
 		<!-- select * from notice -->
 		<!-- <include refid="searcher"></include> -->
@@ -43,7 +44,8 @@
 	</select>
 	
 	<resultMap type="RecentVO" id="recentResult">
-		<id property="username" column="username" />
+		<id property="epNum" column="epNum"/>
+		<result property="username" column="username" />
 		<result property="toonNum" column="toonNum"/>
 		<result property="epNum" column="epNum"/>
 		<result property="viewDate" column="viewDate"/>
@@ -64,6 +66,7 @@
 	
 	<resultMap type="ToonVO" id="toonResult">
 			<id property="toonNum" column="toonNum"/>
+			<id property="writerId" column="writerId"/>
 			<result property="toonTitle" column="toonTitle"/>
 			<result property="genre" column="genre"/>
 			<result property="writerId" column="writerId"/>
@@ -80,7 +83,7 @@
 		
 		<resultMap type="EachEpVO" id="eachEpResult">
 			<id property="epNum" column="epNum"/>
-			<result property="toonNum" column="toonNum"/>
+			<id property="toonNum" column="toonNum"/>
 			
 			<result property="eachEpNum" column="eachEpNum"/>
 			<result property="epSumImg" column="epSumImg"/>
