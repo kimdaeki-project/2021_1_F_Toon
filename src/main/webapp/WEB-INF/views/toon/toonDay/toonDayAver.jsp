@@ -17,7 +17,7 @@
 
 
 <link rel="stylesheet" href="../../css/header.css">
-<link rel="stylesheet" href="../../css/toonday.css">
+<link rel="stylesheet" href="../../css/toonDay.css">
 
 </head>
 <body>

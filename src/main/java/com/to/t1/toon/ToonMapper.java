@@ -42,5 +42,4 @@ public interface ToonMapper {
 	public List<ToonVO> endReAver(ToonVO toonVO,MemberVO memberVO)throws Exception;
 	public List<ToonVO> endReRecent(ToonVO toonVO,MemberVO memberVO)throws Exception;
 	
-	public List<ToonVO> turn(ToonVO toonVO,MemberVO memberVO)throws Exception;
 }

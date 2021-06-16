@@ -13,7 +13,7 @@
 <!--                     <a href="index.html" class="logo"> -->
 <!--                         <img src="images/logo.png" alt=""> -->
 <!--                     </a> -->
-						<a class="navbar-brand" href="${pageContext.request.contextPath}/"><h2>WEBTOON PAGE</h2></a>
+						<a class="navbar-brand" href="${pageContext.request.contextPath}/"><h1>WongToon</h1></a>
                 </div>
                 <div class="col-lg-4 col-md-6 col-sm-6 search-trigger">
                     <div class="right-button">

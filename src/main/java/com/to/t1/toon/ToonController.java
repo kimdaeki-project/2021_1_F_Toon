@@ -82,9 +82,9 @@ public class ToonController {
 	
 	
 	@GetMapping("toonDayAver")
-	public ModelAndView toonDayAver(ToonVO toonVO, MemberVO memberVO)throws Exception{
+	public ModelAndView toonDayAver(ToonVO toonVO,MemberVO memberVO) throws Exception {
 		ModelAndView mv = new ModelAndView();
-	
+		
 		toonVO.setToonDay("mon");
 		List<ToonVO> mt = toonService.toonDayAver(toonVO,memberVO);
 		
