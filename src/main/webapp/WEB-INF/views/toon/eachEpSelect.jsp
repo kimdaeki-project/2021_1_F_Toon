@@ -16,7 +16,7 @@
 	<!-- 웹툰 소개 -->
 	<div class="comicinfo">
 		<div class="thumb">
-			<a href="#">
+			<a href="/toon/eachEpList?toonNum=${toonVO.toonNum}">
 				<img src="${toonVO.titleImg}">
 				<span class="mask"></span>
 				</a>
