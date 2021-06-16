@@ -12,7 +12,7 @@ import com.to.t1.util.Pager;
 @Mapper
 public interface ToonMapper {
 
-	public List<ToonVO> getList()throws Exception;
+	public List<ToonVO> getList(Pager pager)throws Exception;
 	public Long getTotalCount(Pager pager)throws Exception;
 	public ToonVO getSelect(ToonVO toonVO)throws Exception;
 	

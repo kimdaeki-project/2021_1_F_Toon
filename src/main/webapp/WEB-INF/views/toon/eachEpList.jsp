@@ -28,7 +28,7 @@
 		<p class="detail_info"><span class="genre">장르 : ${toonVO.genre}</span></p>
 		<ul class="btn_group">
 		<li><a href="#" title="관심웹툰" class="book_maker on"><span>관심웹툰</span></a></li>
-		<li><a href="#" title="첫회보기" class="first"><span>첫회보기</span></a></li>
+		<li><a href="/toon/eachEpSelect?toonNum=${eachEpVO.toonNum}&epNum=1" title="첫회보기" class="first"><span>첫회보기</span></a></li>
 		
 	</div>
 	
@@ -64,7 +64,8 @@
 				<td>
 					<div class="rating_type">
 						<span class="star"><em style="width:${toonVO.ratingSum}/${toonVO.ratingPerson}*10%">평점</em></span>
-						<strong>${toonVO.ratingSum}/${toonVO.ratingPerson}</strong>
+						<strong>${toonVO.ratingSum/toonVO.ratingPerson}</strong>
+						
 					</div>
 				</td>
 				<td class="num"><span>${eachEpVO.epDate}</span></td>

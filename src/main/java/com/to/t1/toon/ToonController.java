@@ -30,7 +30,7 @@ public class ToonController {
 	
 	@GetMapping("toonList")
 	public void getList(Pager pager, Model model)throws Exception{
-		List<ToonVO> list=toonService.getList();
+		List<ToonVO> list=toonService.getList(pager);
 		model.addAttribute("list", list);
 		model.addAttribute("listsize", list.size());
 	}

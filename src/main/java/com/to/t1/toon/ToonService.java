@@ -19,8 +19,8 @@ public class ToonService {
 	@Autowired
 	private MemberMapper memberMapper;
 	
-	public List<ToonVO> getList()throws Exception{
-		return toonMapper.getList();
+	public List<ToonVO> getList(Pager pager)throws Exception{
+		return toonMapper.getList(pager);
 	}
 	
 	public ToonVO getSelect(ToonVO toonVO) throws Exception{

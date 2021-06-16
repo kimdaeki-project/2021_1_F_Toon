@@ -63,6 +63,7 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 					.antMatchers("/member/**").hasAnyRole("ADMIN", "MEMBER")
 					
 					
+					
 					.antMatchers("/toon/toonDay/toonDay").permitAll()
 					.antMatchers("/toon/toonDay/toonDayAver").permitAll()
 					.antMatchers("/toon/toonDay/toonDayRecent").permitAll()
@@ -81,7 +82,9 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 					
 					.antMatchers("/toon/eachEpList/**").permitAll()
 					.antMatchers("/toon/eachEpSelect/**").permitAll()
-								
+						
+					.antMatchers("/fragments/search").permitAll()
+					
 					.antMatchers("/notice/select").hasAnyRole("ADMIN", "MEMBER")
 					.antMatchers("/qna/qnaSelect").hasAnyRole("ADMIN", "MEMBER")
 					.antMatchers("/qna/qnaUpdate").hasAnyRole("ADMIN", "MEMBER")
@@ -89,6 +92,8 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 					.antMatchers("/qna/qnaInsert").hasAnyRole("MEMBER")
 					.antMatchers("/notice/insert").hasAnyRole("ADMIN")
 					.antMatchers("/admin/test").hasAnyRole("ADMIN")
+					
+					
 					
 					.antMatchers("/search/NewFile").permitAll()
 					.antMatchers("/search/NextFile").permitAll()

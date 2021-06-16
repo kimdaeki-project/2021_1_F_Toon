@@ -71,15 +71,18 @@
                 </div>
             </nav>
         </div>
-    </header> 
-    
-      <div class="search_input" id="search_input_box">
+    </header>
+
+   <div class="search_input" id="search_input_box">
             <div class="container ">
                 <form class="d-flex justify-content-between search-inner">
-                    <input type="text" class="form-control" id="search_input" placeholder="제목/작가로 검색하실수 있습니다" >
-                    <button type="submit" class="danger" href="/">검색하기</button>
+                    
+                  <input type="text" id="gnb.keyword" name="keyword" value="" title="검색어 입력"  class="snb_search_text">  
+                  <button type="submit" class="btn"></button>
                     <span class="ti-close" id="close_search" title="Close Search"></span>
                 </form>
             </div>
         </div>
-    <!-- End header MEnu Area -->
+        
+        
+<!-- End header MEnu Area -->
