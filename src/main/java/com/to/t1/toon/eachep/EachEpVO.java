@@ -16,5 +16,5 @@ public class EachEpVO {
 	private String epContentImg;
 	private long epHit;
 	private long epRatingSum;
-	private long epRaitngPerson;
+	private long epRatingPerson;
 }
