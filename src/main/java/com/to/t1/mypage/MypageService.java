@@ -26,6 +26,15 @@ public class MypageService {
 		return mypageMapper.getList(memberVO);
 	}
 	
+	public List<RecentVO> getList2(MemberVO memberVO) throws Exception {
+		Pager pager = new Pager();
+		
+		pager.makeRow();
+		long totalCount = mypageMapper.getTotalCount(memberVO);
+		pager.makeNum(totalCount);
+	
+		return mypageMapper.getList2(memberVO);
+	}
 	
 	
 	

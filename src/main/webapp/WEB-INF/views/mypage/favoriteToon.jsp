@@ -1,6 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
 <%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags" %>
 <!DOCTYPE html>
 <html>
@@ -10,7 +9,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
   
     <c:import url="../fragments/bootstrap.jsp"></c:import>
-    <title>UPDATE</title>
+    <title>Favorite Toon</title>
    
      <link rel="stylesheet" href="/css/header.css">
      <!-- plugins:css -->
@@ -25,7 +24,7 @@
 </head>
 <body>
 	<c:import url="../fragments/header.jsp"></c:import>	
-
+	
     <!-- partial -->
     <div class="page-body">
       <!-- partial:partials/_sidebar.html -->
@@ -33,7 +32,7 @@
         <div class="user-profile">
           <div class="display-avatar animated-avatar">
             <c:if test="${memberVO.joinFileVO.fileName eq null}"><img width=180px height=200px alt="" src="../images/member.jpg"></c:if>
-			<c:if test="${memberVO.joinFileVO.fileName ne null}"><img width=180px height=200px alt="" src="../upload/member/${memberVO.joinFileVO.fileName}"></c:if>
+			<c:if test="${memberVO.joinFileVO.fileName ne null}"><img width=180px height=200px alt="" src="./upload/member/${memberVO.joinFileVO.fileName}"></c:if>
           </div>
           <div class="info-wrapper">
             <p class="user-name"><sec:authentication property="principal.name"/>님</p>
@@ -56,7 +55,7 @@
             </a>
             <ul class="collapse navigation-submenu" id="ui-elements">
               <li>
-                <a href="pages/ui-components/buttons.html">최근 본 웹툰</a>
+                <a href="../mypage/recentToon">최근 본 웹툰</a>
               </li>
               <li>
                 <a href="../mypage/favoriteToon">관심 웹툰</a>
@@ -98,16 +97,53 @@
       </div>
       <!-- partial -->
       <div class="page-content-wrapper">
-      <h2>수정ㅋ</h2>
-	<form action="memberUpdate" method="post">
-		ID <input type="text" name="username" readonly="readonly" value="<sec:authentication property="principal.username"/>"><br>
-		Name <input type="text" name="name" value= "${memberVO.name}"><br>
-		닉네임 <input type="text" name="nickname" value="${memberVO.nickname}"><br>
-		Phone <input type="text" name="phone" value= "${memberVO.phone}"><br>
-		Email <input type="text" name="email" value= "${memberVO.email}"><br>
+           <div class="container">	
 
-		<button class="btn btn-info">Update</button>
-	</form>
+		<h2>favorite 웹툰</h2>
+
+		<table class="table">
+			<thead class="thead-dark">
+				<tr>
+					<th>섬네일</th>
+					<th>웹툰 이름</th>
+					<th>웹툰 장르</th>
+					<th>웹툰 요일</th>
+					<th>작가 이름</th>
+					<th>좋아요 한 날짜</th>
+				</tr>
+			</thead>
+			
+			<tbody>
+			<c:forEach items="${list}" var="list" >
+				<tr>
+					<td>${list.toonVO.titleImg}</td>
+					<td>${list.toonVO.toonTitle}</td>
+					<td>${list.toonVO.genre}</td>
+					<td>${list.toonVO.toonDay}</td>
+					<td>${list.memberVO.nickname}</td>
+					<td>${list.favoritoonVO.likeDate}</td>
+<%-- 					<td><a href="./${board}Select?num=${dto.num}"> --%>
+					
+<%-- 					<c:catch> --%>
+<%-- 					<c:forEach begin="1" end="${dto.dept}">--</c:forEach> --%>
+<%-- 					</c:catch> --%>
+<%-- 					${dto.title} --%>
+<!-- 					</a></td> -->
+<%-- 					<td>${dto.writer}</td> --%>
+<%-- 					<td>${dto.regDate}</td> --%>
+<%-- 					<td>${dto.hit}</td> --%>
+				</tr>
+			</c:forEach>
+			
+			</tbody>
+
+		</table>
+	</div>
+           
+  
+	
+
+	</p>
         <div class="page-content-wrapper-inner">
           <div class="content-viewport">
             <div class="row">
@@ -117,6 +153,7 @@
               </div>
             </div>
       </div>
+      </div>
     </div>
     <script src="../assets/vendors/js/core.js"></script>
     <script src="../assets/vendors/apexcharts/apexcharts.min.js"></script>
@@ -124,7 +161,9 @@
     <script src="../assets/js/charts/chartjs.addon.js"></script>
     <script src="../assets/js/template.js"></script>
     <script src="../assets/js/dashboard.js"></script>
-
-
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+    <script type="text/javascript" src="../js/mypage.js"></script>
+	
+	
 </body>
 </html>

@@ -28,9 +28,22 @@ public class MypageController {
 		model.addAttribute("list", ar);
 		model.addAttribute("pager", pager);
 		
+		System.out.println("리센트툰");
+		
 		return "mypage/recentToon";
 	}
 	
+	@GetMapping("favoriteToon") 
+	public String getList2(Pager pager, Model model,MemberVO memberVO)throws Exception{
+		
+		List<RecentVO> ar = mypageService.getList2(memberVO);
+		System.out.println(ar);
+		model.addAttribute("list", ar);
+		model.addAttribute("pager", pager);
+		
+		System.out.println("페이보릿툰");
+		return "mypage/favoriteToon";
+	}
 	
 	
 }

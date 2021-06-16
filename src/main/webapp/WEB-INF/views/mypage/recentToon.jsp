@@ -31,12 +31,12 @@
       <div class="sidebar">
         <div class="user-profile">
           <div class="display-avatar animated-avatar">
-            <c:if test="${member.joinFileVO.fileName eq null}"><img width=180px height=200px alt="" src="../images/member.jpg"></c:if>
+            <c:if test="${member.joinFileVO.fileName eq null}"><img width=180px height=200px alt="" src="/images/member.jpg"></c:if>
 			<c:if test="${member.joinFileVO.fileName ne null}"><img width=180px height=200px alt="" src="../upload/member/${member.joinFileVO.fileName}"></c:if>
           </div>
           <div class="info-wrapper">
             <p class="user-name"><sec:authentication property="principal.name"/>님</p>
-            <h6 class="display-income"><sec:authentication property="principal.point"/>point</h6>
+            <h6 class="display-income">${memberVO.point}point</h6>
           </div>
         </div>
         <ul class="navigation-menu">
@@ -58,7 +58,7 @@
                 <a href="../mypage/recentToon">최근 본 웹툰</a>
               </li>
               <li>
-                <a href="pages/ui-components/tables.html">관심 웹툰</a>
+                <a href="/mypage/favoriteToon">관심 웹툰</a>
               </li>
               <li>
                 <a href="pages/ui-components/typography.html">소장 웹툰</a>

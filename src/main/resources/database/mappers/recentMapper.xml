@@ -14,59 +14,6 @@
 	
 	</select>
 	
-	<resultMap type="RecentVO" id="recentResult">
-		<id property="username" column="username" />
-		<result property="toonNum" column="toonNum"/>
-		<result property="epNum" column="epNum"/>
-		<result property="viewDate" column="viewDate"/>
-		
-		<association property="toonVO" javaType="ToonVO" resultMap="toonResult"></association>
-		<association property="eachEpVO" javaType="EachEpVO" resultMap="eachEpResult"></association>
-		<association property="memberVO" javaType="MemberVO" resultMap="memberResult"></association> 
-	</resultMap>
-	<resultMap type="ToonVO" id="toonResult">
-			<id property="toonNum" column="toonNum"/>
-			<result property="toonTitle" column="toonTitle"/>
-			<!--  
-			<result property="genre" column="genre"/>
-			<result property="writerId" column="writerId"/>
-			<result property="toonSum" column="toonSum"/>
-			<result property="totalHit" column="totalHit"/>
-			<result property="toonDay" column="toonDay"/>
-			<result property="state" column="state"/>
-			<result property="titleImg" column="titleImg"/>
-			<result property="ratingSum" column="ratingSum"/>
-			<result property="ratingPerson" column="ratingPerson"/>
-			-->
-		</resultMap>
-		
-		
-		<resultMap type="EachEpVO" id="eachEpResult">
-			<id property="epNum" column="epNum"/>
-			<result property="toonNum" column="toonNum"/>
-			
-			<result property="eachEpNum" column="eachEpNum"/>
-			<result property="epSumImg" column="epSumImg"/>
-			<result property="epTitle" column="epTitle"/>
-			
-<!-- 			<result property="epDate" column="epDate"/> -->
-<!-- 			<result property="epContentImg" column="epContentImg"/> -->
-<!-- 			<result property="epHit" column="epHit"/> -->
-		</resultMap>
-
-		<resultMap type="MemberVO" id="memberResult">
-			<id property="username" column="username" />
-			<result property="nickname" column="nickname"/>
-			
-			<!--  
-			<result property="password" column="password"/>
-			<result property="name" column="name"/>
-			<result property="phone" column="phone"/>
-			<result property="email" column="email"/>
-			<result property="point" column="point"/>
-			-->
-		</resultMap>
-		
 	<select id="getList" parameterType="MemberVO" resultMap="recentResult">
 		SELECT recenttoon.*,toon.toonTitle, eachep.epTitle, eachep.eachEpNum,eachep.epSumImg, member.nickname 
 		FROM recenttoon, eachep, toon, member 
@@ -80,5 +27,81 @@
 		<!-- limit #{startRow}, #{perPage} -->
 		<!-- limit 시작index번호(0부터시작), 갯수 -->
 	</select>
+	
+	<select id="getList2" parameterType="MemberVO" resultMap="recentResult">
+		SELECT favoritetoon.*, toon.toonTitle, toon.genre, toon.titleImg, toon.toonDay, member.nickname
+		FROM favoritetoon, toon, member
+		WHERE toon.writerId = member.username AND favoritetoon.toonNum = toon.toonNum and
+		favoritetoon.likeClick='1' AND favoritetoon.username='55555555' 
+		ORDER BY favoritetoon.likeDate DESC;
+
+		<!-- select * from notice -->
+		<!-- <include refid="searcher"></include> -->
+		<!-- order by boNum desc -->
+		<!-- limit #{startRow}, #{perPage} -->
+		<!-- limit 시작index번호(0부터시작), 갯수 -->
+	</select>
+	
+	<resultMap type="RecentVO" id="recentResult">
+		<id property="username" column="username" />
+		<result property="toonNum" column="toonNum"/>
+		<result property="epNum" column="epNum"/>
+		<result property="viewDate" column="viewDate"/>
+		
+		<association property="favoritoonVO" javaType="FavoritoonVO" resultMap="favoritoonResult"></association>
+		<association property="toonVO" javaType="ToonVO" resultMap="toonResult"></association>
+		<association property="eachEpVO" javaType="EachEpVO" resultMap="eachEpResult"></association>
+		<association property="memberVO" javaType="MemberVO" resultMap="memberResult"></association> 
+	</resultMap>
+	
+	<resultMap type="favoritoonVO" id="favoritoonResult">
+			<id property="toonNum" column="toonNum"/>
+			<result property="username" column="username"/>
+			<result property="likeClick" column="likeClick"/>
+			<result property="likeDate" column="likeDate"/>
+		
+	</resultMap>
+	
+	<resultMap type="ToonVO" id="toonResult">
+			<id property="toonNum" column="toonNum"/>
+			<result property="toonTitle" column="toonTitle"/>
+			<result property="genre" column="genre"/>
+			<result property="writerId" column="writerId"/>
+			<result property="toonSum" column="toonSum"/>
+			<result property="totalHit" column="totalHit"/>
+			<result property="toonDay" column="toonDay"/>
+			<result property="state" column="state"/>
+			<result property="titleImg" column="titleImg"/>
+			<result property="ratingSum" column="ratingSum"/>
+			<result property="ratingPerson" column="ratingPerson"/>
+		
+		</resultMap>
+		
+		
+		<resultMap type="EachEpVO" id="eachEpResult">
+			<id property="epNum" column="epNum"/>
+			<result property="toonNum" column="toonNum"/>
+			
+			<result property="eachEpNum" column="eachEpNum"/>
+			<result property="epSumImg" column="epSumImg"/>
+			<result property="epTitle" column="epTitle"/>
+			
+			<result property="epDate" column="epDate"/>
+			<result property="epContentImg" column="epContentImg"/>
+			<result property="epHit" column="epHit"/>
+		</resultMap>
+
+		<resultMap type="MemberVO" id="memberResult">
+			<id property="username" column="username" />
+			<result property="nickname" column="nickname"/>
+			<result property="password" column="password"/>
+			<result property="name" column="name"/>
+			<result property="phone" column="phone"/>
+			<result property="email" column="email"/>
+			<result property="point" column="point"/>
+			
+		</resultMap>
+		
+
 
 </mapper>

@@ -11,6 +11,7 @@
   		<typeAlias type="com.to.t1.member.RoleVO" alias="RoleVO"/>
 
 		<typeAlias type="com.to.t1.mypage.RecentVO" alias="RecentVO"/>
+		<typeAlias type="com.to.t1.mypage.FavoritoonVO" alias="FavoritoonVO"/>
 
 
 		<typeAlias type="com.to.t1.toon.ToonVO" alias="ToonVO"/>
