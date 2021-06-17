@@ -107,18 +107,20 @@
 					<th>웹툰 이름</th>
 					<th>에피 제목</th>
 					<th>작가 이름</th>
-					<th>구입 한 날짜</th>
+					<th>구매 가격</th>
+					<th>구매 날짜</th>
 				</tr>
 			</thead>
 			
 			<tbody>
 			<c:forEach items="${list}" var="list" >
 				<tr>
-					<td><img width=50px height=50px src= ${list.toonVO.titleImg}></td>
+					<td><img width=50px height=50px src= ${list.eachEpVO.epSumImg}></td>
 					<td>${list.toonVO.toonTitle}</td>
 					<td>${list.eachEpVO.epTitle}</td>
 					<td>${list.memberVO.nickname}</td>
-					<td>${list.favoritoonVO.likeDate}</td>
+					<td>${list.usePointVO.epPrice}</td>
+					<td>${list.usePointVO.useDate}</td>
 
 				</tr>
 			</c:forEach>
@@ -128,7 +130,40 @@
 		</table>
 	</div>
            
-  
+  	<ul class="pagination">
+
+				<c:if test="${pager.pre}">
+					<li class="page-item"><a class="page-link p" href="#"
+						title="${pager.startNum-1}">이전</a></li>
+				</c:if>
+
+				<c:forEach begin="${pager.startNum}" end="${pager.lastNum}" var="i">
+					<li class="page-item"><a class="page-link p" href="#" 
+					title="${i}">${i}</a></li>
+				</c:forEach>
+
+				<c:if test="${pager.next}">
+					<li class="page-item"><a class="page-link p" href="#"
+					 title="${pager.lastNum+1}">다음</a></li>
+				</c:if>
+			</ul>
+  			
+  			<div class="input-group mt-3 mb-3">
+				<form id="frm" action="./#" class="form-inline">
+					<input type="hidden" name="curPage" value="1" id="curPage">
+					<div class="input-group-prepend">
+						<select class="form-control" name="kind" id="kind">
+							<option class="sel">공지종류</option>
+							<option class="sel">제목</option>
+						</select>
+					</div>
+					&nbsp;&nbsp; <input type="text" class="form-control" name="search" id="search" value="${pager.search}" placeholder="입력하세요">
+					&nbsp;&nbsp;
+					<div class="input-group-append">
+						<button class="btn btn-secondary" type="submit">검색</button>
+					</div>
+				</form>
+			</div>
 	
 
 	</p>

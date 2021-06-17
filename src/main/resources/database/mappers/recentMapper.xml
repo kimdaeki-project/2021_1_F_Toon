@@ -44,6 +44,17 @@
 		
 	</select>
 	
+	<select id="getList3" parameterType="java.util.Map" resultMap="recentResult">
+
+		SELECT usepoint.* ,toon.toonTitle, eachep.epTitle, eachep.eachEpNum , member.nickname, eachep.epSumImg
+		FROM usepoint, eachep ,toon, member
+		WHERE usepoint.epNum = eachep.epNum AND eachep.toonNum = toon .toonNum 
+		AND  toon.WriterID = member.username AND usepoint.username = #{memberVO.username}  
+		ORDER BY usepoint.useDate DESC
+		limit #{pager.startRow}, #{pager.perPage}
+		
+	</select>
+	
 	<resultMap type="RecentVO" id="recentResult">
 		<id property="epNum" column="epNum"/>
 		<result property="username" column="username" />

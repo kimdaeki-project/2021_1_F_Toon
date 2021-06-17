@@ -63,16 +63,16 @@ public class MypageController {
 	}
 	
 	@GetMapping("useToon") 
-	public String getList3(Pager pager, Model model, MemberVO memberVO)throws Exception{
+	public String getList3(Model model, MemberVO memberVO, Pager pager)throws Exception{
 		
-		List<RecentVO> ar = mypageService.getList3(memberVO);
+		List<RecentVO> ar = mypageService.getList3(memberVO,  pager);
 		
 		memberVO = memberService.myPage(memberVO);	
 		System.out.println(ar);
 		
 		model.addAttribute("memberVO", memberVO);
 		model.addAttribute("list", ar);
-//		model.addAttribute("pager", pager);
+		model.addAttribute("pager", pager);
 		
 		System.out.println("구매웹툰");
 		return "mypage/useToon";

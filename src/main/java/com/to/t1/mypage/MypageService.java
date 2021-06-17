@@ -43,14 +43,17 @@ public class MypageService {
 		return mypageMapper.getList2(obj);
 	}
 	
-	public List<RecentVO> getList3(MemberVO memberVO) throws Exception {
-		Pager pager = new Pager();
+	public List<RecentVO> getList3(MemberVO memberVO, Pager pager) throws Exception {
+		HashMap<String, Object> obj = new HashMap<String, Object>();
 		
-//		pager.makeRow();
-//		long totalCount = mypageMapper.getTotalCount(memberVO, pager);
-//		pager.makeNum(totalCount);
+		pager.makeRow();
+		long totalCount = mypageMapper.getTotalCount(obj);
+		pager.makeNum(totalCount);
+		
+		obj.put("memberVO", memberVO);
+		obj.put("pager", pager);
 	
-		return mypageMapper.getList3(memberVO);
+		return mypageMapper.getList3(obj);
 	}
 	
 	
