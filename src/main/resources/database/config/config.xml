@@ -27,7 +27,6 @@
   		
   		<typeAlias type="com.to.t1.point.ChargePointVO" alias="ChargePointVO"/>
   		<typeAlias type="com.to.t1.point.UsePointVO" alias="UsePointVO"/>
-  		
 		<typeAlias type="com.to.t1.util.Pager" alias="Pager"/>
 		<typeAlias type="java.lang.Long" alias="Long"/>
   		

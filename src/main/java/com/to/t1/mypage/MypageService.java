@@ -17,13 +17,13 @@ public class MypageService {
 	@Autowired
 	private MypageMapper mypageMapper;
 
-	public List<RecentVO> getList(MemberVO memberVO) throws Exception {
+	public List<RecentVO> getList(MemberVO memberVO, Pager pager) throws Exception {
 		
-//		pager.makeRow();
-//		long totalCount = mypageMapper.getTotalCount(memberVO);
-//		pager.makeNum(totalCount);
+		pager.makeRow();
+		long totalCount = mypageMapper.getTotalCount(memberVO, pager);
+		pager.makeNum(totalCount);
 	
-		return mypageMapper.getList(memberVO);
+		return mypageMapper.getList(memberVO, pager);
 	}
 	
 
@@ -34,9 +34,18 @@ public class MypageService {
 //		long totalCount = mypageMapper.getTotalCount(memberVO, pager);
 //		pager.makeNum(totalCount);
 	
-		return mypageMapper.getList2(memberVO, pager);
+		return mypageMapper.getList2(memberVO);
 	}
 	
+	public List<RecentVO> getList3(MemberVO memberVO) throws Exception {
+		Pager pager = new Pager();
+		
+//		pager.makeRow();
+//		long totalCount = mypageMapper.getTotalCount(memberVO, pager);
+//		pager.makeNum(totalCount);
+	
+		return mypageMapper.getList3(memberVO);
+	}
 	
 	
 }

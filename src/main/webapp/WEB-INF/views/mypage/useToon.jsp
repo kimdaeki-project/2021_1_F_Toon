@@ -9,7 +9,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
   
     <c:import url="../fragments/bootstrap.jsp"></c:import>
-    <title>Recent Toon</title>
+    <title>구매한 웹툰</title>
    
      <link rel="stylesheet" href="/css/header.css">
      <!-- plugins:css -->
@@ -24,18 +24,18 @@
 </head>
 <body>
 	<c:import url="../fragments/header.jsp"></c:import>	
-
+	
     <!-- partial -->
     <div class="page-body">
       <!-- partial:partials/_sidebar.html -->
       <div class="sidebar">
         <div class="user-profile">
           <div class="display-avatar animated-avatar">
-            <c:if test="${memberVO.joinFileVO.fileName eq null}"><img width=180px height=200px alt="" src="/images/member.jpg"></c:if>
+            <c:if test="${memberVO.joinFileVO.fileName eq null}"><img width=180px height=200px alt="" src="../images/member.jpg"></c:if>
 			<c:if test="${memberVO.joinFileVO.fileName ne null}"><img width=180px height=200px alt="" src="/upload/member/${memberVO.joinFileVO.fileName}"></c:if>
           </div>
           <div class="info-wrapper">
-            <p class="user-name">${memberVO.name}님</p>
+           <p class="user-name">${memberVO.name}님</p>
             <h6 class="display-income">${memberVO.point}point</h6>
           </div>
         </div>
@@ -98,28 +98,28 @@
       <div class="page-content-wrapper">
            <div class="container">	
 
-		<h2>최근본웹툰</h2>
+		<h2>구매한 웹툰</h2>
 
 		<table class="table">
 			<thead class="thead-dark">
 				<tr>
 					<th></th>
 					<th>웹툰 이름</th>
-					<th>에피소드 이름</th>
+					<th>에피 제목</th>
 					<th>작가 이름</th>
-					<th>최근 본 날짜</th>
+					<th>구입 한 날짜</th>
 				</tr>
 			</thead>
 			
 			<tbody>
 			<c:forEach items="${list}" var="list" >
 				<tr>
-					<td><img width=50px height=50px src= ${list.eachEpVO.epSumImg}></td>
-					
+					<td><img width=50px height=50px src= ${list.toonVO.titleImg}></td>
 					<td>${list.toonVO.toonTitle}</td>
 					<td>${list.eachEpVO.epTitle}</td>
 					<td>${list.memberVO.nickname}</td>
-					<td>${list.viewDate}</td>
+					<td>${list.favoritoonVO.likeDate}</td>
+
 				</tr>
 			</c:forEach>
 			
@@ -128,42 +128,7 @@
 		</table>
 	</div>
            
-  	
-			<ul class="pagination">
-
-				<c:if test="${pager.pre}">
-					<li class="page-item"><a class="page-link p" href="#"
-						title="${pager.startNum-1}">이전</a></li>
-				</c:if>
-
-				<c:forEach begin="${pager.startNum}" end="${pager.lastNum}" var="i">
-
-					<li class="page-item"><a class="page-link p" href="#"
-						title="${i}">${i}</a></li>
-				</c:forEach>
-
-				<c:if test="${pager.next}">
-					<li class="page-item"><a class="page-link p" href="#"
-						title="${pager.lastNum+1}">다음</a></li>
-				</c:if>
-			</ul>
-  			
-  			<div class="input-group mt-3 mb-3">
-				<form id="frm" action="./noticeList" class="form-inline">
-					<input type="hidden" name="curPage" value="1" id="curPage">
-					<div class="input-group-prepend">
-						<select class="form-control" name="kind" id="kind">
-							<option class="sel">공지종류</option>
-							<option class="sel">제목</option>
-						</select>
-					</div>
-					&nbsp;&nbsp; <input type="text" class="form-control" name="search" id="search" value="${pager.search}" placeholder="입력하세요">
-					&nbsp;&nbsp;
-					<div class="input-group-append">
-						<button class="btn btn-secondary" type="submit">검색</button>
-					</div>
-				</form>
-			</div>
+  
 	
 
 	</p>

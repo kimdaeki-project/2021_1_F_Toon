@@ -4,6 +4,8 @@ public class Pager {
    private Long curPage;
    private Long perPage;
    
+  
+   
    private Long startRow;
    
    //page

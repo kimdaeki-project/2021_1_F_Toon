@@ -29,7 +29,7 @@ public class MypageController {
 	@GetMapping("recentToon") 
 	public String getList(Model model, MemberVO memberVO, Pager pager)throws Exception{
 		
-		List<RecentVO> ar = mypageService.getList(memberVO);
+		List<RecentVO> ar = mypageService.getList(memberVO, pager);
 		
 		memberVO = memberService.myPage(memberVO);	
 
@@ -56,9 +56,24 @@ public class MypageController {
 		
 		model.addAttribute("memberVO", memberVO);
 		model.addAttribute("list", ar);
-		model.addAttribute("pager", pager);
+//		model.addAttribute("pager", pager);
 		
 		System.out.println("페이보릿툰");
 		return "mypage/favoriteToon";
+	}
+	
+	@GetMapping("useToon") 
+	public String getList3(Pager pager, Model model, MemberVO memberVO)throws Exception{
+		
+		List<RecentVO> ar = mypageService.getList3(memberVO);
+		memberVO = memberService.myPage(memberVO);	
+		System.out.println(ar);
+		
+		model.addAttribute("memberVO", memberVO);
+		model.addAttribute("list", ar);
+//		model.addAttribute("pager", pager);
+		
+		System.out.println("구매웹툰");
+		return "mypage/useToon";
 	}
 }

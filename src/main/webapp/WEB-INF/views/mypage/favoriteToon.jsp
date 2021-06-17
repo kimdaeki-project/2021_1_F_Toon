@@ -62,7 +62,7 @@
                 <a href="/mypage/favoriteToon/?username=${memberVO.username}">관심 웹툰</a>
               </li>
               <li>
-                <a href="pages/ui-components/typography.html">소장 웹툰</a>
+                <a href="/mypage/useToon/?username=${memberVO.username}">소장 웹툰</a>
               </li>
             </ul>
           </li>
