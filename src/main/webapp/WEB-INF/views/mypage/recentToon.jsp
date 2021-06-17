@@ -137,11 +137,13 @@
 				</c:if>
 
 				<c:forEach begin="${pager.startNum}" end="${pager.lastNum}" var="i">
-					<li class="page-item"><a class="page-link p" href="#" title="${i}">${i}</a></li>
+					<li class="page-item"><a class="page-link p" href="#" 
+					title="${i}">${i}</a></li>
 				</c:forEach>
 
 				<c:if test="${pager.next}">
-					<li class="page-item"><a class="page-link p" href="#" title="${pager.lastNum+1}">다음</a></li>
+					<li class="page-item"><a class="page-link p" href="#"
+					 title="${pager.lastNum+1}">다음</a></li>
 				</c:if>
 			</ul>
   			
@@ -185,21 +187,21 @@
     <script type="text/javascript" src="../js/mypage.js"></script>
     
     	<script type="text/javascript">
-	let kind= '${pager.kind}';//Title, Writer, Contents
-	$(".sel").each(function() {
-		let t = $(this).text();//Title, Writer, Contents
-		if(t == kind){
-			$(this).prop("selected", true);
-		}
-	});
+// 	let kind= '${pager.kind}';//Title, Writer, Contents
+// 	$(".sel").each(function() {
+// 		let t = $(this).text();//Title, Writer, Contents
+// 		if(t == kind){
+// 			$(this).prop("selected", true);
+// 		}
+// 	});
 	
-	$(".p").click(function () {
-		let curPage = $(this).attr("title");
-		$("#curPage").val(curPage);
-		let search= '${pager.search}';
-		$("#frm").submit();
+// 	$(".p").click(function () {
+// 		let curPage = $(this).attr("title");
+// 		$("#curPage").val(curPage);
+// 		let search= '${pager.search}';
+// 		$("#frm").submit();
 
-	});
+// 	});
 	
 	</script>
 	

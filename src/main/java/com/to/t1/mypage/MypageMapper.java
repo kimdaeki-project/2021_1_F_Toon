@@ -14,7 +14,7 @@ public interface MypageMapper {
 
 	public List<RecentVO> getList(Map map) throws Exception;
 	
-	public List<RecentVO> getList2(MemberVO memberVO)throws Exception;
+	public List<RecentVO> getList2(Map map)throws Exception;
 	
 	public List<RecentVO> getList3(MemberVO memberVO)throws Exception;
 	
