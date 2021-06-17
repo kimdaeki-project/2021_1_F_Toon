@@ -19,7 +19,7 @@
 	href="${pageContext.request.contextPath}/css/board/main.css">
 <link rel="stylesheet"
 	href="${pageContext.request.contextPath}/css/board/util.css">
-
+<link rel="stylesheet" href="${pageContext.request.contextPath}/css/mypage/style.css">
 
 <style type="text/css">
 .thead {
@@ -38,17 +38,127 @@
 	border-radius;
 }
 </style>
-<title>관리자전용 작품 페이지</title>
+<title>관리자전용 작품목록 페이지</title>
 
 </head>
 <body>
+
+<div class="page-body">
+      <!-- partial:partials/_sidebar.html -->
+      <div class="sidebar">
+        <div class="user-profile">
+          <div class="display-avatar animated-avatar">
+            <img class="profile-img img-lg rounded-circle" src="../assets/images/profile/male/image_1.png" alt="profile image">
+          </div>
+          <div class="info-wrapper">
+            <p class="user-name">관리자</p>
+            <h6 class="display-income">ADMIN</h6>
+          </div>
+        </div>
+        <ul class="navigation-menu">
+          
+          <li class="nav-category-divider">Management</li>
+          <!-- 작품관리  -->
+          <li>
+            <a href="#select_toon" data-toggle="collapse" aria-expanded="false">
+              <span class="link-title">작품관리</span>
+              <i class="mdi mdi-flask2 link-icon"></i>
+            </a>
+            
+            <ul class="collapse navigation-submenu" id="select_toon">
+              
+              <li>
+                <a href="pages/sample-pages/error_2.html" target="_blank">웹툰 수정 승인</a>
+              </li>
+              
+              <li>
+                <a onclick="toonPage()">작품 조회</a>
+              </li>
+              <li>
+                <a href="pages/sample-pages/error_2.html" target="_blank">작품 등록</a>
+              </li>
+              
+            </ul>
+          </li>
+          
+           <li>
+            <a href="#sales_inquiry" data-toggle="collapse" aria-expanded="false">
+              <span class="link-title">매출관리</span>
+              <i class="mdi mdi-clipboard-outline link-icon"></i>
+            </a>
+             <ul class="collapse navigation-submenu" id="sales_inquiry">
+              <li>
+                <a href="pages/sample-pages/login_1.html" target="_blank">전체 매출조회</a>
+              </li>
+              <li>
+                <a href="pages/sample-pages/error_2.html" target="_blank">웹툰 별 매출조회</a>
+              </li>
+            </ul>
+          </li>
+          
+          <li>
+            <a href="#payment_manage" data-toggle="collapse" aria-expanded="false">
+              <span class="link-title">결제관리</span>
+              <i class="mdi mdi-clipboard-outline link-icon"></i>
+            </a>
+             <ul class="collapse navigation-submenu" id="payment_manage">
+              <li>
+                <a href="pages/sample-pages/login_1.html" target="_blank">결제내역 조회</a>
+              </li>
+              <li>
+                <a href="pages/sample-pages/error_2.html" target="_blank">환불 관리</a>
+              </li>
+            </ul>
+          </li>
+          
+          <li>
+            <a href="#select_member" data-toggle="collapse" aria-expanded="false">
+              <span class="link-title">회원 관리</span>
+              <i class="mdi mdi-flask link-icon"></i>
+            </a>
+            <ul class="collapse navigation-submenu" id="select_member">
+              <li>
+                <a href="pages/sample-pages/login_1.html" target="_blank">회원 조회</a>
+              </li>
+              <li>
+                <a href="pages/sample-pages/error_2.html" target="_blank">작가 조회</a>
+              </li>
+              <li>
+                <a href="pages/sample-pages/error_2.html" target="_blank">경고 회원 조회</a>
+              </li>
+            </ul>
+          </li>
+          
+          
+          
+          
+          <li>
+            <a href="#board_manage" data-toggle="collapse" aria-expanded="false">
+              <span class="link-title">공지사항,질의응답 관리</span>
+              <i class="mdi mdi-chart-donut link-icon"></i>
+            </a>
+            <ul class="collapse navigation-submenu" id="board_manage">
+              <li>
+                 <a onclick="noticePage()">공지사항</a>
+              </li>
+              <li>
+                 <a onclick="qnaPage()">질의응답</a>
+              </li>
+            </ul>
+          </li>
+          
+        </ul>
+        
+      </div>
+
+
 
 	<div class="container">
 		<br>
 		<h2>
 			<p>
 				<span
-					style="border-radius: 15px 15px 15px 15px; border: 3px solid #b4b4b4; padding: 0.5em 0.6em; color: black; background-color: #dcdcdc;">관리자/공지사항</span>
+					style="border-radius: 15px 15px 15px 15px; border: 3px solid #b4b4b4; padding: 0.5em 0.6em; color: black; background-color: #dcdcdc;">관리자/작품목록</span>
 			</p>
 		</h2>
 		<br><br>
@@ -57,46 +167,47 @@
 				<table>
 					<thead class="thead">
 						<tr class="row100 head">
-							<th class="cell100 column2">작품고유번호</th>
+							<th class="cell100 column1">번호</th>
 							<th class="cell100 column1">제목</th>
-							<th class="cell100 column2">장르</th>
-							<th class="cell100 column3">작가</th>
-							<th class="cell100 column2">작품요약</th>
-							<th class="cell100 column5">총 조회수</th>
-							<th class="cell100 column2">요일</th>
-							<th class="cell100 column2">여부</th>
-							<th class="cell100 column2">타이틀이미지</th>
-							<th class="cell100 column2">평점</th>
-							<th class="cell100 column2">평점(수)</th>
+							<th class="cell100 column1">장르</th>
+							<th class="cell100 column1">작가</th>
+							<th class="cell100 column1">작품요약</th>
+							<th class="cell100 column1">총 조회수</th>
+							<th class="cell100 column1">요일</th>
+							<th class="cell100 column1">여부</th>
+							<th class="cell100 column1">타이틀이미지</th>
+							<th class="cell100 column1">평점</th>
+							<th class="cell100 column1">평점(수)</th>
 						</tr>
 					</thead>
 
 				</table>
 			</div>
-			<br>
+			<br><br><br><br>
 			<div class="table100-body js-pscroll">
 				<table>
 					<tbody class="tbody">
 						<c:forEach items="${manageToonList}" var="vo">
 							<tr class="row100 body">
-								<td class="cell100 column2">${vo.toonNum}</td>
+								<td class="cell100 column1">${vo.toonNum}</td>
 								<td class="cell100 column1"><a
-									href="./manageToonSelect?toonNum=${vo.toonNum}"> ${vo.toonTitle}</a></td>
-								<td class="cell100 column2">${vo.genre}</td>
-								<td class="cell100 column3">${vo.writerId}</td>
-								<td class="cell100 column2">${vo.toonSum}</td>
-								<td class="cell100 column2">${vo.totalHit}</td>
-								<td class="cell100 column2">${vo.toonDay}</td>
-								<td class="cell100 column2">${vo.state}</td>
-								<td class="cell100 column2">${vo.titleImg}</td>
-								<td class="cell100 column4">${vo.ratingSum}</td>
-								<td class="cell100 column5">${vo.ratingPerson}</td>
+									href="./manageToonSelect?toonNum=${vo.toonNum}">${vo.toonTitle}</a></td>
+								<td class="cell100 column1">${vo.genre}</td>
+								<td class="cell100 column1">${vo.writerID}</td>
+								<td class="cell100 column1">${vo.toonSum}</td>
+								<td class="cell100 column1">${vo.totalHit}</td>
+								<td class="cell100 column1">${vo.toonDay}</td>
+								<td class="cell100 column1">${vo.state}</td>
+								<td class="cell100 column1"><img width=50px height=50px src= ${list.toonVO.titleImg}></td>
+								<td class="cell100 column1">${vo.ratingSum}</td>
+								<td class="cell100 column1">${vo.ratingPerson}</td>
 							</tr>
 						</c:forEach>
 					</tbody>
 				</table>
 
 			</div>
+			
 			<ul class="pagination">
 
 				<c:if test="${pager.pre}">
@@ -135,7 +246,7 @@
 					</div>
 				</form>
 			</div>
-			<a href="./insert" class="btn btn-secondary" role="button">작성</a>
+			<a href="./manageToonInsert" class="btn btn-secondary" role="button">작성</a>
 		</div>
 
 	</div>

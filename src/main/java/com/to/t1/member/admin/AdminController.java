@@ -59,10 +59,9 @@ public class AdminController {
 	@GetMapping("manageToonList")
 	public ModelAndView getManageToonList(Pager pager)throws Exception{
 		ModelAndView mv = new ModelAndView();
-		System.out.println(pager.getCurPage());
 		
 		List<ToonVO> ar = adminService.getManageToonList(pager);
-		mv.addObject("list", ar);
+		mv.addObject("manageToonList", ar);
 		mv.setViewName("admin/manageToonList");
 		mv.addObject("admin", "admin");
 		mv.addObject("pager", pager);
@@ -91,8 +90,6 @@ public class AdminController {
 		
 		return mv;
 	}
-	
-	
 	
 	@GetMapping("manageToonSelect")
 	public ModelAndView getManageToonSelect(ToonVO toonVO)throws Exception{
