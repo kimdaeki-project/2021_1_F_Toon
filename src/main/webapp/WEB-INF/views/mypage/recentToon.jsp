@@ -35,7 +35,7 @@
 			<c:if test="${memberVO.joinFileVO.fileName ne null}"><img width=180px height=200px alt="" src="/upload/member/${memberVO.joinFileVO.fileName}"></c:if>
           </div>
           <div class="info-wrapper">
-            <p class="user-name"><sec:authentication property="principal.name"/>님</p>
+            <p class="user-name">${memberVO.name}님</p>
             <h6 class="display-income">${memberVO.point}point</h6>
           </div>
         </div>
@@ -75,9 +75,7 @@
               <li>
                 <a href="pages/sample-pages/login_1.html" target="_blank">내 댓글 조회</a>
               </li>
-              <li>
-                <a href="pages/sample-pages/error_2.html" target="_blank">신고한 댓글 조회</a>
-              </li>
+              
             </ul>
           </li>
           <li>
@@ -159,8 +157,7 @@
 							<option class="sel">제목</option>
 						</select>
 					</div>
-					&nbsp;&nbsp; <input type="text" class="form-control" name="search"
-						id="search" value="${pager.search}" placeholder="입력하세요">
+					&nbsp;&nbsp; <input type="text" class="form-control" name="search" id="search" value="${pager.search}" placeholder="입력하세요">
 					&nbsp;&nbsp;
 					<div class="input-group-append">
 						<button class="btn btn-secondary" type="submit">검색</button>
