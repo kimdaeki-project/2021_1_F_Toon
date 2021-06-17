@@ -24,6 +24,7 @@ import com.to.t1.member.MemberService;
 import com.to.t1.member.MemberVO;
 import com.to.t1.toon.ToonService;
 import com.to.t1.toon.ToonVO;
+import com.to.t1.toon.eachep.EachEpVO;
 import com.to.t1.util.Pager;
 
 @Controller
@@ -43,18 +44,12 @@ public class AdminController {
 	public String admintest(Model model) {
 		return "admin/test";
 	}
-	//작품
-	@Autowired
-	private ToonService toonService;
-	
+	//작품	
 	
 	@ModelAttribute("toon")
 	public String getToon() {
 		return "toon";
 	}
-	
-	@Autowired
-	private MemberService memberService;
 	
 	@GetMapping("manageToonList")
 	public ModelAndView getManageToonList(Pager pager)throws Exception{
@@ -133,7 +128,7 @@ public class AdminController {
 		
 		int result = adminService.setManageToonDelete(toonVO);
 		
-		return "redirect:./manageNoticeList";
+		return "redirect:./manageToonList";
 	}
 	
 	@GetMapping("toonFileDelete")
@@ -173,7 +168,132 @@ public class AdminController {
 		
 		return mv;
 	}
+///////////////////////////////////////////////////////////////////////////////////////	
+///////////////////////////////////////////////////////////////////////////////////////	
+///////////////////////////////////////////////////////////////////////////////////////	
+	/////////회차////////////
+	@ModelAttribute("eachep")
+	public String getEachEp() {
+		return "eachep";
+	}
 	
+	@GetMapping("manageEachEpList")
+	public ModelAndView getmanageEachEpList(Pager pager)throws Exception{
+		ModelAndView mv = new ModelAndView();
+		
+		List<ToonVO> ar = adminService.getManageToonList(pager);
+		mv.addObject("manageEachEpList", ar);
+		mv.setViewName("admin/manageEachEpList");
+		mv.addObject("admin", "admin");
+		mv.addObject("pager", pager);
+		
+		return mv;
+	}
+	
+	@PostMapping("eachEpSummerFileDelete")
+	public ModelAndView setEachEpSummerFileDelete(String fileName)throws Exception{
+		ModelAndView mv = new ModelAndView();
+		boolean result = adminService.setEachEpSummerFileDelete(fileName);
+		mv.addObject("result", result);
+		mv.setViewName("common/ajaxResult");
+		return mv;
+	}
+	
+	@PostMapping("eachEpSummerFileUpload")
+	public ModelAndView setEachEpSummerFileUpload(MultipartFile file)throws Exception{
+		ModelAndView mv = new ModelAndView();
+		System.out.println("썸머 toon 파일 업로드");
+		System.out.println(file.getOriginalFilename());
+		String fileName = adminService.setEachEpSummerFileUpload(file);
+		fileName = "../upload/toon/"+fileName;
+		mv.addObject("result", fileName);
+		mv.setViewName("common/ajaxResult");
+		
+		return mv;
+	}
+	
+	@GetMapping("manageEachEpSelect")
+	public ModelAndView getManageEachEpSelect(EachEpVO eachEpVO)throws Exception{
+		ModelAndView mv = new ModelAndView();
+		eachEpVO = adminService.getManageEachEpSelect(eachEpVO);
+		mv.addObject("vo", eachEpVO);
+		mv.addObject("admin", "admin");
+		mv.setViewName("admin/manageEachEpSelect");
+		return mv;
+	}
+	
+	@GetMapping("manageEachEpInsert")
+	public ModelAndView setManageEachEpInsert(HttpSession session)throws Exception{
+		 ModelAndView mv = new ModelAndView();
+			mv.setViewName("admin/manageEachEpInsert");
+			mv.addObject("admin", "admin");
+		
+			return mv;
+			
+		}	
+	
+	@PostMapping("manageEachEpInsert")
+	public String setManageEachEpInsert(EachEpVO eachEpVO, MultipartFile [] files, Model model)throws Exception{
+		
+		int result = adminService.setManageEachEpInsert(eachEpVO, files);
+		
+		String message="등록 실패";
+		
+		if(result>0) {
+			message="등록 성공";
+		}
+		model.addAttribute("msg", message);
+		model.addAttribute("path", "./manageEachEpList");
+		
+		
+		return "common/commonResult";
+	}
+	
+	@PostMapping("manageEachEpDelete")
+	public String setManageEachEpDelete(EachEpVO eachEpVO)throws Exception{
+		
+		int result = adminService.setManageToonDelete(eachEpVO);
+		
+		return "redirect:./manageEachEpVOList";
+	}
+	
+	@GetMapping("EachEpFileDelete")
+	public ModelAndView setEachEpFileDelete(AdminFileVO adminFileVO)throws Exception{
+		ModelAndView mv = new ModelAndView();
+		int result = adminService.setEachEpFileDelete(adminFileVO);
+		mv.addObject("result", result);
+		mv.setViewName("common/ajaxResult");
+		return mv;
+	}
+	
+	@GetMapping("manageEachEpUpdate")
+	public ModelAndView setManageEachEpUpdate(EachEpVO eachEpVO)throws Exception{
+		ModelAndView mv = new ModelAndView();
+		eachEpVO = adminService.getManageEachEpSelect(eachEpVO);
+		
+		mv.addObject("vo", eachEpVO);
+		mv.addObject("admin", "admin");
+		mv.setViewName("admin/manageEachEpUpdate");
+		return mv;
+	}
+	
+	@PostMapping("manageEachEpUpdate")
+	public ModelAndView setManageEachEpUpdate(EachEpVO eachEpVO, ModelAndView mv, MultipartFile [] files) throws Exception{
+		
+		int result = adminService.setManageEachEpUpdate(eachEpVO, files);
+		
+		if(result>0) {
+			//성공하면 리스트로 이동
+			mv.setViewName("redirect:./manageEachEpList");
+		}else {
+			//실패하면 수정실패 , 리스트로 이동
+			mv.addObject("msg", "수정 실패");
+			mv.addObject("path", "./manageEachEpList");
+			mv.setViewName("common/commonResult");
+		}
+		
+		return mv;
+	}
 	
 	
 ///////////////////////////////////////////////////////////////////////////////////////	

@@ -167,17 +167,17 @@
 				<table>
 					<thead class="thead">
 						<tr class="row100 head">
-							<th class="cell100 column1">번호</th>
-							<th class="cell100 column1">제목</th>
-							<th class="cell100 column1">장르</th>
-							<th class="cell100 column1">작가</th>
-							<th class="cell100 column1">작품요약</th>
-							<th class="cell100 column1">총 조회수</th>
-							<th class="cell100 column1">요일</th>
-							<th class="cell100 column1">여부</th>
-							<th class="cell100 column1">타이틀이미지</th>
-							<th class="cell100 column1">평점</th>
-							<th class="cell100 column1">평점(수)</th>
+							<th>번호</th>
+							<th>제목</th>
+							<th>장르</th>
+							<th>작가</th>
+							<th>작품요약</th>
+							<th>조회</th>
+							<th>요일</th>
+							<th>여부</th>
+							<th>이미지</th>
+							<th>평점</th>
+							<th>평점(수)</th>
 						</tr>
 					</thead>
 
@@ -189,18 +189,17 @@
 					<tbody class="tbody">
 						<c:forEach items="${manageToonList}" var="vo">
 							<tr class="row100 body">
-								<td class="cell100 column1">${vo.toonNum}</td>
-								<td class="cell100 column1"><a
-									href="./manageToonSelect?toonNum=${vo.toonNum}">${vo.toonTitle}</a></td>
-								<td class="cell100 column1">${vo.genre}</td>
-								<td class="cell100 column1">${vo.writerID}</td>
-								<td class="cell100 column1">${vo.toonSum}</td>
-								<td class="cell100 column1">${vo.totalHit}</td>
-								<td class="cell100 column1">${vo.toonDay}</td>
-								<td class="cell100 column1">${vo.state}</td>
-								<td class="cell100 column1"><img width=50px height=50px src= ${list.toonVO.titleImg}></td>
-								<td class="cell100 column1">${vo.ratingSum}</td>
-								<td class="cell100 column1">${vo.ratingPerson}</td>
+								<td>${vo.toonNum}</td>
+								<td><a href="./manageToonSelect?toonNum=${vo.toonNum}">${vo.toonTitle}</a></td>
+								<td class="cell100 column5">${vo.genre}</td>
+								<td class="cell100 column5">${vo.writerID}</td>
+								<td class="cell100 column5">${vo.toonSum}</td>
+								<td>${vo.totalHit}</td>
+								<td>${vo.toonDay}</td>
+								<td>${vo.state}</td>
+								<td><img width=50px height=50px src=${list.toonVO.titleImg}></td>
+								<td>${vo.ratingSum}</td>
+								<td>${vo.ratingPerson}</td>
 							</tr>
 						</c:forEach>
 					</tbody>
