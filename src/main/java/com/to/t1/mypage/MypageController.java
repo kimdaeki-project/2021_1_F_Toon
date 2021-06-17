@@ -66,6 +66,7 @@ public class MypageController {
 	public String getList3(Pager pager, Model model, MemberVO memberVO)throws Exception{
 		
 		List<RecentVO> ar = mypageService.getList3(memberVO);
+		
 		memberVO = memberService.myPage(memberVO);	
 		System.out.println(ar);
 		

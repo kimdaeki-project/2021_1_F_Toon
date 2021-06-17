@@ -137,19 +137,16 @@
 				</c:if>
 
 				<c:forEach begin="${pager.startNum}" end="${pager.lastNum}" var="i">
-
-					<li class="page-item"><a class="page-link p" href="#"
-						title="${i}">${i}</a></li>
+					<li class="page-item"><a class="page-link p" href="#" title="${i}">${i}</a></li>
 				</c:forEach>
 
 				<c:if test="${pager.next}">
-					<li class="page-item"><a class="page-link p" href="#"
-						title="${pager.lastNum+1}">다음</a></li>
+					<li class="page-item"><a class="page-link p" href="#" title="${pager.lastNum+1}">다음</a></li>
 				</c:if>
 			</ul>
   			
   			<div class="input-group mt-3 mb-3">
-				<form id="frm" action="./noticeList" class="form-inline">
+				<form id="frm" action="./#" class="form-inline">
 					<input type="hidden" name="curPage" value="1" id="curPage">
 					<div class="input-group-prepend">
 						<select class="form-control" name="kind" id="kind">
@@ -186,6 +183,25 @@
     <script src="../assets/js/dashboard.js"></script>
     <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
     <script type="text/javascript" src="../js/mypage.js"></script>
+    
+    	<script type="text/javascript">
+	let kind= '${pager.kind}';//Title, Writer, Contents
+	$(".sel").each(function() {
+		let t = $(this).text();//Title, Writer, Contents
+		if(t == kind){
+			$(this).prop("selected", true);
+		}
+	});
+	
+	$(".p").click(function () {
+		let curPage = $(this).attr("title");
+		$("#curPage").val(curPage);
+		let search= '${pager.search}';
+		$("#frm").submit();
+
+	});
+	
+	</script>
 	
 	
 </body>

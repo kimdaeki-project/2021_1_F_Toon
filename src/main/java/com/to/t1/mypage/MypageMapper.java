@@ -1,6 +1,7 @@
 package com.to.t1.mypage;
 
 import java.util.List;
+import java.util.Map;
 
 import org.apache.ibatis.annotations.Mapper;
 
@@ -11,12 +12,12 @@ import com.to.t1.util.Pager;
 @Mapper
 public interface MypageMapper {
 
-	public List<RecentVO> getList(MemberVO memberVO, Pager pager) throws Exception;
+	public List<RecentVO> getList(Map map) throws Exception;
 	
 	public List<RecentVO> getList2(MemberVO memberVO)throws Exception;
 	
 	public List<RecentVO> getList3(MemberVO memberVO)throws Exception;
 	
-	public long getTotalCount(MemberVO memberVO, Pager pager) throws Exception;
+	public long getTotalCount(Map map) throws Exception;
 		
 }

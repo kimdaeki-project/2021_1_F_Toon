@@ -108,7 +108,7 @@
 	<h3>내 포인트: ${memberVO.point}</h3>
 	</sec:authorize>
 	
-	<!-- 이렇게 해서 값 넘김 알지 저건? URL 주소뒤에 값 넘기는거 업데이트도 똑같이 하면될듯 ㅇㅈ? -->
+
 	
 	<sec:authorize access="isAuthenticated()">
 		<a href="./memberUpdate" class="btn btn-info" 

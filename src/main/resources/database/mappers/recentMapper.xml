@@ -14,14 +14,14 @@
 	
 	</select>
 	
-	<select id="getList" parameterType="Pager" resultMap="recentResult">
+	<select id="getList" parameterType="java.util.Map" resultMap="recentResult">
 
 		SELECT recenttoon.*,toon.toonTitle, eachep.epTitle, eachep.eachEpNum,eachep.epSumImg, member.nickname 
 		FROM recenttoon, eachep, toon, member 
 		WHERE toon.writerId = member.username AND eachep.toonNum = toon.toonNum  AND recenttoon.epNum = eachep.epNum 
-		AND recenttoon.username = #{username} 
+		AND recenttoon.username = #{memberVO.username} 
 		ORDER BY recenttoon.viewDate DESC
-<!-- 		limit #{startRow}, #{perPage} -->
+		limit #{pager.startRow}, #{pager.perPage}
 		
 	</select>
 	
@@ -32,7 +32,6 @@
 <!--          limit #{startRow}, #{perPage} -->
 <!--          limit 시작index번호(0부터시작), 갯수  -->
 <!--          </select> -->
-	
 	
 	
 	<select id="getList2" parameterType="RecentVO" resultMap="recentResult">

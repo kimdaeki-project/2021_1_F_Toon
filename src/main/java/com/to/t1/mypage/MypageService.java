@@ -1,5 +1,6 @@
 package com.to.t1.mypage;
 
+import java.util.HashMap;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -18,14 +19,17 @@ public class MypageService {
 	private MypageMapper mypageMapper;
 
 	public List<RecentVO> getList(MemberVO memberVO, Pager pager) throws Exception {
+		HashMap<String, Object> obj = new HashMap<String, Object>();
 		
-		pager.makeRow();
-		long totalCount = mypageMapper.getTotalCount(memberVO, pager);
-		pager.makeNum(totalCount);
-	
-		return mypageMapper.getList(memberVO, pager);
+		pager.makeRow(); //makeRow가 뭐하는건지
+		Long totalCount = mypageMapper.getTotalCount(obj);
+		pager.makeNum(totalCount); //makeNum이 뭐하는건지
+		
+		obj.put("memberVO", memberVO);
+		obj.put("pager", pager);
+		
+		return mypageMapper.getList(obj);
 	}
-	
 
 	public List<RecentVO> getList2(MemberVO memberVO) throws Exception {
 		Pager pager = new Pager();
