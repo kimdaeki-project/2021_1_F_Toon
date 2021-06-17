@@ -8,8 +8,17 @@
 <!-- 연재상태=?(0or1) and 요일=?(월~일) 일때 각 작품의 총 조회수를 내림차순 정렬 -->
 <!-- 연재상태=?(0or1) and 요일=?(월~일) 일때 각 작품의 평점의 평균을 내림차순 정렬-->
 <!-- 연재상태=?(0or1) and 요일=?(월~일) 일때 각 작품의 업데이트 순서대로 내림차순 정렬-->
+	
 
+	
+	<select id="toonSearch" parameterType="ToonVO" resultType="ToonVO">
+		SELECT *
+	FROM toon t JOIN
+	member m ON t.writerId = m.username
+	WHERE (m.ENABLEd=3=m.nickname  LIKE CONCAT('%', #{toonVO.search}, '%')) OR (t.toontitle LIKE CONCAT('%', #{toonVO.search}, '%'));
 
+	</select>
+	
          
 	<select id="getList" parameterType="ToonVO" resultType="ToonVO">
 	SELECT * FROM toon WHERE toonNum=#{toonNum}

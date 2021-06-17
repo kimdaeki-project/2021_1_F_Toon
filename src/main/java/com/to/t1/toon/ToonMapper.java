@@ -1,5 +1,6 @@
 package com.to.t1.toon;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.apache.ibatis.annotations.Mapper;
@@ -28,6 +29,7 @@ public interface ToonMapper {
 	public List<ToonVO> toonDay(@Param("toonVO") ToonVO toonVO,@Param("memberVO") MemberVO memberVO)throws Exception;
 	public List<ToonVO> toonDayAver(ToonVO toonVO, MemberVO memberVO)throws Exception;
 	public List<ToonVO> toonDayRecent(ToonVO toonVO, MemberVO memberVO)throws Exception;
+	public List<ToonVO> toonDaySelect(ToonVO toonVO, MemberVO memberVO)throws Exception;
 	
 	public List<ToonVO> genre(@Param("toonVO") ToonVO toonVO,@Param("memberVO") MemberVO memberVO)throws Exception;
 	public List<ToonVO> genreAver(ToonVO toonVO, MemberVO memberVO)throws Exception;
@@ -41,5 +43,8 @@ public interface ToonMapper {
 	public List<ToonVO> endRe(ToonVO toonVO,MemberVO memberVO)throws Exception;
 	public List<ToonVO> endReAver(ToonVO toonVO,MemberVO memberVO)throws Exception;
 	public List<ToonVO> endReRecent(ToonVO toonVO,MemberVO memberVO)throws Exception;
+
+	public List<ToonVO> toonSearch(@Param("toonVO") ToonVO toonVO,@Param("memberVO") MemberVO memberVO)throws Exception;
+	
 	
 }

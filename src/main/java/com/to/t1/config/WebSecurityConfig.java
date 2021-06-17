@@ -68,7 +68,8 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 					.antMatchers("/toon/toonDay/toonDay").permitAll()
 					.antMatchers("/toon/toonDay/toonDayAver").permitAll()
 					.antMatchers("/toon/toonDay/toonDayRecent").permitAll()
-									
+					.antMatchers("/toon/toonDay/toonDaySelect").permitAll()				
+					
 					.antMatchers("/toon/genre/genre").permitAll()
 					.antMatchers("/toon/genre/genreAver").permitAll()
 					.antMatchers("/toon/genre/genreRecent").permitAll()
@@ -84,7 +85,7 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 					.antMatchers("/toon/eachEpList/**").permitAll()
 					.antMatchers("/toon/eachEpSelect/**").permitAll()
 						
-					.antMatchers("/fragments/search").permitAll()
+					.antMatchers("/**").permitAll()
 					
 					.antMatchers("/notice/select").hasAnyRole("ADMIN", "MEMBER")
 					.antMatchers("/qna/qnaSelect").hasAnyRole("ADMIN", "MEMBER")

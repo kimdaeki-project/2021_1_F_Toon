@@ -1,6 +1,7 @@
 .toon{
+	
     width: 90%;
-    margin: 10px auto;
+    margin: 15px auto;
     background-color: blue;
 }
 
@@ -12,9 +13,8 @@
 }
 
 .tue{
-   
-    float: left;
  
+    float: left; 
     width:14%;
 }
 
@@ -36,7 +36,6 @@
 .fri{
   
     float: left;
-  
     width:14%;
    
 }
@@ -55,4 +54,18 @@
     width:14%;
     
 }
+
+.view_type{
+	float: right;
+	width: 20%;
+}
+
+.w {
+	color: gray;
+}
+
+
+
+
+
 

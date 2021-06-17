@@ -66,6 +66,7 @@
                             <li class="nav-item"><a class="nav-link" href="/toon/genre/genre">장르</a></li>    
                          	<li class="nav-item"><a class="nav-link" href="/toon/ranking/ranking">랭킹</a></li>
                            	<li class="nav-item"><a class="nav-link" href="/toon/end/endRe">완결</a></li>
+                           	<li class="nav-item"><a class="nav-link" href="/toon/toonSearch">검색</a></li>                           	
                         </ul>
                     </div>
                 </div>
@@ -73,16 +74,21 @@
         </div>
     </header>
 
-   <div class="search_input" id="search_input_box">
-            <div class="container ">
-                <form class="d-flex justify-content-between search-inner">
+
+			
+ 		<div class="search_input" id="search_input_box">
+            <div class="container ">            
+                <form action="/toon/toonSearch" method="get" class="d-flex justify-content-between search-inner">
+                   
+                   
+                   
+                    <input type="text" class="form-control" name="search" id="search" value=""	 placeholder="Search Here">
                     
-                  <input type="text" id="gnb.keyword" name="keyword" value="" title="검색어 입력"  class="snb_search_text">  
-                  <button type="submit" class="btn"></button>
-                    <span class="ti-close" id="close_search" title="Close Search"></span>
-                </form>
+                    <input class="btn btn-search" type="submit" value="검색">
+                </form>          
             </div>
         </div>
-        
+
+
         
 <!-- End header MEnu Area -->

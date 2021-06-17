@@ -39,80 +39,95 @@
 	</div>
 	<br>
 	<br>
+	<br>
+	
+	<div class="toon" align="center">
 
-	<div class="toon">
 
-
-		<!-- 월요일 ------------------------------------------------------>
-		<div class="mon">월요일
+	<!-- 월요일 ------------------------------------------------------>
+		<div class="mon"><h2>월요일</h2>
+		<br>
 			<ul>
 		<c:forEach items="${mt}" var="mt">
-			<li><a href="../toon/eachEpList?toonNum=${mt.toonNum}"> <img width=100px height=100px src=${mt.titleImg}></a></li>
-			<li>${mt.toonTitle} /${mt.nickname} </li>
+			<li><a href="/toon/eachEpList?toonNum=${mt.toonNum}"> <img width=100px height=100px src=${mt.titleImg}></a></li>
+			<li>${mt.toonTitle}</li>
+			<p>	
 		</c:forEach>
 		</ul>
 		</div>
 
 			<!-- 화요일 ------------------------------------------------------>
-		<div class="tue">화요일
+		<div class="tue"><h2>화요일</h2>
+		<br>
 			<ul>
 		<c:forEach items="${tt}" var="tt">
-			<li><a href="../toon/eachEpList?toonNum=${tt.toonNum}"> <img width=100px height=100px src=${tt.titleImg}></a></li>
-			<li>${tt.toonTitle} /${tt.nickname} </li>
+			<li><a href="/toon/eachEpList?toonNum=${tt.toonNum}"> <img width=100px height=100px src=${tt.titleImg}></a></li>
+			<li>${tt.toonTitle} </li>
+						<p>	
 		</c:forEach>
 		</ul>
 		</div>	
 		
 		
 		<!-- 수요일 ------------------------------------------------------>
-		<div class="wen">수요일
+		<div class="wen"><h2>수요일</h2>
+		<br>
 			<ul>
 		<c:forEach items="${wt}" var="wt">
-			<li><a href="../toon/eachEpList?toonNum=${wt.toonNum}"> <img width=100px height=100px src=${wt.titleImg}></a></li>
-			<li>${wt.toonTitle} /${wt.nickname} </li>
+			<li><a href="/toon/eachEpList?toonNum=${wt.toonNum}"> <img width=100px height=100px src=${wt.titleImg}></a></li>
+			<li>${wt.toonTitle} </li>
+						<p>	
 		</c:forEach>
 		</ul>
 		</div>
 		
 		
 		<!-- 목요일 ------------------------------------------------------>
-		<div class="the">목요일
+		<div class="the"><h2>목요일</h2>
+		<br>
 			<ul>
 		<c:forEach items="${tt2}" var="tt2">
-			<li><a href="../toon/eachEpList?toonNum=${tt.toonNum}"> <img width=100px height=100px src=${tt2.titleImg}></a></li>
-			<li>${tt2.toonTitle} /${tt2.nickname} </li>
+			<li><a href="/toon/eachEpList?toonNum=${tt2.toonNum}"> <img width=100px height=100px src=${tt2.titleImg}></a></li>
+			<li>${tt2.toonTitle}</li>
+						<p>	
 		</c:forEach>
 		</ul>
 		</div>
 		
 		
 		<!-- 금요일 ------------------------------------------------------>
-		<div class="fri">금요일
+		<div class="fri"><h2>금요일</h2>
+		<br>
 			<ul>
 		<c:forEach items="${ft}" var="ft">
-			<li><a href="../toon/eachEpList?toonNum=${ft.toonNum}"> <img width=100px height=100px src=${ft.titleImg}></a></li>
-			<li>${ft.toonTitle} /${ft.nickname} </li>
+			<li><a href="/toon/eachEpList?toonNum=${ft.toonNum}"> <img width=100px height=100px src=${ft.titleImg}></a></li>
+			<li>${ft.toonTitle} </li>
+						<p>	
 		</c:forEach>
 		</ul>
 		</div>
 		
 		
 		<!-- 화요일 ------------------------------------------------------>
-		<div class="sat">토요일
+		<div class="sat"><h2>토요일</h2>
+		<br>
 			<ul>
 		<c:forEach items="${st}" var="st">
-			<li><a href="../toon/eachEpList?toonNum=${st.toonNum}"> <img width=100px height=100px src=${st.titleImg}></a></li>
-			<li>${st.toonTitle} /${st.nickname} </li>
+			<li><a href="/toon/eachEpList?toonNum=${st.toonNum}"> <img width=100px height=100px src=${st.titleImg}></a></li>
+			<li>${st.toonTitle} </li>
+						<p>	
 		</c:forEach>
 		</ul>
 		</div>
 		
 		
-		<div class="sun">일요일
+		<div class="sun"><h2>일요일</h2>
+		<br>
 			<ul>
 		<c:forEach items="${st2}" var="st2">
-			<li><a href="../toon/eachEpList?toonNum=${st2.toonNum}"> <img width=100px height=100px src=${st2.titleImg}></a></li>
-			<li>${st2.toonTitle} /${st2.nickname} </li>
+			<li><a href="/toon/eachEpList?toonNum=${st2.toonNum}"> <img width=100px height=100px src=${st2.titleImg}></a></li>
+			<li>${st2.toonTitle}</li>
+						<p>	
 		</c:forEach>
 		</ul>
 		</div>

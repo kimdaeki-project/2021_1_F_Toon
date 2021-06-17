@@ -26,13 +26,13 @@
 	<div class="view_type">
 		<table>
 			<tr>
-				<td><a href="/toon/toonDay/toonDay">조회순</a></td>
+				<td ><a class="w" href="/toon/toonDay/toonDay">조회순</a></td>
 
 				<p>
-				<td><a href="/toon/toonDay/toonDayRecent">업데이트순</a></td>
+				<td><a class="w" href="/toon/toonDay/toonDayRecent">업데이트순</a></td>
 				</p>
 
-				<td><a href="/toon/toonDay/toonDayAver">별점순</a></td>
+				<td><a class="w" href="/toon/toonDay/toonDayAver">별점순</a></td>
 			</tr>
 
 		</table>
@@ -42,10 +42,12 @@
 	<br>
 
 	<div class="toon" align="center">
-
-
-			<!-- 월요일 ------------------------------------------------------>
-		<div class="mon"><h2>월요일</h2>
+	 
+			
+		<!-- 월요일 ------------------------------------------------------>
+		<c:if test="${toonVO.toonDay eq '월요일'}">
+		<div class="mon">
+		<h2>월요일</h2>
 		<br>
 			<ul>
 		<c:forEach items="${mt}" var="mt">
@@ -54,9 +56,12 @@
 			<p>	
 		</c:forEach>
 		</ul>
-		</div>
+		</div>		
+		</c:if>
 
-			<!-- 화요일 ------------------------------------------------------>
+
+		<!-- 화요일 ------------------------------------------------------>
+		<c:if test="${toonVO.toonDay eq '화요일'}">
 		<div class="tue"><h2>화요일</h2>
 		<br>
 			<ul>
@@ -67,9 +72,10 @@
 		</c:forEach>
 		</ul>
 		</div>	
-		
+		</c:if>
 		
 		<!-- 수요일 ------------------------------------------------------>
+		<c:if test="${toonVO.toonDay eq '수요일'}">
 		<div class="wen"><h2>수요일</h2>
 		<br>
 			<ul>
@@ -80,9 +86,10 @@
 		</c:forEach>
 		</ul>
 		</div>
-		
+		</c:if>
 		
 		<!-- 목요일 ------------------------------------------------------>
+		<c:if test="${toonVO.toonDay eq '목요일'}">
 		<div class="the"><h2>목요일</h2>
 		<br>
 			<ul>
@@ -93,9 +100,10 @@
 		</c:forEach>
 		</ul>
 		</div>
-		
+		</c:if>
 		
 		<!-- 금요일 ------------------------------------------------------>
+		<c:if test="${toonVO.toonDay eq '금요일'}">
 		<div class="fri"><h2>금요일</h2>
 		<br>
 			<ul>
@@ -106,9 +114,10 @@
 		</c:forEach>
 		</ul>
 		</div>
+		</c:if>
 		
-		
-		<!-- 화요일 ------------------------------------------------------>
+		<!-- 토요일 ------------------------------------------------------>
+		<c:if test="${toonVO.toonDay eq '토요일'}">
 		<div class="sat"><h2>토요일</h2>
 		<br>
 			<ul>
@@ -119,8 +128,10 @@
 		</c:forEach>
 		</ul>
 		</div>
+		</c:if>
 		
-		
+		<!-- 일요일 ------------------------------------------------------>
+		<c:if test="${toonVO.toonDay eq '일요일'}">
 		<div class="sun"><h2>일요일</h2>
 		<br>
 			<ul>
@@ -131,8 +142,11 @@
 		</c:forEach>
 		</ul>
 		</div>
+		</c:if>
 
 
 	</div>
+
+
 </body>
 </html>

@@ -47,6 +47,11 @@ public class ToonService {
 	public List<ToonVO> toonDayRecent(ToonVO toonVO,MemberVO memberVO) throws Exception{
 		return toonMapper.toonDayRecent(toonVO,memberVO);
 	}
+	
+	public List<ToonVO> toonDaySelect(ToonVO toonVO,MemberVO memberVO) throws Exception{
+		return toonMapper.toonDayRecent(toonVO,memberVO);
+	}
+	
 	//genre-------------------------------
 	public List<ToonVO> genre(ToonVO toonVO,MemberVO memberVO) throws Exception{
 		return toonMapper.genre(toonVO,memberVO);
@@ -83,19 +88,14 @@ public class ToonService {
 	public List<ToonVO> endReRecent(ToonVO toonVO,MemberVO memberVO) throws Exception{
 		return toonMapper.endReRecent(toonVO,memberVO);
 	}
-	
+	//search
+	public List<ToonVO> toonSearch(ToonVO toonVO,MemberVO memberVO) throws Exception{
+		return toonMapper.toonSearch(toonVO, memberVO);
+	}
 	
 
-	public List<ToonVO> toonDay(ModelAndView toonDay) {
-		// TODO Auto-generated method stub
-		return null;
-	}
 	
-	
-	public List<ToonVO> turn(ToonVO toonVO,MemberVO memberVO) throws Exception{
-		return toonMapper.turn(toonVO,memberVO);
-	}
-	
+
 	
 
 	
