@@ -12,7 +12,8 @@ import lombok.Data;
 public class UsePointVO {
 	
 	//티켓 사용 내역 usePoint table 기본 내용
-	private long userName;
+	private long toonNum;
+	private long username;
 	private long epNum;
 	private int epPrice;
 	private Timestamp useDate;
