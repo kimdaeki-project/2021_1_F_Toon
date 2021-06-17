@@ -172,33 +172,11 @@ public class ToonController {
 	
 		toonVO.setToonDay("mon");
 		List<ToonVO> mt = toonService.toonDaySelect(toonVO,memberVO);
-		
-		toonVO.setToonDay("tue");
-		List<ToonVO> tt = toonService.toonDaySelect(toonVO,memberVO);
-		
-		toonVO.setToonDay("wen");
-		List<ToonVO> wt = toonService.toonDaySelect(toonVO,memberVO);
-		
-		toonVO.setToonDay("the");
-		List<ToonVO> tt2 = toonService.toonDaySelect(toonVO,memberVO);
-		
-		toonVO.setToonDay("fri");
-		List<ToonVO> ft = toonService.toonDaySelect(toonVO,memberVO);
-		
-		toonVO.setToonDay("sat");
-		List<ToonVO> st = toonService.toonDaySelect(toonVO,memberVO);
-		
-		toonVO.setToonDay("sun");
-		List<ToonVO> st2 = toonService.toonDaySelect(toonVO,memberVO);
+
 		
 		
 		mv.addObject("mt", mt);
-		mv.addObject("tt", tt);
-		mv.addObject("wt", wt);
-		mv.addObject("tt2", tt2);
-		mv.addObject("ft", ft);
-		mv.addObject("st", st);
-		mv.addObject("st2", st2);
+		
 		mv.setViewName("toon/toonDay/toonDaySelect");
 		return mv ;
 	}

@@ -12,7 +12,7 @@
 
 	
 	<select id="toonSearch" parameterType="ToonVO" resultType="ToonVO">
-		SELECT *
+	SELECT *
 	FROM toon t JOIN
 	member m ON t.writerId = m.username
 	WHERE (m.ENABLEd=3=m.nickname  LIKE CONCAT('%', #{toonVO.search}, '%')) OR (t.toontitle LIKE CONCAT('%', #{toonVO.search}, '%'));

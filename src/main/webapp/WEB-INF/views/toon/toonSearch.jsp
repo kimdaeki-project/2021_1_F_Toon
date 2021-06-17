@@ -47,7 +47,12 @@
 			<li>${search.nickname}</li>
 			<li>${search.toonSum}</li>
 		</c:forEach>
-	
+		
+		
+		
+		
+		
+		
 	</ul>
 	</div>
 
