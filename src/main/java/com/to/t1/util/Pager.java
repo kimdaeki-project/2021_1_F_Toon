@@ -20,19 +20,19 @@ public class Pager {
    private String search;
    
    public void makeNum(Long totalCount) {
-      int perBlock=5;
-      //1. totalCount
-      if(totalCount == 0) {
-         totalCount = 1L;
+      int perBlock=5; //한 블럭당 보여줄 숫자의 갯수
+      //1. totalCount 전체 글의 갯수
+      if(totalCount == 0) { // 전체글의 갯수가 0이라면
+         totalCount = 1L; // 전체글에 1을 넣어준다.
       }
       //2. totalCount를 이용해서 totalPage수 구하기
-      Long totalPage = totalCount/this.getPerPage();
-      if(totalCount%this.getPerPage() != 0) {
+      Long totalPage = totalCount/this.getPerPage(); //전체페이지는 = 전체글의갯수 / 한페이지당 보여줄 글의갯수를 넣어준다.
+      if(totalCount%this.getPerPage() != 0) { //전체글의갯수 / 한페이지당 보여줄 글의 객수를 나눠줄때 0 이아니라면 전체페이지 증가한다.
          totalPage++;
       }
       //3. totalPage를 이용해서 totalBlock 수 구하기
-      Long totalBlock = totalPage / perBlock;
-      if(totalPage%perBlock !=0) {
+      Long totalBlock = totalPage / perBlock; // 전체블럭 = 전체페이지에서 한블럭당 보여줄 숫자의갯수를 나눈다.
+      if(totalPage%perBlock !=0) { //토탈블럭이 0이아니면 증감
          totalBlock++;
       }
       
@@ -67,7 +67,7 @@ public class Pager {
       // 1         0
       // 2         10
       // 3         20
-      this.startRow = (this.getCurPage()-1)*this.getPerPage(); 
+      this.startRow = (this.getCurPage()-1)*this.getPerPage();  //스타트 로우 = 글의갯수-1  *  한페이지당 보여줄 글의갯수
    }
 
    public Long getCurPage() {
