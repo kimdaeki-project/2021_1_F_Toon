@@ -252,9 +252,9 @@ public class AdminController {
 	@PostMapping("manageEachEpDelete")
 	public String setManageEachEpDelete(EachEpVO eachEpVO)throws Exception{
 		
-		int result = adminService.setManageToonDelete(eachEpVO);
+		int result = adminService.setManageEachEpDelete(eachEpVO);
 		
-		return "redirect:./manageEachEpVOList";
+		return "redirect:./manageEachEpList";
 	}
 	
 	@GetMapping("EachEpFileDelete")

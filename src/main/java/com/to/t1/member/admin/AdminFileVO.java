@@ -4,9 +4,17 @@ public class AdminFileVO {
 	
 	private Long fileNum;
 	private Long toonNum;
+	private Long epNum;
 	private String fileName;
 	private String oriName;
 	
+	
+	public Long getEpNum() {
+		return epNum;
+	}
+	public void setEpNum(Long epNum) {
+		this.epNum = epNum;
+	}
 	public Long getFileNum() {
 		return fileNum;
 	}
