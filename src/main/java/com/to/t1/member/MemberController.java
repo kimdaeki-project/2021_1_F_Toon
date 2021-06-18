@@ -164,7 +164,8 @@ public class MemberController {
 		memberVO = memberService.myPage((MemberVO) auth2.getPrincipal());
 		model.addAttribute("memberVO", memberVO);
 		
-		System.out.println(message);	
+		System.out.println(message);
+		
 
 		return message;
 	}

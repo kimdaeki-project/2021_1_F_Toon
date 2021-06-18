@@ -147,18 +147,28 @@
  
 
 	<script type="text/javascript">
+	
 	function change(){
 		var password = $("#password").val();
 		var newpassword = $("#newpassword").val();
 		var newpassword2 = $("#newpassword2").val();
+		var newPasswordTrim= $.trim(newPassword);
+		
+		if(confirm("정말 변경하시겠습니까?") == true){
 
-		$.ajax({
-	         type : 'POST',
-	         url  : 'changePassword',
-	         data : {
-	            "password" : password,
-	            "newpassword" : newpassword,
-	            "newpassword2" : newpassword2,
+		      if(newPasswordTrim.length>17||newPasswordTrim.length<7||newPasswordTrim==null){
+		         alert( "패스워드는 8글자 이상 16글자 이하입니다.");
+		            
+		      }else{
+		    	  
+		    		$.ajax({
+		   	         type : 'POST',
+		   	         url  : 'changePassword',
+		   	         data : {
+		   	            "password" : password,
+		   	            "newpassword" : newpassword,
+		   	            "newpassword2" : newpassword2,
+		   
 	            
 	         },
 
@@ -167,7 +177,7 @@
 	         success : function(data){
 	             
 	            alert(data);
-	            
+	           
 	          },
 	          
 
