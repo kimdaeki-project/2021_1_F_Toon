@@ -5,37 +5,35 @@
   
   <configuration>
      <typeAliases>
- 
-        <typeAlias type="com.to.t1.member.MemberVO" alias="MemberVO"/>
-        <typeAlias type="com.to.t1.member.JoinFileVO" alias="JoinFileVO"/>
-        <typeAlias type="com.to.t1.member.RoleVO" alias="RoleVO"/>
 
       <typeAlias type="com.to.t1.mypage.RecentVO" alias="RecentVO"/>
       <typeAlias type="com.to.t1.mypage.FavoritoonVO" alias="FavoritoonVO"/>
 
 
-      <typeAlias type="com.to.t1.toon.ToonVO" alias="ToonVO"/>
-      <typeAlias type="com.to.t1.review.ReviewVO" alias="ReviewVO"/>
-      <typeAlias type="com.to.t1.toon.eachep.EachEpVO" alias="EachEpVO"/>
+  		<typeAlias type="com.to.t1.member.MemberVO" alias="MemberVO"/>
+  		<typeAlias type="com.to.t1.member.JoinFileVO" alias="JoinFileVO"/>
+  		<typeAlias type="com.to.t1.member.RoleVO" alias="RoleVO"/>
+		<typeAlias type="com.to.t1.member.admin.AdminVO" alias="AdminVO"/>
 
-      
-        <typeAlias type="com.to.t1.board.BoardVO" alias="BoardVO"/>
-        <typeAlias type="com.to.t1.board.BoardFileVO" alias="BoardFileVO"/>
-        <typeAlias type="com.to.t1.board.notice.NoticeVO" alias="NoticeVO"/>
-        <typeAlias type="com.to.t1.board.qna.QnaVO" alias="QnaVO"/>
-        <typeAlias type="com.to.t1.member.admin.AdminVO" alias="AdminVO"/>
-        <typeAlias type="com.to.t1.member.admin.AdminFileVO" alias="AdminFileVO"/>
-        
-        
-        <typeAlias type="com.to.t1.point.PointVO" alias="PointVO"/>
-        <typeAlias type="com.to.t1.point.UsePointVO" alias="UsePointVO"/>
-       
-        <typeAlias type="com.to.t1.ticket.TicketBoxVO" alias="TicketBoxVO"/>
-        <typeAlias type="com.to.t1.ticket.UseTicketVO" alias="UseTicketVO"/>
-       
-       <typeAlias type="com.to.t1.util.Pager" alias="Pager"/>
-       <typeAlias type="java.lang.Long" alias="Long"/>
-           
+		<typeAlias type="com.to.t1.toon.ToonVO" alias="ToonVO"/>
+		<typeAlias type="com.to.t1.review.ReviewVO" alias="ReviewVO"/>
+		<typeAlias type="com.to.t1.toon.eachep.EachEpVO" alias="EachEpVO"/>
+		<typeAlias type="com.to.t1.member.admin.AdminFileVO" alias="AdminFileVO"/>
+		
+  		<typeAlias type="com.to.t1.board.BoardVO" alias="BoardVO"/>
+  		<typeAlias type="com.to.t1.board.BoardFileVO" alias="BoardFileVO"/>
+  		<typeAlias type="com.to.t1.board.notice.NoticeVO" alias="NoticeVO"/>
+  		<typeAlias type="com.to.t1.board.qna.QnaVO" alias="QnaVO"/>
+  		
+  		
+  		<typeAlias type="com.to.t1.point.PointVO" alias="PointVO"/>
+  		<typeAlias type="com.to.t1.ticket.TicketBoxVO" alias="TicketBoxVO"/>
+  		<typeAlias type="com.to.t1.ticket.UseTicketVO" alias="UseTicketVO"/>
+  		
+  		
+		<typeAlias type="com.to.t1.util.Pager" alias="Pager"/>
+		<typeAlias type="java.lang.Long" alias="Long"/>
+  	
      </typeAliases>
   
   </configuration>
