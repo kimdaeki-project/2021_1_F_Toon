@@ -13,5 +13,4 @@ public class PointVO {
 	private String contents;
 	
 	
-	
 }
