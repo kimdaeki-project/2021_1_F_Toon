@@ -11,7 +11,6 @@
   		<typeAlias type="com.to.t1.member.RoleVO" alias="RoleVO"/>
 
 		<typeAlias type="com.to.t1.mypage.RecentVO" alias="RecentVO"/>
-		<typeAlias type="com.to.t1.mypage.FavoritoonVO" alias="FavoritoonVO"/>
 
 
 		<typeAlias type="com.to.t1.toon.ToonVO" alias="ToonVO"/>
@@ -25,15 +24,10 @@
   		<typeAlias type="com.to.t1.board.qna.QnaVO" alias="QnaVO"/>
   		
   		
-<<<<<<< HEAD
   		<typeAlias type="com.to.t1.point.PointVO" alias="PointVO"/>
   		<typeAlias type="com.to.t1.ticket.TicketBoxVO" alias="TicketBoxVO"/>
   		<typeAlias type="com.to.t1.ticket.UseTicketVO" alias="UseTicketVO"/>
   		
-=======
-  		<typeAlias type="com.to.t1.point.ChargePointVO" alias="ChargePointVO"/>
-  		<typeAlias type="com.to.t1.point.UsePointVO" alias="UsePointVO"/>
->>>>>>> sunghyun3
 		<typeAlias type="com.to.t1.util.Pager" alias="Pager"/>
 		<typeAlias type="java.lang.Long" alias="Long"/>
   		
