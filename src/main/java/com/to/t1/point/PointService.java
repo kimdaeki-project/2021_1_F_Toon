@@ -31,7 +31,7 @@ public class PointService {
 		chargePointVO.setPoint(point);
 		
 		result = pointMapper.setChargePoint(chargePointVO);
-		result = pointMapper.setChargePointList(chargePointVO);
+		result = pointMapper.setPointList(chargePointVO);
 		
 		return result;
 	}
@@ -52,5 +52,7 @@ public class PointService {
 	public List<PointVO> SelectMyPointUseList (MemberVO memberVO)throws Exception{
 		return pointMapper.getMyUseList(memberVO);
 	}
+	
+	
 	
 }
