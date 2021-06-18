@@ -107,7 +107,6 @@
 					<th>웹툰 이름</th>
 					<th>에피 제목</th>
 					<th>작가 이름</th>
-					<th>구매 가격</th>
 					<th>구매 날짜</th>
 				</tr>
 			</thead>
@@ -119,8 +118,7 @@
 					<td>${list.toonVO.toonTitle}</td>
 					<td>${list.eachEpVO.epTitle}</td>
 					<td>${list.memberVO.nickname}</td>
-					<td>${list.usePointVO.epPrice}</td>
-					<td>${list.usePointVO.useDate}</td>
+					<td>${list.useTicketVO.utDate}</td>
 
 				</tr>
 			</c:forEach>

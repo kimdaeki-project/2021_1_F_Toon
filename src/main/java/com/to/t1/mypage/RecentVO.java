@@ -4,6 +4,8 @@ import java.sql.Timestamp;
 
 import com.to.t1.member.MemberVO;
 import com.to.t1.point.PointVO;
+import com.to.t1.point.UsePointVO;
+import com.to.t1.ticket.UseTicketVO;
 import com.to.t1.toon.ToonVO;
 import com.to.t1.toon.eachep.EachEpVO;
 
@@ -21,6 +23,6 @@ public class RecentVO {
 	private EachEpVO eachEpVO;
 	private MemberVO memberVO;
 	private FavoritoonVO favoritoonVO;
-	
-	private PointVO pointVO;
+	private UseTicketVO useTicketVO;
+	private UsePointVO usePointVO;
 }
