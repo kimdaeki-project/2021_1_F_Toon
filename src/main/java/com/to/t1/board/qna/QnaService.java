@@ -19,11 +19,21 @@ import com.to.t1.util.Pager;
 @Service
 public class QnaService implements BoardService{
 
+	
 	@Autowired
 	private QnaMapper qnaMapper;
 	@Autowired
 	private FileManager fileManager;
 
+	
+	public List<BoardVO> getManageQnaList(Pager pager) throws Exception {
+		pager.makeRow();
+		
+		pager.makeNum(qnaMapper.getTotalCount(pager));
+		
+		return qnaMapper.getManageQnaList(pager);
+	}
+	
 	
 	@Override
 	public List<BoardVO> getList(Pager pager) throws Exception {
@@ -34,12 +44,18 @@ public class QnaService implements BoardService{
 		return qnaMapper.getList(pager);
 	}
 
+	
+	public BoardVO getManageQnaSelect(BoardVO boardVO) throws Exception {
+		
+		return qnaMapper.getManageQnaSelect(boardVO);
+	}
+	
 	@Override
 	public BoardVO getSelect(BoardVO boardVO) throws Exception {
 		qnaMapper.setHitUpdate(boardVO);
 		return qnaMapper.getSelect(boardVO);
 	}
-
+	
 	@Override
 	@Transactional(rollbackFor = Exception.class)
 	public int setInsert(BoardVO boardVO, MultipartFile[] files) throws Exception {
@@ -65,21 +81,6 @@ public class QnaService implements BoardService{
 			qnaMapper.setFileInsert(boardFileVO);
 		}
 		return result;
-	}
-
-	@Override
-	public int setUpdate(BoardVO boardVO, MultipartFile[] files) throws Exception {
-		// TODO Auto-generated method stub
-		return qnaMapper.setUpdate(boardVO);
-	}
-
-	@Override
-	public int setDelete(BoardVO boardVO) throws Exception {
-		// TODO Auto-generated method stub
-		//1. files table의 fileName 조회
-		//2. qna table에서 글 삭제 
-		//3. HDD에 파일들을 삭제
-		return qnaMapper.setDelete(boardVO);
 	}
 	
 	@Transactional(rollbackFor = Exception.class)
@@ -112,6 +113,26 @@ public class QnaService implements BoardService{
 		}
 		return result;
 	}
+
+	@Override
+	public int setUpdate(BoardVO boardVO, MultipartFile[] files) throws Exception {
+		// TODO Auto-generated method stub
+		return qnaMapper.setUpdate(boardVO);
+	}
+	
+	public int setQnaDelete(BoardVO boardVO) throws Exception {
+		
+		return qnaMapper.setQnaDelete(boardVO);
+	}
+	
+	@Override
+	public int setDelete(BoardVO boardVO) throws Exception {
+		// TODO Auto-generated method stub
+		//1. files table의 fileName 조회
+		//2. qna table에서 글 삭제 
+		//3. HDD에 파일들을 삭제
+		return qnaMapper.setDelete(boardVO);
+	}
 	
 	@Autowired
 	private BoFileManager boFileManager;
@@ -129,6 +150,18 @@ public class QnaService implements BoardService{
 			boFileManager.delete("qna", boardFileVO.getFileName(), session);
 		}
 		return result;
+	}
+
+	public boolean setQnaSummerFileDelete(String fileName) throws Exception {
+		boolean result = boFileManager.delete("qna", fileName, session);
+		return result;
+	}
+	
+	
+	public String setQnaSummerFileUpload(MultipartFile file)throws Exception{
+		
+		String fileName = boFileManager.save("qna", file, session);
+		return fileName;
 	}
 	
 	@Override

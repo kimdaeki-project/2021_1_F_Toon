@@ -1,6 +1,7 @@
 package com.to.t1.util;
 
 public class Pager {
+
    private Long curPage;
    private Long perPage;
    

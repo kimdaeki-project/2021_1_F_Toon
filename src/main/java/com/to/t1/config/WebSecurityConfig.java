@@ -65,18 +65,27 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter{
 				.antMatchers("/member/**").hasAnyRole("ADMIN", "MEMBER")
 				
 				.antMatchers("/member/memberJoinCheck").permitAll()
-				
+
 				.antMatchers("/notice/select").hasAnyRole("ADMIN", "MEMBER")
+
 				.antMatchers("/qna/qnaSelect").hasAnyRole("ADMIN", "MEMBER")
 				.antMatchers("/qna/qnaUpdate").hasAnyRole("ADMIN", "MEMBER")
 				.antMatchers("/qna/reply").hasAnyRole("ADMIN")
 				.antMatchers("/qna/qnaInsert").hasAnyRole("MEMBER")
+
 				.antMatchers("/notice/insert").hasAnyRole("ADMIN")
 				.antMatchers("/admin/adminPage").hasAnyRole("ADMIN")
 				.antMatchers("/admin/addToonForm").hasAnyRole("ADMIN")
 				.antMatchers("/charge/chargePointForm").hasAnyRole("ADMIN", "MEMBER","WRITER")
 				.antMatchers("/admin/test").hasAnyRole("ADMIN")
 				.antMatchers("/mypage/recentToon").hasAnyRole("ADMIN", "MEMBER")
+
+				.antMatchers("/admin/insert").hasAnyRole("ADMIN")
+				.antMatchers("/admin/test").hasAnyRole("ADMIN")
+				.antMatchers("/admin/manageSelect").hasAnyRole("ADMIN")
+				.antMatchers("/admin/manageNoticeList").hasAnyRole("ADMIN")
+				
+
 				.anyRequest().authenticated()
 				.and()
 			.formLogin()

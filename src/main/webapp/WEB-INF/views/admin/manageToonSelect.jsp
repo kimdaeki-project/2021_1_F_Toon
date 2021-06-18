@@ -49,14 +49,14 @@
 	<h2>
 			<p>
 				<span
-					style="border-radius: 15px 15px 15px 15px; border: 3px solid #b4b4b4; padding: 0.5em 0.6em; color: black; background-color: #dcdcdc;">공지사항/내용</span>
+					style="border-radius: 15px 15px 15px 15px; border: 3px solid #b4b4b4; padding: 0.5em 0.6em; color: black; background-color: #dcdcdc;">작품/내용</span>
 			</p>
 		</h2><br>
 	
 	<table class="table">
 		<thead>
 			<tr style="text-align: center;">
-	    		<th>작성일 : ${vo.createdDate}</th>
+	    		<th></th>
 	    		<th>조회수 : ${vo.noticeHit}</th>
 	    		
 			</tr>
@@ -73,14 +73,6 @@
 		</thead>
 	
 	</table>
-	
-	
-	<div id="file1">
-	<c:forEach items="${vo.files}" var="file">
-		<a href="../upload/${board}/${file.fileName}">${file.oriName}</a>
-	</c:forEach>
-	</div>
-	 
 
 
 <c:import url="../fragments/footer.jsp"></c:import>

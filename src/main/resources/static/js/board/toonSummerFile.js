@@ -1,7 +1,7 @@
 /**
  * 
  */
-$("#qnaContents").summernote({
+$("#titleImg").summernote({
 			height:500,
 			placeholder: '작성하세요',
 			callbacks: {
@@ -21,7 +21,7 @@ $("#qnaContents").summernote({
 function deleteFile(files){
 	let fileName = $(files[0]).attr("src");
 	fileName = fileName.substring(fileName.lastIndexOf('/')+1);
-	$.post("qnaSummerFileDelete", {fileName:fileName}, function(result){
+	$.post("toonSummerFileDelete", {fileName:fileName}, function(result){
 		console.log(result);
 	});
 }
@@ -33,7 +33,7 @@ function uploadFile(files) {
 	let fileName="";
 	$.ajax({
 		type: "POST",
-		url: "./qnaSummerFileUpload",
+		url: "./toonSummerFileUpload",
 		data:formData,
 		enctype:"multipart/form-data",
 		cache:false,
@@ -41,7 +41,7 @@ function uploadFile(files) {
 		contentType:false,
 		success:function(result){
 			fileName=result.trim();
-			$("#qnaContents").summernote('insertImage', fileName);
+			$("#titleImg").summernote('insertImage', fileName);
 		} 
 		
 	});		
