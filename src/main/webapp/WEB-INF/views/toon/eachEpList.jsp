@@ -11,8 +11,9 @@
 </head>
 <body>
 <c:import url="../fragments/header.jsp"></c:import>
-	
+   
 <div id="content" class="webtoon">
+
 	<!-- 웹툰 소개 -->
 	<div class="comicinfo">
 		<div class="thumb">
@@ -26,7 +27,9 @@
 			<span class="wrt_nm">${toonVO.nickname}</span>
 			</h2>
 			<p><h2>${toonVO.toonSum}</h2></p>
-		<p class="detail_info"><span class="genre">장르 : ${toonVO.genre}</span></p>
+		<p class="detail_info"><span class="genre">장르 : ${toonVO.genre}</span>
+		<span class="totalRating">웹툰별점 : ${toonVO.ratingSum/toonVO.ratingPerson}</span></p>
+		
 		<ul class="btn_group">
 		<li><a href="#" title="관심웹툰" class="book_maker on"><span>관심웹툰</span></a></li>
 		<li><a href="/toon/eachEpSelect?toonNum=${toonVO.toonNum}&epNum=1" title="첫회보기" class="first"><span>첫회보기</span></a></li>
@@ -91,6 +94,7 @@
 	   		 </c:if>
 	 		 </ul>
 		</div>
+
 </div>
 
 </body>

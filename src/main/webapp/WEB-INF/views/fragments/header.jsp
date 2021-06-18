@@ -13,7 +13,7 @@
 <!--                     <a href="index.html" class="logo"> -->
 <!--                         <img src="images/logo.png" alt=""> -->
 <!--                     </a> -->
-						<a class="navbar-brand" href="${pageContext.request.contextPath}/"><h2>WEBTOON PAGE</h2></a>
+						<a class="navbar-brand" href="${pageContext.request.contextPath}/"><h1>WongToon</h1></a>
                 </div>
                 <div class="col-lg-4 col-md-6 col-sm-6 search-trigger">
                     <div class="right-button">
@@ -66,20 +66,29 @@
                             <li class="nav-item"><a class="nav-link" href="/toon/genre/genre">장르</a></li>    
                          	<li class="nav-item"><a class="nav-link" href="/toon/ranking/ranking">랭킹</a></li>
                            	<li class="nav-item"><a class="nav-link" href="/toon/end/endRe">완결</a></li>
+                           	<li class="nav-item"><a class="nav-link" href="/toon/toonSearch">검색</a></li>                           	
                         </ul>
                     </div>
                 </div>
             </nav>
         </div>
-    </header> 
-    
-      <div class="search_input" id="search_input_box">
-            <div class="container ">
-                <form class="d-flex justify-content-between search-inner">
-                    <input type="text" class="form-control" id="search_input" placeholder="제목/작가로 검색하실수 있습니다" >
-                    <button type="submit" class="danger" href="/">검색하기</button>
-                    <span class="ti-close" id="close_search" title="Close Search"></span>
-                </form>
+    </header>
+
+
+			
+ 		<div class="search_input" id="search_input_box">
+            <div class="container ">            
+                <form action="/toon/toonSearch" method="get" class="d-flex justify-content-between search-inner">
+                   
+                   
+                   
+                    <input type="text" class="form-control" name="search" id="search" value=""	 placeholder="Search Here">
+                    
+                    <input class="btn btn-search" type="submit" value="검색">
+                </form>          
             </div>
         </div>
-    <!-- End header MEnu Area -->    
+
+
+        
+<!-- End header MEnu Area -->

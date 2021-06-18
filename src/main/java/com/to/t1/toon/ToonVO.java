@@ -10,7 +10,7 @@ import lombok.Data;
 
 @Data
 public class ToonVO {
-
+	
 	private long toonNum;
 	private String toonTitle;
 	private String genre;
@@ -23,6 +23,9 @@ public class ToonVO {
 	private long ratingSum;
 	private long ratingPerson;
 	private String nickname;
+	private String search;
+	
 	private List<EachEpVO> eachEpVO;
+	
 	
 }

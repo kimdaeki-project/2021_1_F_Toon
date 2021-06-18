@@ -23,14 +23,10 @@ public class ToonController {
 	
 	@Autowired
 	private MemberService memberService;
-	
-	
-	
-	
-	
+
 	@GetMapping("toonList")
 	public void getList(Pager pager, Model model)throws Exception{
-		List<ToonVO> list=toonService.getList();
+		List<ToonVO> list=toonService.getList(pager);
 		model.addAttribute("list", list);
 		model.addAttribute("listsize", list.size());
 	}
@@ -43,6 +39,21 @@ public class ToonController {
 		
 	}
 
+	@GetMapping("toonSearch")
+	public ModelAndView toonSearch(ToonVO toonVO,MemberVO memberVO)throws Exception{
+		ModelAndView mv = new ModelAndView();
+		
+		List<ToonVO> search = toonService.toonSearch(toonVO, memberVO);
+		
+		mv.addObject("toonSearch", search);
+		mv.setViewName("toon/toonSearch");
+		
+		
+		
+		return mv;
+	}
+	
+	
 	@GetMapping("toonDay")
 	public ModelAndView toonDay(ToonVO toonVO,MemberVO memberVO) throws Exception {
 		ModelAndView mv = new ModelAndView();
@@ -82,9 +93,9 @@ public class ToonController {
 	
 	
 	@GetMapping("toonDayAver")
-	public ModelAndView toonDayAver(ToonVO toonVO, MemberVO memberVO)throws Exception{
+	public ModelAndView toonDayAver(ToonVO toonVO,MemberVO memberVO) throws Exception {
 		ModelAndView mv = new ModelAndView();
-	
+		
 		toonVO.setToonDay("mon");
 		List<ToonVO> mt = toonService.toonDayAver(toonVO,memberVO);
 		
@@ -152,6 +163,21 @@ public class ToonController {
 		mv.addObject("st", st);
 		mv.addObject("st2", st2);
 		mv.setViewName("toon/toonDay/toonDayRecent");
+		return mv ;
+	}
+	
+	@GetMapping("toonDaySelect")
+	public ModelAndView toonDaySelect(ToonVO toonVO, MemberVO memberVO)throws Exception{
+		ModelAndView mv = new ModelAndView();
+	
+		toonVO.setToonDay("mon");
+		List<ToonVO> mt = toonService.toonDaySelect(toonVO,memberVO);
+
+		
+		
+		mv.addObject("mt", mt);
+		
+		mv.setViewName("toon/toonDay/toonDaySelect");
 		return mv ;
 	}
 	
