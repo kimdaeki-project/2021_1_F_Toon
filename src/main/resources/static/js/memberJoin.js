@@ -173,6 +173,10 @@ function emailCheck(){
           swal("인증실패","You clicked the button!" , "warning");
           isCertification = false;
        }
+
  };
 
  
+
+ 
+

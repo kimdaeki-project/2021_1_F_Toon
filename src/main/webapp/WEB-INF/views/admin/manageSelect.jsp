@@ -81,8 +81,33 @@
 	</c:forEach>
 	</div>
 	 
+	<a href="./update?boNum=${vo.boNum}" class="btn btn-secondary">수정</a>
+	<a href="#" id="del" class="btn btn-secondary">삭제</a>
+	
+	
+	<form action="./delete" id="frm" method="get">
+		<input type="hidden" name="boNum" value="${vo.boNum}">
+	</form>
+	</div>
 
 
+
+<script type="text/javascript" src="../resources/js/board/comments.js"></script>
+<script type="text/javascript">
+	const del = document.getElementById("del");
+	const frm = document.getElementById("frm");
+	
+	del.addEventListener("click", function(){
+		let result = confirm("삭제하시겠습니까?");
+		
+		if(result){
+			//frm.method="post";
+			frm.setAttribute("method", "post");
+			frm.submit();
+			//location.href="./${board}Delete?num=${dto.num}";
+		}
+	});
+</script>
 <c:import url="../fragments/footer.jsp"></c:import>
 </body>
 </html>

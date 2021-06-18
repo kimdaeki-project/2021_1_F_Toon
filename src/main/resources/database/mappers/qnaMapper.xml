@@ -23,6 +23,14 @@
          </where>
          </sql>
          
+         <select id="getManageQnaList" resultType="QnaVO" parameterType="Pager">
+         select * from qna
+         <include refid="searcher"></include>
+         order by ref desc, step asc
+         limit #{startRow}, #{perPage}
+         <!-- limit 시작index번호(0부터시작), 갯수 --> 
+         </select>
+         
          
          <select id="getList" resultType="QnaVO" parameterType="Pager">
          select * from qna
@@ -35,6 +43,13 @@
          <select id="getTotalCount" parameterType="Pager" resultType="java.lang.Long">
             select count(boNum) from qna
             <include refid="searcher"></include>
+         </select>
+         
+         <select id="getManageQnaSelect" resultMap="selectResult" parameterType="BoardVO">
+         SELECT Q.*, QF.* from
+         qna Q left join qnaFiles QF
+         on Q.boNum = QF.boNum
+         WHERE Q.boNum=#{boNum}
          </select>
          
          <select id="getSelect" resultMap="selectResult" parameterType="BoardVO">
@@ -110,7 +125,7 @@
             update qna set qnaTitle=#{qnaTitle}, qnaContents=#{qnaContents} where boNum=#{boNum}
          </update>
          
-         <delete id="setDelete" parameterType="BoardVO">
+         <delete id="setQnaDelete" parameterType="BoardVO">
             delete from qna where boNum=#{boNum}
          </delete>
    

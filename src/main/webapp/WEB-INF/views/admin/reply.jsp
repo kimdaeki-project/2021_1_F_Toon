@@ -42,7 +42,7 @@
 		<h2>
 			<p>
 				<span
-					style="border-radius: 15px 15px 15px 15px; border: 3px solid #b4b4b4; padding: 0.5em 0.6em; color: black; background-color: #dcdcdc;">답변/작성</span>
+					style="border-radius: 15px 15px 15px 15px; border: 3px solid #b4b4b4; padding: 0.5em 0.6em; color: black; background-color: #dcdcdc;">관리자/답변/작성</span>
 			</p>
 		</h2><br>
 		
@@ -52,7 +52,7 @@
 				
 			<div class="form-group">
 				<label for="username">&nbsp;작성자</label> <input type="text"
-					readonly="readonly" value="${member.username}"
+					readonly="readonly" value="principal.name"
 					class="form-control myCheck" id="username" name="username">
 			</div>
 			<div class="form-group">

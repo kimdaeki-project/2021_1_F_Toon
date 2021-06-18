@@ -124,7 +124,7 @@
 					</div>
 				</form>
 			</div>
-			<a href="./insert" class="btn btn-secondary" role="button">작성</a>
+			
 		</div>
 
 	</div>
@@ -149,6 +149,6 @@
 	
 </script>
 
-	
+<c:import url="../fragments/footer.jsp"></c:import>
 </body>
 </html>
