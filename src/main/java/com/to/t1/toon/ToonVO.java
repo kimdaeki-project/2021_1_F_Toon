@@ -40,11 +40,12 @@ public class ToonVO {
 	public void setGenre(String genre) {
 		this.genre = genre;
 	}
-	public String getWriterID() {
-		return writerID;
+	
+	public String getWriterId() {
+		return writerId;
 	}
-	public void setWriterID(String writerID) {
-		this.writerID = writerID;
+	public void setWriterId(String writerId) {
+		this.writerId = writerId;
 	}
 	public String getToonSum() {
 		return toonSum;

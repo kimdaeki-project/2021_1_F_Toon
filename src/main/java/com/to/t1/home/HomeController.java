@@ -37,5 +37,11 @@ public class HomeController {
 	public void member() {
 		System.out.println("memberuser!!!");
 	}
+	@GetMapping("companyMap")
+	public String companyMap(Model model) {
+			
+		return "companyMap";
+	}
+	
 
 }
