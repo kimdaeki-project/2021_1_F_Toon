@@ -86,11 +86,14 @@
 		<h2>리뷰</h2>
 		
 		<div id="rating" class="rating">
-			<c:forEach begin="1" end="10" var="i">
-			<label class="startRadio__box"> <input type="radio" name="star" id="star${i}" value="${i}"> 
-			<span class="startRadio__img"><span class="blind">${i}</span></span>
-			</label>
-			</c:forEach>
+			<div class="startRadio">
+  				<c:forEach begin="1" end="10" var="i">
+  				<label class="startRadio__box">
+    			<input type="radio" name="star" id="star${i}" value="${i}">
+    			<span class="startRadio__img"><span class="blind">${i}</span></span>
+  				</label>
+  				</c:forEach>
+			</div>
 		</div>
 		
 		<div class="review_contents">
@@ -100,9 +103,12 @@
 		<button id="save">등록</button>
 	</div>
 
-	<!--리뷰 페이지  -->
+	<!-- 댓글 리스트 -->
 	<div id="review_page">
-
+		
+		
+		
+		
 	</div>
 	
 	

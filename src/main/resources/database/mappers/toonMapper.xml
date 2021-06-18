@@ -22,6 +22,20 @@
    ORDER BY t.totalHit DESC;
    </select>
    
+   	<update id="updateScore" parameterType="ReviewVO">
+		UPDATE toon t LEFT JOIN  review r
+		ON t.toonNum=r.toonNum
+		SET t.ratingSum= t.ratingSum+r.rating, t.ratingPerson=t.ratingPerson+1
+		WHERE t.toonNum=#{toonNum}
+	</update>
+	
+	<update id="deleteScore" parameterType="ReviewVO">
+		UPDATE toon t LEFT JOIN  review r
+		ON t.toonNum=r.toonNum
+		SET t.ratingSum= t.ratingSum-r.rating, t.ratingPerson=t.ratingPerson-1
+		WHERE t.toonNum=#{toonNum}
+	</update>
+   
    <select id="toonDayAver" parameterType="ToonVO" resultType="ToonVO">      
    SELECT *
    FROM toon t JOIN

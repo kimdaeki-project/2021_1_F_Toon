@@ -79,7 +79,7 @@
 		<div class="the">목요일
 			<ul>
 		<c:forEach items="${tt2}" var="tt2">
-			<li><a href="../toon/eachEpList?toonNum=${tt.toonNum}"> <img width=100px height=100px src=${tt2.titleImg}></a></li>
+			<li><a href="../toon/eachEpList?toonNum=${tt2.toonNum}"> <img width=100px height=100px src=${tt2.titleImg}></a></li>
 			<li>${tt2.toonTitle} /${tt2.nickname} </li>
 		</c:forEach>
 		</ul>

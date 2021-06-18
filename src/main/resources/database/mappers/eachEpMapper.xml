@@ -49,14 +49,26 @@
 		SELECT * FROM toon t LEFT JOIN member m 
 		ON t.writerId = m.username
 		JOIN eachep e ON t.toonNum = e.toonNum
-		WHERE e.toonNum=#{toonNum} AND e.epNum=#{epNum}		
+		WHERE e.toonNum=#{toonNum} AND e.eachEpNum=#{eachEpNum}		
 	</select>
 	
 	<update id="setHitUpdate" parameterType="EachEpVO">
 		update eachEp set epHit=epHit+1 where toonNum=#{toonNum} AND epNum=#{epNum}
 	</update>
 	
+	<update id="updateScore" parameterType="ReviewVO">
+		update eachep e left JOIN review r 
+		ON e.toonNum=r.toonNum AND e.epNum=r.epNum
+		SET e.epRatingSum=e.epRatingSum+r.rating, e.epRatingPerson=e.epRatingPerson+1
+		WHERE e.toonNum=#{toonNum} AND e.eachEpNum=#{eachEpNum}
+	</update>
 	
+	<update id="deleteScore" parameterType="ReviewVO">
+		update eachep e left JOIN review r 
+		ON e.toonNum=r.toonNum AND e.epNum=r.epNum
+		SET e.epRatingSum=e.epRatingSum-r.rating, e.epRatingPerson=e.epRatingPerson-1
+		WHERE e.toonNum=#{toonNum} AND e.eachEpNum=#{eachEpNum}
+	</update>
 	
 
 </mapper>

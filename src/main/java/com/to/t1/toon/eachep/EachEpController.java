@@ -30,7 +30,7 @@ public class EachEpController {
 	public void getSelect(EachEpVO eachEpVO, Model model)throws Exception{
 		ToonVO list= eachEpService.getSelect(eachEpVO);
 		model.addAttribute("toonVO", list);
-		model.addAttribute("title", list.getEachEpVO().size());
+		model.addAttribute("listsize", list.getEachEpVO().size());
 		System.out.println(list.getEachEpVO().size());
 	}
 }

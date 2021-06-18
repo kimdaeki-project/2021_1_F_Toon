@@ -16,7 +16,7 @@
 	<!-- 웹툰 소개 -->
 	<div class="comicinfo">
 		<div class="thumb">
-			<a href="#">
+			<a href="/toon/eachEpList?toonNum=${toonVO.toonNum}">
 				<img src="${toonVO.titleImg}">
 				<span class="mask"></span>
 				</a>
@@ -52,14 +52,14 @@
 		<c:forEach items="${toonVO.eachEpVO}" var="eachEpVO">
 			<tr>
 				<td class="imgalign">
-					<a href="/toon/eachEpSelect?toonNum=${toonVO.toonNum}&epNum=${eachEpVO.eachEpNum}" >
+					<a href="/toon/eachEpSelect?toonNum=${toonVO.toonNum}&eachEpNum=${eachEpVO.eachEpNum}" >
 					<img src="${eachEpVO.epSumImg}"
 						title="${eachEpVO.eachEpNum}화" alt="${eachEpVO.eachEpNum}화" width="71" height="41">
 						<span class="mask"></span>
 					</a>
 				</td>
 				<td class="title">
-				<a href="/toon/eachEpSelect?toonNum=${toonVO.toonNum}&epNum=${eachEpVO.eachEpNum}">
+				<a href="/toon/eachEpSelect?toonNum=${toonVO.toonNum}&eachEpNum=${eachEpVO.eachEpNum}">
 				${eachEpVO.eachEpNum}화</a>
 				</td>
 				<td>

@@ -23,10 +23,10 @@ public class ReviewController {
 	@Autowired
 	private ToonService toonService;
 	
-	@PostMapping("reviewGetList")
+	@PostMapping("reviewList")
 	public void reviewGetList(Pager pager, Model model)throws Exception{
 		List<ReviewVO> list= reviewService.getList(pager);
-		model.addAttribute("reviews", list);
+		model.addAttribute("reviewVO", list);
 		model.addAttribute("pager", pager);
 		model.addAttribute("listsize", list.size());
 	}
