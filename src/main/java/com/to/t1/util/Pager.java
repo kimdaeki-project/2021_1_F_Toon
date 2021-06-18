@@ -2,6 +2,7 @@ package com.to.t1.util;
 
 public class Pager {
 
+
    private Long curPage;
    private Long perPage;
    
@@ -163,5 +164,4 @@ public class Pager {
    public void setSearch(String search) {
       this.search = search;
    }
-   
 }

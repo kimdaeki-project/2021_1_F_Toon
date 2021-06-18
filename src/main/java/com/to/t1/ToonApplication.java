@@ -11,4 +11,5 @@ public class ToonApplication {
 		SpringApplication.run(ToonApplication.class, args);
 		
 	}
+
 }

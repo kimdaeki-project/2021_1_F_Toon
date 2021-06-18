@@ -15,6 +15,7 @@ public class EachEpVO {
 	private Date epDate;
 	private String epContentImg;
 	private long epHit;
+
 	
 	public long getEpNum() {
 		return epNum;
@@ -64,4 +65,8 @@ public class EachEpVO {
 	public void setEpHit(long epHit) {
 		this.epHit = epHit;
 	}
+
+	private long epRatingSum;
+	private long epRatingPerson;
+
 }

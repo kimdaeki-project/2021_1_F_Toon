@@ -1,12 +1,20 @@
 package com.to.t1.toon;
 
+
 import com.to.t1.member.MemberVO;
+
+
+import java.util.List;
+
+import com.to.t1.member.MemberVO;
+import com.to.t1.toon.eachep.EachEpVO;
+
 
 import lombok.Data;
 
 @Data
 public class ToonVO {
-
+	
 	private long toonNum;
 	private String toonTitle;
 	private String genre;
@@ -18,6 +26,7 @@ public class ToonVO {
 	private String titleImg;
 	private long ratingSum;
 	private long ratingPerson;
+
 	private MemberVO memberVO;
 	private String nickname;
 	
@@ -40,6 +49,11 @@ public class ToonVO {
 	public void setGenre(String genre) {
 		this.genre = genre;
 	}
+
+	private String search;
+	
+	private List<EachEpVO> eachEpVO;
+
 	
 	public String getWriterId() {
 		return writerId;

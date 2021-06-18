@@ -7,6 +7,7 @@
         <div class="container">
             <div class="row align-items-center justify-content-between">
                 <div class="col-6 col-lg-4">
+
                     <div class="float-left">
                         <ul class="header_social">
 <!--                             <li><a href="#"><i class="ti-facebook"></i></a></li> -->
@@ -22,12 +23,14 @@
                             </sec:authorize>
                         </ul>   
                     </div>
+
+
                 </div>
                 <div class="col-6 col-lg-4 col-md-6 col-sm-6 logo-wrapper">
 <!--                     <a href="index.html" class="logo"> -->
 <!--                         <img src="images/logo.png" alt=""> -->
 <!--                     </a> -->
-						<a class="navbar-brand" href="${pageContext.request.contextPath}/"><h2>WEBTOON PAGE</h2></a>
+						<a class="navbar-brand" href="${pageContext.request.contextPath}/"><h1>WongToon</h1></a>
                 </div>
                 <div class="col-lg-4 col-md-6 col-sm-6 search-trigger">
                     <div class="right-button">
@@ -58,15 +61,7 @@
                 </div>
             </div>
         </div>
-        <div class="search_input" id="search_input_box">
-            <div class="container ">
-                <form class="d-flex justify-content-between search-inner">
-                    <input type="text" class="form-control" id="search_input" placeholder="Search Here">
-                    <button type="submit" class="btn"></button>
-                    <span class="ti-close" id="close_search" title="Close Search"></span>
-                </form>
-            </div>
-        </div>
+     
     </section>
     
     <!--================ End header top Area =================-->
@@ -84,22 +79,30 @@
                     <!-- Collect the nav links, forms, and other content for toggling -->
                     <div class="collapse navbar-collapse offset" id="navbarSupportedContent">
                         <ul class="nav navbar-nav menu_nav ml-auto mr-auto">
-                            <li class="nav-item active"><a class="nav-link" href="index.html">Home</a></li> 
-                            <li class="nav-item"><a class="nav-link" href="category.html">Categories</a></li> 
-                            <li class="nav-item"><a class="nav-link" href="archive.html">Archive</a></li>    
-                            <li class="nav-item submenu dropdown">
-                                <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Blog</a>
-                                <ul class="dropdown-menu">
-                                    <li class="nav-item"><a class="nav-link" href="blog.html">Blog</a></li>
-                                    <li class="nav-item"><a class="nav-link" href="single-blog.html">Blog Details</a></li>
-                                </ul>
-                            </li>
-                            <li class="nav-item"><a class="nav-link" href="blog.html">Latest news</a></li>
-                            <li class="nav-item"><a class="nav-link" href="contact.html">Contact us</a></li>         
+                            <li class="nav-item active"><a class="nav-link" href="/">Home</a></li> 
+                            <li class="nav-item"><a class="nav-link" href="/toon/toonDay/toonDay">요일</a></li> 
+                            <li class="nav-item"><a class="nav-link" href="/toon/genre/genre">장르</a></li>    
+                         	<li class="nav-item"><a class="nav-link" href="/toon/ranking/ranking">랭킹</a></li>
+                           	<li class="nav-item"><a class="nav-link" href="/toon/end/endRe">완결</a></li>                           	
                         </ul>
                     </div>
                 </div>
             </nav>
         </div>
-     </header>
-    <!-- End header MEnu Area -->
+
+
+			
+ 		<div class="search_input" id="search_input_box">
+            <div class="container ">            
+                <form action="/toon/toonSearch" method="get" class="d-flex justify-content-between search-inner">
+                   
+                   
+                   
+                    <input type="text" class="form-control" name="search" id="search" value=""	 placeholder="Search Here">
+                    
+                    <input class="btn btn-search" type="submit" value="검색">
+                </form>          
+            </div>
+        </div>
+
+

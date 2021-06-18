@@ -1,5 +1,6 @@
 package com.to.t1.toon;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.apache.ibatis.annotations.Mapper;
@@ -12,7 +13,7 @@ import com.to.t1.util.Pager;
 @Mapper
 public interface ToonMapper {
 
-	public List<ToonVO> getList()throws Exception;
+	public List<ToonVO> getList(Pager pager)throws Exception;
 	public Long getTotalCount(Pager pager)throws Exception;
 	public ToonVO getSelect(ToonVO toonVO)throws Exception;
 	
@@ -26,8 +27,25 @@ public interface ToonMapper {
 	public long setDelete(ToonVO toonVO)throws Exception;
 	
 	public List<ToonVO> toonDay(@Param("toonVO") ToonVO toonVO,@Param("memberVO") MemberVO memberVO)throws Exception;
+	public List<ToonVO> toonDayAver(ToonVO toonVO, MemberVO memberVO)throws Exception;
+	public List<ToonVO> toonDayRecent(ToonVO toonVO, MemberVO memberVO)throws Exception;
+	public List<ToonVO> toonDaySelect(ToonVO toonVO, MemberVO memberVO)throws Exception;
+	
 	public List<ToonVO> genre(@Param("toonVO") ToonVO toonVO,@Param("memberVO") MemberVO memberVO)throws Exception;
+	public List<ToonVO> genreAver(ToonVO toonVO, MemberVO memberVO)throws Exception;
+	public List<ToonVO> genreRecent(ToonVO toonVO, MemberVO memberVO)throws Exception;
+	
+	
 	public List<ToonVO> ranking(ToonVO toonVO,MemberVO memberVO)throws Exception;
+	public List<ToonVO> rankingAver(ToonVO toonVO,MemberVO memberVO)throws Exception;
+	public List<ToonVO> rankingRecent(ToonVO toonVO,MemberVO memberVO)throws Exception;
+	
 	public List<ToonVO> endRe(ToonVO toonVO,MemberVO memberVO)throws Exception;
+	public List<ToonVO> endReAver(ToonVO toonVO,MemberVO memberVO)throws Exception;
+	public List<ToonVO> endReRecent(ToonVO toonVO,MemberVO memberVO)throws Exception;
+
+	public List<ToonVO> toonSearch(@Param("toonVO") ToonVO toonVO,@Param("memberVO") MemberVO memberVO)throws Exception;
+	
 	
 }
+

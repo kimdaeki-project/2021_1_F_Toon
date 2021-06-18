@@ -1,13 +1,30 @@
-<?xml version="1.0" encoding="UTF-8"?>
+
 <!DOCTYPE mapper
     PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
     "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
 <mapper namespace="com.to.t1.toon.ToonMapper">
 
+
 <!-- 연재상태=?(0or1) and 요일=?(월~일) 일때 각 작품의 총 조회수를 내림차순 정렬 -->
 <!-- 연재상태=?(0or1) and 요일=?(월~일) 일때 각 작품의 평점의 평균을 내림차순 정렬-->
 <!-- 연재상태=?(0or1) and 요일=?(월~일) 일때 각 작품의 업데이트 순서대로 내림차순 정렬-->
+
+	<!-- 연재상태=?(0or1) and 요일=?(월~일) 일때 각 작품의 총 조회수를 내림차순 정렬 -->
+	<!-- 연재상태=?(0or1) and 요일=?(월~일) 일때 각 작품의 평점의 평균을 내림차순 정렬 -->
+	<!-- 연재상태=?(0or1) and 요일=?(월~일) 일때 각 작품의 업데이트 순서대로 내림차순 정렬 -->
+
+
+
+
+	<select id="toonSearch" parameterType="ToonVO"
+		resultType="ToonVO">
+		SELECT *
+		FROM toon t JOIN
+		member m ON t.writerId = m.username
+		WHERE (m.ENABLEd=3=m.nickname LIKE CONCAT('%', #{toonVO.search}, '%')) OR
+		(t.toontitle LIKE CONCAT('%', #{toonVO.search}, '%'))
+	</select>
 
 
 	<select id="toonDay" parameterType="ToonVO" resultType="ToonVO">
@@ -100,6 +117,7 @@
 	ORDER BY totalHit DESC;	
 	</select>	
 			
+	
 	<select id="endReAver" parameterType="ToonVO" resultType="ToonVO">
 	SELECT *
 	FROM toon t JOIN
@@ -115,9 +133,38 @@
 	ON t.writerId = m.username
 	JOIN eachep e ON t.toonNum = e.toonNum
 	WHERE state=1
-	ORDER BY max(e.epDate) DESC;
+	GROUP BY t.toonNum 
+	ORDER BY max(e.epDate) DESC
 	</select>	
 	
+
+	<select id="getList" parameterType="ToonVO" resultType="ToonVO">
+		SELECT * FROM toon WHERE toonNum=#{toonNum}
+	</select>
+
+
+	<update id="updateScore" parameterType="ReviewVO">
+		UPDATE toon t LEFT JOIN
+		review r
+		ON t.toonNum=r.toonNum
+		SET t.ratingSum= t.ratingSum+r.rating,
+		t.ratingPerson=t.ratingPerson+1
+		WHERE t.toonNum=#{toonNum}
+	</update>
+
+	<update id="deleteScore" parameterType="ReviewVO">
+		UPDATE toon t LEFT JOIN
+		review r
+		ON t.toonNum=r.toonNum
+		SET t.ratingSum= t.ratingSum-r.rating,
+		t.ratingPerson=t.ratingPerson-1
+		WHERE t.toonNum=#{toonNum}
+	</update>
+	
+	
+
+
+
 
 
 </mapper>
