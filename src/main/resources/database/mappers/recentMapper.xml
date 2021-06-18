@@ -46,11 +46,11 @@
 	
 	<select id="getList3" parameterType="java.util.Map" resultMap="recentResult">
 
-		SELECT usepoint.* ,toon.toonTitle, eachep.epTitle, eachep.eachEpNum , member.nickname, eachep.epSumImg
-		FROM usepoint, eachep ,toon, member
-		WHERE usepoint.epNum = eachep.epNum AND eachep.toonNum = toon .toonNum 
-		AND  toon.WriterID = member.username AND usepoint.username = #{memberVO.username}  
-		ORDER BY usepoint.useDate DESC
+		SELECT useticket.* ,toon.toonTitle, eachep.epTitle, eachep.eachEpNum , eachep.epSumImg, member.nickname
+		FROM useticket, eachep ,toon, member
+		WHERE useticket.epNum = eachep.epNum AND eachep.toonNum = toon .toonNum 
+		AND  toon.WriterID = member.username AND useticket.username = #{memberVO.username} 
+		ORDER BY useticket.utDate DESC	
 		limit #{pager.startRow}, #{pager.perPage}
 		
 	</select>
@@ -62,23 +62,22 @@
 		<result property="epNum" column="epNum"/>
 		<result property="viewDate" column="viewDate"/>
 		
-		<association property="pointVO" javaType="PointVO" resultMap="usePointResult"></association>
+		<association property="useTicketVO" javaType="UseTicketVO" resultMap="useTicketResult"></association>
 		<association property="favoritoonVO" javaType="FavoritoonVO" resultMap="favoritoonResult"></association>
 		<association property="toonVO" javaType="ToonVO" resultMap="toonResult"></association>
 		<association property="eachEpVO" javaType="EachEpVO" resultMap="eachEpResult"></association>
 		<association property="memberVO" javaType="MemberVO" resultMap="memberResult"></association> 
 	</resultMap>
 	
-	<resultMap type="pointVO" id="usePointResult">
+	<resultMap type="useTicketVO" id="useTicketResult">
 			<id property="toonNum" column="toonNum"/>
 			<id property="username" column="username"/>
 			<id property="epNum" column="epNum"/>
 			
+			<result property="toonNum" column="toonNum"/>
 			<result property="username" column="username"/>
 			<result property="epNum" column="epNum"/>
-			
-			<result property="epPrice" column="epPrice"/>
-			<result property="useDate" column="useDate"/>
+			<result property="utDate" column="utDate"/>
 	</resultMap>
 	
 	<resultMap type="favoritoonVO" id="favoritoonResult">
