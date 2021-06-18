@@ -10,7 +10,22 @@
 		WHERE toon.writerId = member.username AND eachep.toonNum = toon.toonNum AND recenttoon.epNum = eachep.epNum
 		AND recenttoon.username =#{memberVO.username}
 		ORDER BY recenttoon.viewDate DESC 
+	</select>
 	
+	<select id="getTotalCount2" parameterType="java.util.Map" resultType="java.lang.Long">
+		SELECT COUNT(*)
+		FROM favoritetoon, toon, member
+		WHERE toon.writerId = member.username AND favoritetoon.toonNum = toon.toonNum AND favoritetoon.likeClick='1'
+		AND favoritetoon.username=#{memberVO.username} 
+		ORDER BY favoritetoon.likeDate DESC
+	</select>
+	
+	<select id="getTotalCount3" parameterType="java.util.Map" resultType="java.lang.Long">
+		SELECT COUNT(*)
+		FROM useticket, eachep ,toon, member
+		WHERE useticket.epNum = eachep.epNum AND eachep.toonNum = toon .toonNum 
+		AND  toon.WriterID = member.username AND useticket.username =#{memberVO.username}  
+		ORDER BY useticket.utDate DESC
 	</select>
 	
 	<select id="getList" parameterType="java.util.Map" resultMap="recentResult">
@@ -23,15 +38,6 @@
 		limit #{pager.startRow}, #{pager.perPage}
 		
 	</select>
-	
-<!--          <select id="getList" resultType="NoticeVO" parameterType="Pager"> -->
-<!--          select * from notice -->
-<!--          <include refid="searcher"></include> -->
-<!--          order by boNum desc -->
-<!--          limit #{startRow}, #{perPage} -->
-<!--          limit 시작index번호(0부터시작), 갯수  -->
-<!--          </select> -->
-	
 	
 	<select id="getList2" parameterType="java.util.Map" resultMap="recentResult">
 

@@ -31,35 +31,33 @@ public class MypageService {
 		System.out.println("totalcount : "+totalCount);
 		pager.makeNum(totalCount); 
 		
-
-		
 		return mypageMapper.getList(obj);
 	}
-	
-	
 
 	public List<RecentVO> getList2(MemberVO memberVO, Pager pager) throws Exception {
 		HashMap<String, Object> obj = new HashMap<String, Object>();
-		
-		pager.makeRow();
-		long totalCount = mypageMapper.getTotalCount1(obj);
-		pager.makeNum(totalCount);
 		obj.put("memberVO", memberVO);
 		obj.put("pager", pager);
-	
+		
+		pager.makeRow();
+		long totalCount = mypageMapper.getTotalCount2(obj);
+		pager.makeNum(totalCount);
+		
 		return mypageMapper.getList2(obj);
 	}
 	
 	public List<RecentVO> getList3(MemberVO memberVO, Pager pager) throws Exception {
 		HashMap<String, Object> obj = new HashMap<String, Object>();
 		
-		pager.makeRow();
-		long totalCount = mypageMapper.getTotalCount1(obj);
-		pager.makeNum(totalCount);
-		
 		obj.put("memberVO", memberVO);
 		obj.put("pager", pager);
 	
+		
+		pager.makeRow();
+		long totalCount = mypageMapper.getTotalCount3(obj);
+		pager.makeNum(totalCount);
+		
+		
 		return mypageMapper.getList3(obj);
 	}
 	
