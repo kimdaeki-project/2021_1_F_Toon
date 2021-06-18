@@ -23,6 +23,8 @@ public class AdminService {
 	@Autowired
 	private AdminMapper adminMapper;
 	@Autowired
+	private AdminEpMapper adminEpMapper;
+	@Autowired
 	private FileManager fileManager;
 	@Autowired
 	private BoFileManager boFileManager;
@@ -117,20 +119,20 @@ public class AdminService {
 public List<EachEpVO> getManageEachEpList(Pager pager) throws Exception {
 		
 		pager.makeRow();
-		Long totalCount = adminMapper.getTotalCount(pager);
+		Long totalCount = adminEpMapper.getTotalCount(pager);
 		pager.makeNum(totalCount);
-		return adminMapper.getManageEachEpList(pager);
+		return adminEpMapper.getManageEachEpList(pager);
 	}
 	
 	public EachEpVO getManageEachEpSelect(EachEpVO eachEpVO) throws Exception {
 		
-		return adminMapper.getManageEachEpSelect(eachEpVO);
+		return adminEpMapper.getManageEachEpSelect(eachEpVO);
 	}
 
 	public int setManageEachEpInsert(EachEpVO eachEpVO, MultipartFile [] files) throws Exception {
 
 
-		int result = adminMapper.setManageEachEpInsert(eachEpVO);
+		int result = adminEpMapper.setManageEachEpInsert(eachEpVO);
 
 
 		for(MultipartFile mf : files) {
@@ -141,7 +143,7 @@ public List<EachEpVO> getManageEachEpList(Pager pager) throws Exception {
 			adminFileVO.setFileName(fileName);
 			adminFileVO.setOriName(mf.getOriginalFilename());
 
-			adminMapper.setFileInsert(adminFileVO);
+			adminEpMapper.setFileInsert(adminFileVO);
 		}
 
 		return result;
@@ -157,15 +159,15 @@ public List<EachEpVO> getManageEachEpList(Pager pager) throws Exception {
 			adminFileVO.setOriName(multipartFile.getOriginalFilename());
 			adminFileVO.setEpNum(eachEpVO.getEpNum());
 			//2. DB에 Insert
-			adminMapper.setFileInsert(adminFileVO);
+			adminEpMapper.setFileInsert(adminFileVO);
 		}
-		return adminMapper.setManageEachEpUpdate(eachEpVO);
+		return adminEpMapper.setManageEachEpUpdate(eachEpVO);
 	}
 
 
 	public int setManageEachEpDelete(EachEpVO eachEpVO) throws Exception {
 
-		return adminMapper.setManageEachEpDelete(eachEpVO);
+		return adminEpMapper.setManageEachEpDelete(eachEpVO);
 	}
 
 
@@ -173,9 +175,9 @@ public List<EachEpVO> getManageEachEpList(Pager pager) throws Exception {
 	public int setEachEpFileDelete(AdminFileVO adminFileVO) throws Exception {
 		//fileName을 print
 		//1. 조회
-		adminFileVO = adminMapper.getFileSelect(adminFileVO);
+		adminFileVO = adminEpMapper.getFileSelect(adminFileVO);
 		//2. table 삭제
-		int result = adminMapper.setToonFileDelete(adminFileVO);
+		int result = adminEpMapper.setEachEpFileDelete(adminFileVO);
 		//3. HDD 삭제
 		if(result > 0) {
 			boFileManager.delete("eachep", adminFileVO.getFileName(), session);

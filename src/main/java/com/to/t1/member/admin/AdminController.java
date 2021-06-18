@@ -181,7 +181,7 @@ public class AdminController {
 	public ModelAndView getmanageEachEpList(Pager pager)throws Exception{
 		ModelAndView mv = new ModelAndView();
 		
-		List<ToonVO> ar = adminService.getManageToonList(pager);
+		List<EachEpVO> ar = adminService.getManageEachEpList(pager);
 		mv.addObject("manageEachEpList", ar);
 		mv.setViewName("admin/manageEachEpList");
 		mv.addObject("admin", "admin");
@@ -205,7 +205,7 @@ public class AdminController {
 		System.out.println("썸머 toon 파일 업로드");
 		System.out.println(file.getOriginalFilename());
 		String fileName = adminService.setEachEpSummerFileUpload(file);
-		fileName = "../upload/toon/"+fileName;
+		fileName = "../upload/eachep/"+fileName;
 		mv.addObject("result", fileName);
 		mv.setViewName("common/ajaxResult");
 		
