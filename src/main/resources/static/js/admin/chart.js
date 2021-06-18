@@ -2,9 +2,9 @@
  * 
  */
  /**/
- alert("chartjs연결");
- 
- const labels = [
+/*데이터 항목 만들기*/
+
+const labels = [
   'January',
   'February',
   'March',
@@ -12,30 +12,23 @@
   'May',
   'June',
 ];
+
 const data = {
   labels: labels,
   datasets: [{
-    label: 'My First dataset',
+    label: '충전 매출액',
     backgroundColor: 'rgb(255, 99, 132)',
     borderColor: 'rgb(255, 99, 132)',
-    data: [0, 10, 5, 2, 20, 30, 45],
+    data: [0, 1000, 5000, 10000, 20000,15000, 40000],
   }]
 };
-
-
-const config = {
-  type: 'line',
-  data,
-  options: {}
-};
 const config = {
   type: 'line',
   data,
   options: {}
 };
 
-
-var myChart = new Chart(
-    document.getElementById('myChart'),
+ var myChart = new Chart(
+    document.getElementById('totalIncome'),
     config
- );
+  );

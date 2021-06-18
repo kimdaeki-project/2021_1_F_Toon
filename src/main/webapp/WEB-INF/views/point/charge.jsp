@@ -5,6 +5,7 @@
 <!DOCTYPE html>
 <html>
 <head>
+<!-- iamport 스크립트 -->
 <script type="text/javascript" src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
 <script type="text/javascript" src="https://service.iamport.kr/js/iamport.payment-1.1.5.js"></script>
 <!--CSS관련 부트 스트랩  -->
@@ -12,7 +13,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
     <!-- Bootstrap CSS 5.0 -->
-    <title>charge point Page</title>
+    <title>point charge Page</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x" crossorigin="anonymous">
 </head>
 <body>
@@ -105,9 +106,7 @@
 			</div>
     	</li>
     	</ul><!--END CHARGE CHECKBOX -->
-    	
     	<!-- 결제 버튼 -->
-    	
 	</div> <!-- 선택하기 끝-->
 	<!-- START TOTAL PRICE  -->
 	<div class="col card card-body" id="total-price">
