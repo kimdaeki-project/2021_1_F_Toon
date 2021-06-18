@@ -65,8 +65,7 @@
                             <li class="nav-item"><a class="nav-link" href="/toon/toonDay/toonDay">요일</a></li> 
                             <li class="nav-item"><a class="nav-link" href="/toon/genre/genre">장르</a></li>    
                          	<li class="nav-item"><a class="nav-link" href="/toon/ranking/ranking">랭킹</a></li>
-                           	<li class="nav-item"><a class="nav-link" href="/toon/end/endRe">완결</a></li>
-                           	<li class="nav-item"><a class="nav-link" href="/toon/toonSearch">검색</a></li>                           	
+                           	<li class="nav-item"><a class="nav-link" href="/toon/end/endRe">완결</a></li>                           	
                         </ul>
                     </div>
                 </div>

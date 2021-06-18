@@ -169,14 +169,36 @@ public class ToonController {
 	@GetMapping("toonDaySelect")
 	public ModelAndView toonDaySelect(ToonVO toonVO, MemberVO memberVO)throws Exception{
 		ModelAndView mv = new ModelAndView();
-	
+		
 		toonVO.setToonDay("mon");
-		List<ToonVO> mt = toonService.toonDaySelect(toonVO,memberVO);
-
+		List<ToonVO> mt = toonService.toonDayRecent(toonVO,memberVO);
+		
+		toonVO.setToonDay("tue");
+		List<ToonVO> tt = toonService.toonDayRecent(toonVO,memberVO);
+		
+		toonVO.setToonDay("wen");
+		List<ToonVO> wt = toonService.toonDayRecent(toonVO,memberVO);
+		
+		toonVO.setToonDay("the");
+		List<ToonVO> tt2 = toonService.toonDayRecent(toonVO,memberVO);
+		
+		toonVO.setToonDay("fri");
+		List<ToonVO> ft = toonService.toonDayRecent(toonVO,memberVO);
+		
+		toonVO.setToonDay("sat");
+		List<ToonVO> st = toonService.toonDayRecent(toonVO,memberVO);
+		
+		toonVO.setToonDay("sun");
+		List<ToonVO> st2 = toonService.toonDayRecent(toonVO,memberVO);
 		
 		
 		mv.addObject("mt", mt);
-		
+		mv.addObject("tt", tt);
+		mv.addObject("wt", wt);
+		mv.addObject("tt2", tt2);
+		mv.addObject("ft", ft);
+		mv.addObject("st", st);
+		mv.addObject("st2", st2);
 		mv.setViewName("toon/toonDay/toonDaySelect");
 		return mv ;
 	}
