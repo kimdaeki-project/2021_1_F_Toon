@@ -84,7 +84,7 @@ public class PointController {
 		return path;
 	}
 	
-	//소장권 사용
+	//소장권 사용 (1개 사용 )
 	@PostMapping("useTicket")
 	public void useTicket() throws Exception{
 		//1. 소장권 조회 
