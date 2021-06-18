@@ -21,9 +21,10 @@ public class MypageService {
 	public List<RecentVO> getList(MemberVO memberVO, Pager pager) throws Exception {
 		HashMap<String, Object> obj = new HashMap<String, Object>();
 		
-		pager.makeRow(); //makeRow가 뭐하는건지
+		pager.makeRow(); 
 		Long totalCount = mypageMapper.getTotalCount(obj);
-		pager.makeNum(totalCount); //makeNum이 뭐하는건지
+		System.out.println("totalcount : "+totalCount);
+		pager.makeNum(totalCount); 
 		
 		obj.put("memberVO", memberVO);
 		obj.put("pager", pager);
