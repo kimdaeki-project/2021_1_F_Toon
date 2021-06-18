@@ -15,7 +15,7 @@
 	SELECT *
 	FROM toon t JOIN
 	member m ON t.writerId = m.username
-	WHERE (m.ENABLEd=3=m.nickname  LIKE CONCAT('%', #{toonVO.search}, '%')) OR (t.toontitle LIKE CONCAT('%', #{toonVO.search}, '%'));
+	WHERE (m.ENABLEd=3=m.nickname  LIKE CONCAT('%', #{toonVO.search}, '%')) OR (t.toontitle LIKE CONCAT('%', #{toonVO.search}, '%'))
 
 	</select>
 	
@@ -30,7 +30,7 @@
 	member m ON t.writerId = m.username
 	WHERE t.state=0 AND t.toonDay=#{toonVO.toonDay}
 	GROUP BY t.toonNum
-	ORDER BY t.totalHit DESC;
+	ORDER BY t.totalHit DESC
 	</select>
 	
 	<select id="toonDayAver" parameterType="ToonVO" resultType="ToonVO">		
@@ -38,7 +38,7 @@
 	FROM toon t JOIN
 	member m ON t.writerId = m.username
 	WHERE t.state=0 AND t.toonDay=#{toonVO.toonDay}
-	ORDER BY ratingSum/ratingPerson DESC;			
+	ORDER BY ratingSum/ratingPerson DESC			
 	</select>
 	
 	<select id="toonDayRecent" parameterType="ToonVO" resultType="ToonVO">		
@@ -49,7 +49,7 @@
 	JOIN eachep e ON t.toonNum = e.toonNum
 	WHERE t.state=0 AND t.toonDay=#{toonVO.toonDay} 
 	GROUP BY t.toonNum 
-	ORDER BY max(e.epDate) DESC;		
+	ORDER BY max(e.epDate) DESC		
 	</select>
 	
 	<select id="genre" parameterType="ToonVO" resultType="ToonVO">
@@ -57,7 +57,7 @@
 	FROM toon t JOIN
 	member m ON t.writerId = m.username
 	WHERE genre=#{toonVO.genre} AND state=0
-	ORDER BY totalHit DESC;
+	ORDER BY totalHit DESC
 	</select>
 	
 	<select id="genreAver" parameterType="ToonVO" resultType="ToonVO">		
@@ -65,7 +65,7 @@
 	FROM toon t JOIN
 	member m ON t.writerId = m.username
 	WHERE genre=#{toonVO.genre} AND state=0
-	ORDER BY ratingSum/ratingPerson DESC;			
+	ORDER BY ratingSum/ratingPerson DESC			
 	</select>
 	
 	<select id="genreRecent" parameterType="ToonVO" resultType="ToonVO">		
@@ -76,7 +76,7 @@
 	JOIN eachep e ON t.toonNum = e.toonNum
 	WHERE genre=#{toonVO.genre} AND state=0
 	GROUP BY t.toonNum 
-	ORDER BY max(e.epDate) DESC;		
+	ORDER BY max(e.epDate) DESC		
 	</select>
 		
 	<select id="ranking" parameterType="ToonVO" resultType="ToonVO">
@@ -84,7 +84,7 @@
 	FROM toon t JOIN
 	member m ON t.writerId = m.username
 	WHERE state=0
-	ORDER BY totalHit DESC LIMIT 21;
+	ORDER BY totalHit DESC LIMIT 21
 	</select>
 	
 	<select id="rankingAver" parameterType="ToonVO" resultType="ToonVO">
@@ -92,7 +92,7 @@
 	FROM toon t JOIN
 	member m ON t.writerId = m.username
 	WHERE state=0
-	ORDER BY ratingSum/ratingPerson DESC LIMIT 21;	
+	ORDER BY ratingSum/ratingPerson DESC LIMIT 21	
 	</select>
 	
 	<select id="rankingRecent" parameterType="ToonVO" resultType="ToonVO">
@@ -103,7 +103,7 @@
 	JOIN eachep e ON t.toonNum = e.toonNum
 	WHERE state=0
 	GROUP BY t.toonNum 
-	ORDER BY max(e.epDate) DESC LIMIT 21;
+	ORDER BY max(e.epDate) DESC LIMIT 21
 	</select>
 	
 	<select id="endRe" parameterType="ToonVO" resultType="ToonVO">
@@ -111,7 +111,7 @@
 	FROM toon t JOIN
 	member m ON t.writerId = m.username
 	WHERE state=1
-	ORDER BY totalHit DESC;	
+	ORDER BY totalHit DESC
 	</select>	
 			
 	<select id="endReAver" parameterType="ToonVO" resultType="ToonVO">
@@ -119,7 +119,7 @@
 	FROM toon t JOIN
 	member m ON t.writerId = m.username
 	WHERE state=1
-	ORDER BY ratingSum/ratingPerson DESC;
+	ORDER BY ratingSum/ratingPerson DESC
 	</select>	
 	
 	<select id="endReRecent" parameterType="ToonVO" resultType="ToonVO">
@@ -130,7 +130,7 @@
 	JOIN eachep e ON t.toonNum = e.toonNum
 	WHERE state=1
 	GROUP BY t.toonNum 
-	ORDER BY max(e.epDate) DESC;
+	ORDER BY max(e.epDate) DESC
 	</select>	
 	
 	
