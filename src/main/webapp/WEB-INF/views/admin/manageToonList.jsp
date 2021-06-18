@@ -192,7 +192,7 @@
 								<td>${vo.toonNum}</td>
 								<td><a href="./manageToonSelect?toonNum=${vo.toonNum}">${vo.toonTitle}</a></td>
 								<td class="cell100 column5">${vo.genre}</td>
-								<td class="cell100 column5">${vo.writerID}</td>
+								<td class="cell100 column5">${vo.writerId}</td>
 								<td class="cell100 column5">${vo.toonSum}</td>
 								<td>${vo.totalHit}</td>
 								<td>${vo.toonDay}</td>
