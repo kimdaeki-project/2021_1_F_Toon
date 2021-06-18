@@ -15,6 +15,8 @@ import org.springframework.mail.SimpleMailMessage;
 import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextImpl;
+import org.springframework.security.core.userdetails.UserDetails;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -39,6 +41,9 @@ public class MemberController {
 	@Autowired
     private JavaMailSender javaMailSender;
 
+	@Autowired
+    private PasswordEncoder passwordEncoder;
+	
 	@GetMapping("login")
 	public String getLogin()throws Exception{
 		System.out.println("로그인");
@@ -124,9 +129,60 @@ public class MemberController {
 		model.addAttribute("memberVO", memberVO);
 		
 		System.out.println("마이페이지 사진");
+		
+		System.out.println(memberVO);
 
 		return  "member/myPage";
 	}
+	
+	@PostMapping("changePassword")
+	@ResponseBody
+	public String changePassword(MemberVO memberVO, Authentication auth2, String newpassword, String newpassword2, Model model)throws Exception{
+		UserDetails userDetails = (UserDetails) auth2.getPrincipal(); //세션에 있는 유스디테일을 갖고옴
+		memberVO.setUsername(userDetails.getUsername());
+		
+		String message = "";
+		
+		boolean result = passwordEncoder.matches(memberVO.getPassword(), userDetails.getPassword()); //matches : 왼쪽값 오른쪽 비번 비교하느거
+		if(result) {
+			if(newpassword.equals(newpassword2)) {
+				memberVO.setPassword(newpassword); 
+				int result2 = memberService.pwUpdate(memberVO);
+				if(result2>0) {
+					message="비밀번호가 변경되었습니다.";
+				}
+			}else {
+				message="비밀번호가 일치하지않습니다.";
+			}
+		}else {
+			message="현재 비밀번호가 일치하지않습니다.";
+		}
+		
+	
+		System.out.println(auth2.getPrincipal());
+		
+		memberVO = memberService.myPage((MemberVO) auth2.getPrincipal());
+		model.addAttribute("memberVO", memberVO);
+		
+		System.out.println(message);	
+
+		return message;
+	}
+	
+	
+	@GetMapping("changePassword") 
+	public String changePassword(MemberVO memberVO, Authentication auth2, Model model)throws Exception{
+	
+		System.out.println(auth2.getPrincipal());
+		
+		memberVO = memberService.myPage((MemberVO) auth2.getPrincipal());
+		model.addAttribute("memberVO", memberVO);
+		
+		System.out.println("비번변경");	
+
+		return  "member/changePassword";
+	}
+
 
 
 	@PostMapping("getJoinFile") 
