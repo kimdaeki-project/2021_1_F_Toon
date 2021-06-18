@@ -91,7 +91,7 @@
 		</update>
 
 		<update id="pwUpdate" parameterType="MemberVO">
-			update member set password=#{password} where username=#{username}
+			update member set PASSWORD=#{password} where username=#{username}
 		</update>
 		
 		<delete id="memberDelete" parameterType="MemberVO">
@@ -106,7 +106,7 @@
 		<id property="username" column="username" />
 		<result property="password" column="password"/>
 		<result property="name" column="name"/>
-		<result property="nickname" column="nickname"/>
+		<result property="nickname" column="name"/>
 		<result property="phone" column="phone"/>
 		<result property="email" column="email"/>
 		<result property="point" column="point"/>

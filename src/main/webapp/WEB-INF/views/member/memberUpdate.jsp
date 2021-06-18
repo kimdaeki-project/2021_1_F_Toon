@@ -59,7 +59,7 @@
                 <a href="pages/ui-components/buttons.html">최근 본 웹툰</a>
               </li>
               <li>
-                <a href="../mypage/favoriteToon">관심 웹툰</a>
+                <a href="pages/ui-components/tables.html">관심 웹툰</a>
               </li>
               <li>
                 <a href="pages/ui-components/typography.html">소장 웹툰</a>
