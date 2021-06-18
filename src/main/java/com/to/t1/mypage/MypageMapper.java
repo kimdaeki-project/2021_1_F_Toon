@@ -18,6 +18,6 @@ public interface MypageMapper {
 	
 	public List<RecentVO> getList3(Map map)throws Exception;
 	
-	public long getTotalCount(Map map) throws Exception;
+	public long getTotalCount1(Map map) throws Exception;
 		
 }

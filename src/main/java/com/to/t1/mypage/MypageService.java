@@ -21,17 +21,17 @@ public class MypageService {
 	public List<RecentVO> getList(MemberVO memberVO, Pager pager) throws Exception {
 		HashMap<String, Object> obj = new HashMap<String, Object>();
 		
-
-		
 		System.out.println();
+		obj.put("memberVO", memberVO);
+		obj.put("pager", pager);
 		
+		System.out.println(" 유저네임"+memberVO.getUsername());
 		pager.makeRow(); 
-		Long totalCount = mypageMapper.getTotalCount(obj);
+		Long totalCount = mypageMapper.getTotalCount1(obj);
 		System.out.println("totalcount : "+totalCount);
 		pager.makeNum(totalCount); 
 		
-		obj.put("memberVO", memberVO);
-		obj.put("pager", pager);
+
 		
 		return mypageMapper.getList(obj);
 	}
@@ -42,7 +42,7 @@ public class MypageService {
 		HashMap<String, Object> obj = new HashMap<String, Object>();
 		
 		pager.makeRow();
-		long totalCount = mypageMapper.getTotalCount(obj);
+		long totalCount = mypageMapper.getTotalCount1(obj);
 		pager.makeNum(totalCount);
 		obj.put("memberVO", memberVO);
 		obj.put("pager", pager);
@@ -54,7 +54,7 @@ public class MypageService {
 		HashMap<String, Object> obj = new HashMap<String, Object>();
 		
 		pager.makeRow();
-		long totalCount = mypageMapper.getTotalCount(obj);
+		long totalCount = mypageMapper.getTotalCount1(obj);
 		pager.makeNum(totalCount);
 		
 		obj.put("memberVO", memberVO);

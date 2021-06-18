@@ -129,6 +129,8 @@ public class MemberController {
 		model.addAttribute("memberVO", memberVO);
 		
 		System.out.println("마이페이지 사진");
+		
+		System.out.println(memberVO);
 
 		return  "member/myPage";
 	}
@@ -166,9 +168,6 @@ public class MemberController {
 
 		return message;
 	}
-	
-	
-	
 	
 	
 	@GetMapping("changePassword") 

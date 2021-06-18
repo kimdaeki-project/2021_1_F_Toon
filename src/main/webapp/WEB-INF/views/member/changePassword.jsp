@@ -146,8 +146,6 @@
     <script type="text/javascript" src="../js/mypage.js"></script>
  
 
-    
-
 	<script type="text/javascript">
 	function change(){
 		var password = $("#password").val();
@@ -172,9 +170,6 @@
 	            
 	          },
 	          
-	         
-
-	         
 
 	      });
 	      
