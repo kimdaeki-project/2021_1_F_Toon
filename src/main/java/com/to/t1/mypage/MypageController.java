@@ -42,11 +42,10 @@ public class MypageController {
 		
 		System.out.println("리센트툰");
 		
-		
 		return "mypage/recentToon";
 	}
-
 	
+
 	@GetMapping("favoriteToon") 
 	public String getList2(Model model, MemberVO memberVO, Pager pager)throws Exception{
 		

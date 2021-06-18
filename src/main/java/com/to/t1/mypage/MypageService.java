@@ -21,6 +21,10 @@ public class MypageService {
 	public List<RecentVO> getList(MemberVO memberVO, Pager pager) throws Exception {
 		HashMap<String, Object> obj = new HashMap<String, Object>();
 		
+
+		
+		System.out.println();
+		
 		pager.makeRow(); 
 		Long totalCount = mypageMapper.getTotalCount(obj);
 		System.out.println("totalcount : "+totalCount);
@@ -31,6 +35,8 @@ public class MypageService {
 		
 		return mypageMapper.getList(obj);
 	}
+	
+	
 
 	public List<RecentVO> getList2(MemberVO memberVO, Pager pager) throws Exception {
 		HashMap<String, Object> obj = new HashMap<String, Object>();

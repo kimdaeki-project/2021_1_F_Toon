@@ -4,7 +4,7 @@
 <mapper namespace="com.to.t1.mypage.MypageMapper">
 	
 	
-	<select id="getTotalCount" parameterType="RecentVO" resultType="java.lang.Long">
+	<select id="getTotalCount" parameterType="java.util.Map" resultType="java.lang.Long">
 		SELECT count(*)
 		FROM recenttoon, eachep, toon, member
 		WHERE toon.writerId = member.username AND eachep.toonNum = toon.toonNum AND recenttoon.epNum = eachep.epNum

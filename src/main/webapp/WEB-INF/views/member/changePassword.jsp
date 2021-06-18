@@ -10,7 +10,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
   
     <c:import url="../fragments/bootstrap.jsp"></c:import>
-    <title>MYPAGE</title>
+    <title>change password</title>
    
     <link rel="stylesheet" href="/css/header.css">
      <!-- plugins:css -->
@@ -104,20 +104,20 @@
       </div>
       <!-- partial -->
       <div class="page-content-wrapper">
-           <h1>회원정보</h1>
+           <h1>비밀번호 변경</h1>
     <sec:authorize access="isAuthenticated()">       	
 	
-	<h3>아이디: <sec:authentication property="principal.username"/></h3>
-	<h3>이름: ${memberVO.name}</h3>
-	<h3>닉네임: ${memberVO.nickname}</h3>
-	<h3>핸드폰: ${memberVO.phone}</h3>
-	<h3>이메일: ${memberVO.email}</h3>
-	<h3>내 포인트: ${memberVO.point}</h3>
+	<input id=password name=password>
+	<input id=newpassword name=newpassword>
+	<input id=newpassword2 name=newpassword2>
+	
 	</sec:authorize>
 	
 
 	
 	<sec:authorize access="isAuthenticated()">
+		<a href="" class="btn btn-info" role="button" onclick="change()">변경?</a>
+	
 		<a href="./memberUpdate" class="btn btn-info" 
 		role="button" onclick="if(!confirm('내 정보를 수정 하시겠습니까?')){return false;}">내 정보 수정</a>
 		
@@ -144,7 +144,44 @@
     <script src="../assets/js/dashboard.js"></script>
     <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
     <script type="text/javascript" src="../js/mypage.js"></script>
-	
+ 
+
+    
+
+	<script type="text/javascript">
+	function change(){
+		var password = $("#password").val();
+		var newpassword = $("#newpassword").val();
+		var newpassword2 = $("#newpassword2").val();
+
+		$.ajax({
+	         type : 'POST',
+	         url  : 'changePassword',
+	         data : {
+	            "password" : password,
+	            "newpassword" : newpassword,
+	            "newpassword2" : newpassword2,
+	            
+	         },
+
+	         dataType :'text',
+	         
+	         success : function(data){
+	             
+	            alert(data);
+	            
+	          },
+	          
+	         
+
+	         
+
+	      });
+	      
+	   
+	   }
+
+	</script>
 	
 </body>
 </html>
