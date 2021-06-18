@@ -62,14 +62,14 @@
 		<result property="epNum" column="epNum"/>
 		<result property="viewDate" column="viewDate"/>
 		
-		<association property="usePointVO" javaType="UsePointVO" resultMap="usePointResult"></association>
+		<association property="pointVO" javaType="PointVO" resultMap="usePointResult"></association>
 		<association property="favoritoonVO" javaType="FavoritoonVO" resultMap="favoritoonResult"></association>
 		<association property="toonVO" javaType="ToonVO" resultMap="toonResult"></association>
 		<association property="eachEpVO" javaType="EachEpVO" resultMap="eachEpResult"></association>
 		<association property="memberVO" javaType="MemberVO" resultMap="memberResult"></association> 
 	</resultMap>
 	
-	<resultMap type="usePointVO" id="usePointResult">
+	<resultMap type="pointVO" id="usePointResult">
 			<id property="toonNum" column="toonNum"/>
 			<id property="username" column="username"/>
 			<id property="epNum" column="epNum"/>

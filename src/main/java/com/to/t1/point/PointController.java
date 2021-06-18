@@ -63,7 +63,7 @@ public class PointController {
 	//파라미터 값 : 1. user정보 , 2.(사용 할)EP정보
 	//리턴 : 진행상황,(int로 반환) 
 	@PostMapping("getTicket")
-	public String getTicket(MemberVO memberVO,PointVO usePointVO, Model model)throws Exception{
+	public String getTicket(MemberVO memberVO,PointVO  usePointVO, Model model)throws Exception{
 		String path = "/";
 		int result =pointservice.UsePoint(memberVO, usePointVO);
 		
