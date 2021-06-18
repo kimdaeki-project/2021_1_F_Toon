@@ -66,6 +66,12 @@
 				  	  <label class="form-check-label" for="case4">30개</label>
 					</div>
 		    	</li>
+		    	<li class="list-group-item">
+		    		<div class="form-check card-body">
+					  <input class="form-check-input" id="case4" type="radio" name="point" value="3000">
+				  	  <label class="form-check-label" for="case4">50개</label>
+					</div>
+		    	</li>
 		    </ul><!--END CHARGE CHECKBOX -->
     		<!-- 결제 버튼 -->
     		</div>

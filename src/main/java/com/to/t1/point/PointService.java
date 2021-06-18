@@ -29,20 +29,19 @@ public class PointService {
 		
 		chargePointVO.setUsername(username);
 		chargePointVO.setPoint(point);
+		chargePointVO.setContents("충전 ");
 		
 		result = pointMapper.setChargePoint(chargePointVO);
-		result = pointMapper.setChargePointList(chargePointVO);
+		result = pointMapper.setPointList(chargePointVO);
 		
 		return result;
 	}
 	//포인트 사용()
 	public int UsePoint(MemberVO memberVO,PointVO usePointVO) throws Exception{
-		
-		int result = 0;
+		int result= 0;
 		
 		return result;
 	}
-	
 	
 	//회원 충전내역 조회
 	public List<PointVO> SelectMyChargeList (MemberVO memberVO)throws Exception{
