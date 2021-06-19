@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+    
+    <mapper namespace="com.to.t1.point.PointMapper">
+	
+	<!-- 포인트 충전내역 조회하기(키는 username, List)-->
+	<select id="getMyChargeList" parameterType="MemberVO" resultType="ChargePointVO">
+		SELECT * FROM USER03.chargePoint WHERE  username = #{username}
+	</select>
+	<!-- 포인트 충전하기 (멤버 업데이트) -->
+	<update id="setChargePoint" parameterType="ChargePointVO">
+		UPDATE member SET point =(member.point + #{point}) WHERE username =#{username}
+	</update>
+	<!-- 포인트 사용 내역 작성하기 -->
+	<insert id="setChargePointList" parameterType="ChargePointVO">
+		INSERT INTO chargePoint(username, point, cDate) VALUES (#{username}, #{point}, NOW())
+	</insert>
+	
+	<!-- 포인트 사용하기(1화 결제) 200p 차감하기 -->
+	<update id="setUsePoint" parameterType="UsePointVO">
+		UPDATE member SET point = (member.point - #{point}) WHERE  username =#{username}
+	</update>
+	<!-- 포인트 사용내역 작성하기 -->
+	<insert id="setUsePointList" parameterType="UsePointVO">
+		INSERT INTO usePoint (`username`, `toonNum`, `epNum`, `epPrice`, `useDate`) VALUES ('member02', '2', '4', '200', NOW())
+	</insert>
+	
+	<resultMap type="UsePointVO" id="selectUsePointList">
+		<id property="username" column="username"/>
+		<id property="epNum" column="username"/>
+		<id property="epPrice" column="epPrice"/>
+		<result property="useDate" column="useDate"/>
+		
+		<association property="ToonVO" javaType="ToonVO" resultMap="toonJoinpointMap"></association>
+		<association property="EachEPVO" javaType="EachEPVO" resultMap="eachEpJoinpointMap"></association>
+		<association property="MemberVO" javaType="MemberVO" resultMap="memberJoinpointMap"></association>
+	</resultMap>
+	
+	<resultMap type="ToonVO" id="toonJoinpointMap">
+		<result property="toonNum" column="toonNum"/>
+		<result property="toonTitle" column="toonTitle"/>
+	</resultMap>
+	<resultMap type="EachEPVO" id="eachEpJoinpointMap">
+		<result property="epTitle" column="epTitle"/>
+		<result property="eachEpNum" column="eachEpNum"/>
+		<result property="epSumImg" column="epSumImg"/>
+	</resultMap>
+	<resultMap type="MemberVO" id="memberJoinpointMap">
+		<result property="nickname" column="nickname"/>
+	</resultMap>
+	<!-- 포인트 사용 내역 조회하기(리스트) -->
+	<select id="getMyUseList" parameterType="MemberVO" resultMap="selectUsePointList">
+		SELECT usePoint.* ,toon.toonTitle, 
+		eachep.epTitle, eachep.eachEpNum ,eachep.epSumImg,member.nickname  
+		FROM usePoint, eachep ,toon, member
+		WHERE usepoint.epNum = eachep.epNum AND eachep.toonNum = toon .toonNum 
+		AND  toon.WriterID = member.username AND usepoint.username = #{username}
+		ORDER BY usepoint.useDate DESC
+	</select>
+	
+   </mapper>
