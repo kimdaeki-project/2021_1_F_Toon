@@ -15,5 +15,5 @@ public class FavoritoonVO {
 	private String username;
 	private long likeClick;
 	private Timestamp likeDate;
-	
+	//확인
 }
