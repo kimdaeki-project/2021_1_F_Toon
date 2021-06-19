@@ -23,7 +23,7 @@ public class PointController {
 	
 	@Autowired
 	public PointService pointservice;
-	
+	//dd
 	//검증 관련
 //	@Autowired
 //	private IamportClient api;
