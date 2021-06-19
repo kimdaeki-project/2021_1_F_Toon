@@ -7,5 +7,5 @@ public class TicketBoxVO {
 	
 	private String username;
 	private long toonNum;
-	private int stock; 
+	private int stock;
 }

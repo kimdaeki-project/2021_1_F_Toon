@@ -37,11 +37,7 @@
 		UPDATE member SET point = (member.point - #{point}) 
 		WHERE  username =#{username}
 	</update>
-	<!-- 소장권 TicketBOX 넣기 혹은 꺼내기-->
-	
-	<!-- useTicket 내역 작성하기 -->
-	
-	<!-- 소장권 돌려주기 (소장권 -> point 전환하기)  -->
+
 	
 	
    </mapper>
