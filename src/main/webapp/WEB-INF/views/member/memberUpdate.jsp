@@ -26,7 +26,7 @@
 <body>
 	<c:import url="../fragments/header.jsp"></c:import>	
 
-    <!-- partial -->
+     <!-- partial -->
     <div class="page-body">
       <!-- partial:partials/_sidebar.html -->
       <div class="sidebar">
@@ -36,17 +36,28 @@
 			<c:if test="${memberVO.joinFileVO.fileName ne null}"><img width=180px height=200px alt="" src="../upload/member/${memberVO.joinFileVO.fileName}"></c:if>
           </div>
           <div class="info-wrapper">
-            <p class="user-name"><sec:authentication property="principal.name"/>님</p>
+            <p class="user-name">${memberVO.name}님</p>
             <h6 class="display-income">${memberVO.point}point</h6>
           </div>
         </div>
         <ul class="navigation-menu">
           <li class="nav-category-divider">MAIN</li>
-          <li>
-            <a href="/member/myPage">
-              <h4><span class="link-title">내정보 수정</span></h4>
-              <i class="mdi mdi-gauge link-icon"></i>
+          
+           <li>
+            <a href="#sample-pages" data-toggle="collapse" aria-expanded="false">
+              <h4><span class="link-title">내 정보</span></h4>
+              <i class="mdi mdi-flask link-icon"></i>
             </a>
+            <ul class="collapse navigation-submenu" id="sample-pages">
+              <li>
+                <a href="/member/myPage" >내 정보 조회</a>
+              </li>
+              
+               <li>
+                <a href="/member/changePassword" >비밀번호 변경</a>
+              </li>
+              
+            </ul>
           </li>
          
           <li>
@@ -56,32 +67,28 @@
             </a>
             <ul class="collapse navigation-submenu" id="ui-elements">
               <li>
-                <a href="pages/ui-components/buttons.html">최근 본 웹툰</a>
+                <a href="${pageContext.request.contextPath}../mypage/recentToon/?username=${memberVO.username}">최근 본 웹툰</a>
+                
               </li>
               <li>
-                <a href="../mypage/favoriteToon">관심 웹툰</a>
+                <a href="${pageContext.request.contextPath}../mypage/favoriteToon/?username=${memberVO.username}">관심 웹툰</a>
               </li>
               <li>
-                <a href="pages/ui-components/typography.html">소장 웹툰</a>
+                <a href="${pageContext.request.contextPath}../mypage/useToon/?username=${memberVO.username}">소장 웹툰</a>
               </li>
             </ul>
           </li>
+          
+            <li>
+            	<a href="">
+             	<h4> <span class="link-title">내 댓글</span></h4>
+            	  <i class="mdi mdi-clipboard-outline link-icon"></i>
+            	</a>
+          	 </li>
+          
+          
           <li>
-            <a href="#sample-pages" data-toggle="collapse" aria-expanded="false">
-              <h4><span class="link-title">댓글</span></h4>
-              <i class="mdi mdi-flask link-icon"></i>
-            </a>
-            <ul class="collapse navigation-submenu" id="sample-pages">
-              <li>
-                <a href="pages/sample-pages/login_1.html" target="_blank">내 댓글 조회</a>
-              </li>
-              <li>
-                <a href="pages/sample-pages/error_2.html" target="_blank">신고한 댓글 조회</a>
-              </li>
-            </ul>
-          </li>
-          <li>
-            <a href="pages/forms/form-elements.html">
+            <a href="${pageContext.request.contextPath}/point/charge">
              <h4> <span class="link-title">충전하기</span></h4>
               <i class="mdi mdi-clipboard-outline link-icon"></i>
             </a>

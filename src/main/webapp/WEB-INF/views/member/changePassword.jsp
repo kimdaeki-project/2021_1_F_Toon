@@ -26,7 +26,7 @@
 <body>
 	<c:import url="../fragments/header.jsp"></c:import>	
 
-    <!-- partial -->
+     <!-- partial -->
     <div class="page-body">
       <!-- partial:partials/_sidebar.html -->
       <div class="sidebar">
@@ -42,18 +42,22 @@
         </div>
         <ul class="navigation-menu">
           <li class="nav-category-divider">MAIN</li>
-          <li>
-            <a href="/member/myPage">
-              <h4><span class="link-title">내 정보</span></h4>
-              <i class="mdi mdi-gauge link-icon"></i>
-            </a>
-          </li>
           
-          <li>
-            <a href="/member/changePassword">
-              <h4><span class="link-title">비밀번호 변경</span></h4>
-              <i class="mdi mdi-gauge link-icon"></i>
+           <li>
+            <a href="#sample-pages" data-toggle="collapse" aria-expanded="false">
+              <h4><span class="link-title">내 정보</span></h4>
+              <i class="mdi mdi-flask link-icon"></i>
             </a>
+            <ul class="collapse navigation-submenu" id="sample-pages">
+              <li>
+                <a href="/member/myPage">내 정보 조회</a>
+              </li>
+              
+               <li>
+                <a href="/member/changePassword">비밀번호 변경</a>
+              </li>
+              
+            </ul>
           </li>
          
           <li>
@@ -74,18 +78,15 @@
               </li>
             </ul>
           </li>
-          <li>
-            <a href="#sample-pages" data-toggle="collapse" aria-expanded="false">
-              <h4><span class="link-title">댓글</span></h4>
-              <i class="mdi mdi-flask link-icon"></i>
-            </a>
-            <ul class="collapse navigation-submenu" id="sample-pages">
-              <li>
-                <a href="pages/sample-pages/login_1.html" target="_blank">내 댓글 조회</a>
-              </li>
-              
-            </ul>
-          </li>
+          
+            <li>
+            	<a href="">
+             	<h4> <span class="link-title">내 댓글</span></h4>
+            	  <i class="mdi mdi-clipboard-outline link-icon"></i>
+            	</a>
+          	 </li>
+          
+          
           <li>
             <a href="${pageContext.request.contextPath}/point/charge">
              <h4> <span class="link-title">충전하기</span></h4>
@@ -105,18 +106,15 @@
       <!-- partial -->
       <div class="page-content-wrapper">
            <h1>비밀번호 변경</h1>
-    <sec:authorize access="isAuthenticated()">       	
-	
+        	
+
 	<input id=password name=password>
 	<input id=newpassword name=newpassword>
 	<input id=newpassword2 name=newpassword2>
-	
-	</sec:authorize>
-	
 
 	
 	<sec:authorize access="isAuthenticated()">
-		<a href="" class="btn btn-info" role="button" onclick="change()">변경?</a>
+		<a href="./changePassword" class="btn btn-info" role="button" onclick="change()">변경?</a>
 	
 		<a href="./memberUpdate" class="btn btn-info" 
 		role="button" onclick="if(!confirm('내 정보를 수정 하시겠습니까?')){return false;}">내 정보 수정</a>
@@ -152,39 +150,31 @@
 		var password = $("#password").val();
 		var newpassword = $("#newpassword").val();
 		var newpassword2 = $("#newpassword2").val();
-		var newPasswordTrim= $.trim(newPassword);
+		var newpasswordTrim= $.trim(newpassword);
 		
 		if(confirm("정말 변경하시겠습니까?") == true){
-
-		      if(newPasswordTrim.length>17||newPasswordTrim.length<7||newPasswordTrim==null){
-		         alert( "패스워드는 8글자 이상 16글자 이하입니다.");
-		            
-		      }else{
-		    	  
-		    		$.ajax({
+	
+			if(newpasswordTrim.length>17||newpasswordTrim.length<7||newpasswordTrim==null){
+		     alert( "패스워드는 8글자 이상 16글자 이하입니다.");
+		     
+			}else
+				
+				$.ajax({
 		   	         type : 'POST',
 		   	         url  : 'changePassword',
 		   	         data : {
 		   	            "password" : password,
 		   	            "newpassword" : newpassword,
 		   	            "newpassword2" : newpassword2,
-		   
-	            
-	         },
-
-	         dataType :'text',
-	         
-	         success : function(data){
-	             
-	            alert(data);
-	           
-	          },
-	          
-
-	      });
-	      
-	   
-	   }
+	         		 },
+	         		 
+	         		 dataType :'text',
+	         		  
+				});
+			
+			
+		}
+	};
 
 	</script>
 	
