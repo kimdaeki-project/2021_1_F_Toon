@@ -56,6 +56,4 @@ public class UseTicketVO {
 		this.eachEpVO = eachEpVO;
 	}
 	
-	
-	
 }
