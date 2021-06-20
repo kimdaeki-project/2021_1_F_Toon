@@ -160,8 +160,7 @@
 				</c:if>
 
 				<c:forEach begin="${pager.startNum}" end="${pager.lastNum}" var="i">
-					<li class="page-item"><a class="page-link p" href="#" 
-					title="${i}">${i}</a></li>
+					<li class="page-item"><a class="page-link p" href="/mypage/favoriteToon/?username=${memberVO.username}&curPage=${i}" title="${i}">${i}</a></li>
 				</c:forEach>
 
 				<c:if test="${pager.next}">
@@ -170,23 +169,6 @@
 				</c:if>
 			</ul>
   			
-  			<div class="input-group mt-3 mb-3">
-				<form id="frm" action="./#" class="form-inline">
-					<input type="hidden" name="curPage" value="1" id="curPage">
-					<div class="input-group-prepend">
-						<select class="form-control" name="kind" id="kind">
-							<option class="sel">공지종류</option>
-							<option class="sel">제목</option>
-						</select>
-					</div>
-					&nbsp;&nbsp; <input type="text" class="form-control" name="search" id="search" value="${pager.search}" placeholder="입력하세요">
-					&nbsp;&nbsp;
-					<div class="input-group-append">
-						<button class="btn btn-secondary" type="submit">검색</button>
-					</div>
-				</form>
-			</div>
-	
 
 	</p>
         <div class="page-content-wrapper-inner">

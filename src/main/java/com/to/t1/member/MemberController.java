@@ -187,7 +187,6 @@ public class MemberController {
 	}
 
 
-
 	@PostMapping("getJoinFile") 
 	public void getJoinFile(MemberVO memberVO,Model model)throws Exception{
 		model.addAttribute("pic", "pic");

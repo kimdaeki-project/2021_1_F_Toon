@@ -140,7 +140,7 @@
 		</table>
 	</div>
            
-  	
+
 			<ul class="pagination">
 
 				<c:if test="${pager.pre}">
@@ -148,31 +148,13 @@
 				</c:if>
 
 				<c:forEach begin="${pager.startNum}" end="${pager.lastNum}" var="i">
-					<li class="page-item"><a class="page-link p" href="#" title="${i}">${i}</a></li>
+					<li class="page-item"><a class="page-link p" href="/mypage/recentToon/?username=${memberVO.username}&curPage=${i}" title="${i}">${i}</a></li>
 				</c:forEach>
 
 				<c:if test="${pager.next}">
 					<li class="page-item"><a class="page-link p" href="#" title="${pager.lastNum+1}">다음</a></li>
 				</c:if>
 			</ul>
-  			
-  			<div class="input-group mt-3 mb-3">
-				<form id="frm" action="./#" class="form-inline">
-					<input type="hidden" name="curPage" value="1" id="curPage">
-					<div class="input-group-prepend">
-						<select class="form-control" name="kind" id="kind">
-							<option class="sel">제목</option>
-							<option class="sel">작가</option>
-							<option class="sel">장르</option>
-						</select>
-					</div>
-					&nbsp;&nbsp; <input type="text" class="form-control" name="search" id="search" value="${pager.search}" placeholder="입력하세요">
-					&nbsp;&nbsp;
-					<div class="input-group-append">
-						<button class="btn btn-secondary" type="submit">검색</button>
-					</div>
-				</form>
-			</div>
 	
 
 	</p>
@@ -196,25 +178,6 @@
     <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
     <script type="text/javascript" src="../js/mypage.js"></script>
     
-    	<script type="text/javascript">
-	let kind= '${pager.kind}';//Title, Writer, Contents
-	$(".sel").each(function() {
-		let t = $(this).text();//Title, Writer, Contents
-		if(t == kind){
-			$(this).prop("selected", true);
-		}
-	});
-	
-	$(".p").click(function () {
-		let curPage = $(this).attr("title");
-		$("#curPage").val(curPage);
-		let search= '${pager.search}';
-		$("#frm").submit();
-
-	});
-	
-	</script>
-	
 	
 </body>
 </html>
