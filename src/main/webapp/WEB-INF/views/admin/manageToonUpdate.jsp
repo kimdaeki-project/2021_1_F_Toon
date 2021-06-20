@@ -54,10 +54,10 @@
 					style="border-radius: 15px 15px 15px 15px; border: 3px solid #b4b4b4; padding: 0.5em 0.6em; color: black; background-color: #dcdcdc;">공지사항/수정</span>
 			</p>
 		</h2><br>
-  <form id="frm" action="./update" method="post" enctype="multipart/form-data">
-  	<input type="hidden" name="boNum" value="${param.boNum}">
+  <form id="frm" action="./manageToonUpdate" method="post" enctype="multipart/form-data">
+  	<input type="hidden" name="toonNum" value="${param.toonNum}">
     <div class="form-group">
-      <label for="username">&nbsp;작성자</label>
+      <label for="writerID">&nbsp;작성자</label>
       <input type="text" readonly="readonly" value="${vo.username}" class="form-control" id="username" name="username">
     </div>
     <div class="form-group">
