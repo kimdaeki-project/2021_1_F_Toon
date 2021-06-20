@@ -116,8 +116,8 @@
 	<sec:authorize access="isAuthenticated()">
 		<a href="./changePassword" class="btn btn-info" role="button" onclick="change()">변경?</a>
 	
-		<a href="./memberUpdate" class="btn btn-info" 
-		role="button" onclick="if(!confirm('내 정보를 수정 하시겠습니까?')){return false;}">내 정보 수정</a>
+<!-- 		<a href="./memberUpdate" class="btn btn-info"  -->
+<!-- 		role="button" onclick="if(!confirm('내 정보를 수정 하시겠습니까?')){return false;}">내 정보 수정</a> -->
 		
 		<a href="./memberDelete?username=<sec:authentication property="principal.username"/>" class="btn btn-danger" 
 		id="sunghyun" role="button" onclick="if(!confirm('정말 탈퇴 하시겠습니까?')){return false;}">회원 탈퇴</a>
@@ -169,7 +169,7 @@
 	         		 },
 	         		 
 	         		 dataType :'text',
-	         		  
+	         		 
 				});
 			
 			

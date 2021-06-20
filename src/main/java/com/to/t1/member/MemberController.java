@@ -138,12 +138,14 @@ public class MemberController {
 	@PostMapping("changePassword")
 	@ResponseBody
 	public String changePassword(MemberVO memberVO, Authentication auth2, String newpassword, String newpassword2, Model model)throws Exception{
-		UserDetails userDetails = (UserDetails) auth2.getPrincipal(); //세션에 있는 유스디테일을 갖고옴
-		memberVO.setUsername(userDetails.getUsername());
 		
 		String message = "";
 		
+		UserDetails userDetails = (UserDetails)auth2.getPrincipal(); //세션에 있는 유스디테일을 갖고옴
+		memberVO.setUsername(userDetails.getUsername());
+		
 		boolean result = passwordEncoder.matches(memberVO.getPassword(), userDetails.getPassword()); //matches : 왼쪽값 오른쪽 비번 비교하느거
+		
 		if(result) {
 			if(newpassword.equals(newpassword2)) {
 				memberVO.setPassword(newpassword); 
@@ -152,7 +154,7 @@ public class MemberController {
 					message="비밀번호가 변경되었습니다.";
 				}
 			}else {
-				message="비밀번호가 일치하지않습니다.";
+				message="변경된 비밀번호가 일치하지않습니다.";
 			}
 		}else {
 			message="현재 비밀번호가 일치하지않습니다.";
@@ -163,7 +165,7 @@ public class MemberController {
 		
 		memberVO = memberService.myPage((MemberVO) auth2.getPrincipal());
 		model.addAttribute("memberVO", memberVO);
-		model.addAttribute("message", message);
+		model.addAttribute("msg", message);
 		
 		System.out.println(message);
 
