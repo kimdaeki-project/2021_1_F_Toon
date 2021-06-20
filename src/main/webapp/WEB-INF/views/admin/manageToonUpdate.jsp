@@ -56,25 +56,42 @@
 		</h2><br>
   <form id="frm" action="./manageToonUpdate" method="post" enctype="multipart/form-data">
   	<input type="hidden" name="toonNum" value="${param.toonNum}">
-    <div class="form-group">
-      <label for="writerID">&nbsp;작성자</label>
-      <input type="text" readonly="readonly" value="${vo.username}" class="form-control" id="username" name="username">
+  	
+  	<div class="form-group">
+      <label for="toonTitle">&nbsp;제목</label>
+      <input type="text" class="form-control" id="toonTitle" name="toonTitle" value="${vo.toonTitle}">
     </div>
+  	
+  	<div class="form-group">
+      <label for="genre">&nbsp;장르</label>
+      <input type="text" class="form-control" id="genre" name="genre" value="${vo.toonTitle}">
+    </div>
+  	
     <div class="form-group">
-      <label for="noticeKinds">&nbsp;공지종류</label>
-      <input type="text" class="form-control" id="noticeKinds" name="noticeKinds" value="${vo.noticeKinds}">
+      <label for="writerId">&nbsp;작가</label>
+      <input type="text" value="${vo.writerId}" class="form-control" id="writerId" name="writerId">
     </div>
     
     <div class="form-group">
-      <label for="noticeTitle">&nbsp;제목</label>
-      <input type="text" class="form-control" id="noticeTitle" name="noticeTitle" value="${vo.noticeTitle}">
+		<label for="toonSum">&nbsp;작품요약</label>
+		<textarea class="form-control myCheck" rows="5" id="toonSum"
+			name="noticeContents">${vo.noticeContents}</textarea>
+	</div>
+    
+     <div class="form-group">
+      <label for="toonDay">&nbsp;요일</label>
+      <input type="text" class="form-control" id="toonDay" name="toonDay" value="${vo.toonDay}">
     </div>
     
-    <div class="form-group">
-				<label for="noticeContents">&nbsp;내용</label>
+     <div class="form-group">
+				<label for="titleImg">&nbsp;이미지</label>
 				<textarea class="form-control myCheck" rows="5" id="noticeContents"
 					name="noticeContents">${vo.noticeContents}</textarea>
-			</div>
+	</div>
+    
+    
+    
+    
     
     <c:forEach items="${vo.files}" var="file">
     	<div>
