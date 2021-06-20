@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.to.t1.member.admin.AdminEpMapper">
+		
+	    <sql id="searcher">
+         <where>
+            <choose>
+               
+               <when test="kind=='eachEpNum'">
+                  eachEpNum like concat('%', #{search}, '%')
+               </when>
+               
+               <otherwise>
+                  epTitle like concat('%', #{search}, '%')
+               </otherwise>
+            </choose>
+         </where>
+         </sql>
+         
+         <select id="getFileSelect" parameterType="AdminFileVO" resultType="AdminFileVO">
+      select * from eachepfiles where fileNum=#{fileNum}
+      </select>
+         
+         <select id="getManageEachEpList" resultType="EachEpVO" parameterType="Pager">
+         select * from eachep
+         <include refid="searcher"></include>
+         order by eachEpNum desc
+         limit #{startRow}, #{perPage}
+         <!-- limit 시작index번호(0부터시작), 갯수 --> 
+         </select>
+         
+      <select id="getTotalCount" parameterType="Pager" resultType="java.lang.Long">
+            select count(eachEpNum) from eachep
+            <include refid="searcher"></include>
+         </select>
+         
+         <select id="getManageEachEpSelect" resultMap="selectResult" parameterType="EachEpVO">
+         SELECT E.*, EF.* from
+         eachep E left join eachepfiles EF
+         on E.eachepNum = EF.eachepNum
+         WHERE E.eachepNum=#{eachepNum}
+         </select>
+
+         <resultMap type="EachEpVO" id="selectResult">
+            <id column="epNum" property="epNum"/>
+            <result column="toonNum" property="toonNum"/>
+            <result column="eachEpNum" property="eachEpNum"/>
+            <result column="epSumImg" property="epSumImg"/>
+            <result column="epTitle" property="epTitle"/>
+            <result column="epDate" property="epDate"/>
+            <result column="epContentImg" property="epContentImg"/>
+            <result column="epHit" property="epHit"/>
+            <result column="epRatingSum" property="epRatingSum"/>
+            <result column="epRatingPerson" property="epRatingPerson"/>
+            <collection property="files" javaType="java.util.List" ofType="AdminFileVO">
+               <id column="fileNum" property="fileNum"/>
+               <result column="fileName" property="fileName"/>
+               <result column="oriName" property="oriName"/>
+            </collection>
+         </resultMap>
+         
+         <insert id="setManageEachEpInsert" parameterType="EachEpVO" useGeneratedKeys="true" keyProperty="epNum">
+            insert into eachep values(#{epNum}, #{toonNum}, #{epSumImg}, #{epTitle}, now(),#{epContentImg}, 0, #{epRatingSum}, #{epRatingPerson})
+         </insert>
+         
+         <insert id="setFileInsert" parameterType="AdminFileVO">
+            insert into eachepFiles (fileNum, epNum, fileName, oriName)
+            values (#{fileNum}, #{epNum}, #{fileName}, #{oriName})
+         </insert>
+         
+         <delete id="setEachEpFileDelete" parameterType="AdminFileVO">
+         delete from eachepFiles where fileNum=#{fileNum}
+         </delete>
+         
+         <update id="setManageEachEpUpdate" parameterType="ToonVO">
+            update eachep set epSumImg=#{epSumImg}, epTitle=#{epTitle}, epContentImg=#{epContentImg} where epNum=#{epNum}
+         </update>
+         
+         <delete id="setManageEachEpDelete" parameterType="ToonVO">
+            delete from eachep where epNum=#{epNum}
+         </delete> 
+
+</mapper>

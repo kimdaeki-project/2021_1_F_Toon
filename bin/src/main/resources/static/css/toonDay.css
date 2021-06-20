@@ -1,0 +1,71 @@
+.toon{
+	
+    width: 90%;
+    margin: 15px auto;
+    background-color: blue;
+}
+
+.mon {
+    
+    float: left;
+    width:14%;
+    
+}
+
+.tue{
+ 
+    float: left; 
+    width:14%;
+}
+
+.wen{
+   
+    float: left;
+    width:14%;
+  
+}
+
+
+.the {
+   
+    float: left;
+    width:14%;
+   
+}
+
+.fri{
+  
+    float: left;
+    width:14%;
+   
+}
+
+.sat{
+   
+    float: left;
+    width:14%;
+    
+}
+
+
+.sun{
+   
+    float: left;
+    width:14%;
+    
+}
+
+.view_type{
+	float: right;
+	width: 20%;
+}
+
+.w {
+	color: gray;
+}
+
+
+
+
+
+
