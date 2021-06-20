@@ -9,10 +9,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
   
     <c:import url="../fragments/bootstrap.jsp"></c:import>
-    <title>Recent Toon</title>
+    <title>내 댓글보기</title>
    
      <link rel="stylesheet" href="/css/header.css">
      <!-- plugins:css -->
+    <link rel="stylesheet" href="../assets/vendors/iconfonts/mdi/css/materialdesignicons.css">
     <!-- endinject -->
     <!-- vendor css for this page -->
     <!-- End vendor css for this page -->
@@ -23,7 +24,7 @@
 </head>
 <body>
 	<c:import url="../fragments/header.jsp"></c:import>	
-
+	
    <!-- partial -->
     <div class="page-body">
       <!-- partial:partials/_sidebar.html -->
@@ -65,7 +66,7 @@
             </a>
             <ul class="collapse navigation-submenu" id="ui-elements">
                 <li>
-           
+            
             <ul class="collapse navigation-submenu" id="ui-elements">
               <li>
                 <a href="/mypage/recentToon/?username=${memberVO.username}">최근 본 웹툰</a>
@@ -83,7 +84,7 @@
           </li>
           
             <li>
-            	<a href="">
+            	<a href="/mypage/review">
              	<h4> <span class="link-title">내 댓글</span></h4>
             	  <i class="mdi mdi-clipboard-outline link-icon"></i>
             	</a>
@@ -110,16 +111,16 @@
       <div class="page-content-wrapper">
            <div class="container">	
 
-		<h2>최근본웹툰</h2>
+		<h2>내 댓글 ㅋ</h2>
 
 		<table class="table">
 			<thead class="thead-dark">
 				<tr>
 					<th></th>
 					<th>웹툰 이름</th>
-					<th>에피소드 이름</th>
+					<th>에피 제목</th>
 					<th>작가 이름</th>
-					<th>최근 본 날짜</th>
+					<th>구매 날짜</th>
 				</tr>
 			</thead>
 			
@@ -127,11 +128,11 @@
 			<c:forEach items="${list}" var="list" >
 				<tr>
 					<td><img width=50px height=50px src= ${list.eachEpVO.epSumImg}></td>
-					
 					<td>${list.toonVO.toonTitle}</td>
 					<td>${list.eachEpVO.epTitle}</td>
 					<td>${list.memberVO.nickname}</td>
-					<td>${list.viewDate}</td>
+					<td>${list.useTicketVO.utDate}</td>
+
 				</tr>
 			</c:forEach>
 			
@@ -140,21 +141,24 @@
 		</table>
 	</div>
            
-			<ul class="pagination">
+  	<ul class="pagination">
 
 				<c:if test="${pager.pre}">
-					<li class="page-item"><a class="page-link p" href="#" title="${pager.startNum-1}">이전</a></li>
+					<li class="page-item"><a class="page-link p" href="#"
+						title="${pager.startNum-1}">이전</a></li>
 				</c:if>
 
 				<c:forEach begin="${pager.startNum}" end="${pager.lastNum}" var="i">
-					<li class="page-item"><a class="page-link p" href="/mypage/recentToon/?username=${memberVO.username}&curPage=${i}" title="${i}">${i}</a></li>
+					<li class="page-item"><a class="page-link p" href="/mypage/useToon/?username=${memberVO.username}&curPage=${i}" title="${i}">${i}</a></li>
 				</c:forEach>
 
 				<c:if test="${pager.next}">
-					<li class="page-item"><a class="page-link p" href="#" title="${pager.lastNum+1}">다음</a></li>
+					<li class="page-item"><a class="page-link p" href="#"
+					 title="${pager.lastNum+1}">다음</a></li>
 				</c:if>
 			</ul>
-			
+  			
+	
 
 	</p>
         <div class="page-content-wrapper-inner">
@@ -176,7 +180,7 @@
     <script src="../assets/js/dashboard.js"></script>
     <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
     <script type="text/javascript" src="../js/mypage.js"></script>
-    
+	
 	
 </body>
 </html>

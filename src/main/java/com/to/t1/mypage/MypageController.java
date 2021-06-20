@@ -76,4 +76,20 @@ public class MypageController {
 		System.out.println("구매웹툰");
 		return "mypage/useToon";
 	}
+	
+	@GetMapping("review") 
+	public String getList4(Model model, MemberVO memberVO, Pager pager)throws Exception{
+		
+		List<RecentVO> ar = mypageService.getList3(memberVO,  pager);
+		
+		memberVO = memberService.myPage(memberVO);	
+		System.out.println(ar);
+		
+		model.addAttribute("memberVO", memberVO);
+		model.addAttribute("list", ar);
+		model.addAttribute("pager", pager);
+		
+		System.out.println("내댓글보기");
+		return "mypage/review";
+	}
 }
