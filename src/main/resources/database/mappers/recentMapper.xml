@@ -39,6 +39,10 @@
 		
 	</select>
 	
+	 <delete id="setDelete" parameterType="RecentVO">
+            delete from recenttoon where epNum=#{epNum}
+     </delete> 
+	
 	<select id="getList2" parameterType="java.util.Map" resultMap="recentResult">
 
 		SELECT favoritetoon.*, toon.toonTitle, toon.genre, toon.titleImg, toon.toonDay, member.nickname

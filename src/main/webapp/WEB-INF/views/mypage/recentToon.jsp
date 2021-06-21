@@ -120,6 +120,7 @@
 					<th>에피소드 이름</th>
 					<th>작가 이름</th>
 					<th>최근 본 날짜</th>
+					<th>선택</th>
 				</tr>
 			</thead>
 			
@@ -132,6 +133,7 @@
 					<td>${list.eachEpVO.epTitle}</td>
 					<td>${list.memberVO.nickname}</td>
 					<td>${list.viewDate}</td>
+					<td><input type="checkbox"></td>
 				</tr>
 			</c:forEach>
 			
@@ -139,6 +141,8 @@
 
 		</table>
 	</div>
+<%-- 			<a href="./recentToon?epNum=${list.epNum}" id="delete" class="btn btn-danger">삭제</a> --%>
+<%-- 			<input type="hidden" name="epNum" value="${list.epNum}"> --%>
            
 			<ul class="pagination">
 

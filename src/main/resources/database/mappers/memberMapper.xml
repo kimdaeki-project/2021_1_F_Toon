@@ -119,7 +119,6 @@
 			<result property="fileName" column="fileName"/>
 			<result property="oriName" column="oriName"/>
 	</resultMap>
-		
-		
+				
 			
    </mapper>

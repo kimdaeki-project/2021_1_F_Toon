@@ -10,8 +10,6 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
-import com.to.t1.board.BoardVO;
-import com.to.t1.board.notice.NoticeService;
 import com.to.t1.member.MemberService;
 import com.to.t1.member.MemberVO;
 import com.to.t1.util.Pager;
@@ -41,6 +39,14 @@ public class MypageController {
 		System.out.println(pager.getLastNum());
 		
 		System.out.println("리센트툰");
+		
+		return "mypage/recentToon";
+	}
+	
+	@GetMapping("delete")
+	public String setDelete(RecentVO recentVO)throws Exception{
+		
+		int result = mypageService.setDelete(recentVO);
 		
 		return "mypage/recentToon";
 	}
