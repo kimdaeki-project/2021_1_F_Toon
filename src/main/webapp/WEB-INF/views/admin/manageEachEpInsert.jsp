@@ -53,7 +53,7 @@
 <body>
 	<c:import url="../fragments/header.jsp"></c:import>
 	
-	 <div class="row">
+	<div class="row">
   	<div class="col-2">
   		<c:import url="./adminNav.jsp"></c:import>
   	</div>
@@ -62,54 +62,45 @@
 	<h2>
 			<p>
 				<span
-					style="border-radius: 15px 15px 15px 15px; border: 3px solid #b4b4b4; padding: 0.5em 0.6em; color: black; background-color: #dcdcdc;">관리자/작품등록</span>
+					style="border-radius: 15px 15px 15px 15px; border: 3px solid #b4b4b4; padding: 0.5em 0.6em; color: black; background-color: #dcdcdc;">관리자/작품/회차등록</span>
 			</p>
 		</h2><br>
-		<form id="frm" action="./manageToonInsert" method="post" enctype="multipart/form-data">
+		<form id="frm" action="./manageEachEpInsert" method="post" enctype="multipart/form-data">
 	
 			<div class="form-group">
-				<label for="toonTitle">&nbsp;제목</label> <input type="text"
-					class="form-control myCheck" id="toonTitle" name="toonTitle">
-			</div>
-			<div class="form-group">
-				<label for="genre">&nbsp;장르</label> <input type="text"
-					class="form-control myCheck" id="genre" name="genre">
-			</div>
-			<div class="form-group">
-				<label for="writerID">&nbsp;작성자</label> <input type="text"
-					class="form-control myCheck" id="writerID" name="writerID">
+				<label for="toonNum">&nbsp;작품번호</label> <input type="number"
+					class="form-control myCheck" id="toonNum" name="toonNum">
 			</div>
 			
 			<div class="form-group">
-				<label for="toonSum">&nbsp;요약내용</label>
-				<textarea class="form-control myCheck" rows="5" id="toonSum"
-					name="toonSum"></textarea>
+				<label for="eachEpNum">&nbsp;회차번호</label> <input type="number"
+					class="form-control myCheck" id="eachEpNum" name="eachEpNum">
 			</div>
 			
 			<div class="form-group">
-				<label for="toonDay">&nbsp;요일</label> <input type="text"
-					class="form-control myCheck" id="toonDay" name="toonDay">
+				<label for="epSumImg">&nbsp;썸네일</label>
+				<textarea class="form-control myCheck" rows="5" id="epSumImg"
+					name="epSumImg"></textarea>
+			</div>
+			<div class="form-group">
+				<label for="epTitle">&nbsp;회차제목</label> <input type="text"
+					class="form-control myCheck" id="epTitle" name="epTitle">
 			</div>
 			
 			<div class="form-group">
-				<label for="state">&nbsp;여부</label> <input type="text"
-					class="form-control myCheck" id="state" name="state">
-			</div>
-
-			<div class="form-group">
-				<label for="titleImg">&nbsp;타이틀이미지</label>
-				<textarea class="form-control myCheck" rows="5" id="titleImg"
-					name="titleImg"></textarea>
+				<label for="epContentImg">&nbsp;내용이미지</label>
+				<textarea class="form-control myCheck" rows="5" id="epContentImg"
+					name="epContentImg"></textarea>
 			</div>
 			
 			<div class="form-group">
-				<label for="ratingSum">&nbsp;평점</label> <input type="number"
-					class="form-control myCheck" id="ratingSum" name="ratingSum">
+				<label for="epRatingSum">&nbsp;평점</label> <input type="number"
+					class="form-control myCheck" id="epRatingSum" name="epRatingSum">
 			</div>
 			
 			<div class="form-group">
-				<label for="ratingPerson">&nbsp;평점(수)</label> <input type="number"
-					class="form-control myCheck" id="ratingPerson" name="ratingPerson">
+				<label for="epRatingPerson">&nbsp;평점(수)</label> <input type="number"
+					class="form-control myCheck" id="epRatingPerson" name="epRatingPerson">
 			</div>
 
 			&nbsp;&nbsp;<input type="button" id="btn" value="등록" class="btn btn-secondary">
@@ -131,7 +122,6 @@
 
 	<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
 	<script type="text/javascript" src="../js/board/boardInsert.js"></script>
-	<script type="text/javascript" src="../js/board/toonSummerFile.js"></script>
-
+	<script type="text/javascript" src="../js/board/eachEpSummerFile.js"></script>
 </body>
 </html>

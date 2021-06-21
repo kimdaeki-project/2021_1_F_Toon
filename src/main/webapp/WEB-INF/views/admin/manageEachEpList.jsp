@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -42,6 +43,12 @@
 
 </head>
 <body>
+<c:import url="./../fragments/header.jsp"></c:import>
+
+ <div class="row">
+  	<div class="col-2">
+  		<c:import url="./adminNav.jsp"></c:import>
+  	</div>
 
 	<div class="container">
 		<br>
@@ -76,18 +83,18 @@
 			<div class="table100-body js-pscroll">
 				<table>
 					<tbody class="tbody">
-						<c:forEach items="${manageEachEpList}" var="vo">
+						<c:forEach items="${manageEachEpList}" var="eachEpVO">
 							<tr class="row100 body">
-								<td>${vo.epNum}</td>
-								<td>${vo.toonNum}</td>
-								<td>${vo.eachEpNum}</td>
-								<td><img width=50px height=50px src=${list.eachEpVO.epSumImg}></td>
-								<td><a href="./manageEachEpSelect?epNum=${vo.epNum}">${vo.epTitle}</a></td>
-								<td>${vo.epDate}</td>
-								<td><img width=50px height=50px src=${list.eachEpVO.epContentImg}></td>
-								<td>${vo.epHit}</td>
-								<td>${vo.epRatingSum}</td>
-								<td>${vo.epRatingPerson}</td>
+								<td>${eachEpVO.epNum}</td>
+								<td>${eachEpVO.toonNum}</td>
+								<td>${eachEpVO.eachEpNum}</td>
+								<td><img width=50px height=50px src=${eachEpVO.epSumImg}></td>
+								<td><a href="./manageEachEpSelect?epNum=${eachEpVO.epNum}">${eachEpVO.epTitle}</a></td>
+								<td>${eachEpVO.epDate}</td>
+								<td><img width=50px height=50px src=${eachEpVO.epContentImg}></td>
+								<td>${eachEpVO.epHit}</td>
+								<td>${eachEpVO.epRatingSum}</td>
+								<td>${eachEpVO.epRatingPerson}</td>
 							</tr>
 						</c:forEach>
 					</tbody>

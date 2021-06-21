@@ -13,6 +13,13 @@
     
     <link rel="stylesheet" href="${pageContext.request.contextPath}/css/header.css">
     
+    <!-- plugins:css -->
+<link rel="stylesheet" href="${pageContext.request.contextPath}/assets/vendors/iconfonts/mdi/css/materialdesignicons.css">
+<link rel="stylesheet" href="${pageContext.request.contextPath}/css/mypage/style.css">
+<!-- Layout style -->
+<link rel="shortcut icon" href="${pageContext.request.contextPath}/asssets/images/favicon.ico" />
+    
+    
     <style type="text/css">
      .back {
     	background-image: url('../images/toon-qna1.PNG');
@@ -46,6 +53,11 @@
 </head>
 <body>
 	<c:import url="../fragments/header.jsp"></c:import>
+	
+	<div class="row">
+  	<div class="col-2">
+  		<c:import url="./adminNav.jsp"></c:import>
+  	</div>
 
 	<div class="container"><br>
 		<h2>

@@ -3,7 +3,7 @@
  */
 $("#titleImg").summernote({
 			height:500,
-			placeholder: '작성하세요',
+			placeholder: '타이틀이미지를 넣어주세요',
 			callbacks: {
 				onImageUpload: function(files) {
 				   // upload image to server and create imgNode...

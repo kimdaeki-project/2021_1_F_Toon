@@ -97,7 +97,7 @@ public class AdminController {
 	public ModelAndView getManageToonSelect(ToonVO toonVO)throws Exception{
 		ModelAndView mv = new ModelAndView();
 		toonVO = adminService.getManageToonSelect(toonVO);
-		mv.addObject("vo", toonVO);
+		mv.addObject("toonVO", toonVO);
 		mv.addObject("admin", "admin");
 		mv.setViewName("admin/manageToonSelect");
 		return mv;
@@ -152,7 +152,7 @@ public class AdminController {
 		ModelAndView mv = new ModelAndView();
 		toonVO = adminService.getManageToonSelect(toonVO);
 		
-		mv.addObject("vo", toonVO);
+		mv.addObject("toonVO", toonVO);
 		mv.addObject("admin", "admin");
 		mv.setViewName("admin/manageToonUpdate");
 		return mv;
@@ -209,7 +209,7 @@ public class AdminController {
 	@PostMapping("eachEpSummerFileUpload")
 	public ModelAndView setEachEpSummerFileUpload(MultipartFile file)throws Exception{
 		ModelAndView mv = new ModelAndView();
-		System.out.println("썸머 toon 파일 업로드");
+		System.out.println("썸머 eachep 파일 업로드");
 		System.out.println(file.getOriginalFilename());
 		String fileName = adminService.setEachEpSummerFileUpload(file);
 		fileName = "../upload/eachep/"+fileName;
@@ -223,7 +223,7 @@ public class AdminController {
 	public ModelAndView getManageEachEpSelect(EachEpVO eachEpVO)throws Exception{
 		ModelAndView mv = new ModelAndView();
 		eachEpVO = adminService.getManageEachEpSelect(eachEpVO);
-		mv.addObject("vo", eachEpVO);
+		mv.addObject("eachEpVO", eachEpVO);
 		mv.addObject("admin", "admin");
 		mv.setViewName("admin/manageEachEpSelect");
 		return mv;
@@ -278,7 +278,7 @@ public class AdminController {
 		ModelAndView mv = new ModelAndView();
 		eachEpVO = adminService.getManageEachEpSelect(eachEpVO);
 		
-		mv.addObject("vo", eachEpVO);
+		mv.addObject("eachEpVO", eachEpVO);
 		mv.addObject("admin", "admin");
 		mv.setViewName("admin/manageEachEpUpdate");
 		return mv;
