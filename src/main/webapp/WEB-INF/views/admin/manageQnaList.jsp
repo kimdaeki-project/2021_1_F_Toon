@@ -58,7 +58,8 @@
   		<c:import url="./adminNav.jsp"></c:import>
   	</div>
         
-      </div>        
+      
+            
 		<div class="container">
 		<br>
 		<h2>
@@ -90,8 +91,6 @@
             <tr>
    
                <td class="cell100 column1"><a href="./manageQnaSelect?boNum=${vo.boNum}">
-               
-               
                
                <c:catch>
                <c:forEach begin="1" end="${vo.depth}">
@@ -149,7 +148,7 @@
 		</div>
 
 	</div>
-
+</div>  
 <script type="text/javascript">
 	let kind= '${pager.kind}';//Title, Writer, Contents
 	$(".sel").each(function() {

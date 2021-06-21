@@ -160,7 +160,7 @@
 	});
 	
 </script>
-
+<script type="text/javascript" src="../js/board/perfect-scrollbar.min.js"></script>
 	
 </body>
 </html>
