@@ -21,6 +21,5 @@ public class UsePointVO {
    private ToonVO toonVO;
    private EachEpVO eachEpVO;
    private MemberVO memberVO;
-
  
 }

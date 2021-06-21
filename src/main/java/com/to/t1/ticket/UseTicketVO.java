@@ -14,6 +14,7 @@ public class UseTicketVO {
 	private long epNum;
 	private long toonNum;
 	private Timestamp utDate;
+	private long sort;
 	
 	//타이틀 조회와 에피소드 조회용.
 	private ToonVO toonVO;
