@@ -108,13 +108,13 @@
            <h1>비밀번호 변경</h1>
         	
 
-	<input id=password name=password>
-	<input id=newpassword name=newpassword>
-	<input id=newpassword2 name=newpassword2>
+	<input type="password" id=password name=password><br><br>
+	<input type="password" id=newpassword name=newpassword><br><br>
+	<input type="password" id=newpassword2 name=newpassword2><br><br>
 
 	
 	<sec:authorize access="isAuthenticated()">
-		<a href="./changePassword" class="btn btn-info" role="button" onclick="change()">변경?</a>
+		<button class="btn btn-info" role="button" onclick="change()">변경?</button>
 	
 <!-- 		<a href="./memberUpdate" class="btn btn-info"  -->
 <!-- 		role="button" onclick="if(!confirm('내 정보를 수정 하시겠습니까?')){return false;}">내 정보 수정</a> -->
@@ -168,7 +168,10 @@
 		   	            "newpassword2" : newpassword2,
 	         		 },
 	         		 
-	         		 dataType :'text',
+	         		 
+	         		 success : function(msg) {
+	                    alert(msg);
+	         		 }
 	         		 
 				});
 			
