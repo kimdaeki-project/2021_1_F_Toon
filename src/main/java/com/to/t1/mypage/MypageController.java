@@ -86,7 +86,7 @@ public class MypageController {
 	@GetMapping("review") 
 	public String getList4(Model model, MemberVO memberVO, Pager pager)throws Exception{
 		
-		List<RecentVO> ar = mypageService.getList3(memberVO,  pager);
+		List<RecentVO> ar = mypageService.getList4(memberVO,  pager);
 		
 		memberVO = memberService.myPage(memberVO);	
 		System.out.println(ar);

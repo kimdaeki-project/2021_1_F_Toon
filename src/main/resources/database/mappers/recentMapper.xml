@@ -28,6 +28,15 @@
 		ORDER BY useticket.utDate DESC
 	</select>
 	
+	<select id="getTotalCount4" parameterType="java.util.Map" resultType="java.lang.Long">
+		
+		SELECT count(*)
+		FROM review, toon, eachep, member
+		WHERE toon.writerId=member.username AND review.toonNum = toon.toonNum and review.epNum = eachep.epNum 
+		and review.username=#{memberVO.username} 
+		ORDER BY review.commentDate DESC
+	</select>
+	
 	<select id="getList" parameterType="java.util.Map" resultMap="recentResult">
 
 		SELECT recenttoon.*,toon.toonTitle, eachep.epTitle, eachep.eachEpNum,eachep.epSumImg, member.nickname 
@@ -65,6 +74,17 @@
 		
 	</select>
 	
+	<select id="getList4" parameterType="java.util.Map" resultMap="recentResult">
+
+		SELECT review.*, toon.toonTitle, toon.titleImg, eachep.epTitle, member.nickname
+		FROM review, toon, eachep, member
+		WHERE toon.writerId=member.username AND review.toonNum = toon.toonNum and review.epNum = eachep.epNum 
+		and review.username=#{memberVO.username}
+		ORDER BY review.commentDate DESC
+		limit #{pager.startRow}, #{pager.perPage}
+		
+	</select>
+	
 	<resultMap type="RecentVO" id="recentResult">
 		<id property="epNum" column="epNum"/>
 		<result property="username" column="username" />
@@ -72,12 +92,27 @@
 		<result property="epNum" column="epNum"/>
 		<result property="viewDate" column="viewDate"/>
 		
+		<association property="reviewVO" javaType="ReviewVO" resultMap="reviewResult"></association>
 		<association property="useTicketVO" javaType="UseTicketVO" resultMap="useTicketResult"></association>
 		<association property="favoritoonVO" javaType="FavoritoonVO" resultMap="favoritoonResult"></association>
 		<association property="toonVO" javaType="ToonVO" resultMap="toonResult"></association>
 		<association property="eachEpVO" javaType="EachEpVO" resultMap="eachEpResult"></association>
 		<association property="memberVO" javaType="MemberVO" resultMap="memberResult"></association> 
 	</resultMap>
+	
+	<resultMap type="reviewVO" id="reviewResult">
+			<id property="revNum" column="revNum"/>
+			<id property="toonNum" column="toonNum"/>
+			<id property="epNum" column="epNum"/>
+			<id property="username" column="username"/>
+			<result property="toonNum" column="toonNum"/>
+			<result property="epNum" column="epNum"/>
+			<result property="username" column="username"/>
+			<result property="rating" column="rating"/>
+			<result property="comments" column="comments"/>
+			<result property="commentDate" column="commentDate"/>	
+	</resultMap>
+	
 	
 	<resultMap type="useTicketVO" id="useTicketResult">
 			<id property="toonNum" column="toonNum"/>

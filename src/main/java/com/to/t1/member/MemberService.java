@@ -48,7 +48,6 @@ public class MemberService implements UserDetailsService {
 	public boolean memberError(MemberVO memberVO, Errors errors)throws Exception{
 		boolean result = false;
 
-		System.out.println("앙앙앙앙앙");
 		result = errors.hasErrors();
 //		if(!memberVO.getPassword().equals(memberVO.getPassword1())) {
 //			errors.rejectValue("password1", "memberVO.password.notEqual");
@@ -58,7 +57,7 @@ public class MemberService implements UserDetailsService {
 		MemberVO checkMember = memberMapper.getUsername(memberVO);
 		if(checkMember !=null) {
 			errors.rejectValue("username", "member.id.equal");
-//			errors.rejectValue("username", "member.name.equal");
+
 			result = true;
 		}
 		
@@ -120,9 +119,7 @@ public class MemberService implements UserDetailsService {
 		}else {
 			boolean check = fileManager.delete("member", joinFileVO.getFileName(), session);
 		}
-		//이게없음 그러니깐 쿼리를 타도 안되지
 		
-//		System.out.println(memberVO.getUsername());
 		return memberMapper.memberDelete(username);
 	}
 	

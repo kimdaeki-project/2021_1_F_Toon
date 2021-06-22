@@ -80,7 +80,7 @@
           </li>
           
             <li>
-            	<a href="">
+            	<a href="${pageContext.request.contextPath}../mypage/review/?username=${memberVO.username}">
              	<h4> <span class="link-title">내 댓글</span></h4>
             	  <i class="mdi mdi-clipboard-outline link-icon"></i>
             	</a>

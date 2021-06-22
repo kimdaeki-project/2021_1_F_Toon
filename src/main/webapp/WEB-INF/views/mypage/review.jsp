@@ -84,7 +84,7 @@
           </li>
           
             <li>
-            	<a href="/mypage/review">
+            	<a href="/mypage/review/?username=${memberVO.username}">
              	<h4> <span class="link-title">내 댓글</span></h4>
             	  <i class="mdi mdi-clipboard-outline link-icon"></i>
             	</a>
@@ -120,19 +120,20 @@
 					<th>웹툰 이름</th>
 					<th>에피 제목</th>
 					<th>작가 이름</th>
-					<th>구매 날짜</th>
+					<th>내용</th>
+					<th>작성 일자</th>
 				</tr>
 			</thead>
 			
 			<tbody>
 			<c:forEach items="${list}" var="list" >
 				<tr>
-					<td><img width=50px height=50px src= ${list.eachEpVO.epSumImg}></td>
+					<td><img width=50px height=50px src= ${list.toonVO.titleImg}></td>
 					<td>${list.toonVO.toonTitle}</td>
 					<td>${list.eachEpVO.epTitle}</td>
 					<td>${list.memberVO.nickname}</td>
-					<td>${list.useTicketVO.utDate}</td>
-
+					<td>${list.reviewVO.comments}</td>
+					<td>${list.reviewVO.commentDate}</td>
 				</tr>
 			</c:forEach>
 			
@@ -149,7 +150,7 @@
 				</c:if>
 
 				<c:forEach begin="${pager.startNum}" end="${pager.lastNum}" var="i">
-					<li class="page-item"><a class="page-link p" href="/mypage/useToon/?username=${memberVO.username}&curPage=${i}" title="${i}">${i}</a></li>
+					<li class="page-item"><a class="page-link p" href="/mypage/review/?username=${memberVO.username}&curPage=${i}" title="${i}">${i}</a></li>
 				</c:forEach>
 
 				<c:if test="${pager.next}">

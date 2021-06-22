@@ -65,5 +65,19 @@ public class MypageService {
 		return mypageMapper.getList3(obj);
 	}
 	
+	public List<RecentVO> getList4(MemberVO memberVO, Pager pager) throws Exception {
+		HashMap<String, Object> obj = new HashMap<String, Object>();
+		
+		obj.put("memberVO", memberVO);
+		obj.put("pager", pager);
+	
+		
+		pager.makeRow();
+		long totalCount = mypageMapper.getTotalCount4(obj);
+		pager.makeNum(totalCount);
+		
+		
+		return mypageMapper.getList4(obj);
+	}
 	
 }
