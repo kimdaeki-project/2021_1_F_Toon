@@ -17,8 +17,7 @@
 
 	
 
-	<select id="toonSearch" parameterType="ToonVO"
-		resultType="ToonVO">
+	<select id="toonSearch" parameterType="ToonVO" resultType="ToonVO">
 		SELECT *
 		FROM toon t JOIN
 		member m ON t.writerId = m.username

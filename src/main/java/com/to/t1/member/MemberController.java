@@ -67,7 +67,10 @@ public class MemberController {
 	@GetMapping("memberLoginResult")
 	public String memberLoginResult(HttpSession session, Authentication auth2, Model model)throws Exception{
 		System.out.println("!!!!!!!!!!!!!!!!!!!!!");
+		MemberVO memberVO =new MemberVO();
 		//session의 속성명들 꺼내오기 
+		
+		memberVO = memberService.myPage(memberVO);	
 		
 		Enumeration<String> en = session.getAttributeNames();
 		
@@ -94,7 +97,6 @@ public class MemberController {
 		System.out.println("Principal : "+auth2.getPrincipal());
 		System.out.println("Authorities : "+auth2.getAuthorities());
 		System.out.println("===================================");
-		
 		
 		
 		System.out.println(obj);
@@ -353,8 +355,8 @@ public class MemberController {
 	      }else {
 	         message="비밀번호가 일치하지않습니다.";
 	      }
-	  	return message;
-		}
+	  		return message;
+	}
 
 	   @GetMapping("CheckMail")
 	   @ResponseBody

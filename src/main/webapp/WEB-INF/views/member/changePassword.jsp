@@ -109,14 +109,20 @@
         	
 
 	<input type="password" id=password name=password><br><br>
+	<h5 id="pwResult"></h5>
+	
 	<input type="password" id=newpassword name=newpassword><br><br>
+	<h5 id="pwResult"></h5>
+	
 	<input type="password" id=newpassword2 name=newpassword2><br><br>
+	<h5 id="pwResult"></h5>
 
 	
 	<sec:authorize access="isAuthenticated()">
 		<button class="btn btn-info" role="button" onclick="change()">변경?</button><br><br>
 		
-		<input type="text" id="passwordCheck" placeholder="비밀번호 입력">
+		<input type="password" id="passwordCheck" placeholder="비밀번호 입력">
+		<h5 id="pwResult"></h5>
 		
 		<button class="btn btn-danger" onclick="usernameDelete()">회원 탈퇴</button>
 		
@@ -141,82 +147,9 @@
     <script src="../assets/js/dashboard.js"></script>
     <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
     <script type="text/javascript" src="../js/mypage.js"></script>
- 
+    
+	<script type="text/javascript" src="../js/changePassword.js"></script>
 
-	<script type="text/javascript">
-	
-	function change(){
-		var password = $("#password").val();
-		var newpassword = $("#newpassword").val();
-		var newpassword2 = $("#newpassword2").val();
-		var newpasswordTrim= $.trim(newpassword);
-		
-		if(confirm("정말 변경하시겠습니까?") == true){
-	
-			if(newpasswordTrim.length>17||newpasswordTrim.length<7||newpasswordTrim==null){
-		     alert( "패스워드는 8글자 이상 16글자 이하입니다.");
-		     
-			}else
-				
-				$.ajax({
-		   	         type : 'POST',
-		   	         url  : 'changePassword',
-		   	         data : {
-		   	            "password" : password,
-		   	            "newpassword" : newpassword,
-		   	            "newpassword2" : newpassword2,
-	         		 },
-	         		 
-	         		 
-	         		 success : function(msg) {
-	                    alert(msg);
-	                    location.href="./myPage"
-
-	         		 }
-	         		 
-				});
-			
-			
-		}
-	};
-
-	
-function usernameDelete(){
-		   var passwordCheck = $("#passwordCheck").val();
-		   
-		   if(confirm("정말 회원을 탈퇴 하시겠습니까?") == true){
-		      
-		   
-		      $.ajax({
-		         type : 'GET',
-		         url : '../member/memberDelete',
-		         data : {
-		            "password" : passwordCheck,
-		         },
-
-		         dataType :'text',
-		         
-		         success : function(data) {
-		             
-		            alert(data);
-		            if(data=="탈퇴 되었습니다."){
-		            location.href="./logout"
-		            }
-		          },
-		         
-		          error:function(requeest, status, error){
-		             alert(error);
-		          },
-
-		      });
-		   }else{
-		      return;
-		   }
-		   
-		      
-		}
-	
-	</script>
 	
 </body>
 </html>
