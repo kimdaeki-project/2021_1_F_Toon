@@ -71,27 +71,27 @@ public class AdminController {
 		return mv;
 	}
 	
-	@PostMapping("toonSummerFileDelete")
-	public ModelAndView setToonSummerFileDelete(String fileName)throws Exception{
-		ModelAndView mv = new ModelAndView();
-		boolean result = adminService.setToonSummerFileDelete(fileName);
-		mv.addObject("result", result);
-		mv.setViewName("common/ajaxResult");
-		return mv;
-	}
-	
-	@PostMapping("toonSummerFileUpload")
-	public ModelAndView setToonSummerFileUpload(MultipartFile file)throws Exception{
-		ModelAndView mv = new ModelAndView();
-		System.out.println("썸머 toon 파일 업로드");
-		System.out.println(file.getOriginalFilename());
-		String fileName = adminService.setToonSummerFileUpload(file);
-		fileName = "../upload/toon/"+fileName;
-		mv.addObject("result", fileName);
-		mv.setViewName("common/ajaxResult");
-		
-		return mv;
-	}
+//	@PostMapping("toonSummerFileDelete")
+//	public ModelAndView setToonSummerFileDelete(String fileName)throws Exception{
+//		ModelAndView mv = new ModelAndView();
+//		boolean result = adminService.setToonSummerFileDelete(fileName);
+//		mv.addObject("result", result);
+//		mv.setViewName("common/ajaxResult");
+//		return mv;
+//	}
+//	
+//	@PostMapping("toonSummerFileUpload")
+//	public ModelAndView setToonSummerFileUpload(MultipartFile file)throws Exception{
+//		ModelAndView mv = new ModelAndView();
+//		System.out.println("썸머 toon 파일 업로드");
+//		System.out.println(file.getOriginalFilename());
+//		String fileName = adminService.setToonSummerFileUpload(file);
+//		fileName = "../upload/toon/"+fileName;
+//		mv.addObject("result", fileName);
+//		mv.setViewName("common/ajaxResult");
+//		
+//		return mv;
+//	}
 	
 	@GetMapping("manageToonSelect")
 	public ModelAndView getManageToonSelect(ToonVO toonVO)throws Exception{
@@ -114,9 +114,9 @@ public class AdminController {
 		}	
 	
 	@PostMapping("manageToonInsert")
-	public String setManageToonInsert(ToonVO toonVO, MultipartFile [] files, Model model)throws Exception{
+	public String setManageToonInsert(ToonVO toonVO, Model model)throws Exception{
 		
-		int result = adminService.setManageToonInsert(toonVO, files);
+		int result = adminService.setManageToonInsert(toonVO);
 		
 		String message="등록 실패";
 		
@@ -197,27 +197,27 @@ public class AdminController {
 		return mv;
 	}
 	
-	@PostMapping("eachEpSummerFileDelete")
-	public ModelAndView setEachEpSummerFileDelete(String fileName)throws Exception{
-		ModelAndView mv = new ModelAndView();
-		boolean result = adminService.setEachEpSummerFileDelete(fileName);
-		mv.addObject("result", result);
-		mv.setViewName("common/ajaxResult");
-		return mv;
-	}
-	
-	@PostMapping("eachEpSummerFileUpload")
-	public ModelAndView setEachEpSummerFileUpload(MultipartFile file)throws Exception{
-		ModelAndView mv = new ModelAndView();
-		System.out.println("썸머 eachep 파일 업로드");
-		System.out.println(file.getOriginalFilename());
-		String fileName = adminService.setEachEpSummerFileUpload(file);
-		fileName = "../upload/eachep/"+fileName;
-		mv.addObject("result", fileName);
-		mv.setViewName("common/ajaxResult");
-		
-		return mv;
-	}
+//	@PostMapping("eachEpSummerFileDelete")
+//	public ModelAndView setEachEpSummerFileDelete(String fileName)throws Exception{
+//		ModelAndView mv = new ModelAndView();
+//		boolean result = adminService.setEachEpSummerFileDelete(fileName);
+//		mv.addObject("result", result);
+//		mv.setViewName("common/ajaxResult");
+//		return mv;
+//	}
+//	
+//	@PostMapping("eachEpSummerFileUpload")
+//	public ModelAndView setEachEpSummerFileUpload(MultipartFile file)throws Exception{
+//		ModelAndView mv = new ModelAndView();
+//		System.out.println("썸머 eachep 파일 업로드");
+//		System.out.println(file.getOriginalFilename());
+//		String fileName = adminService.setEachEpSummerFileUpload(file);
+//		fileName = "../upload/eachep/"+fileName;
+//		mv.addObject("result", fileName);
+//		mv.setViewName("common/ajaxResult");
+//		
+//		return mv;
+//	}
 	
 	@GetMapping("manageEachEpSelect")
 	public ModelAndView getManageEachEpSelect(EachEpVO eachEpVO)throws Exception{

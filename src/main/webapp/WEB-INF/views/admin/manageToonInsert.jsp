@@ -96,11 +96,16 @@
 					class="form-control myCheck" id="state" name="state">
 			</div>
 
-			<div class="form-group">
-				<label for="titleImg">&nbsp;타이틀이미지</label>
-				<textarea class="form-control myCheck" rows="5" id="titleImg"
-					name="titleImg"></textarea>
-			</div>
+<!-- 			<div class="form-group"> -->
+<!-- 				<label for="titleImg">&nbsp;타이틀이미지</label> -->
+<!-- 				<textarea class="form-control myCheck" rows="5" id="titleImg" -->
+<!-- 					name="titleImg"></textarea> -->
+<!-- 			</div> -->
+
+				<div class="form-group">
+				<label for="titleImg">&nbsp;타이틀이미지</label> 
+				<input type="text" class="form-control myCheck" id="titleImg" name="titleImg">
+				</div>
 			
 			<div class="form-group">
 				<label for="ratingSum">&nbsp;평점</label> <input type="number"
@@ -131,7 +136,7 @@
 
 	<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
 	<script type="text/javascript" src="../js/board/boardInsert.js"></script>
-	<script type="text/javascript" src="../js/board/toonSummerFile.js"></script>
+<!-- 	<script type="text/javascript" src="../js/board/toonSummerFile.js"></script> -->
 
 </body>
 </html>

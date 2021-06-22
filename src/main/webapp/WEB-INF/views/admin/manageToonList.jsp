@@ -69,13 +69,13 @@
 					<thead class="thead">
 						<tr class="row100 head">
 							<th class="cell100 column5">작품번호</th>
+							<th class="cell100 column5">타이틀이미지</th>
 							<th class="cell100 column5">제목</th>
 							<th class="cell100 column5">장르</th>
 							<th class="cell100 column5">작가</th>
 							<th class="cell100 column5">조회</th>
 							<th class="cell100 column5">요일</th>
-							<th class="cell100 column5">여부</th>
-							<th class="cell100 column5">타이틀이미지</th>
+							
 						</tr>
 					</thead>
 
@@ -88,13 +88,13 @@
 						<c:forEach items="${manageToonList}" var="toonVO">
 							<tr class="row100 body">
 								<td class="cell100 column5">${toonVO.toonNum}</td>
+								<td class="cell100 column5"><img width=50px height=50px src=${toonVO.titleImg}></td>
 								<td class="cell100 column5"><a href="./manageToonSelect?toonNum=${toonVO.toonNum}">${toonVO.toonTitle}</a></td>
 								<td class="cell100 column5">${toonVO.genre}</td>
 								<td class="cell100 column5">${toonVO.writerID}</td>
 								<td class="cell100 column5">${toonVO.totalHit}</td>
 								<td class="cell100 column5">${toonVO.toonDay}</td>
-								<td class="cell100 column5">${toonVO.state}</td>
-								<td class="cell100 column5"><img width=50px height=50px src=${toonVO.titleImg}></td>
+								
 							</tr>
 						</c:forEach>
 					</tbody>

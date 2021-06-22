@@ -74,10 +74,32 @@
 				</div>
 
 				<a href="./manageToonUpdate?toonNum=${toonVO.toonNum}" class="btn btn-secondary">수정</a>
+				
+				<a href="#" id="del" class="btn btn-secondary">삭제</a>
+				
+				<form action="./manageToonDelete" id="frm" method="get">
+				<input type="hidden" name="toonNum" value="${toonVO.toonNum}">
+				</form>
 
 			</div>
 
 
 		</div>
+<script type="text/javascript">
+	const del = document.getElementById("del");
+	const frm = document.getElementById("frm");
+	
+	del.addEventListener("click", function(){
+		let result = confirm("삭제하시겠습니까?");
+		
+		if(result){
+		
+			frm.setAttribute("method", "post");
+			frm.submit();
+	
+		}
+	});
+</script>
+		
 </body>
 </html>
