@@ -19,7 +19,7 @@ public class EachEpVO {
 	private String epContentImg;
 	private long epHit;
 	private long epRatingSum;
-	private long epRatingPerson;
-	
+	private long epRatingPerson;	
 	private List<ReviewVO> reviewVO;
+
 }

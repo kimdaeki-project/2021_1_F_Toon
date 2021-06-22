@@ -26,9 +26,17 @@ public class NoticeService implements BoardService {
 	private BoFileManager boFileManager;
 	@Autowired
 	private HttpSession session;
-	
+
 	@Value("${board.notice.filePath}")
 	private String filePath;
+
+	public List<BoardVO> getManageList(Pager pager) throws Exception {
+		
+		pager.makeRow();
+		Long totalCount = noticeMapper.getTotalCount(pager);
+		pager.makeNum(totalCount);
+		return noticeMapper.getManageList(pager);
+	}
 	
 	@Override
 	public List<BoardVO> getList(Pager pager) throws Exception {
@@ -38,7 +46,12 @@ public class NoticeService implements BoardService {
 		pager.makeNum(totalCount);
 		return noticeMapper.getList(pager);
 	}
-
+	
+	public BoardVO getManageSelect(BoardVO boardVO) throws Exception {
+		
+		return noticeMapper.getSelect(boardVO);
+	}
+	
 	@Override
 	public BoardVO getSelect(BoardVO boardVO) throws Exception {
 		// TODO Auto-generated method stub
@@ -46,29 +59,28 @@ public class NoticeService implements BoardService {
 		return noticeMapper.getSelect(boardVO);
 	}
 
-	@Override
 	public int setInsert(BoardVO boardVO, MultipartFile [] files) throws Exception {
-		
-		
+
+
 		int result = noticeMapper.setInsert(boardVO);
-		
+
 		//글번호 찾기
-		
+
 		for(MultipartFile mf : files) {
 			BoardFileVO boardFileVO = new BoardFileVO();
 			String fileName= boFileManager.save("notice", mf, session);
-			
+
 			boardFileVO.setBoNum(boardVO.getBoNum());
 			boardFileVO.setFileName(fileName);
 			boardFileVO.setOriName(mf.getOriginalFilename());
-			
+
 			noticeMapper.setFileInsert(boardFileVO);
 		}
-		
+
 		return result;
 	}
 
-	@Override
+
 	public int setUpdate(BoardVO boardVO, MultipartFile [] files) throws Exception {
 		for(MultipartFile multipartFile:files) {
 			BoardFileVO boardFileVO = new BoardFileVO();
@@ -83,38 +95,37 @@ public class NoticeService implements BoardService {
 		return noticeMapper.setUpdate(boardVO);
 	}
 
-	@Override
+
 	public int setDelete(BoardVO boardVO) throws Exception {
-		// TODO Auto-generated method stub
+
 		return noticeMapper.setDelete(boardVO);
 	}
-	
-	
-	@Override
+
+
+
 	public int setFileDelete(BoardFileVO boardFileVO) throws Exception {
 		//fileName을 print
-				//1. 조회
-				boardFileVO = noticeMapper.getFileSelect(boardFileVO);
-				//2. table 삭제
-				int result = noticeMapper.setFileDelete(boardFileVO);
-				//3. HDD 삭제
-				if(result > 0) {
-					boFileManager.delete("notice", boardFileVO.getFileName(), session);
-				}
-				return result;
+		//1. 조회
+		boardFileVO = noticeMapper.getFileSelect(boardFileVO);
+		//2. table 삭제
+		int result = noticeMapper.setFileDelete(boardFileVO);
+		//3. HDD 삭제
+		if(result > 0) {
+			boFileManager.delete("notice", boardFileVO.getFileName(), session);
+		}
+		return result;
 	}
-	
-	@Override
+
+
 	public boolean setSummerFileDelete(String fileName) throws Exception {
 		boolean result = boFileManager.delete("notice", fileName, session);
 		return result;
 	}
-	
-	@Override
+
+
 	public String setSummerFileUpload(MultipartFile file)throws Exception{
-		
+
 		String fileName = boFileManager.save("notice", file, session);
 		return fileName;
 	}
-
 }

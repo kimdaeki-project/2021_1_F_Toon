@@ -5,13 +5,43 @@
     
     <mapper namespace="com.to.t1.point.PointMapper">
 	
-	<!-- 현재 내 포인트 조회 -->
-	<!-- 포인트 충전하기 (멤버 업데이트) -->
-	<!-- 포인트 사용 내역 작성하기 -->
-	<!-- 포인트 충전내역 조회하기(키는 username, List)-->
+	<!-- 포인트 "충전"내역 조회하기(키는 username, List)-->
+	<select id="getMyChargeList" parameterType="MemberVO" resultType="PointVO">
+		SELECT * FROM USER03.Point WHERE  username = #{username}
+	</select>
+	<!-- 포인트 "사용"내역 조회하기(키는 username, List)-->
+	<select id="getMyUseList" parameterType="MemberVO" resultType="PointVO">
+		SELECT * FROM USER03.Point WHERE  username = #{username}
+	</select>
 	
-	<!-- 포인트 사용하기(1화 결제) 1개 차감하기 -->
-	<!-- 포인트 사용내역 작성하기 -->
-	<!-- 포인트 사용 내역 조회하기(리스트) -->
+	
+	<!-- 포인트 충전하기 (멤버 업데이트) -->
+	<update id="setChargePoint" parameterType="PointVO">
+		UPDATE member SET point =(member.point + #{point}) 
+		WHERE username =#{username}
+	</update>
+	
+	<!-- 포인트 내역 작성하기 -->
+	<insert id="setPointList" parameterType="PointVO">
+		INSERT INTO `user03`.`point` (`username`, `point`, `cDate`, `contents`) 
+		VALUES (#{username}, #{point}, NOW(),#{contents} );
+	</insert>
+	
+	<select id="getTicketStock" parameterType="TicketBoxVO" resultType="TicketBoxVO">
+		SELECT * FROM USER03.chargePoint 
+		WHERE  username = #{username}
+	</select>
+	
+	<!-- 소장권 구매- 포인트 사용하기-->
+	<update id="setUsePoint" parameterType="PointVO">
+		UPDATE member SET point = (member.point - #{point}) 
+		WHERE  username =#{username}
+	</update>
+	<!-- 소장권 TicketBOX 넣기 혹은 꺼내기-->
+	
+	<!-- useTicket 내역 작성하기 -->
+	
+	<!-- 소장권 돌려주기 (소장권 -> point 전환하기)  -->
+	
 	
    </mapper>

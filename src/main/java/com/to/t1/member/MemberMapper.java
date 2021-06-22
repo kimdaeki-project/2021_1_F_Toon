@@ -3,6 +3,7 @@ package com.to.t1.member;
 import java.util.Map;
 
 import org.apache.ibatis.annotations.Mapper;
+import org.apache.ibatis.annotations.Param;
 
 import com.to.t1.member.MemberVO;
 
@@ -31,5 +32,8 @@ public interface MemberMapper {
 	
 	public int setMemberRole(Map<String, String> map)throws Exception;
 	
-	public JoinFileVO myPage(MemberVO memberVO)throws Exception;
+	public MemberVO myPage(MemberVO memberVO)throws Exception;
+	
+	public MemberVO memberJoinCheck(MemberVO memberVO)throws Exception;
+
 }

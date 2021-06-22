@@ -15,6 +15,8 @@ import org.springframework.mail.SimpleMailMessage;
 import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextImpl;
+import org.springframework.security.core.userdetails.UserDetails;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -39,6 +41,9 @@ public class MemberController {
 	@Autowired
     private JavaMailSender javaMailSender;
 
+	@Autowired
+    private PasswordEncoder passwordEncoder;
+	
 	@GetMapping("login")
 	public String getLogin()throws Exception{
 		System.out.println("로그인");
@@ -117,24 +122,67 @@ public class MemberController {
 	}
 
 	@GetMapping("myPage") 
-	public void myPage(MemberVO memberVO, HttpSession session, Authentication auth2)throws Exception{
+	public String myPage(MemberVO memberVO, HttpSession session, Authentication auth2, Model model)throws Exception{
+		System.out.println(auth2.getPrincipal());
 		
-		Enumeration<String> en = session.getAttributeNames();
+		memberVO = memberService.myPage((MemberVO) auth2.getPrincipal());
+		model.addAttribute("memberVO", memberVO);
 		
-		while(en.hasMoreElements()) {
-			System.out.println("Attribute Name : "+en.nextElement());
+		System.out.println("마이페이지 사진");
+		
+		System.out.println(memberVO);
+
+		return  "member/myPage";
+	}
+	
+	@PostMapping("changePassword")
+	@ResponseBody
+	public String changePassword(MemberVO memberVO, Authentication auth2, String newpassword, String newpassword2, Model model)throws Exception{
+		UserDetails userDetails = (UserDetails) auth2.getPrincipal(); //세션에 있는 유스디테일을 갖고옴
+		memberVO.setUsername(userDetails.getUsername());
+		
+		String message = "";
+		
+		boolean result = passwordEncoder.matches(memberVO.getPassword(), userDetails.getPassword()); //matches : 왼쪽값 오른쪽 비번 비교하느거
+		if(result) {
+			if(newpassword.equals(newpassword2)) {
+				memberVO.setPassword(newpassword); 
+				int result2 = memberService.pwUpdate(memberVO);
+				if(result2>0) {
+					message="비밀번호가 변경되었습니다.";
+				}
+			}else {
+				message="비밀번호가 일치하지않습니다.";
+			}
+		}else {
+			message="현재 비밀번호가 일치하지않습니다.";
 		}
 		
-		//로그인 시 session의 속성명 : SPRING_SECURITY_CONTEXT
-		Object obj = session.getAttribute("SPRING_SECURITY_CONTEXT");
-		
-		SecurityContextImpl sc = (SecurityContextImpl)obj;
-		
-		Authentication auth= sc.getAuthentication();
-		
-		System.out.println("Z");
+	
 		System.out.println(auth2.getPrincipal());
+		
+		memberVO = memberService.myPage((MemberVO) auth2.getPrincipal());
+		model.addAttribute("memberVO", memberVO);
+		
+		System.out.println(message);	
+
+		return message;
 	}
+	
+	
+	@GetMapping("changePassword") 
+	public String changePassword(MemberVO memberVO, Authentication auth2, Model model)throws Exception{
+	
+		System.out.println(auth2.getPrincipal());
+		
+		memberVO = memberService.myPage((MemberVO) auth2.getPrincipal());
+		model.addAttribute("memberVO", memberVO);
+		
+		System.out.println("비번변경");	
+
+		return  "member/changePassword";
+	}
+
 
 
 	@PostMapping("getJoinFile") 
@@ -204,9 +252,24 @@ public class MemberController {
 		return message;
 	}
 
-
 	@RequestMapping("memberJoinCheck")
 	public void memberJoinCheck()throws Exception{}
+	
+	@PostMapping("memberJoinCheck")
+	@ResponseBody
+	public String memberJoinCheck(MemberVO memberVO)throws Exception{
+		 memberVO = memberService.memberJoinCheck(memberVO);
+		 
+		 String message="";
+		 
+		 if(memberVO==null) {
+			 message="아이디가 사용가능합니다.";
+		 }else {
+			 message="아이디가 중복됩니다.";
+		 }
+		 
+		 return message;
+	}
 
 	@GetMapping("join")
 	public String setJoin(@ModelAttribute MemberVO memberVO)throws Exception{
@@ -235,18 +298,37 @@ public class MemberController {
 	}
 
 	@RequestMapping("memberUpdate")
-	public void memberUpdate()throws Exception{}
+	public String memberUpdate(MemberVO memberVO, HttpSession session, Authentication auth2, Model model)throws Exception{
+		System.out.println(auth2.getPrincipal());
+		
+		memberVO = memberService.myPage((MemberVO) auth2.getPrincipal());
+		model.addAttribute("memberVO", memberVO);
+		
+		System.out.println("Z");
 
-	@PostMapping("memberUpdate")
-	public String memberUpdate(MemberVO memberVO, HttpSession session)throws Exception{
-		int result = memberService.memberUpdate(memberVO);
-
-		if(result>0) {
-			session.setAttribute("member", memberVO);
-		}
-		return "redirect:../";
+		return  "member/memberUpdate";
 	}
 
+	@PostMapping("memberUpdate")
+	public String memberUpdate(MemberVO memberVO, Authentication auth2, HttpSession session, Model model)throws Exception{
+		System.out.println(memberVO);
+		int result = memberService.memberUpdate(memberVO);
+		memberVO = memberService.myPage(memberVO);
+		
+		String message = "정보 수정 실패하였습니다";
+		String path = "../";
+		
+		if(result>0) {
+			session.setAttribute("member", memberVO);
+			model.addAttribute("memberVO", memberVO);
+			message ="정보 수정 성공하였습니다.";
+		}
+		
+		model.addAttribute("msg", message);
+		model.addAttribute("path", "./myPage");
+		return "common/commonResult";
+	}
+	
 	@RequestMapping("memberDelete")
 	public ModelAndView memberDelete(HttpSession session, String username)throws Exception{
 		MemberVO memberVo =(MemberVO)session.getAttribute("member"); 
@@ -255,23 +337,24 @@ public class MemberController {
 		int result = memberService.memberDelete(username, session, memberVo);
 		session.invalidate();
 		
-		String message="회원가입 탈퇴 실패";
+		String message="회원 탈퇴 실패";
 		String path = "../";
 		
 		if(result>0) {
-			message="회원가입 탈퇴 성공";
+			message="회원 탈퇴 성공";
 			
 		}
 		mv.addObject("msg", message);
 		mv.addObject("path", "./logout");
 		mv.setViewName("common/commonResult");
+		
+		
 		return mv;
 	}
 
 	   @GetMapping("CheckMail")
 	   @ResponseBody
 	   public String SendMail(Model model,String email, HttpSession session) {
-		  System.out.println("왜안되냐 ㅠ");
 	      Random random = new Random();
 	      String key = "";
 	     
@@ -293,6 +376,6 @@ public class MemberController {
 	      
 	      return key;
 	   }
-	   
+	  
 }
 

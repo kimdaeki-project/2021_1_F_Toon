@@ -22,7 +22,7 @@ public class QnaController {
 	private QnaService qnaService;
 	
 	@ModelAttribute("board")
-	public String getBoard() {
+	public String getQnaBoard() {
 		return "qna";
 	}
 	
@@ -45,7 +45,7 @@ public class QnaController {
 		mv.addObject("vo", boardVO);
 		mv.setViewName("board/qnaSelect");
 		return mv;
-	}	
+	}
 	
 	@GetMapping("qnaInsert")
 	public String setInsert(Model model)throws Exception{
@@ -61,47 +61,6 @@ public class QnaController {
 		return "redirect:./qnaList";
 	}
 
-	@GetMapping("qnaUpdate")
-	public String setUpdate(BoardVO boardVO, Model model)throws Exception{
-		boardVO = qnaService.getSelect(boardVO);
-		model.addAttribute("vo", boardVO);
-		model.addAttribute("action", "qnaUpdate");
-		return "board/qnaUpdate";
-		
-	}
-	
-	@PostMapping("qnaUpdate")
-	public String setUpdate(BoardVO boardVO, MultipartFile [] files)throws Exception{
-		
-		int result = qnaService.setUpdate(boardVO, files);
-		
-		return "redirect:./qnaList";
-	}
-	
-	@PostMapping("delete")
-	public String setDelete(BoardVO boardVO)throws Exception{
-		
-		int result = qnaService.setDelete(boardVO);
-		
-		return "redirect:./qnaList";
-	}
-
-	@GetMapping("reply")
-	public String setReplyInsert(BoardVO boardVO, Model model)throws Exception{
-		model.addAttribute("vo", boardVO);
-		model.addAttribute("action", "reply");
-		return "board/reply";
-	}
-	
-	@PostMapping("reply")
-	public String setReplyInsert(BoardVO boardVO, MultipartFile [] files)throws Exception{
-		
-		int result = qnaService.setReplyInsert(boardVO, files);
-	
-		return "redirect:./qnaList";
-	}	
-	
-	
 	@PostMapping("summerFileDelete")
 	public ModelAndView setSummerFileDelete(String fileName)throws Exception{
 		ModelAndView mv = new ModelAndView();
@@ -123,9 +82,5 @@ public class QnaController {
 		
 		return mv;
 	}
-	
-	
-	
-	
 	
 }

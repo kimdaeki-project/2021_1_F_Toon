@@ -19,8 +19,12 @@ public class ToonService {
 	@Autowired
 	private MemberMapper memberMapper;
 	
+
+	
+
 	public List<ToonVO> getList(Pager pager)throws Exception{
 		return toonMapper.getList(pager);
+
 	}
 	
 	public ToonVO getSelect(ToonVO toonVO) throws Exception{
@@ -35,11 +39,14 @@ public class ToonService {
 		return toonMapper.deleteScore(reviewVO);
 	}
 	
+
 	//toonDay--------------------------
+
 	public List<ToonVO> toonDay(ToonVO toonVO,MemberVO memberVO) throws Exception{
 		return toonMapper.toonDay(toonVO,memberVO);
 	}
 	
+
 	public List<ToonVO> toonDayAver(ToonVO toonVO,MemberVO memberVO) throws Exception{
 		return toonMapper.toonDayAver(toonVO,memberVO);
 	}
@@ -53,10 +60,12 @@ public class ToonService {
 	}
 	
 	//genre-------------------------------
+
 	public List<ToonVO> genre(ToonVO toonVO,MemberVO memberVO) throws Exception{
 		return toonMapper.genre(toonVO,memberVO);
 	}
 	
+
 	public List<ToonVO> genreAver(ToonVO toonVO,MemberVO memberVO) throws Exception{
 		return toonMapper.genreAver(toonVO,memberVO);
 	}
@@ -65,10 +74,21 @@ public class ToonService {
 		return toonMapper.genreRecent(toonVO,memberVO);
 	}
 	//ranking
+
 	public List<ToonVO> ranking(ToonVO toonVO,MemberVO memberVO) throws Exception{
 		return toonMapper.ranking(toonVO,memberVO);
 	}
 	
+
+
+
+	public List<ToonVO> toonDay(ModelAndView toonDay) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	
+
 	public List<ToonVO> rankingAver(ToonVO toonVO,MemberVO memberVO) throws Exception{
 		return toonMapper.rankingAver(toonVO,memberVO);
 	}
@@ -100,3 +120,4 @@ public class ToonService {
 
 	
 }
+

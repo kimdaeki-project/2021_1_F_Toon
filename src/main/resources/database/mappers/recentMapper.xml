@@ -1,0 +1,133 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.to.t1.mypage.MypageMapper">
+	
+	
+	<select id="getTotalCount1" parameterType="java.util.Map" resultType="java.lang.Long">
+		SELECT count(*)
+		FROM recenttoon, eachep, toon, member
+		WHERE toon.writerId = member.username AND eachep.toonNum = toon.toonNum AND recenttoon.epNum = eachep.epNum
+		AND recenttoon.username =#{memberVO.username}
+		ORDER BY recenttoon.viewDate DESC 
+	
+	</select>
+	
+	<select id="getList" parameterType="java.util.Map" resultMap="recentResult">
+
+		SELECT recenttoon.*,toon.toonTitle, eachep.epTitle, eachep.eachEpNum,eachep.epSumImg, member.nickname 
+		FROM recenttoon, eachep, toon, member 
+		WHERE toon.writerId = member.username AND eachep.toonNum = toon.toonNum  AND recenttoon.epNum = eachep.epNum 
+		AND recenttoon.username = #{memberVO.username} 
+		ORDER BY recenttoon.viewDate DESC
+		limit #{pager.startRow}, #{pager.perPage}
+		
+	</select>
+	
+<!--          <select id="getList" resultType="NoticeVO" parameterType="Pager"> -->
+<!--          select * from notice -->
+<!--          <include refid="searcher"></include> -->
+<!--          order by boNum desc -->
+<!--          limit #{startRow}, #{perPage} -->
+<!--          limit 시작index번호(0부터시작), 갯수  -->
+<!--          </select> -->
+	
+	
+	<select id="getList2" parameterType="java.util.Map" resultMap="recentResult">
+
+		SELECT favoritetoon.*, toon.toonTitle, toon.genre, toon.titleImg, toon.toonDay, member.nickname
+		FROM favoritetoon, toon, member
+		WHERE toon.writerId = member.username AND favoritetoon.toonNum = toon.toonNum AND favoritetoon.likeClick='1'
+		AND favoritetoon.username=#{memberVO.username}  
+		ORDER BY favoritetoon.likeDate DESC
+		limit #{pager.startRow}, #{pager.perPage}
+		
+	</select>
+	
+	<select id="getList3" parameterType="java.util.Map" resultMap="recentResult">
+
+		SELECT useticket.* ,toon.toonTitle, eachep.epTitle, eachep.eachEpNum , eachep.epSumImg, member.nickname
+		FROM useticket, eachep ,toon, member
+		WHERE useticket.epNum = eachep.epNum AND eachep.toonNum = toon .toonNum 
+		AND  toon.WriterID = member.username AND useticket.username = #{memberVO.username} 
+		ORDER BY useticket.utDate DESC	
+		limit #{pager.startRow}, #{pager.perPage}
+		
+	</select>
+	
+	<resultMap type="RecentVO" id="recentResult">
+		<id property="epNum" column="epNum"/>
+		<result property="username" column="username" />
+		<result property="toonNum" column="toonNum"/>
+		<result property="epNum" column="epNum"/>
+		<result property="viewDate" column="viewDate"/>
+		
+		<association property="useTicketVO" javaType="UseTicketVO" resultMap="useTicketResult"></association>
+		<association property="favoritoonVO" javaType="FavoritoonVO" resultMap="favoritoonResult"></association>
+		<association property="toonVO" javaType="ToonVO" resultMap="toonResult"></association>
+		<association property="eachEpVO" javaType="EachEpVO" resultMap="eachEpResult"></association>
+		<association property="memberVO" javaType="MemberVO" resultMap="memberResult"></association> 
+	</resultMap>
+	
+	<resultMap type="useTicketVO" id="useTicketResult">
+			<id property="toonNum" column="toonNum"/>
+			<id property="username" column="username"/>
+			<id property="epNum" column="epNum"/>
+			
+			<result property="toonNum" column="toonNum"/>
+			<result property="username" column="username"/>
+			<result property="epNum" column="epNum"/>
+			<result property="utDate" column="utDate"/>
+	</resultMap>
+	
+	<resultMap type="favoritoonVO" id="favoritoonResult">
+			<id property="toonNum" column="toonNum"/>
+			<result property="username" column="username"/>
+			<result property="likeClick" column="likeClick"/>
+			<result property="likeDate" column="likeDate"/>
+	</resultMap>
+	
+	<resultMap type="ToonVO" id="toonResult">
+			<id property="toonNum" column="toonNum"/>
+			<id property="writerId" column="writerId"/>
+			<result property="toonTitle" column="toonTitle"/>
+			<result property="genre" column="genre"/>
+			<result property="writerId" column="writerId"/>
+			<result property="toonSum" column="toonSum"/>
+			<result property="totalHit" column="totalHit"/>
+			<result property="toonDay" column="toonDay"/>
+			<result property="state" column="state"/>
+			<result property="titleImg" column="titleImg"/>
+			<result property="ratingSum" column="ratingSum"/>
+			<result property="ratingPerson" column="ratingPerson"/>
+		
+		</resultMap>
+		
+		
+		<resultMap type="EachEpVO" id="eachEpResult">
+			<id property="epNum" column="epNum"/>
+			<id property="toonNum" column="toonNum"/>
+			
+			<result property="eachEpNum" column="eachEpNum"/>
+			<result property="epSumImg" column="epSumImg"/>
+			<result property="epTitle" column="epTitle"/>
+			
+			<result property="epDate" column="epDate"/>
+			<result property="epContentImg" column="epContentImg"/>
+			<result property="epHit" column="epHit"/>
+		</resultMap>
+
+		<resultMap type="MemberVO" id="memberResult">
+			<id property="username" column="username" />
+			<result property="nickname" column="nickname"/>
+			<result property="password" column="password"/>
+			<result property="name" column="name"/>
+			<result property="phone" column="phone"/>
+			<result property="email" column="email"/>
+			<result property="point" column="point"/>
+			
+		</resultMap>
+		
+
+
+</mapper>
