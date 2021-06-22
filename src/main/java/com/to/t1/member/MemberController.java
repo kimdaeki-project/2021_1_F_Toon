@@ -64,9 +64,10 @@ public class MemberController {
 	}
 	
 	@GetMapping("memberLoginResult")
-	public String memberLoginResult(HttpSession session, Authentication auth2)throws Exception{
+	public String memberLoginResult(HttpSession session, Authentication auth2, Model model)throws Exception{
 		System.out.println("!!!!!!!!!!!!!!!!!!!!!");
 		//session의 속성명들 꺼내오기 
+		
 		Enumeration<String> en = session.getAttributeNames();
 		
 		while(en.hasMoreElements()) {
@@ -98,6 +99,7 @@ public class MemberController {
 		System.out.println(obj);
 		
 		System.out.println("Login 성공");
+		
 		return "redirect:/";
 	}
 
@@ -151,7 +153,7 @@ public class MemberController {
 				memberVO.setPassword(newpassword); 
 				int result2 = memberService.pwUpdate(memberVO);
 				if(result2>0) {
-					message="비밀번호가 변경되었습니다.";
+					message="비밀번호가 성공적으로 변경되었습니다.";
 				}
 			}else {
 				message="변경된 비밀번호가 일치하지않습니다.";
