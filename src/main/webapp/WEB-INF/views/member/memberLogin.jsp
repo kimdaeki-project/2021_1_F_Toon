@@ -69,13 +69,48 @@
                     
                 </div>
                 <div class="login-btn-wrap">
-                    <button type="submit" class="login-btn">Login</button>
+                    <button type="submit" class="login-btn" id="btn">Login</button>
                     <a href="/member/searchPw" >Forgot password?</a> <a href="/member/memberJoinCheck">Sign Up</a>
                 </div>
             </div>
         </div>
     </div>
 	</form>
+
+
+<script type="text/javascript">
+
+	$("#btn").click(function() {
+		var id= $("#id").val();
+		var pw = $("#pw").val();
+		
+		if (id == "" || pw == "") {
+			swal("정보를 입력해주시기 바랍니다.", "You clicked the button!", "warning");
+		} 
+// 		else {
+// 			$.ajax({
+// 				type : 'POST',
+// 				url : 'searchId',
+// 				data : {
+// 					phone : phone, //주는사람
+// 					name : name,
+// 				},
+
+// 				dataType : 'text',
+// 				success : function(data) {
+
+// 					msg = data;
+// 					swal(msg);
+// 					message = $("message").val("principal.username");
+
+// 				}
+
+// 			})
+// 		}
+
+	})
+</script>
+<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
 
 </body>
 </html>

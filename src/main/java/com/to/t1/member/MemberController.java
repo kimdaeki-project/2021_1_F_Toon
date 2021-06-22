@@ -47,6 +47,7 @@ public class MemberController {
 	@GetMapping("login")
 	public String getLogin()throws Exception{
 		System.out.println("로그인");
+		System.out.println("진짜");
 		return "member/memberLogin";
 	}
 	
@@ -116,12 +117,12 @@ public class MemberController {
 //	}
 
 	//@GetMapping("logout")
-	public String logout(HttpSession session)throws Exception{
-
-		session.invalidate();
-
-		return "redirect:../";
-	}
+//	public String logout(HttpSession session)throws Exception{
+//
+//		session.invalidate();
+//
+//		return "redirect:../";
+//	}
 
 	@GetMapping("myPage") 
 	public String myPage(MemberVO memberVO, HttpSession session, Authentication auth2, Model model)throws Exception{
@@ -217,6 +218,7 @@ public class MemberController {
 		System.out.println(message);
 
 		return message;
+		
 	}
 
 	@GetMapping("memberIdCheck")
