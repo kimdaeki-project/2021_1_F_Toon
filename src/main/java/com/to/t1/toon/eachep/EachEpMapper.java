@@ -15,7 +15,6 @@ public interface EachEpMapper {
 	public ToonVO getSelect(EachEpVO eachEpVO)throws Exception;
 	
 	public long setHitUpdate(EachEpVO eachEpVO)throws Exception;
-	public ToonVO setInsert(EachEpVO eachEpVO,MemberVO memberVO,ToonVO toonVO)throws Exception;
 	
 	
 	public long updateScore(ReviewVO reviewVO)throws Exception;

@@ -1,6 +1,9 @@
 package com.to.t1.toon.eachep;
 
 import java.sql.Date;
+import java.util.List;
+
+import com.to.t1.review.ReviewVO;
 
 import com.to.t1.member.MemberVO;
 
@@ -18,6 +21,7 @@ public class EachEpVO {
 	private String epContentImg;
 	private long epHit;
 	private long epRatingSum;
-	private long epRatingPerson;
+	private long epRatingPerson;	
+	private List<ReviewVO> reviewVO;
 
 }

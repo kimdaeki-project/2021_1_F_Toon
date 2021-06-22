@@ -32,16 +32,10 @@ public class EachEpService {
 	public ToonVO getSelect(EachEpVO eachEpVO)throws Exception{
 		eachEpMapper.setHitUpdate(eachEpVO);
 		ToonVO toonVO=eachEpMapper.getSelect(eachEpVO);
-		
 		return toonVO;
 	}
 	
-	public void setInsert(EachEpVO eachEpVO,MemberVO memberVO,ToonVO toonVO)throws Exception{
-		eachEpMapper.setInsert(eachEpVO,memberVO,toonVO);
-		
-		return;
-	}
-	
+
 	
 	public long updateScore(ReviewVO reviewVO)throws Exception{
 		return eachEpMapper.updateScore(reviewVO);
