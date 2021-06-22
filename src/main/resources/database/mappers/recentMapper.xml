@@ -39,7 +39,7 @@
 	
 	<select id="getList" parameterType="java.util.Map" resultMap="recentResult">
 
-		SELECT recenttoon.*,toon.toonTitle, eachep.epTitle, eachep.eachEpNum,eachep.epSumImg, member.nickname 
+		SELECT recenttoon.*,toon.toonTitle, eachep.epTitle, eachep.eachEpNum,toon.titleImg, member.nickname 
 		FROM recenttoon, eachep, toon, member 
 		WHERE toon.writerId = member.username AND eachep.toonNum = toon.toonNum  AND recenttoon.epNum = eachep.epNum 
 		AND recenttoon.username = #{memberVO.username} 

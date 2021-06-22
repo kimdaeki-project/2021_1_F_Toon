@@ -109,8 +109,9 @@
       <!-- partial -->
       <div class="page-content-wrapper">
            <div class="container">	
-
-		<h2>최근본웹툰</h2>
+		<br>
+		<center><h2>최근 본 웹툰</h2></center>
+		<br>
 
 		<table class="table">
 			<thead class="thead-dark">
@@ -127,7 +128,7 @@
 			<tbody>
 			<c:forEach items="${list}" var="list" >
 				<tr>
-					<td><img width=50px height=50px src= ${list.eachEpVO.epSumImg}></td>
+					<td><img width=50px height=50px src= ${list.toonVO.titleImg}></td>
 					
 					<td>${list.toonVO.toonTitle}</td>
 					<td>${list.eachEpVO.epTitle}</td>
@@ -141,8 +142,8 @@
 
 		</table>
 	</div>
-<%-- 			<a href="./recentToon?epNum=${list.epNum}" id="delete" class="btn btn-danger">삭제</a> --%>
-<%-- 			<input type="hidden" name="epNum" value="${list.epNum}"> --%>
+<%-- 			<a href="./recentToon?epNum=${list.eachEpVO.epNum}" id="delete" class="btn btn-danger">삭제</a> --%>
+<%-- 			<input type="hidden" name="epNum" value="${list.eachEpVO.epNum}"> --%>
            
 			<ul class="pagination">
 
