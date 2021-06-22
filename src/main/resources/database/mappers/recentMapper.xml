@@ -4,6 +4,11 @@
 <mapper namespace="com.to.t1.mypage.MypageMapper">
 	
 	
+	<insert id="setInsert" parameterType="EachEpVO">
+	INSERT INTO recenttoon(username, toonNum, epNum, viewDate)
+	VALUES(member=#{username},toon=#{toonNum} ,epchep=#{eachEpNum} ,SYSDATE());
+	</insert>
+	
 	<select id="getTotalCount1" parameterType="java.util.Map" resultType="java.lang.Long">
 		SELECT count(*)
 		FROM recenttoon, eachep, toon, member

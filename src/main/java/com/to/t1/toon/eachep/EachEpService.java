@@ -3,6 +3,7 @@ package com.to.t1.toon.eachep;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.to.t1.member.MemberVO;
 import com.to.t1.review.ReviewVO;
 import com.to.t1.toon.ToonVO;
 import com.to.t1.util.Pager;
@@ -35,6 +36,13 @@ public class EachEpService {
 		return toonVO;
 	}
 	
+	public void setInsert(EachEpVO eachEpVO,MemberVO memberVO,ToonVO toonVO)throws Exception{
+		eachEpMapper.setInsert(eachEpVO,memberVO,toonVO);
+		
+		return;
+	}
+	
+	
 	public long updateScore(ReviewVO reviewVO)throws Exception{
 		return eachEpMapper.updateScore(reviewVO);
 	}
@@ -42,4 +50,7 @@ public class EachEpService {
 	public long deleteScore(ReviewVO reviewVO)throws Exception{
 		return eachEpMapper.updateScore(reviewVO);
 	}
+	
+	
+	
 }

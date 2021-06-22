@@ -70,5 +70,11 @@
 		WHERE e.toonNum=#{toonNum} AND e.eachEpNum=#{eachEpNum}
 	</update>
 	
+	<insert id="getInsert" parameterType="EachEpVO" >
+	INSERT INTO recenttoon(username, toonNum, epNum, viewDate)
+	VALUES(member=#{username},toon=#{toonNum} ,epchep=#{eachEpNum} ,SYSDATE());
+	</insert>
+	
+	
 
 </mapper>

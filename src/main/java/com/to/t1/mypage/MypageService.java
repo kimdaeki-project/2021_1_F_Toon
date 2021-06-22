@@ -10,6 +10,7 @@ import com.to.t1.board.BoardVO;
 import com.to.t1.member.MemberMapper;
 import com.to.t1.member.MemberVO;
 import com.to.t1.toon.ToonVO;
+import com.to.t1.toon.eachep.EachEpVO;
 import com.to.t1.util.Pager;
 
 @Service
@@ -62,6 +63,16 @@ public class MypageService {
 	
 		return mypageMapper.getList3(obj);
 	}
+	
+	public void setInsert(EachEpVO eachEpVO,MemberVO memberVO,ToonVO toonVO)throws Exception{
+		mypageMapper.setInsert(eachEpVO,memberVO,toonVO);
+		
+		return;
+	}
+	
+	
+	
+	
 	
 	
 }
