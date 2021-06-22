@@ -75,13 +75,13 @@
 							<th class="cell100 column5">조회</th>
 							<th class="cell100 column5">요일</th>
 							<th class="cell100 column5">여부</th>
-							<th class="cell100 column5">이미지</th>
+							<th class="cell100 column5">타이틀이미지</th>
 						</tr>
 					</thead>
 
 				</table>
 			</div>
-			<br><br><br><br>
+			<br>
 			<div class="table100-body js-pscroll">
 				<table>
 					<tbody class="tbody">
@@ -140,12 +140,13 @@
 					</div>
 				</form>
 	</div>
-
+</div>
+</div>
 
 	<script type="text/javascript">
-	let kind= '${pager.kind}';//Title, Writer, Contents
+	let kind= '${pager.kind}';
 	$(".sel").each(function() {
-		let t = $(this).text();//Title, Writer, Contents
+		let t = $(this).text();
 		if(t == kind){
 			$(this).prop("selected", true);
 		}
@@ -160,7 +161,7 @@
 	});
 	
 </script>
-<script type="text/javascript" src="../js/board/perfect-scrollbar.min.js"></script>
+
 	
 </body>
 </html>

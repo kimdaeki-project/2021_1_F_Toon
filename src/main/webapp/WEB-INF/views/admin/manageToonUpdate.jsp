@@ -72,32 +72,32 @@
   	
   	<div class="form-group">
       <label for="toonTitle">&nbsp;제목</label>
-      <input type="text" class="form-control" id="toonTitle" name="toonTitle" value="${vo.toonTitle}">
+      <input type="text" class="form-control" id="toonTitle" name="toonTitle" value="${toonVO.toonTitle}">
     </div>
   	
   	<div class="form-group">
       <label for="genre">&nbsp;장르</label>
-      <input type="text" class="form-control" id="genre" name="genre" value="${vo.genre}">
+      <input type="text" class="form-control" id="genre" name="genre" value="${toonVO.genre}">
     </div>
   	
     <div class="form-group">
-    <label for="writerId">&nbsp;작가</label>
-    <input type="text"  class="form-control" id="writerId" name="writerId" value="${vo.writerId}">
+    <label for="writerID">&nbsp;작가</label>
+    <input type="text"  class="form-control" id="writerID" name="writerID" value="${toonVO.writerID}">
     </div>
     
     <div class="form-group">
 	<label for="toonSum">&nbsp;작품요약</label>
-	<textarea class="form-control myCheck" rows="5" id="toonSum" name="toonSum">${vo.toonSum}</textarea>
+	<textarea class="form-control myCheck" rows="5" id="toonSum" name="toonSum">${toonVO.toonSum}</textarea>
 	</div>
     
     <div class="form-group">
     <label for="toonDay">&nbsp;요일</label>
-    <input type="text" class="form-control" id="toonDay" name="toonDay" value="${vo.toonDay}">
+    <input type="text" class="form-control" id="toonDay" name="toonDay" value="${toonVO.toonDay}">
     </div>
     
     <div class="form-group">
-	<label for="titleImg">&nbsp;이미지</label>
-	<textarea class="form-control myCheck" rows="5" id="titleImg" name="titleImg">${vo.titleImg}</textarea>
+	<label for="titleImg">&nbsp;타이틀이미지</label>
+	<textarea class="form-control myCheck" rows="5" id="titleImg" name="titleImg">${toonVO.titleImg}</textarea>
 	</div>
     
     
@@ -118,9 +118,10 @@
 			</div>
 		</div>
 	</div>
+	</div>
 
 <script type="text/javascript" src="../js/board/boardUpdate.js"></script>
 <script type="text/javascript" src="../js/board/toonSummerFile.js"></script>
-<c:import url="../fragments/footer.jsp"></c:import>
+
 </body>
 </html>

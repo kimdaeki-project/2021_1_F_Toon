@@ -67,39 +67,28 @@
 					style="border-radius: 15px 15px 15px 15px; border: 3px solid #b4b4b4; padding: 0.5em 0.6em; color: black; background-color: #dcdcdc;">공지사항/수정</span>
 			</p>
 		</h2><br>
-  <form id="frm" action="./manageToonUpdate" method="post" enctype="multipart/form-data">
-  	<input type="hidden" name="toonNum" value="${param.toonNum}">
+  <form id="frm" action="./manageEachEpUpdate" method="post" enctype="multipart/form-data">
+  	<input type="hidden" name="epNum" value="${param.epNum}">
   	
   	<div class="form-group">
-      <label for="toonTitle">&nbsp;제목</label>
-      <input type="text" class="form-control" id="toonTitle" name="toonTitle" value="${vo.toonTitle}">
+      <label for="toonTitle">&nbsp;회차별번호</label>
+      <input type="number" class="form-control" id="eachEpNum" name="eachEpNum" value="${eachEpVO.eachEpNum}">
     </div>
   	
   	<div class="form-group">
-      <label for="genre">&nbsp;장르</label>
-      <input type="text" class="form-control" id="genre" name="genre" value="${vo.genre}">
-    </div>
+	<label for="epSumImg">&nbsp;썸네일이미지</label>
+	<textarea class="form-control myCheck" rows="5" id="epSumImg" name="epSumImg">${eachEpVO.epSumImg}</textarea>
+	</div>
   	
     <div class="form-group">
-    <label for="writerId">&nbsp;작가</label>
-    <input type="text"  class="form-control" id="writerId" name="writerId" value="${vo.writerId}">
+    <label for="epTitle">&nbsp;회차제목</label>
+    <input type="text"  class="form-control" id="epTitle" name="epTitle" value="${eachEpVO.epTitle}">
     </div>
     
     <div class="form-group">
-	<label for="toonSum">&nbsp;작품요약</label>
-	<textarea class="form-control myCheck" rows="5" id="toonSum" name="toonSum">${vo.toonSum}</textarea>
+	<label for="epContentImg">&nbsp;내용이미지</label>
+	<textarea class="form-control myCheck" rows="5" id="epContentImg" name="epContentImg">${eachEpVO.epContentImg}</textarea>
 	</div>
-    
-    <div class="form-group">
-    <label for="toonDay">&nbsp;요일</label>
-    <input type="text" class="form-control" id="toonDay" name="toonDay" value="${vo.toonDay}">
-    </div>
-    
-    <div class="form-group">
-	<label for="titleImg">&nbsp;이미지</label>
-	<textarea class="form-control myCheck" rows="5" id="titleImg" name="titleImg">${vo.titleImg}</textarea>
-	</div>
-    
     
     &nbsp;&nbsp;<input type="submit" id="btn" value="수정" class="btn btn-secondary">
   </form>
@@ -120,7 +109,7 @@
 	</div>
 
 <script type="text/javascript" src="../js/board/boardUpdate.js"></script>
-<script type="text/javascript" src="../js/board/toonSummerFile.js"></script>
-<c:import url="../fragments/footer.jsp"></c:import>
+<script type="text/javascript" src="../js/board/eachEpSummerFile.js"></script>
+
 </body>
 </html>

@@ -73,6 +73,8 @@
 				</p>
 				</div>
 
+				<a href="./manageToonUpdate?toonNum=${toonVO.toonNum}" class="btn btn-secondary">수정</a>
+
 			</div>
 
 

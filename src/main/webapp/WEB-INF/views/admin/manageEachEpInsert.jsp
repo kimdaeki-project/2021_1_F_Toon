@@ -73,12 +73,12 @@
 			</div>
 			
 			<div class="form-group">
-				<label for="eachEpNum">&nbsp;회차번호</label> <input type="number"
+				<label for="eachEpNum">&nbsp;회차별번호</label> <input type="number"
 					class="form-control myCheck" id="eachEpNum" name="eachEpNum">
 			</div>
 			
 			<div class="form-group">
-				<label for="epSumImg">&nbsp;썸네일</label>
+				<label for="epSumImg">&nbsp;썸네일이미지</label>
 				<textarea class="form-control myCheck" rows="5" id="epSumImg"
 					name="epSumImg"></textarea>
 			</div>

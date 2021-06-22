@@ -26,6 +26,7 @@
 <!-- Layout style -->
 <link rel="shortcut icon" href="${pageContext.request.contextPath}/asssets/images/favicon.ico" />
 
+<link rel="stylesheet" href="${pageContext.request.contextPath}/css/mypage/perfect-scrollbar.css">
 
 <style type="text/css">
 .thead {
@@ -139,11 +140,11 @@
 
 	</div>
 
-
+<script type="text/javascript" src="../js/board/perfect-scrollbar.min.js"></script>
 	<script type="text/javascript">
-	let kind= '${pager.kind}';//Title, Writer, Contents
+	let kind= '${pager.kind}';
 	$(".sel").each(function() {
-		let t = $(this).text();//Title, Writer, Contents
+		let t = $(this).text();
 		if(t == kind){
 			$(this).prop("selected", true);
 		}

@@ -150,9 +150,9 @@
 	</div>
 </div>  
 <script type="text/javascript">
-	let kind= '${pager.kind}';//Title, Writer, Contents
+	let kind= '${pager.kind}';
 	$(".sel").each(function() {
-		let t = $(this).text();//Title, Writer, Contents
+		let t = $(this).text();
 		if(t == kind){
 			$(this).prop("selected", true);
 		}

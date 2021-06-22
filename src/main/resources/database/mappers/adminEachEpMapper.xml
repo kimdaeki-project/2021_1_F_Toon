@@ -63,7 +63,7 @@
          </resultMap>
          
          <insert id="setManageEachEpInsert" parameterType="EachEpVO" useGeneratedKeys="true" keyProperty="epNum">
-            insert into eachep values(#{epNum}, #{toonNum}, #{epSumImg}, #{epTitle}, now(),#{epContentImg}, 0, #{epRatingSum}, #{epRatingPerson})
+            insert into eachep values(#{epNum}, #{toonNum}, #{eachEpNum}, #{epSumImg}, #{epTitle}, now(),#{epContentImg}, 0, #{epRatingSum}, #{epRatingPerson})
          </insert>
          
          <insert id="setFileInsert" parameterType="AdminFileVO">

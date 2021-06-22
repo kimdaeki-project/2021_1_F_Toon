@@ -21,6 +21,8 @@
 <link rel="stylesheet"
 	href="${pageContext.request.contextPath}/css/board/util.css">
 <link rel="stylesheet" href="${pageContext.request.contextPath}/css/mypage/style.css">
+<link rel="stylesheet" href="${pageContext.request.contextPath}/css/mypage/perfect-scrollbar.css">
+
 
 <style type="text/css">
 .thead {
@@ -67,8 +69,8 @@
 							<th class="cell100 column5">회차번호</th>
 							<th class="cell100 column5">작품번호</th>
 							<th class="cell100 column5">회차별번호</th>
-							<th class="cell100 column5">썸네일</th>
-							<th class="cell100 column5">제목</th>
+							<th class="cell100 column5">썸네일이미지</th>
+							<th class="cell100 column5">회차제목</th>
 							<th class="cell100 column5">날짜</th>
 							<th class="cell100 column5">내용이미지</th>
 						</tr>
@@ -76,7 +78,7 @@
 
 				</table>
 			</div>
-			<br><br><br><br>
+			<br>
 			<div class="table100-body js-pscroll">
 				<table>
 					<tbody class="tbody">
@@ -137,9 +139,9 @@
 
 
 	<script type="text/javascript">
-	let kind= '${pager.kind}';//Title, Writer, Contents
+	let kind= '${pager.kind}';
 	$(".sel").each(function() {
-		let t = $(this).text();//Title, Writer, Contents
+		let t = $(this).text();
 		if(t == kind){
 			$(this).prop("selected", true);
 		}
