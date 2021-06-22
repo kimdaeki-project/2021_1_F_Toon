@@ -16,6 +16,7 @@ public class ReviewVO {
 	private long rating;
 	private String comments;
 	private Date commentDate;
+	
 	public long getRevNum() {
 		return revNum;
 	}

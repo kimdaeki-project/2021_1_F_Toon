@@ -5,6 +5,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.to.t1.toon.eachep.EachEpVO;
 import com.to.t1.util.Pager;
 
 @Service
@@ -18,8 +19,10 @@ public class ReviewService {
 //		pager.setCurBlock(pager.getCurBlock() == 0 ? 1 : pager.getCurBlock());
 //		pager.makecal(reviewMapper.getTotalCount(pager));
 		pager.makeRow();
+	
 		Long totalCount = reviewMapper.getTotalCount(pager);
 		pager.makeNum(totalCount);
+		
 		return reviewMapper.getList(pager);
 	}
 	

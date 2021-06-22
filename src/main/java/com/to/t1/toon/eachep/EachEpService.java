@@ -31,7 +31,6 @@ public class EachEpService {
 	public ToonVO getSelect(EachEpVO eachEpVO)throws Exception{
 		eachEpMapper.setHitUpdate(eachEpVO);
 		ToonVO toonVO=eachEpMapper.getSelect(eachEpVO);
-		
 		return toonVO;
 	}
 	

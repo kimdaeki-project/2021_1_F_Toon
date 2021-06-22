@@ -160,6 +160,8 @@ public class Pager {
 	}
 	
 	private long toonNum;
+	private long eachEpNum;
+	private long epNum;
 
 	public long getToonNum() {
 		return toonNum;
@@ -167,6 +169,22 @@ public class Pager {
 
 	public void setToonNum(long toonNum) {
 		this.toonNum = toonNum;
+	}
+
+	public long getEpNum() {
+		return epNum;
+	}
+
+	public void setEpNum(long epNum) {
+		this.epNum = epNum;
+	}
+
+	public long getEachEpNum() {
+		return eachEpNum;
+	}
+
+	public void setEachEpNum(long eachEpNum) {
+		this.eachEpNum = eachEpNum;
 	}
 	
 }

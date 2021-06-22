@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.to.t1.member.MemberVO;
 import com.to.t1.toon.ToonService;
+import com.to.t1.toon.eachep.EachEpVO;
 import com.to.t1.util.Pager;
 
 @Controller
@@ -23,13 +24,11 @@ public class ReviewController {
 	@Autowired
 	private ToonService toonService;
 	
-	@PostMapping("reviewList")
-	public void reviewGetList(Pager pager, Model model)throws Exception{
-		List<ReviewVO> list= reviewService.getList(pager);
-		model.addAttribute("reviewVO", list);
-		model.addAttribute("pager", pager);
-		model.addAttribute("listsize", list.size());
-	}
+	/*
+	 * @PostMapping("reviewList") public void getList(Pager pager, Model
+	 * model)throws Exception{ List<EachEpVO> list= reviewService.getList(pager);
+	 * model.addAttribute("eachEpVO", list); model.addAttribute("pager", pager); }
+	 */
 	
 	@PostMapping("setReview")
 	public void setReview(ReviewVO reviewVO,HttpSession session, Model model)throws Exception{
