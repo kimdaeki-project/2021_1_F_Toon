@@ -109,19 +109,20 @@ public class MemberService implements UserDetailsService {
 	public int memberUpdate(MemberVO memberVO)throws Exception{
 		return memberMapper.memberUpdate(memberVO);
 	}
-
-	public int memberDelete(String username, HttpSession session, MemberVO memberVO)throws Exception{
+	
+	public int memberDelete( HttpSession session, MemberVO memberVO)throws Exception{
 		JoinFileVO joinFileVO = memberMapper.getJoinFile(memberVO);
-		System.out.println("!!!!!!!!!!!!!!!!!");
 		
+		String filePath= "upload/member/";
 		if(joinFileVO == null) {
 			
 		}else {
-			boolean check = fileManager.delete("member", joinFileVO.getFileName(), session);
+			boolean check = fileManager.delete(filePath, joinFileVO.getFileName(), session);
 		}
 		
-		return memberMapper.memberDelete(username);
+		return memberMapper.memberDelete(memberVO);
 	}
+	
 	
 	public MemberVO searchId(MemberVO memberVO)throws Exception{
 		return memberMapper.searchId(memberVO);

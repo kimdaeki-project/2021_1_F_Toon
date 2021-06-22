@@ -114,10 +114,12 @@
 
 	
 	<sec:authorize access="isAuthenticated()">
-		<button class="btn btn-info" role="button" onclick="change()">변경?</button>
+		<button class="btn btn-info" role="button" onclick="change()">변경?</button><br><br>
 		
-		<a href="./memberDelete?username=<sec:authentication property="principal.username"/>" class="btn btn-danger" 
-		id="sunghyun" role="button" onclick="if(!confirm('정말 탈퇴 하시겠습니까?')){return false;}">회원 탈퇴</a>
+		<input type="text" id="passwordCheck" placeholder="비밀번호 입력">
+		
+		<button class="btn btn-danger" onclick="usernameDelete()">회원 탈퇴</button>
+		
 	</sec:authorize>
 	</p>
         <div class="page-content-wrapper-inner">
@@ -178,6 +180,42 @@
 		}
 	};
 
+	
+function usernameDelete(){
+		   var passwordCheck = $("#passwordCheck").val();
+		   
+		   if(confirm("정말 회원을 탈퇴 하시겠습니까?") == true){
+		      
+		   
+		      $.ajax({
+		         type : 'GET',
+		         url : '../member/memberDelete',
+		         data : {
+		            "password" : passwordCheck,
+		         },
+
+		         dataType :'text',
+		         
+		         success : function(data) {
+		             
+		            alert(data);
+		            if(data=="탈퇴 되었습니다."){
+		            location.href="./logout"
+		            }
+		          },
+		         
+		          error:function(requeest, status, error){
+		             alert(error);
+		          },
+
+		      });
+		   }else{
+		      return;
+		   }
+		   
+		      
+		}
+	
 	</script>
 	
 </body>

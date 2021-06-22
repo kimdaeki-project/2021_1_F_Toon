@@ -20,7 +20,9 @@ public interface MemberMapper {
 	
 	public int memberUpdate(MemberVO memberVO)throws Exception;
 	
-	public int memberDelete(String username)throws Exception;
+//	public int memberDelete(String username)throws Exception;
+	
+	public int memberDelete(MemberVO memberVO)throws Exception;
 	
 	public MemberVO searchId(MemberVO memberVO)throws Exception;
 	

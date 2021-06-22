@@ -295,7 +295,7 @@ public class MemberController {
 		String path="./memberJoin";
 		
 		if(result>0) {
-			message ="회원 가입 성공";
+			message ="축)회원 가입 성공";
 			path="../";
 		}
 		
@@ -336,28 +336,25 @@ public class MemberController {
 		return "common/commonResult";
 	}
 	
-	@RequestMapping("memberDelete")
-	public ModelAndView memberDelete(HttpSession session, String username)throws Exception{
-		MemberVO memberVo =(MemberVO)session.getAttribute("member"); 
-		ModelAndView mv = new ModelAndView();
-		
-		int result = memberService.memberDelete(username, session, memberVo);
-		session.invalidate();
-		
-		String message="회원 탈퇴 실패";
-		String path = "../";
-		
-		if(result>0) {
-			message="회원 탈퇴 성공";
-			
+	@GetMapping("memberDelete")
+	   @ResponseBody
+	   public String memberDelete(MemberVO memberVO ,Authentication authentication,HttpSession session)throws Exception{
+		  ModelAndView mv = new ModelAndView();
+	      String message ="";
+	      UserDetails userDetails = (UserDetails) authentication.getPrincipal();
+	      memberVO.setUsername(userDetails.getUsername());
+	      boolean result = passwordEncoder.matches(memberVO.getPassword(), userDetails.getPassword());
+	      System.out.println(memberVO);
+	      System.out.println(result);
+	      if(result) {
+	         memberService.memberDelete(session,memberVO);
+	         message="탈퇴 되었습니다.";
+	         mv.addObject("path", "./logout");
+	      }else {
+	         message="비밀번호가 일치하지않습니다.";
+	      }
+	  	return message;
 		}
-		mv.addObject("msg", message);
-		mv.addObject("path", "./logout");
-		mv.setViewName("common/commonResult");
-		
-		
-		return mv;
-	}
 
 	   @GetMapping("CheckMail")
 	   @ResponseBody
