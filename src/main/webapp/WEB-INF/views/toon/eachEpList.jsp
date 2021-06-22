@@ -51,8 +51,37 @@
 		</tr>			
 		</thead>
 		
-		<h1>${memberVO.username}</h1>
+		
 		<tbody>
+		
+			<tr>
+				<td class="imgalign">
+					<a href="/toon/eachEpSelect?toonNum=${toonVO.toonNum}&eachEpNum=${eachEpVO.eachEpNum}">
+					  
+					<img src="${eachEpVO.epSumImg}"
+						title="${eachEpVO.eachEpNum}화" alt="${eachEpVO.eachEpNum}화" width="71" height="41">
+						<span class="mask"></span>
+					</a>
+				</td>
+				<td class="title">
+				<a href="/toon/eachEpSelect?toonNum=${toonVO.toonNum}&eachEpNum=${eachEpVO.eachEpNum}">
+				${eachEpVO.eachEpNum}화</a>
+				</td>
+				<td>
+					<div class="rating_type">
+						<span class="star"><em>평점</em></span>
+						<strong>${eachEpVO.epRatingSum/eachEpVO.epRatingPerson}</strong>
+					</div>
+				</td>
+				<td class="num"><span>${eachEpVO.epDate}</span></td>
+			</tr>
+		
+		</tbody>
+		
+		
+		
+		<tbody>
+		<h1>${memberVO.username}</h1>
 		<c:forEach items="${toonVO.eachEpVO}" var="eachEpVO">
 			<tr>
 				<td class="imgalign">
@@ -79,36 +108,7 @@
 		</tbody>
 		
 		
-		<c:if test="${username eq memberVO.username}">
-		<tbody>
-		<h1>${memberVO.username}</h1>
-		<c:forEach items="${toonVO.eachEpVO}" var="eachEpVO">
-			<tr>
-				<td class="imgalign">
-					<a href="/toon/eachEpSelect?toonNum=${toonVO.toonNum}&eachEpNum=${eachEpVO.eachEpNum}">
-					  
-					<img src="${eachEpVO.epSumImg}"
-						title="${eachEpVO.eachEpNum}화" alt="${eachEpVO.eachEpNum}화" width="71" height="41">
-						<span class="mask"></span>
-					</a>
-				</td>
-				<td class="title">
-				<a href="/toon/eachEpSelect?toonNum=${toonVO.toonNum}&eachEpNum=${eachEpVO.eachEpNum}">
-				${eachEpVO.eachEpNum}화</a>
-				</td>
-				<td>
-					<div class="rating_type">
-						<span class="star"><em>평점</em></span>
-						<strong>${eachEpVO.epRatingSum/eachEpVO.epRatingPerson}</strong>
-					</div>
-				</td>
-				<td class="num"><span>${eachEpVO.epDate}</span></td>
-			</tr>
-		</c:forEach>
-		</tbody>
 		
-		
-		</c:if>
 		
 
 		
