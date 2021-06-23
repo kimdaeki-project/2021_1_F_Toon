@@ -184,21 +184,21 @@
     <script type="text/javascript" src="../js/mypage.js"></script>
     
     	<script type="text/javascript">
-// 	let kind= '${pager.kind}';//Title, Writer, Contents
-// 	$(".sel").each(function() {
-// 		let t = $(this).text();//Title, Writer, Contents
-// 		if(t == kind){
-// 			$(this).prop("selected", true);
-// 		}
-// 	});
+	let kind= '${pager.kind}';//Title, Writer, Contents
+	$(".sel").each(function() {
+		let t = $(this).text();//Title, Writer, Contents
+		if(t == kind){
+			$(this).prop("selected", true);
+		}
+	});
 	
-// 	$(".p").click(function () {
-// 		let curPage = $(this).attr("title");
-// 		$("#curPage").val(curPage);
-// 		let search= '${pager.search}';
-// 		$("#frm").submit();
+	$(".p").click(function () {
+		let curPage = $(this).attr("title");
+		$("#curPage").val(curPage);
+		let search= '${pager.search}';
+		$("#frm").submit();
 
-// 	});
+	});
 	
 	</script>
 	
