@@ -72,7 +72,7 @@
 						${toonVO.ratingSum/toonVO.ratingPerson}</span>
 				</p>
 				</div>
-
+				<br>
 				<a href="./manageToonUpdate?toonNum=${toonVO.toonNum}" class="btn btn-secondary">수정</a>
 				
 				<a href="#" id="del" class="btn btn-secondary">삭제</a>

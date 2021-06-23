@@ -40,8 +40,8 @@
          <select id="getManageEachEpSelect" resultMap="selectResult" parameterType="EachEpVO">
          SELECT E.*, EF.* from
          eachep E left join eachepfiles EF
-         on E.eachepNum = EF.eachepNum
-         WHERE E.eachepNum=#{eachepNum}
+         on E.epNum = EF.epNum
+         WHERE E.epNum=#{epNum}
          </select>
 
          <resultMap type="EachEpVO" id="selectResult">
