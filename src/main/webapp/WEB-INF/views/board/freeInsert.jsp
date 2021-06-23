@@ -12,7 +12,6 @@
     <c:import url="../fragments/bootstrap.jsp"></c:import>
     
    <link rel="stylesheet" href="${pageContext.request.contextPath}/css/header.css">
-   <link rel="stylesheet" href="${pageContext.request.contextPath}/css/mypage/style.css">
     
     <style type="text/css">
      .back {
@@ -23,14 +22,14 @@
      #frm {
      	background-color: #F7F7F7;
      	border-style: solid;
-     	border-color: #b4b4b4;
+     	border-color: #6C7AE0;
      	border-radius: 15px 15px 15px 15px;
      }
   
     
     </style>
 
-<title>공지사항 작성</title>
+<title>자유게시판 내용작성</title>
 
 
 <!-- summernote  -->
@@ -46,25 +45,15 @@
 </head>
 <body>
 	<c:import url="../fragments/header.jsp"></c:import>
-	
-	 <div class="row">
-  	<div class="col-2">
-  		<c:import url="./adminNav.jsp"></c:import>
-  	</div>
 
 	<div class="container"><br>
 	<h2>
 			<p>
 				<span
-					style="border-radius: 15px 15px 15px 15px; border: 3px solid #b4b4b4; padding: 0.5em 0.6em; color: black; background-color: #dcdcdc;">공지사항/작성</span>
+					style="border-radius: 15px 15px 15px 15px; border: 3px solid #6C7AE0; padding: 0.5em 0.6em; color: white; background-color: #6C7AE0;">자유게시판</span>
 			</p>
 		</h2><br>
-		<form id="frm" action="./insert" method="post" enctype="multipart/form-data">
-	
-			<div class="form-group">
-				<label for="noticeKinds">&nbsp;공지종류</label> <input type="text"
-					class="form-control myCheck" id="noticeKinds" name="noticeKinds">
-			</div>
+		<form id="frm" action="./freeInsert" method="post" enctype="multipart/form-data">
 
 			<div class="form-group">
 				<label for="username">&nbsp;작성자</label> <input type="text"
@@ -72,21 +61,21 @@
 					class="form-control myCheck" id="username" name="username">
 			</div>
 			<div class="form-group">
-				<label for="noticeTitle">&nbsp;제목</label> <input type="text"
-					class="form-control myCheck" id="noticeTitle" name="noticeTitle">
+				<label for="freeTitle">&nbsp;제목</label> <input type="text"
+					class="form-control myCheck" id="freeTitle" name="freeTitle">
 			</div>
 
 			<div class="form-group">
-				<label for="noticeContents">&nbsp;내용</label>
-				<textarea class="form-control myCheck" rows="5" id="noticeContents"
-					name="noticeContents"></textarea>
+				<label for="freeContents">&nbsp;내용</label>
+				<textarea class="form-control myCheck" rows="5" id="freeContents"
+					name="freeContents"></textarea>
 			</div>
 
-			&nbsp;&nbsp;<input type="button" id="add" value="파일추가" class="btn btn-secondary"><br>
+			&nbsp;&nbsp;<input type="button" id="add" value="파일추가" class="btn btn-primary"><br>
 			
 			<div id="files" title="0"></div><br>
 
-			&nbsp;&nbsp;<input type="button" id="btn" value="등록" class="btn btn-secondary">
+			&nbsp;&nbsp;<input type="button" id="btn" value="등록" class="btn btn-primary">
 		</form>
 	</div>
 	
@@ -106,6 +95,7 @@
 	<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
 	<script type="text/javascript" src="../js/board/boardInsert.js"></script>
 	<script type="text/javascript" src="../js/board/fileAdd.js"></script>
-	<script type="text/javascript" src="../js/board/summerFile.js"></script>
+	<script type="text/javascript" src="../js/board/freeSummerFile.js"></script>
+	<c:import url="../fragments/footer.jsp"></c:import>
 </body>
 </html>

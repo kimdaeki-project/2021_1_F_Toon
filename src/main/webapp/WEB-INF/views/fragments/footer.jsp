@@ -33,6 +33,8 @@
 						>공지사항</a></li>
 					<li><a href="${pageContext.request.contextPath}/qna/qnaList"
 						>질의응답</a></li>
+					<li><a href="${pageContext.request.contextPath}/free/freeList"
+						>자유게시판</a></li>	
 				</ul>
 			</div>
 

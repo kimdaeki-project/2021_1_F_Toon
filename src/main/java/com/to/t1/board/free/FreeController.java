@@ -69,8 +69,8 @@ public class FreeController {
 		List<FreeVO> ar = freeService.getList(pager);
 		
 		mv.addObject("freeList", ar);
-		mv.setViewName("free/freeList");
-		mv.addObject("free", "free");
+		mv.setViewName("board/freeList");
+		mv.addObject("board", "free");
 		mv.addObject("pager", pager);
 		System.out.println(pager.getStartNum());
 		System.out.println(pager.getLastNum());
@@ -83,15 +83,15 @@ public class FreeController {
 		ModelAndView mv = new ModelAndView();
 		freeVO = freeService.getSelect(freeVO);
 		mv.addObject("vo", freeVO);
-		mv.setViewName("free/freeSelect");
+		mv.setViewName("board/freeSelect");
 		return mv;
 	}
 	
 	@GetMapping("freeInsert")
 	public ModelAndView setInsert(HttpSession session)throws Exception{
 		 ModelAndView mv = new ModelAndView();
-			mv.setViewName("free/freeInsert");
-			mv.addObject("free", "free");
+			mv.setViewName("board/freeInsert");
+			mv.addObject("board", "free");
 		
 			return mv;
 			
@@ -122,7 +122,7 @@ public class FreeController {
 		return "redirect:./freeList";
 	}
 	
-	@GetMapping("fileDelete")
+	@GetMapping("freeFileDelete")
 	public ModelAndView setFileDelete(BoardFileVO boardFileVO)throws Exception{
 		ModelAndView mv = new ModelAndView();
 		int result = freeService.setFileDelete(boardFileVO);
@@ -137,8 +137,8 @@ public class FreeController {
 		freeVO = freeService.getSelect(freeVO);
 		
 		mv.addObject("vo", freeVO);
-		mv.addObject("free", "free");
-		mv.setViewName("free/freeUpdate");
+		mv.addObject("board", "free");
+		mv.setViewName("board/freeUpdate");
 		return mv;
 	}
 	

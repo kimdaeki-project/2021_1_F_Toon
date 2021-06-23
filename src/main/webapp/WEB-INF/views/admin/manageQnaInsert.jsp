@@ -110,6 +110,6 @@
 	<script type="text/javascript" src="../js/board/boardInsert.js"></script>
 	<script type="text/javascript" src="../js/board/fileAdd.js"></script>
 	<script type="text/javascript" src="../js/board/qnaSummerFile.js"></script>
-	<c:import url="../fragments/footer.jsp"></c:import>
+
 </body>
 </html>
