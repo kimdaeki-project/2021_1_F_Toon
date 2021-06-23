@@ -13,7 +13,7 @@ import lombok.Data;
 
 @Data
 public class RecentVO {
-
+	private long recNum;
 	private String username;
 	private long toonNum;
 	private long epNum;

@@ -3,11 +3,13 @@ package com.to.t1.toon.eachep;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.Authentication;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import com.to.t1.mypage.RecentVO;
 import com.to.t1.review.ReviewService;
 import com.to.t1.review.ReviewVO;
 import com.to.t1.toon.ToonService;
@@ -26,14 +28,21 @@ public class EachEpController {
 	
 	@GetMapping("eachEpList")
 	public void getList(Pager pager, Model model)throws Exception{
+		System.out.println(pager.getToonNum());
 		ToonVO list=eachEpService.getList(pager);
 		model.addAttribute("toonVO", list);
 		model.addAttribute("pager", pager);
+		
 	}
 	
 	@GetMapping("eachEpSelect")
-	public void getSelect(EachEpVO eachEpVO,Pager pager, Model model)throws Exception{
-		ToonVO list= eachEpService.getSelect(eachEpVO);
+	public void getSelect(EachEpVO eachEpVO,Pager pager, Model model, Authentication auth)throws Exception{
+		RecentVO recentVO = new RecentVO(); 
+		if(auth!=null) {
+			System.out.println("username: "+auth.getName());
+		recentVO.setUsername(auth.getName());
+		}
+		ToonVO list= eachEpService.getSelect(eachEpVO, recentVO);
 		model.addAttribute("toonVO", list);
 		model.addAttribute("listsize", list.getEachEpVO().size());
 		

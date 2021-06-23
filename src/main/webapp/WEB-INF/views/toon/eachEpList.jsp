@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %> 
+<%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -55,14 +56,30 @@
 		<c:forEach items="${toonVO.eachEpVO}" var="eachEpVO">
 			<tr>
 				<td class="imgalign">
-					<a href="/toon/eachEpSelect?toonNum=${toonVO.toonNum}&eachEpNum=${eachEpVO.eachEpNum}" >
+					<sec:authorize access="isAnonymous()">
+						<a href="/toon/eachEpSelect?toonNum=${toonVO.toonNum}&eachEpNum=${eachEpVO.eachEpNum}&epNum=${eachEpVO.epNum}" >
+					</sec:authorize>
+			
+					<sec:authorize access="isAuthenticated()">
+						<a href="/toon/eachEpSelect?toonNum=${toonVO.toonNum}&eachEpNum=${eachEpVO.eachEpNum}&epNum=${eachEpVO.epNum}&username=<sec:authentication property="principal.username"/>" >
+					</sec:authorize>
+					
 					<img src="${eachEpVO.epSumImg}"
 						title="${eachEpVO.eachEpNum}화" alt="${eachEpVO.eachEpNum}화" width="71" height="41">
 						<span class="mask"></span>
 					</a>
 				</td>
+				
 				<td class="title">
-				<a href="/toon/eachEpSelect?toonNum=${toonVO.toonNum}&eachEpNum=${eachEpVO.eachEpNum}">
+				
+					<sec:authorize access="isAnonymous()">
+						<a href="/toon/eachEpSelect?toonNum=${toonVO.toonNum}&eachEpNum=${eachEpVO.eachEpNum}&epNum=${eachEpVO.epNum}" >
+					</sec:authorize>
+			
+					<sec:authorize access="isAuthenticated()">
+						<a href="/toon/eachEpSelect?toonNum=${toonVO.toonNum}&eachEpNum=${eachEpVO.eachEpNum}&epNum=${eachEpVO.epNum}&username=<sec:authentication property="principal.username"/>" >
+					</sec:authorize>
+					
 				${eachEpVO.eachEpNum}화</a>
 				</td>
 				<td>
