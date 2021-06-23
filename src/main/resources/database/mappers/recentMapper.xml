@@ -86,6 +86,7 @@
 	</select>
 	
 	<resultMap type="RecentVO" id="recentResult">
+		<id property="recNum" column="recNum"/>
 		<id property="epNum" column="epNum"/>
 		<result property="username" column="username" />
 		<result property="toonNum" column="toonNum"/>
