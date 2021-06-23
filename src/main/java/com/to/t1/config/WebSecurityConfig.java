@@ -64,6 +64,8 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter{
             .antMatchers("/member/CheckMail","/member/memberLoginResult").permitAll()
             .antMatchers("/member/**").hasAnyRole("ADMIN", "MEMBER")
             
+            
+            
             .antMatchers("/member/memberJoinCheck").permitAll()
 			.antMatchers("/toon/toonDay/toonDay").permitAll()
 			.antMatchers("/toon/toonDay/toonDayAver").permitAll()
@@ -83,9 +85,10 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter{
 			.antMatchers("/toon/end/endReRecent").permitAll()
 			
 			.antMatchers("/toon/eachEpList/**").permitAll()
+			
 			.antMatchers("/toon/eachEpSelect/**").permitAll()
 				
-			.antMatchers("/**").permitAll()
+			
             .antMatchers("/notice/select").hasAnyRole("ADMIN", "MEMBER")
             .antMatchers("/qna/qnaSelect").hasAnyRole("ADMIN", "MEMBER")
             .antMatchers("/qna/qnaUpdate").hasAnyRole("ADMIN", "MEMBER")

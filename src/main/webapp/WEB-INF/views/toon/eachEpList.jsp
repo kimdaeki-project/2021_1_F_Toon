@@ -54,7 +54,7 @@
 		<tbody>
 		<c:forEach items="${toonVO.eachEpVO}" var="eachEpVO">
 			<tr>
-				<td class="imgalign">
+				<td class="imgalign" id="pay">
 					<a href="/toon/eachEpSelect?toonNum=${toonVO.toonNum}&eachEpNum=${eachEpVO.eachEpNum}" >
 					<img src="${eachEpVO.epSumImg}"
 						title="${eachEpVO.eachEpNum}화" alt="${eachEpVO.eachEpNum}화" width="71" height="41">
@@ -76,6 +76,10 @@
 		</c:forEach>
 		</tbody>
 		</table>
+		
+		<script>
+		
+		</script>
 		
 		<div class="paginate">
 		 	<ul class="pagination">
