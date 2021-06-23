@@ -4,11 +4,13 @@ package com.to.t1.point;
 import java.util.Map; //jSON 파서용 
 import javax.servlet.http.HttpSession;
 
+import org.hamcrest.core.IsNull;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -25,32 +27,29 @@ public class PointController {
 	@Autowired
 	public PointService pointservice;
 	
-	//검증 관련
-//	@Autowired
-//	private IamportClient api;
-//	//소장권 사용 내역 조회
-	
+
 	//가지고 있는 이용권 조회 (웹툰 이름과, 웹툰 이동url , 썸네일 사진, 보유 소장권 갯수 )
 	
 	//소장권 구입 (insert)페이지 진입
 	@GetMapping("charge")
-	public String chargePoint(Model model, HttpSession httpSession, PointVO chargePointVO) throws Exception{
-//		this.api = new IamportClient("8955862071146697",
-//				"cf9f6e33a37773d3792a17d3584428236a9a3fcbbf4998fa8d5c2dfb89730544b2b4df1b4f38a62d");
-//		
+	public String chargePoint(Model model, HttpSession httpSession, PointVO PointVO) throws Exception{
+		
 		return "point/charge";
 		
 	}
 	//충전을 하는 경우 1. 상단에 point/charge에 들어왔다. 2. 웹툰 소장권을 사려다가 포인트가 모자라서 들어왔다.
 	@ResponseBody
 	@RequestMapping(value="success", method = RequestMethod.POST)
-	public String setPoint(@RequestParam Map<String, Object> param,Model model,HttpSession httpSession) throws Exception{
+	public String setPoint(@RequestBody Map<String, Object> param,Model model,HttpSession httpSession) throws Exception{
 		
-//		int result = pointservice.ChargePoint(param);
-		
+		int result = pointservice.chargePoint(param);		
 		return "member/myPage";
 	}
-	
+	//검증 관련
+//	@Autowired
+//	private IamportClient api;
+//	//소장권 사용 내역 조회
+		
 //	//RESTAPI 검증
 //	@ResponseBody
 //	@RequestMapping(value="/verifyIamport/{imp_uid}")
@@ -60,40 +59,38 @@ public class PointController {
 //	{	
 //			return api.paymentByImpUid(imp_uid);
 //	}
+	
+//	this.api = new IamportClient("8955862071146697",
+//	"cf9f6e33a37773d3792a17d3584428236a9a3fcbbf4998fa8d5c2dfb89730544b2b4df1b4f38a62d");
+//
 	//소장권 구입  
 	//파라미터 값 : 1. user정보 , 2.(사용 할)EP정보
 	//리턴 : 진행상황,(int로 반환) 
 	
-	@GetMapping("getTicket")
-	public String getTicket(Model model, HttpSession httpSession, PointVO chargePointVO) throws Exception{
-//		this.api = new IamportClient("8955862071146697",
-//				"cf9f6e33a37773d3792a17d3584428236a9a3fcbbf4998fa8d5c2dfb89730544b2b4df1b4f38a62d");
-//		
+	@PostMapping("ticketCharge")
+	public String getTicket(@RequestParam Map<String,Object> param, HttpSession httpSession,Model model, TicketBoxVO ticketBoxVO)throws Exception{
+		//TicktBox조회 
+		ticketBoxVO = pointservice.checkTicketStock(param, ticketBoxVO);
+		System.out.println(ticketBoxVO);
+		System.out.println(ticketBoxVO);
+		model.addAttribute("info",param);
+		model.addAttribute("ticketBox",ticketBoxVO);
+		
 		return "point/getTicket";
-		
 	}
-	@PostMapping("getTicket")
-	public String getTicket(MemberVO memberVO,PointVO  usePointVO,TicketBoxVO ticketBoxVO , Model model)throws Exception{
-		String path = "/";
-		int result =0;
+	@PostMapping("getToonTicket")
+	public String getToonTicket(PointVO pointVO, TicketBoxVO ticketBoxVO,int isAlready, HttpSession httpSession)throws Exception {
 		
-		switch(result) {
-		case 0 : //결제 실패시, error 500인 경우  
-			break;
-		case 1 :  // 결제 성공시 
-			model.addAttribute("UsePointVO",usePointVO);
-			path = "view페이지로 이동할 것";
-			break;
-		case 3 : //금액이 모잘라서 충전을 해야하는 경우 :ChargePoint 컨트롤러 명령어 줄 것 
-			path ="charge페이지로 이동할 것";
-			break;
-		default : 
-			break;
-		}
-		return path;
+		
+		pointservice.getTicket(pointVO, ticketBoxVO, isAlready);
+		//경로 처리하기 
+		
+		
+		return "toon/eachEpList";
 	}
 	@GetMapping("useTicket")
-	public String useTicket(Model model, HttpSession httpSession, PointVO chargePointVO) throws Exception{
+	public String useTicket(Model model, HttpSession httpSession) throws Exception{
+		
 		
 		return "point/useTicket";
 	}
@@ -107,6 +104,4 @@ public class PointController {
 		//2-3. 소장권의 stock >1 인 경우 : 소장권 구입하고 소장권 구입 URL로 이동하기 
 		
 	}
-	
-	
 }
