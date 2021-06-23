@@ -1,10 +1,13 @@
-let pw = document.getElementById("pw");
+let password = document.getElementById("password");
+let newpassword = document.getElementById("newpassword");
+let newpassword2 = document.getElementById("newpassword2");
+let passwordCheck = document.getElementById("passwordCheck");
 
-pw.addEventListener("blur", function(){
+password.addEventListener("blur", function(){
 
 	let message = "8글자 미만입니다";
 	let c = "r1";
-	if(pw.value.length>7){
+	if(password.value.length>7){
 		
 		message = "8글자 이상입니다"
 		c= "r2";
@@ -14,6 +17,58 @@ pw.addEventListener("blur", function(){
 	let pwResult = document.getElementById("pwResult");
 	pwResult.innerHTML=message;
 	pwResult.setAttribute("class", c);
+	
+});
+
+
+newpassword.addEventListener("blur", function(){
+
+	let message = "8글자 미만입니다";
+	let c = "r1";
+	if(newpassword.value.length>7){
+		
+		message = "8글자 이상입니다"
+		c= "r2";
+		pwCheckResult=true;
+	}
+	
+	let pwResult2 = document.getElementById("pwResult2");
+	pwResult2.innerHTML=message;
+	pwResult2.setAttribute("class", c);
+	
+});
+
+newpassword2.addEventListener("blur", function(){
+
+	let message = "8글자 미만입니다";
+	let c = "r1";
+	if(newpassword2.value.length>7){
+		
+		message = "8글자 이상입니다"
+		c= "r2";
+		pwCheckResult=true;
+	}
+	
+	let pwResult3 = document.getElementById("pwResult3");
+	pwResult3.innerHTML=message;
+	pwResult3.setAttribute("class", c);
+	
+});
+
+passwordCheck.addEventListener("blur", function(){
+
+	let message = "8글자 미만입니다";
+	let c = "r1";
+	if(passwordCheck.value.length>7){
+		
+		message = "8글자 이상입니다"
+		c= "r2";
+		pwCheckResult=true;
+	}
+	
+	let pwResult4 = document.getElementById("pwResult4");
+	pwResult4.innerHTML=message;
+	pwResult4.setAttribute("class", c);
 	
 });
 

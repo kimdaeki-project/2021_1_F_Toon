@@ -20,6 +20,7 @@
     <!-- End vendor css for this page -->
     <!-- inject:css -->
     <link rel="stylesheet" href="/css/mypage/style.css">
+    <link rel="stylesheet" href="/css/join.css">
     <!-- Layout style -->
     <link rel="shortcut icon" href="../asssets/images/favicon.ico" />
 </head>
@@ -108,21 +109,21 @@
            <h1>비밀번호 변경</h1>
         	
 
-	<input type="password" id=password name=password><br><br>
+	<input type="password" id=password name=password><br>
 	<h5 id="pwResult"></h5>
 	
-	<input type="password" id=newpassword name=newpassword><br><br>
-	<h5 id="pwResult"></h5>
+	<input type="password" id=newpassword name=newpassword><br>
+	<h5 id="pwResult2"></h5>
 	
-	<input type="password" id=newpassword2 name=newpassword2><br><br>
-	<h5 id="pwResult"></h5>
+	<input type="password" id=newpassword2 name=newpassword2><br>
+	<h5 id="pwResult3"></h5>
 
 	
 	<sec:authorize access="isAuthenticated()">
 		<button class="btn btn-info" role="button" onclick="change()">변경?</button><br><br>
 		
-		<input type="password" id="passwordCheck" placeholder="비밀번호 입력">
-		<h5 id="pwResult"></h5>
+		<input type="password" id="passwordCheck" placeholder="비밀번호 입력"><br>
+		<h5 id="pwResult4"></h5>
 		
 		<button class="btn btn-danger" onclick="usernameDelete()">회원 탈퇴</button>
 		
