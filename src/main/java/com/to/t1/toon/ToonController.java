@@ -57,8 +57,7 @@ public class ToonController {
 	
 	@GetMapping("toonDay")
 	   public ModelAndView toonDay(ToonVO toonVO,MemberVO memberVO,Authentication auth2) throws Exception {
-	      
-		ModelAndView mv = new ModelAndView();
+	      ModelAndView mv = new ModelAndView();
 	      
 	      memberVO = memberService.myPage((MemberVO) auth2.getPrincipal());
 	      
@@ -93,9 +92,8 @@ public class ToonController {
 	      mv.addObject("st2", st2);
 	      mv.setViewName("toon/toonDay/toonDay");
 	      
-	     if(memberVO != null) {
-	    	 mv.addObject("memberVO", memberVO);
-	     }
+	      System.out.println("username"+memberVO.getUsername());
+	    
 	      return mv ;
 	   }
 	
