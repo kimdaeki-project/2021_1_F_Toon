@@ -3,9 +3,6 @@ package com.to.t1.member;
 import java.util.Map;
 
 import org.apache.ibatis.annotations.Mapper;
-import org.apache.ibatis.annotations.Param;
-
-import com.to.t1.member.MemberVO;
 
 @Mapper
 public interface MemberMapper {
@@ -35,5 +32,6 @@ public interface MemberMapper {
 	public MemberVO myPage(MemberVO memberVO)throws Exception;
 	
 	public MemberVO memberJoinCheck(MemberVO memberVO)throws Exception;
+	
 
 }

@@ -43,14 +43,22 @@
 		INSERT INTO user03.ticketbox (username, toonNum, stock,sort) VALUES (#{username}, #{toonNum}, #{stock},#{sort})
 	</insert>
 <!-- 소장권 사용하기 -->
-	<!-- 1. 소장권  UPDATE 하거나 INSERT 하기  -->	
-	<!-- 2. 사용 내역 작성하기 -->
+	<!-- 1. 소장권 INSERT 하기  -->	
 	<insert id="setTicketUselist" parameterType="UseTicketVO">
-		INSERT INTO user03.useticket (username,epNum,sort,toonNum,utDate,) VALUES (#{username}, #{epNum},#{sort}), #{toonNum},NOW())
+		INSERT INTO user03.useticket (username,epNum,sort,toonNum,utDate) VALUES (#{username}, #{epNum},#{sort}), #{toonNum},NOW())
 	</insert>
 	<!-- 티켓 권한 부여 하기 -->
 	<!-- 3. 사용 내역 조회하기  -->
 	<select id="getUseTicktList" parameterType="MemberVO" resultType="UseTicketVO">
 		SELECT * FROM USER03.useticket WHERE username= #{username} 
+	</select>
+	<!-- 총 티켓 갯수 구하기 -->
+	<select id="getTotalTicketCount" parameterType="UseTicketVO" resultType="Long">
+		SELECT COUNT(*) FROM useticket  WHERE (username=#{username} AND toonNum = #{toonNum} )AND sort = 1
+	</select>
+	
+	<select id="getToonTicktList" parameterType="UseTicketVO" resultType="UseTicketVO">
+		SELECT * FROM USER03.useticket  
+		WHERE (username=#{username} AND toonNum = #{toonNum} )AND sort = 1 ORDER BY utDate DESC 
 	</select>
    </mapper>

@@ -1,5 +1,6 @@
 package com.to.t1.toon.eachep;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.servlet.http.HttpSession;
@@ -13,8 +14,11 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.to.t1.member.MemberService;
 import com.to.t1.member.MemberVO;
+import com.to.t1.point.PointService;
 import com.to.t1.review.ReviewService;
 import com.to.t1.review.ReviewVO;
+import com.to.t1.ticket.TicketBoxVO;
+import com.to.t1.ticket.UseTicketVO;
 import com.to.t1.toon.ToonService;
 import com.to.t1.toon.ToonVO;
 import com.to.t1.util.Pager;
@@ -31,8 +35,20 @@ public class EachEpController {
 	@Autowired
 	private MemberService memberService;
 	
+	@Autowired
+	private PointService pointService;
+	
 	@GetMapping("eachEpList")
-	public void getList(Pager pager, Model model,HttpSession httpSession,MemberVO memberVO)throws Exception{
+	public void getList(Pager pager,Model model,HttpSession httpSession,MemberVO memberVO,Authentication auth2, UseTicketVO useTicketVO)throws Exception{
+		 
+		
+		if(auth2 != null) {
+			memberVO = memberService.myPage((MemberVO) auth2.getPrincipal());
+	    	useTicketVO.setUsername(memberVO.getUsername());
+	    	List<UseTicketVO> utl = pointService.getToonTicktList(useTicketVO, pager);
+	    	model.addAttribute("useTicketVO", utl); 
+	    }
+		
 		ToonVO list=eachEpService.getList(pager);
 
 		model.addAttribute("memberVO", memberVO); 

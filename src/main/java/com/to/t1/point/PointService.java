@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import com.to.t1.member.MemberVO;
 import com.to.t1.ticket.TicketBoxVO;
 import com.to.t1.ticket.UseTicketVO;
+import com.to.t1.util.Pager;
 
 @Service
 public class PointService {
@@ -95,9 +96,18 @@ public class PointService {
 		return pointMapper.getMyPointList(memberVO);
 	}
 	
-	//소장권 사용내역 조회 (리스트)
+	//소장권 사용내역 조회 : toon 상관 없이 조회(리스트)
 	public List<UseTicketVO> getUseTicketList(MemberVO memberVO)throws Exception {
 		return pointMapper.getUseTicktList(memberVO);
+	}
+	//UseTicket을 위한 조회 : toonNum과 username으로 조회
+	public List<UseTicketVO> getToonTicktList(UseTicketVO useTicketVO, Pager pager)throws Exception{
+		
+		pager.makeRow();
+		Long totalCount = pointMapper.getTotalTicketCount(useTicketVO);
+		pager.makeNum(totalCount);
+		
+		return pointMapper.getToonTicktList(useTicketVO);
 	}
 	
 	
