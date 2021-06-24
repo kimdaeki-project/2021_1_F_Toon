@@ -40,6 +40,7 @@
 	<!-- 웹툰 소장권 충전,form으로 post전송  line:40에 붙여넣기
 	${pageContext.request.contextPath}}/point/ticketCharge : post전송-->
 	<div id="getTicketButton" class="" >
+	<sec:authorize access="isAuthenticated()"> 
 		<form id="goto-ticket" action="${pageContext.request.contextPath}/point/ticketCharge" method="post">
 			<span>유저이름</span>
 			<input name="username" value="<sec:authentication property="principal.username"/>" readonly="readonly"/>
@@ -52,6 +53,7 @@
 			<!-- point가 작은 경우 소장권 버튼 누르면 alert창 나오고 chargePoint페이지로 이동하기 -->
 			<button id="chargeTicket" class="" type="submit">소장권 충전하기</button>		
 		</form>
+	</sec:authorize>	
 	</div>
 	
 	
