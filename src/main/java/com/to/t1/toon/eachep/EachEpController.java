@@ -32,11 +32,10 @@ public class EachEpController {
 	private MemberService memberService;
 	
 	@GetMapping("eachEpList")
-	public void getList(Pager pager, Model model,HttpSession httpSession,MemberVO memberVO, Authentication auth2)throws Exception{
+	public void getList(Pager pager, Model model,HttpSession httpSession,MemberVO memberVO)throws Exception{
 		ToonVO list=eachEpService.getList(pager);
-		
-		memberVO = memberService.myPage((MemberVO) auth2.getPrincipal());
-	      
+
+		model.addAttribute("memberVO", memberVO); 
 		
 		model.addAttribute("toonVO", list);
 		model.addAttribute("pager", pager);

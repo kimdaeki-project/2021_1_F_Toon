@@ -58,7 +58,7 @@
 	
 	<div>${toonVO.toonTitle}</div>
 	<div>${toonVO.nickname}</div>
-	<div>${toonVO.username}</div>
+	<div>${memberVO.username}</div>
 	
 	<!-- 리스트 -->
 
