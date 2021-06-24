@@ -105,25 +105,52 @@
       </div>
       <!-- partial -->
       <div class="page-content-wrapper">
-           <h1>회원정보</h1>
+           <center><h2><회원정보></h2></center>
     <sec:authorize access="isAuthenticated()">       	
 	
-	<h3>아이디: <sec:authentication property="principal.username"/></h3>
-	<h3>이름: ${memberVO.name}</h3>
-	<h3>닉네임: ${memberVO.nickname}</h3>
-	<h3>핸드폰: ${memberVO.phone}</h3>
-	<h3>이메일: ${memberVO.email}</h3>
-	<h3>내 포인트: ${memberVO.point}</h3>
+	<fieldset disabled>
+    
+    <div class="form-group">
+      <label for="disabledTextInput">아이디</label>
+      <input type="text" id="disabledTextInput" class="form-control" placeholder=<sec:authentication property="principal.username"/>>
+    </div>
+    
+     <div class="form-group">
+      <label for="disabledTextInput">이름</label>
+      <input type="text" id="disabledTextInput" class="form-control" placeholder=${memberVO.name}>
+    </div>
+    
+     <div class="form-group">
+      <label for="disabledTextInput">닉네임</label>
+      <input type="text" id="disabledTextInput" class="form-control" placeholder=${memberVO.nickname}>
+    </div>
+    
+     <div class="form-group">
+      <label for="disabledTextInput">핸드폰</label>
+      <input type="text" id="disabledTextInput" class="form-control" placeholder=${memberVO.phone}>
+    </div>
+    
+    <div class="form-group">
+      <label for="disabledTextInput">E-mail</label>
+      <input type="text" id="disabledTextInput" class="form-control" placeholder=${memberVO.email}>
+    </div>
+    
+    <div class="form-group">
+      <label for="disabledTextInput">내 포인트</label>
+      <input type="text" id="disabledTextInput" class="form-control" placeholder=${memberVO.point}point>
+    </div>
+    
+    
+  </fieldset>
+  <br><br>
+	
 	</sec:authorize>
 	
 
 	
 	<sec:authorize access="isAuthenticated()">
-		<a href="./memberUpdate" class="btn btn-info" 
-		role="button" onclick="if(!confirm('내 정보를 수정 하시겠습니까?')){return false;}">내 정보 수정</a>
-		
-<%-- 		<a href="./memberDelete?username=<sec:authentication property="principal.username"/>" class="btn btn-danger"  --%>
-<!-- 		id="sunghyun" role="button" onclick="if(!confirm('정말 탈퇴 하시겠습니까?')){return false;}">회원 탈퇴</a> -->
+		<center><a href="./memberUpdate" class="btn btn-info" 
+		role="button" onclick="if(!confirm('내 정보를 수정 하시겠습니까?')){return false;}">내 정보 수정</a></center>
 	</sec:authorize>
 	</p>
         <div class="page-content-wrapper-inner">

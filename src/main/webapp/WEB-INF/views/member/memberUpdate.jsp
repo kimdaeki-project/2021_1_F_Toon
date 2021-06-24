@@ -105,15 +105,35 @@
       </div>
       <!-- partial -->
       <div class="page-content-wrapper">
-      <h2>수정ㅋ</h2>
+      <center><h2><회원 정보 수정></h2></center>
 	<form action="memberUpdate" method="post">
-		ID <input type="text" name="username" readonly="readonly" value="<sec:authentication property="principal.username"/>"><br>
-		Name <input type="text" name="name" value= "${memberVO.name}"><br>
-		닉네임 <input type="text" name="nickname" value="${memberVO.nickname}"><br>
-		Phone <input type="text" name="phone" value= "${memberVO.phone}"><br>
-		Email <input type="text" name="email" value= "${memberVO.email}"><br>
+		
+		 <div class="form-group">
+     	 <label for="disabledTextInput">아이디</label>
+    	  <input type="text" id="disabledTextInput" readonly="readonly" class="form-control" placeholder=<sec:authentication property="principal.username"/>>
+   		 </div>
+		
+		 <div class="form-group">
+      		<label for="Input">이름</label>
+      		<input type="text" id="disabledTextInput" name="name" class="form-control" value= "${memberVO.name}">
+ 		  </div>
+ 		  
+ 		  <div class="form-group">
+      		<label for="Input">닉네임</label>
+      		<input type="text" id="disabledTextInput" name="nickname" class="form-control" value="${memberVO.nickname}">
+ 		  </div>
+ 		  
+ 		  <div class="form-group">
+      		<label for="Input">핸드폰</label>
+      		<input type="text" id="disabledTextInput" name="phone" class="form-control" value="${memberVO.phone}">
+ 		  </div>
+ 		  
+ 		  <div class="form-group">
+      		<label for="Input">E-mail</label>
+      		<input type="text" id="disabledTextInput" name="email" class="form-control" value="${memberVO.email}">
+ 		  </div><br>
 
-		<button class="btn btn-info">Update</button>
+		<center><button class="btn btn-info">Update</button></center>
 	</form>
         <div class="page-content-wrapper-inner">
           <div class="content-viewport">
