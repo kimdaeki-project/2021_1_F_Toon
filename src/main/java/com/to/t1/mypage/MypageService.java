@@ -34,8 +34,8 @@ public class MypageService {
 		return mypageMapper.getList(obj);
 	}
 	
-	public int setDelete(RecentVO recentVO) throws Exception {
-		return mypageMapper.setDelete(recentVO);
+	public int setDelete(String recNum) throws Exception {
+		return mypageMapper.setDelete(recNum);
 	}
 
 	public List<RecentVO> getList2(MemberVO memberVO, Pager pager) throws Exception {

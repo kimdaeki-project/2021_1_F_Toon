@@ -48,8 +48,8 @@
 		
 	</select>
 	
-	 <delete id="setDelete" parameterType="RecentVO">
-            delete from recenttoon where epNum=#{epNum}
+	 <delete id="setDelete" >
+            delete from recenttoon where recNum=#{recNum} 
      </delete> 
 	
 	<select id="getList2" parameterType="java.util.Map" resultMap="recentResult">

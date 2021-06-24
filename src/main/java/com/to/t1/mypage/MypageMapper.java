@@ -20,7 +20,7 @@ public interface MypageMapper {
 	
 	public List<RecentVO> getList4(Map map)throws Exception; //내 댓글
 	
-	public int setDelete(RecentVO recentVO) throws Exception;
+	public int setDelete(String recNum) throws Exception;
 	
 	public long getTotalCount1(Map map) throws Exception;
 	

@@ -2,6 +2,8 @@ package com.to.t1.mypage;
 
 import java.util.List;
 
+import javax.servlet.http.HttpServletRequest;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.Authentication;
 import org.springframework.stereotype.Controller;
@@ -13,6 +15,7 @@ import org.springframework.web.servlet.ModelAndView;
 import com.to.t1.member.MemberService;
 import com.to.t1.member.MemberVO;
 import com.to.t1.util.Pager;
+
 
 @Controller
 @RequestMapping("/mypage/**")
@@ -44,9 +47,15 @@ public class MypageController {
 	}
 	
 	@GetMapping("delete")
-	public String setDelete(RecentVO recentVO)throws Exception{
+	public String setDelete(HttpServletRequest request)throws Exception{
 		
-		int result = mypageService.setDelete(recentVO);
+		String[] ajaxMsg = request.getParameterValues("valueArr");
+		int size = ajaxMsg.length;
+		for(int i =0; i<size; i++) {
+			mypageService.setDelete(ajaxMsg[i]);
+		}
+		
+//		int result = mypageService.setDelete(recentVO);
 		
 		return "mypage/recentToon";
 	}
