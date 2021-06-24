@@ -3,13 +3,25 @@ let newpassword = document.getElementById("newpassword");
 let newpassword2 = document.getElementById("newpassword2");
 let passwordCheck = document.getElementById("passwordCheck");
 
+$("#agree-charge").click(function(){
+	let agreechk=$("#agree-charge").prop("checked");
+
+    if(agreechk){ 
+        $("#start-charge").prop("disabled",false);
+    }
+    else{
+        $("#start-charge").prop("disabled",true);
+    }
+});
+
+
 password.addEventListener("blur", function(){
 
-	let message = "8글자 미만입니다";
+	let message =  '\u00A0'+ '\u00A0'+ '\u00A0'+ '\u00A0'+"8글자 미만입니다";
 	let c = "r1";
 	if(password.value.length>7){
 		
-		message = "8글자 이상입니다"
+		message = '\u00A0'+ '\u00A0'+ '\u00A0'+ '\u00A0'+"8글자 이상입니다";
 		c= "r2";
 		pwCheckResult=true;
 	}
@@ -23,11 +35,11 @@ password.addEventListener("blur", function(){
 
 newpassword.addEventListener("blur", function(){
 
-	let message = "8글자 미만입니다";
+	let message = '\u00A0'+ '\u00A0'+ '\u00A0'+ '\u00A0'+"8글자 미만입니다";
 	let c = "r1";
 	if(newpassword.value.length>7){
 		
-		message = "8글자 이상입니다"
+		message = '\u00A0'+ '\u00A0'+ '\u00A0'+ '\u00A0'+"8글자 이상입니다";
 		c= "r2";
 		pwCheckResult=true;
 	}
@@ -40,11 +52,11 @@ newpassword.addEventListener("blur", function(){
 
 newpassword2.addEventListener("blur", function(){
 
-	let message = "8글자 미만입니다";
+	let message = '\u00A0'+ '\u00A0'+ '\u00A0'+ '\u00A0'+"8글자 미만입니다";
 	let c = "r1";
 	if(newpassword2.value.length>7){
 		
-		message = "8글자 이상입니다"
+		message = '\u00A0'+ '\u00A0'+ '\u00A0'+ '\u00A0'+"8글자 이상입니다";
 		c= "r2";
 		pwCheckResult=true;
 	}
@@ -57,11 +69,11 @@ newpassword2.addEventListener("blur", function(){
 
 passwordCheck.addEventListener("blur", function(){
 
-	let message = "8글자 미만입니다";
+	let message = '\u00A0'+ '\u00A0'+ '\u00A0'+ '\u00A0'+"8글자 미만입니다";
 	let c = "r1";
 	if(passwordCheck.value.length>7){
 		
-		message = "8글자 이상입니다"
+		message = '\u00A0'+ '\u00A0'+ '\u00A0'+ '\u00A0'+"8글자 이상입니다";
 		c= "r2";
 		pwCheckResult=true;
 	}
@@ -133,7 +145,7 @@ function usernameDelete(){
 		            }
 		          },
 		         
-		          error:function(requeest, status, error){
+		          error:function(request, status, error){
 		             swal(error);
 		          },
 

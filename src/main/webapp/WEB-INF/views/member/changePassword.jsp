@@ -106,26 +106,60 @@
       </div>
       <!-- partial -->
       <div class="page-content-wrapper">
-           <h1>비밀번호 변경</h1>
-        	
+          <h2><label for="inputPassword6"><비빌번호 변경></label></h2>
 
-	<input type="password" id=password name=password><br>
-	<h5 id="pwResult"></h5>
-	
-	<input type="password" id=newpassword name=newpassword><br>
-	<h5 id="pwResult2"></h5>
-	
-	<input type="password" id=newpassword2 name=newpassword2><br>
-	<h5 id="pwResult3"></h5>
+	<div class="form-group">
+    &nbsp;&nbsp;&nbsp;<label for="inputPassword6">현재 비밀번호</label>
+    <input type="password" id="password" name=password class="form-control mx-sm-3" aria-describedby="passwordHelpInline">
+    &nbsp;&nbsp;&nbsp; <small class="text-muted"> Must be 8-16 characters long.</small>
+    <div class="form-group" id= pwResult></div>
+  	</div>
+  	
+  	<div class="form-group">
+     &nbsp;&nbsp;&nbsp;<label for="inputPassword6">변경 비밀번호</label>
+    <input type="password" id="newpassword" name=newpassword class="form-control mx-sm-3" aria-describedby="passwordHelpInline">
+    <small id="passwordHelpInline" class="text-muted">
+   	 &nbsp;&nbsp;&nbsp;  Must be 8-16 characters long.
+    </small>
+     <div class="form-group" id= pwResult2></div>
+  	</div>
+  	
+  	<div class="form-group">
+     &nbsp;&nbsp;&nbsp;<label for="inputPassword6">변경 비밀번호 확인</label>
+    <input type="password" id="newpassword2" name=newpassword2 class="form-control mx-sm-3" aria-describedby="passwordHelpInline"> 
+    <small id="passwordHelpInline" class="text-muted">
+     &nbsp;&nbsp;&nbsp; Must be 8-16 characters long.
+    </small>
+     <div class="form-group" id= pwResult3>
+  	</div>
 
 	
 	<sec:authorize access="isAuthenticated()">
-		<button class="btn btn-info" role="button" onclick="change()">변경?</button><br><br>
+		&nbsp;&nbsp;&nbsp;&nbsp;<button class="btn btn-info" role="button" onclick="change()">비밀번호 변경</button><br><br><br>
 		
-		<input type="password" id="passwordCheck" placeholder="비밀번호 입력"><br>
-		<h5 id="pwResult4"></h5>
+          <h2><label for="inputPassword6"><회원 탈퇴></label></h2>
 		
-		<button class="btn btn-danger" onclick="usernameDelete()">회원 탈퇴</button>
+		<div class="form-group">
+     	&nbsp;&nbsp;&nbsp;<label for="inputPassword6">현재 비밀번호 입력</label>
+		
+		<input type="password" id="passwordCheck" name=passwordCheck class="form-control mx-sm-3" aria-describedby="passwordHelpInline"> 
+    	<small id="passwordHelpInline" class="text-muted"> &nbsp;&nbsp;&nbsp; Must be 8-16 characters long. </small>
+		<div class="form-group" id= pwResult4></div>
+		
+		<div class="card card-body form-check" >
+   	 	 <input class="card-body form-check-input text-start" type="checkbox" id="agree-charge" />
+	  	<label class="form-check-label fs-5 text-end" for="agree-charge">탈퇴 후에는 아이디: ${memberVO.username} 으로 다시 가입할 수 없으며 아이디와 데이터는 복구할 수 없습니다.
+			<br>게시판형 서비스에 남아 있는 게시글은 탈퇴 후 삭제할 수 없습니다. 또한, 툰 아이디를 사용해 다른 서비스에 로그인 할 수 없게 됩니다. 
+			<br>안내 사항을 모두 확인하였으며, 이에 동의합니다.
+			</label>
+   		 </div> <br>
+		
+		<center><button id="start-charge" class="btn btn-danger" onclick="usernameDelete()" type="button" disabled>탈퇴</button></center>
+		
+		<!-- 결제동의 DIV 시작 -->
+    
+    <!-- 결제동의 DIV 끝 -->
+<!--     <button id="start-charge" class="btn btn-primary" type="button" disabled>포인트 충전하기</button> -->
 		
 	</sec:authorize>
 	</p>
