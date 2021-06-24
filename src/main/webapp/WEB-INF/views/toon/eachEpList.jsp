@@ -2,6 +2,8 @@
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %> 
 <%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags" %>
+<!-- 현재 날짜 넣기 -->
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -12,7 +14,6 @@
 </head>
 <body>
 <c:import url="../fragments/header.jsp"></c:import>
-   
 <div id="content" class="webtoon">
 
 	<!-- 웹툰 소개 -->
@@ -32,9 +33,9 @@
 		<span class="totalRating">웹툰별점 : ${toonVO.ratingSum/toonVO.ratingPerson}</span></p>
 		
 		<ul class="btn_group">
-		<li><a href="#" title="관심웹툰" class="book_maker on"><span>관심웹툰</span></a></li>
-		<li><a href="/toon/eachEpSelect?toonNum=${toonVO.toonNum}&epNum=1" title="첫회보기" class="first"><span>첫회보기</span></a></li>
-		
+			<li><a href="#" title="관심웹툰" class="book_maker on"><span>관심웹툰</span></a></li>
+			<li><a href="/toon/eachEpSelect?toonNum=${toonVO.toonNum}&epNum=1" title="첫회보기" class="first"><span>첫회보기</span></a></li>
+		</ul>
 		</div>
 	</div>
 	<!-- 웹툰 소장권 충전,form으로 post전송  line:40에 붙여넣기
@@ -73,61 +74,50 @@
 			<th scope="col">등록일</th>
 		</tr>			
 		</thead>
+		<!-- forEach : 시작 -->
+		
+		<!-- 1. epDate string -> YYYYMMDD date로 변환  -->
+		<!-- 2. utDate string-> YYYYMMDD date로 변환 -->
+		<!-- 3. 소장권이 있으면  바로 오픈 -->
+		<!-- 4. 소장권이 없으면 바로 클로즈 소장권이 없는 경우 3. java.util.Date -> before Method 사용하기 -->
 		
 		<tbody>
-		<c:forEach items="${toonVO.eachEpVO}" var="eachEpVO" begin="0" end="2">
-			<tr onclick="pay">
-				<td class="imgalign" >
-					<a href="/toon/eachEpSelect?toonNum=${toonVO.toonNum}&eachEpNum=${eachEpVO.eachEpNum}" >
-					<img src="${eachEpVO.epSumImg}"
-						title="${eachEpVO.eachEpNum}화" alt="${eachEpVO.eachEpNum}화" width="71" height="41">
-						<span class="mask"></span>
-					</a>
-				</td>
-				<td class="title">
-				<a href="/toon/eachEpSelect?toonNum=${toonVO.toonNum}&eachEpNum=${eachEpVO.eachEpNum}">
-				${eachEpVO.eachEpNum}화</a>
-				</td>
-				<td>
-					<div class="rating_type">
-						<span class="star"><em>평점</em></span>
-						<strong>${eachEpVO.epRatingSum/eachEpVO.epRatingPerson}</strong>
-					</div>
-				</td>
-				<td class="num"><span>${eachEpVO.epDate}</span></td>
-			</tr>
+		<c:forEach items="${toonVO.eachEpVO}" var="eachEpVO">
+			
 		</c:forEach>
 		</tbody>
 		
-		<tbody>
-		<c:forEach items="${toonVO.eachEpVO}" var="eachEpVO" begin="3">
-			<tr>
-				<td class="imgalign" >
-					<a href="/toon/eachEpSelect?toonNum=${toonVO.toonNum}&eachEpNum=${eachEpVO.eachEpNum}" >
-					<img src="${eachEpVO.epSumImg}"
-						title="${eachEpVO.eachEpNum}화" alt="${eachEpVO.eachEpNum}화" width="71" height="41">
-						<span class="mask"></span>
-					</a>
-				</td>
-				<td class="title">
-				<a href="/toon/eachEpSelect?toonNum=${toonVO.toonNum}&eachEpNum=${eachEpVO.eachEpNum}">
-				${eachEpVO.eachEpNum}화</a>
-				</td>
-				<td>
-					<div class="rating_type">
-						<span class="star"><em>평점</em></span>
-						<strong>${eachEpVO.epRatingSum/eachEpVO.epRatingPerson}</strong>
-					</div>
-				</td>
-				<td class="num"><span>${eachEpVO.epDate}</span></td>
-			</tr>
-		</c:forEach>
-		</tbody>
+<!-- 		<tbody> -->
+<%-- 		<c:forEach items="${toonVO.eachEpVO}" var="eachEpVO" begin="0" end="2"> --%>
+<!-- 			<tr onclick="pay"> -->
+<!-- 				<td class="imgalign" > -->
+<%-- 					<a href="/toon/eachEpSelect?toonNum=${toonVO.toonNum}&eachEpNum=${eachEpVO.eachEpNum}" > --%>
+<%-- 					<img src="${eachEpVO.epSumImg}" --%>
+<%-- 						title="${eachEpVO.eachEpNum}화" alt="${eachEpVO.eachEpNum}화" width="71" height="41"> --%>
+<!-- 						<span class="mask"></span> -->
+<!-- 					</a> -->
+<!-- 				</td> -->
+<!-- 				<td class="title"> -->
+<%-- 				<a href="/toon/eachEpSelect?toonNum=${toonVO.toonNum}&eachEpNum=${eachEpVO.eachEpNum}"> --%>
+<%-- 				${eachEpVO.eachEpNum}화</a> --%>
+<!-- 				</td> -->
+<!-- 				<td> -->
+<!-- 					<div class="rating_type"> -->
+<!-- 						<span class="star"><em>평점</em></span> -->
+<%-- 						<strong>${eachEpVO.epRatingSum/eachEpVO.epRatingPerson}</strong> --%>
+<!-- 					</div> -->
+<!-- 				</td> -->
+<%-- 				<td class="num"><span>${eachEpVO.epDate}</span></td> --%>
+<!-- 			</tr> -->
+<%-- 		</c:forEach> --%>
+<!-- 		</tbody> -->
+
+		<!-- forEach : tbody END -->
 		
 		</table>
 		
 		
-		
+		<!-- pager 처리 -->
 		<div class="paginate">
 		 	<ul class="pagination">
 	  
