@@ -74,10 +74,10 @@
 						<c:forEach items="${freeList}" var="vo">
 							<tr class="row100 body">
 								<td class="cell100 column1"><a
-									href="./freeSelect?freeNum=${vo.freeNum}"> ${vo.freeTitle}</a></td>
-								<td class="cell100 column3">${vo.username}</td>
-								<td class="cell100 column4">${vo.freeDate}</td>
-								<td class="cell100 column5">${vo.freeHit}</td>
+									href="./freeSelect?boNum=${vo.boNum}"> ${vo.freeTitle}</a></td>
+								<td class="cell100 column2">${vo.username}</td>
+								<td class="cell100 column3">${vo.freeDate}</td>
+								<td class="cell100 column4">${vo.freeHit}</td>
 							</tr>
 						</c:forEach>
 					</tbody>

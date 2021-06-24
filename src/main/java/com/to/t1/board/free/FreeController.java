@@ -2,6 +2,7 @@ package com.to.t1.board.free;
 
 import java.util.List;
 
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -38,7 +39,7 @@ public class FreeController {
 		return "free";
 	}
 	
-	@PostMapping("FreeSummerFileDelete")
+	@PostMapping("freeSummerFileDelete")
 	public ModelAndView setFreeSummerFileDelete(String fileName)throws Exception{
 		ModelAndView mv = new ModelAndView();
 		boolean result = freeService.setFreeSummerFileDelete(fileName);
@@ -47,7 +48,7 @@ public class FreeController {
 		return mv;
 	}
 	
-	@PostMapping("FreeSummerFileUpload")
+	@PostMapping("freeSummerFileUpload")
 	public ModelAndView setFreeSummerFileUpload(MultipartFile file)throws Exception{
 		ModelAndView mv = new ModelAndView();
 		System.out.println("썸머 free 파일 업로드");
@@ -122,10 +123,10 @@ public class FreeController {
 		return "redirect:./freeList";
 	}
 	
-	@GetMapping("freeFileDelete")
-	public ModelAndView setFileDelete(BoardFileVO boardFileVO)throws Exception{
+	@GetMapping("fileDelete")
+	public ModelAndView setFileDelete(FreeFileVO freeFileVO)throws Exception{
 		ModelAndView mv = new ModelAndView();
-		int result = freeService.setFileDelete(boardFileVO);
+		int result = freeService.setFileDelete(freeFileVO);
 		mv.addObject("result", result);
 		mv.setViewName("common/ajaxResult");
 		return mv;

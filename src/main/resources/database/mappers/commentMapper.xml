@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+    
+   <mapper namespace="com.to.t1.board.comment.CommentMapper">
+   <select id="commentCount" resultType="CommentVO">
+        SELECT
+            COUNT(*)
+        FROM COMMENT
+    </select>
+    
+    <select id="commentList" resultType="CommentVO">
+        SELECT
+            *
+        FROM COMMENT
+        where boNum=#{boNum}
+    </select>
+    
+    
+    <insert id="commentInsert" parameterType="CommentVO" useGeneratedKeys="true" keyProperty="cno">
+        INSERT INTO
+        COMMENT (CNO, boNum, CONTENT, WRITER, REG_DATE)
+        VALUES(#{cno},#{boNum},#{content},#{writer},now()) 
+    </insert>
+    
+    <update id="commentUpdate" parameterType="CommentVO">
+        UPDATE COMMENT
+            SET
+            CONTENT = #{content}
+        WHERE CNO = #{cno}
+    </update>
+    
+    <delete id="commentDelete" parameterType="CommentVO">
+        DELETE FROM COMMENT WHERE CNO = #{cno}
+    </delete>
+</mapper>

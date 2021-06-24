@@ -10,7 +10,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.multipart.MultipartFile;
 
-import com.to.t1.board.BoardFileVO;
+
 import com.to.t1.board.BoardService;
 
 import com.to.t1.util.BoFileManager;
@@ -39,12 +39,6 @@ public class FreeService {
 		pager.makeNum(totalCount);
 		return freeMapper.getList(pager);
 	}
-	
-	public FreeVO getManageSelect(FreeVO freeVO) throws Exception {
-		
-		return freeMapper.getSelect(freeVO);
-	}
-	
 
 	public FreeVO getSelect(FreeVO freeVO) throws Exception {
 	
@@ -59,14 +53,14 @@ public class FreeService {
 		//글번호 찾기
 
 		for(MultipartFile mf : files) {
-			BoardFileVO boardFileVO = new BoardFileVO();
+			FreeFileVO freeFileVO = new FreeFileVO();
 			String fileName= boFileManager.save("free", mf, session);
 
-			boardFileVO.setFreeNum(freeVO.getFreeNum());
-			boardFileVO.setFileName(fileName);
-			boardFileVO.setOriName(mf.getOriginalFilename());
+			freeFileVO.setBoNum(freeVO.getBoNum());
+			freeFileVO.setFileName(fileName);
+			freeFileVO.setOriName(mf.getOriginalFilename());
 
-			freeMapper.setFileInsert(boardFileVO);
+			freeMapper.setFileInsert(freeFileVO);
 		}
 
 		return result;
@@ -75,14 +69,14 @@ public class FreeService {
 
 	public int setUpdate(FreeVO freeVO, MultipartFile [] files) throws Exception {
 		for(MultipartFile multipartFile:files) {
-			BoardFileVO boardFileVO = new BoardFileVO();
+			FreeFileVO freeFileVO = new FreeFileVO();
 			//1. File들을 HDD에 저장
 			String fileName= boFileManager.save("free", multipartFile, session);
-			boardFileVO.setFileName(fileName);
-			boardFileVO.setOriName(multipartFile.getOriginalFilename());
-			boardFileVO.setFreeNum(freeVO.getFreeNum());
+			freeFileVO.setFileName(fileName);
+			freeFileVO.setOriName(multipartFile.getOriginalFilename());
+			freeFileVO.setBoNum(freeVO.getBoNum());
 			//2. DB에 Insert
-			freeMapper.setFileInsert(boardFileVO);
+			freeMapper.setFileInsert(freeFileVO);
 		}
 		return freeMapper.setUpdate(freeVO);
 	}
@@ -95,15 +89,15 @@ public class FreeService {
 
 
 
-	public int setFileDelete(BoardFileVO boardFileVO) throws Exception {
+	public int setFileDelete(FreeFileVO freeFileVO) throws Exception {
 		//fileName을 print
 		//1. 조회
-		boardFileVO = freeMapper.getFileSelect(boardFileVO);
+		freeFileVO = freeMapper.getFileSelect(freeFileVO);
 		//2. table 삭제
-		int result = freeMapper.setFileDelete(boardFileVO);
+		int result = freeMapper.setFileDelete(freeFileVO);
 		//3. HDD 삭제
 		if(result > 0) {
-			boFileManager.delete("free", boardFileVO.getFileName(), session);
+			boFileManager.delete("free", freeFileVO.getFileName(), session);
 		}
 		return result;
 	}

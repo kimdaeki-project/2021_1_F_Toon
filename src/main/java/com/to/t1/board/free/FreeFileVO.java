@@ -1,9 +1,9 @@
-package com.to.t1.board;
+package com.to.t1.board.free;
 
 import lombok.Data;
 
 @Data
-public class BoardFileVO {
+public class FreeFileVO {
 	
 	private Long fileNum;
 	private Long boNum;

@@ -60,6 +60,7 @@
 					readonly="readonly" value= <sec:authentication property="principal.username"/>
 					class="form-control myCheck" id="username" name="username">
 			</div>
+			
 			<div class="form-group">
 				<label for="freeTitle">&nbsp;제목</label> <input type="text"
 					class="form-control myCheck" id="freeTitle" name="freeTitle">

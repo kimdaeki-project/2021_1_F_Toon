@@ -1,4 +1,4 @@
-
+<?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper
     PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
     "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
@@ -23,38 +23,38 @@
          </where>
          </sql>
          
-      <select id="getFileSelect" parameterType="BoardFileVO" resultType="BoardFileVO">
+      <select id="getFileSelect" parameterType="FreeFileVO" resultType="FreeFileVO">
       select * from freeFiles where fileNum=#{fileNum}
       </select>
            
          <select id="getList" resultType="FreeVO" parameterType="Pager">
          select * from free
          <include refid="searcher"></include>
-         order by freeNum desc
+         order by boNum desc
          limit #{startRow}, #{perPage}
          <!-- limit 시작index번호(0부터시작), 갯수 --> 
          </select>
          
       <select id="getTotalCount" parameterType="Pager" resultType="java.lang.Long">
-            select count(freeNum) from free
+            select count(boNum) from free
             <include refid="searcher"></include>
          </select>
          
-         <select id="getSelect" resultMap="selectResult" parameterType="freeVO">
+         <select id="getSelect" resultMap="selectResult" parameterType="FreeVO">
          SELECT F.*, FF.* from
          free F left join freeFiles FF
-         on F.freeNum = FF.freeNum
-         WHERE F.freeNum=#{freeNum}
+         on F.boNum = FF.boNum
+         WHERE F.boNum=#{boNum}
          </select>
 
          <resultMap type="FreeVO" id="selectResult">
-            <id column="freeNum" property="freeNum"/>
+            <id column="boNum" property="boNum"/>
             <result column="freeTitle" property="freeTitle"/>
             <result column="username" property="username"/>
             <result column="freeContents" property="freeContents"/>
             <result column="freeDate" property="freeDate"/>
             <result column="freeHit" property="freeHit"/>
-            <collection property="files" javaType="java.util.List" ofType="BoardFileVO">
+            <collection property="freefiles" javaType="java.util.List" ofType="FreeFileVO">
                <id column="fileNum" property="fileNum"/>
                <result column="fileName" property="fileName"/>
                <result column="oriName" property="oriName"/>
@@ -62,28 +62,28 @@
          </resultMap>
          
          <update id="setHitUpdate" parameterType="FreeVO">
-            update free set freeHit=freeHit+1 where freeNum=#{freeNum}
+            update free set freeHit=freeHit+1 where boNum=#{boNum}
          </update>
          
-         <insert id="setInsert" parameterType="FreeVO" useGeneratedKeys="true" keyProperty="freeNum">
-            insert into free values(#{freeNum}, #{freeTitle}, #{username},#{freeContents}, now(), 0)
+         <insert id="setInsert" parameterType="FreeVO" useGeneratedKeys="true" keyProperty="boNum">
+            insert into free values(#{boNum}, #{freeTitle}, #{username},#{freeContents}, now(), 0)
          </insert>
          
-         <insert id="setFileInsert" parameterType="BoardFileVO">
-            insert into freeFiles (fileNum, freeNum, fileName, oriName)
-            values (#{fileNum}, #{freeNum}, #{fileName}, #{oriName})
+         <insert id="setFileInsert" parameterType="FreeFileVO">
+            insert into freeFiles (fileNum, boNum, fileName, oriName)
+            values (#{fileNum}, #{boNum}, #{fileName}, #{oriName})
          </insert>
          
-         <delete id="setFileDelete" parameterType="BoardFileVO">
+         <delete id="setFileDelete" parameterType="FreeFileVO">
          delete from freeFiles where fileNum=#{fileNum}
       	 </delete>
          
          <update id="setUpdate" parameterType="FreeVO">
-            update free set freeTitle=#{freeTitle}, freeContents=#{freeContents} where freeNum=#{freeNum}
+            update free set freeTitle=#{freeTitle}, freeContents=#{freeContents} where boNum=#{boNum}
          </update>
          
          <delete id="setDelete" parameterType="FreeVO">
-            delete from free where freeNum=#{freeNum}
+            delete from free where boNum=#{boNum}
          </delete> 
          
         

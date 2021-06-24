@@ -2,18 +2,20 @@ package com.to.t1.board.free;
 
 import java.sql.Date;
 import java.util.List;
-import com.to.t1.board.BoardFileVO;
-import lombok.Data;
 
-@Data
+import lombok.Getter;
+import lombok.Setter;
+
+@Getter
+@Setter
 public class FreeVO {
 
-	private Long freeNum;
+	private Long boNum;
 	private String freeTitle;
 	private String username;
 	private String freeContents;
 	private Date freeDate;
 	private Long freeHit;
 	
-	private List<BoardFileVO> files;
+	private List<FreeFileVO> freefiles;
 }

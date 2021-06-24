@@ -26,7 +26,7 @@
 
 
 			<div class="col-lg-3 col-sm-6 mb-4 mb-xl-0 single-footer-widget">
-				<h4>공지사항/질의응답</h4>
+				<h4>공지/문의/자유게시판</h4>
 				<ul>
 					<li><a
 						href="${pageContext.request.contextPath}/notice/noticeList"
@@ -37,8 +37,6 @@
 						>자유게시판</a></li>	
 				</ul>
 			</div>
-
-		
 
 	</div>
 	
