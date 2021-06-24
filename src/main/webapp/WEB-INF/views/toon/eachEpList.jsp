@@ -56,6 +56,9 @@
 	</sec:authorize>	
 	</div>
 	
+	<div>${toonVO.toonTitle}</div>
+	<div>${toonVO.nickname}</div>
+	<div>${toonVO.username}</div>
 	
 	<!-- 리스트 -->
 
@@ -73,7 +76,7 @@
 		
 		<tbody>
 		<c:forEach items="${toonVO.eachEpVO}" var="eachEpVO" begin="0" end="2">
-			<tr id="pay">
+			<tr onclick="pay">
 				<td class="imgalign" >
 					<a href="/toon/eachEpSelect?toonNum=${toonVO.toonNum}&eachEpNum=${eachEpVO.eachEpNum}" >
 					<img src="${eachEpVO.epSumImg}"
@@ -123,32 +126,7 @@
 		
 		</table>
 		
-		<script>
-		$(document).ready(function(){ 
-			$('#pay').click(function() {
-				var result = confirm('200p가 소모됩니다 열람하시겠습니까?'); 
-				if(result) {  
-					
-					
-				alert("yes");
-					
-				var result2 = (${ticketBox.stock} != 0);
-				
-				if(result2){	
-						
-					}else{
-						
-					}
-					
-						
-				} else { 
-					
-				alert("no");
-					
-					} }); 
-			});
 		
-		</script>
 		
 		<div class="paginate">
 		 	<ul class="pagination">
@@ -169,6 +147,8 @@
 		</div>
 
 </div>
+
+
 <script type="text/javascript" src="../../js/pay/goTicketBox.js"></script>
 <script type="text/javascript" src="../../js/list/list.js"></script>
 </body>

@@ -5,11 +5,14 @@ import java.util.List;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.Authentication;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import com.to.t1.member.MemberService;
+import com.to.t1.member.MemberVO;
 import com.to.t1.review.ReviewService;
 import com.to.t1.review.ReviewVO;
 import com.to.t1.toon.ToonService;
@@ -25,12 +28,20 @@ public class EachEpController {
 	private ToonService toonService;
 	@Autowired
 	private ReviewService reviewService;
+	@Autowired
+	private MemberService memberService;
 	
 	@GetMapping("eachEpList")
-	public void getList(Pager pager, Model model,HttpSession httpSession)throws Exception{
+	public void getList(Pager pager, Model model,HttpSession httpSession,MemberVO memberVO, Authentication auth2)throws Exception{
 		ToonVO list=eachEpService.getList(pager);
+		
+		memberVO = memberService.myPage((MemberVO) auth2.getPrincipal());
+	      
+		
 		model.addAttribute("toonVO", list);
 		model.addAttribute("pager", pager);
+		System.out.println("username"+memberVO.getUsername());
+	    
 	}
 	
 	@GetMapping("eachEpSelect")
