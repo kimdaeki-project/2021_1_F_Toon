@@ -3,6 +3,26 @@ let newpassword = document.getElementById("newpassword");
 let newpassword2 = document.getElementById("newpassword2");
 let passwordCheck = document.getElementById("passwordCheck");
 
+
+// PW EQUAL CHECK **********************************
+newpassword.addEventListener("blur", function(){
+	let message  = '\u00A0'+ '\u00A0'+ '\u00A0'+ '\u00A0'+"비밀번호가 일치합니다.";
+	let c = "r2";
+	
+	if(newpassword.value != newpassword2.value){
+		newpassword2.value="";
+		message= '\u00A0'+ '\u00A0'+ '\u00A0'+ '\u00A0'+"비밀번호가 일치하지 않습니다."
+		c= "r1";
+	}else {
+		pwEqualResult=true;
+	}
+	
+	pwResult3.innerHTML=message;
+	pwResult3.setAttribute("class", c);
+});
+
+
+//탈퇴전 약관동의
 $("#agree-charge").click(function(){
 	let agreechk=$("#agree-charge").prop("checked");
 

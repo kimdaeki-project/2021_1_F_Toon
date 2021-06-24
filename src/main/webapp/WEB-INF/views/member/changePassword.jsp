@@ -156,10 +156,6 @@
 		
 		<center><button id="start-charge" class="btn btn-danger" onclick="usernameDelete()" type="button" disabled>탈퇴</button></center>
 		
-		<!-- 결제동의 DIV 시작 -->
-    
-    <!-- 결제동의 DIV 끝 -->
-<!--     <button id="start-charge" class="btn btn-primary" type="button" disabled>포인트 충전하기</button> -->
 		
 	</sec:authorize>
 	</p>
