@@ -8,9 +8,7 @@ $(document).ready(function(){
 				if(result) {  
 					
 					
-				alert("yes");
 					
-				
 					
 						
 				} else { 
@@ -20,9 +18,9 @@ $(document).ready(function(){
 					
 				alert("no");
 					
-				
-				
-				
+					
+					
+					
 		} }); 
 		});
 		

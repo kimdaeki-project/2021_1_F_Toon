@@ -24,7 +24,7 @@ public class ToonVO {
 	private long ratingPerson;
 	private String nickname;
 	private String search;
-	
+	private String username;
 	private List<EachEpVO> eachEpVO;
 	
 	

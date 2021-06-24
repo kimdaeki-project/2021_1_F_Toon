@@ -56,10 +56,10 @@ public class ToonController {
 	
 	
 	@GetMapping("toonDay")
-	   public ModelAndView toonDay(ToonVO toonVO,MemberVO memberVO) throws Exception {
+	   public ModelAndView toonDay(ToonVO toonVO,MemberVO memberVO,Authentication auth2) throws Exception {
 	      ModelAndView mv = new ModelAndView();
 	      
-	    
+	      memberVO = memberService.myPage((MemberVO) auth2.getPrincipal());
 	      
 	      toonVO.setToonDay("mon");
 	      List<ToonVO> mt = toonService.toonDay(toonVO,memberVO);
@@ -92,6 +92,7 @@ public class ToonController {
 	      mv.addObject("st2", st2);
 	      mv.setViewName("toon/toonDay/toonDay");
 	      
+	      System.out.println("username"+memberVO.getUsername());
 	    
 	      return mv ;
 	   }
