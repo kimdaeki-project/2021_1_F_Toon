@@ -2,6 +2,8 @@ package com.to.t1.toon.eachep;
 
 import java.util.List;
 
+import javax.servlet.http.HttpSession;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -25,7 +27,7 @@ public class EachEpController {
 	private ReviewService reviewService;
 	
 	@GetMapping("eachEpList")
-	public void getList(Pager pager, Model model)throws Exception{
+	public void getList(Pager pager, Model model,HttpSession httpSession)throws Exception{
 		ToonVO list=eachEpService.getList(pager);
 		model.addAttribute("toonVO", list);
 		model.addAttribute("pager", pager);
@@ -45,4 +47,6 @@ public class EachEpController {
 		
 		System.out.println(list.getEachEpVO().size());
 	}
+	
+	
 }

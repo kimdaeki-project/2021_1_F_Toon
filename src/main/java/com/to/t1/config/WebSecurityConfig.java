@@ -63,8 +63,6 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter{
             .antMatchers("/member/CheckMail","/member/memberLoginResult").permitAll()
             .antMatchers("/member/**").hasAnyRole("ADMIN", "MEMBER")
             
-            
-            
             .antMatchers("/member/memberJoinCheck").permitAll()
 			.antMatchers("/toon/toonDay/toonDay").permitAll()
 			.antMatchers("/toon/toonDay/toonDayAver").permitAll()
