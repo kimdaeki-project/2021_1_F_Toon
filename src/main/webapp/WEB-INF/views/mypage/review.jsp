@@ -114,7 +114,7 @@
 		<h2>내 댓글 ㅋ</h2>
 
 		<table class="table">
-			<thead class="thead-dark">
+			<thead class="A simple light list group item">
 				<tr>
 					<th></th>
 					<th>웹툰 이름</th>

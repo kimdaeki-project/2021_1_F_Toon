@@ -37,8 +37,10 @@
                         <button type="button"  onclick="id11()" style="border: 1px solid black;float: right;width: 50px;">확인</button>
                         <br>
                         <form:errors path="username" class="c1"></form:errors>
-                      	<center><h5 id="idCheckResult"></h5></center>
-						<center><h5 id="idResult"></h5></center>
+<!--                         <div class="form-group" id= idCheckResult></div> -->
+                        <div class="form-group" id= idResult></div>
+<%--                       	<center><h5 id="idCheckResult"></h5></center> --%>
+<%-- 						<center><h5 id="idResult"></h5></center> --%>
 						
                     </div>
                     
@@ -47,14 +49,16 @@
                         <input placeholder="Password" type="password" id="pw" path="password" />
                         <br>
                         <form:errors path="password" class="c1"></form:errors>
-                        <center><h5 id="pwResult"></h5></center>
+                        <div class="form-group" id= pwResult></div>
+<%--                         <center><h5 id="pwResult"></h5></center> --%>
 						
                     </div>
                     
                      <div class="login-input-wrap input-password">
                         <i class="fas fa-key"></i>
                         <form:password placeholder="Password" id="pw2" path="password"/>
-                        <center><h5 id="pwResult2"></h5></center>
+                         <div class="form-group" id= pwResult2></div>
+<%--                         <center><h5 id="pwResult2"></h5></center> --%>
                     </div>
                     
                     <div class="login-input-wrap input-password">
