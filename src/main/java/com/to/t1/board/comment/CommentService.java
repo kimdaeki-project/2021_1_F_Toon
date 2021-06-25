@@ -14,23 +14,23 @@ public class CommentService {
 	@Autowired
     private CommentMapper commentMapper;
     
-    public List<CommentVO> commentListService() throws Exception{
+    public List<CommentVO> commentList(CommentVO commentVO) throws Exception{
         
-        return commentMapper.commentList();
+        return commentMapper.commentList(commentVO);
     }
     
-    public int commentInsertService(CommentVO commentVO) throws Exception{
+    public int commentInsert(CommentVO commentVO) throws Exception{
         
         return commentMapper.commentInsert(commentVO);
     }
     
-    public int commentUpdateService(CommentVO commentVO) throws Exception{
+    public int commentUpdate(CommentVO commentVO) throws Exception{
         
         return commentMapper.commentUpdate(commentVO);
     }
     
-    public int commentDeleteService(long cno) throws Exception{
+    public int commentDelete(long coNum) throws Exception{
         
-        return commentMapper.commentDelete(cno);
+        return commentMapper.commentDelete(coNum);
     }
 }
