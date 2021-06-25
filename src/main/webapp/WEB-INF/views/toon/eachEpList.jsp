@@ -9,6 +9,7 @@
 <c:import url="../fragments/bootstrap.jsp"></c:import>
 <title>Insert title here</title>
 <link rel="stylesheet" href="../css/header.css">
+<link rel="stylesheet" href="../css/list.css">
 </head>
 <body>
 <c:import url="../fragments/header.jsp"></c:import>
@@ -59,6 +60,7 @@
 	<div>${toonVO.toonTitle}</div>
 	<div>${toonVO.nickname}</div>
 	<div>${memberVO.username}</div>
+	<div>${useTiketVO.sort}</div>
 	
 	<!-- 리스트 -->
 
@@ -74,10 +76,44 @@
 		</tr>			
 		</thead>
 		
+		
+		<!-- -------------------------유료-------------------------------------- -->
+	
 		<tbody>
+	
+		
 		<c:forEach items="${toonVO.eachEpVO}" var="eachEpVO" begin="0" end="2">
-			<tr onclick="pay">
+			<tr>
 				<td class="imgalign" >
+				
+					<a href="#" class="pay" data-toonNum="${toonVO.toonNum}" data-eachEpNum="${eachEpVO.eachEpNum}" >
+					<img src="${eachEpVO.epSumImg}"
+						title="${eachEpVO.eachEpNum}화" alt="${eachEpVO.eachEpNum}화" width="71" height="41">
+						<span class="mask"></span>
+					</a>
+				</td>
+				<td class="title">
+				<a href="#" class="pay" data-toonNum="${toonVO.toonNum}" data-eachEpNum="${eachEpVO.eachEpNum}" >
+				${eachEpVO.eachEpNum}화</a>
+				</td>
+				<td>
+					<div class="rating_type">
+						<span class="star"><em>평점</em></span>
+						<strong>${eachEpVO.epRatingSum/eachEpVO.epRatingPerson}</strong>
+					</div>
+				</td>
+				<td class="num"><span>${eachEpVO.epDate}</span></td>
+			</tr>
+		</c:forEach>
+		</tbody>
+		
+		
+		<!-- -------------------------무료-------------------------------------- -->
+		<tbody>
+		<c:forEach items="${toonVO.eachEpVO}" var="eachEpVO" begin="3">
+			<tr>
+				<td class="imgalign" >
+				
 					<a href="/toon/eachEpSelect?toonNum=${toonVO.toonNum}&eachEpNum=${eachEpVO.eachEpNum}" >
 					<img src="${eachEpVO.epSumImg}"
 						title="${eachEpVO.eachEpNum}화" alt="${eachEpVO.eachEpNum}화" width="71" height="41">
@@ -99,30 +135,8 @@
 		</c:forEach>
 		</tbody>
 		
-		<tbody>
-		<c:forEach items="${toonVO.eachEpVO}" var="eachEpVO" begin="3">
-			<tr>
-				<td class="imgalign" >
-					<a href="/toon/eachEpSelect?toonNum=${toonVO.toonNum}&eachEpNum=${eachEpVO.eachEpNum}" >
-					<img src="${eachEpVO.epSumImg}"
-						title="${eachEpVO.eachEpNum}화" alt="${eachEpVO.eachEpNum}화" width="71" height="41">
-						<span class="mask"></span>
-					</a>
-				</td>
-				<td class="title">
-				<a href="/toon/eachEpSelect?toonNum=${toonVO.toonNum}&eachEpNum=${eachEpVO.eachEpNum}">
-				${eachEpVO.eachEpNum}화</a>
-				</td>
-				<td>
-					<div class="rating_type">
-						<span class="star"><em>평점</em></span>
-						<strong>${eachEpVO.epRatingSum/eachEpVO.epRatingPerson}</strong>
-					</div>
-				</td>
-				<td class="num"><span>${eachEpVO.epDate}</span></td>
-			</tr>
-		</c:forEach>
-		</tbody>
+		
+		
 		
 		</table>
 		

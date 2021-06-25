@@ -10,6 +10,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.servlet.ModelAndView;
 
 import com.to.t1.member.MemberService;
 import com.to.t1.member.MemberVO;
@@ -31,21 +32,40 @@ public class EachEpController {
 	@Autowired
 	private MemberService memberService;
 	
+	//결제
 	@GetMapping("eachEpList")
-	public void getList(Pager pager, Model model,HttpSession httpSession,MemberVO memberVO)throws Exception{
+	public void getList(Pager pager, Model model,HttpSession httpSession,MemberVO memberVO, Authentication auth2,ModelAndView modelAndView)throws Exception{
 		ToonVO list=eachEpService.getList(pager);
-
+		ModelAndView mv = new ModelAndView();
+		if(auth2 != null) {
+	    	  memberVO = memberService.myPage((MemberVO) auth2.getPrincipal());
+	    	  mv.addObject("memberVO",memberVO);
+	      }
+		
 		model.addAttribute("memberVO", memberVO); 
 		
 		model.addAttribute("toonVO", list);
 		model.addAttribute("pager", pager);
-		System.out.println("username"+memberVO.getUsername());
-	    
+		System.out.println("username"+memberVO.getUsername());    
 	}
 	
+
+	
+	
+	
+	
+	
+	
+	
 	@GetMapping("eachEpSelect")
-	public void getSelect(EachEpVO eachEpVO,Pager pager, Model model)throws Exception{
+	public void getSelect(EachEpVO eachEpVO,Pager pager, Model model,ModelAndView modelAndView,MemberVO memberVO,Authentication auth2)throws Exception{
 		ToonVO list= eachEpService.getSelect(eachEpVO);
+		ModelAndView mv = new ModelAndView();
+		if(auth2 != null) {
+	    	  memberVO = memberService.myPage((MemberVO) auth2.getPrincipal());
+	    	  mv.addObject("memberVO",memberVO);
+	      }
+		
 		model.addAttribute("toonVO", list);
 		model.addAttribute("listsize", list.getEachEpVO().size());
 		
