@@ -73,6 +73,7 @@ public class ToonController {
 	      if(auth2 != null) {
 	    	  memberVO = memberService.myPage((MemberVO) auth2.getPrincipal());
 	    	  mv.addObject("memberVO",memberVO);
+	    	  
 	      }
 	      
 	      toonVO.setToonDay("mon");

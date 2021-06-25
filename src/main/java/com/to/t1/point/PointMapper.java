@@ -7,6 +7,7 @@ import org.apache.ibatis.annotations.Mapper;
 import com.to.t1.member.MemberVO;
 import com.to.t1.ticket.TicketBoxVO;
 import com.to.t1.ticket.UseTicketVO;
+import com.to.t1.util.Pager;
 
 @Mapper
 public interface PointMapper {
@@ -26,6 +27,12 @@ public interface PointMapper {
 	public int insertTicketStock(TicketBoxVO ticketBoxVO)throws Exception;
 	
 	public int setTicketUselist(UseTicketVO useTicketVO)throws Exception;
+	
+	
+	public long getTotalTicketCount (UseTicketVO useTicketVO)throws Exception;
 	public List<UseTicketVO> getUseTicktList(MemberVO memberVO)throws Exception; 
+	
+	public List<UseTicketVO> getToonTicktList(UseTicketVO UseTicketVO)throws Exception;
+	
 	
 }

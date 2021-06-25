@@ -1,6 +1,7 @@
 package com.to.t1.util;
 
 public class Pager {
+	
 	private Long curPage;
 	private Long perPage;
 	
@@ -53,8 +54,6 @@ public class Pager {
 		if(curBlock==1) {
 			this.pre=false;
 		}
-		
-		
 		
 	}
 	
