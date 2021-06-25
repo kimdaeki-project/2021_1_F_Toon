@@ -60,7 +60,7 @@
 	<div>${toonVO.toonTitle}</div>
 	<div>${toonVO.nickname}</div>
 	<div>${memberVO.username}</div>
-	<div>${useTiketVO.sort}</div>
+	<div>${eachEpVO.epTitle}</div>
 	
 	<!-- 리스트 -->
 

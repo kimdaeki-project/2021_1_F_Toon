@@ -24,4 +24,5 @@ public class EachEpVO {
 	private long epRatingPerson;	
 	private List<ReviewVO> reviewVO;
 	private UseTicketVO useTicketVO;
+	private long sort;
 }
