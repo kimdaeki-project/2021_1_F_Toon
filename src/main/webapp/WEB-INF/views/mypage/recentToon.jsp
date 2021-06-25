@@ -213,11 +213,17 @@
 	            valueArr.push(list[i].value);
 	        }
 	    }
+	   if (confirm("정말 삭제하시겠습니까?")==true){
+		   
+	   }else{
+		   return;
+	   }
+	   
 	    if (valueArr.length == 0){
 	    	alert("선택된 글이 없습니다.");
 	    }
 	    else{
-			var chk = confirm("정말 삭제하시겠습니까?");				 
+// 			var chk = confirm("정말 삭제하시겠습니까?");				 
 			$.ajax({
 			    url : url,                    // 전송 URL
 			    type : 'GET',                // GET or POST 방식
