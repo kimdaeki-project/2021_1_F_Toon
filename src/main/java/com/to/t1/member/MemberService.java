@@ -31,7 +31,7 @@ public class MemberService implements UserDetailsService {
 	@Autowired
 	private PasswordEncoder passwordEncoder;
 	
-	@Override 
+	@Override //시큐리티에서 세션에 저장해주고 권한부여 해주고 로그인 처리해주는거
 	public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
 		MemberVO memberVO = new MemberVO();
 		memberVO.setUsername(username);
@@ -145,6 +145,31 @@ public class MemberService implements UserDetailsService {
 	
 	public MemberVO memberJoinCheck(MemberVO memberVO)throws Exception{
 		return memberMapper.memberJoinCheck(memberVO);
+	}
+	
+	public JoinFileVO selectImage(MemberVO memberVO)throws Exception{
+		return memberMapper.selectImage(memberVO);
+	}
+	
+	public int delImage(JoinFileVO joinFileVO)throws Exception{
+		return memberMapper.delImage(joinFileVO);
+	}
+	
+	
+	@Transactional(rollbackFor = Exception.class)
+	   public int setImage(MemberVO memberVO,MultipartFile avatar)throws Exception {
+	      String filePath= "upload/member/";
+	      
+	            
+	         String fileName= fileManager.save(avatar, filePath); //db에 넣어주고, 경로 설정
+	         System.out.println(fileName);
+	         JoinFileVO joinFileVO = new JoinFileVO();
+	         joinFileVO.setFileName(fileName);
+	         joinFileVO.setOriName(avatar.getOriginalFilename());
+	         joinFileVO.setUsername(memberVO.getUsername());
+	         int result = memberMapper.setImage(joinFileVO);
+	         
+	      return result;
 	}
 	
 }

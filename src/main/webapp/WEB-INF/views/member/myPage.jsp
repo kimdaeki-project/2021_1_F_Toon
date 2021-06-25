@@ -22,6 +22,7 @@
     <link rel="stylesheet" href="/css/mypage/style.css">
     <!-- Layout style -->
     <link rel="shortcut icon" href="../asssets/images/favicon.ico" />
+    <link rel="stylesheet" href="/css/myPage.css">
 </head>
 <body>
 	<c:import url="../fragments/header.jsp"></c:import>	
@@ -32,10 +33,23 @@
       <div class="sidebar">
         <div class="user-profile">
           <div class="display-avatar animated-avatar">
-            <c:if test="${memberVO.joinFileVO.fileName eq null}"><img width=180px height=200px alt="" src="../images/member.jpg"></c:if>
-			<c:if test="${memberVO.joinFileVO.fileName ne null}"><img width=180px height=200px alt="" src="../upload/member/${memberVO.joinFileVO.fileName}"></c:if>
+            <c:if test="${memberVO.joinFileVO.fileName eq null}"><img id="image" width=180px height=200px alt="" src="../images/member.jpg"></c:if>
+			<c:if test="${memberVO.joinFileVO.fileName ne null}"><img id="image" width=180px height=200px alt="" src="../upload/member/${memberVO.joinFileVO.fileName}"></c:if>
           </div>
+          <br>
           <div class="info-wrapper">
+          
+          	<form id="formId">
+          	
+          	<div class="filebox"> 
+          	<label for="avatar">사진 선택</label> 
+          	<input id="avatar" name="avatar" type="file">
+          	</div>
+          	
+          	<button onclick="upload()" class="btn btn-outline-info">업로드</button>
+          	<button onclick="delete1()" class="btn btn-outline-danger">삭제</button>
+          	</form>
+          	
             <p class="user-name">${memberVO.name}님</p>
             <h6 class="display-income">${memberVO.point}point</h6>
           </div>
@@ -172,6 +186,73 @@
     <script src="../assets/js/dashboard.js"></script>
     <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
     <script type="text/javascript" src="../js/mypage.js"></script>
+    <script type="text/javascript">
+    $(function() {
+        $("#avatar").on('change', function(){
+            readURL(this);
+        });
+    });
+    
+    function readURL(input) {
+        if (input.files && input.files[0]) {
+           var reader = new FileReader();
+           reader.onload = function (e) {
+              $('#image').attr('src', e.target.result);
+           }
+           reader.readAsDataURL(input.files[0]);
+        }
+        
+    }
+
+    function delete1(){
+       if(confirm("사진을 삭제하시겠습니까?") == true){
+       $.ajax({
+          type : 'POST',
+          url : '../member/delImage',
+          data : {
+             
+          },
+       
+          dataType :'text',
+
+          success : function(message) {
+                 alert(message);
+                location.href="../member/myPage";
+              },
+              error:function(requeest, status, error){
+                 alert(error);
+              },
+       })
+    }
+   }
+
+
+    
+    function upload(){
+    	   var form = $('#formId')[0];
+    	   var formData = new FormData(form);
+
+    	   $.ajax({
+    	      type:"post",
+    	      enctype:'multipart/form-data',
+    	       url:'../member/setImage',
+    	       data:formData,
+    	       dataType :'text',
+    	       processData:false,
+    	       contentType:false,
+    	       cache:false,
+    	       success : function(message) {
+    	             alert(message);
+    	            location.href="../member/myPage";
+    	          },
+    	       error:function(e){
+    	           alert("error : ", e);
+    	       },
+    	   });
+    	   
+    	}
+       
+    </script>
 	
 	
 </body>

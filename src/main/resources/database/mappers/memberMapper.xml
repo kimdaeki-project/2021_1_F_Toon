@@ -119,6 +119,20 @@
 			<result property="fileName" column="fileName"/>
 			<result property="oriName" column="oriName"/>
 	</resultMap>
-				
+		
+		<!-- 사진선택 -->
+		<select id="selectImage" parameterType="MemberVO" resultType="JoinFileVO"> 
+			select * from joinfiles where username=#{username}
+		</select>
+			
+		<!-- 사진등록 -->	
+		<insert id="setImage" parameterType="JoinFileVO">
+			insert into joinfiles (username, fileName, oriName) 
+			values(#{username}, #{fileName}, #{oriName})
+		</insert>	
+		
+		<delete id="delImage" parameterType="JoinFileVO">
+			delete from joinfiles where username=#{username}
+		</delete>
 			
    </mapper>

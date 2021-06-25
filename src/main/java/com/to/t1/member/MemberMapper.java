@@ -37,5 +37,11 @@ public interface MemberMapper {
 	public MemberVO myPage(MemberVO memberVO)throws Exception;
 	
 	public MemberVO memberJoinCheck(MemberVO memberVO)throws Exception;
-
+	
+	public JoinFileVO selectImage(MemberVO memberVO)throws Exception; //사진 선택
+	
+	public int setImage(JoinFileVO joinFileVO) ;//사진 등록
+	
+	public int delImage(JoinFileVO joinFileVO);//사진 삭제
+	
 }

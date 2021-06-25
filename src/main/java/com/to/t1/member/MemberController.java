@@ -383,5 +383,52 @@ public class MemberController {
 	      return key;
 	   }
 	  
+	   @PostMapping("setImage")
+	   @ResponseBody
+	   public String setImage(@Valid MemberVO memberVO,Errors errors, MultipartFile avatar,Authentication authentication) throws Exception{
+	      System.out.println(avatar);
+	      String message="";
+		   if(avatar.getSize()==0) {
+	         message= "파일이없습니다.";
+	      }
+	      UserDetails userDetails = (UserDetails) authentication.getPrincipal();
+	      memberVO.setUsername(userDetails.getUsername()); //시큐리티에 있는 유저네임을 멤버브이오 유저네임에 집어넣음
+	      System.out.println(memberVO);
+	      JoinFileVO joinFileVO = memberService.selectImage(memberVO); //이미지가 있는지 없는지 찾음
+	      System.out.println(joinFileVO);
+	      if(joinFileVO==null) { //값이없으면 세팅
+	         int result1 = memberService.setImage(memberVO, avatar);
+	         System.out.println(result1);
+	      }else { //값이 있으면 삭제하고 세팅
+	         int result = memberService.delImage(joinFileVO);
+	         int result1 = memberService.setImage(memberVO, avatar);
+	         System.out.println(result1);
+	      }
+	      message="업로드 되었습니다.";   
+	      System.out.println(message);
+	      return message;
+	   }
+
+	   @PostMapping("delImage")
+	   @ResponseBody
+	   public String delImage(MemberVO memberVO,Authentication authentication)throws Exception{
+	      String message= "";
+	      UserDetails userDetails = (UserDetails) authentication.getPrincipal();
+	      memberVO.setUsername(userDetails.getUsername());
+	      System.out.println(memberVO);
+	      JoinFileVO joinFileVO = memberService.selectImage(memberVO);
+	      if(joinFileVO==null) {
+	         message="삭제할 사진이없습니다.";
+	      }else {
+	         
+	         int result = memberService.delImage(joinFileVO);
+	         message="사진이 삭제되었습니다.";
+	      }
+	      
+	      
+	      return message;
+	   }
+	  
+	   
 }
 
