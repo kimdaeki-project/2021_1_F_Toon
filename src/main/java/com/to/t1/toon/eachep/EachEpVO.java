@@ -26,7 +26,6 @@ public class EachEpVO {
 
 	
 	//20210625추가
-	
 	private UseTicketVO useTicketVO;
 	
 }

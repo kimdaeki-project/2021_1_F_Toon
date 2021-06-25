@@ -40,11 +40,12 @@ public class EachEpController {
 	
 	@GetMapping("eachEpList")
 	public void getList(Pager pager,Model model,HttpSession httpSession,MemberVO memberVO,Authentication auth2, UseTicketVO useTicketVO)throws Exception{
-		 
 		
 		if(auth2 != null) {
+			
 			memberVO = memberService.myPage((MemberVO) auth2.getPrincipal());
 	    	useTicketVO.setUsername(memberVO.getUsername());
+	    	System.out.println(useTicketVO);
 	    	List<UseTicketVO> utl = pointService.getToonTicktList(useTicketVO, pager);
 	    	model.addAttribute("useTicketVO", utl); 
 	    }
