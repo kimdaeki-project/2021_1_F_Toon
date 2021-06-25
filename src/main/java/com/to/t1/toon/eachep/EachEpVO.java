@@ -5,6 +5,7 @@ import java.sql.Date;
 import java.util.List;
 
 import com.to.t1.review.ReviewVO;
+import com.to.t1.ticket.UseTicketVO;
 
 import lombok.Data;
 
@@ -23,4 +24,9 @@ public class EachEpVO {
 	private long epRatingPerson;	
 	private List<ReviewVO> reviewVO;
 
+	
+	//20210625추가
+	
+	private UseTicketVO useTicketVO;
+	
 }
