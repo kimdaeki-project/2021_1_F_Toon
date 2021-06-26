@@ -39,7 +39,7 @@
           <div class="info-wrapper">
           
           	<form id="formId">
-          	
+      		
           	<div class="filebox"> 
           	<label for="avatar">사진 선택</label> 
           	<input id="avatar" name="avatar" type="file">
@@ -187,6 +187,7 @@
     <script type="text/javascript" src="../js/mypage.js"></script>
     <script type="text/javascript">
     $(function() {
+    	
         $("#avatar").on('change', function(){
             readURL(this);
         });
@@ -226,11 +227,11 @@
    }
 
 
-    
+    //왜 여기안타지?
     function upload(){
     	   var form = $('#formId')[0];
     	   var formData = new FormData(form);
-
+;
     	   $.ajax({
     	      type:"post",
     	      enctype:'multipart/form-data',
@@ -241,16 +242,19 @@
     	       contentType:false,
     	       cache:false,
     	       success : function(message) {
-    	             alert(message);
-    	            location.href="../member/myPage";
+    	            alert(message);
+
+			          location.href="../member/myPage";
     	          },
     	       error:function(e){
     	           alert("error : ", e);
     	       },
     	   });
-    	   
     	}
        
+    function check(){
+    	location.reload(); 
+    }
     </script>
 	
 	

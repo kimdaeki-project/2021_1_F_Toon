@@ -9,6 +9,52 @@ let pwCheckResult = false;
 let pwEqualResult = false; 
 let etcResult=true		   // name, email, phone 결과
 
+function inputPhoneNumber(obj) {
+	
+	$( 'input' ).on("blur keyup", function() {
+		$(this).val( $(this).val().replace( /[ㄱ-ㅎ|ㅏ-ㅣ|가-힣]/g, '' ) );
+	});
+	
+    var number = obj.value.replace(/[^0-9]/g, "");
+    var phone = "";
+
+    if(number.length < 4) {
+        return number;
+    } else if(number.length < 7) {
+        phone += number.substr(0, 3);
+        phone += "-";
+        phone += number.substr(3);
+    } else if(number.length < 11) {
+        phone += number.substr(0, 3);
+        phone += "-";
+        phone += number.substr(3, 3);
+        phone += "-";
+        phone += number.substr(6);
+    } else {
+        phone += number.substr(0, 3);
+        phone += "-";
+        phone += number.substr(3, 4);
+        phone += "-";
+        phone += number.substr(7);
+    }
+    obj.value = phone;
+}
+
+//function inputPhoneNumber(){
+//	alert("zz")
+//}
+
+function  handlerNum(){
+ E = window.event;
+ if(E.keyCode >47 && E.keyCode <58){   
+  if(E.keyCode == 48){
+   if(document.eduReg.ATTENDANT.value == "" ) E.returnValue=false;
+   else return;
+   }else return;
+ }else{
+  E.returnValue=false;
+ }
+}
 
 
 // PW EQUAL CHECK **********************************

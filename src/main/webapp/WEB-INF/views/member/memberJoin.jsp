@@ -89,8 +89,8 @@
                     </div>
       
                     <div class="login-input-wrap input-password">
-                        <i class="fas fa-phone"></i>
-                        <form:input placeholder="Phone" id="phone" path="phone"/>
+                        <i class="fas fa-phone"></i> 
+                        <form:input placeholder="Phone" id="phone" path="phone" type="tell" onKeyup="inputPhoneNumber(this);" onkeypress='handlerNum();' maxlength="13" />
                         <br>
                         <form:errors path="phone" class="c1"></form:errors>
                     </div>
