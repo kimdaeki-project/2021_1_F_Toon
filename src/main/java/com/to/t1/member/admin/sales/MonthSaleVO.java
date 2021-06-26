@@ -3,11 +3,11 @@ package com.to.t1.member.admin.sales;
 import java.sql.Date;
 
 import lombok.Data;
+
 @Data
-public class MonthSaleVO{
+public class MonthSaleVO {
 	
-	private Date Wstart;
-	private Date Wend;
-	
+	private Date date;
 	private long Sum;
+	
 }
