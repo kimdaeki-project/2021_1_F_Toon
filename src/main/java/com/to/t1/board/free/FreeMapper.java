@@ -4,7 +4,7 @@ import java.util.List;
 
 import org.apache.ibatis.annotations.Mapper;
 
-
+import com.to.t1.board.BoardFileVO;
 import com.to.t1.board.BoardMapper;
 import com.to.t1.board.BoardVO;
 import com.to.t1.util.Pager;
@@ -20,7 +20,7 @@ public interface FreeMapper {
 	
 	public int setInsert(FreeVO freeVO) throws Exception;
 	
-	public int setFileInsert(FreeFileVO freeFileVO) throws Exception;
+	public int setFileInsert(BoardFileVO boardFileVO) throws Exception;
 	
 	public int setUpdate(FreeVO freeVO) throws Exception;
 	
@@ -28,8 +28,8 @@ public interface FreeMapper {
 	
 	public int setDelete(FreeVO freeVO) throws Exception;
 
-	public FreeFileVO getFileSelect(FreeFileVO freeFileVO)throws Exception;
+	public BoardFileVO getFileSelect(BoardFileVO boardFileVO)throws Exception;
 	
-	public int setFileDelete(FreeFileVO freeFileVO)throws Exception;
+	public int setFileDelete(BoardFileVO boardFileVO)throws Exception;
 	
 }
