@@ -23,40 +23,40 @@ public class CommentController {
     
     @RequestMapping("/commentList") //댓글 리스트
     @ResponseBody
-    private List<CommentVO> commentList(CommentVO commentVO, Model model) throws Exception{
-
-        return commentService.commentList(commentVO);
+    private List<CommentVO> commentServiceList(Model model) throws Exception{
+        
+        return commentService.commentListService();
     }
     
     @RequestMapping("/insert") //댓글 작성 
     @ResponseBody
-    private long commentInsert(@RequestParam long boNum, @RequestParam String commentContents, @RequestParam String username) throws Exception {
+    private long commentServiceInsert(@RequestParam long boNum, @RequestParam String content) throws Exception{
         
         CommentVO commentVO = new CommentVO();
         commentVO.setBoNum(boNum);
-        commentVO.setCommentContents(commentContents);
-        commentVO.setUsername(username);
-        int dd = commentService.commentInsert(commentVO);
-        System.out.println("나오냐"+dd);
-        return dd;
+        commentVO.setContent(content);
+        //로그인 기능을 구현했거나 따로 댓글 작성자를 입력받는 폼이 있다면 입력 받아온 값으로 사용하면 됩니다. 저는 따로 폼을 구현하지 않았기때문에 임시로 "test"라는 값을 입력해놨습니다.
+        commentVO.setWriter("test");  
+        
+        return commentService.commentInsertService(commentVO);
     }
     
     @RequestMapping("/update") //댓글 수정  
     @ResponseBody
-    private long commentUpdate(@RequestParam long coNum, @RequestParam String commentContents) throws Exception{
-    	
+    private long commentServiceUpdate(@RequestParam long cno, @RequestParam String content) throws Exception{
+        
         CommentVO commentVO = new CommentVO();
-        commentVO.setCoNum(coNum);
-        commentVO.setCommentContents(commentContents);
-  
-        return commentService.commentUpdate(commentVO);
+        commentVO.setCno(cno);
+        commentVO.setContent(content);
+        
+        return commentService.commentUpdateService(commentVO);
     }
     
-    @RequestMapping("/delete/{coNum}") //댓글 삭제  
+    @RequestMapping("/delete/{cno}") //댓글 삭제  
     @ResponseBody
-    private long commentDelete(@PathVariable long coNum) throws Exception{
+    private long commentServiceDelete(@PathVariable long cno) throws Exception{
         
-        return commentService.commentDelete(coNum);
+        return commentService.commentDeleteService(cno);
     }
     
 }

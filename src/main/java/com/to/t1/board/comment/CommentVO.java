@@ -10,10 +10,10 @@ import lombok.Setter;
 @Setter
 public class CommentVO {
 
-	private long coNum;
+	private long cno;
     private long boNum;
-    private String commentContents;
-    private String username;
-    private Date commentDate;
+    private String content;
+    private String writer;
+    private Date reg_date;
 
 }

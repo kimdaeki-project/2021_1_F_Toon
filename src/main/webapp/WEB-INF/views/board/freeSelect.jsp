@@ -99,11 +99,11 @@
     <!--  댓글  -->
 
     <div class="container">
-        <label for="commentContents">댓글</label>
+        <label for="content">comment</label>
         <form name="commentInsertForm">
             <div class="input-group">
-               <input type="hidden" name="boNum" id="boNum" value="${vo.boNum}"/>
-               <input type="text" class="form-control" id="commentContents" name="commentContents" placeholder="내용을 입력하세요.">
+               <input type="hidden" name="boNum" value="${vo.boNum}"/>
+               <input type="text" class="form-control" id="content" name="content" placeholder="내용을 입력하세요.">
                <span class="input-group-btn">
                     <button class="btn btn-default" type="button" name="commentInsertBtn">등록</button>
                </span>
