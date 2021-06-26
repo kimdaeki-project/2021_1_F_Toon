@@ -5,7 +5,6 @@ import java.util.List;
 import javax.annotation.Resource;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.core.Authentication;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -13,7 +12,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
-import com.to.t1.member.MemberService;
 import com.to.t1.member.MemberVO;
 
  
@@ -23,9 +21,8 @@ public class CommentController {
  
     @Autowired
     private CommentService commentService;
-    
     @Autowired
-    private MemberService memberService;
+    private MemberVO memberVO;
     
     
     @RequestMapping("/commentList") //댓글 리스트
@@ -37,14 +34,12 @@ public class CommentController {
     
     @RequestMapping("/insert") //댓글 작성 
     @ResponseBody
-    private long commentInsert(@RequestParam long boNum, @RequestParam String commentContents, Authentication auth2, MemberVO memberVO) throws Exception {
+    private long commentInsert(@RequestParam long boNum, @RequestParam String commentContents) throws Exception {
         
-    	memberVO = memberService.myPage((MemberVO) auth2.getPrincipal());
-    	
         CommentVO commentVO = new CommentVO();
         commentVO.setBoNum(boNum);
         commentVO.setCommentContents(commentContents);
-        commentVO.setUsername(memberVO.getUsername());        
+        commentVO.setUsername("");
         
         return commentService.commentInsert(commentVO);
     }
