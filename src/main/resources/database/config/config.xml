@@ -24,11 +24,20 @@
   		<typeAlias type="com.to.t1.board.BoardFileVO" alias="BoardFileVO"/>
   		<typeAlias type="com.to.t1.board.notice.NoticeVO" alias="NoticeVO"/>
   		<typeAlias type="com.to.t1.board.qna.QnaVO" alias="QnaVO"/>
-  		
+  		<typeAlias type="com.to.t1.board.free.FreeVO" alias="FreeVO"/>
+  		<typeAlias type="com.to.t1.board.free.FreeFileVO" alias="FreeFileVO"/>
+  		<typeAlias type="com.to.t1.board.comment.CommentVO" alias="CommentVO"/>
+  	
   		
   		<typeAlias type="com.to.t1.point.PointVO" alias="PointVO"/>
   		<typeAlias type="com.to.t1.ticket.TicketBoxVO" alias="TicketBoxVO"/>
   		<typeAlias type="com.to.t1.ticket.UseTicketVO" alias="UseTicketVO"/>
+  		
+  		
+  		<typeAlias type="com.to.t1.member.admin.sales.DaySaleVO" alias="DaySaleVO"/>
+      <typeAlias type="com.to.t1.member.admin.sales.MonthSaleVO" alias="MonthSaleVO"/>
+      <typeAlias type="com.to.t1.member.admin.sales.WeekSaleVO" alias="WeekSaleVO"/>
+      <typeAlias type="com.to.t1.member.admin.sales.ToonSaleVO" alias="ToonSaleVO"/>
   		
   		
 		<typeAlias type="com.to.t1.util.Pager" alias="Pager"/>
