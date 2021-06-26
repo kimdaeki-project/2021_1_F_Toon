@@ -18,13 +18,16 @@
     <link rel="shortcut icon" href="../asssets/images/favicon.ico"/>
 </head>
 
-<body>
+<body class="header-fixed">
 	<!-- Header -->
 	<c:import url="../fragments/header.jsp"></c:import>	
 	<div class="">
 	<!-- partial:partials/_sidebar.html -->
   	<div class="row page-body">
-  		<div class="col-2"> <c:import url="./adminNav.jsp"></c:import> </div>
+  		<nav class="t-header">
+		<c:import url="./adminNav.jsp"></c:import>
+		</nav>
+  	
   	 <!-- partial -->
   	<div class="page-content-wrapper">
   	 	<!-- 매출액 (충전)-->
@@ -39,6 +42,7 @@
 	    	<div class="card row"> 
 				<h5 class="fs-6"> 매출액 조회하기 월별</h5>
 				<canvas id="income-week"></canvas>
+				<button class="btn btn-primary"></button>
 			</div>
 	    </div>
 	    <!-- 총 충전 매출액 (년   수입) -->
@@ -57,15 +61,13 @@
   </div>
 </div>
 
+
    
     <script src="../assets/vendors/js/core.js"></script>
     <script src="../assets/vendors/apexcharts/apexcharts.min.js"></script>
-    <script src="../assets/vendors/chartjs/Chart.min.js"></script>
     <script src="../assets/js/charts/chartjs.addon.js"></script>
     <script src="../assets/js/template.js"></script>
-    <script src="../assets/js/dashboard.js"></script>
-    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
-    <script type="text/javascript" src="../js/mypage.js"></script>
+
     
      <!-- chart.js -->
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
