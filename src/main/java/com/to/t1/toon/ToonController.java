@@ -25,23 +25,34 @@ public class ToonController {
 	private MemberService memberService;
 
 	@GetMapping("toonList")
-	public void getList(Pager pager, Model model)throws Exception{
+	public void getList(Pager pager, Model model, Authentication auth2)throws Exception{
 		List<ToonVO> list=toonService.getList(pager);
 		model.addAttribute("list", list);
 		model.addAttribute("listsize", list.size());
 	}
 	
 	@GetMapping("toonSelect")
-	public void getSelect(ToonVO toonVO)throws Exception{
+	public void getSelect(ToonVO toonVO, Authentication auth2,MemberVO memberVO)throws Exception{
 		ModelAndView mv = new ModelAndView();
+
+		if(auth2 != null) {
+	    	  memberVO = memberService.myPage((MemberVO) auth2.getPrincipal());
+	    	  mv.addObject("memberVO",memberVO);
+	      }
+		
 		toonVO= toonService.getSelect(toonVO);
 		mv.addObject("toonVO", toonVO);
 		
 	}
 
 	@GetMapping("toonSearch")
-	public ModelAndView toonSearch(ToonVO toonVO,MemberVO memberVO)throws Exception{
+	public ModelAndView toonSearch(ToonVO toonVO,MemberVO memberVO, Authentication auth2)throws Exception{
 		ModelAndView mv = new ModelAndView();
+		
+		if(auth2 != null) {
+	    	  memberVO = memberService.myPage((MemberVO) auth2.getPrincipal());
+	    	  mv.addObject("memberVO",memberVO);
+	      }
 		
 		List<ToonVO> search = toonService.toonSearch(toonVO, memberVO);
 		
@@ -93,8 +104,13 @@ public class ToonController {
 	
 	
 	@GetMapping("toonDayAver")
-	public ModelAndView toonDayAver(ToonVO toonVO,MemberVO memberVO) throws Exception {
+	public ModelAndView toonDayAver(ToonVO toonVO,MemberVO memberVO, Authentication auth2) throws Exception {
 		ModelAndView mv = new ModelAndView();
+		
+		if(auth2 != null) {
+	    	  memberVO = memberService.myPage((MemberVO) auth2.getPrincipal());
+	    	  mv.addObject("memberVO",memberVO);
+	      }
 		
 		toonVO.setToonDay("mon");
 		List<ToonVO> mt = toonService.toonDayAver(toonVO,memberVO);
@@ -130,9 +146,14 @@ public class ToonController {
 	}
 	
 	@GetMapping("toonDayRecent")
-	public ModelAndView toonDayRecent(ToonVO toonVO, MemberVO memberVO)throws Exception{
+	public ModelAndView toonDayRecent(ToonVO toonVO, MemberVO memberVO, Authentication auth2)throws Exception{
 		ModelAndView mv = new ModelAndView();
 	
+		if(auth2 != null) {
+	    	  memberVO = memberService.myPage((MemberVO) auth2.getPrincipal());
+	    	  mv.addObject("memberVO",memberVO);
+	      }
+		
 		toonVO.setToonDay("mon");
 		List<ToonVO> mt = toonService.toonDayRecent(toonVO,memberVO);
 		
@@ -167,8 +188,13 @@ public class ToonController {
 	}
 	
 	@GetMapping("toonDaySelect")
-	public ModelAndView toonDaySelect(ToonVO toonVO, MemberVO memberVO)throws Exception{
+	public ModelAndView toonDaySelect(ToonVO toonVO, MemberVO memberVO, Authentication auth2)throws Exception{
 		ModelAndView mv = new ModelAndView();
+		
+		if(auth2 != null) {
+	    	  memberVO = memberService.myPage((MemberVO) auth2.getPrincipal());
+	    	  mv.addObject("memberVO",memberVO);
+	      }
 		
 		toonVO.setToonDay("mon");
 		List<ToonVO> mt = toonService.toonDayRecent(toonVO,memberVO);
@@ -205,8 +231,13 @@ public class ToonController {
 	
 	
 	@GetMapping("genre")
-	public ModelAndView genre(ToonVO toonVO,MemberVO memberVO)throws Exception {
+	public ModelAndView genre(ToonVO toonVO,MemberVO memberVO, Authentication auth2)throws Exception {
 		ModelAndView mv = new ModelAndView();
+		
+		if(auth2 != null) {
+	    	  memberVO = memberService.myPage((MemberVO) auth2.getPrincipal());
+	    	  mv.addObject("memberVO",memberVO);
+	      }
 		
 		toonVO.setGenre("action");
 		List<ToonVO> ac = toonService.genre(toonVO,memberVO);
@@ -239,8 +270,13 @@ public class ToonController {
 	}
 	
 	@GetMapping("genreAver")
-	public ModelAndView genreAver(ToonVO toonVO,MemberVO memberVO)throws Exception {
+	public ModelAndView genreAver(ToonVO toonVO,MemberVO memberVO, Authentication auth2)throws Exception {
 		ModelAndView mv = new ModelAndView();
+		
+		if(auth2 != null) {
+	    	  memberVO = memberService.myPage((MemberVO) auth2.getPrincipal());
+	    	  mv.addObject("memberVO",memberVO);
+	      }
 		
 		toonVO.setGenre("action");
 		List<ToonVO> ac = toonService.genreAver(toonVO,memberVO);
@@ -273,8 +309,13 @@ public class ToonController {
 	}
 	
 	@GetMapping("genreRecent")
-	public ModelAndView genreRecent(ToonVO toonVO,MemberVO memberVO)throws Exception {
+	public ModelAndView genreRecent(ToonVO toonVO,MemberVO memberVO, Authentication auth2)throws Exception {
 		ModelAndView mv = new ModelAndView();
+		
+		if(auth2 != null) {
+	    	  memberVO = memberService.myPage((MemberVO) auth2.getPrincipal());
+	    	  mv.addObject("memberVO",memberVO);
+	      }
 		
 		toonVO.setGenre("action");
 		List<ToonVO> ac = toonService.genreRecent(toonVO,memberVO);
@@ -307,8 +348,13 @@ public class ToonController {
 	}
 	
 	@GetMapping("ranking")
-	public ModelAndView ranking(ToonVO toonVO,MemberVO memberVO)throws Exception {
+	public ModelAndView ranking(ToonVO toonVO,MemberVO memberVO, Authentication auth2)throws Exception {
 		ModelAndView mv = new ModelAndView();
+		
+		if(auth2 != null) {
+	    	  memberVO = memberService.myPage((MemberVO) auth2.getPrincipal());
+	    	  mv.addObject("memberVO",memberVO);
+	      }
 		
 		toonVO.setTotalHit(0);
 		List<ToonVO> ra = toonService.ranking(toonVO,memberVO);
@@ -324,8 +370,13 @@ public class ToonController {
 	}
 	
 	@GetMapping("rankingAver")
-	public ModelAndView rankingAver(ToonVO toonVO,MemberVO memberVO)throws Exception {
+	public ModelAndView rankingAver(ToonVO toonVO,MemberVO memberVO, Authentication auth2)throws Exception {
 		ModelAndView mv = new ModelAndView();
+		
+		if(auth2 != null) {
+	    	  memberVO = memberService.myPage((MemberVO) auth2.getPrincipal());
+	    	  mv.addObject("memberVO",memberVO);
+	      }
 		
 		toonVO.setTotalHit(0);
 		List<ToonVO> ra = toonService.rankingAver(toonVO,memberVO);
@@ -341,8 +392,13 @@ public class ToonController {
 	}
 	
 	@GetMapping("rankingRecent")
-	public ModelAndView rankingRecent(ToonVO toonVO,MemberVO memberVO)throws Exception {
+	public ModelAndView rankingRecent(ToonVO toonVO,MemberVO memberVO, Authentication auth2)throws Exception {
 		ModelAndView mv = new ModelAndView();
+		
+		if(auth2 != null) {
+	    	  memberVO = memberService.myPage((MemberVO) auth2.getPrincipal());
+	    	  mv.addObject("memberVO",memberVO);
+	      }
 		
 		toonVO.setTotalHit(0);
 		List<ToonVO> ra = toonService.rankingRecent(toonVO,memberVO);
@@ -359,8 +415,13 @@ public class ToonController {
 	
 	
 	@GetMapping("endRe")
-	public ModelAndView endKr(ToonVO toonVO,MemberVO memberVO)throws Exception {
+	public ModelAndView endKr(ToonVO toonVO,MemberVO memberVO, Authentication auth2)throws Exception {
 		ModelAndView mv = new ModelAndView();
+		
+		if(auth2 != null) {
+	    	  memberVO = memberService.myPage((MemberVO) auth2.getPrincipal());
+	    	  mv.addObject("memberVO",memberVO);
+	      }
 		
 		toonVO.setTotalHit(0);
 		List<ToonVO> en = toonService.endRe(toonVO,memberVO);
@@ -372,8 +433,13 @@ public class ToonController {
 	}
 	
 	@GetMapping("endReAver")
-	public ModelAndView endKrAver(ToonVO toonVO,MemberVO memberVO)throws Exception {
+	public ModelAndView endKrAver(ToonVO toonVO,MemberVO memberVO, Authentication auth2)throws Exception {
 		ModelAndView mv = new ModelAndView();
+		
+		if(auth2 != null) {
+	    	  memberVO = memberService.myPage((MemberVO) auth2.getPrincipal());
+	    	  mv.addObject("memberVO",memberVO);
+	      }
 		
 		toonVO.setTotalHit(0);
 		List<ToonVO> en = toonService.endReAver(toonVO,memberVO);
@@ -385,8 +451,13 @@ public class ToonController {
 	}
 	
 	@GetMapping("endReRecent")
-	public ModelAndView endKrRecent(ToonVO toonVO,MemberVO memberVO)throws Exception {
+	public ModelAndView endKrRecent(ToonVO toonVO,MemberVO memberVO, Authentication auth2)throws Exception {
 		ModelAndView mv = new ModelAndView();
+		
+		if(auth2 != null) {
+	    	  memberVO = memberService.myPage((MemberVO) auth2.getPrincipal());
+	    	  mv.addObject("memberVO",memberVO);
+	      }
 		
 		toonVO.setTotalHit(0);
 		List<ToonVO> en = toonService.endReRecent(toonVO,memberVO);
