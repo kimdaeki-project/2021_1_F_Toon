@@ -13,6 +13,7 @@ let orderName = document.getElementById("user-name").value;
 let orderEmail = document.getElementById("user-email").value;
 let orderPhone = document.getElementById("user-phone").value;
 
+
 //radio 버튼 체크 여부 가져오기 
 $("input[name='point']").click(function(){
 	chargePoint = parseInt(document.querySelector('input[name="point"]:checked').value,10);
@@ -38,6 +39,7 @@ $("#start-charge").click(function () {
 	//필요한 정보 : 충전 원하는 포인트 ,  email, name , phone, 
 	var chargePoint = document.querySelector('input[name="point"]:checked').value;
 	chargePoint = parseInt(chargePoint); //int로 변환
+	
 	
 	var IMP = window.IMP;
 	IMP.init('imp51768187');

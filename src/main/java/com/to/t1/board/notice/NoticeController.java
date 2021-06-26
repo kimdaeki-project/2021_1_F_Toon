@@ -2,15 +2,22 @@ package com.to.t1.board.notice;
 
 import java.util.List;
 
+import javax.servlet.http.HttpSession;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.to.t1.board.BoardFileVO;
 import com.to.t1.board.BoardVO;
+import com.to.t1.member.MemberVO;
 import com.to.t1.util.Pager;
 
 @Controller
@@ -19,10 +26,10 @@ public class NoticeController {
 	
 	//DI : Dependency Inject
 	
-	
+	//Unsatified dependency 
 	@Autowired
 	private NoticeService noticeService;
-//	
+	
 	@Value("${board.notice.filePath}")
 	private String filePath;
 	
@@ -31,7 +38,9 @@ public class NoticeController {
 		return "notice";
 	}
 
-	// notice/list
+	
+	
+	// /notice/list
 	@GetMapping("noticeList")
 	public ModelAndView getList(Pager pager)throws Exception{
 		ModelAndView mv = new ModelAndView();
@@ -53,7 +62,7 @@ public class NoticeController {
 	@GetMapping("select")
 	public ModelAndView getSelect(BoardVO boardVO)throws Exception{
 		ModelAndView mv = new ModelAndView();
-		//boardVO = noticeService.getSelect(boardVO);
+		boardVO = noticeService.getSelect(boardVO);
 		mv.addObject("vo", boardVO);
 		mv.setViewName("board/select");
 		return mv;

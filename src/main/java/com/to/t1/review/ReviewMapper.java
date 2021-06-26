@@ -4,7 +4,6 @@ import java.util.List;
 
 import org.apache.ibatis.annotations.Mapper;
 
-import com.to.t1.toon.eachep.EachEpVO;
 import com.to.t1.util.Pager;
 
 @Mapper

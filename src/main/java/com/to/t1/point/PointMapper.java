@@ -5,34 +5,26 @@ import java.util.List;
 import org.apache.ibatis.annotations.Mapper;
 
 import com.to.t1.member.MemberVO;
-import com.to.t1.ticket.TicketBoxVO;
-import com.to.t1.ticket.UseTicketVO;
-import com.to.t1.util.Pager;
 
 @Mapper
 public interface PointMapper {
 	
-	public MemberVO selectMyPoint(MemberVO memberVO)throws Exception;
 	
-	public int setMyPointcount(PointVO pointVO)throws Exception;
+	//충전 
+	public int setChargePoint(PointVO PointVO)throws Exception;
+	public int setPointList(PointVO PointVO)throws Exception;
 	
-	public int setMyPointList(PointVO pointVO)throws Exception;
+	//소장권-사용,구입전 소장권 갯수 조회 
+	public long getTicketStock()throws Exception;
 	
-	public List<PointVO> getMyPointList (MemberVO memberVO)throws Exception;
+	//소장권 구입 
+	public int setUsePoint(PointVO PointVO)throws Exception;
+	public int setUsePointList(PointVO PointVO)throws Exception;
 	
-	public long checkTicketBox(TicketBoxVO ticketBoxVO)throws Exception;
-	public TicketBoxVO checkTicketStock(TicketBoxVO ticketBoxVO)throws Exception;
+	//소장권 사용 -무조건 하나씩 사용한다
 	
-	public int updateTicketStock(TicketBoxVO ticketBoxVO)throws Exception;
-	public int insertTicketStock(TicketBoxVO ticketBoxVO)throws Exception;
-	
-	public int setTicketUselist(UseTicketVO useTicketVO)throws Exception;
-	
-	
-	public long getTotalTicketCount (UseTicketVO useTicketVO)throws Exception;
-	public List<UseTicketVO> getUseTicktList(MemberVO memberVO)throws Exception; 
-	
-	public List<UseTicketVO> getToonTicktList(UseTicketVO UseTicketVO)throws Exception;
-	
+	//조회하기 (충전내역, 포인트 사용 내역)
+	public List<PointVO> getMyChargeList(MemberVO memberVO) throws Exception;
+	public List<PointVO> getMyUseList(MemberVO memberVO)throws Exception;
 	
 }
