@@ -14,8 +14,8 @@
         
     <insert id="commentInsert" parameterType="CommentVO" useGeneratedKeys="true" keyProperty="coNum">
        insert into
-       comment(coNum, boNum, commentContents, username, commentDate)
-       values(#{coNum}, #{boNum}, #{commentContents}, #{username}, now())
+       comment (coNum, boNum, commentContents, username, commentDate)
+       values(#{coNum}, #{boNum}, #{commentContents},#{username}, now())
     </insert>
     
     <update id="commentUpdate" parameterType="CommentVO">

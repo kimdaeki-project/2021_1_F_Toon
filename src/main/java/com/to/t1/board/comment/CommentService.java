@@ -19,17 +19,17 @@ public class CommentService {
         return commentMapper.commentList(commentVO);
     }
     
-    public long commentInsert(CommentVO commentVO) throws Exception{
+    public int commentInsert(CommentVO commentVO) throws Exception{
         
         return commentMapper.commentInsert(commentVO);
     }
     
-    public long commentUpdate(CommentVO commentVO) throws Exception{
+    public int commentUpdate(CommentVO commentVO) throws Exception{
         
         return commentMapper.commentUpdate(commentVO);
     }
     
-    public long commentDelete(long coNum) throws Exception{
+    public int commentDelete(long coNum) throws Exception{
         
         return commentMapper.commentDelete(coNum);
     }
