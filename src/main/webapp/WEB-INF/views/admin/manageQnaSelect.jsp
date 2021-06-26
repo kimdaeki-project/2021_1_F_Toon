@@ -94,14 +94,13 @@
 	
 	<a href="./reply?boNum=${vo.boNum}" class="btn btn-secondary">답변</a>
 	
-	<form action="./delete" id="frm" method="get">
+	<form action="./QnaDelete" id="frm" method="get">
 		<input type="hidden" name="boNum" value="${vo.boNum}">
 	</form>
 	</div>
 
 
 
-<script type="text/javascript" src="../resources/js/board/comments.js"></script>
 <script type="text/javascript">
 	const del = document.getElementById("del");
 	const frm = document.getElementById("frm");

@@ -38,11 +38,6 @@
 
 <title>작품 등록</title>
 
-
-<!-- summernote  -->
-<link href="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote-bs4.min.css" rel="stylesheet">
-<script src="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote-bs4.min.js"></script>
-<!-- ------------ -->
 <style type="text/css">
 #sample {
 	display: none;
@@ -122,6 +117,5 @@
 
 	<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
 	<script type="text/javascript" src="../js/board/boardInsert.js"></script>
-	<script type="text/javascript" src="../js/board/eachEpSummerFile.js"></script>
 </body>
 </html>

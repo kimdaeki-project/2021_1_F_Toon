@@ -138,14 +138,14 @@ public class AdminController {
 		return "redirect:./manageToonList";
 	}
 	
-	@GetMapping("toonFileDelete")
-	public ModelAndView setToonFileDelete(AdminFileVO adminFileVO)throws Exception{
-		ModelAndView mv = new ModelAndView();
-		int result = adminService.setToonFileDelete(adminFileVO);
-		mv.addObject("result", result);
-		mv.setViewName("common/ajaxResult");
-		return mv;
-	}
+//	@GetMapping("toonFileDelete")
+//	public ModelAndView setToonFileDelete(AdminFileVO adminFileVO)throws Exception{
+//		ModelAndView mv = new ModelAndView();
+//		int result = adminService.setToonFileDelete(adminFileVO);
+//		mv.addObject("result", result);
+//		mv.setViewName("common/ajaxResult");
+//		return mv;
+//	}
 	
 	@GetMapping("manageToonUpdate")
 	public ModelAndView setManageToonUpdate(ToonVO toonVO)throws Exception{
@@ -264,14 +264,14 @@ public class AdminController {
 		return "redirect:./manageEachEpList";
 	}
 	
-	@GetMapping("EachEpFileDelete")
-	public ModelAndView setEachEpFileDelete(AdminFileVO adminFileVO)throws Exception{
-		ModelAndView mv = new ModelAndView();
-		int result = adminService.setEachEpFileDelete(adminFileVO);
-		mv.addObject("result", result);
-		mv.setViewName("common/ajaxResult");
-		return mv;
-	}
+//	@GetMapping("EachEpFileDelete")
+//	public ModelAndView setEachEpFileDelete(AdminFileVO adminFileVO)throws Exception{
+//		ModelAndView mv = new ModelAndView();
+//		int result = adminService.setEachEpFileDelete(adminFileVO);
+//		mv.addObject("result", result);
+//		mv.setViewName("common/ajaxResult");
+//		return mv;
+//	}
 	
 	@GetMapping("manageEachEpUpdate")
 	public ModelAndView setManageEachEpUpdate(EachEpVO eachEpVO)throws Exception{
