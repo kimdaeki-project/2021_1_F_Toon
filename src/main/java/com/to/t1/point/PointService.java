@@ -69,7 +69,7 @@ public class PointService {
 		//소장권 사용 내역 작성 
 		useTicketVO.setSort(1); //일단은 소장권으로
 		ticketBoxVO.setStock(-1); //차감하는 티켓 장수 
-		int result = pointMapper.setTicketUselist(useTicketVO);
+		int result = pointMapper.setTicketUselist(useTicketVO);//사용내역 작성
 		result = pointMapper.updateTicketStock(ticketBoxVO);//티켓 한개 차감 
 		
 		return result;
