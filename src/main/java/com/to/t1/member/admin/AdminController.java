@@ -30,7 +30,7 @@ import com.to.t1.util.Pager;
 @Controller
 @RequestMapping("/admin/**")
 public class AdminController {
-// Admin 기능 : 1. [회원, 작품 ]조회 2. [작가, 작품]승인 
+// Admin 기능 : 1. [회원, 작품 ]조회 2. [작가, 작품]승인 (롤 부여)
 //3. [충전액]환불 4. Notice와  QNA관리(x) 
 	@Autowired
 	private AdminService adminService;
@@ -399,7 +399,7 @@ public class AdminController {
 	@PostMapping("delete")
 	public String setDelete(BoardVO boardVO)throws Exception{
 		
-		int result = noticeService.setDelete(boardVO);
+		//int result = noticeService.setDelete(boardVO);
 		
 		return "redirect:./manageNoticeList";
 	}
@@ -548,6 +548,5 @@ public class AdminController {
 		return mv;
 	}
 	//공지사항,질의응답 끝
-
 	
 }
