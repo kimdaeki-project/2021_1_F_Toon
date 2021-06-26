@@ -51,11 +51,14 @@ public class CommentController {
     
     @RequestMapping("/update") //댓글 수정  
     @ResponseBody
-    private long commentUpdate(@RequestParam long coNum, @RequestParam String commentContents) throws Exception{
+    private long commentUpdate(@RequestParam long coNum, @RequestParam String commentContents, Authentication auth2, MemberVO memberVO) throws Exception{
+    	
+    	memberVO = memberService.myPage((MemberVO) auth2.getPrincipal());
     	
         CommentVO commentVO = new CommentVO();
         commentVO.setCoNum(coNum);
         commentVO.setCommentContents(commentContents);
+        commentVO.setUsername(memberVO.getUsername());
   
         return commentService.commentUpdate(commentVO);
     }

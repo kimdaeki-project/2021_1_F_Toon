@@ -29,16 +29,16 @@
      	text-align: center;
      	background-color: #F7F7F7;
      	border-style: solid;
-     	border-color: #b4b4b4;
+     	border-color: #6C7AE0;
      	border-radius: 15px 15px 15px 15px;
      }
      .featurette-divider {
      	background-color : #3c3c3c;
      }
      #file1 {
-      	background-color: #dcdcdc;
+      	background-color: #6C7AE0;
      	border-style: solid;
-     	border-color: #b4b4b4;
+     	border-color: #6C7AE0;
      	border-radius: 15px 15px 15px 15px;
      }
      
@@ -115,10 +115,7 @@
         <div class="commentList"></div>
     </div>
  
-<!--                     추가                         -->
 <script type="text/javascript" src="../js/board/comment.js"></script>
-
-	
 <script type="text/javascript">
 	const del = document.getElementById("del");
 	const frm = document.getElementById("frm");

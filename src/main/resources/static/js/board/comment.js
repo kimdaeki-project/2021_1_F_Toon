@@ -18,9 +18,10 @@ function commentList(){
             var a =''; 
             $.each(data, function(key, value){ 
                 a += '<div class="commentArea" style="border-bottom:1px solid darkgray; margin-bottom: 15px;">';
-                a += '<div class="commentInfo'+value.coNum+'">'+'작성자 : '+value.username;
-                a += '&emsp;&emsp;&emsp;&emsp;<a onclick="commentUpdate('+value.coNum+',\''+value.commentContents+'\');"><button class="btn btn-secondary" type="button"> 수정 </button> </a>';
-                a += '<a onclick="commentDelete('+value.coNum+');"><button class="btn btn-secondary" type="button"> 삭제 </button> </a> </div><br>';
+                a += '<div class="commentInfo'+value.coNum+'">';
+				a += '<span	style="font-weight: bold; color: black;">'+value.username+'</span>';
+                a += '&emsp;&emsp;&emsp;&emsp;<a onclick="commentUpdate('+value.coNum+',\''+value.commentContents+'\');"><button class="btn btn-dark" type="button"> 수정 </button> </a>';
+                a += '<a onclick="commentDelete('+value.coNum+');"><button class="btn btn-dark" type="button"> 삭제 </button> </a> </div><br>';
                 a += '<div class="commentContent'+value.coNum+'"> <p> '+value.commentContents +'</p>';
                 a += '</div></div>';
             });
@@ -52,7 +53,7 @@ function commentUpdate(coNum, commentContents){
     
     a += '<div class="input-group">';
     a += '<input type="text" class="form-control" name="commentContents_'+coNum+'" value="'+commentContents+'"/>';
-    a += '<span class="input-group-btn"><button class="btn btn-default" type="button" onclick="commentUpdateP('+coNum+');">수정</button> </span>';
+    a += '<span class="input-group-btn"><button class="btn btn-dark" type="button" onclick="commentUpdateP('+coNum+');">수정</button> </span>';
     a += '</div>';
     
     $('.commentContent'+coNum).html(a);
