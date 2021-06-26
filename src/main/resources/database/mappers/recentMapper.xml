@@ -126,7 +126,7 @@
 			<result property="utDate" column="utDate"/>
 	</resultMap>
 	
-	<resultMap type="favoritetoonVO" id="favoritoonResult">
+	<resultMap type="FavoritetoonVO" id="favoritoonResult">
 			<id property="toonNum" column="toonNum"/>
 			<result property="username" column="username"/>
 			<result property="likeClick" column="likeClick"/>
