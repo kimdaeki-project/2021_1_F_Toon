@@ -15,6 +15,7 @@ import org.springframework.security.core.userdetails.UserDetails;
 
 import com.to.t1.member.MemberVO;
 import com.to.t1.mypage.RecentVO;
+import com.to.t1.ticket.UseTicketVO;
 
 import lombok.Data;
 
@@ -52,6 +53,8 @@ public class MemberVO implements UserDetails {
 	private boolean enabled;
 	
 	private List<RoleVO> roles;
+	
+	// private List<UseTicketVO> useTicket;
 	
 	//Role 저장
 	@Override
