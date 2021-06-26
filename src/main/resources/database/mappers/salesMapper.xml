@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.to.t1.member.admin.sales.SalesMapper">
+	
+	<select id="getDaySale" resultType="DaySaleVO">
+		SELECT IFNULL(DATE(NOW()), DATE(`cDate`)) AS `date`, IFNULL(sum(`point`),0) AS `Sum` 
+		FROM USER03.point 
+		WHERE DATE(`cDate`)= DATE(NOW()) AND `point`> 0
+
+	</select>
+	
+	<select id="getWeekSale" resultType="WeekSaleVO">
+		SELECT DATE(DATE_SUB(now(), INTERVAL (DAYOFWEEK(NOW())-1) DAY)) as Wstart,
+       	DATE(DATE_SUB(now(), INTERVAL (DAYOFWEEK(NOW())-7) DAY)) as Wend,
+      	sum(`point`) AS `Sum` 
+		FROM USER03.point WHERE point.`point` > 0 
+		GROUP BY DATE(`cDate`) ORDER BY Wstart DESC LIMIT 5 ;
+	</select>
+	
+	<select id="getMonthSale" resultType="MonthSaleVO">
+		SELECT DATE(`cDate`) AS `date`, sum(`point`) AS `Sum`  
+		FROM USER03.point 
+		WHERE point.`point`> 0
+		GROUP BY MONTH(`cDate`)
+	</select>
+	<!-- 특정 기간 별 매출 조회 -->
+	<select id="getLengthSale" parameterType="WeekSaleVO" resultType="DaySaleVO">
+		SELECT DATE(`cDate`) AS `date`, sum(`point`) AS `Sum` 
+		FROM USER03.point 
+		WHERE DATE(`cDate`) &gt;= STR_TO_DATE(#{Wstart}, '%Y-%m-%d') 
+			AND DATE(`cDate`) &lt;= STR_TO_DATE(#{Wend}, '%Y-%m-%d') 
+		AND point.`point`> 0 
+		GROUP BY DATE(`cDate`)
+	</select>
+	
+	<resultMap id="perToonSaleMap" type="ToonSaleVO">
+		<result column="Sum" property="Sum"/>
+	    <association property="toonVO" javaType="ToonVO">
+	    	<id property="toonNum" column="toonNum"></id>
+	        <result property="toonTitle" column="toonTitle"></result>
+	        <result property="toonDay" column="toonDay"></result>
+	    </association>
+	</resultMap>
+	
+	<select id="getToonSale" resultMap="perToonSaleMap">
+		SELECT t. * ,IFNULL(( 200 *COUNT(ut.sort)),0) AS `Sum` 
+		FROM USER03.toon AS t LEFT OUTER JOIN (SELECT * FROM USER03.useticket WHERE useticket.sort = 1)AS ut 
+		ON (ut.toonNum  = t.toonNum)
+		GROUP BY t. toonNum 
+		ORDER BY `sum`DESC, t.totalHit DESC 
+	</select>
+	
+</mapper>

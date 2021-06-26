@@ -8,8 +8,8 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Login</title>
-    <link rel="stylesheet" href="../css/style.css">
+    <title>Login</title>	
+     <link rel="stylesheet" href="../css/style.css">
     <script src="https://kit.fontawesome.com/51db22a717.js" crossorigin="anonymous"></script>
     <link href="https://fonts.googleapis.com/css2?family=Alata&display=swap" rel="stylesheet">
     <c:import url="../fragments/bootstrap.jsp"></c:import>
@@ -69,48 +69,13 @@
                     
                 </div>
                 <div class="login-btn-wrap">
-                    <button type="submit" class="login-btn" id="btn">Login</button>
+                    <button type="submit" class="login-btn">Login</button>
                     <a href="/member/searchPw" >Forgot password?</a> <a href="/member/memberJoinCheck">Sign Up</a>
                 </div>
             </div>
         </div>
     </div>
 	</form>
-
-
-<script type="text/javascript">
-
-	$("#btn").click(function() {
-		var id= $("#id").val();
-		var pw = $("#pw").val();
-		
-		if (id == "" || pw == "") {
-			swal("정보를 입력해주시기 바랍니다.", "You clicked the button!", "warning");
-		} 
-// 		else {
-// 			$.ajax({
-// 				type : 'POST',
-// 				url : 'searchId',
-// 				data : {
-// 					phone : phone, //주는사람
-// 					name : name,
-// 				},
-
-// 				dataType : 'text',
-// 				success : function(data) {
-
-// 					msg = data;
-// 					swal(msg);
-// 					message = $("message").val("principal.username");
-
-// 				}
-
-// 			})
-// 		}
-
-	})
-</script>
-<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
 
 </body>
 </html>

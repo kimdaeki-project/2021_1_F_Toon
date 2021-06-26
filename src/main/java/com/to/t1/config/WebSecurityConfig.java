@@ -11,7 +11,6 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 
 import com.to.t1.security.LoginFail;
 
-
 @Configuration
 @EnableWebSecurity
 public class WebSecurityConfig extends WebSecurityConfigurerAdapter{
@@ -59,7 +58,6 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter{
             .antMatchers("/qna/qnaList").permitAll()
             
             .antMatchers("/member/memberJoinCheck").permitAll()
-            .antMatchers("/member/memberDelete").permitAll()
             .antMatchers("/member/searchId").permitAll()
             .antMatchers("/member/searchPw").permitAll()
             .antMatchers("/member/CheckMail","/member/memberLoginResult").permitAll()
@@ -84,9 +82,14 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter{
 			.antMatchers("/toon/end/endReRecent").permitAll()
 			
 			.antMatchers("/toon/eachEpList/**").permitAll()
+			
+
 			.antMatchers("/toon/eachEpSelect/**").permitAll()
-				
-			.antMatchers("/**").permitAll()
+			.antMatchers("/toon/eachEpSelect2/**").hasAnyRole("ADMIN", "MEMBER")
+
+			.antMatchers("/toon/eachEpSelectOpen/**").permitAll()
+			.antMatchers("/toon/eachEpSelectSec/**").hasAnyRole("ADMIN", "MEMBER")
+			
             .antMatchers("/notice/select").hasAnyRole("ADMIN", "MEMBER")
             .antMatchers("/qna/qnaSelect").hasAnyRole("ADMIN", "MEMBER")
             .antMatchers("/qna/qnaUpdate").hasAnyRole("ADMIN", "MEMBER")
@@ -96,6 +99,9 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter{
             .antMatchers("/admin/adminPage").hasAnyRole("ADMIN")
             .antMatchers("/admin/addToonForm").hasAnyRole("ADMIN")
             .antMatchers("/charge/chargePointForm").hasAnyRole("ADMIN", "MEMBER","WRITER")
+            .antMatchers("/point/charge").hasAnyRole("ADMIN", "MEMBER","WRITER")
+            .antMatchers("/point/getTicket").hasAnyRole("ADMIN", "MEMBER","WRITER")
+            .antMatchers("/point/useTicket").hasAnyRole("ADMIN", "MEMBER","WRITER")
             .antMatchers("/admin/test").hasAnyRole("ADMIN")
             .antMatchers("/mypage/recentToon").hasAnyRole("ADMIN", "MEMBER")
             .anyRequest().authenticated()

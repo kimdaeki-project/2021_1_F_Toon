@@ -1,47 +1,64 @@
-
 <!DOCTYPE mapper
     PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
     "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-    
     <mapper namespace="com.to.t1.point.PointMapper">
-	
-	<!-- 포인트 "충전"내역 조회하기(키는 username, List)-->
-	<select id="getMyChargeList" parameterType="MemberVO" resultType="PointVO">
-		SELECT * FROM USER03.Point WHERE  username = #{username}
+    
+	<!-- 내 포인트 조회 -->
+	<select id="selectMyPoint" parameterType="MemberVO" resultType="MemberVO">
+		SELECT * FROM user03.member WHERE username= #{username}
 	</select>
-	<!-- 포인트 "사용"내역 조회하기(키는 username, List)-->
-	<select id="getMyUseList" parameterType="MemberVO" resultType="PointVO">
-		SELECT * FROM USER03.Point WHERE  username = #{username}
-	</select>
-	
-	
-	<!-- 포인트 충전하기 (멤버 업데이트) -->
-	<update id="setChargePoint" parameterType="PointVO">
-		UPDATE member SET point =(member.point + #{point}) 
+	<!-- 포인트 충전, 사용 -->
+	<update id="setMyPointcount" parameterType="PointVO">
+		UPDATE user03.member SET point = (member.point + #{point}) 
 		WHERE username =#{username}
 	</update>
-	
-	<!-- 포인트 내역 작성하기 -->
-	<insert id="setPointList" parameterType="PointVO">
-		INSERT INTO `user03`.`point` (`username`, `point`, `cDate`, `contents`) 
-		VALUES (#{username}, #{point}, NOW(),#{contents} );
+	<!-- 포인트 내역 작성 -->
+	<insert id="setMyPointList" parameterType="PointVO">
+		INSERT INTO user03.point(username, point, cDate, contents) 
+		VALUES (#{username}, #{point}, NOW(),#{contents})
 	</insert>
-	
-	<select id="getTicketStock" parameterType="TicketBoxVO" resultType="TicketBoxVO">
-		SELECT * FROM USER03.chargePoint 
-		WHERE  username = #{username}
+	<!-- 포인트 충전 내역 조회 -->
+	<select id="getMyPointList" parameterType="MemberVO" resultType="PointVO">
+		SELECT * FROM user03.point 
+		WHERE point.username = #{username} 
+		AND point.point > 0
+	</select>
+<!-- 포인트로 소장권  구매 (member02의 경우) -->
+	<!--  1 .이미 구매한 항목인지 확인: 알아서 걸러 -->	
+	<select id="checkTicketBox" parameterType="TicketBoxVO" resultType="java.lang.Long">
+		SELECT COUNT(*) FROM ticketbox WHERE toonNum = #{toonNum} AND username= #{username}
+	</select>
+	<!--  2.재고 사항 확인하기  -->
+	<select id="checkTicketStock" parameterType="TicketBoxVO" resultType="TicketBoxVO">
+		SELECT * FROM ticketbox 
+		WHERE sort= #{sort} AND (toonNum = #{toonNum} AND username= #{username})
+	</select>
+	<!--  2. 소장권  UPDATE 하거나 INSERT 하기  -->
+	<update id="updateTicketStock" parameterType="TicketBoxVO">
+		UPDATE user03.ticketbox SET stock =(ticketbox.stock+ #{stock}) 
+		WHERE  username= #{username} AND (toonNum= #{toonNum} AND sort=#{sort})
+	</update> 
+	<!--  INSERT -->
+	<insert id="insertTicketStock" parameterType="TicketBoxVO">
+		INSERT INTO user03.ticketbox (username, toonNum, stock,sort) VALUES (#{username}, #{toonNum}, #{stock},#{sort})
+	</insert>
+<!-- 소장권 사용하기 -->
+	<!-- 1. 소장권 INSERT 하기  -->	
+	<insert id="setTicketUselist" parameterType="UseTicketVO">
+		INSERT INTO user03.useticket (username,epNum,sort,toonNum,utDate) VALUES (#{username}, #{epNum},#{sort}), #{toonNum},NOW())
+	</insert>
+	<!-- 티켓 권한 부여 하기 -->
+	<!-- 3. 사용 내역 조회하기  -->
+	<select id="getUseTicktList" parameterType="MemberVO" resultType="UseTicketVO">
+		SELECT * FROM USER03.useticket WHERE username= #{username} 
+	</select>
+	<!-- 총 티켓 갯수 구하기 -->
+	<select id="getTotalTicketCount" parameterType="UseTicketVO" resultType="Long">
+		SELECT COUNT(*) FROM useticket  WHERE (username=#{username} AND toonNum = #{toonNum} )AND sort = 1
 	</select>
 	
-	<!-- 소장권 구매- 포인트 사용하기-->
-	<update id="setUsePoint" parameterType="PointVO">
-		UPDATE member SET point = (member.point - #{point}) 
-		WHERE  username =#{username}
-	</update>
-	<!-- 소장권 TicketBOX 넣기 혹은 꺼내기-->
-	
-	<!-- useTicket 내역 작성하기 -->
-	
-	<!-- 소장권 돌려주기 (소장권 -> point 전환하기)  -->
-	
-	
+	<select id="getToonTicktList" parameterType="UseTicketVO" resultType="UseTicketVO">
+		SELECT * FROM USER03.useticket  
+		WHERE (username=#{username} AND toonNum = #{toonNum} )AND sort = 1 ORDER BY utDate DESC 
+	</select>
    </mapper>
