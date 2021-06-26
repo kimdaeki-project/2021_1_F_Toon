@@ -156,7 +156,7 @@
 	<input type="hidden" id="toonNum" value="${toonVO.toonNum}">
 	<input type="hidden" id="epNum" value="${toonVO.eachEpVO['0'].epNum}">
 	<input type="hidden" id="eachEpNum" value="${toonVO.eachEpVO['0'].eachEpNum}">
-	
+	<input type="hidden" id="revNum" value="${toonVO.eachEpVO['0'].reviewVO['0'].revNum}">
 
 	
 	<script type="text/javascript">
@@ -198,27 +198,23 @@
 	
 	$(function(){	
 		$('#delReview8').click(function(){
-			
-			alert("별점, 댓글 등록");
+			var revNum = $("#revNum").val();
+			alert("별점, 댓글 삭제");
 			
 			$.ajax({
 				type:"POST",
-				url:'../review/setReview',
+				url:'../review/delReview',
 				data:{
-					"toonNum":toonNum,
-					"epNum":epNum,
-					"rating":rating,
-					"comments":comments,
-					"eachEpNum":eachEpNum
+					"revNum":revNum
 				},
 				success:function(result){
 					result = Number(result.trim());
-					if(result>0){
-						alert("댓글을 등록하셨습니다. 등록해 주셔서 감사합니다.");
+					if(result=null){
+						alert("댓글이 삭제되었습니다.");
 						$("#review_page").load(location.href=location.href);
 						/* $("#review_page").load(window.location.href + "#review_page"); */
 					}else{
-						alert("등록에 실패하였습니다. 다시 시도해 주세요");
+						alert("삭제에 실패하였습니다. 다시 시도해 주세요");
 					}
 				}
 				
