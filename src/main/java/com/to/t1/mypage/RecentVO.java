@@ -23,7 +23,7 @@ public class RecentVO {
 	private ToonVO toonVO;
 	private EachEpVO eachEpVO;
 	private MemberVO memberVO;
-	private FavoritoonVO favoritoonVO;
+	private FavoritetoonVO favoritoonVO;
 	private UseTicketVO useTicketVO;
 	private UsePointVO usePointVO;
 	private ReviewVO reviewVO;

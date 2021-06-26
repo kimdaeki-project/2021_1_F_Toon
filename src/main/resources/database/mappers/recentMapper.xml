@@ -95,7 +95,7 @@
 		
 		<association property="reviewVO" javaType="ReviewVO" resultMap="reviewResult"></association>
 		<association property="useTicketVO" javaType="UseTicketVO" resultMap="useTicketResult"></association>
-		<association property="favoritoonVO" javaType="FavoritoonVO" resultMap="favoritoonResult"></association>
+		<association property="favoritetoonVO" javaType="FavoritetoonVO" resultMap="favoritoonResult"></association>
 		<association property="toonVO" javaType="ToonVO" resultMap="toonResult"></association>
 		<association property="eachEpVO" javaType="EachEpVO" resultMap="eachEpResult"></association>
 		<association property="memberVO" javaType="MemberVO" resultMap="memberResult"></association> 
@@ -126,7 +126,7 @@
 			<result property="utDate" column="utDate"/>
 	</resultMap>
 	
-	<resultMap type="favoritoonVO" id="favoritoonResult">
+	<resultMap type="favoritetoonVO" id="favoritoonResult">
 			<id property="toonNum" column="toonNum"/>
 			<result property="username" column="username"/>
 			<result property="likeClick" column="likeClick"/>

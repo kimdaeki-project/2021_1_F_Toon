@@ -133,7 +133,7 @@
 					<td>${list.toonVO.genre}</td>
 					<td>${list.toonVO.toonDay}</td>
 					<td>${list.memberVO.nickname}</td>
-					<td>${list.favoritoonVO.likeDate}</td>
+					<td>${list.favorietoonVO.likeDate}</td>
 <%-- 					<td><a href="./${board}Select?num=${dto.num}"> --%>
 					
 <%-- 					<c:catch> --%>
