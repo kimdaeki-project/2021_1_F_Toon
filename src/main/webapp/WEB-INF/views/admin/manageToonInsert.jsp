@@ -1,7 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-<%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -12,13 +11,6 @@
     <c:import url="../fragments/bootstrap.jsp"></c:import>
     
    <link rel="stylesheet" href="${pageContext.request.contextPath}/css/header.css">
-   
-   <!-- plugins:css -->
-<link rel="stylesheet" href="${pageContext.request.contextPath}/assets/vendors/iconfonts/mdi/css/materialdesignicons.css">
-<link rel="stylesheet" href="${pageContext.request.contextPath}/css/mypage/style.css">
-<!-- Layout style -->
-<link rel="shortcut icon" href="${pageContext.request.contextPath}/asssets/images/favicon.ico" />
-   
     
     <style type="text/css">
      .back {
@@ -47,11 +39,6 @@
 </head>
 <body>
 	<c:import url="../fragments/header.jsp"></c:import>
-	
-	 <div class="row">
-  	<div class="col-2">
-  		<c:import url="./adminNav.jsp"></c:import>
-  	</div>
 
 	<div class="container"><br>
 	<h2>
@@ -91,16 +78,11 @@
 					class="form-control myCheck" id="state" name="state">
 			</div>
 
-<!-- 			<div class="form-group"> -->
-<!-- 				<label for="titleImg">&nbsp;타이틀이미지</label> -->
-<!-- 				<textarea class="form-control myCheck" rows="5" id="titleImg" -->
-<!-- 					name="titleImg"></textarea> -->
-<!-- 			</div> -->
-
-				<div class="form-group">
-				<label for="titleImg">&nbsp;타이틀이미지</label> 
-				<input type="text" class="form-control myCheck" id="titleImg" name="titleImg">
-				</div>
+			<div class="form-group">
+				<label for="titleImg">&nbsp;타이틀이미지</label>
+				<textarea class="form-control myCheck" rows="5" id="titleImg"
+					name="titleImg"></textarea>
+			</div>
 			
 			<div class="form-group">
 				<label for="ratingSum">&nbsp;평점</label> <input type="number"
@@ -131,6 +113,11 @@
 
 	<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
 	<script type="text/javascript" src="../js/board/boardInsert.js"></script>
+<<<<<<< HEAD
 
+=======
+	<script type="text/javascript" src="../js/board/toonSummerFile.js"></script>
+	<c:import url="../fragments/footer.jsp"></c:import>
+>>>>>>> parent of 71bbcf9 (Merge branch 'SeokJun5' into main2)
 </body>
 </html>

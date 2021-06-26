@@ -14,6 +14,7 @@ public class BoardVO {
 	private String noticeContents;
 	private Date createdDate;
 	private Long noticeHit;
+	private Long noticeType;
 	
 	private String qnaTitle;
 	private String qnaContents;
@@ -78,6 +79,13 @@ public class BoardVO {
 	}
 	public void setNoticeHit(Long noticeHit) {
 		this.noticeHit = noticeHit;
-	} 
+	}
+	public Long getNoticeType() {
+		return noticeType;
+	}
+	public void setNoticeType(Long noticeType) {
+		this.noticeType = noticeType;
+	}
+	
 	
 }

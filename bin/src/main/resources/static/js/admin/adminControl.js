@@ -1,5 +1,0 @@
-/**
- * 
- */
- 
-// alert("adminControl Connected");

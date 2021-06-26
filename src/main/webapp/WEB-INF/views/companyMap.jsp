@@ -16,7 +16,7 @@
 
 <link rel="stylesheet" href="${pageContext.request.contextPath}/css/header.css">
 
-<title>찾아오시는 길</title>
+<title></title>
 
 <style type="text/css">
 		.come{

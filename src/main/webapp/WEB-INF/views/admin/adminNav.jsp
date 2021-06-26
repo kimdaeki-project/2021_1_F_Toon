@@ -26,22 +26,14 @@
             <ul class="collapse navigation-submenu" id="select_toon">
               
               <li>
-                <a href="${pageContext.request.contextPath}/admin/manageToonList">작품 조회</a>
-              </li>
-              <li>
-                <a href="${pageContext.request.contextPath}/admin/manageToonInsert">작품 등록</a>
-              </li>
-              
-               <li>
-                <a href="${pageContext.request.contextPath}/admin/manageEachEpList">회차 조회</a>
-              </li>
-              
-               <li>
-                <a href="${pageContext.request.contextPath}/admin/manageEachEpInsert">회차 등록</a>
-              </li>
-              
-              <li>
                 <a href="pages/sample-pages/error_2.html" target="_blank">웹툰 수정 승인</a>
+              </li>
+              
+              <li>
+                <a href="pages/sample-pages/login_1.html" target="_blank">작품 조회</a>
+              </li>
+              <li>
+                <a href="pages/sample-pages/error_2.html" target="_blank">작품 등록</a>
               </li>
               
             </ul>
@@ -96,16 +88,16 @@
           </li>
           <!-- 새로운 각주  -->
           <li>
-            <a href="#board_manage" data-toggle="collapse" aria-expanded="false">
+            <a href="#payment_manage" data-toggle="collapse" aria-expanded="false">
               <span class="link-title">공지사항,질의응답 관리</span>
               <i class="mdi mdi-chart-donut link-icon"></i>
             </a>
-            <ul class="collapse navigation-submenu" id="board_manage">
+            <ul class="collapse navigation-submenu" id="">
               <li>
-                <a href="${pageContext.request.contextPath}/admin/manageNoticeList">공지사항</a>
+                <a href="pages/sample-pages/login_1.html" target="_blank">공지사항</a>
               </li>
               <li>
-                <a href="${pageContext.request.contextPath}/admin/manageQnaList">질의응답</a>
+                <a href="pages/sample-pages/error_2.html" target="_blank">질의응답</a>
               </li>
             </ul>
           </li>

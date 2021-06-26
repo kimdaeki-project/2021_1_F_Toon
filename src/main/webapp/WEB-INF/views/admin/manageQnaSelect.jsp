@@ -1,7 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags" %>   
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>    
 <!DOCTYPE html>
 <html>
 <head>
@@ -13,13 +12,6 @@
     <c:import url="../fragments/bootstrap.jsp"></c:import>
     
     <link rel="stylesheet" href="${pageContext.request.contextPath}/css/header.css">
-    
-    <!-- plugins:css -->
-<link rel="stylesheet" href="${pageContext.request.contextPath}/assets/vendors/iconfonts/mdi/css/materialdesignicons.css">
-<link rel="stylesheet" href="${pageContext.request.contextPath}/css/mypage/style.css">
-<!-- Layout style -->
-<link rel="shortcut icon" href="${pageContext.request.contextPath}/asssets/images/favicon.ico" />
-    
     
     <style type="text/css">
     
@@ -47,11 +39,6 @@
 </head>
 <body>
 <c:import url="../fragments/header.jsp"></c:import>
-	
-	<div class="row">
-  	<div class="col-2">
-  		<c:import url="./adminNav.jsp"></c:import>
-  	</div>
 
 <div class="container"><br>
 	<h2>
@@ -116,5 +103,6 @@
 		}
 	});
 </script>
+<c:import url="../fragments/footer.jsp"></c:import>
 </body>
 </html>

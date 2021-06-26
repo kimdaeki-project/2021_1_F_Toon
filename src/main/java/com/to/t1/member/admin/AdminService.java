@@ -46,21 +46,21 @@ public class AdminService {
 		return adminMapper.getManageToonSelect(toonVO);
 	}
 
-	public int setManageToonInsert(ToonVO toonVO) throws Exception {
+	public int setManageToonInsert(ToonVO toonVO, MultipartFile [] files) throws Exception {
 
 
 		int result = adminMapper.setManageToonInsert(toonVO);
 
-//		for(MultipartFile mf : files) {
-//			AdminFileVO adminFileVO = new AdminFileVO();
-//			String fileName= boFileManager.save("toon", mf, session);
-//
-//			adminFileVO.setToonNum(toonVO.getToonNum());
-//			adminFileVO.setFileName(fileName);
-//			adminFileVO.setOriName(mf.getOriginalFilename());
-//
-//			adminMapper.setFileInsert(adminFileVO);
-//		}
+		for(MultipartFile mf : files) {
+			AdminFileVO adminFileVO = new AdminFileVO();
+			String fileName= boFileManager.save("toon", mf, session);
+
+			adminFileVO.setToonNum(toonVO.getToonNum());
+			adminFileVO.setFileName(fileName);
+			adminFileVO.setOriName(mf.getOriginalFilename());
+
+			adminMapper.setFileInsert(adminFileVO);
+		}
 
 		return result;
 	}
@@ -102,17 +102,17 @@ public class AdminService {
 //	}
 
 
-//	public boolean setToonSummerFileDelete(String fileName) throws Exception {
-//		boolean result = boFileManager.delete("toon", fileName, session);
-//		return result;
-//	}
-//
-//
-//	public String setToonSummerFileUpload(MultipartFile file)throws Exception{
-//
-//		String fileName = boFileManager.save("toon", file, session);
-//		return fileName;
-//	}
+	public boolean setToonSummerFileDelete(String fileName) throws Exception {
+		boolean result = boFileManager.delete("toon", fileName, session);
+		return result;
+	}
+
+
+	public String setToonSummerFileUpload(MultipartFile file)throws Exception{
+
+		String fileName = boFileManager.save("toon", file, session);
+		return fileName;
+	}
 	
 	////////////////////////////////////////////////////////////////////////////
 	
@@ -186,17 +186,17 @@ public List<EachEpVO> getManageEachEpList(Pager pager) throws Exception {
 //	}
 
 
-//	public boolean setEachEpSummerFileDelete(String fileName) throws Exception {
-//		boolean result = boFileManager.delete("eachep", fileName, session);
-//		return result;
-//	}
-//
-//
-//	public String setEachEpSummerFileUpload(MultipartFile file)throws Exception{
-//
-//		String fileName = boFileManager.save("eachep", file, session);
-//		return fileName;
-//	}
+	public boolean setEachEpSummerFileDelete(String fileName) throws Exception {
+		boolean result = boFileManager.delete("eachep", fileName, session);
+		return result;
+	}
+
+
+	public String setEachEpSummerFileUpload(MultipartFile file)throws Exception{
+
+		String fileName = boFileManager.save("eachep", file, session);
+		return fileName;
+	}
 }
 
 

@@ -24,9 +24,6 @@
   		<typeAlias type="com.to.t1.board.BoardFileVO" alias="BoardFileVO"/>
   		<typeAlias type="com.to.t1.board.notice.NoticeVO" alias="NoticeVO"/>
   		<typeAlias type="com.to.t1.board.qna.QnaVO" alias="QnaVO"/>
-  		<typeAlias type="com.to.t1.board.free.FreeVO" alias="FreeVO"/>
-  		<typeAlias type="com.to.t1.board.free.FreeFileVO" alias="FreeFileVO"/>
-  		<typeAlias type="com.to.t1.board.comment.CommentVO" alias="CommentVO"/>
   		
   		
   		<typeAlias type="com.to.t1.point.PointVO" alias="PointVO"/>
