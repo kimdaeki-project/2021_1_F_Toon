@@ -33,7 +33,7 @@
 		
 		<ul class="btn_group">
 		<li><a href="#" title="관심웹툰" class="book_maker on"><span>관심웹툰</span></a></li>
-		<li><a href="/toon/eachEpSelect?toonNum=${toonVO.toonNum}&epNum=1" title="첫회보기" class="first"><span>첫회보기</span></a></li>
+		<li><a href="/toon/eachEpSelect?toonNum=${toonVO.toonNum}&eachEpNum=1" title="첫회보기" class="first"><span>첫회보기</span></a></li>
 		
 		</div>
 	</div>

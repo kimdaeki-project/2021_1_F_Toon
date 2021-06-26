@@ -15,13 +15,12 @@ public class ReviewService {
 	private ReviewMapper reviewMapper;
 	
 	public List<ReviewVO> getList(Pager pager) throws Exception {
-//		pager.setCurPage(pager.getCurPage() == 0 ? 1 : pager.getCurPage());
-//		pager.setCurBlock(pager.getCurBlock() == 0 ? 1 : pager.getCurBlock());
-//		pager.makecal(reviewMapper.getTotalCount(pager));
 		pager.makeRow();
 	
 		Long totalCount = reviewMapper.getTotalCount(pager);
 		pager.makeNum(totalCount);
+		System.out.println("sn : "+pager.getStartNum());
+		System.out.println("per : "+pager.getPerPage());
 		
 		return reviewMapper.getList(pager);
 	}

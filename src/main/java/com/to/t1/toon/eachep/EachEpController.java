@@ -1,5 +1,6 @@
 package com.to.t1.toon.eachep;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -39,10 +40,10 @@ public class EachEpController {
 	public void getSelect(EachEpVO eachEpVO,Pager pager, Model model, Authentication auth)throws Exception{
 		RecentVO recentVO = new RecentVO(); 
 		if(auth!=null) {
-			System.out.println("username: "+auth.getName());
-		recentVO.setUsername(auth.getName());
+			recentVO.setUsername(auth.getName());
 		}
 		ToonVO list= eachEpService.getSelect(eachEpVO, recentVO);
+		
 		model.addAttribute("toonVO", list);
 		model.addAttribute("listsize", list.getEachEpVO().size());
 		
@@ -51,7 +52,8 @@ public class EachEpController {
 		
 		List<ReviewVO> reviewVO = reviewService.getList(pager);
 		list.getEachEpVO().get(0).setReviewVO(reviewVO);
-		
-		System.out.println(list.getEachEpVO().size());
+		if(list.getEachEpVO().get(0).getReviewVO().get(0).getRevNum()==0) {
+			list.getEachEpVO().get(0).setReviewVO(new ArrayList<ReviewVO>());
+		}
 	}
 }

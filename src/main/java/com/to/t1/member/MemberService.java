@@ -4,7 +4,6 @@ import java.util.HashMap;
 import java.util.Map;
 
 import javax.servlet.http.HttpSession;
-import javax.tools.JavaFileManager;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -16,7 +15,6 @@ import org.springframework.transaction.annotation.Transactional;
 import org.springframework.validation.Errors;
 import org.springframework.web.multipart.MultipartFile;
 
-import com.to.t1.member.MemberVO;
 import com.to.t1.util.FileManager;
 
 @Service
