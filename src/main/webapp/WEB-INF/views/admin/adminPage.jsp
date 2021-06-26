@@ -4,30 +4,27 @@
 <!DOCTYPE html>
 <html>
 <head>
- 	<meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+	<meta charset="utf-8">
+   	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
     <c:import url="../fragments/bootstrap.jsp"></c:import>
     <title>Admin Page</title>
-
-  
-    <c:import url="../fragments/bootstrap.jsp"></c:import>
-    <title>WebToon</title>
   
     <link rel="stylesheet" href="/css/header.css">
-     <!-- plugins:css -->
+    <!-- plugins:css -->
     <link rel="stylesheet" href="../assets/vendors/iconfonts/mdi/css/materialdesignicons.css">
     <link rel="stylesheet" href="/css/mypage/style.css">
     <!-- Layout style -->
     <link rel="shortcut icon" href="../asssets/images/favicon.ico" />
-</head>
-<body class="header-fixed">
 
-<!-- Header -->
-<c:import url="./../fragments/header.jsp"></c:import>
-<div class="">
+    
+</head>
+<body>
+	<!-- Header -->
+	<c:import url="../fragments/header.jsp"></c:import>	
+	<div class="">
 <!-- partial:partials/_sidebar.html -->
-  <div class="row">
+  <div class="row page-body">
   	<div class="col-2">
   		<c:import url="./adminNav.jsp"></c:import>
   	</div>
@@ -66,6 +63,15 @@
     <script type="text/javascript" src="../js/admin/adminControl.js"></script>
     <!-- graph.js : 통계 관련  -->
     <script type="text/javascript" src="../js/admin/chart.js"></script>
+    
+    <script src="../assets/vendors/js/core.js"></script>
+    <script src="../assets/vendors/apexcharts/apexcharts.min.js"></script>
+    <script src="../assets/vendors/chartjs/Chart.min.js"></script>
+    <script src="../assets/js/charts/chartjs.addon.js"></script>
+    <script src="../assets/js/template.js"></script>
+    <script src="../assets/js/dashboard.js"></script>
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+    <script type="text/javascript" src="../js/mypage.js"></script>
  <!-- endbuild -->
 </body>
 
