@@ -58,7 +58,7 @@ public class CommentController {
         CommentVO commentVO = new CommentVO();
         commentVO.setCoNum(coNum);
         commentVO.setCommentContents(commentContents);
-        commentVO.setUsername(memberVO.getUsername());
+//        commentVO.setUsername(memberVO.getUsername());
   
         return commentService.commentUpdate(commentVO);
     }
