@@ -83,27 +83,27 @@ public class EachEpController {
 	    
 	}
 	
-	@GetMapping("eachEpSelect")
-	public void getSelect(EachEpVO eachEpVO,Pager pager, Model model, MemberVO memberVO, Authentication auth2)throws Exception{
-		
-		ToonVO list= eachEpService.getSelect(eachEpVO);
-		ModelAndView mv = new ModelAndView();
-		if(auth2 != null) {
-	    	  memberVO = memberService.myPage((MemberVO) auth2.getPrincipal());
-	    	  mv.addObject("memberVO",memberVO);
-	      }
-		
-		model.addAttribute("toonVO", list);
-		model.addAttribute("listsize", list.getEachEpVO().size());
-		
-		pager.setEpNum(eachEpVO.getEachEpNum());
-		pager.setEachEpNum(eachEpVO.getEachEpNum());
-		
-		List<ReviewVO> reviewVO = reviewService.getList(pager);
-		list.getEachEpVO().get(0).setReviewVO(reviewVO);
-		
-		System.out.println(list.getEachEpVO().size());
-	}
+//	@GetMapping("eachEpSelect")
+//	public void getSelect(EachEpVO eachEpVO,Pager pager, Model model, MemberVO memberVO, Authentication auth2)throws Exception{
+//		
+//		ToonVO list= eachEpService.getSelect(eachEpVO);
+//		ModelAndView mv = new ModelAndView();
+//		if(auth2 != null) {
+//	    	  memberVO = memberService.myPage((MemberVO) auth2.getPrincipal());
+//	    	  mv.addObject("memberVO",memberVO);
+//	      }
+//		
+//		model.addAttribute("toonVO", list);
+//		model.addAttribute("listsize", list.getEachEpVO().size());
+//		
+//		pager.setEpNum(eachEpVO.getEachEpNum());
+//		pager.setEachEpNum(eachEpVO.getEachEpNum());
+//		
+//		List<ReviewVO> reviewVO = reviewService.getList(pager);
+//		list.getEachEpVO().get(0).setReviewVO(reviewVO);
+//		
+//		System.out.println(list.getEachEpVO().size());
+//	}
 	
 
 	@GetMapping("eachEpSelect2")
