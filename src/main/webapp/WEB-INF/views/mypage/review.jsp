@@ -1,6 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
 <%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags" %>
 <!DOCTYPE html>
 <html>
@@ -10,7 +9,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
   
     <c:import url="../fragments/bootstrap.jsp"></c:import>
-    <title>UPDATE</title>
+    <title>내 댓글보기</title>
    
      <link rel="stylesheet" href="/css/header.css">
      <!-- plugins:css -->
@@ -25,15 +24,15 @@
 </head>
 <body>
 	<c:import url="../fragments/header.jsp"></c:import>	
-
-     <!-- partial -->
+	
+   <!-- partial -->
     <div class="page-body">
       <!-- partial:partials/_sidebar.html -->
       <div class="sidebar">
         <div class="user-profile">
           <div class="display-avatar animated-avatar">
-            <c:if test="${memberVO.joinFileVO.fileName eq null}"><img width=180px height=200px alt="" src="../images/member.jpg"></c:if>
-			<c:if test="${memberVO.joinFileVO.fileName ne null}"><img width=180px height=200px alt="" src="../upload/member/${memberVO.joinFileVO.fileName}"></c:if>
+            <c:if test="${memberVO.joinFileVO.fileName eq null}"><img width=180px height=200px alt="" src="/images/member.jpg"></c:if>
+			<c:if test="${memberVO.joinFileVO.fileName ne null}"><img width=180px height=200px alt="" src="/upload/member/${memberVO.joinFileVO.fileName}"></c:if>
           </div>
           <div class="info-wrapper">
             <p class="user-name">${memberVO.name}님</p>
@@ -66,21 +65,26 @@
               <i class="mdi mdi-bullseye link-icon"></i>
             </a>
             <ul class="collapse navigation-submenu" id="ui-elements">
+                <li>
+            
+            <ul class="collapse navigation-submenu" id="ui-elements">
               <li>
-                <a href="${pageContext.request.contextPath}../mypage/recentToon/?username=${memberVO.username}">최근 본 웹툰</a>
-                
+                <a href="/mypage/recentToon/?username=${memberVO.username}">최근 본 웹툰</a>
+              </li>
+              
+              <li>
+                <a href="/mypage/favoriteToon/?username=${memberVO.username}">관심 웹툰</a>
               </li>
               <li>
-                <a href="${pageContext.request.contextPath}../mypage/favoriteToon/?username=${memberVO.username}">관심 웹툰</a>
+                <a href="/mypage/useToon/?username=${memberVO.username}">소장 웹툰</a>
               </li>
-              <li>
-                <a href="${pageContext.request.contextPath}../mypage/useToon/?username=${memberVO.username}">소장 웹툰</a>
-              </li>
+            </ul>
+          </li>
             </ul>
           </li>
           
             <li>
-            	<a href="${pageContext.request.contextPath}../mypage/review/?username=${memberVO.username}">
+            	<a href="/mypage/review/?username=${memberVO.username}">
              	<h4> <span class="link-title">내 댓글</span></h4>
             	  <i class="mdi mdi-clipboard-outline link-icon"></i>
             	</a>
@@ -105,36 +109,59 @@
       </div>
       <!-- partial -->
       <div class="page-content-wrapper">
-      <center><h2><회원 정보 수정></h2></center>
-	<form action="memberUpdate" method="post">
-		
-		 <div class="form-group">
-     	 <label for="disabledTextInput">아이디</label>
-    	  <input type="text" id="disabledTextInput" readonly="readonly" class="form-control" placeholder=<sec:authentication property="principal.username"/>>
-   		 </div>
-		
-		 <div class="form-group">
-      		<label for="Input">이름</label>
-      		<input type="text" id="disabledTextInput" name="name" class="form-control" value= "${memberVO.name}">
- 		  </div>
- 		  
- 		  <div class="form-group">
-      		<label for="Input">닉네임</label>
-      		<input type="text" id="disabledTextInput" name="nickname" class="form-control" value="${memberVO.nickname}">
- 		  </div>
- 		  
- 		  <div class="form-group">
-      		<label for="Input">핸드폰</label>
-      		<input type="text" id="disabledTextInput" name="phone" class="form-control" value="${memberVO.phone}">
- 		  </div>
- 		  
- 		  <div class="form-group">
-      		<label for="Input">E-mail</label>
-      		<input type="text" id="disabledTextInput" name="email" class="form-control" value="${memberVO.email}">
- 		  </div><br>
+           <div class="container">	
 
-		<center><button class="btn btn-info">Update</button></center>
-	</form>
+		<h2>내 댓글 ㅋ</h2>
+
+		<table class="table">
+			<thead class="A simple light list group item">
+				<tr>
+					<th></th>
+					<th>웹툰 이름</th>
+					<th>에피 제목</th>
+					<th>작가 이름</th>
+					<th>내용</th>
+					<th>작성 일자</th>
+				</tr>
+			</thead>
+			
+			<tbody>
+			<c:forEach items="${list}" var="list" >
+				<tr>
+					<td><img width=50px height=50px src= ${list.toonVO.titleImg}></td>
+					<td>${list.toonVO.toonTitle}</td>
+					<td>${list.eachEpVO.epTitle}</td>
+					<td>${list.memberVO.nickname}</td>
+					<td>${list.reviewVO.comments}</td>
+					<td>${list.reviewVO.commentDate}</td>
+				</tr>
+			</c:forEach>
+			
+			</tbody>
+
+		</table>
+	</div>
+           
+  	<ul class="pagination">
+
+				<c:if test="${pager.pre}">
+					<li class="page-item"><a class="page-link p" href="#"
+						title="${pager.startNum-1}">이전</a></li>
+				</c:if>
+
+				<c:forEach begin="${pager.startNum}" end="${pager.lastNum}" var="i">
+					<li class="page-item"><a class="page-link p" href="/mypage/review/?username=${memberVO.username}&curPage=${i}" title="${i}">${i}</a></li>
+				</c:forEach>
+
+				<c:if test="${pager.next}">
+					<li class="page-item"><a class="page-link p" href="#"
+					 title="${pager.lastNum+1}">다음</a></li>
+				</c:if>
+			</ul>
+  			
+	
+
+	</p>
         <div class="page-content-wrapper-inner">
           <div class="content-viewport">
             <div class="row">
@@ -144,6 +171,7 @@
               </div>
             </div>
       </div>
+      </div>
     </div>
     <script src="../assets/vendors/js/core.js"></script>
     <script src="../assets/vendors/apexcharts/apexcharts.min.js"></script>
@@ -151,7 +179,9 @@
     <script src="../assets/js/charts/chartjs.addon.js"></script>
     <script src="../assets/js/template.js"></script>
     <script src="../assets/js/dashboard.js"></script>
-
-
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+    <script type="text/javascript" src="../js/mypage.js"></script>
+	
+	
 </body>
 </html>

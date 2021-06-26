@@ -19,11 +19,11 @@ public class FileManager {
 	@Autowired
 	private ResourceLoader resourceLoader;
 	
-	public boolean delete(String name,String fileName ,HttpSession session)throws Exception {
+	public boolean delete(String filePath,String fileName ,HttpSession session)throws Exception {
 		//1. 경로 설정
 //		String path = session.getServletContext().getRealPath("upload/"+name);
 		
-		String filePath= "upload/member/";
+//		String filePath= "upload/member/";
 		
 		String path="static";
 		ClassPathResource classPathResource = new ClassPathResource(path);

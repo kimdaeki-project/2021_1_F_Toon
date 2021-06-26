@@ -59,6 +59,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter{
             .antMatchers("/qna/qnaList").permitAll()
             
             .antMatchers("/member/memberJoinCheck").permitAll()
+            .antMatchers("/member/memberDelete").permitAll()
             .antMatchers("/member/searchId").permitAll()
             .antMatchers("/member/searchPw").permitAll()
             .antMatchers("/member/CheckMail","/member/memberLoginResult").permitAll()

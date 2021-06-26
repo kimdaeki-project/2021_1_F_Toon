@@ -25,27 +25,38 @@
 <body>
 	<c:import url="../fragments/header.jsp"></c:import>	
 	
-    <!-- partial -->
+      <!-- partial -->
     <div class="page-body">
       <!-- partial:partials/_sidebar.html -->
       <div class="sidebar">
         <div class="user-profile">
           <div class="display-avatar animated-avatar">
-            <c:if test="${memberVO.joinFileVO.fileName eq null}"><img width=180px height=200px alt="" src="../../images/member.jpg"></c:if>
+            <c:if test="${memberVO.joinFileVO.fileName eq null}"><img width=180px height=200px alt="" src="/images/member.jpg"></c:if>
 			<c:if test="${memberVO.joinFileVO.fileName ne null}"><img width=180px height=200px alt="" src="/upload/member/${memberVO.joinFileVO.fileName}"></c:if>
           </div>
           <div class="info-wrapper">
-           <p class="user-name">${memberVO.name}님</p>
+            <p class="user-name">${memberVO.name}님</p>
             <h6 class="display-income">${memberVO.point}point</h6>
           </div>
         </div>
         <ul class="navigation-menu">
           <li class="nav-category-divider">MAIN</li>
-          <li>
-            <a href="/member/myPage">
-              <h4><span class="link-title">내정보 수정</span></h4>
-              <i class="mdi mdi-gauge link-icon"></i>
+          
+           <li>
+            <a href="#sample-pages" data-toggle="collapse" aria-expanded="false">
+              <h4><span class="link-title">내 정보</span></h4>
+              <i class="mdi mdi-flask link-icon"></i>
             </a>
+            <ul class="collapse navigation-submenu" id="sample-pages">
+              <li>
+                <a href="/member/myPage">내 정보 조회</a>
+              </li>
+              
+               <li>
+                <a href="/member/changePassword" >비밀번호 변경</a>
+              </li>
+              
+            </ul>
           </li>
          
           <li>
@@ -53,6 +64,9 @@
               <h4><span class="link-title">웹툰</span></h4>
               <i class="mdi mdi-bullseye link-icon"></i>
             </a>
+            <ul class="collapse navigation-submenu" id="ui-elements">
+                <li>
+         
             <ul class="collapse navigation-submenu" id="ui-elements">
               <li>
                 <a href="/mypage/recentToon/?username=${memberVO.username}">최근 본 웹툰</a>
@@ -66,20 +80,19 @@
               </li>
             </ul>
           </li>
-          <li>
-            <a href="#sample-pages" data-toggle="collapse" aria-expanded="false">
-              <h4><span class="link-title">댓글</span></h4>
-              <i class="mdi mdi-flask link-icon"></i>
-            </a>
-            <ul class="collapse navigation-submenu" id="sample-pages">
-              <li>
-                <a href="pages/sample-pages/login_1.html" target="_blank">내 댓글 조회</a>
-              </li>
-              
             </ul>
           </li>
+          
+            <li>
+            	<a href="/mypage/review/?username=${memberVO.username}">
+             	<h4> <span class="link-title">내 댓글</span></h4>
+            	  <i class="mdi mdi-clipboard-outline link-icon"></i>
+            	</a>
+          	 </li>
+          
+          
           <li>
-            <a href="pages/forms/form-elements.html">
+            <a href="${pageContext.request.contextPath}/point/charge">
              <h4> <span class="link-title">충전하기</span></h4>
               <i class="mdi mdi-clipboard-outline link-icon"></i>
             </a>
@@ -101,7 +114,7 @@
 		<h2>favorite 웹툰</h2>
 
 		<table class="table">
-			<thead class="thead-dark">
+			<thead class="A simple light list group item">
 				<tr>
 					<th></th>
 					<th>웹툰 이름</th>
@@ -147,8 +160,7 @@
 				</c:if>
 
 				<c:forEach begin="${pager.startNum}" end="${pager.lastNum}" var="i">
-					<li class="page-item"><a class="page-link p" href="#" 
-					title="${i}">${i}</a></li>
+					<li class="page-item"><a class="page-link p" href="/mypage/favoriteToon/?username=${memberVO.username}&curPage=${i}" title="${i}">${i}</a></li>
 				</c:forEach>
 
 				<c:if test="${pager.next}">
@@ -157,23 +169,6 @@
 				</c:if>
 			</ul>
   			
-  			<div class="input-group mt-3 mb-3">
-				<form id="frm" action="./#" class="form-inline">
-					<input type="hidden" name="curPage" value="1" id="curPage">
-					<div class="input-group-prepend">
-						<select class="form-control" name="kind" id="kind">
-							<option class="sel">공지종류</option>
-							<option class="sel">제목</option>
-						</select>
-					</div>
-					&nbsp;&nbsp; <input type="text" class="form-control" name="search" id="search" value="${pager.search}" placeholder="입력하세요">
-					&nbsp;&nbsp;
-					<div class="input-group-append">
-						<button class="btn btn-secondary" type="submit">검색</button>
-					</div>
-				</form>
-			</div>
-	
 
 	</p>
         <div class="page-content-wrapper-inner">

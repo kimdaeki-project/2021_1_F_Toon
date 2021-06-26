@@ -33,6 +33,10 @@ public class MypageService {
 		
 		return mypageMapper.getList(obj);
 	}
+	
+	public int setDelete(String recNum) throws Exception {
+		return mypageMapper.setDelete(recNum);
+	}
 
 	public List<RecentVO> getList2(MemberVO memberVO, Pager pager) throws Exception {
 		HashMap<String, Object> obj = new HashMap<String, Object>();
@@ -61,5 +65,19 @@ public class MypageService {
 		return mypageMapper.getList3(obj);
 	}
 	
+	public List<RecentVO> getList4(MemberVO memberVO, Pager pager) throws Exception {
+		HashMap<String, Object> obj = new HashMap<String, Object>();
+		
+		obj.put("memberVO", memberVO);
+		obj.put("pager", pager);
+	
+		
+		pager.makeRow();
+		long totalCount = mypageMapper.getTotalCount4(obj);
+		pager.makeNum(totalCount);
+		
+		
+		return mypageMapper.getList4(obj);
+	}
 	
 }
