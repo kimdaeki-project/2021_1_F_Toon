@@ -105,7 +105,7 @@
                <input type="hidden" name="boNum" id="boNum" value="${vo.boNum}"/>
                <input type="text" class="form-control" id="commentContents" name="commentContents" placeholder="내용을 입력하세요.">
                <span class="input-group-btn">
-                    <button class="btn btn-default" type="button" name="commentInsertBtn">등록</button>
+                    <button class="btn btn-dark" type="button" name="commentInsertBtn">등록</button>
                </span>
               </div>
         </form>
