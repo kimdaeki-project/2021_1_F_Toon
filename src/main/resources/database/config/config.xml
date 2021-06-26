@@ -7,8 +7,7 @@
      <typeAliases>
 
       <typeAlias type="com.to.t1.mypage.RecentVO" alias="RecentVO"/>
-      <typeAlias type="com.to.t1.mypage.FavoritetoonVO" alias="FavoritetoonVO"/>
-
+      <typeAlias type="com.to.t1.favoriteToon.FavoritetoonVO" alias="FavoritetoonVO"/>
 
   		<typeAlias type="com.to.t1.member.MemberVO" alias="MemberVO"/>
   		<typeAlias type="com.to.t1.member.JoinFileVO" alias="JoinFileVO"/>

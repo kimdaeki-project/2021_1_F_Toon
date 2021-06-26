@@ -1,4 +1,4 @@
-package com.to.t1.mypage;
+package com.to.t1.favoriteToon;
 
 import java.sql.Timestamp;
 

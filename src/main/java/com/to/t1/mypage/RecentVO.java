@@ -2,6 +2,7 @@ package com.to.t1.mypage;
 
 import java.sql.Timestamp;
 
+import com.to.t1.favoriteToon.FavoritetoonVO;
 import com.to.t1.member.MemberVO;
 import com.to.t1.point.PointVO;
 import com.to.t1.point.UsePointVO;
