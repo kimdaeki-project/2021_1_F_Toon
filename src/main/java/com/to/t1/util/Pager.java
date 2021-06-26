@@ -1,6 +1,7 @@
 package com.to.t1.util;
 
 public class Pager {
+	
 	private Long curPage;
 	private Long perPage;
 	
@@ -53,8 +54,6 @@ public class Pager {
 		if(curBlock==1) {
 			this.pre=false;
 		}
-		
-		
 		
 	}
 	
@@ -160,6 +159,8 @@ public class Pager {
 	}
 	
 	private long toonNum;
+	private long eachEpNum;
+	private long epNum;
 
 	public long getToonNum() {
 		return toonNum;
@@ -167,6 +168,22 @@ public class Pager {
 
 	public void setToonNum(long toonNum) {
 		this.toonNum = toonNum;
+	}
+
+	public long getEpNum() {
+		return epNum;
+	}
+
+	public void setEpNum(long epNum) {
+		this.epNum = epNum;
+	}
+
+	public long getEachEpNum() {
+		return eachEpNum;
+	}
+
+	public void setEachEpNum(long eachEpNum) {
+		this.eachEpNum = eachEpNum;
 	}
 	
 }

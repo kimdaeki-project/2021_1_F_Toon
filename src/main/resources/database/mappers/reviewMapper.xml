@@ -4,24 +4,50 @@
     "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
 <mapper namespace="com.to.t1.review.ReviewMapper">
-	
-	<select id="getList" resultType="ReviewVO" parameterType="Pager">
-		SELECT review.* FROM review 
-		WHERE toonNum=#{toonNum} AND epNum=#{epNum} ORDER BY revNum DESC
+
+	<select id="getList" parameterType="Pager" resultType="ReviewVO">
+		SELECT*FROM eachep e LEFT JOIN review r
+		ON e.toonNum=r.toonNum AND e.epNum=r.epNum
+		WHERE e.eachEpNum=#{eachEpNum} ORDER BY r.revNum DESC
 		LIMIT #{startRow},#{perPage}
 	</select>
 	
-	<select id="getTotalCount" parameterType="Pager" resultType="Long">
-		SELECT COUNT(revNum) FROM review WHERE epNum=#{revNum}
+	<!-- <resultMap type="EachEpVO" id="getReviewVO">
+		<id property="toonNum" column="toonNum"/>
+		<result property="epNum" column="epNum"/>
+      	<result property="eachEpNum" column="eachEpNum"/>
+      	<result property="epSumImg" column="epSumImg"/>
+      	<result property="epTitle" column="epTitle"/>
+      	<result property="epDate" column="epDate"/>
+      	<result property="epContentImg" column="epContentImg"/>
+      	<result property="epHit" column="epHit"/>
+      	<result property="epRatingSum" column="epRatingSum"/>
+      	<result property="epRatingPerson" column="epRatingPerson"/>
+      	<collection property="ReviewVO" javaType="java.util.List" ofType="ReviewVO">
+      		<id column="revNum" property="revNum"/>
+      		<result property="username" column="username"/>
+      		<result property="rating" column="rating"/>
+      		<result property="comments" column="comments"/>
+      		<result property="rating" column="rating"/>
+      		<result property="comments" column="comments"/>
+      		<result property="commentDate" column="commentDate"/>
+      	</collection>
+	</resultMap> -->
+
+	<select id="getTotalCount" parameterType="Pager"
+		resultType="Long">
+		SELECT COUNT(revNum) FROM review WHERE epNum=#{epNum}
 	</select>
-	
+
 	<insert id="setReview" parameterType="ReviewVO">
-		INSERT INTO review(toonNum,epNum,username,rating,comments)
+		INSERT INTO
+		review(toonNum,epNum,username,rating,comments)
 		VALUES(#{toonNum},#{epNum},#{username},#{rating},#{comments})
 	</insert>
-	
+
 	<delete id="delReview" parameterType="ReviewVO">
-		DELETE FROM review WHERE revNum= #{revNum}
+		DELETE FROM review WHERE
+		revNum= #{revNum}
 	</delete>
 
 </mapper>
