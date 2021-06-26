@@ -9,7 +9,7 @@ import com.to.t1.toon.eachep.EachEpVO;
 import lombok.Data;
 
 @Data
-public class FavoritoonVO {
+public class FavoritetoonVO {
 
 	private long toonNum;
 	private String username;
