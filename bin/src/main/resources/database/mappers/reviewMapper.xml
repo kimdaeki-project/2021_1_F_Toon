@@ -1,0 +1,27 @@
+
+<!DOCTYPE mapper
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.to.t1.review.ReviewMapper">
+	
+	<select id="getList" resultType="ReviewVO" parameterType="Pager">
+		SELECT review.* FROM review 
+		WHERE toonNum=#{toonNum} AND epNum=#{epNum} ORDER BY revNum DESC
+		LIMIT #{startRow},#{perPage}
+	</select>
+	
+	<select id="getTotalCount" parameterType="Pager" resultType="Long">
+		SELECT COUNT(revNum) FROM review WHERE epNum=#{revNum}
+	</select>
+	
+	<insert id="setReview" parameterType="ReviewVO">
+		INSERT INTO review(toonNum,epNum,username,rating,comments)
+		VALUES(#{toonNum},#{epNum},#{username},#{rating},#{comments})
+	</insert>
+	
+	<delete id="delReview" parameterType="ReviewVO">
+		DELETE FROM review WHERE revNum= #{revNum}
+	</delete>
+
+</mapper>

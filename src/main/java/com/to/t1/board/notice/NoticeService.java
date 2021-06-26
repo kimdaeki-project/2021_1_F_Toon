@@ -60,8 +60,7 @@ public class NoticeService implements BoardService {
 	}
 
 	public int setInsert(BoardVO boardVO, MultipartFile [] files) throws Exception {
-
-
+		
 		int result = noticeMapper.setInsert(boardVO);
 
 		//글번호 찾기

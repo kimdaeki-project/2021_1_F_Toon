@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -20,6 +21,8 @@
 <link rel="stylesheet"
 	href="${pageContext.request.contextPath}/css/board/util.css">
 <link rel="stylesheet" href="${pageContext.request.contextPath}/css/mypage/style.css">
+<link rel="stylesheet" href="${pageContext.request.contextPath}/css/mypage/perfect-scrollbar.css">
+
 
 <style type="text/css">
 .thead {
@@ -42,6 +45,12 @@
 
 </head>
 <body>
+<c:import url="./../fragments/header.jsp"></c:import>
+
+ <div class="row">
+  	<div class="col-2">
+  		<c:import url="./adminNav.jsp"></c:import>
+  	</div>
 
 	<div class="container">
 		<br>
@@ -57,37 +66,31 @@
 				<table>
 					<thead class="thead">
 						<tr class="row100 head">
-							<th>회차번호</th>
-							<th>작품번호</th>
-							<th>회차별번호</th>
-							<th>썸네일</th>
-							<th>제목</th>
-							<th>날짜</th>
-							<th>내용이미지</th>
-							<th>조회수</th>
-							<th>평점</th>
-							<th>평점(수)</th>
+							<th class="cell100 column5">회차번호</th>
+							<th class="cell100 column5">작품번호</th>
+							<th class="cell100 column5">회차별번호</th>
+							<th class="cell100 column5">썸네일이미지</th>
+							<th class="cell100 column5">회차제목</th>
+							<th class="cell100 column5">날짜</th>
+							<th class="cell100 column5">내용이미지</th>
 						</tr>
 					</thead>
 
 				</table>
 			</div>
-			<br><br><br><br>
+			<br>
 			<div class="table100-body js-pscroll">
 				<table>
 					<tbody class="tbody">
-						<c:forEach items="${manageEachEpList}" var="vo">
+						<c:forEach items="${manageEachEpList}" var="eachEpVO">
 							<tr class="row100 body">
-								<td>${vo.epNum}</td>
-								<td>${vo.toonNum}</td>
-								<td>${vo.eachEpNum}</td>
-								<td><img width=50px height=50px src=${list.eachEpVO.epSumImg}></td>
-								<td><a href="./manageEachEpSelect?epNum=${vo.epNum}">${vo.epTitle}</a></td>
-								<td>${vo.epDate}</td>
-								<td><img width=50px height=50px src=${list.eachEpVO.epContentImg}></td>
-								<td>${vo.epHit}</td>
-								<td>${vo.epRatingSum}</td>
-								<td>${vo.epRatingPerson}</td>
+								<td class="cell100 column5">${eachEpVO.epNum}</td>
+								<td class="cell100 column5">${eachEpVO.toonNum}</td>
+								<td class="cell100 column5">${eachEpVO.eachEpNum}</td>
+								<td class="cell100 column5"><img width=50px height=50px src=${eachEpVO.epSumImg}></td>
+								<td class="cell100 column5"><a href="./manageEachEpSelect?epNum=${eachEpVO.epNum}">${eachEpVO.epTitle}</a></td>
+								<td class="cell100 column5">${eachEpVO.epDate}</td>
+								<td class="cell100 column5"><img width=50px height=50px src=${eachEpVO.epContentImg}></td>
 							</tr>
 						</c:forEach>
 					</tbody>
@@ -129,17 +132,16 @@
 						<button class="btn btn-secondary" type="submit">검색</button>
 					</div>
 				</form>
-			</div>
-			<a href="./manageEachEpInsert" class="btn btn-secondary" role="button">작성</a>
-		</div>
-
+		
 	</div>
+	
+</div>  
 
 
 	<script type="text/javascript">
-	let kind= '${pager.kind}';//Title, Writer, Contents
+	let kind= '${pager.kind}';
 	$(".sel").each(function() {
-		let t = $(this).text();//Title, Writer, Contents
+		let t = $(this).text();
 		if(t == kind){
 			$(this).prop("selected", true);
 		}
@@ -154,7 +156,7 @@
 	});
 	
 </script>
-
+<script type="text/javascript" src="../js/board/perfect-scrollbar.min.js"></script>
 	
 </body>
 </html>

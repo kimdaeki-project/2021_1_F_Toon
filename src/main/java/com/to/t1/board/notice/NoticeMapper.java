@@ -13,4 +13,5 @@ import com.to.t1.util.Pager;
 public interface NoticeMapper extends BoardMapper {
 
 	public List<BoardVO> getManageList(Pager pager) throws Exception;
+	
 }

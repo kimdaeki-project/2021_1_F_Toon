@@ -40,8 +40,8 @@
          <select id="getManageEachEpSelect" resultMap="selectResult" parameterType="EachEpVO">
          SELECT E.*, EF.* from
          eachep E left join eachepfiles EF
-         on E.eachepNum = EF.eachepNum
-         WHERE E.eachepNum=#{eachepNum}
+         on E.epNum = EF.epNum
+         WHERE E.epNum=#{epNum}
          </select>
 
          <resultMap type="EachEpVO" id="selectResult">
@@ -55,15 +55,10 @@
             <result column="epHit" property="epHit"/>
             <result column="epRatingSum" property="epRatingSum"/>
             <result column="epRatingPerson" property="epRatingPerson"/>
-            <collection property="files" javaType="java.util.List" ofType="AdminFileVO">
-               <id column="fileNum" property="fileNum"/>
-               <result column="fileName" property="fileName"/>
-               <result column="oriName" property="oriName"/>
-            </collection>
          </resultMap>
          
          <insert id="setManageEachEpInsert" parameterType="EachEpVO" useGeneratedKeys="true" keyProperty="epNum">
-            insert into eachep values(#{epNum}, #{toonNum}, #{epSumImg}, #{epTitle}, now(),#{epContentImg}, 0, #{epRatingSum}, #{epRatingPerson})
+            insert into eachep values(#{epNum}, #{toonNum}, #{eachEpNum}, #{epSumImg}, #{epTitle}, now(),#{epContentImg}, 0, #{epRatingSum}, #{epRatingPerson})
          </insert>
          
          <insert id="setFileInsert" parameterType="AdminFileVO">

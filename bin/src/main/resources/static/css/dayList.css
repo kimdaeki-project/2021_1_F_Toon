@@ -1,0 +1,69 @@
+@charset "UTF-8";
+
+.grid {
+	width: 300px;
+	margin: 0 auto;
+
+}
+
+
+.grid-item {
+	widows: 200px;
+	height: 200px;
+	display: inline-block;
+}
+
+.view_type {
+	 position: absolute;
+	  left: 1230px;
+	  
+}
+
+.grid-item.a { background-color:  white; display: inline-block;}
+
+
+
+.mon{
+	color: black; 
+}
+
+.tue{
+	color: black;
+}
+
+.wen {
+	color: black;
+}
+
+.the {
+	color: black;
+}
+
+.fri {
+	color: black;
+}
+
+.sat {
+	color: black;
+}
+
+.sun {
+	color: black;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
