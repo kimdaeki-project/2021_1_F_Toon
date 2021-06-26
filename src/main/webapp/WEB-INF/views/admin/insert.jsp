@@ -59,7 +59,7 @@
 					style="border-radius: 15px 15px 15px 15px; border: 3px solid #b4b4b4; padding: 0.5em 0.6em; color: black; background-color: #dcdcdc;">공지사항/작성</span>
 			</p>
 		</h2><br>
-		<form id="frm" action="./insert" method="post" enctype="multipart/form-data">
+		<form id="frm" action="./manageToonInsert" method="post" enctype="multipart/form-data">
 	
 			<div class="form-group">
 				<label for="noticeKinds">&nbsp;공지종류</label> <input type="text"
@@ -68,7 +68,7 @@
 
 			<div class="form-group">
 				<label for="username">&nbsp;작성자</label> <input type="text"
-					readonly="readonly" value= <sec:authentication property="principal.username"/>
+					readonly="readonly" value="principal.name"
 					class="form-control myCheck" id="username" name="username">
 			</div>
 			<div class="form-group">
@@ -107,5 +107,6 @@
 	<script type="text/javascript" src="../js/board/boardInsert.js"></script>
 	<script type="text/javascript" src="../js/board/fileAdd.js"></script>
 	<script type="text/javascript" src="../js/board/summerFile.js"></script>
+	<c:import url="../fragments/footer.jsp"></c:import>
 </body>
 </html>

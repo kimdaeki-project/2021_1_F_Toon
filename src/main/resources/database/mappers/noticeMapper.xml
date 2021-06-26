@@ -99,6 +99,5 @@
          <delete id="setDelete" parameterType="BoardVO">
             delete from notice where boNum=#{boNum}
          </delete> 
-         
    
    </mapper>

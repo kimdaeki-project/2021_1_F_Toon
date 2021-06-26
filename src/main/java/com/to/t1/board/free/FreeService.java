@@ -53,7 +53,8 @@ public class FreeService {
 	}
 
 	public int setInsert(FreeVO freeVO, MultipartFile [] files) throws Exception {
-	
+
+
 		int result = freeMapper.setInsert(freeVO);
 
 		//글번호 찾기

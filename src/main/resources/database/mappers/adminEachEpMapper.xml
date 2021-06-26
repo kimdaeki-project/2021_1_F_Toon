@@ -55,6 +55,11 @@
             <result column="epHit" property="epHit"/>
             <result column="epRatingSum" property="epRatingSum"/>
             <result column="epRatingPerson" property="epRatingPerson"/>
+            <collection property="files" javaType="java.util.List" ofType="AdminFileVO">
+               <id column="fileNum" property="fileNum"/>
+               <result column="fileName" property="fileName"/>
+               <result column="oriName" property="oriName"/>
+            </collection>
          </resultMap>
          
          <insert id="setManageEachEpInsert" parameterType="EachEpVO" useGeneratedKeys="true" keyProperty="epNum">

@@ -31,5 +31,4 @@ public interface FreeMapper {
 	public BoardFileVO getFileSelect(BoardFileVO boardFileVO)throws Exception;
 	
 	public int setFileDelete(BoardFileVO boardFileVO)throws Exception;
-	
 }

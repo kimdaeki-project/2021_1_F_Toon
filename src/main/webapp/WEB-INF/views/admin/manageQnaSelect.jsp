@@ -117,5 +117,6 @@
 		}
 	});
 </script>
+<c:import url="../fragments/footer.jsp"></c:import>
 </body>
 </html>
