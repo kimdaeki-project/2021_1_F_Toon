@@ -30,7 +30,7 @@
 			<h2>${toonVO.toonTitle}
 			<span class="wrt_nm">${toonVO.nickname}</span>
 			</h2>
-			<p><h2>${toonVO.toonSum}</h2></p>
+			<h2>${toonVO.toonSum}</h2><p></p>
 		<p class="detail_info"><span class="genre">장르 : ${toonVO.genre}</span>
 		<span class="totalRating">웹툰별점 : ${toonVO.ratingSum/toonVO.ratingPerson}</span></p>
 		
@@ -67,7 +67,7 @@
 	
 	<!-- 리스트 -->
 
-		<table cellpadding="0" cellspacing="0" class="viewList">
+		<table class="viewList">
 		<%-- <caption><span class="blind">회차별 목록</span></caption> --%>
 		<col width="99"><col width="*"><col width="141"><col width="76">
 		<thead>
@@ -79,13 +79,6 @@
 		</tr>			
 		</thead>
 		<!-- forEach : 시작 -->
-		
-		<!-- 1. epDate string -> YYYYMMDD date로 변환  -->
-		<!-- 2. utDate string-> YYYYMMDD date로 변환 -->
-		<!-- 3. 소장권이 있으면  바로 오픈 -->
-		<!-- 4. 소장권이 없으면 바로 클로즈 소장권이 없는 경우 3. java.util.Date -> before Method 사용하기 -->
-		
-		
 		<!-- -------------------------유료-------------------------------------- -->
 	
 		<tbody>

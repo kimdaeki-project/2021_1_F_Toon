@@ -91,15 +91,20 @@ public class PointService {
 		ticketBoxVO = pointMapper.checkTicketStock(ticketBoxVO);
 		return ticketBoxVO;
 	}
+	//포인트 충전내역 조회
+	public List<PointVO> getMyChargePointList(MemberVO memberVO)throws Exception {
+		return pointMapper.getMyChargePointList(memberVO);
+	}
 	//포인트 사용내역 조회
-	public List<PointVO> getPointList(MemberVO memberVO)throws Exception {
-		return pointMapper.getMyPointList(memberVO);
+	public List<PointVO> getMyUsePointList(MemberVO memberVO)throws Exception {
+		return pointMapper.getMyUsePointList(memberVO);
 	}
 	
 	//소장권 사용내역 조회 : toon 상관 없이 조회(리스트)
 	public List<UseTicketVO> getUseTicketList(MemberVO memberVO)throws Exception {
 		return pointMapper.getUseTicktList(memberVO);
 	}
+	
 	//UseTicket을 위한 조회 : toonNum과 username으로 조회
 	public List<UseTicketVO> getToonTicktList(UseTicketVO useTicketVO, Pager pager)throws Exception{
 		
