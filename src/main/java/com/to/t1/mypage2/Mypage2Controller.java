@@ -15,6 +15,7 @@ import com.to.t1.member.MemberService;
 import com.to.t1.member.MemberVO;
 import com.to.t1.mypage.RecentVO;
 import com.to.t1.point.PointService;
+import com.to.t1.point.PointVO;
 import com.to.t1.util.Pager;
 
 @Controller
@@ -29,16 +30,18 @@ public class Mypage2Controller {
 	
 
 	@GetMapping("pointCharge") 
-	public String getList(MemberVO memberVO, Model model, Pager pager)throws Exception{
+	public String getList(MemberVO memberVO, Authentication auth2, Model model, Pager pager)throws Exception{
 		
-//		List<PointVO> ar = pointService.ge
-		
-		memberVO = memberService.myPage(memberVO);
+		List<PointVO> ar = pointService.getMyChargePointList(memberVO);
+		memberVO = memberService.myPage((MemberVO) auth2.getPrincipal());
+	
 		
 		model.addAttribute("memberVO", memberVO);
+		model.addAttribute("list", ar);
 		
 		System.out.println("포인트 충전 내역 조회");
-
+		System.out.println("멤버브이오 :"+memberVO);
+		System.out.println("에이알 :"+ar);
 		return  "mypage2/pointCharge";
 	}
 	

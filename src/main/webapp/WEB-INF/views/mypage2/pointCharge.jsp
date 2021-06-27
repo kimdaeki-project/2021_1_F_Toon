@@ -121,9 +121,9 @@
 			<tbody>
 			<c:forEach items="${list}" var="list" >
 				<tr>
-					<td class="text_ct">${list.toonVO.toonTitle}</td>
-					<td class="text_ct">${list.eachEpVO.epTitle}</td>
-					<td class="text_ct">${list.memberVO.nickname}</td>
+					<td class="text_ct">${list.point}</td>
+					<td class="text_ct">${list.cDate}</td>
+					<td class="text_ct">${list.contents}</td>
 	
 					
 				</tr>
