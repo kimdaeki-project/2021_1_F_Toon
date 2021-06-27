@@ -51,6 +51,10 @@
 	 <delete id="setDelete" >
             delete from recenttoon where recNum=#{recNum} 
      </delete> 
+     
+      <delete id="setDelete2" parameterType="FavoritetoonVO">
+            delete from favoritetoon where toonNum=#{toonNum} 
+     </delete> 
 	
 	<select id="getList2" parameterType="java.util.Map" resultMap="recentResult">
 
@@ -126,7 +130,7 @@
 			<result property="utDate" column="utDate"/>
 	</resultMap>
 	
-	<resultMap type="favoritetoonVO" id="favoritoonResult">
+	<resultMap type="FavoritetoonVO" id="favoritoonResult">
 			<id property="toonNum" column="toonNum"/>
 			<result property="username" column="username"/>
 			<result property="likeClick" column="likeClick"/>

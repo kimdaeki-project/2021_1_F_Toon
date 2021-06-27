@@ -11,13 +11,9 @@ let etcResult=true		   // name, email, phone 결과
 
 function inputPhoneNumber(obj) {
 	
-	$( 'input' ).on("blur keyup", function() {
-		$(this).val( $(this).val().replace( /[ㄱ-ㅎ|ㅏ-ㅣ|가-힣]/g, '' ) );
-	});
-	
     var number = obj.value.replace(/[^0-9]/g, "");
     var phone = "";
-
+    
     if(number.length < 4) {
         return number;
     } else if(number.length < 7) {
@@ -36,13 +32,22 @@ function inputPhoneNumber(obj) {
         phone += number.substr(3, 4);
         phone += "-";
         phone += number.substr(7);
+        
     }
+
     obj.value = phone;
 }
 
-//function inputPhoneNumber(){
-//	alert("zz")
-//}
+function  handlerNum(){
+	 $( 'input' ).on("blur keyup", function() {
+		$(phone).val( $(this).val().replace( /[ㄱ-ㅎ|ㅏ-ㅣ|가-힣]/g, '' ) );
+	});
+	
+}
+//	 $( 'input' ).on("blur keyup", function() {
+//		$(phone).val( $(this).val().replace( /[ㄱ-ㅎ|ㅏ-ㅣ|가-힣]/g, '' ) );
+//	});
+
 
 function  handlerNum(){
  E = window.event;
@@ -56,6 +61,28 @@ function  handlerNum(){
  }
 }
 
+
+
+
+//id.addEventListener("blur", function(){
+//	
+//	let id = $("#id").val();
+//	let idTrim = $.trim(id);
+//	let message = "6글자 미만입니다";
+//	let c = "r1"
+//	if(idTrim.length>5){
+//		message = "6글자 이상 입니다";
+//		c = "r2";
+//		idCheckResult=true;
+//	} else {
+//		idCheckResult = false;
+//	}
+//	
+//	let idResult = document.getElementById("idResult");
+//	idResult.innerHTML=message;
+//	idResult.setAttribute("class", c);
+//	
+//});
 
 // PW EQUAL CHECK **********************************
 pw2.addEventListener("blur", function(){
