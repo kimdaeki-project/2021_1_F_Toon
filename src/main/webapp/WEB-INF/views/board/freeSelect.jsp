@@ -36,10 +36,10 @@
      	background-color : #3c3c3c;
      }
      #file1 {
-      	background-color: #6C7AE0;
+      	
      	border-style: solid;
      	border-color: #6C7AE0;
-     	border-radius: 15px 15px 15px 15px;
+
      }
      
     </style>
@@ -82,9 +82,10 @@
 	
 	<div id="file1">
 	<c:forEach items="${vo.freefiles}" var="file">
-		<a href="../upload/${board}/${file.fileName}">${file.oriName}</a>
+		<a href="../upload/${board}/${file.fileName}">&nbsp;${file.oriName}</a>
 	</c:forEach>
 	</div>
+	<br>
 	
 	<a href="./freeUpdate?boNum=${vo.boNum}" class="btn btn-primary">수정</a>
 	<a href="#" id="del" class="btn btn-primary">삭제</a>

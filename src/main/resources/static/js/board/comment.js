@@ -39,9 +39,12 @@ function commentInsert(insertData){
         data : insertData,
         success : function(data){
             if(data == 1) {
+           		alert("댓글 등록 성공했습니다");
                 commentList(); //댓글 작성 후 댓글 목록 reload
                 $('[name=commentContents]').val('');
-            }
+            }else{
+				alert("댓글 등록 실패하셨습니다");
+			}
         }
     });
 }
@@ -69,7 +72,12 @@ function commentUpdateP(coNum){
         type : 'post',
         data : {'commentContents' : updateContent, 'coNum' : coNum},
         success : function(data){
-            if(data == 1) commentList(boNum); //댓글 수정후 목록 출력 
+            if(data == 1) {
+            alert("댓글 수정 성공했습니다");
+            commentList(boNum); //댓글 수정후 목록 출력 
+            }else {
+            alert("댓글 수정 실패했습니다");
+            }
         }
     });
 }
@@ -80,7 +88,12 @@ function commentDelete(coNum){
         url : '/comment/delete/'+coNum,
         type : 'post',
         success : function(data){
-            if(data == 1) commentList(boNum); //댓글 삭제후 목록 출력 
+            if(data == 1) {
+            alert("댓글 삭제 성공했습니다");
+            commentList(boNum); //댓글 삭제후 목록 출력 
+        	}else {
+        	alert("댓글 삭제 실패했습니다");
+        	}
         }
     });
 }

@@ -96,7 +96,7 @@
 		
 			frm.setAttribute("method", "post");
 			frm.submit();
-	
+	    
 		}
 	});
 </script>
