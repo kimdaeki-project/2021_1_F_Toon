@@ -110,46 +110,41 @@
       <!-- partial -->
       <div class="page-content-wrapper">
            <div class="container">	
-
-		<h2>favorite 웹툰</h2>
+		<BR>
+		<center><h2>관심 웹툰</h2></center><br>
 
 		<table class="table">
 			<thead class="A simple light list group item">
 				<tr>
-					<th></th>
-					<th>웹툰 이름</th>
-					<th>웹툰 장르</th>
-					<th>웹툰 요일</th>
-					<th>작가 이름</th>
-					<th>좋아요 한 날짜</th>
+					<th scope="col"></th>
+					<th scope="col">웹툰 이름</th>
+					<th scope="col">웹툰 장르</th>
+					<th scope="col">웹툰 요일</th>
+					<th scope="col">작가 이름</th>
+					<th scope="col">좋아요 한 날짜</th>
+					
+					<th scope="col"><input id="allCheck" type="checkbox" name="allCheck"></th>
 				</tr>
 			</thead>
 			
 			<tbody>
 			<c:forEach items="${list}" var="list" >
 				<tr>
-					<td><img width=50px height=50px src= ${list.toonVO.titleImg}></td>
-					<td>${list.toonVO.toonTitle}</td>
-					<td>${list.toonVO.genre}</td>
-					<td>${list.toonVO.toonDay}</td>
-					<td>${list.memberVO.nickname}</td>
-					<td>${list.favoritetoonVO.likeDate}</td>
-<%-- 					<td><a href="./${board}Select?num=${dto.num}"> --%>
-					
-<%-- 					<c:catch> --%>
-<%-- 					<c:forEach begin="1" end="${dto.dept}">--</c:forEach> --%>
-<%-- 					</c:catch> --%>
-<%-- 					${dto.title} --%>
-<!-- 					</a></td> -->
-<%-- 					<td>${dto.writer}</td> --%>
-<%-- 					<td>${dto.regDate}</td> --%>
-<%-- 					<td>${dto.hit}</td> --%>
+					<td class="text_ct"><img width=50px height=50px src= ${list.toonVO.titleImg}></td>
+					<td class="text_ct">${list.toonVO.toonTitle}</td>
+					<td class="text_ct">${list.toonVO.genre}</td>
+					<td class="text_ct">${list.toonVO.toonDay}</td>
+					<td class="text_ct">${list.memberVO.nickname}</td>
+					<td class="text_ct">${list.favoritetoonVO.likeDate}</td>
+
+					<td class="text_ct"><input name="RowCheck" type="checkbox" value="${list.favoritetoonVO.toonNum}">${list.favoritetoonVO.toonNum}</td>
 				</tr>
 			</c:forEach>
-			
+		
 			</tbody>
 
 		</table>
+		<input type="button" value="선택 삭제" class="btn btn-danger" onclick="deleteValue();">
 	</div>
            
   	<ul class="pagination">
@@ -190,6 +185,69 @@
     <script src="../assets/js/dashboard.js"></script>
     <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
     <script type="text/javascript" src="../js/mypage.js"></script>
+    
+     <script type="text/javascript">
+    
+    $(function(){
+		var chkObj = document.getElementsByName("RowCheck");
+		var rowCnt = chkObj.length;
+		
+		$("input[name='allCheck']").click(function(){
+			var chk_listArr = $("input[name='RowCheck']");
+			for (var i=0; i<chk_listArr.length; i++){
+				chk_listArr[i].checked = this.checked;
+			}
+		});
+		$("input[name='RowCheck']").click(function(){
+			if($("input[name='RowCheck']:checked").length == rowCnt){
+				$("input[name='allCheck']")[0].checked = true;
+			}
+			else{
+				$("input[name='allCheck']")[0].checked = false;
+			}
+		});
+	});
+	function deleteValue(){
+		var url = "delete2";    // Controller로 보내고자 하는 URL (.dh부분은 자신이 설정한 값으로 변경해야됨)
+		var valueArr = new Array();
+	    var list = $("input[name='RowCheck']");
+	    for(var i = 0; i < list.length; i++){
+	        if(list[i].checked){ //선택되어 있으면 배열에 값을 저장함
+	            valueArr.push(list[i].value);
+	        }
+	    }
+	   if (confirm("정말 삭제하시겠습니까?")==true){
+		   
+	   }else{
+		   return;
+	   }
+	   
+	    if (valueArr.length == 0){
+	    	alert("선택된 글이 없습니다.");
+	    }
+	    else{
+		 
+			$.ajax({
+			    url : url,                    // 전송 URL
+			    type : 'POST',                // GET or POST 방식
+			    traditional : true,
+			    data : {
+			    	valueArr : valueArr        // 보내고자 하는 data 변수 설정
+			    },
+                success: function(jdata){
+                    if(jdata = 1) {
+                        alert("삭제 성공");
+                        location.href="/mypage/favoriteToon/?username=${memberVO.username}&curPage=${i}"
+                    }
+                    else{
+                        alert("삭제 실패");
+                    }
+                }
+			});
+		}
+	}
+    
+    </script>
 	
 	
 </body>

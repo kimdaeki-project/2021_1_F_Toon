@@ -14,10 +14,6 @@ function inputPhoneNumber(obj) {
     var number = obj.value.replace(/[^0-9]/g, "");
     var phone = "";
     
-    $( 'inputPhoneNumber' ).on("blur keyup", function() {
-		$(this).val( $(this).val().replace( /[ㄱ-ㅎ|ㅏ-ㅣ|가-힣]/g, '' ) );
-	});
-
     if(number.length < 4) {
         return number;
     } else if(number.length < 7) {
@@ -38,10 +34,20 @@ function inputPhoneNumber(obj) {
         phone += number.substr(7);
         
     }
-    
 
     obj.value = phone;
 }
+
+function  handlerNum(){
+	 $( 'input' ).on("blur keyup", function() {
+		$(phone).val( $(this).val().replace( /[ㄱ-ㅎ|ㅏ-ㅣ|가-힣]/g, '' ) );
+	});
+	
+}
+//	 $( 'input' ).on("blur keyup", function() {
+//		$(phone).val( $(this).val().replace( /[ㄱ-ㅎ|ㅏ-ㅣ|가-힣]/g, '' ) );
+//	});
+
 
 function  handlerNum(){
  E = window.event;
@@ -56,9 +62,7 @@ function  handlerNum(){
 }
 
 
-function phone(){
-	alert("zz")
-}
+
 
 //id.addEventListener("blur", function(){
 //	
