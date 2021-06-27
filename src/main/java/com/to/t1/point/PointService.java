@@ -1,5 +1,6 @@
 package com.to.t1.point;
 
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.lang.Long;
@@ -92,9 +93,20 @@ public class PointService {
 		return ticketBoxVO;
 	}
 	//포인트 충전내역 조회
-	public List<PointVO> getMyChargePointList(MemberVO memberVO)throws Exception {
-		return pointMapper.getMyChargePointList(memberVO);
+	public List<PointVO> getMyChargePointList(MemberVO memberVO, Pager pager)throws Exception {
+		HashMap<String, Object> obj = new HashMap<String, Object>();
+		
+		obj.put("memberVO", memberVO);
+		obj.put("pager", pager);
+		
+		pager.makeRow(); 
+		Long totalCount = pointMapper.getTotalCount1(obj);
+		System.out.println("totalcount : "+totalCount);
+		pager.makeNum(totalCount); 
+		
+		return pointMapper.getMyChargePointList(obj);
 	}
+	
 	//포인트 사용내역 조회
 	public List<PointVO> getMyUsePointList(MemberVO memberVO)throws Exception {
 		return pointMapper.getMyUsePointList(memberVO);

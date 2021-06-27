@@ -30,18 +30,19 @@ public class Mypage2Controller {
 	
 
 	@GetMapping("pointCharge") 
-	public String getList(MemberVO memberVO, Authentication auth2, Model model, Pager pager)throws Exception{
+	public String getList(Model model, MemberVO memberVO, Pager pager)throws Exception{
 		
-		List<PointVO> ar = pointService.getMyChargePointList(memberVO);
-		memberVO = memberService.myPage((MemberVO) auth2.getPrincipal());
+		List<PointVO> ar = pointService.getMyChargePointList(memberVO, pager);
+		
+		memberVO = memberService.myPage(memberVO);
 	
-		
-		model.addAttribute("memberVO", memberVO);
 		model.addAttribute("list", ar);
+		model.addAttribute("pager", pager);
+		model.addAttribute("memberVO", memberVO);
 		
 		System.out.println("포인트 충전 내역 조회");
-		System.out.println("멤버브이오 :"+memberVO);
-		System.out.println("에이알 :"+ar);
+		System.out.println(ar);
+		
 		return  "mypage2/pointCharge";
 	}
 	
@@ -56,6 +57,34 @@ public class Mypage2Controller {
 		System.out.println("포인트 사용 내역 조회");
 
 		return  "mypage2/pointUse";
+	}
+	
+	@GetMapping("ticketCharge") 
+	public String ticketCharge(MemberVO memberVO, Authentication auth2, Model model)throws Exception{
+//		List<PointVO> ar = pointService.getToonTicktList(null, null);
+				
+				
+//		memberVO = memberService.myPage((MemberVO) auth2.getPrincipal());
+//		
+//		model.addAttribute("memberVO", memberVO);
+//		model.addAttribute("list", ar);
+//		
+		System.out.println("소장권 구매 내역 조회");
+//
+		return  "mypage2/ticketCharge";
+	}
+	
+	@GetMapping("ticketUse") 
+	public String ticketUse(MemberVO memberVO, Authentication auth2, Model model)throws Exception{
+//		List<PointVO> ar = pointService.getUseTicketList(memberVO);
+//		memberVO = memberService.myPage((MemberVO) auth2.getPrincipal());
+//		
+//		model.addAttribute("memberVO", memberVO);
+//		model.addAttribute("list", ar);
+//		
+		System.out.println("소장권 사용 내역 조회");
+//
+		return  "mypage2/ticketUse";
 	}
 	
 }

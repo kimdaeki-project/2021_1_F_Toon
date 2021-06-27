@@ -17,12 +17,43 @@
 		INSERT INTO user03.point(username, point, cDate, contents) 
 		VALUES (#{username}, #{point}, NOW(),#{contents})
 	</insert>
-	<!-- 포인트 충전 내역 조회 -->
-	<select id="getMyChargePointList" parameterType="MemberVO" resultType="PointVO">
+	
+	<!-- 성현 수정 포인트 충전 내역 조회 -->
+	<select id="getMyChargePointList" parameterType="java.util.Map" resultMap="pointResult">
 		SELECT * FROM user03.point 
-		WHERE point.username = #{username} 
-		AND point.point <![CDATA[<]]> 0
+		WHERE point.username = #{memberVO.username} 
+		AND point.point <![CDATA[>]]> 0
+		limit #{pager.startRow}, #{pager.perPage}
 	</select>
+	
+	<select id="getTotalCount1" parameterType="java.util.Map" resultType="java.lang.Long">
+		SELECT count(*)
+		FROM user03.point 
+		WHERE point.username = #{memberVO.username} 
+		AND point.point <![CDATA[>]]> 0 
+
+	</select>
+	
+	<resultMap type="PointVO" id="pointResult">
+		
+		<result property="username" column="username" />
+		<result property="point" column="point"/>
+		<result property="cDate" column="cDate"/>
+		<result property="contents" column="contents"/>
+		
+		
+		<association property="memberVO" javaType="MemberVO" resultMap="memberResult"></association> 
+	</resultMap>
+	
+		<resultMap type="MemberVO" id="memberResult">
+			<id property="username" column="username" />
+			<result property="nickname" column="nickname"/>
+			<result property="password" column="password"/>
+			<result property="name" column="name"/>
+			<result property="phone" column="phone"/>
+			<result property="email" column="email"/>
+			<result property="point" column="point"/>
+		</resultMap>
 	
 <!-- 포인트로 소장권  구매 (member02의 경우) -->
 	<!--  1 .이미 구매한 항목인지 확인: 알아서 걸러 -->	
@@ -49,6 +80,8 @@
 		WHERE username = 'member02' 
 		AND point <![CDATA[<]]>  0 ORDER BY cDate DESC 
 	</select>
+
+	
 <!-- 소장권 사용하기 -->
 	<!-- 1. 소장권 INSERT 하기  -->	
 	<insert id="setTicketUselist" parameterType="UseTicketVO">

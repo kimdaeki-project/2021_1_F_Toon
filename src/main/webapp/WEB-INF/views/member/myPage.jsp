@@ -99,7 +99,8 @@
             </a>
              <ul class="collapse navigation-submenu" id="sales_inquiry">
               <li>
-                <a href="/mypage2/pointCharge">포인트 충전 내역 조회</a>
+                <a href=" ${pageContext.request.contextPath}../mypage2/pointCharge/?username=${memberVO.username}">포인트 충전 내역 조회</a>
+           
               </li>
               <li>
                 <a href="/mypage2/pointUse">포인트 사용 내역 조회</a>
@@ -114,10 +115,10 @@
             </a>
              <ul class="collapse navigation-submenu" id="payment_manage">
               <li>
-                <a href="pages/sample-pages/login_1.html">소장권 구매 내역 조회</a>
+                <a href="/mypage2/ticketCharge">소장권 구매 내역 조회</a>
               </li>
               <li>
-                <a href="pages/sample-pages/error_2.html">소장권 사용 내역 조회</a>
+                <a href="/mypage2/ticketUse">소장권 사용 내역 조회</a>
               </li>
             </ul>
           </li>

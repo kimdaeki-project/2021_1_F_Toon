@@ -9,11 +9,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
   
     <c:import url="../fragments/bootstrap.jsp"></c:import>
-    <title>Favorite Toon</title>
+    <title>Recent Toon</title>
    
      <link rel="stylesheet" href="/css/header.css">
      <!-- plugins:css -->
-    <link rel="stylesheet" href="../assets/vendors/iconfonts/mdi/css/materialdesignicons.css">
     <!-- endinject -->
     <!-- vendor css for this page -->
     <!-- End vendor css for this page -->
@@ -24,8 +23,8 @@
 </head>
 <body>
 	<c:import url="../fragments/header.jsp"></c:import>	
-	
-      <!-- partial -->
+
+   <!-- partial -->
     <div class="page-body">
       <!-- partial:partials/_sidebar.html -->
       <div class="sidebar">
@@ -49,7 +48,7 @@
             </a>
             <ul class="collapse navigation-submenu" id="sample-pages">
               <li>
-                <a href="/member/myPage">내 정보 조회</a>
+                <a href="/member/myPage" >내 정보 조회</a>
               </li>
               
                <li>
@@ -66,7 +65,7 @@
             </a>
             <ul class="collapse navigation-submenu" id="ui-elements">
                 <li>
-         
+           
             <ul class="collapse navigation-submenu" id="ui-elements">
               <li>
                 <a href="/mypage/recentToon/?username=${memberVO.username}">최근 본 웹툰</a>
@@ -97,12 +96,7 @@
               <i class="mdi mdi-clipboard-outline link-icon"></i>
             </a>
           </li>
-          <li>
-            <a href="pages/charts/chartjs.html">
-              <h4><span class="link-title">작가등록</span></h4>
-              <i class="mdi mdi-chart-donut link-icon"></i>
-            </a>
-          </li>
+        
  
         </ul>
         
@@ -110,55 +104,53 @@
       <!-- partial -->
       <div class="page-content-wrapper">
            <div class="container">	
+		<br>
+		<center><h2>소장권 사용 내역</h2></center>
+		<br>
 
-		<h2>favorite 웹툰</h2>
-
-		<table class="table">
+			<table class="table">
 			<thead class="A simple light list group item">
 				<tr>
-					<th></th>
-					<th>웹툰 이름</th>
-					<th>웹툰 장르</th>
-					<th>웹툰 요일</th>
-					<th>작가 이름</th>
-					<th>좋아요 한 날짜</th>
+					<th scope="col">금액</th>
+					<th scope="col">충전 내역</th>					
+					<th scope="col">구매 날짜</th>
+				
 				</tr>
 			</thead>
 			
 			<tbody>
 			<c:forEach items="${list}" var="list" >
 				<tr>
-					<td><img width=50px height=50px src= ${list.toonVO.titleImg}></td>
-					<td>${list.toonVO.toonTitle}</td>
-					<td>${list.toonVO.genre}</td>
-					<td>${list.toonVO.toonDay}</td>
-					<td>${list.memberVO.nickname}</td>
-					<td>${list.favorietoonVO.likeDate}</td>
+					<td class="text_ct">${list.point}</td>
+					<td class="text_ct">${list.cDate}</td>
+					<td class="text_ct">${list.contents}</td>
+					
 				</tr>
 			</c:forEach>
 			
 			</tbody>
 
 		</table>
+		<input type="button" value="선택 삭제" class="btn btn-danger" onclick="deleteValue();">
 	</div>
+<%-- 			<a href="./recentToon?epNum=${list.eachEpVO.epNum}" id="delete" class="btn btn-danger">삭제</a> --%>
+<%-- 			<input type="hidden" name="epNum" value="${list.eachEpVO.epNum}"> --%>
            
-  	<ul class="pagination">
+			<ul class="pagination">
 
 				<c:if test="${pager.pre}">
-					<li class="page-item"><a class="page-link p" href="#"
-						title="${pager.startNum-1}">이전</a></li>
+					<li class="page-item"><a class="page-link p" href="#" title="${pager.startNum-1}">이전</a></li>
 				</c:if>
 
 				<c:forEach begin="${pager.startNum}" end="${pager.lastNum}" var="i">
-					<li class="page-item"><a class="page-link p" href="/mypage/favoriteToon/?username=${memberVO.username}&curPage=${i}" title="${i}">${i}</a></li>
+					<li class="page-item"><a class="page-link p" href="/mypage/recentToon/?username=${memberVO.username}&curPage=${i}" title="${i}">${i}</a></li>
 				</c:forEach>
 
 				<c:if test="${pager.next}">
-					<li class="page-item"><a class="page-link p" href="#"
-					 title="${pager.lastNum+1}">다음</a></li>
+					<li class="page-item"><a class="page-link p" href="#" title="${pager.lastNum+1}">다음</a></li>
 				</c:if>
 			</ul>
-  			
+			
 
 	</p>
         <div class="page-content-wrapper-inner">
@@ -180,7 +172,7 @@
     <script src="../assets/js/dashboard.js"></script>
     <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
     <script type="text/javascript" src="../js/mypage.js"></script>
-	
+   
 	
 </body>
 </html>

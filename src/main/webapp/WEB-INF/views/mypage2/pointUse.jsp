@@ -96,12 +96,7 @@
               <i class="mdi mdi-clipboard-outline link-icon"></i>
             </a>
           </li>
-          <li>
-            <a href="pages/charts/chartjs.html">
-              <h4><span class="link-title">작가등록</span></h4>
-              <i class="mdi mdi-chart-donut link-icon"></i>
-            </a>
-          </li>
+       
  
         </ul>
         
@@ -110,7 +105,7 @@
       <div class="page-content-wrapper">
            <div class="container">	
 		<br>
-		<center><h2>최근 본 웹툰</h2></center>
+		<center><h2>포인트 사용 내역</h2></center>
 		<br>
 
 			<table class="table">
@@ -177,68 +172,7 @@
     <script src="../assets/js/dashboard.js"></script>
     <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
     <script type="text/javascript" src="../js/mypage.js"></script>
-    <script type="text/javascript">
-    
-    $(function(){
-		var chkObj = document.getElementsByName("RowCheck");
-		var rowCnt = chkObj.length;
-		
-		$("input[name='allCheck']").click(function(){
-			var chk_listArr = $("input[name='RowCheck']");
-			for (var i=0; i<chk_listArr.length; i++){
-				chk_listArr[i].checked = this.checked;
-			}
-		});
-		$("input[name='RowCheck']").click(function(){
-			if($("input[name='RowCheck']:checked").length == rowCnt){
-				$("input[name='allCheck']")[0].checked = true;
-			}
-			else{
-				$("input[name='allCheck']")[0].checked = false;
-			}
-		});
-	});
-	function deleteValue(){
-		var url = "delete";    // Controller로 보내고자 하는 URL (.dh부분은 자신이 설정한 값으로 변경해야됨)
-		var valueArr = new Array();
-	    var list = $("input[name='RowCheck']");
-	    for(var i = 0; i < list.length; i++){
-	        if(list[i].checked){ //선택되어 있으면 배열에 값을 저장함
-	            valueArr.push(list[i].value);
-	        }
-	    }
-	   if (confirm("정말 삭제하시겠습니까?")==true){
-		   
-	   }else{
-		   return;
-	   }
-	   
-	    if (valueArr.length == 0){
-	    	alert("선택된 글이 없습니다.");
-	    }
-	    else{
-// 			var chk = confirm("정말 삭제하시겠습니까?");				 
-			$.ajax({
-			    url : url,                    // 전송 URL
-			    type : 'GET',                // GET or POST 방식
-			    traditional : true,
-			    data : {
-			    	valueArr : valueArr        // 보내고자 하는 data 변수 설정
-			    },
-                success: function(jdata){
-                    if(jdata = 1) {
-                        alert("삭제 성공");
-                        location.href="/mypage/recentToon/?username=${memberVO.username}&curPage=${i}"
-                    }
-                    else{
-                        alert("삭제 실패");
-                    }
-                }
-			});
-		}
-	}
-    
-    </script>
+  
 	
 </body>
 </html>

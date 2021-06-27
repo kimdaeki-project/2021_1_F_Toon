@@ -16,5 +16,5 @@ public class PointVO {
 	private Timestamp cDate; 
 	private String contents;
 	
-	
+	private MemberVO memberVO;
 }
