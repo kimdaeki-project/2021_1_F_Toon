@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>    
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags" %> 
 <!DOCTYPE html>
 <html>
 <head>
@@ -38,6 +39,11 @@
 <body>
 <c:import url="../fragments/header.jsp"></c:import>
 
+<div class="row">
+  	<div class="col-2">
+  		<c:import url="./adminNav.jsp"></c:import>
+  	</div>
+
 	<div class="container"><br>
 		<h2>
 			<p>
@@ -52,7 +58,7 @@
 				
 			<div class="form-group">
 				<label for="username">&nbsp;작성자</label> <input type="text"
-					readonly="readonly" value="principal.name"
+					readonly="readonly" value= <sec:authentication property="principal.username"/>
 					class="form-control myCheck" id="username" name="username">
 			</div>
 			<div class="form-group">
@@ -69,10 +75,10 @@
 			&nbsp;&nbsp;<input type="button" id="btn" value="등록" class="btn btn-secondary">
 		</form>
 	</div>
-	
+	</div>
 
 	<script type="text/javascript" src="../js/board/boardInsert.js"></script>
 	<script type="text/javascript" src="../js/board/qnaSummerFile.js"></script>
-	<c:import url="../fragments/footer.jsp"></c:import>
+
 </body>
 </html>
