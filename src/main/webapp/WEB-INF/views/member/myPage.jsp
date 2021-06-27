@@ -92,6 +92,36 @@
             </ul>
           </li>
           
+      	 <li>
+            <a href="#sales_inquiry" data-toggle="collapse" aria-expanded="false">
+             <h4> <span class="link-title">포인트 관리</span></h4> 
+              <i class="mdi mdi-clipboard-outline link-icon"></i>
+            </a>
+             <ul class="collapse navigation-submenu" id="sales_inquiry">
+              <li>
+                <a href="/mypage2/pointCharge">포인트 충전 내역 조회</a>
+              </li>
+              <li>
+                <a href="mypage2/pointUse">포인트 사용 내역 조회</a>
+              </li>
+            </ul>
+          </li>
+          
+          <li>
+            <a href="#payment_manage" data-toggle="collapse" aria-expanded="false">
+             <h4>  <span class="link-title">소장권 관리</span></h4>
+              <i class="mdi mdi-clipboard-outline link-icon"></i>
+            </a>
+             <ul class="collapse navigation-submenu" id="payment_manage">
+              <li>
+                <a href="pages/sample-pages/login_1.html">소장권 구매 내역 조회</a>
+              </li>
+              <li>
+                <a href="pages/sample-pages/error_2.html">소장권 사용 내역 조회</a>
+              </li>
+            </ul>
+          </li>
+          
             <li>
             	<a href="${pageContext.request.contextPath}../mypage/review/?username=${memberVO.username}">
              	<h4> <span class="link-title">내 댓글</span></h4>
@@ -106,12 +136,7 @@
               <i class="mdi mdi-clipboard-outline link-icon"></i>
             </a>
           </li>
-          <li>
-            <a href="pages/charts/chartjs.html">
-              <h4><span class="link-title">작가등록</span></h4>
-              <i class="mdi mdi-chart-donut link-icon"></i>
-            </a>
-          </li>
+          
  
         </ul>
         
@@ -160,7 +185,6 @@
 	</sec:authorize>
 	
 
-	
 	<sec:authorize access="isAuthenticated()">
 		<center><a href="./memberUpdate" class="btn btn-info" 
 		role="button" onclick="if(!confirm('내 정보를 수정 하시겠습니까?')){return false;}">내 정보 수정</a></center>
