@@ -22,7 +22,6 @@
     
     <style type="text/css">
      .back {
-
     	border-style: solid;
     	border-color: #98DFFF;
      }

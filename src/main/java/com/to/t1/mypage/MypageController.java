@@ -9,7 +9,9 @@ import org.springframework.security.core.Authentication;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.to.t1.member.MemberService;
@@ -53,13 +55,25 @@ public class MypageController {
 		int size = ajaxMsg.length;
 		for(int i =0; i<size; i++) {
 			mypageService.setDelete(ajaxMsg[i]);
-		}
-		
-//		int result = mypageService.setDelete(recentVO);
+		}	
 		
 		return "mypage/recentToon";
 	}
 	
+	@PostMapping("delete2")
+	public String setDelete2(HttpServletRequest request)throws Exception{
+		System.out.println("지워지나");
+		
+		String[] ajaxMsg = request.getParameterValues("valueArr");
+		int size = ajaxMsg.length;
+		for(int i =0; i<size; i++) {
+			mypageService.setDelete2(ajaxMsg[i]);
+		}	
+	
+		System.out.println("안지워지나?");
+		return "mypage/favoriteToon";
+	}
+
 
 	@GetMapping("favoriteToon") 
 	public String getList2(Model model, MemberVO memberVO, Pager pager)throws Exception{

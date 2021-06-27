@@ -93,6 +93,8 @@
                         <form:input placeholder="Phone" id="phone" path="phone" type="tell" onKeyup="inputPhoneNumber(this);" onkeypress='handlerNum();' maxlength="13" />
                         <br>
                         <form:errors path="phone" class="c1"></form:errors>
+                        <div class="form-group" id= phoneResult></div>
+                        
                     </div>
                         
                     <div class="login-input-wrap input-password">

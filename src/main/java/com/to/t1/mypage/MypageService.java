@@ -38,6 +38,12 @@ public class MypageService {
 		return mypageMapper.setDelete(recNum);
 	}
 
+	public int setDelete2(String toonNum) throws Exception {
+		System.out.println("서비스 툰넘 : "+toonNum);
+		return mypageMapper.setDelete(toonNum);
+		
+	}
+	
 	public List<RecentVO> getList2(MemberVO memberVO, Pager pager) throws Exception {
 		HashMap<String, Object> obj = new HashMap<String, Object>();
 		obj.put("memberVO", memberVO);

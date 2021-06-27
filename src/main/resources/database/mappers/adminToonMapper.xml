@@ -9,7 +9,7 @@
          <!-- 공통으로 사용하는 sql문 -->
          <where>
             <choose>
-               <when test="kind=='writerId'">
+               <when test="kind=='writerID'">
                   writerId like concat('%', #{search}, '%')
                </when>
                
@@ -56,7 +56,7 @@
             <id column="toonNum" property="toonNum"/>
             <result column="toonTitle" property="toonTitle"/>
             <result column="genre" property="genre"/>
-            <result column="writerId" property="writerId"/>
+            <result column="writerId" property="writerID"/>
             <result column="toonSum" property="toonSum"/>
             <result column="createdDate" property="createdDate"/>
             <result column="totalHit" property="totalHit"/>
@@ -65,15 +65,10 @@
             <result column="titleImg" property="titleImg"/>
             <result column="ratingSum" property="ratingSum"/>
             <result column="ratingPerson" property="ratingPerson"/>
-            <collection property="files" javaType="java.util.List" ofType="AdminFileVO">
-               <id column="fileNum" property="fileNum"/>
-               <result column="fileName" property="fileName"/>
-               <result column="oriName" property="oriName"/>
-            </collection>
          </resultMap>
          
          <insert id="setManageToonInsert" parameterType="ToonVO" useGeneratedKeys="true" keyProperty="toonNum">
-            insert into toon values(#{toonNum}, #{toonTitle}, #{genre}, #{writerId}, #{toonSum}, 0, #{toonDay}, #{state}, #{titleImg}, #{ratingSum}, #{ratingPerson})
+            insert into toon values(#{toonNum}, #{toonTitle}, #{genre}, #{writerID}, #{toonSum}, 0, #{toonDay}, #{state}, #{titleImg}, #{ratingSum}, #{ratingPerson})
          </insert>
          
          <insert id="setFileInsert" parameterType="AdminFileVO">
@@ -86,7 +81,7 @@
          </delete>
          
          <update id="setManageToonUpdate" parameterType="ToonVO">
-            update toon set toonTitle=#{toonTitle}, genre=#{genre}, writerId=#{writerId}, toonSum=#{toonSum}, toonDay=#{toonDay}, titleImg=#{titleImg} where toonNum=#{toonNum}
+            update toon set toonTitle=#{toonTitle}, genre=#{genre}, writerId=#{writerID}, toonSum=#{toonSum}, toonDay=#{toonDay}, titleImg=#{titleImg} where toonNum=#{toonNum}
          </update>
          
          <delete id="setManageToonDelete" parameterType="ToonVO">

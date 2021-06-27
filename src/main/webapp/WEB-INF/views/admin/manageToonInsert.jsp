@@ -40,6 +40,12 @@
 <body>
 	<c:import url="../fragments/header.jsp"></c:import>
 
+<div class="row">
+  	<div class="col-2">
+  		<c:import url="./adminNav.jsp"></c:import>
+  	</div>
+
+
 	<div class="container"><br>
 	<h2>
 			<p>
@@ -113,11 +119,6 @@
 
 	<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
 	<script type="text/javascript" src="../js/board/boardInsert.js"></script>
-<<<<<<< HEAD
 
-=======
-	<script type="text/javascript" src="../js/board/toonSummerFile.js"></script>
-	<c:import url="../fragments/footer.jsp"></c:import>
->>>>>>> parent of 71bbcf9 (Merge branch 'SeokJun5' into main2)
 </body>
 </html>
