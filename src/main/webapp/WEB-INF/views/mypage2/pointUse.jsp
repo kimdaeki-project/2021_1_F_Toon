@@ -113,29 +113,23 @@
 		<center><h2>최근 본 웹툰</h2></center>
 		<br>
 
-		<table class="table">
+			<table class="table">
 			<thead class="A simple light list group item">
 				<tr>
-					<th scope="col"></th>
-					<th scope="col">웹툰 이름</th>
-					<th scope="col">에피소드 이름</th>
-					<th scope="col">작가 이름</th>
-					<th scope="col">최근 본 날짜</th>
+					<th scope="col">금액</th>
+					<th scope="col">충전 내역</th>					
+					<th scope="col">구매 날짜</th>
 				
-					<th scope="col"><input id="allCheck" type="checkbox" name="allCheck"></th>
 				</tr>
 			</thead>
 			
 			<tbody>
 			<c:forEach items="${list}" var="list" >
 				<tr>
-					<td class="text_ct"><img width=50px height=50px src= ${list.toonVO.titleImg}></td>
-					<td class="text_ct">${list.toonVO.toonTitle}</td>
-					<td class="text_ct">${list.eachEpVO.epTitle}</td>
-					<td class="text_ct">${list.memberVO.nickname}</td>
-					<td class="text_ct">${list.viewDate}</td>
+					<td class="text_ct">${list.point}</td>
+					<td class="text_ct">${list.cDate}</td>
+					<td class="text_ct">${list.contents}</td>
 					
-					<td class="text_ct"><input name="RowCheck" type="checkbox" value="${list.recNum}"></td>
 				</tr>
 			</c:forEach>
 			

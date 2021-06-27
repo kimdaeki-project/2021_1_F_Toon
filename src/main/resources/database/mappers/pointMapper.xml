@@ -21,7 +21,7 @@
 	<select id="getMyChargePointList" parameterType="MemberVO" resultType="PointVO">
 		SELECT * FROM user03.point 
 		WHERE point.username = #{username} 
-		AND point.point > 0
+		AND point.point <![CDATA[<]]> 0
 	</select>
 	
 <!-- 포인트로 소장권  구매 (member02의 경우) -->

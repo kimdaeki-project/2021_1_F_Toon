@@ -102,7 +102,7 @@
                 <a href="/mypage2/pointCharge">포인트 충전 내역 조회</a>
               </li>
               <li>
-                <a href="mypage2/pointUse">포인트 사용 내역 조회</a>
+                <a href="/mypage2/pointUse">포인트 사용 내역 조회</a>
               </li>
             </ul>
           </li>
