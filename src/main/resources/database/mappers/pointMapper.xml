@@ -52,13 +52,14 @@
 	<select id="getUseTicktList" parameterType="MemberVO" resultType="UseTicketVO">
 		SELECT * FROM USER03.useticket WHERE username= #{username} 
 	</select>
-	<!-- 총 티켓 갯수 구하기 -->
+	
+	<!-- 조회(Long)  : 어떤 유저가 가진 어떤 웹툰의 총 소장권 갯수 -->
 	<select id="getTotalTicketCount" parameterType="UseTicketVO" resultType="Long">
 		SELECT COUNT(*) FROM useticket  WHERE (username=#{username} AND toonNum = #{toonNum} )AND sort = 1
 	</select>
-	
+	<!-- 조회(List) : 어떤 유저가 소장한 웹툰이력 최근 사용순으로 조회하기  -->
 	<select id="getToonTicktList" parameterType="UseTicketVO" resultType="UseTicketVO">
 		SELECT * FROM USER03.useticket  
-		WHERE (username=#{username} AND toonNum = #{toonNum} )AND sort = 1 ORDER BY utDate DESC 
+		WHERE username=#{username} AND sort = 1 ORDER BY utDate DESC
 	</select>
    </mapper>

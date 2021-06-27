@@ -28,7 +28,6 @@ public interface PointMapper {
 	
 	public int setTicketUselist(UseTicketVO useTicketVO)throws Exception;
 	
-	
 	public long getTotalTicketCount (UseTicketVO useTicketVO)throws Exception;
 	public List<UseTicketVO> getUseTicktList(MemberVO memberVO)throws Exception; 
 	
