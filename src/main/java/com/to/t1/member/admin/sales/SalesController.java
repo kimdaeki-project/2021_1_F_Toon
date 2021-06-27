@@ -57,17 +57,16 @@ public class SalesController {
 	@GetMapping("income")
 	public String GetIncomeList( DaySaleVO daySaleVO,
 			MonthSaleVO monthSaleVO,ToonSaleVO toonSaleVO, Model model) throws Exception {
-		//1. 일별 데이터 가져오기
-		daySaleVO = saleService.getDaySale();
-		//2. 주별 데이터 가져오기 
 		
-		//List<WeekSaleVO> = new SalesController() 
-		//3. 월별 데이터 가져오기
-		//4. 웹툰 데이터 가져오기
+		daySaleVO = saleService.getDaySale();
+		
 		model.addAttribute("daySaleVO",daySaleVO);
 		model.addAttribute("weekSaleVO",saleService.getWeekSale());
 		model.addAttribute("monthSaleVO",saleService.getMonthSale());
-		model.addAttribute("toonSaleVO",saleService.getMonthSale());
+		model.addAttribute("toonSaleVO",saleService.getToonSale());
+		
+		
 		return "admin/adminUtil/SaleSelect";
+		
 	}
 }

@@ -92,8 +92,8 @@ public class PointService {
 		return ticketBoxVO;
 	}
 	//포인트 사용내역 조회
-	public List<PointVO> getPointList(MemberVO memberVO)throws Exception {
-		return pointMapper.getMyPointList(memberVO);
+	public List<PointVO> getMyChargePointList(MemberVO memberVO)throws Exception {
+		return pointMapper.getMyChargePointList(memberVO);
 	}
 	
 	//소장권 사용내역 조회 : toon 상관 없이 조회(리스트)

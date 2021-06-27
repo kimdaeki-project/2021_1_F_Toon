@@ -18,7 +18,7 @@ public interface PointMapper {
 	
 	public int setMyPointList(PointVO pointVO)throws Exception;
 	
-	public List<PointVO> getMyPointList (MemberVO memberVO)throws Exception;
+	public List<PointVO> getMyChargePointList (MemberVO memberVO)throws Exception;
 	
 	public long checkTicketBox(TicketBoxVO ticketBoxVO)throws Exception;
 	public TicketBoxVO checkTicketStock(TicketBoxVO ticketBoxVO)throws Exception;
@@ -32,6 +32,5 @@ public interface PointMapper {
 	public List<UseTicketVO> getUseTicktList(MemberVO memberVO)throws Exception; 
 	
 	public List<UseTicketVO> getToonTicktList(UseTicketVO UseTicketVO)throws Exception;
-	
 	
 }
