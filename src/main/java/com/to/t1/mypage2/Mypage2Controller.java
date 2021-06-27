@@ -43,24 +43,24 @@ public class Mypage2Controller {
 	}
 	
 	
-	@GetMapping("recentToon") 
-	public String getList(Model model, MemberVO memberVO, Pager pager)throws Exception{
-		
-		List<RecentVO> ar = mypageService.getList(memberVO, pager);
-		
-		memberVO = memberService.myPage(memberVO);	
-
-		model.addAttribute("list", ar);
-		model.addAttribute("pager", pager);
-		model.addAttribute("memberVO", memberVO);
-		
-		System.out.println(pager.getStartNum());
-		System.out.println(pager.getLastNum());
-		
-		System.out.println("리센트툰");
-		
-		return "mypage/recentToon";
-	}
+//	@GetMapping("recentToon") 
+//	public String getList(Model model, MemberVO memberVO, Pager pager)throws Exception{
+//		
+//		List<RecentVO> ar = mypageService.getList(memberVO, pager);
+//		
+//		memberVO = memberService.myPage(memberVO);	
+//
+//		model.addAttribute("list", ar);
+//		model.addAttribute("pager", pager);
+//		model.addAttribute("memberVO", memberVO);
+//		
+//		System.out.println(pager.getStartNum());
+//		System.out.println(pager.getLastNum());
+//		
+//		System.out.println("리센트툰");
+//		
+//		return "mypage/recentToon";
+//	}
 	@GetMapping("pointUse") 
 	public String pointUse(MemberVO memberVO, HttpSession session, Authentication auth2, Model model)throws Exception{
 		System.out.println(auth2.getPrincipal());		
