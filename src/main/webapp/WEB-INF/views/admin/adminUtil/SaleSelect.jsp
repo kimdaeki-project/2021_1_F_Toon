@@ -74,11 +74,11 @@
                           </tr>
                         </thead>
                         <tbody>
-                        <c:forEach items="${toonSaleVO}" var="toonSaleVO">
+                        <c:forEach items="${toonSaleVO}" var="toonSaleVO" end="4">
                         	<tr>
                             <td class="d-flex align-items-center border-top-0">
                               <img class="profile-img img-sm img-rounded mr-2" src="${toonSaleVO.toonVO.titleImg}" alt="profile image">
-                              <span>{toonSaleVO.toonVO.toonTitle}</span>
+                              <span>${toonSaleVO.toonVO.toonTitle}</span>
                             </td>
                             <td>${toonSaleVO.toonVO.toonDay}</td>
                             <td>${toonSaleVO.sum}</td>
