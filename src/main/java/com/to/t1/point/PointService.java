@@ -2,9 +2,11 @@ package com.to.t1.point;
 
 import java.util.List;
 import java.util.Map;
+import java.awt.Point;
 import java.lang.Long;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import com.to.t1.member.MemberVO;
@@ -19,30 +21,33 @@ public class PointService {
 	private PointMapper pointMapper;
 	
 	//포인트 충전 para :pointVO , MAP<string,Object> return : pointVO, eachEpVO , int status 
-	public int chargePoint(@RequestParam Map<String,Object> param) throws Exception {
-		PointVO pointVO = new PointVO();
-		int result = 0;
-		//1. 전달받은 map데이터 파싱하기 
-		//2. 충전이므로, point는 parseInt시키기
-		String username = (String)param.get("username");
-		long point = (long)param.get("point"); //산술 연산을 위해서 양의 long으로 변환
+	public int chargePoint(@RequestBody Map<String,String> param) throws Exception {
 		
+		String username = (String)param.get("username");
+		long point = Long.parseLong(param.get("point"));
+		String contents = (String)param.get("contents");
+		
+		System.out.println("username" + username);
+		System.out.println("point" + point);
+		System.out.println("contents" + contents);
+		
+		PointVO pointVO = new PointVO();
 		pointVO.setUsername(username);
 		pointVO.setPoint(point);
-		pointVO.setContents("포인트충전:" + point +"P");
-		
+		pointVO.setContents(contents);
+		System.out.println(pointVO);
 		//3.포인트 충전하기,내역작성하기 
-		result= pointMapper.setMyPointcount(pointVO);
+		int result= pointMapper.setMyPointcount(pointVO);
 		result=pointMapper.setMyPointList(pointVO); 
 		//4. 성공시 받아 놓은 다음 경로 반환하기  
 		if(result !=0) {
+			
 			return result;
 		}
 		else {
 			System.out.println("입력실패");
 			return result;
 		}
-		
 	}
 	
 	//소장권 구매 == 포인트 사용  

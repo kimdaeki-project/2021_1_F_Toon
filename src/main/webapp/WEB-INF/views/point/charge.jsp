@@ -22,8 +22,6 @@
   <div class="row justify-content-md-center">
     <div class="col"></div>
     <div class="col-6"><!-- col2시작 -->
-    <form>
-    
     <!-- username -->
 	    <input id="user-name" value="<sec:authentication property="principal.username" />" readonly="readonly" hidden="hidden"/><!-- hidden="hidden" 추가 할 것 -->
 	    
@@ -123,7 +121,6 @@
     <!-- 결제동의 DIV 끝 -->
     <button id="start-charge" class="btn btn-primary" type="button" disabled>포인트 충전하기</button>
     
-	</form>
     
     </div><!-- 2col 끝 -->
     <div class="col"></div><!-- 3번째 col END-->

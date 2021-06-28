@@ -24,7 +24,7 @@ $("input[name='point']").click(function(){
 //agree-charge시 버튼 활성화 하기
 $("#agree-charge").click(function(){
 	let agreechk=$("#agree-charge").prop("checked");
-
+	
     if(agreechk){ 
         $("#start-charge").prop("disabled",false);
     }
@@ -39,20 +39,25 @@ $("#start-charge").click(function () {
 	var chargePoint = document.querySelector('input[name="point"]:checked').value;
 	chargePoint = parseInt(chargePoint); //int로 변환
 	
+	
 	var IMP = window.IMP;
 	IMP.init('imp51768187');
 	IMP.request_pay({
 	pg: 'html5_inicis', 
+	
 	pay_method: 'card',
+	
 	merchant_uid:'merchant_' + new Date().getTime(),
-	name: 'HSTOON:ToonPoint',
-	amount: chargePoint, 
+	
+	name: 'HSTOON:ToonPoint', //결제창에서 보여질 이름
+	amount: chargePoint, //가격, 충전 할 금액 
 	buyer_email: orderEmail,
 	buyer_name: orderName,
 	buyer_tel: orderPhone,
 	buyer_addr: 'memberAddress',
 	buyer_postcode: '07930',
 	m_redirect_url: 'https://www.yourdomain.com/payments/complete'
+	
 	}, function (rsp) {
 		if ( rsp.success ) {
 	        var msg = '결제가 완료되었습니다.';
@@ -61,27 +66,27 @@ $("#start-charge").click(function () {
 	        msg += '결제 금액 : ' + rsp.paid_amount;
 	        msg += '카드 승인번호 : ' + rsp.apply_num;
 	        
-	        var params = {"username" : orderName,"point": rsp.paid_amount}
-	        
+	        var contents = '포인트 충전 :' + rsp.paid_amount + 'P'
+	       
 	        $.ajax({
 	        	type : 'POST',
-	        	data : params,
-	        	url : "point/success",/* POST 요청하기*/ 
-	        	dataType :'text',
-	        	success : function(data) {
-			        alert("포인트 적립이 완료되었습니다 ");
-					location.href="${CONTEXT_PATH}/member/myPage";
-				}, error: function(request, status, error) {
+	        	data : { username: orderName, point: rsp.paid_amount, contents : contents },
+	        	ContentType : 'application/json; charset=UTF-8',/*전송할 데이터ㅓ 타입 명시*/
+	        	timeout: 10000,  
+	        	dataType : 'text',
+	        	url : '/point/success',/* POST 요청하기*/
+	        	
+	        	success : function(rsp) {
+			        alert("포인트 적립 완료");
+			        alert(params);
+					location.href= rsp;
+				}, 
+				error: function(request, status, error) {
+					alert("전송실패");
 					
 				}
 				}).done(function(data) {
 		        	console.log(data);
-		        	// 위의 rsp.paid_amount 와 data.response.amount를 비교한후 로직 실행 (import 서버검증)
-		        	if(rsp.paid_amount == data.response.amount){
-			        	alert("결제 및 결제검증완료(아직)");
-			        } else {
-		        		alert("결제 실패");
-		        		}
 		        	});
 		        	}
 		else {
