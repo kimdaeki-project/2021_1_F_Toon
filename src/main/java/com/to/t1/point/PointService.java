@@ -13,8 +13,6 @@ import org.springframework.web.bind.annotation.RequestParam;
 import com.to.t1.member.MemberVO;
 import com.to.t1.ticket.TicketBoxVO;
 import com.to.t1.ticket.UseTicketVO;
-import com.to.t1.toon.eachep.EachEpMapper;
-import com.to.t1.toon.eachep.EachEpVO;
 import com.to.t1.util.Pager;
 
 @Service
@@ -23,8 +21,6 @@ public class PointService {
 	@Autowired
 	private PointMapper pointMapper;
 	
-	@Autowired
-	private EachEpMapper eachEpMapper;
 	//포인트 충전 para :pointVO , MAP<string,Object> return : pointVO, eachEpVO , int status 
 	public int chargePoint(@RequestBody Map<String,String> param) throws Exception {
 		
@@ -159,7 +155,6 @@ public class PointService {
 		return pointMapper.getToonTicktList(obj);
 	}
 	
-	public List<EachEpVO> getEplistwithUT (UseTicketVO useTicketVO)throws Exception{
-		return eachEpMapper.getEplistwithUT(useTicketVO);
-	}
+	//소장권 구매내역는 pointvo으로 리턴
+	//소장권 사용내역은 useticket으로 리턴
 }

@@ -4,6 +4,15 @@
     "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
 <mapper namespace="com.to.t1.toon.eachep.EachEpMapper">
+
+
+	<select id="getList" parameterType="Pager" resultMap="getEachEp">
+		SELECT * FROM toon t LEFT JOIN member m 
+		ON t.writerId = m.username
+		JOIN eachep e ON t.toonNum = e.toonNum
+		WHERE e.toonNum=#{toonNum} ORDER BY e.eachEpNum DESC
+		LIMIT #{startRow},#{perPage}
+	</select>
 	
 	<resultMap type="ToonVO" id="getEachEp">
 		<id property="toonNum" column="toonNum"/>
@@ -18,9 +27,6 @@
       	<result property="ratingSum" column="ratingSum"/>
       	<result property="ratingPerson" column="ratingPerson"/>
       	<result property="nickname" column="nickname"/>
-      	
-      	<association property="UseTicketVO" javaType="UseTicketVO" resultMap="EpListwithUT"></association>
-      	
       	<collection property="eachEpVO" javaType="java.util.List" ofType="EachEpVO">
       		<id column="t" property="a"/>
       		<result property="epNum" column="epNum"/>
@@ -34,28 +40,6 @@
       		<result property="epRatingPerson" column="epRatingPerson"/>
       	</collection>
 	</resultMap>
-	<!-- UseTicket 같이 더하기 -->
-	<resultMap type="UseTicketVO" id="EpListwithUT">
-		<result property="sort" column="sort"/>
-	</resultMap>
-	<!-- useTicket인경우 조회하기 -->
-		<!-- 검색하기 움직임  -->
-	<select id="getEplistwithUT" parameterType="UseTicketVO" resultMap="getEachEp">
-		SELECT ep.* ,IFNULL(ut.sort,0) AS sort 
-		FROM eachep as ep LEFT OUTER JOIN ( 
-			SELECT * FROM useticket 
-			WHERE (username = #{username} AND toonNum =#{toonNum}) AND sort = 1) as ut 
-		on (ep.toonNum = ut.toonNum AND ep.epNum = ut.epNum) 
-		WHERE ep.toonNum = #{toonNum} ORDER BY ep.eachEpNum
-	</select>
-	
-	<select id="getList" parameterType="Pager" resultMap="getEachEp">
-		SELECT * FROM toon t LEFT JOIN member m 
-		ON t.writerId = m.username
-		JOIN eachep e ON t.toonNum = e.toonNum
-		WHERE e.toonNum=#{toonNum} ORDER BY e.eachEpNum DESC
-		LIMIT #{startRow},#{perPage}
-	</select>
 	
 	<select id="getTotalCount" parameterType="Pager" resultType="Long">
 		SELECT COUNT(eachEpNum) FROM eachEp WHERE toonNum=#{toonNum}
