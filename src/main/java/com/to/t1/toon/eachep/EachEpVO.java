@@ -4,6 +4,7 @@ package com.to.t1.toon.eachep;
 import java.sql.Date;
 import java.util.List;
 
+import com.to.t1.mypage.RecentVO;
 import com.to.t1.review.ReviewVO;
 import com.to.t1.ticket.UseTicketVO;
 
@@ -23,6 +24,8 @@ public class EachEpVO {
 	private long epRatingSum;
 	private long epRatingPerson;	
 	private List<ReviewVO> reviewVO;
+	private List<RecentVO> recentVO;
+
 
 	private UseTicketVO useTicketVO;
 }
