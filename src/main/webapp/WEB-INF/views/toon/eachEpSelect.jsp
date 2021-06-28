@@ -2,6 +2,8 @@
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags" %> 
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -29,8 +31,9 @@
 			<p><h2>${toonVO.toonSum}</h2></p>
 		<p class="detail_info"><span class="genre">장르 : ${toonVO.genre}</span></p>
 		<ul class="btn_group">
-		<li><a href="#" title="관심웹툰" class="book_maker on"><span>관심웹툰</span></a></li>
-		<li><a href="/toon/eachEpSelect?toonNum=${toonVO.toonNum}&eachEpNum=1" title="첫회보기" class="first"><span>첫회보기</span></a></li>
+			<li><a href="#" title="관심웹툰" class="book_maker on"><span>관심웹툰</span></a></li>
+			<li><a href="/toon/eachEpSelect?toonNum=${toonVO.toonNum}&eachEpNum=1&epNum=1" title="첫회보기" class="first"><span>첫회보기</span></a></li>
+			<li><a href="/toon/eachEpList?toonNum=${toonVO.toonNum}" title="목록보기" class="backToTheList"><span>목록보기</span></a></li>
 		</ul>
 		</div>
 	</div>
@@ -39,14 +42,16 @@
 		<div class="view">
 			<h3>${toonVO.eachEpVO['0'].epTitle}</h3>
 			<div class="btn_area">
-				<c:if test="${toonVO.eachEpVO['0'].epNum!=1}">
-				<span class="pre"> 
-				<a href="/toon/eachEpSelect?toonNum=${toonVO.toonNum}&eachEpNum=${toonVO.eachEpVO['0'].eachEpNum-1}">이전화</a>
-				</span>
+				<c:if test="${toonVO.eachEpVO['0'].eachEpNum!=1}">
+					<span class="pre"> 
+					<a href="/toon/eachEpSelect?toonNum=${toonVO.toonNum}&eachEpNum=${toonVO.eachEpVO['0'].eachEpNum-1}&epNum=${toonVO.eachEpVO['0'].epNum-1}">이전화</a>
+					</span>
 				</c:if>
-				<span class="next"> 
-				<a href="/toon/eachEpSelect?toonNum=${toonVO.toonNum}&eachEpNum=${toonVO.eachEpVO['0'].eachEpNum+1}">다음화</a>
-				</span>
+				<c:if test="${toonVO.eachEpVO['0'].eachEpNum<pager.maxEp}">
+					<span class="next"> 
+					<a href="/toon/eachEpSelect?toonNum=${toonVO.toonNum}&eachEpNum=${toonVO.eachEpVO['0'].eachEpNum+1}&epNum=${toonVO.eachEpVO['0'].epNum+1}">다음화</a>
+					</span>
+				</c:if>
 			</div>
 		</div>
 		<div class="vote_lst">
@@ -58,16 +63,11 @@
 				<dd class="total">
 					<div class="rating_type4" id="topTotalStarPoint">
 						<span class="star"><em style="width: 98%">평점</em></span> 
-						<span id="topPointTotalNumber"><strong>${toonVO.eachEpVO['0'].epRatingSum/toonVO.eachEpVO['0'].epRatingPerson}</strong></span> 
+						<span id="topPointTotalNumber"><strong><fmt:formatNumber value="${toonVO.eachEpVO['0'].epRatingSum/toonVO.eachEpVO['0'].epRatingPerson}" pattern=".00"/></strong></span> 
 						<span class="pointTotalPerson">(참여 <em>${toonVO.eachEpVO['0'].epRatingPerson}</em>)</span>
 					</div>
 				</dd>
 
-				<dt id="topStarLabel">
-					<img
-						src="https://ssl.pstatic.net/static/comic/images/migration/detail/txt_point_click.gif"
-						width="38" height="11" class="starscore_guide_txt" alt="별점주기">
-				</dt>
 			</dl>
 			<dl class="rt">
 				<dt>등록일</dt>
@@ -84,7 +84,7 @@
 
 	<!-- 리뷰,별점 -->
 	<div class="wrap">
-		<h2>리뷰</h2>
+		<h2>별점 & 댓글</h2>
 		
 		<div id="rating" class="rating">
 			<div class="startRadio">
@@ -98,8 +98,8 @@
 		</div>
 		
 		<div class="review_contents">
-			<div class="warning_msg">5자 이상으로 작성해 주세요.</div>
-			<textarea rows="10" id="comments" class="review_textarea"></textarea>
+			<div class="warning_msg">별점과 댓글 모두 입력해주세요.</div>
+			<textarea rows="10" id="comments" class="review_textarea" ></textarea>
 		</div>
 		<button id="save">등록</button>
 	</div>
@@ -125,7 +125,7 @@
 					<sec:authorize access="isAuthenticated()">
 					<sec:authentication property="principal.username" var="loginUser"/>
 						<c:if test="${reviewVO1.username == loginUser}">
-							<td><button id="delReview">삭제</button></td>
+							<td><button id="delReview" title="${reviewVO1.revNum}" value="${reviewVO1.revNum}">삭제</button></td>
 						</c:if>
 					</sec:authorize>
 				</tr>
@@ -133,8 +133,9 @@
 		</c:forEach>
 		
 	</table>
-	
-	<div class="paginate">
+
+	<c:if test="${toonVO.eachEpVO['0'].reviewVO['0']!=null}">
+		<div class="paginate">
 		 	<ul class="pagination">
 	  
 	  		<c:if test="${pager.pre}">	
@@ -151,12 +152,13 @@
 	   		 </c:if>
 	 		 </ul>
 		</div>
+	</c:if>
+	
 	</div>	
 	
 	<input type="hidden" id="toonNum" value="${toonVO.toonNum}">
 	<input type="hidden" id="epNum" value="${toonVO.eachEpVO['0'].epNum}">
 	<input type="hidden" id="eachEpNum" value="${toonVO.eachEpVO['0'].eachEpNum}">
-	<input type="hidden" id="revNum" value="${toonVO.eachEpVO['0'].reviewVO['0'].revNum}">
 
 	
 	<script type="text/javascript">
@@ -164,43 +166,54 @@
 	var toonNum = $("#toonNum").val();
 	var epNum = $("#epNum").val();
 	var eachEpNum = $("#eachEpNum").val();
+	var rating =  Number($('#rating').find("input[name='star']:checked").val());
+	var comments = $("#comments").val();
+	var revNum = $("#delReview").val();
 	
+	/*별점, 댓글 저장*/
 	$(function(){	
 		$('#save').click(function(){
-			var rating =  Number($('#rating').find("input[name='star']:checked").val());
-			var comments = $("#comments").val();
-			alert("별점, 댓글 등록");
-			
-			$.ajax({
-				type:"POST",
-				url:'../review/setReview',
-				data:{
-					"toonNum":toonNum,
-					"epNum":epNum,
-					"rating":rating,
-					"comments":comments,
-					"eachEpNum":eachEpNum
-				},
-				success:function(result){
-					result = Number(result.trim());
-					if(result>0){
-						alert("댓글을 등록하셨습니다. 등록해 주셔서 감사합니다.");
-						$("#review_page").load(location.href=location.href);
-						/* $("#review_page").load(window.location.href + "#review_page"); */
-					}else{
-						alert("등록에 실패하였습니다. 다시 시도해 주세요");
-					}
-				}
+			/* 댓글 최소 글자수 제한  */
+			if($('#comments').val().length < 5) {
+				alert("5자 이상 입력해주세요.");
+				$('#comments').val($('#comments').val().substring(0, 5));
+			}else{
+				var rating =  Number($('#rating').find("input[name='star']:checked").val());
+				var comments = $("#comments").val();
 				
-			})
+				if(isNaN(rating)==true){alert("별점을 입력해주세요.");
+				}else{
+					$.ajax({
+						type:"POST",
+						url:'../review/setReview',
+						data:{
+							"toonNum":toonNum,
+							"epNum":epNum,
+							"rating":rating,
+							"comments":comments,
+							"eachEpNum":eachEpNum
+						},
+						success:function(result){
+							result = Number(result.trim());
+							if(result>0){
+								alert("별점과 댓글을 등록하셨습니다. 등록해 주셔서 감사합니다.");
+								$("#review_page").load(location.href=location.href);
+								/* $("#review_page").load(window.location.href + "#review_page"); */
+							}else{
+								alert("등록에 실패하였습니다. 로그인 후 시도해 주세요");
+							}
+						}	
+					})
+				}
+			}
 		})
 	});
 	
+	/* 별점, 댓글 삭제 */
 	$(function(){	
-		$('#delReview8').click(function(){
-			var revNum = $("#revNum").val();
+		$('#delReview').click(function(){
 			alert("별점, 댓글 삭제");
-			
+
 			$.ajax({
 				type:"POST",
 				url:'../review/delReview',
@@ -209,10 +222,9 @@
 				},
 				success:function(result){
 					result = Number(result.trim());
-					if(result=null){
+					if(result!=null){
 						alert("댓글이 삭제되었습니다.");
 						$("#review_page").load(location.href=location.href);
-						/* $("#review_page").load(window.location.href + "#review_page"); */
 					}else{
 						alert("삭제에 실패하였습니다. 다시 시도해 주세요");
 					}

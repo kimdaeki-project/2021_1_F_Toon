@@ -44,7 +44,7 @@ public class ReviewController {
 			reviewVO.setUsername(auth.getName());
 			toonService.deleteScore(reviewVO);
 			eachEpService.deleteScore(reviewVO);
-			model.addAttribute("result", reviewService.setReview(reviewVO));
+			model.addAttribute("result", reviewService.delReview(reviewVO));
 		}
 	}
 

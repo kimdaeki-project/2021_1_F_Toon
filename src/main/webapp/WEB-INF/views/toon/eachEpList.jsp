@@ -2,6 +2,7 @@
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %> 
 <%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -29,12 +30,12 @@
 			</h2>
 			<p><h2>${toonVO.toonSum}</h2></p>
 		<p class="detail_info"><span class="genre">장르 : ${toonVO.genre}</span>
-		<span class="totalRating">웹툰별점 : ${toonVO.ratingSum/toonVO.ratingPerson}</span></p>
+		<span class="totalRating">웹툰별점 : <fmt:formatNumber value="${toonVO.ratingSum/toonVO.ratingPerson}" pattern=".00"/></span></p>
 		
 		<ul class="btn_group">
-		<li><a href="#" title="관심웹툰" class="book_maker on"><span>관심웹툰</span></a></li>
-		<li><a href="/toon/eachEpSelect?toonNum=${toonVO.toonNum}&eachEpNum=1" title="첫회보기" class="first"><span>첫회보기</span></a></li>
-		
+		<li><a href="#" title="관심웹툰" class="book_maker on" id="check_favorite"><span>관심웹툰</span></a></li>
+		<li><a href="/toon/eachEpSelect?toonNum=${toonVO.toonNum}&eachEpNum=1&epNum=1" title="첫회보기" class="first"><span>첫회보기</span></a></li>
+		</ul>
 		</div>
 	</div>
 	
@@ -85,7 +86,7 @@
 				<td>
 					<div class="rating_type">
 						<span class="star"><em>평점</em></span>
-						<strong>${eachEpVO.epRatingSum/eachEpVO.epRatingPerson}</strong>
+						<strong><fmt:formatNumber value="${eachEpVO.epRatingSum/eachEpVO.epRatingPerson}" pattern=".00"/></strong>
 					</div>
 				</td>
 				<td class="num"><span>${eachEpVO.epDate}</span></td>
@@ -111,6 +112,15 @@
 	   		 </c:if>
 	 		 </ul>
 		</div>
+		
+		<input type="hidden" id="toonNum" value="${toonVO.toonNum}">
+		<sec:authorize access="isAuthenticated()">
+			<sec:authentication property="principal.username" var="loginUser"/>
+			<input type="hidden" id="username" value="${loginUser}">
+		</sec:authorize>
+		
+<script type="text/javascript" src="../js/toon/favoriteToon.js"></script>
+
 
 </div>
 
