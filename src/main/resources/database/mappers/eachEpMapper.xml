@@ -69,5 +69,4 @@
 		WHERE e.toonNum=#{toonNum} AND e.eachEpNum=#{eachEpNum}
 	</update>
 	
-
 </mapper>

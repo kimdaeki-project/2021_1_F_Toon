@@ -12,12 +12,12 @@
 		UPDATE user03.member SET point = (member.point + #{point}) 
 		WHERE username =#{username}
 	</update>
-	<!-- 포인트 내역 작성 -->
+	<!-- 포인트 내역 작성  : -->
 	<insert id="setMyPointList" parameterType="PointVO">
 		INSERT INTO user03.point(username, point, cDate, contents) 
 		VALUES (#{username}, #{point}, NOW(),#{contents})
 	</insert>
-	<!-- 포인트 충전 내역 조회 -->
+	<!-- 포인트 충전 내역 조회 지출시에는 음수로 들어감 충전시에는 2000(양수로 작성됨)-->
 	<select id="getMyPointList" parameterType="MemberVO" resultType="PointVO">
 		SELECT * FROM user03.point 
 		WHERE point.username = #{username} 
@@ -50,8 +50,9 @@
 	<!-- 티켓 권한 부여 하기 -->
 	<!-- 3. 사용 내역 조회하기  -->
 	<select id="getUseTicktList" parameterType="MemberVO" resultType="UseTicketVO">
-		SELECT * FROM USER03.useticket WHERE username= #{username} 
+		SELECT * FROM useticket WHERE username= #{username} 
 	</select>
+	
 	<!-- 총 티켓 갯수 구하기 -->
 	<select id="getTotalTicketCount" parameterType="UseTicketVO" resultType="Long">
 		SELECT COUNT(*) FROM useticket  WHERE (username=#{username} AND toonNum = #{toonNum} )AND sort = 1
