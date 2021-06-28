@@ -58,7 +58,6 @@ public class SalesController {
 		model.addAttribute("monthSaleVO",saleService.getMonthSale());
 		model.addAttribute("toonSaleVO",saleService.getToonSale());
 		
-		
 		return "admin/incomeSelect/SaleSelect";
 		
 	}

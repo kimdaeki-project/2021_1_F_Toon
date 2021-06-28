@@ -73,13 +73,11 @@ $("#start-charge").click(function () {
 	        	type : 'POST',
 	        	data : JSON.stringify(send),
 	        	contentType: 'application/json',
-	      		dataType : 'json',
-	      		
+	      		dataType : 'text',
 	        	url : 'point/getPoint',/* POST 요청하기*/
 	        	success : function(res) {
 			        alert("포인트 적립 완료");
-			        alert(params);
-					location.href= res;
+					window.location.href="/member/myPage";
 				}, 
 				error: function(request, status, error) {
 					alert("전송실패");

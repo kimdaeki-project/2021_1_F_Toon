@@ -25,7 +25,4 @@ public class EachEpVO {
 	private List<ReviewVO> reviewVO;
 
 	private UseTicketVO useTicketVO;
-	private long sort;
-
-	
 }

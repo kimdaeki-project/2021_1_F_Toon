@@ -51,15 +51,17 @@
 	
 	<!-- 조회(List) : 어떤 유저가 소장한 웹툰이력을 최근 사용순으로 조회하기  -->
 	<select id="getToonTicktList"  parameterType="java.util.Map" resultMap="pointResult">
-		SELECT * FROM USER03.useticket  
-		WHERE username=#{memberVO.username} AND sort = 1 ORDER BY utDate DESC
+		SELECT * FROM USER03.point  
+		WHERE username=#{memberVO.username} AND point <![CDATA[<]]> 0 
+		ORDER BY cDate DESC 
 		limit #{pager.startRow}, #{pager.perPage}
 	</select>
-	
+	<!-- 소장권 구매 : n개로 산 것-->
+
 	<select id="getTotalCount3" parameterType="java.util.Map" resultType="java.lang.Long">
 		SELECT count(*)
-		FROM USER03.useticket  
-		WHERE username=#{memberVO.username} AND sort = 1 ORDER BY utDate DESC
+		FROM USER03.point  
+		WHERE username=#{memberVO.username} ORDER BY cDate DESC 
 	</select>
 
 	<!-- 3. 사용 내역 조회하기  -->
@@ -128,19 +130,19 @@
 		INSERT INTO user03.ticketbox (username, toonNum, stock,sort) VALUES (#{username}, #{toonNum}, #{stock},#{sort})
 	</insert>
 	
-
 	
 <!-- 소장권 사용하기 -->
+	
 	<!-- 1. 소장권 INSERT 하기  -->	
 	<insert id="setTicketUselist" parameterType="UseTicketVO">
 		INSERT INTO user03.useticket (username,epNum,sort,toonNum,utDate) VALUES (#{username}, #{epNum},#{sort}), #{toonNum},NOW())
 	</insert>
-	<!-- 티켓 권한 부여 하기 -->
-	
-	
 	<!-- 조회(Long)  : 어떤 유저가 가진 어떤 웹툰의 총 소장권 갯수 -->
 	<select id="getTotalTicketCount" parameterType="UseTicketVO" resultType="Long">
 		SELECT COUNT(*) FROM useticket  WHERE (username=#{username} AND toonNum = #{toonNum} )AND sort = 1
 	</select>
+	
+	<!--  Eachep와 useTicket Select가져오기 -->
+	<!--  -->
 	
    </mapper>

@@ -142,6 +142,7 @@
 			<table class="table">
 			<thead class="A simple light list group item">
 				<tr>			
+					<th scope="col">사용 내역</th>
 					<th scope="col">구매 날짜</th>
 					<th scope="col">구매자</th>
 				
@@ -151,6 +152,7 @@
 			<tbody>
 			<c:forEach items="${list}" var="list" >
 				<tr>
+					<td class="text_ct">${list.contents}</td>
 					<td class="text_ct">${list.useTicketVO.utDate}</td>
 					<td class="text_ct">${list.username}</td>
 					
