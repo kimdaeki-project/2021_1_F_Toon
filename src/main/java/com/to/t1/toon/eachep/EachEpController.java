@@ -58,9 +58,7 @@ public class EachEpController {
 		model.addAttribute("toonVO", list);
 		model.addAttribute("pager", pager);
 		System.out.println("username"+memberVO.getUsername());    
-		}
-
-
+	}
 	
 	@GetMapping("eachEpSelect")
 	public void getSelect(EachEpVO eachEpVO,Pager pager, Model model,ModelAndView modelAndView,MemberVO memberVO, UseTicketVO useTicketVO, Authentication auth2)throws Exception{
