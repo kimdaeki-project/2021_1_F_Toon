@@ -159,7 +159,7 @@
 					<td>${list.toonVO.genre}</td>
 					<td>${list.toonVO.toonDay}</td>
 					<td>${list.memberVO.nickname}</td>
-					<td>${list.favorietoonVO.likeDate}</td>
+					<td>${list.favoritetoonVO.likeDate}</td>
 				</tr>
 			</c:forEach>
 			
