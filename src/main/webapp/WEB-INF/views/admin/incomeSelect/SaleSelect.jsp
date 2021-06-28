@@ -102,16 +102,16 @@
       <script type="text/javascript" src="vendors/js/core.js"></script>
       <script type="text/javascript" src="vendors/js/vendor.addons.js"></script>
       <!-- endinject -->
-      <!-- build:js -->
       
-      <script src="/js/template.js"></script>
+      <!-- build:js -->
+      <script src="./../js/template.js"></script>
       <!-- chart.js -->
       <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
       <!-- 직접 작성한 js  -->
      <!--  <script type="text/javascript" src="/js/admin/adminControl.js"></script>
       --> 
       <!-- graph.js : 통계 관련  -->
-      <script type="text/javascript" src="/js/admin/income.js"></script>
+      <script type="text/javascript" src="./../js/admin/income.js"></script>
       
   </body>
 </html>
