@@ -34,42 +34,57 @@
                       <!-- Page Header Content -->
                   </div>
                   <div class="content-viewport">
-                      <!-- Page contents here -->
-	                  <!-- 매출액 (충전)-->
+                     <!-- Page contents here -->
+	                 <!-- 매출액 (충전)-->
 					<div class="row" id="income-chart-all">
-						<div class="row">
-						    <!-- 총 충전 매출액 (오늘 수입) -->
-						<div class="card row" > 
-							<h5 class="fs-6"> 매출액 조회하기 일별</h5>
-							<canvas id="income-today"></canvas>
-						</div>
-						    <!-- 총 충전 매출액 (주간 수입) -->
-						 <div class="card row"> 
-							<h5 class="fs-6"> 매출액 조회하기 월별</h5>
-							<canvas id="income-week"></canvas>
-						</div>
-						</div>
-						    <!-- 총 충전 매출액 (년   수입) -->
-						<div class="card row" > 
-							<h5 class="fs-6"> 매출액 조회하기 년별,가로로 길게</h5>
-							<canvas id="income-year"></canvas>
-						</div>
-					</div>
-	                </div><!-- income chart 완료 -->
-	                <!-- 매출액 : 웹툰 순위 Top 5 table for Each문 사용하기-->
-					<div class="col" id="income-chart-toon">
-						<ul class="card">
-							<li class="card-body">
-							<div class="card">여기에 대충 내용이 있어요</div></li>
-						</ul>
-					</div>
+		            <div class="col-md-6">
+		              <div class="grid">
+		                <div class="grid-body">
+		                  <h2 class="grid-title">일별 매출액</h2>
+		                  <div class="item-wrapper">
+		                    <canvas id="income-today" width="600" height="400"></canvas>
+		                  </div>
+		                </div>
+		              </div>
+		            </div>
+		             <div class="col-md-6">
+		              <div class="grid">
+		                <div class="grid-body">
+		                  <h2 class="grid-title">주별 매출액</h2>
+		                  <div class="item-wrapper">
+		                    <canvas id="income-week" width="600" height="400"></canvas>
+		                  </div>
+		                </div>
+		              </div>
+		            </div>
+		          </div>
+		          <div class="col-md-6">
+		              <div class="grid">
+		                <div class="grid-body">
+		                  <h2 class="grid-title">월별 매출액</h2>
+		                  <div class="item-wrapper">
+		                    <canvas id="income-month" width="1200" height="400"></canvas>
+		                  </div>
+		                </div>
+		              </div>
+		            </div>
 	              </div>
+	                <!-- 매출액 : 웹툰 순위 Top 5 table for Each문 사용하기-->
+	                <div class="col" id="income-chart-toon">
+					<ul class="card">
+						<li class="card-body">
+						<div class="card">답 5까지 게시</div></li>
+					</ul>
+				  </div>
+			</div>
+			
+			<div>
               <!-- content viewport ends -->
-              <footer class="footer">
-                  <!-- Footer Element-->
+              <footer class="footer"> <!-- Footer Element-->
               </footer>
           </div>
           <!-- page content ends -->
+      </div>
       </div>
       <!--page body ends -->
       <!-- plugins:js -->
@@ -83,7 +98,5 @@
       <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
       <!-- 직접 작성한 js  -->
       <script type="text/javascript" src="../js/admin/adminControl.js"></script>
-      <!-- graph.js : 통계 관련  -->
-      <script type="text/javascript" src="../js/admin/chart.js"></script>
   </body>
 </html>

@@ -1,10 +1,11 @@
 package com.to.t1.point;
 
 
+
 import java.util.Map; //jSON 파서용 
 import javax.servlet.http.HttpSession;
 
-import org.hamcrest.core.IsNull;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -12,11 +13,9 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
-import com.to.t1.member.MemberVO;
 import com.to.t1.ticket.TicketBoxVO;
 
 @Controller
@@ -37,32 +36,19 @@ public class PointController {
 		return "point/charge";
 		
 	}
-	//충전을 하는 경우 1. 상단에 point/charge에 들어왔다. 2. 웹툰 소장권을 사려다가 포인트가 모자라서 들어왔다.
+	//포인트 충전
+	@PostMapping("success")
 	@ResponseBody
-	@RequestMapping(value="success", method = RequestMethod.POST)
-	public String setPoint(@RequestBody Map<String, Object> param,Model model,HttpSession httpSession) throws Exception{
+	public String setPoint(@RequestBody Map<String, String> param,Model model,HttpSession httpSession) throws Exception{
 		
-		int result = pointservice.chargePoint(param);		
-		return "member/myPage";
+		System.out.println(param);
+		int result = pointservice.chargePoint(param);
+		if(result == 0 ) {
+			return "../member/myPage";
+		}
+		return "../member/myPage";
 	}
-	//검증 관련
-//	@Autowired
-//	private IamportClient api;
-//	//소장권 사용 내역 조회
-		
-//	//RESTAPI 검증
-//	@ResponseBody
-//	@RequestMapping(value="/verifyIamport/{imp_uid}")
-//	public IamportResponse<Payment> paymentByImpUid( Model model, Locale locale, 
-//			HttpSession session, @PathVariable(value= "imp_uid") String imp_uid) 
-//					throws IamportResponseException, IOException
-//	{	
-//			return api.paymentByImpUid(imp_uid);
-//	}
-	
-//	this.api = new IamportClient("8955862071146697",
-//	"cf9f6e33a37773d3792a17d3584428236a9a3fcbbf4998fa8d5c2dfb89730544b2b4df1b4f38a62d");
-//
+
 	//소장권 구입  
 	//파라미터 값 : 1. user정보 , 2.(사용 할)EP정보
 	//리턴 : 진행상황,(int로 반환) 
@@ -104,4 +90,23 @@ public class PointController {
 		//2-3. 소장권의 stock >1 인 경우 : 소장권 구입하고 소장권 구입 URL로 이동하기 
 		
 	}
+	
+	//검증 관련
+//	@Autowired
+//	private IamportClient api;
+//	//소장권 사용 내역 조회
+		
+//	//RESTAPI 검증
+//	@ResponseBody
+//	@RequestMapping(value="/verifyIamport/{imp_uid}")
+//	public IamportResponse<Payment> paymentByImpUid( Model model, Locale locale, 
+//			HttpSession session, @PathVariable(value= "imp_uid") String imp_uid) 
+//					throws IamportResponseException, IOException
+//	{	
+//			return api.paymentByImpUid(imp_uid);
+//	}
+	
+//	this.api = new IamportClient("8955862071146697",
+//	"cf9f6e33a37773d3792a17d3584428236a9a3fcbbf4998fa8d5c2dfb89730544b2b4df1b4f38a62d");
+//
 }

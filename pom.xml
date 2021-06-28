@@ -130,6 +130,11 @@
 			<artifactId>gson</artifactId>
 		</dependency> 
 		<!-- 여기까지  -->
+		<dependency>
+			<groupId>com.fasterxml.jackson.core</groupId>
+			<artifactId>jackson-databind</artifactId>
+		</dependency>
+		
 	</dependencies>
 
 	<build>
