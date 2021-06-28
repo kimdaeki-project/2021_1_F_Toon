@@ -39,8 +39,6 @@ public class MemberController {
 	
 	@GetMapping("login")
 	public String getLogin()throws Exception{
-		System.out.println("로그인");
-		System.out.println("진짜");
 		return "member/memberLogin";
 	}
 	
@@ -59,7 +57,7 @@ public class MemberController {
 	
 	@GetMapping("memberLoginResult")
 	public String memberLoginResult(HttpSession session, Authentication auth2, Model model)throws Exception{
-		System.out.println("!!!!!!!!!!!!!!!!!!!!!");
+		
 		MemberVO memberVO =new MemberVO();
 		//session의 속성명들 꺼내오기 
 		
