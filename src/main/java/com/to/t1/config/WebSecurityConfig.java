@@ -90,8 +90,8 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter{
 			.antMatchers("/toon/eachEpSelectOpen/**").permitAll()
 			.antMatchers("/toon/eachEpSelectSec/**").hasAnyRole("ADMIN", "MEMBER")
 			
-            .antMatchers("/notice/select").hasAnyRole("ADMIN", "MEMBER")
-            .antMatchers("/qna/qnaSelect").hasAnyRole("ADMIN", "MEMBER")
+            .antMatchers("/notice/select").permitAll()
+            .antMatchers("/qna/qnaSelect").permitAll()
             .antMatchers("/qna/qnaUpdate").hasAnyRole("ADMIN", "MEMBER")
             .antMatchers("/qna/reply").hasAnyRole("ADMIN")
             .antMatchers("/qna/qnaInsert").hasAnyRole("MEMBER")

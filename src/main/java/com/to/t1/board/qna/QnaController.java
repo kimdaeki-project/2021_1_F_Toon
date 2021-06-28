@@ -2,9 +2,12 @@ package com.to.t1.board.qna;
 
 import java.util.List;
 
+import javax.servlet.http.HttpSession;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -25,6 +28,7 @@ public class QnaController {
 	public String getQnaBoard() {
 		return "qna";
 	}
+
 	
 	@GetMapping("qnaList")
 	public String getList(Pager pager, Model model)throws Exception{
@@ -39,8 +43,9 @@ public class QnaController {
 	}
 	
 	@GetMapping("qnaSelect")
-	public ModelAndView getSelect(BoardVO boardVO)throws Exception{
+	public ModelAndView getSelect(BoardVO boardVO, ModelMap modelMap)throws Exception{
 		ModelAndView mv = new ModelAndView();
+		
 		boardVO = qnaService.getSelect(boardVO);
 		mv.addObject("vo", boardVO);
 		mv.setViewName("board/qnaSelect");
@@ -61,6 +66,31 @@ public class QnaController {
 		return "redirect:./qnaList";
 	}
 
+	@GetMapping("qnaUpdate")
+	public String setUpdate(BoardVO boardVO, Model model)throws Exception{
+		boardVO = qnaService.getSelect(boardVO);
+		model.addAttribute("vo", boardVO);
+		model.addAttribute("action", "qnaUpdate");
+		return "board/qnaUpdate";
+		
+	}
+	
+	@PostMapping("qnaUpdate")
+	public String setUpdate(BoardVO boardVO, MultipartFile [] files)throws Exception{
+		
+		int result = qnaService.setUpdate(boardVO, files);
+		
+		return "redirect:./qnaList";
+	}
+	
+	@PostMapping("qnaDelete")
+	public String setQnaDelete(BoardVO boardVO) throws Exception{
+		
+		int result = qnaService.setQnaDelete(boardVO);
+		
+		return "redirect:./qnaList";
+	}
+	
 	@PostMapping("summerFileDelete")
 	public ModelAndView setSummerFileDelete(String fileName)throws Exception{
 		ModelAndView mv = new ModelAndView();

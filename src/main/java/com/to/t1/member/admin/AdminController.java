@@ -485,16 +485,16 @@ public class AdminController {
 		return "redirect:./manageQnaList";
 	}
 
-	@GetMapping("qnaUpdate")
+	@GetMapping("manageQnaUpdate")
 	public String setUpdate(BoardVO boardVO, Model model)throws Exception{
 		boardVO = qnaService.getSelect(boardVO);
 		model.addAttribute("vo", boardVO);
-		model.addAttribute("action", "qnaUpdate");
-		return "admin/qnaUpdate";
+		model.addAttribute("action", "manageQnaUpdate");
+		return "admin/manageQnaUpdate";
 		
 	}
 	
-	@PostMapping("qnaUpdate")
+	@PostMapping("manageQnaUpdate")
 	public String setUpdate(BoardVO boardVO, MultipartFile [] files)throws Exception{
 		
 		int result = qnaService.setUpdate(boardVO, files);
@@ -502,7 +502,7 @@ public class AdminController {
 		return "redirect:./manageQnaList";
 	}
 	
-	@PostMapping("QnaDelete")
+	@PostMapping("manageQnaDelete")
 	public String setQnaDelete(BoardVO boardVO) throws Exception{
 		
 		int result = qnaService.setQnaDelete(boardVO);
