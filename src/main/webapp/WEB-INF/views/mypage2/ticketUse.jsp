@@ -161,7 +161,7 @@
 			</tbody>
 
 		</table>
-		
+		</div>
 	</div>
 <%-- 			<a href="./recentToon?epNum=${list.eachEpVO.epNum}" id="delete" class="btn btn-danger">삭제</a> --%>
 <%-- 			<input type="hidden" name="epNum" value="${list.eachEpVO.epNum}"> --%>

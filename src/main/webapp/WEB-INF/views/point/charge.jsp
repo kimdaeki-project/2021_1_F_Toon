@@ -15,6 +15,15 @@
     <!-- Bootstrap CSS 5.0 -->
     <title>point charge Page</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x" crossorigin="anonymous">
+    <!-- CSS Import -->
+    <c:import url="../fragments/bootstrap.jsp"></c:import>
+    <title>Admin Page</title>
+    <link rel="stylesheet" href="/css/header.css">
+    <!-- plugins:css -->
+    <link rel="stylesheet" href="../assets/vendors/iconfonts/mdi/css/materialdesignicons.css">
+    <link rel="stylesheet" href="/css/mypage/style.css">
+    <!-- Layout style -->
+    <link rel="shortcut icon" href="../asssets/images/favicon.ico"/>
 </head>
 <body>
 
@@ -128,6 +137,7 @@
 </div>
 
 <script type="text/javascript" src ="../../js/pay/iamport.js"></script>
+
 
 </body>
 </html>
