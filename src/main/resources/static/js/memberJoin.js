@@ -13,6 +13,33 @@ let pwEqualResult = false;
 let phoneCheckResult = false;
 let etcResult=true		   // name, email, phone 결과
 
+
+$("#id").keyup(function(event){
+
+	if (!(event.keyCode >=37 && event.keyCode<=40)) {
+
+	var inputVal = $(this).val();
+
+	$(this).val(inputVal.replace(/[^a-z0-9]/gi,''));
+
+	}
+
+});
+
+$("#pw").keyup(function(event){
+
+	if (!(event.keyCode >=37 && event.keyCode<=40)) {
+
+	var inputVal = $(this).val();
+
+	$(this).val(inputVal.replace(/[^a-z0-9*]/gi,''));
+
+	}
+
+});
+
+
+
 function inputPhoneNumber(obj) {
 	
     var number = obj.value.replace(/[^0-9]/g, "");
@@ -92,35 +119,6 @@ phone.addEventListener("blur", function(){
 	
 });
 
-//email.addEventListener("blur", function(){
-//	let message  = "@포함된 형식으로 입력하세요.";
-//	let c = "r3";
-//		
-//	emailResult.innerHTML=message;
-//	emailResult.setAttribute("class", c);
-//	
-//});
-
-
-//id.addEventListener("blur", function(){
-//	
-//	let id = $("#id").val();
-//	let idTrim = $.trim(id);
-//	let message = "6글자 미만입니다";
-//	let c = "r1"
-//	if(idTrim.length>5){
-//		message = "6글자 이상 입니다";
-//		c = "r2";
-//		idCheckResult=true;
-//	} else {
-//		idCheckResult = false;
-//	}
-//	
-//	let idResult = document.getElementById("idResult");
-//	idResult.innerHTML=message;
-//	idResult.setAttribute("class", c);
-//	
-//});
 
 // PW EQUAL CHECK **********************************
 pw2.addEventListener("blur", function(){
@@ -145,13 +143,13 @@ pw.addEventListener("change", function(){
 
 $("#name").keyup(function(event){
 
-if (!(event.keyCode >=37 && event.keyCode<=40)) {
+	if (!(event.keyCode >=37 && event.keyCode<=40)) {
 
-var inputVal = $(this).val();
+		var inputVal = $(this).val();
 
-$(this).val(inputVal.replace(/[a-z0-9]/gi,''));
+		$(this).val(inputVal.replace(/[a-z0-9]/gi,''));
 
-}
+	}
 
 });
 
