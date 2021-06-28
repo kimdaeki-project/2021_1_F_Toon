@@ -21,14 +21,12 @@ public class MypageService {
 	public List<RecentVO> getList(MemberVO memberVO, Pager pager) throws Exception {
 		HashMap<String, Object> obj = new HashMap<String, Object>();
 		
-		System.out.println();
 		obj.put("memberVO", memberVO);
 		obj.put("pager", pager);
 		
-		System.out.println(" 유저네임"+memberVO.getUsername());
 		pager.makeRow(); 
 		Long totalCount = mypageMapper.getTotalCount1(obj);
-		System.out.println("totalcount : "+totalCount);
+		
 		pager.makeNum(totalCount); 
 		
 		return mypageMapper.getList(obj);
@@ -39,7 +37,7 @@ public class MypageService {
 	}
 
 	public int setDelete2(String toonNum) throws Exception {
-		System.out.println("서비스 툰넘 : "+toonNum);
+
 		return mypageMapper.setDelete(toonNum);
 		
 	}
