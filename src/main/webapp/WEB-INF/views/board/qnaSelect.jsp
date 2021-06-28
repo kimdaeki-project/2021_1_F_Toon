@@ -83,11 +83,15 @@
 
 
 
-	
-	<c:if test="${principal.username eq memberVO.username}">
+	<sec:authentication property="principal.username" var="username"/>
+	<c:choose>
+	<c:when test="${username eq principal.username}">
 	<a href="./qnaUpdate?boNum=${vo.boNum}" class="btn btn-secondary">수정</a>
-	</c:if>
-	
+	</c:when>
+	<c:otherwise>
+	<span style="display:none;"><a href="./qnaUpdate?boNum=${vo.boNum}" class="btn btn-secondary">수정</a></span>
+	</c:otherwise>
+	</c:choose>
 	<a href="#" id="del" class="btn btn-secondary">삭제</a>
 	
 	<form action="./qnaDelete" id="frm" method="get">
