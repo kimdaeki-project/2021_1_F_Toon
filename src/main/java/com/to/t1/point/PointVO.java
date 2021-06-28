@@ -16,5 +16,4 @@ public class PointVO {
 	private Timestamp cDate; 
 	private String contents;
 	
-	
 }

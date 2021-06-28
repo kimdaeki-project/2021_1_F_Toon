@@ -16,47 +16,40 @@ public class SalesController {
 	@Autowired
 	private SaleService saleService;
 	
-	//1. 오늘 조회
 	
-	@PostMapping("today")
-	@ResponseBody
-	public DaySaleVO getDaySaleVO() throws Exception{
+	@GetMapping("today")
+	public @ResponseBody DaySaleVO getDaySaleVO() throws Exception{
 		System.out.println(saleService.getDaySale());
+		
 		return saleService.getDaySale();
 		//json 형식으로 돌려주는 요청
 	}
 	
-	@PostMapping("week")
-	@ResponseBody
+	@GetMapping("week")
 	//2. 주 조회
-	public List<MonthSaleVO> getWeekSale() throws Exception{
+	public @ResponseBody List<MonthSaleVO> getWeekSale() throws Exception{
 		return saleService.getWeekSale();
 	}
 	
-	@PostMapping("month")
-	@ResponseBody
-	public  List<WeekSaleVO> getMonthSale()throws Exception{
+	@GetMapping("month")
+	public @ResponseBody List<WeekSaleVO> getMonthSale()throws Exception{
 		return saleService.getMonthSale();
 	}
 	
-	@PostMapping("length")
-	@ResponseBody
+	@GetMapping("length")
 	//4. 기간 조회
-	public   List<DaySaleVO> getLengthSale(MonthSaleVO weekSaleVO)throws Exception{
+	public @ResponseBody  List<DaySaleVO> getLengthSale(MonthSaleVO weekSaleVO)throws Exception{
 		return saleService.getLengthSale(weekSaleVO);
 	}
-	
-	@PostMapping("perToon")
-	@ResponseBody
+	@GetMapping("perToon")
 	//5. 웹툰 별 매출 조회
-	public  List<ToonSaleVO> getToonSale() throws Exception{
+	public @ResponseBody List<ToonSaleVO> getToonSale() throws Exception{
 		System.out.println(saleService.getToonSale());
 		return saleService.getToonSale();
 	}
-	
 	@GetMapping("income")
 	public String GetIncomeList( DaySaleVO daySaleVO,
-			MonthSaleVO monthSaleVO,ToonSaleVO toonSaleVO, Model model) throws Exception {
+		MonthSaleVO monthSaleVO,ToonSaleVO toonSaleVO, Model model) throws Exception {
 		
 		daySaleVO = saleService.getDaySale();
 		
@@ -66,7 +59,16 @@ public class SalesController {
 		model.addAttribute("toonSaleVO",saleService.getToonSale());
 		
 		
-		return "admin/adminUtil/SaleSelect";
+		return "admin/incomeSelect/SaleSelect";
 		
 	}
+	
+	@GetMapping("toonsIncome")
+	public String getToonIncomeList(Model model) throws Exception {
+		
+		model.addAttribute("toonSaleVO",saleService.getToonSale());
+		
+		return "admin/incomeSelect/toonIncome";
+	}
+	
 }

@@ -35,27 +35,26 @@
                   <div class="content-viewport">
                       <!-- Page contents here -->
 	                  <!-- 매출액 (충전)-->
-					<div class="row" id="income-chart-all">
+					<div class="row" id="income_chart_all">
 						<div class="row">
 						    <!-- 총 충전 매출액 (오늘 수입) -->
 						<div class="card row" > 
 							<h5 class="fs-6"> 매출액 조회하기 일별</h5>
 							<p>${daySaleVO.date}</p>
 							<p>${daySaleVO.sum}</p>
-							<canvas id="income-today">
-							
+							<canvas id="income_today">
 							</canvas>
 						</div>
 						    <!-- 총 충전 매출액 (주간 수입) -->
 						 <div class="card row"> 
-							<h5 class="fs-6"> 매출액 조회하기 월별</h5>
-							<canvas id="income-week"></canvas>
+							<h5 class="fs-6"> 매출액 조회하기 주 별</h5>
+							<canvas id="income_week"></canvas>
 						</div>
 						</div>
-						    <!-- 총 충전 매출액 (년   수입) -->
+						    <!-- 총 충전 매출액 (월 수입) -->
 						<div class="card row" > 
-							<h5 class="fs-6"> 매출액 조회하기 년별,가로로 길게</h5>
-							<canvas id="income-year"></canvas>
+							<h5 class="fs-6"> 매출액 조회하기 월별,가로로 길게</h5>
+							<canvas id="income_month"></canvas>
 						</div>
 					</div>
 	                </div><!-- income chart 완료 -->
@@ -104,13 +103,15 @@
       <script type="text/javascript" src="vendors/js/vendor.addons.js"></script>
       <!-- endinject -->
       <!-- build:js -->
-      <script src="js/template.js"></script>
-      <!-- chart.js -->
+      
+      <script src="/js/template.js"></script>
       <!-- chart.js -->
       <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
       <!-- 직접 작성한 js  -->
-      <script type="text/javascript" src="../js/admin/adminControl.js"></script>
+     <!--  <script type="text/javascript" src="/js/admin/adminControl.js"></script>
+      --> 
       <!-- graph.js : 통계 관련  -->
-      <script type="text/javascript" src="../js/admin/chart.js"></script>
+      <script type="text/javascript" src="/js/admin/income.js"></script>
+      
   </body>
 </html>
