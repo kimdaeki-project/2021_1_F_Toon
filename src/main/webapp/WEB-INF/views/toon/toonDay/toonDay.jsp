@@ -26,13 +26,16 @@
 <sec:authorize access="isAuthenticated()"> 
 	<input name="username" value="<sec:authentication property="principal.username"/>" hidden="hidden" readonly="readonly"/>
 </sec:authorize>
+
+
 	<div class="view_type">
+		
 		<table>
 			<tr>
-				<td ><a class="w" href="/toon/toonDay/toonDay">조회순</a></td>
+				<td ><a class="w" href="/toon/toonDay/toonDay">조회순&emsp;</a></td>
 
 				<p>
-				<td><a class="w" href="/toon/toonDay/toonDayRecent">업데이트순</a></td>
+				<td><a class="w" href="/toon/toonDay/toonDayRecent">업데이트순&emsp;</a></td>
 				</p>
 
 				<td><a class="w" href="/toon/toonDay/toonDayAver">별점순</a></td>
@@ -40,6 +43,7 @@
 
 		</table>
 	</div>
+	
 	<br>
 	<br>
 	<br>
@@ -48,90 +52,83 @@
 	 
 
 		<!-- 월요일 ------------------------------------------------------>		
-		<div class="mon"><a href="/toon/toonDay/toonDaySelect"><h2>월요일</h2></a>
+		<div class="mon"><h1>월요일</h1>
 		<br>
 			<ul>
 		<c:forEach items="${mt}" var="mt">
 			<li><a href="/toon/eachEpList?toonNum=${mt.toonNum}"> <img width=100px height=100px src=${mt.titleImg}></a></li>
-			<li>${mt.toonTitle}</li>
-			<p>	
+			<li>${mt.toonTitle}</li><p>	
 		</c:forEach>
 		</ul>
 		</div>
 
 		<!-- 화요일 ------------------------------------------------------>
-		<div class="tue"><h2>화요일</h2>
+		<div class="tue"><h1>화요일</h1>
 		<br>
 			<ul>
 		<c:forEach items="${tt}" var="tt">
 			<li><a href="/toon/eachEpList?toonNum=${tt.toonNum}"> <img width=100px height=100px src=${tt.titleImg}></a></li>
-			<li>${tt.toonTitle} </li>
-						<p>	
+			<li>${tt.toonTitle} </li><p>	
 		</c:forEach>
 		</ul>
 		</div>	
 		
 		
 		<!-- 수요일 ------------------------------------------------------>
-		<div class="wen"><h2>수요일</h2>
+		<div class="wen"><h1>수요일</h1>
 		<br>
 			<ul>
 		<c:forEach items="${wt}" var="wt">
 			<li><a href="/toon/eachEpList?toonNum=${wt.toonNum}"> <img width=100px height=100px src=${wt.titleImg}></a></li>
-			<li>${wt.toonTitle} </li>
-						<p>	
+			<li>${wt.toonTitle} </li><p>	
 		</c:forEach>
 		</ul>
 		</div>
 		
 		
 		<!-- 목요일 ------------------------------------------------------>
-		<div class="the"><h2>목요일</h2>
+		<div class="the"><h1>목요일</h1>
 		<br>
 			<ul>
 		<c:forEach items="${tt2}" var="tt2">
 			<li><a href="/toon/eachEpList?toonNum=${tt2.toonNum}"> <img width=100px height=100px src=${tt2.titleImg}></a></li>
-			<li>${tt2.toonTitle}</li>
-						<p>	
+			<li>${tt2.toonTitle}</li><p>	
 		</c:forEach>
 		</ul>
 		</div>
 		
 		
 		<!-- 금요일 ------------------------------------------------------>
-		<div class="fri"><h2>금요일</h2>
+		<div class="fri"><h1>금요일</h1>
 		<br>
 			<ul>
 		<c:forEach items="${ft}" var="ft">
 			<li><a href="/toon/eachEpList?toonNum=${ft.toonNum}"> <img width=100px height=100px src=${ft.titleImg}></a></li>
-			<li>${ft.toonTitle} </li>
-						<p>	
+			<li>${ft.toonTitle} </li><p>	
 		</c:forEach>
 		</ul>
 		</div>
 		
 		
 		<!-- 토요일 ------------------------------------------------------>
-		<div class="sat"><h2>토요일</h2>
+		<div class="sat"><h1>토요일</h1>
 		<br>
 			<ul>
 		<c:forEach items="${st}" var="st">
 			<li><a href="/toon/eachEpList?toonNum=${st.toonNum}"> <img width=100px height=100px src=${st.titleImg}></a></li>
-			<li>${st.toonTitle} </li>
-						<p>	
+			<li>${st.toonTitle} </li><p>	
 		</c:forEach>
 		</ul>
 		</div>
 		
 		
 		<!-- 일요일 ------------------------------------------------------>
-		<div class="sun"><h2>일요일</h2>
+		<div class="sun"><h1>일요일</h1>
 		<br>
 			<ul>
 		<c:forEach items="${st2}" var="st2">
 			<li><a href="/toon/eachEpList?toonNum=${st2.toonNum}"> <img width=100px height=100px src=${st2.titleImg}></a></li>
-			<li>${st2.toonTitle}</li>
-						<p>	
+			<li>${st2.toonTitle}</li><p>	
 		</c:forEach>
 		</ul>
 		</div>

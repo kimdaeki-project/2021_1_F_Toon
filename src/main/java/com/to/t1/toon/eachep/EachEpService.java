@@ -3,6 +3,7 @@ package com.to.t1.toon.eachep;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.to.t1.point.PointService;
 import com.to.t1.review.ReviewVO;
 import com.to.t1.toon.ToonVO;
 import com.to.t1.util.Pager;
@@ -11,6 +12,9 @@ import com.to.t1.util.Pager;
 public class EachEpService {
 	@Autowired
 	private EachEpMapper eachEpMapper;
+
+	
+	
 	
 	public ToonVO getList(Pager pager)throws Exception{
 //		pager.setCurPage(pager.getCurPage()==0?1:pager.getCurPage());
@@ -22,6 +26,10 @@ public class EachEpService {
 //		System.out.println(pager.getToonNum());
 //		System.out.println(pager.getStartRow());
 //		System.out.println(pager.getPerPage());
+		/*
+		 * HashMap<String, Object> obj = new HashMap<String, Object>();
+		 * obj.put("memberVO", memberVO); obj.put("pager", pager);
+		 */
 		
 		Long totalCount = eachEpMapper.getTotalCount(pager);
 		pager.makeNum(totalCount);

@@ -26,97 +26,85 @@
 	<div class="view_type">
 		<table>
 			<tr>
-				<td><a href="/toon/genre/genre">조회순</a></td>
+				<td><a class="w" href="/toon/genre/genre">조회순&emsp;</a></td>
 
 				<p>
-				<td><a href="/toon/genre/genreRecent">업데이트순</a></td>
+				<td><a class="w" href="/toon/genre/genreRecent">업데이트순&emsp;</a></td>
 				</p>
 
-				<td><a href="/toon/genre/genreAver">별점순</a></td>
+				<td><a class="w" href="/toon/genre/genreAver">별점순</a></td>
 			</tr>
 
 		</table>
 	</div>
 	<br>
 	<br>
+	<br>
+	<div class="toon" align="center">
 
-	<div class="toon">
 
-
-		<div class="action">
-			<a
-				href="${pageContext.request.contextPath}/toon/toonList/genre=${action}">액션</a>
+		<div class="action"> <h1>액션</h1>
+		<br>
 			<ul>
 				<c:forEach items="${action}" var="action">
-					<li><a href="/toon/eachEpList?toonNum=${action.toonNum}"><img width=100px height=100px src=${action.titleImg}>
-					</li>
-					<li>${action.toonTitle}/${action.nickname}</li>
+					<li><a href="/toon/eachEpList?toonNum=${action.toonNum}"><img width=100px height=100px src=${action.titleImg}></a></li>
+					<li>${action.toonTitle}</li><p>
 				</c:forEach>
 			</ul>
 
 		</div>
 
 
-		<div class="school">
-			<a
-				href="${pageContext.request.contextPath}/toon/toonList/genre=${school}">학원</a>
+		<div class="school"> <h1>학원</h1>
+		<br>			
 			<ul>
 				<c:forEach items="${school}" var="school">
-					<li><a href="/toon/eachEpList?toonNum=${school.toonNum}"><img width=100px height=100px src=${school.titleImg}>
-					</li>
-					<li>${school.toonTitle}/${school.nickname}</li>
+					<li><a href="/toon/eachEpList?toonNum=${school.toonNum}"><img width=100px height=100px src=${school.titleImg}></a></li>
+					<li>${school.toonTitle}</li><p>
 				</c:forEach>
 			</ul>
 		</div>
 
 
-		<div class="romance">
-			<a
-				href="${pageContext.request.contextPath}/toon/toonList/genre=${romance}">로맨스</a>
+		<div class="romance"> <h1>로맨스</h1>
+		<br>
 			<ul>
 				<c:forEach items="${romance}" var="romance">
-					<li><a href="/toon/eachEpList?toonNum=${romance.toonNum}"><img width=100px height=100px src=${romance.titleImg}>
-					</li>
-					<li>${romance.toonTitle}/${romance.nickname}</li>
+					<li><a href="/toon/eachEpList?toonNum=${romance.toonNum}"><img width=100px height=100px src=${romance.titleImg}></a></li>
+					<li>${romance.toonTitle}</li><p>
 				</c:forEach>
 			</ul>
 		</div>
 
 
-		<div class="fantasy">
-			<a
-				href="${pageContext.request.contextPath}/toon/toonList/genre=${fantasy}">판타지</a>
+		<div class="fantasy"> <h1>판타지</h1>
+		<br>		
 			<ul>
 				<c:forEach items="${fantasy}" var="fantasy">
-					<li><a href="/toon/eachEpList?toonNum=${fantasy.toonNum}"><img width=100px height=100px src=${fantasy.titleImg}>
-					</li>
-					<li>${fantasy.toonTitle}/${fantasy.nickname}</li>
+					<li><a href="/toon/eachEpList?toonNum=${fantasy.toonNum}"><img width=100px height=100px src=${fantasy.titleImg}></a></li>
+					<li>${fantasy.toonTitle}</li><p>
 				</c:forEach>
 			</ul>
 		</div>
 
 
-		<div class="thriller">
-			<a
-				href="${pageContext.request.contextPath}/toon/toonList/genre=${thriller}">스릴러</a>
+		<div class="thriller"> <h1>스릴러</h1>
+		<br>
 			<ul>
 				<c:forEach items="${thriller}" var="thriller">
-					<li><a href="/toon/eachEpList?toonNum=${thriller.toonNum}"><img width=100px height=100px src=${thriller.titleImg}>
-					</li>
-					<li>${thriller.toonTitle}/${thriller.nickname}</li>
+					<li><a href="/toon/eachEpList?toonNum=${thriller.toonNum}"><img width=100px height=100px src=${thriller.titleImg}></a></li>
+					<li>${thriller.toonTitle}</li><p>
 				</c:forEach>
 			</ul>
 		</div>
 
 
-		<div class="comedy">
-			<a
-				href="${pageContext.request.contextPath}/toon/toonList/genre=${comedy}">코미디</a>
+		<div class="comedy"> <h1>코메디</h1>
+		<br>
 			<ul>
 				<c:forEach items="${comedy}" var="comedy">
-					<li><a href="/toon/eachEpList?toonNum=${comedy.toonNum}"><img width=100px height=100px src=${comedy.titleImg}>
-					</li>
-					<li>${comedy.toonTitle}/${comedy.nickname}</li>
+					<li><a href="/toon/eachEpList?toonNum=${comedy.toonNum}"><img width=100px height=100px src=${comedy.titleImg}></a></li>
+					<li>${comedy.toonTitle}</li><p>
 				</c:forEach>
 			</ul>
 		</div>

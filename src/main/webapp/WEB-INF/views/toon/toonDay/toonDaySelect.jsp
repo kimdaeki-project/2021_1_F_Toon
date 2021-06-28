@@ -45,7 +45,7 @@
 	 
 
 		<!-- 월요일 ------------------------------------------------------>		
-		<div class="mon"><a href="/toon/toonDay/toonDaySelect"><h2>월요일</h2></a>
+		<div class="mon"><a href="/toon/toonDay/toonDaySelect"><h1>월요일</h1></a>
 		<br>
 			<ul>
 		<c:forEach items="${mt}" var="mt">
@@ -57,7 +57,7 @@
 		</div>
 
 		<!-- 화요일 ------------------------------------------------------>
-		<div class="tue"><h2>화요일</h2>
+		<div class="tue"><h1>화요일</h1>
 		<br>
 			<ul>
 		<c:forEach items="${tt}" var="tt">
@@ -70,7 +70,7 @@
 		
 		
 		<!-- 수요일 ------------------------------------------------------>
-		<div class="wen"><h2>수요일</h2>
+		<div class="wen"><h1>수요일</h1>
 		<br>
 			<ul>
 		<c:forEach items="${wt}" var="wt">
@@ -83,7 +83,7 @@
 		
 		
 		<!-- 목요일 ------------------------------------------------------>
-		<div class="the"><h2>목요일</h2>
+		<div class="the"><h1>목요일</h1>
 		<br>
 			<ul>
 		<c:forEach items="${tt2}" var="tt2">
@@ -96,7 +96,7 @@
 		
 		
 		<!-- 금요일 ------------------------------------------------------>
-		<div class="fri"><h2>금요일</h2>
+		<div class="fri"><h1>금요일</h1>
 		<br>
 			<ul>
 		<c:forEach items="${ft}" var="ft">
@@ -109,7 +109,7 @@
 		
 		
 		<!-- 토요일 ------------------------------------------------------>
-		<div class="sat"><h2>토요일</h2>
+		<div class="sat"><h1>토요일</h1>
 		<br>
 			<ul>
 		<c:forEach items="${st}" var="st">
@@ -122,7 +122,7 @@
 		
 		
 		<!-- 일요일 ------------------------------------------------------>
-		<div class="sun"><h2>일요일</h2>
+		<div class="sun"><h1>일요일</h1>
 		<br>
 			<ul>
 		<c:forEach items="${st2}" var="st2">

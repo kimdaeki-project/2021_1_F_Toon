@@ -12,36 +12,90 @@
     <c:import url="./fragments/bootstrap.jsp"></c:import>
     <title>Wong Toon</title>
    
-    <link rel="stylesheet" href="/css/header.css">
-    
-    <meta charset="UTF-8"> <meta name="viewport" content="width=device-width, initial-scale=1.0"> 
-<meta http-equiv="X-UA-Compatible" content="ie=edge"> <title>부트스트랩Carousel</title>
- <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" 
- integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous"> 
- <style> .carousel-inner > .carousel-item > img{ /* width: 640px; height: 720px; */ } </style>
+<link rel="stylesheet" href="/css/header.css">
+<link rel="stylesheet" href="/css/index.css">
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
 </head>
 <body>
-	<c:import url="./fragments/header.jsp"></c:import>
-  
-  
+<c:import url="./fragments/header.jsp"></c:import>
  
-
-   <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous">
-</script> <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script> 
-<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script> <script> $('.carousel').carousel({ interval: 2000 //기본 5초 }) </script> 
-
-
-<h2 class="w3-center">Manual Slideshow</h2>
-
-<div class="w3-content w3-display-container">
-  <img class="mySlides" src="https://ifh.cc/g/EwbQVh.jpg" style="width:80%">
-  <img class="mySlides" src="https://ifh.cc/g/vJwutX.jpg" style="width:80%">
-  <img class="mySlides" src="https://ifh.cc/g/14MTyP.jpg" style="width:80%">
-  <img class="mySlides" src="https://ifh.cc/g/EwbQVh.jpg" style="width:80%">
-
-  <button class="w3-button w3-black w3-display-left" onclick="plusDivs(-1)">&#10094;</button>
-  <button class="w3-button w3-black w3-display-right" onclick="plusDivs(1)">&#10095;</button>
+ <!-- 슬라이드  -->
+<h1 align="center">이달의 추천 웹툰 </h1>
+<div class="w3-container">
 </div>
+<div class="w3-content" style="max-width:1000px">
+  <a class="r" href="/toon/eachEpList?toonNum=1"><img class="mySlides" src="https://ifh.cc/g/KH86Cq.jpg" style="width:90%;display:none"></a>
+  <a class="r" href="/toon/eachEpList?toonNum=51"><img class="mySlides" src="https://ifh.cc/g/2BSR3W.jpg" style="width:90%"></a>
+  <a class="r" href="/toon/eachEpList?toonNum=62"><img class="mySlides" src="https://ifh.cc/g/SiEi30.jpg" style="width:100%;display:none"></a>
+
+  <div class="w3-row-padding w3-section">
+    <div class="w3-col s4">
+      <img class="demo w3-opacity w3-hover-opacity-off" src="https://ifh.cc/g/KH86Cq.jpg" style="width:100%;cursor:pointer" onclick="currentDiv(1)">
+    </div>
+    <div class="w3-col s4">
+      <img class="demo w3-opacity w3-hover-opacity-off" src="https://ifh.cc/g/2BSR3W.jpg" style="width:100%;cursor:pointer" onclick="currentDiv(2)">
+    </div>
+    <div class="w3-col s4">
+      <img class="demo w3-opacity w3-hover-opacity-off" src="https://ifh.cc/g/SiEi30.jpg" style="width:100%;cursor:pointer" onclick="currentDiv(3)">
+    </div>
+  </div>
+</div>
+<!-- 슬라이드 끝 --> 
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+ 
+<!-- 웹툰 페이지 이동 -->
+
+<table align="center">
+<tr>
+<td><h3>요일별 웹툰</h3><p><a class="d" href="/toon/toonDay/toonDay"> 
+<img width=400px height=400px src="https://ifh.cc/g/K7Pxnu.webp"></a></td>
+<td><h3>장르별 웹툰</h3><p><a class="g" href="/toon/genre/genre">
+<img width=400px height=400px src="https://ifh.cc/g/KLjfiT.jpg"></a></td>
+</tr>
+</table>
+<br>
+<br>
+
+<table align="center">
+<tr>
+<td><h3>랭킹별 웹툰</h3><p><a class="r" href="/toon/ranking/ranking">
+<img width=400px height=400px src="https://ifh.cc/g/K7Pxnu.webp"><p></a></td>
+<td><h3>완결웹툰</h3><p><a class="e" href="/toon/end/endRe">
+<img width=400px height=400px src="https://ifh.cc/g/K7Pxnu.webp"><p></a></td>
+</tr>
+</table>
+<!-- 웹툰 페이지 이동  끝-->
+
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+
+
+<div class="ind"><h2>툰</h2></a>
+		<br>
+			<ul>
+		<c:forEach items="${in}" var="in">
+			<li><a href="/toon/eachEpList?toonNum=${in.toonNum}"> <img width=100px height=100px src=${in.titleImg}></a></li>
+			<li>${in.toonTitle}</li>
+			<p>	
+		</c:forEach>
+		</ul>
+		</div>
+
+
+
+<script src="js/index.js"></script>
 
 <script>
 var slideIndex = 1;
@@ -64,7 +118,6 @@ function showDivs(n) {
 </script>
 
 
-  
 <!-- ================ End footer Area ================= -->
 <c:import url="./fragments/footer.jsp"></c:import>
 <!-- Optional JavaScript -->

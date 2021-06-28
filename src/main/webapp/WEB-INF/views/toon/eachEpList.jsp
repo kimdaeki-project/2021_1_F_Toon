@@ -57,10 +57,8 @@
 	</sec:authorize>	
 	</div>
 	
-	<div>${toonVO.toonTitle}</div>
-	<div>${toonVO.nickname}</div>
-	<div>${memberVO.username}</div>
-	<div>${eachEpVO.epTitle}</div>
+	
+	
 	
 	<!-- 리스트 -->
 
@@ -81,9 +79,10 @@
 	
 		<tbody>
 	
-		
+
 		<c:forEach items="${toonVO.eachEpVO}" var="eachEpVO" begin="0" end="2">
 			<tr>
+			
 				<td class="imgalign" >
 				
 					<a href="#" class="pay" data-toonNum="${toonVO.toonNum}" data-eachEpNum="${eachEpVO.eachEpNum}" >

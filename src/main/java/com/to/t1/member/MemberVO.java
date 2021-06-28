@@ -15,13 +15,19 @@ import org.springframework.security.core.userdetails.UserDetails;
 
 import com.to.t1.member.MemberVO;
 import com.to.t1.mypage.RecentVO;
+import com.to.t1.ticket.TicketBoxVO;
+import com.to.t1.toon.ToonVO;
 
 import lombok.Data;
 
 @Data
 public class MemberVO implements UserDetails {
 	
-
+	private long stock;
+	
+	private ToonVO toonVO;
+	
+	private TicketBoxVO ticketBoxVO;
 	
 	private String toonDay;
 	

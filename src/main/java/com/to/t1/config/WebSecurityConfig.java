@@ -81,6 +81,8 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter{
 			.antMatchers("/toon/end/endReAver").permitAll()
 			.antMatchers("/toon/end/endReRecent").permitAll()
 			
+			.antMatchers("/toon/toonSearch/**").permitAll()
+			
 			.antMatchers("/toon/eachEpList/**").permitAll()
 			
 			.antMatchers("/toon/eachEpSelect/**").permitAll()
