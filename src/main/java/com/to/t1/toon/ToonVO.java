@@ -27,4 +27,7 @@ public class ToonVO {
 	private List<EachEpVO> eachEpVO;
 	
 	
+	private String nickname;
+	
+	
 }
