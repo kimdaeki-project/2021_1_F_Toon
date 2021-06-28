@@ -22,11 +22,13 @@ public class ToonVO {
 	private String titleImg;
 	private long ratingSum;
 	private long ratingPerson;
+	
 	private String search;
 	private String username;
-	private List<EachEpVO> eachEpVO;
 	private String nickname;
+
+	private List<EachEpVO> eachEpVO;
 	
-	
+	private MemberVO memberVO;
 	
 }

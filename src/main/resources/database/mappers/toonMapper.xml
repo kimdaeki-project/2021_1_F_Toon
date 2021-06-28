@@ -142,7 +142,7 @@
 		UPDATE toon t LEFT JOIN
 		review r
 		ON t.toonNum=r.toonNum
-		SET t.ratingSum= t.ratingSum+r.rating,
+		SET t.ratingSum= t.ratingSum+#{rating},
 		t.ratingPerson=t.ratingPerson+1
 		WHERE t.toonNum=#{toonNum}
 	</update>
@@ -151,7 +151,7 @@
 		UPDATE toon t LEFT JOIN
 		review r
 		ON t.toonNum=r.toonNum
-		SET t.ratingSum= t.ratingSum-r.rating,
+		SET t.ratingSum= t.ratingSum-#{rating},
 		t.ratingPerson=t.ratingPerson-1
 		WHERE t.toonNum=#{toonNum}
 	</update>

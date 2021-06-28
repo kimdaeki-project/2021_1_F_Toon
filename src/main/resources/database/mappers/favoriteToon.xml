@@ -1,0 +1,18 @@
+
+<!DOCTYPE mapper
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.to.t1.favoriteToon.FavoriteToonMapper">
+
+	<insert id="setFavorite" parameterType="FavoritetoonVO">
+		INSERT INTO favoritetoon (toonNum, username, likeClick, likeDate)
+		VALUES(#{toonNum}, #{username}, 1, NOW())
+	</insert>
+	
+	<delete id="delFavorite" parameterType="FavoritetoonVO">
+		DELETE FROM favoritetoon 
+		WHERE toonNum=#{toonNum} AND username=#{username}
+	</delete>
+
+</mapper>

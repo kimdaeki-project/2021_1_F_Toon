@@ -52,7 +52,9 @@
 		<br>
 			<ul>
 		<c:forEach items="${mt}" var="mt">
-			<li><a href="/toon/eachEpList?toonNum=${mt.toonNum}"> <img width=100px height=100px src=${mt.titleImg}></a></li>
+			
+			<li><a href="/toon/eachEpList?toonNum=${mt.toonNum}"> <img width=100px height=100px src="${mt.titleImg}"></a></li>
+			
 			<li>${mt.toonTitle}</li>
 			<p>	
 		</c:forEach>
@@ -64,13 +66,11 @@
 		<br>
 			<ul>
 		<c:forEach items="${tt}" var="tt">
-			<li><a href="/toon/eachEpList?toonNum=${tt.toonNum}"> <img width=100px height=100px src=${tt.titleImg}></a></li>
-			<li>${tt.toonTitle} </li>
-						<p>	
+			<li><a href="/toon/eachEpList?toonNum=${tt.toonNum}"> <img width=100px height=100px src="${tt.titleImg}"></a></li>
+			<li>${tt.toonTitle} </li>	
 		</c:forEach>
 		</ul>
 		</div>	
-		
 		
 		<!-- 수요일 ------------------------------------------------------>
 		<div class="wen"><h2>수요일</h2>
