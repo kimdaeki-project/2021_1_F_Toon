@@ -1,8 +1,11 @@
 package com.to.t1.toon.eachep;
 
+import java.util.List;
+
 import org.apache.ibatis.annotations.Mapper;
 
 import com.to.t1.review.ReviewVO;
+import com.to.t1.ticket.UseTicketVO;
 import com.to.t1.toon.ToonVO;
 import com.to.t1.util.Pager;
 
@@ -17,5 +20,8 @@ public interface EachEpMapper {
 	
 	public long updateScore(ReviewVO reviewVO)throws Exception;
 	public long deleteScore(ReviewVO reviewVO)throws Exception;
-
+	
+	//소장권 사용 유무 포함된 리스트 불러오기
+	public List<EachEpVO> getEplistwithUT(UseTicketVO useTicketVO)throws Exception;
+	
 }

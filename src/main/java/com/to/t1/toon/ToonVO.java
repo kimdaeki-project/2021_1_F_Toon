@@ -4,6 +4,7 @@ package com.to.t1.toon;
 import java.util.List;
 
 import com.to.t1.member.MemberVO;
+import com.to.t1.ticket.UseTicketVO;
 import com.to.t1.toon.eachep.EachEpVO;
 
 import lombok.Data;
@@ -24,6 +25,7 @@ public class ToonVO {
 	private long ratingPerson;
 	private String search;
 	private String username;
+	
 	private List<EachEpVO> eachEpVO;
 	private String nickname;
 	

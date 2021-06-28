@@ -36,7 +36,7 @@ public class EachEpController {
 	private ReviewService reviewService;
 	@Autowired
 	private MemberService memberService;
-
+	
 
 	//결제
 
@@ -50,15 +50,24 @@ public class EachEpController {
 			memberVO = memberService.myPage((MemberVO) auth2.getPrincipal());
 	    	useTicketVO.setUsername(memberVO.getUsername());
 	    	
-	    	List<PointVO> utl = pointService.getToonTicktList(memberVO, pager);
-	    	model.addAttribute("useTicketVO", utl); 
-	    }
-		ToonVO list=eachEpService.getList(pager);	
-		model.addAttribute("memberVO", memberVO); 
-		model.addAttribute("toonVO", list);
-		model.addAttribute("pager", pager);
-		System.out.println("username"+memberVO.getUsername());    
+	    	//List<PointVO> utl = pointService.getToonTicktList(memberVO, pager);
+	    	System.out.println(useTicketVO.getUsername());
+	    	System.out.println(useTicketVO.getToonNum());
+	    	
+	    	System.out.println(pointService.getEplistwithUT(useTicketVO));
+	    	
+	    	//model.addAttribute("useTicketVO", utl); 
+	    	
+		}else {
+//			ToonVO list=eachEpService.getList(pager);
+//			model.addAttribute("memberVO", memberVO); 
+//			model.addAttribute("toonVO", list);
+//			model.addAttribute("pager", pager);
+//			System.out.println("username"+memberVO.getUsername());  
 		}
+		
+		
+	}
 
 
 	
@@ -112,9 +121,11 @@ public class EachEpController {
 	public void getSelect2(EachEpVO eachEpVO,Pager pager, Model model,ModelAndView modelAndView,MemberVO memberVO,Authentication auth2)throws Exception{
 		ToonVO list= eachEpService.getSelect(eachEpVO);
 		ModelAndView mv = new ModelAndView();
+		
 		if(auth2 != null) {
 	    	  memberVO = memberService.myPage((MemberVO) auth2.getPrincipal());
 	    	  mv.addObject("memberVO",memberVO);
+	    	  
 	      }
 		
 		model.addAttribute("toonVO", list);

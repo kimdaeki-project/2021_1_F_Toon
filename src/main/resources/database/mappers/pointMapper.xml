@@ -77,7 +77,7 @@
 
 	<resultMap type="PointVO" id="pointResult">
 		
-		<result property="username" column="username" />
+		<result property="username" column="username"/>
 		<result property="point" column="point"/>
 		<result property="cDate" column="cDate"/>
 		<result property="contents" column="contents"/>
@@ -141,8 +141,5 @@
 	<select id="getTotalTicketCount" parameterType="UseTicketVO" resultType="Long">
 		SELECT COUNT(*) FROM useticket  WHERE (username=#{username} AND toonNum = #{toonNum} )AND sort = 1
 	</select>
-	
-	<!--  Eachep와 useTicket Select가져오기 -->
-	<!--  -->
 	
    </mapper>
