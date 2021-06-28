@@ -38,15 +38,9 @@ function inputPhoneNumber(obj) {
     obj.value = phone;
 }
 
-function  handlerNum(){
-	 $( 'input' ).on("blur keyup", function() {
+	 $( "#phone").on("blur keyup", function() {
 		$(phone).val( $(this).val().replace( /[ㄱ-ㅎ|ㅏ-ㅣ|가-힣]/g, '' ) );
 	});
-	
-}
-//	 $( 'input' ).on("blur keyup", function() {
-//		$(phone).val( $(this).val().replace( /[ㄱ-ㅎ|ㅏ-ㅣ|가-힣]/g, '' ) );
-//	});
 
 
 function  handlerNum(){
@@ -104,6 +98,31 @@ pw2.addEventListener("blur", function(){
 pw.addEventListener("change", function(){
 	pw2.value="";
 });
+
+$("#name").keyup(function(event){
+
+if (!(event.keyCode >=37 && event.keyCode<=40)) {
+
+var inputVal = $(this).val();
+
+$(this).val(inputVal.replace(/[a-z0-9]/gi,''));
+
+}
+
+});
+
+$("#email").keyup(function(event){
+
+if (!(event.keyCode >=37 && event.keyCode<=40)) {
+
+var inputVal = $(this).val();
+
+$(this).val(inputVal.replace(/[^a-z0-9@]/gi,''));
+
+}
+
+});
+
 
 // **** PW CHECK *********************************
 
@@ -184,9 +203,21 @@ function id11(){
 	  dataType :'text',
       
       success : function(message) {
-        
+        	
          swal(message);
-           
+         
+         if(message=="아이디가 사용가능합니다."){
+			
+			let idResult = document.getElementById("idResult");
+			idResult.innerHTML="멋진 아이디 군요!";
+			} 
+		 if(message=="아이디가 중복됩니다."){
+			let idResult = document.getElementById("idResult");
+			idResult.innerHTML="다른 멋진아이디를 입력하세요!";
+			c = "r1";
+			idResult.setAttribute("class", c);
+		}
+		 	
        }
 
    })

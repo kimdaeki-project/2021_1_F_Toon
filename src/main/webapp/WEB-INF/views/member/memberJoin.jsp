@@ -63,7 +63,7 @@
                     
                     <div class="login-input-wrap input-password">
                         <i class="fas fa-user-circle"></i>
-                        <form:input placeholder="name" id="name" path="name"/>
+                        <form:input placeholder="name" id="name" maxlength="5" path="name"/>
                         <br>
                         <form:errors path="name" class="c1"></form:errors>
                     </div>	

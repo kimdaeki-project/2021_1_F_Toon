@@ -132,11 +132,12 @@
       <!-- partial -->
       <div class="page-content-wrapper">
       <center><h2><회원 정보 수정></h2></center>
+      
 	<form action="memberUpdate" method="post">
 		
 		 <div class="form-group">
      	 <label for="disabledTextInput">아이디</label>
-    	  <input type="text" id="disabledTextInput" readonly="readonly" class="form-control" placeholder=<sec:authentication property="principal.username"/>>
+    	  <input type="text" id="disabledTextInput" name="username" readonly="readonly" class="form-control" value= "${memberVO.username}"/>
    		 </div>
 		
 		 <div class="form-group">
@@ -161,6 +162,7 @@
 
 		<center><button class="btn btn-info">Update</button></center>
 	</form>
+	
         <div class="page-content-wrapper-inner">
           <div class="content-viewport">
             <div class="row">
