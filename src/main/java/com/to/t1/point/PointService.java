@@ -108,8 +108,18 @@ public class PointService {
 	}
 	
 	//포인트 사용내역 조회
-	public List<PointVO> getMyUsePointList(MemberVO memberVO)throws Exception {
-		return pointMapper.getMyUsePointList(memberVO);
+	public List<PointVO> getMyUsePointList(MemberVO memberVO, Pager pager)throws Exception {
+		HashMap<String, Object> obj = new HashMap<String, Object>();
+		
+		obj.put("memberVO", memberVO);
+		obj.put("pager", pager);
+		
+		pager.makeRow(); 
+		Long totalCount = pointMapper.getTotalCount2(obj);
+		System.out.println("totalcount : "+totalCount);
+		pager.makeNum(totalCount); 
+		
+		return pointMapper.getMyUsePointList(obj);
 	}
 	
 	//소장권 사용내역 조회 : toon 상관 없이 조회(리스트)

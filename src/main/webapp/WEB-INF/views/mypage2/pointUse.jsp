@@ -9,7 +9,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
   
     <c:import url="../fragments/bootstrap.jsp"></c:import>
-    <title>Recent Toon</title>
+    <title>포인트 사용내역</title>
    
      <link rel="stylesheet" href="/css/header.css">
      <!-- plugins:css -->
@@ -112,8 +112,9 @@
 			<thead class="A simple light list group item">
 				<tr>
 					<th scope="col">금액</th>
-					<th scope="col">충전 내역</th>					
+					<th scope="col">사용 내역</th>					
 					<th scope="col">구매 날짜</th>
+					<th scope="col">구매자</th>
 				
 				</tr>
 			</thead>
@@ -122,8 +123,10 @@
 			<c:forEach items="${list}" var="list" >
 				<tr>
 					<td class="text_ct">${list.point}</td>
-					<td class="text_ct">${list.cDate}</td>
 					<td class="text_ct">${list.contents}</td>
+					<td class="text_ct">${list.CDate}</td>
+					<td class="text_ct">${list.username}</td>
+					
 					
 				</tr>
 			</c:forEach>
@@ -131,7 +134,7 @@
 			</tbody>
 
 		</table>
-		<input type="button" value="선택 삭제" class="btn btn-danger" onclick="deleteValue();">
+		
 	</div>
 <%-- 			<a href="./recentToon?epNum=${list.eachEpVO.epNum}" id="delete" class="btn btn-danger">삭제</a> --%>
 <%-- 			<input type="hidden" name="epNum" value="${list.eachEpVO.epNum}"> --%>
@@ -143,7 +146,7 @@
 				</c:if>
 
 				<c:forEach begin="${pager.startNum}" end="${pager.lastNum}" var="i">
-					<li class="page-item"><a class="page-link p" href="/mypage/recentToon/?username=${memberVO.username}&curPage=${i}" title="${i}">${i}</a></li>
+					<li class="page-item"><a class="page-link p" href="/mypage/pointUse/?username=${memberVO.username}&curPage=${i}" title="${i}">${i}</a></li>
 				</c:forEach>
 
 				<c:if test="${pager.next}">

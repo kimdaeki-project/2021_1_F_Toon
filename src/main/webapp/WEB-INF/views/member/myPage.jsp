@@ -103,7 +103,7 @@
            
               </li>
               <li>
-                <a href="/mypage2/pointUse">포인트 사용 내역 조회</a>
+                <a href=" ${pageContext.request.contextPath}../mypage2/pointUse/?username=${memberVO.username}">포인트 사용 내역 조회</a>
               </li>
             </ul>
           </li>

@@ -31,9 +31,23 @@
 		FROM user03.point 
 		WHERE point.username = #{memberVO.username} 
 		AND point.point <![CDATA[>]]> 0 
-
 	</select>
 	
+	<!-- 성현 수정 포인트 사용 내역 조회 -->
+	<select id="getMyUsePointList" parameterType="java.util.Map" resultMap="pointResult">
+		SELECT p.username ,ABS(p.point) AS `point`, p. cDate , p.`contents` 
+		FROM USER03.`point` AS p 
+		WHERE username = #{memberVO.username} 
+		AND point <![CDATA[<]]>  0 ORDER BY cDate DESC 
+	</select>
+
+	<select id="getTotalCount2" parameterType="java.util.Map" resultType="java.lang.Long">
+		SELECT count(*)
+		FROM USER03.`point` AS p 
+		WHERE username = #{memberVO.username} 
+		AND point <![CDATA[<]]>  0 ORDER BY cDate DESC 
+	</select>
+
 	<resultMap type="PointVO" id="pointResult">
 		
 		<result property="username" column="username" />
@@ -74,12 +88,7 @@
 	<insert id="insertTicketStock" parameterType="TicketBoxVO">
 		INSERT INTO user03.ticketbox (username, toonNum, stock,sort) VALUES (#{username}, #{toonNum}, #{stock},#{sort})
 	</insert>
-	<select id="getMyUsePointList" parameterType="MemberVO">
-		SELECT p.username ,ABS(p.point) AS `point`, p. cDate , p.`contents` 
-		FROM USER03.`point` AS p 
-		WHERE username = 'member02' 
-		AND point <![CDATA[<]]>  0 ORDER BY cDate DESC 
-	</select>
+	
 
 	
 <!-- 소장권 사용하기 -->

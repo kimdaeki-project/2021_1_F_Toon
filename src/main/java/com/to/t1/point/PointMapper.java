@@ -23,7 +23,10 @@ public interface PointMapper {
 	public List<PointVO> getMyChargePointList (Map map)throws Exception;
 	public long getTotalCount1(Map map) throws Exception;
 	
-	public List<PointVO> getMyUsePointList (MemberVO memberVO)throws Exception;
+	//포인트 사용내역 조회
+	public List<PointVO> getMyUsePointList (Map map)throws Exception;
+	public long getTotalCount2(Map map) throws Exception;
+	
 	public long checkTicketBox(TicketBoxVO ticketBoxVO)throws Exception;
 	public TicketBoxVO checkTicketStock(TicketBoxVO ticketBoxVO)throws Exception;
 	
