@@ -313,7 +313,7 @@ public class MemberController {
 		memberVO = memberService.myPage((MemberVO) auth2.getPrincipal());
 		model.addAttribute("memberVO", memberVO);
 		
-		System.out.println("Z");
+		System.out.println("업데이트 페이지");
 
 		return  "member/memberUpdate";
 	}
@@ -321,7 +321,9 @@ public class MemberController {
 	@PostMapping("memberUpdate")
 	public String memberUpdate(MemberVO memberVO, Authentication auth2, HttpSession session, Model model)throws Exception{
 		System.out.println(memberVO);
+		
 		int result = memberService.memberUpdate(memberVO);
+		
 		memberVO = memberService.myPage(memberVO);
 		
 		String message = "정보 수정 실패하였습니다";
@@ -332,6 +334,7 @@ public class MemberController {
 			model.addAttribute("memberVO", memberVO);
 			message ="정보 수정 성공하였습니다.";
 		}
+		System.out.println(result);
 		
 		model.addAttribute("msg", message);
 		model.addAttribute("path", "./myPage");
