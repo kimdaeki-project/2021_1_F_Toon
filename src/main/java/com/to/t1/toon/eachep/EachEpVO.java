@@ -26,6 +26,5 @@ public class EachEpVO {
 	private List<ReviewVO> reviewVO;
 	private List<RecentVO> recentVO;
 
-
 	private UseTicketVO useTicketVO;
 }
