@@ -22,6 +22,7 @@
     <link rel="stylesheet" href="/css/mypage/style.css">
     <!-- Layout style -->
     <link rel="shortcut icon" href="../asssets/images/favicon.ico" />
+    <link rel="stylesheet" href="/css/join.css">
 </head>
 <body>
 	<c:import url="../fragments/header.jsp"></c:import>	
@@ -134,7 +135,7 @@
       <center><h2><회원 정보 수정></h2></center>
       
 	<form action="memberUpdate" method="post">
-		
+
 		 <div class="form-group">
      	 <label for="disabledTextInput">아이디</label>
     	  <input type="text" id="disabledTextInput" name="username" readonly="readonly" class="form-control" value= "${memberVO.username}"/>
@@ -142,22 +143,25 @@
 		
 		 <div class="form-group">
       		<label for="Input">이름</label>
-      		<input type="text" id="disabledTextInput" name="name" class="form-control" value= "${memberVO.name}">
+      		<input type="text" id="name"  name="name" maxlength="5" class="form-control" value= "${memberVO.name}">
+      		 <div class="form-group" id= nameResult></div>
  		  </div>
  		  
  		  <div class="form-group">
       		<label for="Input">닉네임</label>
-      		<input type="text" id="disabledTextInput" name="nickname" class="form-control" value="${memberVO.nickname}">
+      		<input type="text" id="nickname" name="nickname" class="form-control" value="${memberVO.nickname}">
  		  </div>
  		  
  		  <div class="form-group">
       		<label for="Input">핸드폰</label>
-      		<input type="text" id="disabledTextInput" name="phone" class="form-control" value="${memberVO.phone}">
+      		<input type="text" id="phone" name="phone" class="form-control" value="${memberVO.phone}" type="tell" onKeyup="inputPhoneNumber(this);" onkeypress='handlerNum();' maxlength="13" >
+      		<div class="form-group" id= phoneResult></div>
  		  </div>
  		  
  		  <div class="form-group">
       		<label for="Input">E-mail</label>
-      		<input type="text" id="disabledTextInput" name="email" class="form-control" value="${memberVO.email}">
+      		<input type="text" id="email" name="email" class="form-control" value="${memberVO.email}">
+      		<div class="form-group" id= emailResult></div>
  		  </div><br>
 
 		<center><button class="btn btn-info">Update</button></center>
@@ -179,6 +183,130 @@
     <script src="../assets/js/charts/chartjs.addon.js"></script>
     <script src="../assets/js/template.js"></script>
     <script src="../assets/js/dashboard.js"></script>
+    
+    <script type="text/javascript">
+    let name = document.getElementById("name");
+    let phone = document.getElementById("phone");
+    let email = document.getElementById("email");
+    
+    let phoneCheckResult = false;
+    
+    name.addEventListener("blur", function(){
+		
+    	let message  = "이름은 한글로만 수정 가능합니다.";
+    	let c = "r3";
+    		
+    	nameResult.innerHTML=message;
+    	nameResult.setAttribute("class", c);
+    	
+    });
+    
+    $("#name").keyup(function(event){
+
+    	if (!(event.keyCode >=37 && event.keyCode<=40)) {
+
+    		var inputVal = $(this).val();
+
+    		$(this).val(inputVal.replace(/[a-z0-9]/gi,''));
+
+    	}
+
+    });
+    
+    function inputPhoneNumber(obj) {
+    	
+        var number = obj.value.replace(/[^0-9]/g, "");
+        var phone = "";
+        
+        if(number.length < 4) {
+            return number;
+        } else if(number.length < 7) {
+            phone += number.substr(0, 3);
+            phone += "-";
+            phone += number.substr(3);
+        } else if(number.length < 11) {
+            phone += number.substr(0, 3);
+            phone += "-";
+            phone += number.substr(3, 3);
+            phone += "-";
+            phone += number.substr(6);
+        } else {
+            phone += number.substr(0, 3);
+            phone += "-";
+            phone += number.substr(3, 4);
+            phone += "-";
+            phone += number.substr(7);
+            
+        }
+
+        obj.value = phone;
+    }
+    
+    $( "#phone").on("blur keyup", function() {
+		$(phone).val( $(this).val().replace( /[ㄱ-ㅎ|ㅏ-ㅣ|가-힣]/g, '' ) );
+	});
+
+
+function  handlerNum(){
+ E = window.event;
+ if(E.keyCode >47 && E.keyCode <58){   
+  if(E.keyCode == 48){
+   if(document.eduReg.ATTENDANT.value == "" ) E.returnValue=false;
+   else return;
+   }else return;
+ }else{
+  E.returnValue=false;
+ }
+}
+
+phone.addEventListener("blur", function(){
+	let message  = "폰 번호는 숫자만 입력가능합니다.";
+	let c = "r3";
+	
+	let phone = $("#phone").val();
+	let phoneTrim = $.trim(phone);
+	
+	if(phoneTrim.length==13){
+		message = "올바르게 수정되었습니다.";
+		c = "r2";
+		phoneCheckResult=true;
+	} else {
+		message = "010-0000-0000 형식으로 수정하세요";
+		c = "r1";
+		phoneCheckResult = false;
+	}
+	
+	let phoneResult = document.getElementById("phoneResult");
+	phoneResult.innerHTML=message;
+	phoneResult.setAttribute("class", c);
+	
+});
+
+
+$("#email").keyup(function(event){
+
+	if (!(event.keyCode >=37 && event.keyCode<=40)) {
+
+	var inputVal = $(this).val();
+
+	$(this).val(inputVal.replace(/[^a-z0-9@.]/gi,''));
+
+	}
+
+	});
+    
+    
+email.addEventListener("blur", function(){
+	
+	let message  = "E-mail은 @/. 가 포함된 형식으로 수정하세요";
+	let c = "r3";
+		
+	emailResult.innerHTML=message;
+	emailResult.setAttribute("class", c);
+	
+});    
+    
+    </script>
 
 
 </body>
