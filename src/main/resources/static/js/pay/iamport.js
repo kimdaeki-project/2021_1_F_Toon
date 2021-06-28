@@ -66,20 +66,20 @@ $("#start-charge").click(function () {
 	        msg += '결제 금액 : ' + rsp.paid_amount;
 	        msg += '카드 승인번호 : ' + rsp.apply_num;
 	        
-	        var contents = '포인트 충전 :' + rsp.paid_amount + 'P'
+	        var contents = '포인트 충전 :' + rsp.paid_amount + 'P';
+	        var send = { username: orderName, point: rsp.paid_amount, contents : contents }
 	       
 	        $.ajax({
 	        	type : 'POST',
-	        	data : { username: orderName, point: rsp.paid_amount, contents : contents },
-	        	ContentType : 'application/json; charset=UTF-8',/*전송할 데이터ㅓ 타입 명시*/
-	        	timeout: 10000,  
-	        	dataType : 'text',
-	        	url : '/point/success',/* POST 요청하기*/
-	        	
-	        	success : function(rsp) {
+	        	data : JSON.stringify(send),
+	        	contentType: 'application/json',
+	      		dataType : 'json',
+	      		
+	        	url : 'point/getPoint',/* POST 요청하기*/
+	        	success : function(res) {
 			        alert("포인트 적립 완료");
 			        alert(params);
-					location.href= rsp;
+					location.href= res;
 				}, 
 				error: function(request, status, error) {
 					alert("전송실패");

@@ -37,7 +37,7 @@ public class PointController {
 		
 	}
 	//포인트 충전
-	@PostMapping("success")
+	@PostMapping("getPoint")
 	@ResponseBody
 	public String setPoint(@RequestBody Map<String, String> param,Model model,HttpSession httpSession) throws Exception{
 		
