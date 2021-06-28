@@ -142,6 +142,7 @@ public class PointService {
 	
 	//UseTicket을 위한 조회 : toonNum과 username으로 조회
 	public List<PointVO> getToonTicktList(MemberVO memberVO, Pager pager)throws Exception{
+		
 		HashMap<String, Object> obj = new HashMap<String, Object>();
 		
 		obj.put("memberVO", memberVO);

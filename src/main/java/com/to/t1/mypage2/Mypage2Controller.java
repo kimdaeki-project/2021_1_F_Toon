@@ -64,8 +64,9 @@ public class Mypage2Controller {
 	
 	@GetMapping("ticketCharge") 
 	public String ticketCharge(Model model, MemberVO memberVO, Pager pager)throws Exception{
+		
 		List<PointVO> ar = pointService.getToonTicktList(memberVO, pager);
-				
+		
 		memberVO = memberService.myPage(memberVO);
 		
 		model.addAttribute("list", ar);
@@ -73,7 +74,7 @@ public class Mypage2Controller {
 		model.addAttribute("memberVO", memberVO);
 		
 		System.out.println("소장권 구매 내역 조회");
-
+		
 		return  "mypage2/ticketCharge";
 	}
 	

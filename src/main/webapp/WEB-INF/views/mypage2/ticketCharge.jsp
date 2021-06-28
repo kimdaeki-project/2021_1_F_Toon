@@ -153,7 +153,8 @@
 			<c:forEach items="${list}" var="list" >
 				<tr>
 					<td class="text_ct">${list.contents}</td>
-					<td class="text_ct">${list.useTicketVO.utDate}</td>
+					
+					<td class="text_ct">${list.CDate}</td>
 					<td class="text_ct">${list.username}</td>
 					
 				</tr>
