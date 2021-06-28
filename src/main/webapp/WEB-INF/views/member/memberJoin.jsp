@@ -64,8 +64,9 @@
                     <div class="login-input-wrap input-password">
                         <i class="fas fa-user-circle"></i>
                         <form:input placeholder="name" id="name" maxlength="5" path="name"/>
+                         <div class="form-group" id= nameResult></div>
                         <br>
-                        <form:errors path="name" class="c1"></form:errors>
+                        <form:errors path="name" class="c"></form:errors>
                     </div>	
                     
                 </div>
@@ -83,7 +84,7 @@
             
                     <div class="login-input-wrap input-id">
                         <i class="far fa-id-badge"></i>
-                        <form:input placeholder="NickName" type="text" id="nickname" path="nickname"/>
+                        <form:input placeholder="NickName" type="text" id="nickname" path="nickname" maxlength="13"/>
                         <br>
                         <form:errors path="nickname" class="c1"></form:errors>
                     </div>
@@ -94,13 +95,14 @@
                         <br>
                         <form:errors path="phone" class="c1"></form:errors>
                         <div class="form-group" id= phoneResult></div>
-                        
+
                     </div>
                         
                     <div class="login-input-wrap input-password">
                         <i class="fas fa-indent"></i>
                         <form:input placeholder="E-mail" id="email" path="email"/> <button id = "CheckMail" type="button" class="sendMail" onclick="sendMail()"style="border: 1px solid black;float: right;width: 50px;">전송</button>
                         <form:errors path="email" class="c1"></form:errors>
+                        <div class="form-group" id= emailResult></div>
                     </div>
                     
                     <div class="login-input-wrap input-password">
