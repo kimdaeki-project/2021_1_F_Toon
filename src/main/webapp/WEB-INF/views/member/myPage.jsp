@@ -115,10 +115,10 @@
             </a>
              <ul class="collapse navigation-submenu" id="payment_manage">
               <li>
-                <a href="/mypage2/ticketCharge">소장권 구매 내역 조회</a>
+                <a href="${pageContext.request.contextPath}../mypage2/ticketCharge/?username=${memberVO.username}">소장권 구매 내역 조회</a>
               </li>
               <li>
-                <a href="/mypage2/ticketUse">소장권 사용 내역 조회</a>
+                <a href="${pageContext.request.contextPath}../mypage2/ticketUse/?username=${memberVO.username}">소장권 사용 내역 조회</a>
               </li>
             </ul>
           </li>

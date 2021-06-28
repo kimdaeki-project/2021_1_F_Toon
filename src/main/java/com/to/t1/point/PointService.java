@@ -123,19 +123,33 @@ public class PointService {
 	}
 	
 	//소장권 사용내역 조회 : toon 상관 없이 조회(리스트)
-	public List<UseTicketVO> getUseTicketList(MemberVO memberVO)throws Exception {
-		return pointMapper.getUseTicktList(memberVO);
+	public List<PointVO> getUseTicketList(MemberVO memberVO, Pager pager)throws Exception {
+		HashMap<String, Object> obj = new HashMap<String, Object>();
+		
+		obj.put("memberVO", memberVO);
+		obj.put("pager", pager);
+		
+		pager.makeRow();
+		Long totalCount = pointMapper.getTotalCount4(obj);
+		pager.makeNum(totalCount);
+		
+		return pointMapper.getUseTicktList(obj);
 	}
 	
 	//UseTicket을 위한 조회 : toonNum과 username으로 조회
-	public List<UseTicketVO> getToonTicktList(UseTicketVO useTicketVO, Pager pager)throws Exception{
+	public List<PointVO> getToonTicktList(MemberVO memberVO, Pager pager)throws Exception{
+		HashMap<String, Object> obj = new HashMap<String, Object>();
+		
+		obj.put("memberVO", memberVO);
+		obj.put("pager", pager);
 		
 		pager.makeRow();
-		Long totalCount = pointMapper.getTotalTicketCount(useTicketVO);
+		Long totalCount = pointMapper.getTotalCount3(obj);
 		pager.makeNum(totalCount);
 		
-		return pointMapper.getToonTicktList(useTicketVO);
+		return pointMapper.getToonTicktList(obj);
 	}
 	
-	
+	//소장권 구매내역는 pointvo으로 리턴
+	//소장권 사용내역은 useticket으로 리턴
 }

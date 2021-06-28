@@ -16,6 +16,7 @@ import org.springframework.web.servlet.ModelAndView;
 import com.to.t1.member.MemberService;
 import com.to.t1.member.MemberVO;
 import com.to.t1.point.PointService;
+import com.to.t1.point.PointVO;
 import com.to.t1.review.ReviewService;
 import com.to.t1.review.ReviewVO;
 import com.to.t1.ticket.TicketBoxVO;
@@ -48,7 +49,8 @@ public class EachEpController {
 		if(auth2 != null) {
 			memberVO = memberService.myPage((MemberVO) auth2.getPrincipal());
 	    	useTicketVO.setUsername(memberVO.getUsername());
-	    	List<UseTicketVO> utl = pointService.getToonTicktList(useTicketVO, pager);
+	    	
+	    	List<PointVO> utl = pointService.getToonTicktList(memberVO, pager);
 	    	model.addAttribute("useTicketVO", utl); 
 	    }
 		ToonVO list=eachEpService.getList(pager);	
@@ -69,7 +71,7 @@ public class EachEpController {
 			memberVO = memberService.myPage((MemberVO) auth2.getPrincipal());
 	    	useTicketVO.setUsername(memberVO.getUsername());
 	    	System.out.println(useTicketVO);
-	    	List<UseTicketVO> utl = pointService.getToonTicktList(useTicketVO, pager);
+	    	List<PointVO> utl = pointService.getToonTicktList(memberVO, pager);
 	    	model.addAttribute("useTicketVO", utl); 
 	    }
 		

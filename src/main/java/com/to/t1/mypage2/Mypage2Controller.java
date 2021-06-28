@@ -16,6 +16,7 @@ import com.to.t1.member.MemberVO;
 import com.to.t1.mypage.RecentVO;
 import com.to.t1.point.PointService;
 import com.to.t1.point.PointVO;
+import com.to.t1.ticket.UseTicketVO;
 import com.to.t1.util.Pager;
 
 @Controller
@@ -65,7 +66,6 @@ public class Mypage2Controller {
 	public String ticketCharge(Model model, MemberVO memberVO, Pager pager)throws Exception{
 		List<PointVO> ar = pointService.getToonTicktList(memberVO, pager);
 				
-				
 		memberVO = memberService.myPage(memberVO);
 		
 		model.addAttribute("list", ar);
@@ -78,13 +78,15 @@ public class Mypage2Controller {
 	}
 	
 	@GetMapping("ticketUse") 
-	public String ticketUse(MemberVO memberVO, Authentication auth2, Model model)throws Exception{
-//		List<PointVO> ar = pointService.getUseTicketList(memberVO);
-//		memberVO = memberService.myPage((MemberVO) auth2.getPrincipal());
-//		
-//		model.addAttribute("memberVO", memberVO);
-//		model.addAttribute("list", ar);
-//		
+	public String ticketUse(Model model, MemberVO memberVO, Pager pager)throws Exception{
+		List<PointVO> ar = pointService.getUseTicketList(memberVO, pager);
+		
+		memberVO = memberService.myPage(memberVO);
+
+		model.addAttribute("list", ar);
+		model.addAttribute("pager", pager);
+		model.addAttribute("memberVO", memberVO);
+		
 		System.out.println("소장권 사용 내역 조회");
 //
 		return  "mypage2/ticketUse";

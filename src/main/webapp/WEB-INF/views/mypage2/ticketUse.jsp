@@ -82,6 +82,37 @@
             </ul>
           </li>
           
+           <li>
+            <a href="#sales_inquiry" data-toggle="collapse" aria-expanded="false">
+             <h4> <span class="link-title">포인트 관리</span></h4> 
+              <i class="mdi mdi-clipboard-outline link-icon"></i>
+            </a>
+             <ul class="collapse navigation-submenu" id="sales_inquiry">
+              <li>
+                <a href="/mypage2/pointCharge/?username=${memberVO.username}">포인트 충전 내역 조회</a>
+           
+              </li>
+              <li>
+                <a href="/mypage2/pointUse/?username=${memberVO.username}">포인트 사용 내역 조회</a>
+              </li>
+            </ul>
+          </li>
+          
+          <li>
+            <a href="#payment_manage" data-toggle="collapse" aria-expanded="false">
+             <h4>  <span class="link-title">소장권 관리</span></h4>
+              <i class="mdi mdi-clipboard-outline link-icon"></i>
+            </a>
+             <ul class="collapse navigation-submenu" id="payment_manage">
+              <li>
+                <a href="/mypage2/ticketCharge/?username=${memberVO.username}">소장권 구매 내역 조회</a>
+              </li>
+              <li>
+                <a href="/mypage2/ticketUse/?username=${memberVO.username}">소장권 사용 내역 조회</a>
+              </li>
+            </ul>
+          </li>
+          
             <li>
             	<a href="/mypage/review/?username=${memberVO.username}">
              	<h4> <span class="link-title">내 댓글</span></h4>
@@ -111,9 +142,8 @@
 			<table class="table">
 			<thead class="A simple light list group item">
 				<tr>
-					<th scope="col">금액</th>
-					<th scope="col">충전 내역</th>					
 					<th scope="col">구매 날짜</th>
+					<th scope="col">구매자</th>
 				
 				</tr>
 			</thead>
@@ -121,9 +151,8 @@
 			<tbody>
 			<c:forEach items="${list}" var="list" >
 				<tr>
-					<td class="text_ct">${list.point}</td>
-					<td class="text_ct">${list.cDate}</td>
-					<td class="text_ct">${list.contents}</td>
+					<td class="text_ct">${list.useTicketVO.utDate}</td>
+					<td class="text_ct">${list.username}</td>
 					
 				</tr>
 			</c:forEach>
@@ -131,7 +160,7 @@
 			</tbody>
 
 		</table>
-		<input type="button" value="선택 삭제" class="btn btn-danger" onclick="deleteValue();">
+		
 	</div>
 <%-- 			<a href="./recentToon?epNum=${list.eachEpVO.epNum}" id="delete" class="btn btn-danger">삭제</a> --%>
 <%-- 			<input type="hidden" name="epNum" value="${list.eachEpVO.epNum}"> --%>
@@ -143,7 +172,7 @@
 				</c:if>
 
 				<c:forEach begin="${pager.startNum}" end="${pager.lastNum}" var="i">
-					<li class="page-item"><a class="page-link p" href="/mypage/recentToon/?username=${memberVO.username}&curPage=${i}" title="${i}">${i}</a></li>
+					<li class="page-item"><a class="page-link p" href="/mypage2/ticketUse/?username=${memberVO.username}&curPage=${i}" title="${i}">${i}</a></li>
 				</c:forEach>
 
 				<c:if test="${pager.next}">

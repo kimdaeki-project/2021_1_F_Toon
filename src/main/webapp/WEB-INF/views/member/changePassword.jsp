@@ -80,6 +80,37 @@
             </ul>
           </li>
           
+          <li>
+            <a href="#sales_inquiry" data-toggle="collapse" aria-expanded="false">
+             <h4> <span class="link-title">포인트 관리</span></h4> 
+              <i class="mdi mdi-clipboard-outline link-icon"></i>
+            </a>
+             <ul class="collapse navigation-submenu" id="sales_inquiry">
+              <li>
+                <a href=" ${pageContext.request.contextPath}../mypage2/pointCharge/?username=${memberVO.username}">포인트 충전 내역 조회</a>
+           
+              </li>
+              <li>
+                <a href=" ${pageContext.request.contextPath}../mypage2/pointUse/?username=${memberVO.username}">포인트 사용 내역 조회</a>
+              </li>
+            </ul>
+          </li>
+          
+          <li>
+            <a href="#payment_manage" data-toggle="collapse" aria-expanded="false">
+             <h4>  <span class="link-title">소장권 관리</span></h4>
+              <i class="mdi mdi-clipboard-outline link-icon"></i>
+            </a>
+             <ul class="collapse navigation-submenu" id="payment_manage">
+              <li>
+                <a href="${pageContext.request.contextPath}../mypage2/ticketCharge/?username=${memberVO.username}">소장권 구매 내역 조회</a>
+              </li>
+              <li>
+                <a href="${pageContext.request.contextPath}../mypage2/ticketUse/?username=${memberVO.username}">소장권 사용 내역 조회</a>
+              </li>
+            </ul>
+          </li>
+          
             <li>
             	<a href="${pageContext.request.contextPath}../mypage/review/?username=${memberVO.username}">
              	<h4> <span class="link-title">내 댓글</span></h4>
@@ -94,13 +125,7 @@
               <i class="mdi mdi-clipboard-outline link-icon"></i>
             </a>
           </li>
-          <li>
-            <a href="pages/charts/chartjs.html">
-              <h4><span class="link-title">작가등록</span></h4>
-              <i class="mdi mdi-chart-donut link-icon"></i>
-            </a>
-          </li>
- 
+        
         </ul>
         
       </div>
