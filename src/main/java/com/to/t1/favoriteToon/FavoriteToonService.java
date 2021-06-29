@@ -14,7 +14,17 @@ public class FavoriteToonService {
 	}
 	
 	public int delFavorite(FavoritetoonVO favoritetoonVO) throws Exception {
-		return favoriteMapper.delFavorite(favoritetoonVO);
+		int result=0;
+		int delResult = favoriteMapper.delFavorite(favoritetoonVO);
+		
+		if(delResult==0) {
+			favoriteMapper.setFavorite(favoritetoonVO);
+			result=1;
+		}		
+		return result;	//result==1 이면 관심웹툰 등록완료
 	}
 	
+	public FavoritetoonVO getSelect(FavoritetoonVO favoritetoonVO) throws Exception{
+		return favoriteMapper.getSelect(favoritetoonVO);
+	}
 }

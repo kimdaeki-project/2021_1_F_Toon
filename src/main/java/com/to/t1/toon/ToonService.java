@@ -6,7 +6,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.web.servlet.ModelAndView;
 
-import com.to.t1.member.MemberMapper;
 import com.to.t1.member.MemberVO;
 import com.to.t1.review.ReviewVO;
 import com.to.t1.util.Pager;
@@ -16,15 +15,9 @@ public class ToonService {
 	@Autowired
 	private ToonMapper toonMapper;
 	
-	@Autowired
-	private MemberMapper memberMapper;
-	
-
-	
 
 	public List<ToonVO> getList(Pager pager)throws Exception{
 		return toonMapper.getList(pager);
-
 	}
 	
 	public ToonVO getSelect(ToonVO toonVO) throws Exception{

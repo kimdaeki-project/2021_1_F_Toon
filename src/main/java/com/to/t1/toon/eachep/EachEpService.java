@@ -31,9 +31,9 @@ public class EachEpService {
 		eachEpMapper.setHitUpdate(eachEpVO);
 		recentVO.setToonNum(eachEpVO.getToonNum());
 		recentVO.setEpNum(eachEpVO.getEpNum()); 
+		
 		//eachEpNum 가장 큰 값
 		pager.setMaxEp(eachEpMapper.getTotalCount(pager));
-		
 		
 		if(recentVO.getUsername()!=null) {
 			eachEpMapper.setRecentToon(recentVO); 
