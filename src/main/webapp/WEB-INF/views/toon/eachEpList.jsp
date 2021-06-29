@@ -167,5 +167,6 @@
 
 <script type="text/javascript" src="../../js/pay/goTicketBox.js"></script>
 <script type="text/javascript" src="../../js/list/list.js"></script>
+
 </body>
 </html>
