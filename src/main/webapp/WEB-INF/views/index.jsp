@@ -10,9 +10,9 @@
     <!-- BootStrap -->    
 	<!--     <link rel="icon" href="images/favicon.png" type="image/png">  위에 로고-->
     <c:import url="./fragments/bootstrap.jsp"></c:import>
-    <title>Wong Toon</title>
+
    
-<link rel="stylesheet" href="/css/header.css">
+<link rel="stylesheet" href="../css/header.css">
 <link rel="stylesheet" href="/css/index.css">
 <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
 </head>
@@ -20,7 +20,7 @@
 <c:import url="./fragments/header.jsp"></c:import>
  
  <!-- 슬라이드  -->
-<h1 align="center">이달의 추천 웹툰 </h1>
+<h1 align="center">추천 웹툰 </h1>
 <div class="w3-container">
 </div>
 <div class="w3-content" style="max-width:1000px">
