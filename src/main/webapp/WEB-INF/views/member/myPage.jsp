@@ -149,7 +149,7 @@
 	
 	<fieldset disabled>
     
-    <div class="form-group" id="drop_the_text">
+    <div class="form-group" >
       <label for="disabledTextInput">아이디</label>
       <input type="text" id="disabledTextInput" class="form-control" placeholder=<sec:authentication property="principal.username"/>>
     </div>
