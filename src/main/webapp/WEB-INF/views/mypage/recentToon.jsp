@@ -230,6 +230,7 @@
 			}
 		});
 	});
+    
 	function deleteValue(){
 		var url = "delete";    // Controller로 보내고자 하는 URL (.dh부분은 자신이 설정한 값으로 변경해야됨)
 		var valueArr = new Array();
@@ -254,7 +255,7 @@
 			    url : url,                    // 전송 URL
 			    type : 'GET',                // GET or POST 방식
 			    traditional : true,
-			    data : {
+			    data : {	
 			    	valueArr : valueArr        // 보내고자 하는 data 변수 설정
 			    },
                 success: function(jdata){

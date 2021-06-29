@@ -36,9 +36,15 @@ public class MypageService {
 		return mypageMapper.setDelete(recNum);
 	}
 
-	public int setDelete2(String toonNum) throws Exception {
+	public int setDelete2(String revNum) throws Exception {
 
-		return mypageMapper.setDelete(toonNum);
+		return mypageMapper.setDelete2(revNum);
+		
+	}
+	
+	public int setDelete3(String toonNum) throws Exception {
+
+		return mypageMapper.setDelete3(toonNum);
 		
 	}
 	

@@ -210,6 +210,7 @@
     <script src="../assets/js/dashboard.js"></script>
     <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
     <script type="text/javascript" src="../js/mypage.js"></script>
+    
     <script type="text/javascript">
     $(function() {
     	
@@ -252,11 +253,11 @@
    }
 
 
-    //왜 여기안타지?
+    
     function upload(){
     	   var form = $('#formId')[0];
     	   var formData = new FormData(form);
-;
+
     	   $.ajax({
     	      type:"post",
     	      enctype:'multipart/form-data',
@@ -266,6 +267,7 @@
     	       processData:false,
     	       contentType:false,
     	       cache:false,
+    	       
     	       success : function(message) {
     	            alert(message);
 

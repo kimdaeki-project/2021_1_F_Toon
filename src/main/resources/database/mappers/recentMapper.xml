@@ -48,11 +48,16 @@
 		
 	</select>
 	
-	 <delete id="setDelete" >
+	 <delete id="setDelete">
             delete from recenttoon where recNum=#{recNum} 
      </delete> 
      
-      <delete id="setDelete2" parameterType="FavoritetoonVO">
+     <!-- 댓글삭제 -->
+      <delete id="setDelete2">
+            delete from review where revNum=#{revNum} 
+     </delete> 
+     
+       <delete id="setDelete3">
             delete from favoritetoon where toonNum=#{toonNum} 
      </delete> 
 	

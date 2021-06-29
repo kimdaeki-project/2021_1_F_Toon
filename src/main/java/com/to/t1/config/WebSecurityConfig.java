@@ -113,7 +113,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter{
             .loginPage("/member/login")
             .defaultSuccessUrl("/member/memberLoginResult")
             //Login 실패 처리
-//            .failureUrl("/member/memberLoginResult")
+            .failureUrl("/member/loginFail")
 //            .failureHandler(new LoginFail())
             .permitAll()
             .and()

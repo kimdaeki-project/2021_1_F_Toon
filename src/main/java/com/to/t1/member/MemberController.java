@@ -52,7 +52,7 @@ public class MemberController {
 	@GetMapping("loginFail")
 	public String loginFail()throws Exception{
 		System.out.println("Login Fail");
-		return "redirect:/member/login";
+		return "member/memberLoginResult";
 	}
 	
 	@GetMapping("memberLoginResult")
@@ -94,7 +94,7 @@ public class MemberController {
 		
 		System.out.println("Login 성공");
 		
-		return "redirect:/";
+		return "member/memberLoginResult2";
 	}
 
 //	@PostMapping("login")

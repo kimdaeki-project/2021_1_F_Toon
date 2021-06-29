@@ -22,7 +22,9 @@ public interface MypageMapper {
 	
 	public int setDelete(String recNum) throws Exception;
 	
-	public int setDelete2(String toonNum) throws Exception;
+	public int setDelete2(String revNum) throws Exception; // 댓글 삭제
+	
+	public int setDelete3(String toonNum) throws Exception;
 	
 	public long getTotalCount1(Map map) throws Exception;
 	
