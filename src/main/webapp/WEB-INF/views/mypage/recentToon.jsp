@@ -168,11 +168,12 @@
 			</tbody>
 
 		</table>
-		<input type="button" value="선택 삭제" class="btn btn-danger" onclick="deleteValue();">
+		<input type="button" value="선택 삭제" class="btn btn-danger" onclick="deleteValue();"><br>
 	</div>
 <%-- 			<a href="./recentToon?epNum=${list.eachEpVO.epNum}" id="delete" class="btn btn-danger">삭제</a> --%>
 <%-- 			<input type="hidden" name="epNum" value="${list.eachEpVO.epNum}"> --%>
-           
+           	<br>
+           	
 			<ul class="pagination">
 
 				<c:if test="${pager.pre}">
@@ -187,7 +188,7 @@
 					<li class="page-item"><a class="page-link p" href="/mypage/recentToon/?username=${memberVO.username}&curPage=${pager.curPage+i+1}" title="${pager.lastNum+1}">다음</a></li>
 				</c:if>
 			</ul>
-			
+			</center>
 
 	</p>
         <div class="page-content-wrapper-inner">

@@ -170,7 +170,7 @@
 		</table>
 		<input type="button" value="선택 삭제" class="btn btn-danger" onclick="deleteValue();">
 	</div>
-           
+           <br>
   	<ul class="pagination">
 
 				<c:if test="${pager.pre}">

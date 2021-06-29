@@ -57,8 +57,12 @@
             delete from review where revNum=#{revNum} 
      </delete> 
      
-       <delete id="setDelete3">
+      <delete id="setDelete3">
             delete from favoritetoon where toonNum=#{toonNum} 
+     </delete> 
+     
+     <delete id="setDelete4">
+            delete from useticket where toonNum=#{toonNum} 
      </delete> 
 	
 	<select id="getList2" parameterType="java.util.Map" resultMap="recentResult">
@@ -74,7 +78,7 @@
 	
 	<select id="getList3" parameterType="java.util.Map" resultMap="recentResult">
 
-		SELECT useticket.* ,toon.toonTitle, eachep.epTitle, eachep.eachEpNum , eachep.epSumImg, member.nickname
+		SELECT useticket.* ,toon.toonTitle, eachep.epTitle, eachep.eachEpNum , toon.titleImg, member.nickname
 		FROM useticket, eachep ,toon, member
 		WHERE useticket.epNum = eachep.epNum AND eachep.toonNum = toon .toonNum 
 		AND  toon.WriterID = member.username AND useticket.username = #{memberVO.username} 

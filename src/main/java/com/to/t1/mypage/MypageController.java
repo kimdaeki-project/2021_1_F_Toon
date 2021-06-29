@@ -19,6 +19,7 @@ import com.to.t1.member.MemberService;
 import com.to.t1.member.MemberVO;
 import com.to.t1.review.ReviewService;
 import com.to.t1.review.ReviewVO;
+import com.to.t1.ticket.UseTicketVO;
 import com.to.t1.util.Pager;
 
 
@@ -97,7 +98,22 @@ public class MypageController {
 	
 		return "mypage/favoriteToon";
 	}
+	
+	//구매한웹툰 삭제
+	@PostMapping("delete4")
+	public String setDelete4(UseTicketVO useTicketVO, Model model,HttpServletRequest request)throws Exception{
 
+		
+		String[] ajaxMsg = request.getParameterValues("valueArr");
+		int size = ajaxMsg.length;
+		for(int i =0; i<size; i++) {
+//			reviewService.delReview(reviewVO);
+//			model.addAttribute("result", reviewService.delReview(reviewVO));
+			mypageService.setDelete4(ajaxMsg[i]);
+		}	
+	
+		return "mypage/useToon";
+	}
 
 	@GetMapping("favoriteToon") 
 	public String getList2(Model model, MemberVO memberVO, Pager pager)throws Exception{

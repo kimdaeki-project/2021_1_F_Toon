@@ -26,6 +26,8 @@ public interface MypageMapper {
 	
 	public int setDelete3(String toonNum) throws Exception;
 	
+	public int setDelete4(String toonNum) throws Exception;
+	
 	public long getTotalCount1(Map map) throws Exception;
 	
 	public long getTotalCount2(Map map) throws Exception;

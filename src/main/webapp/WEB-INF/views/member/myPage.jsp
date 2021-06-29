@@ -45,7 +45,7 @@
           	<input id="avatar" name="avatar" type="file">
           	</div>
           	
-          	<button onclick="upload()" class="btn btn-outline-info">업로드</button>
+          	<button type="button" onclick="upload()" class="btn btn-outline-info">업로드</button>
           	<button onclick="delete1()" class="btn btn-outline-danger">삭제</button>
           	</form>
           	
@@ -215,6 +215,7 @@
     $(function() {
     	
         $("#avatar").on('change', function(){
+        	alert(this)
             readURL(this);
         });
     });
@@ -271,7 +272,7 @@
     	       success : function(message) {
     	            alert(message);
 
-			          location.href="../member/myPage";
+			         location.href="../member/myPage";
     	          },
     	       error:function(e){
     	           alert("error : ", e);

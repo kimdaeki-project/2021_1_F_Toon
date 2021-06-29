@@ -48,6 +48,12 @@ public class MypageService {
 		
 	}
 	
+	public int setDelete4(String toonNum) throws Exception {
+
+		return mypageMapper.setDelete4(toonNum);
+		
+	}
+	
 	public List<RecentVO> getList2(MemberVO memberVO, Pager pager) throws Exception {
 		HashMap<String, Object> obj = new HashMap<String, Object>();
 		obj.put("memberVO", memberVO);
@@ -78,15 +84,16 @@ public class MypageService {
 	public List<RecentVO> getList4(MemberVO memberVO, Pager pager) throws Exception {
 		HashMap<String, Object> obj = new HashMap<String, Object>();
 		
-		obj.put("memberVO", memberVO);
-		obj.put("pager", pager);
 	
 		
 		pager.makeRow();
+		obj.put("memberVO", memberVO);
+		obj.put("pager", pager);
 		long totalCount = mypageMapper.getTotalCount4(obj);
 		pager.makeNum(totalCount);
-		
-		
+		System.out.println(pager.getStartRow());
+		System.out.println(pager.getPerPage());
+		System.out.println(mypageMapper.getList4(obj).size());
 		return mypageMapper.getList4(obj);
 	}
 	
