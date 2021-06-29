@@ -48,12 +48,21 @@
 		
 	</select>
 	
-	 <delete id="setDelete" >
+	 <delete id="setDelete">
             delete from recenttoon where recNum=#{recNum} 
      </delete> 
      
-      <delete id="setDelete2" parameterType="FavoritetoonVO">
+     <!-- 댓글삭제 -->
+      <delete id="setDelete2">
+            delete from review where revNum=#{revNum} 
+     </delete> 
+     
+      <delete id="setDelete3">
             delete from favoritetoon where toonNum=#{toonNum} 
+     </delete> 
+     
+     <delete id="setDelete4">
+            delete from useticket where toonNum=#{toonNum} 
      </delete> 
 	
 	<select id="getList2" parameterType="java.util.Map" resultMap="recentResult">
@@ -69,7 +78,7 @@
 	
 	<select id="getList3" parameterType="java.util.Map" resultMap="recentResult">
 
-		SELECT useticket.* ,toon.toonTitle, eachep.epTitle, eachep.eachEpNum , eachep.epSumImg, member.nickname
+		SELECT useticket.* ,toon.toonTitle, eachep.epTitle, eachep.eachEpNum , toon.titleImg, member.nickname
 		FROM useticket, eachep ,toon, member
 		WHERE useticket.epNum = eachep.epNum AND eachep.toonNum = toon .toonNum 
 		AND  toon.WriterID = member.username AND useticket.username = #{memberVO.username} 
@@ -91,7 +100,7 @@
 	
 	<resultMap type="RecentVO" id="recentResult">
 		<id property="recNum" column="recNum"/>
-		<id property="epNum" column="epNum"/>
+		<result property="epNum" column="epNum"/>
 		<result property="username" column="username" />
 		<result property="toonNum" column="toonNum"/>
 		<result property="epNum" column="epNum"/>

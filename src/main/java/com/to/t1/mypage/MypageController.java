@@ -14,8 +14,12 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.to.t1.favoriteToon.FavoritetoonVO;
 import com.to.t1.member.MemberService;
 import com.to.t1.member.MemberVO;
+import com.to.t1.review.ReviewService;
+import com.to.t1.review.ReviewVO;
+import com.to.t1.ticket.UseTicketVO;
 import com.to.t1.util.Pager;
 
 
@@ -28,6 +32,9 @@ public class MypageController {
 	
 	@Autowired
 	private MemberService memberService;
+	
+	@Autowired
+	private ReviewService reviewService;
 
 	@GetMapping("recentToon") 
 	public String getList(Model model, MemberVO memberVO, Pager pager)throws Exception{
@@ -60,20 +67,53 @@ public class MypageController {
 		return "mypage/recentToon";
 	}
 	
+	//댓글삭제
 	@PostMapping("delete2")
-	public String setDelete2(HttpServletRequest request)throws Exception{
-		System.out.println("지워지나");
+	public String setDelete2(ReviewVO reviewVO, Model model,HttpServletRequest request)throws Exception{
+
 		
 		String[] ajaxMsg = request.getParameterValues("valueArr");
 		int size = ajaxMsg.length;
 		for(int i =0; i<size; i++) {
+//			reviewService.delReview(reviewVO);
+//			model.addAttribute("result", reviewService.delReview(reviewVO));
 			mypageService.setDelete2(ajaxMsg[i]);
 		}	
 	
-		System.out.println("안지워지나?");
+		return "mypage/review";
+	}
+	
+	//관심 웹툰 삭제
+	@PostMapping("delete3")
+	public String setDelete3(FavoritetoonVO favoritetoonVO, Model model,HttpServletRequest request)throws Exception{
+
+		
+		String[] ajaxMsg = request.getParameterValues("valueArr");
+		int size = ajaxMsg.length;
+		for(int i =0; i<size; i++) {
+//			reviewService.delReview(reviewVO);
+//			model.addAttribute("result", reviewService.delReview(reviewVO));
+			mypageService.setDelete3(ajaxMsg[i]);
+		}	
+	
 		return "mypage/favoriteToon";
 	}
+	
+	//구매한웹툰 삭제
+	@PostMapping("delete4")
+	public String setDelete4(UseTicketVO useTicketVO, Model model,HttpServletRequest request)throws Exception{
 
+		
+		String[] ajaxMsg = request.getParameterValues("valueArr");
+		int size = ajaxMsg.length;
+		for(int i =0; i<size; i++) {
+//			reviewService.delReview(reviewVO);
+//			model.addAttribute("result", reviewService.delReview(reviewVO));
+			mypageService.setDelete4(ajaxMsg[i]);
+		}	
+	
+		return "mypage/useToon";
+	}
 
 	@GetMapping("favoriteToon") 
 	public String getList2(Model model, MemberVO memberVO, Pager pager)throws Exception{

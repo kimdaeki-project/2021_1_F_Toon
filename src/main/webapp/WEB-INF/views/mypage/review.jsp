@@ -136,52 +136,56 @@
       <!-- partial -->
       <div class="page-content-wrapper">
            <div class="container">	
-
-		<h2>내 댓글</h2>
+		<br>
+		<center><h2>내 댓글 목록</h2></center><br>
+		
 
 		<table class="table">
 			<thead class="A simple light list group item">
 				<tr>
-					<th></th>
-					<th>웹툰 이름</th>
-					<th>에피소드 제목</th>
-					<th>작가 이름</th>
-					<th>내용</th>
-					<th>작성 일자</th>
+					<th scope="col"></th>
+					<th scope="col">웹툰 이름</th>
+					<th scope="col">에피소드 제목</th>
+					<th scope="col">작가 이름</th>
+					<th scope="col">내용</th>
+					<th scope="col">작성 일자</th>	
+					<th scope="col"><input id="allCheck" type="checkbox" name="allCheck"></th>
 				</tr>
 			</thead>
 			
 			<tbody>
 			<c:forEach items="${list}" var="list" >
 				<tr>
-					<td><img width=50px height=50px src="${list.toonVO.titleImg}"></td>
-					<td>${list.toonVO.toonTitle}</td>
-					<td>${list.eachEpVO.epTitle}</td>
-					<td>${list.memberVO.nickname}</td>
-					<td>${list.reviewVO.comments}</td>
-					<td>${list.reviewVO.commentDate}</td>
+					<td class="text_ct"><img width=50px height=50px src="${list.toonVO.titleImg}"></td>
+					<td class="text_ct">${list.toonVO.toonTitle}</td>
+					<td class="text_ct">${list.eachEpVO.epTitle}</td>
+					<td class="text_ct">${list.memberVO.nickname}</td>
+					<td class="text_ct">${list.reviewVO.comments}</td>
+					<td class="text_ct">${list.reviewVO.commentDate}</td>
+					<td class="text_ct"><input name="RowCheck" type="checkbox" value="${list.reviewVO.revNum}"></td>
 				</tr>
 			</c:forEach>
 			
 			</tbody>
 
 		</table>
+		<input type="button" value="선택 삭제" class="btn btn-danger" onclick="deleteValue();">
 	</div>
-           
+           <br>
   	<ul class="pagination">
 
 				<c:if test="${pager.pre}">
-					<li class="page-item"><a class="page-link p" href="#"
+					<li class="page-item"><a class="page-link p" href="/mypage/review/?username=${memberVO.username}&curPage=${pager.curPage-1}"
 						title="${pager.startNum-1}">이전</a></li>
 				</c:if>
+			
 
 				<c:forEach begin="${pager.startNum}" end="${pager.lastNum}" var="i">
 					<li class="page-item"><a class="page-link p" href="/mypage/review/?username=${memberVO.username}&curPage=${i}" title="${i}">${i}</a></li>
 				</c:forEach>
 
 				<c:if test="${pager.next}">
-					<li class="page-item"><a class="page-link p" href="#"
-					 title="${pager.lastNum+1}">다음</a></li>
+					<li class="page-item"><a class="page-link p" href="/mypage/review/?username=${memberVO.username}&curPage=${pager.curPage+i+1}" title="${pager.lastNum+1}">다음</a></li>
 				</c:if>
 			</ul>
   			
@@ -207,7 +211,70 @@
     <script src="../assets/js/dashboard.js"></script>
     <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
     <script type="text/javascript" src="../js/mypage.js"></script>
+    
+	<script type="text/javascript">
+	 $(function(){
+			var chkObj = document.getElementsByName("RowCheck");
+			var rowCnt = chkObj.length;
+			
+			$("input[name='allCheck']").click(function(){
+				var chk_listArr = $("input[name='RowCheck']");
+				for (var i=0; i<chk_listArr.length; i++){
+					chk_listArr[i].checked = this.checked;
+				}
+			});
+			$("input[name='RowCheck']").click(function(){
+				if($("input[name='RowCheck']:checked").length == rowCnt){
+					$("input[name='allCheck']")[0].checked = true;
+				}
+				else{
+					$("input[name='allCheck']")[0].checked = false;
+				}
+			});
+		});
 	
+	 
+	 function deleteValue(){
+			var url = "delete2";    // Controller로 보내고자 하는 URL 
+			var valueArr = new Array();
+		    var list = $("input[name='RowCheck']");
+		    for(var i = 0; i < list.length; i++){
+		        if(list[i].checked){ //선택되어 있으면 배열에 값을 저장함
+		            valueArr.push(list[i].value);
+		        }
+		    }
+		   if (confirm("정말 삭제하시겠습니까?")==true){
+			   
+		   }else{
+			   return;
+		   }
+		   
+		    if (valueArr.length == 0){
+		    	alert("선택된 글이 없습니다.");
+		    }
+		    else{
+//	 			var chk = confirm("정말 삭제하시겠습니까?");				 
+				$.ajax({
+				    url : url,                    // 전송 URL
+				    type : 'POST',                // GET or POST 방식
+				    traditional : true,
+				    data : {
+				    	valueArr : valueArr        // 보내고자 하는 data 변수 설정
+				    },
+	                success: function(jdata){
+	                    if(jdata = 1) {
+	                        alert("삭제 성공");
+	                        location.href="/mypage/review/?username=${memberVO.username}&curPage=${i}"
+	                    }
+	                    else{
+	                        alert("삭제 실패");
+	                    }
+	                }
+				});
+			}
+		}
+	
+	</script>
 	
 </body>
 </html>
