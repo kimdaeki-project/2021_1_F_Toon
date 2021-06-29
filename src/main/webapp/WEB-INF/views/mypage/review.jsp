@@ -137,14 +137,14 @@
       <div class="page-content-wrapper">
            <div class="container">	
 
-		<h2>내 댓글 ㅋ</h2>
+		<h2>내 댓글</h2>
 
 		<table class="table">
 			<thead class="A simple light list group item">
 				<tr>
 					<th></th>
 					<th>웹툰 이름</th>
-					<th>에피 제목</th>
+					<th>에피소드 제목</th>
 					<th>작가 이름</th>
 					<th>내용</th>
 					<th>작성 일자</th>
@@ -154,7 +154,7 @@
 			<tbody>
 			<c:forEach items="${list}" var="list" >
 				<tr>
-					<td><img width=50px height=50px src= ${list.toonVO.titleImg}></td>
+					<td><img width=50px height=50px src="${list.toonVO.titleImg}"></td>
 					<td>${list.toonVO.toonTitle}</td>
 					<td>${list.eachEpVO.epTitle}</td>
 					<td>${list.memberVO.nickname}</td>

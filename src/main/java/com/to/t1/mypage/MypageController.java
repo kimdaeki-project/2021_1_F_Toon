@@ -112,13 +112,11 @@ public class MypageController {
 		List<RecentVO> ar = mypageService.getList4(memberVO,  pager);
 		
 		memberVO = memberService.myPage(memberVO);	
-		System.out.println(ar);
 		
 		model.addAttribute("memberVO", memberVO);
 		model.addAttribute("list", ar);
 		model.addAttribute("pager", pager);
 		
-		System.out.println("내댓글보기");
 		return "mypage/review";
 	}
 }

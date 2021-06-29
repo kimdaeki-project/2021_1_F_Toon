@@ -106,10 +106,7 @@
 	</resultMap>
 	
 	<resultMap type="reviewVO" id="reviewResult">
-			<id property="revNum" column="revNum"/>
-			<id property="toonNum" column="toonNum"/>
-			<id property="epNum" column="epNum"/>
-			<id property="username" column="username"/>
+			<id property="revNum" column="revNum"/>			
 			<result property="toonNum" column="toonNum"/>
 			<result property="epNum" column="epNum"/>
 			<result property="username" column="username"/>
