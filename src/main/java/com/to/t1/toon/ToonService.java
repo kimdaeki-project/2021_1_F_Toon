@@ -39,6 +39,12 @@ public class ToonService {
 		return toonMapper.deleteScore(reviewVO);
 	}
 	
+	
+	
+	public List<ToonVO> index(ToonVO toonVO,MemberVO memberVO) throws Exception{
+		return toonMapper.index(toonVO,memberVO);
+	}
+	
 
 	//toonDay--------------------------
 
@@ -73,22 +79,14 @@ public class ToonService {
 	public List<ToonVO> genreRecent(ToonVO toonVO,MemberVO memberVO) throws Exception{
 		return toonMapper.genreRecent(toonVO,memberVO);
 	}
-	//ranking
+	
+	//ranking---------------------------------------------
 
+	
 	public List<ToonVO> ranking(ToonVO toonVO,MemberVO memberVO) throws Exception{
 		return toonMapper.ranking(toonVO,memberVO);
 	}
 	
-
-
-
-	public List<ToonVO> toonDay(ModelAndView toonDay) {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	
-
 	public List<ToonVO> rankingAver(ToonVO toonVO,MemberVO memberVO) throws Exception{
 		return toonMapper.rankingAver(toonVO,memberVO);
 	}
@@ -96,7 +94,10 @@ public class ToonService {
 	public List<ToonVO> rankingRecent(ToonVO toonVO,MemberVO memberVO) throws Exception{
 		return toonMapper.rankingRecent(toonVO,memberVO);
 	}
-	//endRe
+	
+	//endRe--------------------------------------------------------
+	
+	
 	public List<ToonVO> endRe(ToonVO toonVO,MemberVO memberVO) throws Exception{
 		return toonMapper.endRe(toonVO,memberVO);
 	}

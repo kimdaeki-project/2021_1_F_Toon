@@ -26,6 +26,8 @@ public interface ToonMapper {
 	public long setUpdate(ToonVO toonVO)throws Exception;
 	public long setDelete(ToonVO toonVO)throws Exception;
 	
+	public List<ToonVO> index(@Param("toonVO") ToonVO toonVO,@Param("memberVO") MemberVO memberVO)throws Exception;
+	
 	public List<ToonVO> toonDay(@Param("toonVO") ToonVO toonVO,@Param("memberVO") MemberVO memberVO)throws Exception;
 	public List<ToonVO> toonDayAver(ToonVO toonVO, MemberVO memberVO)throws Exception;
 	public List<ToonVO> toonDayRecent(ToonVO toonVO, MemberVO memberVO)throws Exception;

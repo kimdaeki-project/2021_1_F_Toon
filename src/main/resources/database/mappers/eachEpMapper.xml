@@ -5,8 +5,7 @@
 
 <mapper namespace="com.to.t1.toon.eachep.EachEpMapper">
 
-
-	<select id="getList" parameterType="Pager" resultMap="getEachEp">
+<select id="getList" parameterType="Pager" resultMap="getEachEp">
 		SELECT * FROM toon t LEFT JOIN member m 
 		ON t.writerId = m.username
 		JOIN eachep e ON t.toonNum = e.toonNum

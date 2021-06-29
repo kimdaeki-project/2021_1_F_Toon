@@ -21,31 +21,19 @@
 <body>
 	<c:import url="../fragments/header.jsp"></c:import>
 
-
-<div class="view_type">			
-             <table>
-             <tr >
-             	<td><a href="/toon/end/endRe">조회순</a></td>
-             
-              <p><td><a href="/toon/end/endReRecent">업데이트순</a></td></p>         
-                
-                <td><a href="/toon/end/endReAver">별점순</a></td>
-             </tr>
-           
-             </table>
-			</div>
-	<br>
-	<br>
+	<br><br>
+	<h1  align="center">검색 결과</h1>
+	<br><br>
 	
 	<div align="center">
 	<ul>
 	
 		<c:forEach items="${toonSearch}" var="search">		
-			<li><a href="/toon/eachEpList?toonNum=${search.toonNum}">
-			<img width=100px height=100px src=${search.titleImg}></a></li>
-			<li>${search.toonTitle}</li>
-			<li>${search.nickname}</li>
-			<li>${search.toonSum}</li>
+			<li style="float: left; margin: 50px;">
+			<a href="/toon/eachEpList?toonNum=${search.toonNum}">
+			<img width=100px height=100px src=${search.titleImg}></a>
+			<br><br><h3>${search.toonTitle}<br> ${search.nickname}</h3></li>
+			
 		</c:forEach>
 		
 		

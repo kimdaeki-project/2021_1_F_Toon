@@ -16,7 +16,7 @@
    
    
     <link rel="stylesheet" href="../../css/header.css">
-  
+  	<link rel="stylesheet" href="../../css/endRe.css">
 </head>
 <body>
 	<c:import url="../../fragments/header.jsp"></c:import>
@@ -24,70 +24,32 @@
 
 <div class="view_type">			
              <table>
-               <tr >
-             	<td><a href="/toon/end/endRe">조회순</a></td>
-             
-              <p><td><a href="/toon/end/endReRecent">업데이트순</a></td></p>         
+             <tr >
+             	<td><a class="w" href="/toon/end/endRe">조회순</a>&emsp;</td>
+             	
+             	<td><a class="w" href="/toon/end/endReRecent">업데이트순</a>&emsp;</td>      
                 
-                <td><a href="/toon/end/endReAver">별점순</a></td>
+                <td><a class="w" href="/toon/end/endReAver">별점순</a></td>
              </tr>
-           
            
              </table>
 			</div>
-	<br>
-	<br>
-	
-<div id="carousel-example-generic" class="carousel slide" data-ride="carousel">
-  <!-- Indicators -->
-  <ol class="carousel-indicators">
-    <li data-target="#carousel-example-generic" data-slide-to="0" class="active"></li>
-    <li data-target="#carousel-example-generic" data-slide-to="1"></li>
-    <li data-target="#carousel-example-generic" data-slide-to="2"></li>
-  </ol>
-
-  <!-- Wrapper for slides -->
-  <div class="carousel-inner" role="listbox">
-    <div class="item active">
-      <img src="https://ifh.cc/g/EwbQVh.jpg" alt="...">
-      <div class="carousel-caption">
-        ...
-      </div>
-    </div>
-    <div class="item">
-      <img src="https://ifh.cc/g/vJwutX.jpg" alt="...">
-      <div class="carousel-caption">
-        ...
-      </div>
-    </div>
-    ...
-  </div>
-
-  <!-- Controls -->
-  <a class="left carousel-control" href="#carousel-example-generic" role="button" data-slide="prev">
-    <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
-    <span class="sr-only">Previous</span>
-  </a>
-  <a class="right carousel-control" href="#carousel-example-generic" role="button" data-slide="next">
-    <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
-    <span class="sr-only">Next</span>
-  </a>
-</div>
-
-	
+		<br><br>
+		
+		<h1 align="center"> 완결 웹툰 </h1>
+		
+		<br><br>	
+		
 	<div class="end">
-		<c:set var="i" value="0" /> <c:set var="j" value="3" />
-	
-			<a
-				href="${pageContext.request.contextPath}/toon/toonList/end=${rank}">완결</a>
+		<c:set var="i" value="0" /> <c:set var="j" value="3" />			
 			<ul>
 				<c:forEach items="${end}" var="end">
-					<li><img width=100px height=100px src=${end.titleImg}>
-					</li>
-					<li>${end.toonTitle}/${end.nickname}</li>
+					<li style="float: left; margin: 30px;"><a href="/toon/eachEpList?toonNum=${end.toonNum}">
+					<img width=150px height=150px src=${end.titleImg}></a><br><br><h3>${end.toonTitle}</h3></li>
 				</c:forEach>
+
 			</ul>
-		</div>
+	</div>
 	
 	
 

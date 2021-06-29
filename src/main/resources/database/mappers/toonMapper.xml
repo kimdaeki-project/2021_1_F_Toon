@@ -21,6 +21,12 @@
 		(t.toontitle LIKE CONCAT('%', #{toonVO.search}, '%'))
 	</select>
 
+	<select id="index" parameterType="ToonVO" resultType="ToonVO">
+	SELECT *
+	FROM toon t JOIN
+	member m ON t.writerId = m.username
+	</select>
+
 
 	<select id="toonDay" parameterType="ToonVO" resultType="ToonVO">
 	SELECT *
@@ -78,11 +84,27 @@
 	</select>
 		
 	<select id="ranking" parameterType="ToonVO" resultType="ToonVO">
-	SELECT *
-	FROM toon t JOIN
+	SELECT
+	RANK() OVER(ORDER BY totalHit DESC) AS SCORE_RANK,
+	toonTitle,
+	totalHit,
+	genre,
+	writerId,
+	toonSum,
+	toonDay,
+	state,
+	titleImg,
+	ratingSum,
+	ratingPerson,
+	toonNum,
+	username,
+	nickname,
+	enabled
+FROM
+	toon t JOIN
 	member m ON t.writerId = m.username
-	WHERE state=0
-	ORDER BY totalHit DESC LIMIT 21
+ORDER BY
+	SCORE_RANK asc LIMIT 20;
 	</select>
 	
 	<select id="rankingAver" parameterType="ToonVO" resultType="ToonVO">
