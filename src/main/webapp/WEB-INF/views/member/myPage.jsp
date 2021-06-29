@@ -215,7 +215,7 @@
     $(function() {
     	
         $("#avatar").on('change', function(){
-        	alert(this)
+        	
             readURL(this);
         });
     });
