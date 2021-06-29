@@ -144,12 +144,12 @@
       </div>
       <!-- partial -->
       <div class="page-content-wrapper">
-           <center><h2><회원정보></h2></center>
+           <center><h2> 내 정보 페이지 </h2></center>
     <sec:authorize access="isAuthenticated()">       	
 	
 	<fieldset disabled>
     
-    <div class="form-group">
+    <div class="form-group" id="drop_the_text">
       <label for="disabledTextInput">아이디</label>
       <input type="text" id="disabledTextInput" class="form-control" placeholder=<sec:authentication property="principal.username"/>>
     </div>

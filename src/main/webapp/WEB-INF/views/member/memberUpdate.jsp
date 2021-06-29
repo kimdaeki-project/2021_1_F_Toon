@@ -154,7 +154,7 @@
  		  
  		  <div class="form-group">
       		<label for="Input">핸드폰</label>
-      		<input type="text" id="phone" name="phone" class="form-control" value="${memberVO.phone}" type="tell" onKeyup="inputPhoneNumber(this);" onkeypress='handlerNum();' maxlength="13" >
+      		<input id="phone" name="phone" class="form-control" value="${memberVO.phone}" type="tell" onKeyup="inputPhoneNumber(this);" onkeypress='handlerNum();' minlength="13" maxlength="13" >
       		<div class="form-group" id= phoneResult></div>
  		  </div>
  		  
