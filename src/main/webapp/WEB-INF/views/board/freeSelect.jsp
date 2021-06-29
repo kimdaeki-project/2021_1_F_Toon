@@ -87,9 +87,10 @@
 	</div>
 	<br>
 	
+	<c:if test="${memberVO.username eq vo.username}">
 	<a href="./freeUpdate?boNum=${vo.boNum}" class="btn btn-primary">수정</a>
 	<a href="#" id="del" class="btn btn-primary">삭제</a>
-	
+	</c:if>
 	
 	<form action="./freeDelete" id="frm" method="get">
 		<input type="hidden" name="boNum" value="${vo.boNum}">

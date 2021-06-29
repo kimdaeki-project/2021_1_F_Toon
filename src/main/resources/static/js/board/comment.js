@@ -20,8 +20,8 @@ function commentList(){
                 a += '<div class="commentArea" style="border-bottom:1px solid darkgray; margin-bottom: 15px;">';
                 a += '<div class="commentInfo'+value.coNum+'">';
 				a += '<span	style="font-weight: bold; color: black;">'+value.username+'</span>';
-                a += '&emsp;&emsp;&emsp;&emsp;<a onclick="commentUpdate('+value.coNum+',\''+value.commentContents+'\');"><button class="btn btn-dark" type="button"> 수정 </button> </a>';
-                a += '<a onclick="commentDelete('+value.coNum+');"><button class="btn btn-dark" type="button"> 삭제 </button> </a> </div><br>';
+                a += '&emsp;&emsp;&emsp;&emsp;<c:if test="${memberVO.username eq vo.username}"><a onclick="commentUpdate('+value.coNum+',\''+value.commentContents+'\');"><button class="btn btn-dark" type="button"> 수정 </button> </a></c:if>';
+                a += '<c:if test="${memberVO.username eq vo.username}"><a onclick="commentDelete('+value.coNum+');"><button class="btn btn-dark" type="button"> 삭제 </button> </a> </div></c:if><br>';
                 a += '<div class="commentContent'+value.coNum+'"> <p> '+value.commentContents +'</p>';
                 a += '</div></div>';
             });

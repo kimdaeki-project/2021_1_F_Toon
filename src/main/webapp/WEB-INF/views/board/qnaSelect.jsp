@@ -66,7 +66,7 @@
 			<tr>
 			
 				<td colspan="2"><h3>${vo.qnaTitle}</h3><hr class="featurette-divider">${vo.qnaContents}</td>
-					
+				
 	    	</tr>
 	    
 		</tbody>
@@ -77,22 +77,15 @@
 	
 	<div id="file1">
 	<c:forEach items="${vo.files}" var="file">
-		<a href="../upload/${board}/${file.fileName}">${file.oriName}</a>
+		<a href="../upload/${board}/${file.fileName}">&nbsp;${file.oriName}</a>
 	</c:forEach>
 	</div>
-
-
-
-	<sec:authentication property="principal.username" var="username"/>
-	<c:choose>
-	<c:when test="${username eq principal.username}">
+	
+	<c:if test="${memberVO.username eq vo.username}">
 	<a href="./qnaUpdate?boNum=${vo.boNum}" class="btn btn-secondary">수정</a>
-	</c:when>
-	<c:otherwise>
-	<span style="display:none;"><a href="./qnaUpdate?boNum=${vo.boNum}" class="btn btn-secondary">수정</a></span>
-	</c:otherwise>
-	</c:choose>
+	
 	<a href="#" id="del" class="btn btn-secondary">삭제</a>
+	</c:if>
 	
 	<form action="./qnaDelete" id="frm" method="get">
 		<input type="hidden" name="boNum" value="${vo.boNum}">
@@ -113,6 +106,9 @@
 			
 		}
 	});
+	
+	
+	
 </script>
 	
 <c:import url="../fragments/footer.jsp"></c:import>

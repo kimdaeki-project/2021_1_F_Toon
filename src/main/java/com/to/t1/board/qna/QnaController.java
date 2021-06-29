@@ -5,6 +5,7 @@ import java.util.List;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.Authentication;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.ui.ModelMap;
@@ -16,6 +17,8 @@ import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.to.t1.board.BoardVO;
+import com.to.t1.member.MemberService;
+import com.to.t1.member.MemberVO;
 import com.to.t1.util.Pager;
 
 @Controller
@@ -23,6 +26,9 @@ import com.to.t1.util.Pager;
 public class QnaController {
 	@Autowired
 	private QnaService qnaService;
+	
+	@Autowired
+	 private MemberService memberService;
 	
 	@ModelAttribute("board")
 	public String getQnaBoard() {
@@ -43,10 +49,22 @@ public class QnaController {
 	}
 	
 	@GetMapping("qnaSelect")
-	public ModelAndView getSelect(BoardVO boardVO, ModelMap modelMap)throws Exception{
-		ModelAndView mv = new ModelAndView();
+	public ModelAndView getSelect(BoardVO boardVO, MemberVO memberVO, Authentication auth2, Model model)throws Exception{
+	     ModelAndView mv = new ModelAndView();
 		
+	     if(auth2 != null) {
+	    	  memberVO = memberService.myPage((MemberVO) auth2.getPrincipal());
+	    	  mv.addObject("memberVO",memberVO);
+	      }
+	     
+	     model.addAttribute("memberVO", memberVO);
+	    
+	     System.out.println("memberVO :"+ memberVO);
+	     
+	     System.out.println(memberVO.getUsername());
+	     
 		boardVO = qnaService.getSelect(boardVO);
+		
 		mv.addObject("vo", boardVO);
 		mv.setViewName("board/qnaSelect");
 		return mv;
