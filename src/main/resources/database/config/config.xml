@@ -33,11 +33,13 @@
   		<typeAlias type="com.to.t1.ticket.TicketBoxVO" alias="TicketBoxVO"/>
   		<typeAlias type="com.to.t1.ticket.UseTicketVO" alias="UseTicketVO"/>
   		
+  		<typeAlias type="com.to.t1.toon.complete.EndEpVO" alias="EndEpVO"/>
+  		<typeAlias type="com.to.t1.toon.complete.EndToonVO" alias="EndToonVO"/>
   		
   		<typeAlias type="com.to.t1.member.admin.sales.DaySaleVO" alias="DaySaleVO"/>
-      <typeAlias type="com.to.t1.member.admin.sales.MonthSaleVO" alias="MonthSaleVO"/>
-      <typeAlias type="com.to.t1.member.admin.sales.WeekSaleVO" alias="WeekSaleVO"/>
-      <typeAlias type="com.to.t1.member.admin.sales.ToonSaleVO" alias="ToonSaleVO"/>
+        <typeAlias type="com.to.t1.member.admin.sales.MonthSaleVO" alias="MonthSaleVO"/>
+        <typeAlias type="com.to.t1.member.admin.sales.WeekSaleVO" alias="WeekSaleVO"/>
+        <typeAlias type="com.to.t1.member.admin.sales.ToonSaleVO" alias="ToonSaleVO"/>
   		
   		
 		<typeAlias type="com.to.t1.util.Pager" alias="Pager"/>
