@@ -45,7 +45,7 @@
           	<input id="avatar" name="avatar" type="file">
           	</div>
           	
-          	<button onclick="upload()" class="btn btn-outline-info">업로드</button>
+          	<button type="button" onclick="upload()" class="btn btn-outline-info">업로드</button>
           	<button onclick="delete1()" class="btn btn-outline-danger">삭제</button>
           	</form>
           	
@@ -144,12 +144,12 @@
       </div>
       <!-- partial -->
       <div class="page-content-wrapper">
-           <center><h2><회원정보></h2></center>
+           <center><h2> 내 정보 페이지 </h2></center>
     <sec:authorize access="isAuthenticated()">       	
 	
 	<fieldset disabled>
     
-    <div class="form-group">
+    <div class="form-group" >
       <label for="disabledTextInput">아이디</label>
       <input type="text" id="disabledTextInput" class="form-control" placeholder=<sec:authentication property="principal.username"/>>
     </div>
@@ -210,10 +210,12 @@
     <script src="../assets/js/dashboard.js"></script>
     <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
     <script type="text/javascript" src="../js/mypage.js"></script>
+    
     <script type="text/javascript">
     $(function() {
     	
         $("#avatar").on('change', function(){
+        	
             readURL(this);
         });
     });
@@ -252,11 +254,11 @@
    }
 
 
-    //왜 여기안타지?
+    
     function upload(){
     	   var form = $('#formId')[0];
     	   var formData = new FormData(form);
-;
+
     	   $.ajax({
     	      type:"post",
     	      enctype:'multipart/form-data',
@@ -266,10 +268,11 @@
     	       processData:false,
     	       contentType:false,
     	       cache:false,
+    	       
     	       success : function(message) {
     	            alert(message);
 
-			          location.href="../member/myPage";
+			         location.href="../member/myPage";
     	          },
     	       error:function(e){
     	           alert("error : ", e);

@@ -173,7 +173,7 @@
 			<ul class="pagination">
 
 				<c:if test="${pager.pre}">
-					<li class="page-item"><a class="page-link p" href="#" title="${pager.startNum-1}">이전</a></li>
+					<li class="page-item"><a class="page-link p" href="/mypage/pointUse/?username=${memberVO.username}&curPage=${pager.curPage-1}" title="${pager.startNum-1}">이전</a></li>
 				</c:if>
 
 				<c:forEach begin="${pager.startNum}" end="${pager.lastNum}" var="i">
@@ -181,7 +181,7 @@
 				</c:forEach>
 
 				<c:if test="${pager.next}">
-					<li class="page-item"><a class="page-link p" href="#" title="${pager.lastNum+1}">다음</a></li>
+					<li class="page-item"><a class="page-link p" href="/mypage/pointUse/?username=${memberVO.username}&curPage=${pager.curPage+i+1}" title="${pager.lastNum+1}">다음</a></li>
 				</c:if>
 			</ul>
 			

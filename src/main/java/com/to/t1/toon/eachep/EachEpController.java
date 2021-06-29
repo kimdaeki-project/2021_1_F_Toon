@@ -21,6 +21,7 @@ import com.to.t1.util.Pager;
 @Controller
 @RequestMapping("/toon/**")
 public class EachEpController {
+
    @Autowired
    private EachEpService eachEpService;
    

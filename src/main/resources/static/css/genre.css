@@ -4,14 +4,12 @@
 }
 
 .action {
-    
     float: left;
     width:16%;
     
 }
 
 .school{
-   
     float: left;
  
     width:16%;
@@ -47,6 +45,15 @@
    
 }
 
+
+.view_type{
+	float: right;
+	width: 20%;
+}
+
+.w {
+	color: gray;
+}
 
 
 

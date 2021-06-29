@@ -35,14 +35,14 @@
       <ul class="btn_group">
       
       <li><a href="#" title="관심웹툰" class="book_maker on" id="check_favorite">
-	      <c:choose>
-	      	<c:when test="${empty favorToon}">
-	     		 <span class="like">관심웹툰등록</span>
-	      	</c:when>
-	      	<c:otherwise>
-	      		<span class="like">관심웹툰해제</span>
-	      	</c:otherwise>
-	      </c:choose>
+         <c:choose>
+            <c:when test="${empty favorToon}">
+               <span class="like">관심웹툰등록</span>
+            </c:when>
+            <c:otherwise>
+               <span class="like">관심웹툰해제</span>
+            </c:otherwise>
+         </c:choose>
       </a></li>
       
       <li><a href="/toon/eachEpSelect?toonNum=${toonVO.toonNum}&eachEpNum=1&epNum=1" title="첫회보기" class="first"><span>첫회보기</span></a></li>

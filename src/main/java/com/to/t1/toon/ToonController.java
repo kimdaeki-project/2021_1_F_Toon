@@ -64,6 +64,31 @@ public class ToonController {
 		return mv;
 	}
 	
+	@GetMapping("/")
+	   public String index(ToonVO toonVO,MemberVO memberVO, Authentication auth2) throws Exception {
+	      ModelAndView mv = new ModelAndView();
+	      
+	      if(auth2 != null) {
+	    	  memberVO = memberService.myPage((MemberVO) auth2.getPrincipal());
+	    	  mv.addObject("memberVO",memberVO);
+	    	  
+	      }
+	      
+	      toonVO.setTotalHit(0);
+			List<ToonVO> in = toonService.index(toonVO,memberVO);
+			
+			
+			mv.addObject("in", in);
+			
+	      mv.setViewName("index");
+	      
+	      System.out.println("username"+memberVO.getUsername());
+	    
+	      return "index" ;
+	   }
+	//모르겠당
+	
+	
 	
 	@GetMapping("toonDay")
 	   public ModelAndView toonDay(ToonVO toonVO,MemberVO memberVO, Authentication auth2) throws Exception {

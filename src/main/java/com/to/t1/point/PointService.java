@@ -86,10 +86,10 @@ public class PointService {
 	}
 	//티켓박스 정보 가져오기 
 	public TicketBoxVO checkTicketStock(@RequestParam Map<String,Object> param,TicketBoxVO ticketBoxVO) throws Exception{
-		
+		System.out.println(param);
 		String username= (String)param.get("username");
-		long toonNum = Long.parseLong((String)param.get("toonNum"));
-		
+		long toonNum; 
+		toonNum = Long.parseLong((String)param.get("toonNum"));
 		ticketBoxVO.setUsername(username);
 		ticketBoxVO.setToonNum(toonNum);
 		ticketBoxVO.setSort(1);
