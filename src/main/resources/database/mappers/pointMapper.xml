@@ -76,6 +76,7 @@
 	</select>
 
 	<resultMap type="PointVO" id="pointResult">
+		
 		<result property="username" column="username" />
 		<result property="point" column="point"/>
 		<result property="cDate" column="cDate"/>

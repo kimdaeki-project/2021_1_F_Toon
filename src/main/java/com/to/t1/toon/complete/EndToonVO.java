@@ -1,5 +1,9 @@
 package com.to.t1.toon.complete;
 
+import java.util.List;
+
+import com.to.t1.toon.eachep.EachEpVO;
+
 import lombok.Data;
 
 @Data
@@ -20,4 +24,5 @@ public class EndToonVO {
 	private String search;
 	private String username;
 	
+	private String nickname;
 }
