@@ -65,8 +65,8 @@ public class ToonController {
 		return mv;
 	}
 	
-	@GetMapping("/")
-	   public String index(ToonVO toonVO,MemberVO memberVO, Authentication auth2) throws Exception {
+	@GetMapping("toonIndex")
+	   public ModelAndView toonIndex(ToonVO toonVO,MemberVO memberVO, Authentication auth2) throws Exception {
 	      ModelAndView mv = new ModelAndView();
 	      
 	      if(auth2 != null) {
@@ -76,16 +76,16 @@ public class ToonController {
 	      }
 	      
 	      toonVO.setTotalHit(0);
-			List<ToonVO> in = toonService.index(toonVO,memberVO);
+			List<ToonVO> index = toonService.toonIndex(toonVO,memberVO);
 			
 			
-			mv.addObject("in", in);
+			mv.addObject("toonIndex", index);
 			
-	      mv.setViewName("index");
+	      mv.setViewName("toon");
 	      
 	      System.out.println("username"+memberVO.getUsername());
 	    
-	      return "index" ;
+	      return mv ;
 	   }
 	//모르겠당
 	

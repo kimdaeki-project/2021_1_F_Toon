@@ -5,8 +5,11 @@
     background-color: blue;
 }
 
+.m{
+	color: gray;
+}
+
 .mon {
-    
     float: left;
     width:14%;
     

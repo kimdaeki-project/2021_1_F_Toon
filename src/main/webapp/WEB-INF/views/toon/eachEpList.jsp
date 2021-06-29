@@ -13,32 +13,36 @@
 </head>
 <body>
 <c:import url="../fragments/header.jsp"></c:import>
-   
+   <br><br>
 <div id="content" class="webtoon">
 
-	<!-- 웹툰 소개 -->
+	<!-- 웹툰 이미지 -->
 	<div class="comicinfo">
 		<div class="thumb">
-			<a href="/toon/eachEpList?toonNum=${toonVO.toonNum}">
-				<img src="${toonVO.titleImg}">
+			<a class="s" style="font-size:25px;" href="/toon/eachEpList?toonNum=${toonVO.toonNum}">
+				<img width=180px height=180px src="${toonVO.titleImg}"> &nbsp;&nbsp;${toonVO.toonSum}
 				<span class="mask"></span>
-				</a>
+			</a>
 		</div>
-		<div class="detail">
-			<h2>${toonVO.toonTitle}
-			<span class="wrt_nm">${toonVO.nickname}</span>
-			</h2>
-			<p><h2>${toonVO.toonSum}</h2></p>
-		<p class="detail_info"><span class="genre">장르 : ${toonVO.genre}</span>
-		<span class="totalRating">웹툰별점 : ${toonVO.ratingSum/toonVO.ratingPerson}</span></p>
+		<br>
 		
-		<ul class="btn_group">
-		<li><a href="#" title="관심웹툰" class="book_maker on"><span>관심웹툰</span></a></li>
-		<li><a href="/toon/eachEpSelect?toonNum=${toonVO.toonNum}&epNum=1" title="첫회보기" class="first"><span>첫회보기</span></a></li>
-		
+	<!-- 웹툰 제목과 소개 -->	
+		<div class="detail" >
+			<h2 align="left">${toonVO.toonTitle} <span class="wrt_nm">${toonVO.nickname}</span></h2>
+		<p class="detail_info">
+		<span class="genre">장르 : ${toonVO.genre}</span><br>
+		<span class="totalRating">웹툰별점 : ${toonVO.ratingSum/toonVO.ratingPerson}</span></p>	
+	<!-- 관심웹툰과 첫회보기 -->	
+		<table>
+			<tr>
+				<td ><a href="#" title="관심웹툰" class="book_maker on"><span>관심웹툰</span></a></td>
+				<td><a href="/toon/eachEpSelect?toonNum=${toonVO.toonNum}&epNum=1" title="첫회보기" class="first"><span>첫회보기</span></a></td>
+			</tr>
+		</table>
 		</div>
 	</div>
-	<!-- 웹툰 소장권 충전,form으로 post전송  line:40에 붙여넣기
+	
+	<%-- <!-- 웹툰 소장권 충전,form으로 post전송  line:40에 붙여넣기
 	${pageContext.request.contextPath}}/point/ticketCharge : post전송-->
 	<div id="getTicketButton" class="" >
 	<sec:authorize access="isAuthenticated()"> 
@@ -55,72 +59,46 @@
 			<button id="chargeTicket" class="" type="submit">소장권 충전하기</button>		
 		</form>
 	</sec:authorize>	
-	</div>
+	</div> --%>
 	
-	
+	<br><br>
 	
 	
 	<!-- 리스트 -->
 
-		<table cellpadding="0" cellspacing="0" class="viewList">
-		<%-- <caption><span class="blind">회차별 목록</span></caption> --%>
-		<col width="99"><col width="*"><col width="141"><col width="76">
+		<table cellpadding="0" cellspacing="0" class="viewList"  align="center">
+	
 		<thead>
 		<tr>
-			<th scope="col">이미지</th>
-			<th scope="col">제목</th>
-			<th scope="col">별점</th>
-			<th scope="col">등록일</th>
+			<th scope="col" class="a"><h2>이미지</h2></th>
+			
+			<th scope="col" class="b"><h2>제목</h2></th>
+			
+			<th scope="col" class="c"><h2>별점</h2></th>
+			
+			<th scope="col" class="d"><h2>등록일</h2></th>
 		</tr>			
 		</thead>
 		
 		
 		<!-- -------------------------유료-------------------------------------- -->
 	
-		<tbody>
+		<tbody style="font-size:30px;">
 	
 
-		<c:forEach items="${toonVO.eachEpVO}" var="eachEpVO" begin="0" end="2">
+		<c:forEach items="${toonVO.eachEpVO}" var="eachEpVO">
 			<tr>
 			
 				<td class="imgalign" >
 				
-					<a href="#" class="pay" data-toonNum="${toonVO.toonNum}" data-eachEpNum="${eachEpVO.eachEpNum}" >
-					<img src="${eachEpVO.epSumImg}"
-						title="${eachEpVO.eachEpNum}화" alt="${eachEpVO.eachEpNum}화" width="71" height="41">
+					<a href="/toon/eachEpSelect?toonNum=${toonVO.toonNum}&eachEpNum=${eachEpVO.eachEpNum}&epNum=${eachEpVO.epNum}" class="pay" data-toonNum="${toonVO.toonNum}" data-eachEpNum="${eachEpVO.eachEpNum}" ><br>
+					<img src="${eachEpVO.epSumImg}" title="${eachEpVO.eachEpNum}화" alt="${eachEpVO.eachEpNum}화" width="100" height="100">
 						<span class="mask"></span>
 					</a>
 				</td>
 				<td class="title">
-				<a href="#" class="pay" data-toonNum="${toonVO.toonNum}" data-eachEpNum="${eachEpVO.eachEpNum}" >
-				${eachEpVO.eachEpNum}화</a>
-				</td>
-				<td>
-					<div class="rating_type">
-						<span class="star"><em>평점</em></span>
-						<strong>${eachEpVO.epRatingSum/eachEpVO.epRatingPerson}</strong>
-					</div>
-				</td>
-				<td class="num"><span>${eachEpVO.epDate}</span></td>
-			</tr>
-		</c:forEach>
-		</tbody>
-		
-		
-		<!-- -------------------------무료-------------------------------------- -->
-		<tbody>
-		<c:forEach items="${toonVO.eachEpVO}" var="eachEpVO" begin="3">
-			<tr>
-				<td class="imgalign" >
 				
-					<a href="/toon/eachEpSelect?toonNum=${toonVO.toonNum}&eachEpNum=${eachEpVO.eachEpNum}" >
-					<img src="${eachEpVO.epSumImg}"
-						title="${eachEpVO.eachEpNum}화" alt="${eachEpVO.eachEpNum}화" width="71" height="41">
-						<span class="mask"></span>
-					</a>
-				</td>
-				<td class="title">
-				<a href="/toon/eachEpSelect?toonNum=${toonVO.toonNum}&eachEpNum=${eachEpVO.eachEpNum}">
+				<a href="/toon/eachEpSelect?toonNum=${toonVO.toonNum}&eachEpNum=${eachEpVO.eachEpNum}&epNum=${eachEpVO.epNum}" class="pay" data-toonNum="${toonVO.toonNum}" data-eachEpNum="${eachEpVO.eachEpNum}" >
 				${eachEpVO.eachEpNum}화</a>
 				</td>
 				<td>
@@ -133,9 +111,7 @@
 			</tr>
 		</c:forEach>
 		</tbody>
-		
-		
-		
+
 		
 		</table>
 		

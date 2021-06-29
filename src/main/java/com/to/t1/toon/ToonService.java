@@ -41,8 +41,8 @@ public class ToonService {
 	
 	
 	
-	public List<ToonVO> index(ToonVO toonVO,MemberVO memberVO) throws Exception{
-		return toonMapper.index(toonVO,memberVO);
+	public List<ToonVO> toonIndex(ToonVO toonVO,MemberVO memberVO) throws Exception{
+		return toonMapper.toonIndex(toonVO,memberVO);
 	}
 	
 

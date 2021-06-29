@@ -5,24 +5,15 @@
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="UTF-8">
-<title>Insert title here</title>
-<!-- Required meta tags -->
 <meta charset="utf-8">
-<meta name="viewport"
-	content="width=device-width, initial-scale=1, shrink-to-fit=no">
-<!-- BootStrap -->
-<!--     <link rel="icon" href="images/favicon.png" type="image/png">  위에 로고-->
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <c:import url="../../fragments/bootstrap.jsp"></c:import>
-<title>WebToon</title>
-
-
 <link rel="stylesheet" href="../../css/header.css">
 <link rel="stylesheet" href="../../css/toonDay.css">
-
 </head>
+
 <body>
-	<c:import url="../../fragments/header.jsp"></c:import>
+<c:import url="../../fragments/header.jsp"></c:import>
 <sec:authorize access="isAuthenticated()"> 
 	<input name="username" value="<sec:authentication property="principal.username"/>" hidden="hidden" readonly="readonly"/>
 </sec:authorize>
@@ -52,7 +43,7 @@
 	 
 
 		<!-- 월요일 ------------------------------------------------------>		
-		<div class="mon"><h1>월요일</h1>
+		<div class="mon"><a class="m" href="/toon/toonDay/toonDaySelect"><h1>월요일</h1></a>
 		<br>
 			<ul>
 		<c:forEach items="${mt}" var="mt">

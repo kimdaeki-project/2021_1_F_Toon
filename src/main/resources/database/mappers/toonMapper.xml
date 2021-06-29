@@ -22,7 +22,7 @@
 		(t.toontitle LIKE CONCAT('%', #{toonVO.search}, '%'))
 	</select>
 
-	<select id="index" parameterType="ToonVO" resultType="ToonVO">
+	<select id="toonIndex" parameterType="ToonVO" resultType="ToonVO">
 	SELECT *
 	FROM toon t JOIN
 	member m ON t.writerId = m.username

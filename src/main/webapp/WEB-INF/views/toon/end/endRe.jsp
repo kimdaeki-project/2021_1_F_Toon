@@ -37,19 +37,30 @@
 		<br><br>
 		
 		<h1 align="center"> 완결 웹툰 </h1>
-		
-		<br><br>	
+
 		
 	<div class="end">
 		<c:set var="i" value="0" /> <c:set var="j" value="3" />			
 			<ul>
-				<c:forEach items="${end}" var="end">
+				<c:forEach items="${end}" var="end" begin="0" end="2">
+					<li style="float: left; margin: 100px;"><a href="/toon/eachEpList?toonNum=${end.toonNum}">
+					<img width=250px height=250px src=${end.titleImg}></a><br><br><h3>${end.toonTitle}</h3></li>
+				</c:forEach>
+
+			</ul>
+	</div>
+	
+		<div class="end">
+		<c:set var="i" value="0" /> <c:set var="j" value="3" />			
+			<ul>
+				<c:forEach items="${end}" var="end" begin="3">
 					<li style="float: left; margin: 30px;"><a href="/toon/eachEpList?toonNum=${end.toonNum}">
 					<img width=150px height=150px src=${end.titleImg}></a><br><br><h3>${end.toonTitle}</h3></li>
 				</c:forEach>
 
 			</ul>
 	</div>
+	
 	
 	
 
