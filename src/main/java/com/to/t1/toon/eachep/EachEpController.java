@@ -31,11 +31,24 @@ public class EachEpController {
    private FavoriteToonService favoriteToonService;
    
    @GetMapping("eachEpList")
-   public void getList(Pager pager, Model model, Authentication auth)throws Exception{
+   public void getList(Pager pager, Model model, Authentication auth,
+		   @RequestParam Map<String,Object> param, MemberVO memberVO,TicketBoxVO ticketBoxVO,
+		   )throws Exception{
       FavoritetoonVO favoritetoonVO = new FavoritetoonVO();
       if(auth!=null) {
          favoritetoonVO.setUsername(auth.getName());
          favoritetoonVO.setToonNum(pager.getToonNum());
+         
+         memberVO = memberService.myPage((MemberVO) auth2.getPrincipal());
+
+         param.put("username",memberVO.getUsername());
+
+         ticketBoxVO = pointService.checkTicketStock(param, ticketBoxVO);
+
+         System.out.println(ticketBoxVO);
+
+         model.addAttribute("ticketBox",ticketBoxVO);
+
       }
       ToonVO list=eachEpService.getList(pager);
       model.addAttribute("toonVO", list);
