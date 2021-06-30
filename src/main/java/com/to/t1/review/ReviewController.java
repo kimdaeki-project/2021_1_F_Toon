@@ -23,7 +23,6 @@ public class ReviewController {
 	@Autowired
 	private EachEpService eachEpService;
 	
-
 	
 	@PostMapping("setReview")
 	public void setReview(ReviewVO reviewVO, Model model,Authentication auth)throws Exception{
