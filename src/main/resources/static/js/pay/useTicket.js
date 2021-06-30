@@ -206,6 +206,7 @@ function clickATag(epNump1,eachEpNump1){
 	//전역변수 할당
 	epNump = epNump1;
 	eachEpNump=eachEpNump1;
+	
 	alert(epNump+":::"+eachEpNump);
 	if(isEmpty(usernamep)){
 		var text = "소장권을 구입하거나 사용할려면 \n 로그인이 필요합니다";
