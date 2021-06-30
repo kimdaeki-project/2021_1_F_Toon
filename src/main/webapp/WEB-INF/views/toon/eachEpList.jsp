@@ -31,26 +31,22 @@
 			<h2>${toonVO.toonTitle}
 			<span class="wrt_nm">${toonVO.nickname}</span>
 			</h2>
-			<p><h2>${toonVO.toonSum}</h2></p>
+			<h2>${toonVO.toonSum}</h2>
 		<p class="detail_info"><span class="genre">장르 : ${toonVO.genre}</span>
 		<span class="totalRating">웹툰별점 : ${toonVO.ratingSum/toonVO.ratingPerson}</span></p>
 		
 		<ul class="btn_group">
 		<li><a href="#" title="관심웹툰" class="book_maker on"><span>관심웹툰</span></a></li>
 		<li><a href="/toon/eachEpSelect?toonNum=${toonVO.toonNum}&epNum=1" title="첫회보기" class="first"><span>첫회보기</span></a></li>
-		
+		</ul>
 		</div>
 	</div>
 	<!-- 웹툰 소장권 충전,form으로 post전송  line:40에 붙여넣기
 	${pageContext.request.contextPath}}/point/ticketCharge : post전송-->
 	<!--  -->
-	<span>test link </span><br>
-	
-	<a onclick = "clickATag();">
-		ddddd
+	<a onclick="clickATag(3, 3);">test link 
 		<input name ="epNum" value="3" readonly="readonly"/>
-		<input name ="eachEpNum" value="4" readonly="readonly"/>
-		
+		<input name ="eachEpNum" value="3" readonly="readonly"/>		
 	</a>
 	
 	<div id="getTicketButton">
@@ -63,9 +59,8 @@
 			<br/><span>보유중 포인트</span><!-- javaScript로 200P 미만인지 검사하고 그 값에 따라서 충전버튼 과 소장권 구매 버튼 활성화 다르게 하기 -->
 			<input id="cur-point" name="point" value="<sec:authentication property="principal.point"/>" readonly="readonly"/>
 			<br/><span>toonNum</span>
-			<input id="toon-num" value="${toonVO.toonNum}" readonly="readonly"/>
+			<input id="toon-num" name="toonNum" value="${toonVO.toonNum}" readonly="readonly"/>
 			<br/><span>toonTitle</span>
-			
 			<input id ="toon-Title" name="toonTitle" value="${toonVO.toonTitle}" readonly="readonly"/>
 			<!-- point가 작은 경우 소장권 버튼 누르면 alert창 나오고 chargePoint페이지로 이동하기 -->
 			<button id="chargeTicket" class="" type="submit">소장권 충전하기</button>		
@@ -73,11 +68,9 @@
 	</sec:authorize>	
 	</div>
 	
-	
-	
 	<!-- 리스트 -->
 
-		<table cellpadding="0" cellspacing="0" class="viewList">
+		<table class="viewList">
 		<%-- <caption><span class="blind">회차별 목록</span></caption> --%>
 		<col width="99"><col width="*"><col width="141"><col width="76">
 		<thead>
@@ -99,15 +92,16 @@
 			<tr>
 			
 				<td class="imgalign" >
-				<input id="epNum" name="epNum" value="${eachEpVO.epNum}" hidden="hidden"/>
-					<a href="#" class="pay" data-toonNum="${toonVO.toonNum}" data-eachEpNum="${eachEpVO.eachEpNum}" >
+					<a class="pay" data-toonNum="${toonVO.toonNum}" data-eachEpNum="${eachEpVO.eachEpNum}" >
 					<img src="${eachEpVO.epSumImg}"
 						title="${eachEpVO.eachEpNum}화" alt="${eachEpVO.eachEpNum}화" width="71" height="41">
 						<span class="mask"></span>
 					</a>
+					
 				</td>
 				<td class="title">
-				<a href="#" class="pay" data-toonNum="${toonVO.toonNum}" data-eachEpNum="${eachEpVO.eachEpNum}" >
+				<a onclick="clickATag(${eachEpVO.epNum}, ${eachEpVO.eachEpNum});" class="pay" data-toonNum="${toonVO.toonNum}" data-eachEpNum="${eachEpVO.eachEpNum}" >
+				
 				${eachEpVO.eachEpNum}화</a>
 				</td>
 				<td>
@@ -126,12 +120,11 @@
 		<c:forEach items="${toonVO.eachEpVO}" var="eachEpVO" begin="3">
 			<tr>
 				<td class="imgalign" >
-				<input id="epNum" name="epNum" value="${eachEpVO.epNum}" hidden="hidden"/>
-					<a href="/toon/eachEpSelect?toonNum=${toonVO.toonNum}&eachEpNum=${eachEpVO.eachEpNum}" >
+				<a href="/toon/eachEpSelect?toonNum=${toonVO.toonNum}&eachEpNum=${eachEpVO.eachEpNum}" >
 					<img src="${eachEpVO.epSumImg}"
 						title="${eachEpVO.eachEpNum}화" alt="${eachEpVO.eachEpNum}화" width="71" height="41">
 						<span class="mask"></span>
-					</a>
+				</a>
 				</td>
 				<td class="title">
 				<a href="/toon/eachEpSelect?toonNum=${toonVO.toonNum}&eachEpNum=${eachEpVO.eachEpNum}">
@@ -171,7 +164,6 @@
 		</div>
 
 </div>
-
 
 <script type="text/javascript" src="../../js/pay/useTicket.js"></script>
 <script type="text/javascript" src="../../js/list/list.js"></script>

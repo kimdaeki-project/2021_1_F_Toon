@@ -1,5 +1,3 @@
-//사용 전 check stock 갯수 : 1 이상
-//필요 : username,toonNum, epNum
 
 //유효성 검사 관련
 //https://fruitdev.tistory.com/200
@@ -19,7 +17,6 @@ var url = ""; // 문자열 받기
 
 let eachEpNump;
 let epNump;
-alert(tNum);
 //유효성 검사
 //빈 단어 검사
 function isEmpty(str){
@@ -53,7 +50,7 @@ function checkpoint(text){
 ticketstock = parseInt(checkpoint(ticketstock),10);
 curpoint = parseInt(checkpoint(curpoint),10);
 $('#ticket-stock').val(ticketstock);
-
+//alert($('#ticket-stock').val());
 // 변수형 검사하기 -> 둘 다 number
 //alert("curpoint : " + curpoint + " typeOf point :" + typeof curpoint + 
 //"/ stock : "+ticketstock +res + typeof ticketstock);
@@ -100,7 +97,7 @@ function comfFunction(text,func){
 //티켓 1개 차감 및 소장권 입력 ep이동 ajax
 function getTicketAjax(){
 	epNum = "";
-	var send = { username: usernamep, epNum: epNump , toonNum: tNum};
+	var send = { username: usernamep, epNum: epNump , toonNum: tNum , eachEpNum: eachEpNump};
 	$.ajax({
 		type : 'POST',
 		data : JSON.stringify(send),
@@ -110,7 +107,7 @@ function getTicketAjax(){
 		url : '/point/getNuseTicket', //요청 할 내용
 		success: function(res){
 			url = res; //결과 할당
-			alert("소장권을 사용합니다");
+			alert("소장권을 차감합니다");
 			gotolocation(url);
 			//window.location.href= url;
 		},
@@ -138,7 +135,7 @@ function usePointtoGetTicket(){
 			if(url == '1'){
 				//alert("ajax 통신 성공");
 				alert("소장권 구입 성공");
-				var text ="소장권이 있습니다 \n소장권을 바로 사용하시겠습니까?";
+				var text ="소장권을 바로 사용하시겠습니까?";
 				comfFunction(text,getTicketAjax);
 			}
 		},
@@ -159,7 +156,7 @@ function usePointtoGetTicket(){
 function checkUseTicket(epNump,eachEpNump){
 	
 	//보낼 데이터 : username , epNum ,toonNum
-	var send = { username: usernamep, epNum: epNump, toonNum : tNum, eachEpNum : eachEpNump};
+	var send = { username: usernamep, toonNum : tNum,epNum: epNump, echEpNum : eachEpNump};
 	$.ajax({
 		type : 'POST',
 		data : JSON.stringify(send),
@@ -176,7 +173,7 @@ function checkUseTicket(epNump,eachEpNump){
 		}
 	}).done(function(result){
 		
-		if(result != '0'){
+		if(result != 0){
 			alert("소장권이 있습니다 페이지를 이동합니다");
 			url = result;
 			gotolocation(url);
@@ -202,24 +199,18 @@ function checkUseTicket(epNump,eachEpNump){
 	}); 
 }/*end*/
 
-//checkUseTicket();
-/*end ajax function*/
 
-/*ajax 통신자체는 비동기라서 통신 뒤 무언가를 하고 싶다면 collback 함수에서 실행된다*/ 
-
-//선택한 영역의 div 이벤트 걸기 받을 것 선택한 영역의 : toonNum , eachepNum 받기  
-
-function clickATag(){
-	//alert("a태그 클릭");
+function clickATag(epNump1,eachEpNump1){
 	
-	//선택한 태그의 epnum과 eachEpNum 가져오기
-	epNump = $(event.currentTarget).children('input[name=epNum]').val();
-	eachEpNump = $(event.currentTarget).children('input[name=eachEpNum]').val();
-	//alert(epNump + eachEpNump );
+	alert(epNump1 + ':::'+eachEpNump1);
+	//전역변수 할당
+	epNump = epNump1;
+	eachEpNump=eachEpNump1;
+	alert(epNump+":::"+eachEpNump);
 	if(isEmpty(usernamep)){
 		var text = "소장권을 구입하거나 사용할려면 \n 로그인이 필요합니다";
 		if (confirm(text)) {
-			alert("예 선택"); // 포인트 차감 + 소장권 1 구매
+			alert("예 선택"); // 로그인 페이지로 이동하기
 			var path ="/member/login";
 			gotolocation(path);
     	}else { // 현재 페이지 유지
@@ -229,3 +220,9 @@ function clickATag(){
 		checkUseTicket(epNump,eachEpNump);
 	}
 }
+
+/*end ajax function*/
+//checkUseTicket();
+/*end ajax function*/
+/*ajax 통신자체는 비동기라서 통신 뒤 무언가를 하고 싶다면 collback 함수에서 실행된다*/ 
+//선택한 영역의 div 이벤트 걸기 받을 것 선택한 영역의 : toonNum , eachepNum 받기  

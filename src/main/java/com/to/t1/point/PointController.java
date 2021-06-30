@@ -44,7 +44,7 @@ public class PointController {
 	@ResponseBody
 	public String setPoint(@RequestBody Map<String, String> param,Model model,HttpSession httpSession) throws Exception{
 		
-		System.out.println(param);
+		//System.out.println(param);
 		int result = pointservice.chargePoint(param);
 		if(result == 0 ) {
 			return "../member/myPage";
@@ -55,32 +55,35 @@ public class PointController {
 	//소장권 구입  
 	//파라미터 값 : 1. user정보 , 2.(사용 할)EP정보
 	//리턴 : 진행상황,(int로 반환) 
-	
 	@PostMapping("ticketCharge")
-	public String getTicket(@RequestParam Map<String,Object> param, HttpSession httpSession,Model model, TicketBoxVO ticketBoxVO)throws Exception{
+	public String getTicket(@RequestParam Map<String,Object> param, HttpSession httpSession,Model model, 
+			TicketBoxVO ticketBoxVO)throws Exception{
 		//TicktBox조회 
-		System.out.println("ticketBoxVO1"+ticketBoxVO);
 		
-		ticketBoxVO = pointservice.checkTicketStock(param, ticketBoxVO);
-		//System.out.println("ticketBoxVO2"+ticketBoxVO);
+		long isAlready = pointservice.checkTicketBox(ticketBoxVO);
+		param.put("isAlredy",isAlready);
 		
 		model.addAttribute("info",param);
 		model.addAttribute("ticketBox",ticketBoxVO);
+		model.addAttribute("isAlready",isAlready);
+		System.out.println("info" + param);
+		System.out.println("ticketBox "+ ticketBoxVO);
 		
 		return "point/getTicket";
 	}
 	@PostMapping("getToonTicket")
 	public String getToonTicket(PointVO pointVO, TicketBoxVO ticketBoxVO,@RequestParam long isAlready, HttpSession httpSession)throws Exception {
 		
-		System.out.println(ticketBoxVO);
-		
-		System.out.println("isA"+isAlready);
+		//System.out.println("isA : "+isAlready);
 		pointservice.getTicket(pointVO, ticketBoxVO, isAlready);
 		//경로 처리하기 
 		
 		return "toon/eachEpList";
 	}
 	
+	
+	
+	//소장권 가지고 있는지 확인하기
 	@PostMapping("checkTicket")
 	@ResponseBody
 	public String checkUseTicket(@RequestBody Map<String,Object> param) throws Exception{
@@ -99,23 +102,28 @@ public class PointController {
 			//해당 post전송하기
 			url = "/toon/eachEpSelect?toonNum="+toonNum+"&eachEpNum="+eachEpNum;
 		}else {
-			url = "/toon/eachEpList?toonNum="+toonNum;
+			url = "0";
 		}
 		
 		return url;
 				
 	}
-	//소장권 사용 (1개 구입 및 사용)
+	//소장권 사용 (1개 구입 및 페이지 이동하기)
 	@PostMapping("getNuseTicket")
 	@ResponseBody
 	public String useTicket(@RequestBody Map<String,String> param,
 		TicketBoxVO ticketBoxVO,UseTicketVO useTicketVO) throws Exception{
 		
-		System.out.println("param : "+param);
+		System.out.println("param3 : "+param);
+		System.out.println(ticketBoxVO);
+		System.out.println(useTicketVO);
 		String url = "/";
+		//티켓 쓰기...
 		int result = pointservice.setuseTicket(param, useTicketVO, ticketBoxVO);
+		//eachepNum 찾기
 		long toonNum = Long.parseLong(param.get("toonNum"));
 		long eachEpNum = pointservice.SelectEachEpNum(param);
+		
 		//System.out.println(eachEpNum);
 		//3. 모두 성공하면 0 or 1 return 하기
 		if(result != 0) {
@@ -130,11 +138,10 @@ public class PointController {
 	@PostMapping("directGetTicket")
 	@ResponseBody
 	public String directgetTicket(@RequestBody Map<String,Object> param, 
-			PointVO pointVO , TicketBoxVO ticketBoxVO)throws Exception {
+			PointVO pointVO , TicketBoxVO ticketBoxVO
+			)throws Exception {
 		
 		int result =0;
-		
-		long isAlready = 0;
 		
 		System.out.println("param :"+param);
 		String username= String.valueOf(param.get("username"));
@@ -157,13 +164,12 @@ public class PointController {
 		System.out.println(pointVO);
 		
 		pointservice.checkTicketStock(param,ticketBoxVO); // stock의 갯수 가져오기
-		isAlready = pointservice.checkTicketBox(ticketBoxVO);
-		System.out.println("isAlready : "+ isAlready);
 		
-		//
+		long isAlready = pointservice.checkTicketBox(ticketBoxVO);
 		result = pointservice.getTicket(pointVO, ticketBoxVO, isAlready);
 		String result2 =  Integer.toString(result);
 		System.out.println("result2 :" + result2);
+		
 		return result2;
 		
 	}

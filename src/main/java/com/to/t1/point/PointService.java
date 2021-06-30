@@ -25,14 +25,10 @@ public class PointService {
 	//포인트 충전 para :pointVO , MAP<string,Object> return : pointVO, eachEpVO , int status 
 	public int chargePoint(@RequestBody Map<String,String> param) throws Exception {
 		
-		String username = (String)param.get("username");
+		String username = String.valueOf(param.get("username"));
 		long point = Long.parseLong(param.get("point"));
-		String contents = (String)param.get("contents");
-		
-		System.out.println("username" + username);
-		System.out.println("point" + point);
-		System.out.println("contents" + contents);
-		
+		String contents = String.valueOf(param.get("contents"));
+
 		PointVO pointVO = new PointVO();
 		pointVO.setUsername(username);
 		pointVO.setPoint(point);
@@ -53,7 +49,7 @@ public class PointService {
 	}
 	
 	//소장권 구매 == 포인트 사용  
-	public int getTicket(PointVO pointVO,TicketBoxVO ticketBoxVO, long isAlready) throws Exception{
+	public int getTicket(PointVO pointVO,TicketBoxVO ticketBoxVO ,long isAlready) throws Exception{
 		
 		int result;
 		
@@ -67,6 +63,7 @@ public class PointService {
 		System.out.println("result1 :" +result);
 		result= pointMapper.setMyPointList(pointVO);
 		
+		isAlready = pointMapper.checkTicketBox(ticketBoxVO);
 		if(isAlready == 0) {//이력이 없다면 있으면 insert
 			result = pointMapper.insertTicketStock(ticketBoxVO);
 		}else {//이력이 있다면 Update
@@ -81,22 +78,22 @@ public class PointService {
 		//소장권 사용 내역 작성 
 		int result = 0;
 		
-		String username = (String)param.get("username");
-		long epNum = Long.parseLong(param.get("epNum"));
-		long toonNum =Long.parseLong(param.get("toonNum"));
-		
+		String username = param.get("username");
+		long toonNum =Long.valueOf(param.get("toonNum"));
+		long epNum = Long.valueOf(param.get("epNum"));
 		useTicketVO.setUsername(username);
-		useTicketVO.setEpNum(epNum);
 		useTicketVO.setToonNum(toonNum);
 		useTicketVO.setSort(1); //일단은 소장권으로
+		useTicketVO.setEpNum(epNum);
 		
 		ticketBoxVO.setUsername(username);
 		ticketBoxVO.setToonNum(toonNum);
 		ticketBoxVO.setStock(-1); //차감하는 티켓 장수 
 		ticketBoxVO.setSort(1);
 		
-		//System.out.println(ticketBoxVO);
-		//System.out.println(useTicketVO);
+		System.out.println("param3 with useTicket"+useTicketVO);
+		System.out.println("param3 with TicketBox"+ticketBoxVO);
+		
 		result = pointMapper.setTicketUselist(useTicketVO);//사용내역 작성
 		result = pointMapper.updateTicketStock(ticketBoxVO);//티켓 한개 차감 
 		return result;
@@ -107,9 +104,9 @@ public class PointService {
 		return pointMapper.checkTicketBox(ticketBoxVO);
 	}
 	//티켓박스 정보 가져오기 
-	public TicketBoxVO checkTicketStock(@RequestParam Map<String,Object> param,TicketBoxVO ticketBoxVO) throws Exception{
-//		System.out.println("param1"+param);
-//		System.out.println(ticketBoxVO);
+	public TicketBoxVO checkTicketStock(@RequestParam Map<String,Object> param,
+			TicketBoxVO ticketBoxVO) throws Exception{
+
 		String username= String.valueOf(param.get("username"));
 		long toonNum = ticketBoxVO.getToonNum();
 		

@@ -43,7 +43,8 @@ public class EachEpController {
 	
 	
 	@GetMapping("eachEpList")
-	public void getList(@RequestParam Map<String,Object> param,Pager pager,Model model,HttpSession httpSession,MemberVO memberVO,Authentication auth2,TicketBoxVO ticketBoxVO)throws Exception{
+	public void getList(@RequestParam Map<String,Object> param,Pager pager,Model model,HttpSession httpSession,MemberVO memberVO,Authentication auth2,
+			TicketBoxVO ticketBoxVO)throws Exception{
 
 		if(auth2 != null) {
 			memberVO = memberService.myPage((MemberVO) auth2.getPrincipal());
