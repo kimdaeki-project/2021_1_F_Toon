@@ -81,11 +81,12 @@ $("#start-charge").click(function () {
 				}, 
 				error: function(request, status, error) {
 					alert("전송실패");
+					
 				}
 				}).done(function(data) {
 		        	console.log(data);
 		        	});
-		}
+		        	}
 		else {
 			var msg = '결제에 실패하였습니다.';
 			msg += '에러내용 : ' + rsp.error_msg;
