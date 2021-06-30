@@ -2,6 +2,7 @@ package com.to.t1.toon.eachep;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.Authentication;
@@ -9,44 +10,50 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import com.to.t1.favoriteToon.FavoriteToonService;
 import com.to.t1.favoriteToon.FavoritetoonVO;
+import com.to.t1.member.MemberService;
+import com.to.t1.member.MemberVO;
 import com.to.t1.mypage.RecentVO;
+import com.to.t1.point.PointService;
 import com.to.t1.review.ReviewService;
 import com.to.t1.review.ReviewVO;
+import com.to.t1.ticket.TicketBoxVO;
+import com.to.t1.toon.ToonService;
 import com.to.t1.toon.ToonVO;
 import com.to.t1.util.Pager;
 
 @Controller
 @RequestMapping("/toon/**")
-public class EachEpController {
+public class EachEpController{
 
    @Autowired
    private EachEpService eachEpService;
-   
    @Autowired
    private ReviewService reviewService;
    @Autowired
    private FavoriteToonService favoriteToonService;
-   
+   @Autowired
+   private MemberService memberService;
+   @Autowired
+   private PointService pointService;
+
    @GetMapping("eachEpList")
-   public void getList(Pager pager, Model model, Authentication auth,
-		   @RequestParam Map<String,Object> param, MemberVO memberVO,TicketBoxVO ticketBoxVO,
-		   )throws Exception{
+   public void getList(
+		   Pager pager, Model model, Authentication auth,
+		   @RequestParam Map<String,Object> param, MemberVO memberVO,TicketBoxVO ticketBoxVO
+		   ) throws Exception{
       FavoritetoonVO favoritetoonVO = new FavoritetoonVO();
       if(auth!=null) {
+    	  
          favoritetoonVO.setUsername(auth.getName());
          favoritetoonVO.setToonNum(pager.getToonNum());
          
-         memberVO = memberService.myPage((MemberVO) auth2.getPrincipal());
-
+         memberVO = memberService.myPage((MemberVO) auth.getPrincipal());
          param.put("username",memberVO.getUsername());
-
          ticketBoxVO = pointService.checkTicketStock(param, ticketBoxVO);
-
-         System.out.println(ticketBoxVO);
-
          model.addAttribute("ticketBox",ticketBoxVO);
 
       }
@@ -60,7 +67,8 @@ public class EachEpController {
    }
    
    @GetMapping("eachEpSelect")
-   public void getSelect(EachEpVO eachEpVO,Pager pager, Model model, Authentication auth)throws Exception{
+   public void getSelect(EachEpVO eachEpVO,Pager pager, 
+		   Model model, Authentication auth)throws Exception{
       RecentVO recentVO = new RecentVO();
       FavoritetoonVO favoritetoonVO = new FavoritetoonVO();
       if(auth!=null) {
