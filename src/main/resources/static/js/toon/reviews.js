@@ -3,7 +3,7 @@ var epNum = $("#epNum").val();
 var eachEpNum = $("#eachEpNum").val();
 var rating = Number($('#rating').find("input[name='star']:checked").val());
 var comments = $("#comments").val();
-var revNum = $("#delReview").val();
+
 
 /*별점, 댓글 저장*/
 $(function() {
@@ -44,10 +44,11 @@ $(function() {
 
 /* 별점, 댓글 삭제 */
 $(function() {
-	$('#delReview').click(function() {
-		alert("별점, 댓글 삭제");
+	$('.reviewList').on("click",".delReview",function() {
+		var revNum = $(this).val();
 
-		$.ajax({
+		if(confirm("정말 삭제하시겠습니까?") == true){
+			$.ajax({
 			type: "POST",
 			url: '../review/delReview',
 			data: {
@@ -58,11 +59,16 @@ $(function() {
 				if (result != null) {
 					alert("댓글이 삭제되었습니다.");
 					$("#review_page").load(location.href = location.href);
-				} else {
+				}else {
 					alert("삭제에 실패하였습니다. 다시 시도해 주세요");
 				}
 			}
 
 		})
+		}else{
+			return false;
+		}
+
+		
 	})
 });

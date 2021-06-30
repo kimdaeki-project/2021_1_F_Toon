@@ -64,14 +64,15 @@ public class EachEpController {
       //eachEpNum 가장 큰 값 불러오기 위해서(getTotalCount 사용)
       model.addAttribute("pager", pager);
       
-      pager.setEpNum(eachEpVO.getEachEpNum());
+      pager.setEpNum(eachEpVO.getEpNum());
       pager.setEachEpNum(eachEpVO.getEachEpNum());
       
       List<ReviewVO> reviewVO = reviewService.getList(pager);
       list.getEachEpVO().get(0).setReviewVO(reviewVO);
+
       
       //Next code : revNum==0일때 reviewVO!=null 값으로 null이 되지않음 -> setReviewVO==null 
-      if(list.getEachEpVO().get(0).getReviewVO().get(0).getRevNum()==0) {
+      if(list.getEachEpVO().get(0).getReviewVO().size()==0) {
          list.getEachEpVO().get(0).setReviewVO(new ArrayList<ReviewVO>());
       }
       
