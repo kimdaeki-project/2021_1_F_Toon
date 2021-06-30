@@ -17,6 +17,6 @@ public class PointVO {
 	private Timestamp cDate; 
 	private String contents;
 	
-	private MemberVO memberVO;
+	//private MemberVO memberVO;
 	private UseTicketVO useTicketVO;
 }

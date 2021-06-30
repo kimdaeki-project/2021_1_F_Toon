@@ -112,8 +112,8 @@
 	
 <!-- 포인트로 소장권  구매 (member02의 경우) -->
 	<!--  1 .이미 구매한 항목인지 확인: 알아서 걸러 -->	
-	<select id="checkTicketBox" parameterType="TicketBoxVO" resultType="java.lang.Long">
-		SELECT COUNT(*) FROM ticketbox WHERE toonNum = #{toonNum} AND username= #{username}
+	<select id="checkTicketBox" parameterType="TicketBoxVO" resultType="Long">
+		SELECT COUNT(*) FROM ticketbox WHERE( toonNum = #{toonNum} AND username= #{username} )
 	</select>
 	<!--  2.재고 사항 확인하기  -->
 	<select id="checkTicketStock" parameterType="TicketBoxVO" resultType="TicketBoxVO">
@@ -135,14 +135,21 @@
 	
 	<!-- 1. 소장권 INSERT 하기  -->	
 	<insert id="setTicketUselist" parameterType="UseTicketVO">
-		INSERT INTO user03.useticket (username,epNum,sort,toonNum,utDate) VALUES (#{username}, #{epNum},#{sort}), #{toonNum},NOW())
+		INSERT INTO user03.useticket (username, epNum,sort,toonNum,utDate) VALUES (#{username}, #{epNum},#{sort}, #{toonNum},NOW())
 	</insert>
+	<update id="setTicketCount" parameterType="java.util.Map">
+		UPDATE ticketbox SET stock = (ticketbox.stock- 1) WHERE  username='member02' AND `toonNum`=1
+	</update>
 	<!-- 조회(Long)  : 어떤 유저가 가진 어떤 웹툰의 총 소장권 갯수 -->
 	<select id="getTotalTicketCount" parameterType="UseTicketVO" resultType="Long">
 		SELECT COUNT(*) FROM useticket  WHERE (username=#{username} AND toonNum = #{toonNum} )AND sort = 1
 	</select>
-	
-	<!--  Eachep와 useTicket Select가져오기 -->
-	<!--  -->
+	<!-- 조회(long) : 어떤 유저가 가진 어떤 ep의 소장여부 -->
+	<select id="checkEpGet" parameterType="java.util.Map" resultType="Long">
+		SELECT COUNT(*) FROM useticket WHERE username = #{username} AND epNum = #{epNum}
+	</select>
+	<select id="SelectEachEpNum" parameterType="java.util.Map" resultType="Long">
+		SELECT eachep.eachEpNum FROM eachep WHERE epNum = #{epNum} 
+	</select>
 	
    </mapper>

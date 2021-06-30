@@ -17,6 +17,9 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.to.t1.ticket.TicketBoxVO;
+import com.to.t1.ticket.UseTicketVO;
+
+import retrofit2.http.POST;
 
 @Controller
 @RequestMapping("**/point/**")
@@ -56,38 +59,112 @@ public class PointController {
 	@PostMapping("ticketCharge")
 	public String getTicket(@RequestParam Map<String,Object> param, HttpSession httpSession,Model model, TicketBoxVO ticketBoxVO)throws Exception{
 		//TicktBox조회 
+		System.out.println("ticketBoxVO1"+ticketBoxVO);
+		
 		ticketBoxVO = pointservice.checkTicketStock(param, ticketBoxVO);
-		System.out.println(ticketBoxVO);
-		System.out.println(ticketBoxVO);
+		//System.out.println("ticketBoxVO2"+ticketBoxVO);
+		
 		model.addAttribute("info",param);
 		model.addAttribute("ticketBox",ticketBoxVO);
 		
 		return "point/getTicket";
 	}
 	@PostMapping("getToonTicket")
-	public String getToonTicket(PointVO pointVO, TicketBoxVO ticketBoxVO,int isAlready, HttpSession httpSession)throws Exception {
+	public String getToonTicket(PointVO pointVO, TicketBoxVO ticketBoxVO,@RequestParam long isAlready, HttpSession httpSession)throws Exception {
 		
+		System.out.println(ticketBoxVO);
 		
+		System.out.println("isA"+isAlready);
 		pointservice.getTicket(pointVO, ticketBoxVO, isAlready);
 		//경로 처리하기 
 		
-		
 		return "toon/eachEpList";
 	}
-	@GetMapping("useTicket")
-	public String useTicket(Model model, HttpSession httpSession) throws Exception{
-		
-		
-		return "point/useTicket";
-	}
 	
-	//소장권 사용 (1개 사용 )
-	@PostMapping("useTicket")
-	public void useTicket() throws Exception{
-		//1. 소장권 조회 
-		//2-1. 소장권의 컬럼이 없거나 stock ==0 이고 포인트가 200 이상인 경우, -> 소장권 구입 이동
-		//2-2. 소장권의 컬럼이 없거나 stock ==0 이고 포인트가 200 미만인 경우  -> 포인트 충전 이동
-		//2-3. 소장권의 stock >1 인 경우 : 소장권 구입하고 소장권 구입 URL로 이동하기 
+	@PostMapping("checkTicket")
+	@ResponseBody
+	public String checkUseTicket(@RequestBody Map<String,Object> param) throws Exception{
+		String url = "0";
+		System.out.println("param:" + param);
+		
+		String toonNum = String.valueOf(param.get("toonNum"));
+		String eachEpNum = String.valueOf(param.get("eachEpNum"));
+		System.out.println(toonNum + ":" + eachEpNum);
+		
+		long result = pointservice.CheckUseTicket(param);
+		
+		System.out.println("result : "+result);
+		
+		if(result != 0) {
+			//해당 post전송하기
+			url = "/toon/eachEpSelect?toonNum="+toonNum+"&eachEpNum="+eachEpNum;
+		}else {
+			url = "/toon/eachEpList?toonNum="+toonNum;
+		}
+		
+		return url;
+				
+	}
+	//소장권 사용 (1개 구입 및 사용)
+	@PostMapping("getNuseTicket")
+	@ResponseBody
+	public String useTicket(@RequestBody Map<String,String> param,
+		TicketBoxVO ticketBoxVO,UseTicketVO useTicketVO) throws Exception{
+		
+		System.out.println("param : "+param);
+		String url = "/";
+		int result = pointservice.setuseTicket(param, useTicketVO, ticketBoxVO);
+		long toonNum = Long.parseLong(param.get("toonNum"));
+		long eachEpNum = pointservice.SelectEachEpNum(param);
+		//System.out.println(eachEpNum);
+		//3. 모두 성공하면 0 or 1 return 하기
+		if(result != 0) {
+			//해당 post전송하기
+			url = "/toon/eachEpSelect?toonNum="+toonNum+"&eachEpNum="+eachEpNum;
+		}else {
+			url = "/toon/eachEpList?toonNum="+toonNum;
+		}
+		return url;
+	}
+	//포인트로 티켓 1개 구매하기 
+	@PostMapping("directGetTicket")
+	@ResponseBody
+	public String directgetTicket(@RequestBody Map<String,Object> param, 
+			PointVO pointVO , TicketBoxVO ticketBoxVO)throws Exception {
+		
+		int result =0;
+		
+		long isAlready = 0;
+		
+		System.out.println("param :"+param);
+		String username= String.valueOf(param.get("username"));
+		
+		String contents= String.valueOf(param.get("contents"));
+		
+		String tnum = String.valueOf(param.get("toonNum"));
+		long toonNum = Long.parseLong(tnum);
+		
+		pointVO.setUsername(username);
+		pointVO.setPoint(200);
+		pointVO.setContents(contents);
+		
+		ticketBoxVO.setUsername(username);
+		ticketBoxVO.setToonNum(toonNum);
+		ticketBoxVO.setSort(1);
+		ticketBoxVO.setStock(1);;
+		
+		System.out.println(ticketBoxVO);
+		System.out.println(pointVO);
+		
+		pointservice.checkTicketStock(param,ticketBoxVO); // stock의 갯수 가져오기
+		isAlready = pointservice.checkTicketBox(ticketBoxVO);
+		System.out.println("isAlready : "+ isAlready);
+		
+		//
+		result = pointservice.getTicket(pointVO, ticketBoxVO, isAlready);
+		String result2 =  Integer.toString(result);
+		System.out.println("result2 :" + result2);
+		return result2;
 		
 	}
 	
