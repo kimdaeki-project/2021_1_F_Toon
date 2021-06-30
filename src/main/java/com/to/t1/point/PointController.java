@@ -83,7 +83,7 @@ public class PointController {
 	
 	
 	
-	//소장권 가지고 있는지 확인하기
+	//소장권 가지고 있는지 확인하기 있다면 페이지 이동
 	@PostMapping("checkTicket")
 	@ResponseBody
 	public String checkUseTicket(@RequestBody Map<String,Object> param) throws Exception{
@@ -108,7 +108,7 @@ public class PointController {
 		return url;
 				
 	}
-	//소장권 사용 (1개 구입 및 페이지 이동하기)
+	//소장권 사용 (1개 차감 및 페이지 이동하기)
 	@PostMapping("getNuseTicket")
 	@ResponseBody
 	public String useTicket(@RequestBody Map<String,String> param,
