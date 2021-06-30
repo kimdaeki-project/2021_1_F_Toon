@@ -110,7 +110,7 @@
          <div class="warning_msg">별점과 댓글 모두 입력해주세요.</div>
          <textarea rows="10" id="comments" class="review_textarea" ></textarea>
       </div>
-      <button id="save">등록</button>
+      <input type="button" id="save2" value="등록">
    </div>
 
    <!-- 댓글 리스트 -->   
@@ -134,7 +134,7 @@
                <sec:authorize access="isAuthenticated()">
                <sec:authentication property="principal.username" var="loginUser"/>
                   <c:if test="${reviewVO1.username == loginUser}">
-                     <td><button id="delReview" title="${reviewVO1.revNum}" value="${reviewVO1.revNum}">삭제</button></td>
+                     <td><button class="delReview" title="${reviewVO1.revNum}" value="${reviewVO1.revNum}">삭제</button></td>
                   </c:if>
                </sec:authorize>
             </tr>
