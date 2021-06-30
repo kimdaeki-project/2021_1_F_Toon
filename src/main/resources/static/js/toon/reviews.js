@@ -7,7 +7,7 @@ var comments = $("#comments").val();
 
 /*별점, 댓글 저장*/
 $(function() {
-	$('#save').click(function() {
+	$('#save2').click(function() {
 		/* 댓글 최소 글자수 제한  */
 		if ($('#comments').val().length < 5) {
 			alert("5자 이상 입력해주세요.");
@@ -31,6 +31,7 @@ $(function() {
 					},
 					success: function(result) {
 						$(".reviewList").html(result);
+						alert(result);
 						alert("별점과 댓글을 등록하셨습니다. 등록해 주셔서 감사합니다.");
 					},
 					error: function(result) {
@@ -58,7 +59,7 @@ $(function() {
 				result = Number(result.trim());
 				if (result != null) {
 					alert("댓글이 삭제되었습니다.");
-					$("#review_page").load(location.href = location.href);
+					//$("#review_page").load(location.href = location.href);
 				}else {
 					alert("삭제에 실패하였습니다. 다시 시도해 주세요");
 				}

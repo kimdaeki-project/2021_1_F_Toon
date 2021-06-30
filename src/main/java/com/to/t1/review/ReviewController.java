@@ -35,7 +35,8 @@ public class ReviewController {
 			
 			//리뷰리스트를 js에서 리로드하기 위해서 추가 
 			Pager pager = new Pager();
-			pager.setEachEpNum(reviewVO.getEachEpNum());
+			pager.setEpNum(reviewVO.getEpNum());
+			pager.setToonNum(reviewVO.getToonNum());
 			model.addAttribute("result", reviewService.getList(pager));
 		}		
 	}
