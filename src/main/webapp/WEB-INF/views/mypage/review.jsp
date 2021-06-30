@@ -157,7 +157,7 @@
 			<c:forEach items="${list}" var="list" >
 				<tr>
 					<td class="text_ct"><img width=50px height=50px src="${list.toonVO.titleImg}"></td>
-					<td class="text_ct">${list.toonVO.toonTitle}</td>
+					<td class="text_ct"><a href="/toon/eachEpList?toonNum=${list.toonVO.toonNum}">${list.toonVO.toonTitle}</a></td>
 					<td class="text_ct">${list.eachEpVO.epTitle}</td>
 					<td class="text_ct">${list.memberVO.nickname}</td>
 					<td class="text_ct">${list.reviewVO.comments}</td>
