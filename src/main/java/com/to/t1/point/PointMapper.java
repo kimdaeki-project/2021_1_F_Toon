@@ -47,6 +47,9 @@ public interface PointMapper {
 	
 	public long getTotalTicketCount (UseTicketVO useTicketVO)throws Exception;
 	
-	public long checkEpGet (Map param)throws Exception;
-	public long SelectEachEpNum(Map param)throws Exception;
+	
+	
+	
+	
+	
 }

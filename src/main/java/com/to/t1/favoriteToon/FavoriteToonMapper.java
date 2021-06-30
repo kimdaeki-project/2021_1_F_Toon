@@ -8,4 +8,7 @@ public interface FavoriteToonMapper {
 	public int setFavorite(FavoritetoonVO favoritetoonVO) throws Exception;
 	public int delFavorite(FavoritetoonVO favoritetoonVO) throws Exception;
 	
+	public FavoritetoonVO getSelect(FavoritetoonVO favoritetoonVO) throws Exception;
+	
+	
 }
