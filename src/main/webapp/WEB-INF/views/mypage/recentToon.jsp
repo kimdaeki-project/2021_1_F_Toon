@@ -168,11 +168,12 @@
 			</tbody>
 
 		</table>
-		<input type="button" value="선택 삭제" class="btn btn-danger" onclick="deleteValue();">
+		<input type="button" value="선택 삭제" class="btn btn-danger" onclick="deleteValue();"><br>
 	</div>
 <%-- 			<a href="./recentToon?epNum=${list.eachEpVO.epNum}" id="delete" class="btn btn-danger">삭제</a> --%>
 <%-- 			<input type="hidden" name="epNum" value="${list.eachEpVO.epNum}"> --%>
-           
+           	<br>
+           	
 			<ul class="pagination">
 
 				<c:if test="${pager.pre}">
@@ -187,7 +188,7 @@
 					<li class="page-item"><a class="page-link p" href="/mypage/recentToon/?username=${memberVO.username}&curPage=${pager.curPage+i+1}" title="${pager.lastNum+1}">다음</a></li>
 				</c:if>
 			</ul>
-			
+			</center>
 
 	</p>
         <div class="page-content-wrapper-inner">
@@ -230,6 +231,7 @@
 			}
 		});
 	});
+    
 	function deleteValue(){
 		var url = "delete";    // Controller로 보내고자 하는 URL (.dh부분은 자신이 설정한 값으로 변경해야됨)
 		var valueArr = new Array();
@@ -254,7 +256,7 @@
 			    url : url,                    // 전송 URL
 			    type : 'GET',                // GET or POST 방식
 			    traditional : true,
-			    data : {
+			    data : {	
 			    	valueArr : valueArr        // 보내고자 하는 data 변수 설정
 			    },
                 success: function(jdata){
