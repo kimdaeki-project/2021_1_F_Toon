@@ -77,6 +77,7 @@
    
                <td id="dd" class="cell100 column1"><a href="./qnaSelect?boNum=${vo.boNum}&?username=${memberVO.username}">
                <c:catch>
+               
                <c:forEach begin="1" end="${vo.depth}">&#x279C;</c:forEach>
                </c:catch>
                ${vo.qnaTitle}
