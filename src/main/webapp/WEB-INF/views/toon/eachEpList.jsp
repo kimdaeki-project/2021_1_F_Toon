@@ -20,25 +20,22 @@
 	<div class="comicinfo">
 		<div class="thumb">
 			<a class="s" style="font-size:25px;" href="/toon/eachEpList?toonNum=${toonVO.toonNum}">
-				<img width=180px height=180px src="${toonVO.titleImg}"> &nbsp;&nbsp;${toonVO.toonSum}
+				&nbsp;&nbsp;&nbsp;&nbsp;<img width=180px height=180px src="${toonVO.titleImg}"> &nbsp;&nbsp;${toonVO.toonSum}
 				<span class="mask"></span>
 			</a>
 		</div>
 		<br>
 		
-	<!-- 웹툰 제목과 소개 -->	
+	<!-- 웹툰 제목과 소개 --> <!-- 관심웹툰과 첫회보기 -->	
 		<div class="detail" >
-			<h2 align="left">${toonVO.toonTitle} <span class="wrt_nm">${toonVO.nickname}</span></h2>
-		<p class="detail_info">
-		<span class="genre">장르 : ${toonVO.genre}</span><br>
-		<span class="totalRating">웹툰별점 : ${toonVO.ratingSum/toonVO.ratingPerson}</span></p>	
-	<!-- 관심웹툰과 첫회보기 -->	
-		<table>
-			<tr>
-				<td ><a href="#" title="관심웹툰" class="book_maker on"><span>관심웹툰</span></a></td>
-				<td><a href="/toon/eachEpSelect?toonNum=${toonVO.toonNum}&epNum=1" title="첫회보기" class="first"><span>첫회보기</span></a></td>
-			</tr>
-		</table>
+		&nbsp;&nbsp;&nbsp;&nbsp;<h2 align="left">${toonVO.toonTitle} <span class="wrt_nm">${toonVO.nickname}</span></h2>
+		&nbsp;&nbsp;&nbsp;&nbsp;<p class="detail_info" style="font-size:20px;">
+		<span class="genre">장르 : ${toonVO.genre}</span>&emsp;&emsp;
+		<span class="totalRating">별점: ${toonVO.ratingSum/toonVO.ratingPerson}</span>&emsp;&emsp;
+		<span><a href="#" title="관심웹툰" class="book_maker on">관심웹툰</a></span>&emsp;&emsp;
+		<span><a href="/toon/eachEpSelect?toonNum=${toonVO.toonNum}&epNum=1" title="첫회보기" class="first">첫회보기</a></span></p>	
+
+		
 		</div>
 	</div>
 	
@@ -66,11 +63,11 @@
 	
 	<!-- 리스트 -->
 
-		<table cellpadding="0" cellspacing="0" class="viewList"  align="center">
+		<table border="3" align="center" cellpadding="10"  class="viewList"  >
 	
 		<thead>
 		<tr>
-			<th scope="col" class="a"><h2>이미지</h2></th>
+			<th scope="col" class="a" ><h2>이미지</h2></th>
 			
 			<th scope="col" class="b"><h2>제목</h2></th>
 			
@@ -89,9 +86,9 @@
 		<c:forEach items="${toonVO.eachEpVO}" var="eachEpVO">
 			<tr>
 			
-				<td class="imgalign" >
+				<td class="imgalign"  >
 				
-					<a href="/toon/eachEpSelect?toonNum=${toonVO.toonNum}&eachEpNum=${eachEpVO.eachEpNum}&epNum=${eachEpVO.epNum}" class="pay" data-toonNum="${toonVO.toonNum}" data-eachEpNum="${eachEpVO.eachEpNum}" ><br>
+					<a  href="/toon/eachEpSelect?toonNum=${toonVO.toonNum}&eachEpNum=${eachEpVO.eachEpNum}&epNum=${eachEpVO.epNum}" class="pay" data-toonNum="${toonVO.toonNum}" data-eachEpNum="${eachEpVO.eachEpNum}" ><br>
 					<img src="${eachEpVO.epSumImg}" title="${eachEpVO.eachEpNum}화" alt="${eachEpVO.eachEpNum}화" width="100" height="100">
 						<span class="mask"></span>
 					</a>
@@ -99,7 +96,7 @@
 				<td class="title">
 				
 				<a href="/toon/eachEpSelect?toonNum=${toonVO.toonNum}&eachEpNum=${eachEpVO.eachEpNum}&epNum=${eachEpVO.epNum}" class="pay" data-toonNum="${toonVO.toonNum}" data-eachEpNum="${eachEpVO.eachEpNum}" >
-				${eachEpVO.eachEpNum}화</a>
+				${eachEpVO.epTitle}</a>
 				</td>
 				<td>
 					<div class="rating_type">
@@ -118,13 +115,13 @@
 		
 		
 		<div class="paginate">
-		 	<ul class="pagination">
+		 	<ul  class="pagination" >
 	  
 	  		<c:if test="${pager.pre}">	
 	   		 <li class="page-item"><a class="page-link p" href="#" title="${pager.startNum-1}">Previous</a></li>
 	   		</c:if>
 	   
-	  		<c:forEach begin="${pager.startNum}" end="${pager.lastNum}" var="i">
+	  		<c:forEach begin="${pager.startNum}" end="${pager.lastNum}" var="i" >
 	   
 	   		 <li class="page-item"><a class="page-link p" href="/toon/eachEpList?toonNum=${toonVO.toonNum}&curPage=${i}" title="${i}">${i}</a></li>
 	   		</c:forEach>

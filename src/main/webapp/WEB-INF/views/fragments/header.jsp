@@ -21,7 +21,7 @@
                 <div class="col-6 col-lg-4 col-md-6 col-sm-6 logo-wrapper">
                   <a  class="navbar-brand" href="${pageContext.request.contextPath}/" >
                   <span style="font-size:50px;" class="link-title">
-                  <img width=70px height=70px src="https://ifh.cc/g/7qKyOQ.png">&emsp;STONE TOON</span></a>
+                 <img src="${pageContext.request.contextPath}/images/wongtoon.jpg"></span></a>
                 </div>
                 <div class="col-lg-4 col-md-6 col-sm-6 search-trigger">
                     <div class="right-button">
@@ -30,7 +30,7 @@
           <li>
           
             <li class="nav-item dropdown"><a class="nav-link dropdown-toggle" href="#" id="navbardrop"data-toggle="dropdown">
-            <span class="link-title"><img width=60px height=60px src="https://ifh.cc/g/qHnCSX.png"></span>
+            <span class="link-title"><img src="${pageContext.request.contextPath}/images/wong1.jpg"></span>
             </a>
              <div class="dropdown-menu"> 
               <a class="dropdown-item" href="/member/login">로그인</a>
@@ -58,11 +58,15 @@
             </div>
         </div>
      
-        <div class="search_input" id="search_input_box"> <div class="container"> 
-    <form action="/toon/toonSearch" method="get" class="d-flex justify-content-between search-inner"> 
-    <input type="text" class="form-control" name="search" id="search" value=""	 placeholder="웹툰/작가 검색"> 
-    <input class="btn btn-search" type="submit" value="검색"> </form> </div> </div>
-    </section>
+        <div class="search_input" id="search_input_box"> 
+        <div class="container"> 
+    	<form action="/toon/toonSearch" method="get" class="d-flex justify-content-between search-inner"> 
+    		<input type="text" class="form-control" name="search" id="search" value=""	 placeholder="웹툰/작가 검색"> 
+    		<input class="btn btn-search" type="submit" value="검색">
+    	 </form> </div> </div>
+    	
+    	
+    	</section>
     
     <br>
     <!--================ End header top Area =================-->
@@ -89,7 +93,7 @@
                 </div>
             </nav>
         </div>
-	   <hr style="border:solid 8px gray;">
+	   <hr style="border:solid 8px skyblue;">
     </header>
 
     

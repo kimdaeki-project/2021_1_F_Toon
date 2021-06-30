@@ -12,7 +12,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <c:import url="./fragments/bootstrap.jsp"></c:import>  
 <link rel="stylesheet" href="../css/header.css">
-<link rel="stylesheet" href="../css/style.css">
+
 <link rel="stylesheet" href="../css/index.css">
 <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
 </head>
@@ -40,16 +40,16 @@
 <div class="w3-container">
 </div>
 <div class="w3-content" style="max-width:1000px">
-  <a class="r" href="/toon/eachEpList?toonNum=1"><img class="mySlides" src="https://ifh.cc/g/bBaloj.jpg" style="width:100%;" height=600px></a>
-  <a class="r" href="/toon/eachEpList?toonNum=51"><img class="mySlides" src="https://ifh.cc/g/SLjxYs.jpg" style="width:100%" height=600px></a>
-  <a class="r" href="/toon/eachEpList?toonNum=62"><img class="mySlides" src=https://ifh.cc/g/wu584q.jpg style="width:100%;" height=600px></a>
+  <a class="r" href="/toon/eachEpList?toonNum=25"><img class="mySlides" src="https://ifh.cc/g/mjYvgV.png" style="width:100%;" height=600px></a>
+  <a class="r" href="/toon/eachEpList?toonNum=26"><img class="mySlides" src="https://ifh.cc/g/KsccWZ.jpg" style="width:100%" height=600px></a>
+  <a class="r" href="/toon/eachEpList?toonNum=16"><img class="mySlides" src=https://ifh.cc/g/wu584q.jpg style="width:100%;" height=600px></a>
   	
   <div class="w3-row-padding w3-section">
     <div class="w3-col s4">
-      <img class="demo w3-opacity w3-hover-opacity-off" src="https://ifh.cc/g/bBaloj.jpg" style="width:100%; cursor:pointer" height=300px onclick="currentDiv(1)">
+      <img class="demo w3-opacity w3-hover-opacity-off" src="https://ifh.cc/g/mjYvgV.png" style="width:100%; cursor:pointer" height=300px onclick="currentDiv(1)">
     </div>
     <div class="w3-col s4">
-      <img class="demo w3-opacity w3-hover-opacity-off" src="https://ifh.cc/g/SLjxYs.jpg" style="width:100%;cursor:pointer" height=300px onclick="currentDiv(2)">
+      <img class="demo w3-opacity w3-hover-opacity-off" src="https://ifh.cc/g/KsccWZ.jpg" style="width:100%;cursor:pointer" height=300px onclick="currentDiv(2)">
     </div>
     <div class="w3-col s4">
       <img class="demo w3-opacity w3-hover-opacity-off" src="https://ifh.cc/g/wu584q.jpg" style="width:100%;cursor:pointer" height=300px onclick="currentDiv(3)">
@@ -113,6 +113,7 @@
 
 
 
+<script src="js/index.js"></script>
 <script>
 var slideIndex = 1;
 showDivs(slideIndex);
@@ -136,6 +137,24 @@ function showDivs(n) {
 
 <!-- ================ End footer Area ================= -->
 <c:import url="./fragments/footer.jsp"></c:import>
+<c:import url="./fragments/footer.jsp"></c:import>
+<!-- Optional JavaScript -->
+<!-- jQuery first, then Popper.js, then Bootstrap JS -->
+
+<script src="js/jquery-2.2.4.min.js"></script>
+<script src="js/popper.js"></script>
+<script src="js/bootstrap.min.js"></script>
+
+<script src="js/stellar.js"></script>
+<script src="js/jquery.magnific-popup.min.js"></script>
+<script src="js/jquery.ajaxchimp.min.js"></script>
+<script src="js/waypoints.min.js"></script>
+<script src="js/mail-script.js"></script>
+<script src="js/contact.js"></script>
+<script src="js/jquery.form.js"></script>
+<script src="js/jquery.validate.min.js"></script>
+<script src="js/mail-script.js"></script>
+<script src="js/theme.js"></script>
 
 
 </body>

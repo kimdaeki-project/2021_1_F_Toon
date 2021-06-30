@@ -6,13 +6,13 @@
 
 .a{
 	
-padding-right: 200px;
+padding-right: 100px;
 }
 
 
 .b{
 	
-padding-right: 500px;
+padding-right: 400px;
 }
 
 .c{
@@ -22,5 +22,9 @@ padding-right: 400px;
 
 .d{
 	
-padding-right: 300px;
+padding-right: 200px;
+}
+
+.viewList{
+	color: gray;
 }
