@@ -103,6 +103,20 @@
 <script type="text/javascript" src="../js/board/boardUpdate.js"></script>
 <script type="text/javascript" src="../js/board/fileAdd.js"></script>
 <script type="text/javascript" src="../js/board/qnaSummerFile.js"></script>
+<script type="text/javascript">
+const btn = document.getElementById("btn");
+
+btn.addEventListener("click", function(){
+	let result = confirm("수정하시겠습니까?");
+	
+	if(result){
+		
+		frm.setAttribute("method", "post");
+		frm.submit();
+		
+	}
+});
+</script>
 <c:import url="../fragments/footer.jsp"></c:import>
 </body>
 </html>
