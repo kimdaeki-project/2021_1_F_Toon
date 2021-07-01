@@ -48,7 +48,7 @@
                 <div class="col-lg-6">
                     <div class="single-blog style-five">
                         <div class="thumb">
-                         <a href="/toon/eachEpList?toonNum=52">
+                         <a href="/toon/endEpList?toonNum=52">
                             <img width=555px height=602px src="../../images/indeximage/yumi.jpg" alt="">
                             </a>
                         </div>
@@ -69,7 +69,7 @@
                         <div class="col-lg-6">
                             <div class="single-blog style-five small">
                                 <div class="thumb">
-                                  <a href="/toon/eachEpList?toonNum=39">
+                                  <a href="/toon/endEpList?toonNum=39">
                                     <img width=262px height=212px src="../../images/indeximage/gosu.jpg" alt="">
                                     </a>
                                 </div>
@@ -87,7 +87,7 @@
                         <div class="col-lg-6">
                             <div class="single-blog style-five small">
                                 <div class="thumb">
-                                  <a href="/toon/eachEpList?toonNum=28">
+                                  <a href="/toon/endEpList?toonNum=28">
                                     <img width=262px height=212px src="../../images/indeximage/money.jpg" alt="">
                                     </a>
                                 </div>
@@ -104,7 +104,7 @@
                         <div class="col-lg-6">
                             <div class="single-blog style-five small">
                                 <div class="thumb">
-                                  <a href="/toon/eachEpList?toonNum=37">
+                                  <a href="/toon/endEpList?toonNum=37">
                                     <img width=262px height=212px src="../../images/indeximage/min.jpg" alt="">
                                     </a>
                                 </div>
@@ -121,7 +121,7 @@
                         <div class="col-lg-6">
                             <div class="single-blog style-five small">
                                 <div class="thumb">
-                                  <a href="/toon/eachEpList?toonNum=15">
+                                  <a href="/toon/endEpList?toonNum=15">
                                     <img width=262px height=212px src="../../images/indeximage/dorong.jpg" alt="">
                                     </a>
                                 </div>
