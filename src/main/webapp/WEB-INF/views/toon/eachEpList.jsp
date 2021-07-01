@@ -32,9 +32,10 @@
 		&nbsp;&nbsp;&nbsp;&nbsp;<p class="detail_info" style="font-size:20px;">
 		<span class="genre">장르 : ${toonVO.genre}</span>&emsp;&emsp;
 		<span class="totalRating">별점: ${toonVO.ratingSum/toonVO.ratingPerson}</span>&emsp;&emsp;
-		<span><a href="#" title="관심웹툰" class="book_maker on">관심웹툰</a></span>&emsp;&emsp;
-		<span><a href="/toon/eachEpSelect?toonNum=${toonVO.toonNum}&epNum=1" title="첫회보기" class="first">첫회보기</a></span></p>	
-
+		
+		<span><button title="관심웹툰"  type="button" class="btn btn-outline-primary" onclick="location.href='toonDay'">관심웹툰</button></span>&emsp;&emsp;
+		<span><button title="첫회보기"  type="button" class="btn btn-outline-primary" onclick="location.href='/toon/eachEpSelect?toonNum=${toonVO.toonNum}&epNum=1'">첫화보기</button></span>
+		
 		
 		</div>
 	</div>

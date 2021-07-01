@@ -22,18 +22,17 @@
 	<c:import url="../../fragments/header.jsp"></c:import>
 
 
-<div class="view_type">			
-             <table>
-             <tr >
-             	<td><a class="w" href="/toon/end/endRe">조회순</a>&emsp;</td>
-             	
-             	<td><a class="w" href="/toon/end/endReRecent">업데이트순</a>&emsp;</td>      
-                
-                <td><a class="w" href="/toon/end/endReAver">별점순</a></td>
-             </tr>
-           
-             </table>
-			</div>
+	<div class="view_type">	
+	<table>
+		<tr>
+			<td><button type="button" class="btn btn-outline-primary" onclick="location.href='endRe'">조회순</button></td>
+			<td><button type="button" class="btn btn-outline-info" onclick="location.href='endReRecent'">업데이트순</button></td>
+			<td><button type="button" class="btn btn-outline-dark""	onclick="location.href='endReAver'">별점순</button></td>
+		</tr>
+	</table>
+	</div>
+
+
 		<br><br>
 		
 	<div class="latest-news  area-padding-bottom">

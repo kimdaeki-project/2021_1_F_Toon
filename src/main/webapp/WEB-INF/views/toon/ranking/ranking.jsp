@@ -23,15 +23,15 @@
 <body>
 	<c:import url="../../fragments/header.jsp"></c:import>
 
-<div class="view_type">			
-             <table>
-             <tr >
-             	<td><a class="w" href="/toon/ranking/ranking">조회순&emsp;</a></td>
-                <td><a class="w" href="/toon/ranking/rankingAver">별점순</a></td>
-             </tr>
-           
-             </table>
-			</div>
+<div class="view_type">	
+	<table>
+		<tr>
+			<td><button type="button" class="btn btn-outline-primary" onclick="location.href='ranking'">조회순</button></td>
+			<td><button type="button" class="btn btn-outline-dark""	onclick="location.href='rankingAver'">별점순</button></td>
+		</tr>
+	</table>
+	</div>
+
 
 	 <section class="editors_pick area-padding">
         <div class="container">

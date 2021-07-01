@@ -23,23 +23,26 @@
 <body>
 	<c:import url="../../fragments/header.jsp"></c:import>
 
-	<div class="view_type">
-		<table>
-			<tr>
-				<td><a class="w" href="/toon/genre/genre">조회순&emsp;</a></td>
-
-				<p>
-				<td><a class="w" href="/toon/genre/genreRecent">업데이트순&emsp;</a></td>
-				</p>
-
-				<td><a class="w" href="/toon/genre/genreAver">별점순</a></td>
-			</tr>
-
-		</table>
+	<div class="view_type">	
+	<table>
+		<tr>
+			<td><button type="button" class="btn btn-outline-primary" onclick="location.href='genre'">조회순</button></td>
+			<td><button type="button" class="btn btn-outline-info" onclick="location.href='genreRecent'">업데이트순</button></td>
+			<td><button type="button" class="btn btn-outline-dark""	onclick="location.href='genreAver'">별점순</button></td>
+		</tr>
+	</table>
 	</div>
+
+
 	<br>
 	<br>
 	<br>
+	
+		<div class="area-heading">
+                    <h3> 장르별 웹툰</h3>
+                    <p>올 여름을 강타할 짜릿짜릿한 에어컨같은 장르별 웹툰들을 만나보아요:)</p>
+                </div>
+                
 	<div class="toon" align="center">
 
 

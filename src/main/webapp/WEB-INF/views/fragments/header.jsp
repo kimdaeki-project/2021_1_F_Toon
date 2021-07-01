@@ -6,21 +6,21 @@
     <section class="header-top">
         <div class="container">
             <div class="row align-items-center justify-content-between">
-                <div class="col-6 col-lg-4" >
-                    <div>
+                <div >
+                    <div style="text-align: left;" >
                         <ul>
-                        	
-                            <li class="wong">
+                        	<!-- 가로로? -->
+                            <li class="ww">
                             <a href="${pageContext.request.contextPath}/notice/noticeList">
-                            <img src="${pageContext.request.contextPath}/images/notice.png"></a></li>
+                            <img width=68px height=72px src="${pageContext.request.contextPath}/images/notice.png"></a></li>
                           
-                            <li class="wong">
+                            <li class="ww">
                             <a href="${pageContext.request.contextPath}/qna/qnaList">
-                            <img src="${pageContext.request.contextPath}/images/QnA.png"></a></li>
+                            <img width=63px height=72px src="${pageContext.request.contextPath}/images/QnA.png"></a></li>
 
-	                        <li class="wong">
+	                        <li class="ww">
 	                        <a href="${pageContext.request.contextPath}/point/charge">
-                            <img src="${pageContext.request.contextPath}/images/charge1.png"></a></li>
+                            <img width=70px height=70px src="${pageContext.request.contextPath}/images/charge1.png"></a></li>
                          	
                          	</ul> 
    
@@ -32,18 +32,18 @@
                             <li><a href="${pageContext.request.contextPath}/admin/adminPage">ADMIN PAGE</a></li>
                            
                             </sec:authorize>
-                
-                <div class="col-6 col-lg-4 col-md-6 col-sm-6 logo-wrapper">
+                <!-- ------------------------------------------- --><!-- 
+              <div class="col-6 col-lg-4 col-md-6 col-sm-6 logo-wrapper">
 <!--                     <a href="index.html" class="logo"> -->
 <!--                         <img src="images/logo.png" alt=""> -->
 <!--                     </a> -->
                   <a href="${pageContext.request.contextPath}/">
                   <span class="link-title"><img src="${pageContext.request.contextPath}/images/wongtoon.jpg"></span></a>
-                </div>
-                <div class="col-lg-4 col-md-6 col-sm-6 search-trigger">
+                
+                <div ><!-- class="col-lg-4 col-md-6 col-sm-6 search-trigger" -->
                     <div class="right-button">
                         <ul>
-					<%-- 로그인 전 --%>
+					<%-- 로그인 전 --%>	<!-- 가로로? -->
                      <sec:authorize access="!isAuthenticated()">
                      <span class="link-title"><img width=30px height=30px
 												src="${pageContext.request.contextPath}/images/wong1.jpg"></span>
@@ -100,6 +100,8 @@
 
                     </div>
                 </div>
+                </div>
+                <!-- ------------------------------------------ -->
             </div>
         </div>
     <div class="search_input" id="search_input_box"> <div class="container "> 

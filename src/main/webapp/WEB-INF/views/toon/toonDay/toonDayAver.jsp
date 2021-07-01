@@ -5,24 +5,15 @@
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="UTF-8">
-<title>Insert title here</title>
-<!-- Required meta tags -->
 <meta charset="utf-8">
-<meta name="viewport"
-	content="width=device-width, initial-scale=1, shrink-to-fit=no">
-<!-- BootStrap -->
-<!--     <link rel="icon" href="images/favicon.png" type="image/png">  위에 로고-->
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <c:import url="../../fragments/bootstrap.jsp"></c:import>
-<title>WebToon</title>
-
-
 <link rel="stylesheet" href="../../css/header.css">
 <link rel="stylesheet" href="../../css/toonDay.css">
-
 </head>
+
 <body>
-	<c:import url="../../fragments/header.jsp"></c:import>
+<c:import url="../../fragments/header.jsp"></c:import>
 <sec:authorize access="isAuthenticated()"> 
 	<input name="username" value="<sec:authentication property="principal.username"/>" hidden="hidden" readonly="readonly"/>
 </sec:authorize>
@@ -30,29 +21,26 @@
 
 	<div class="view_type">
 		
-		<table>
-			<tr>
-				<td ><a class="w" href="/toon/toonDay/toonDay">조회순&emsp;</a></td>
-
-				<p>
-				<td><a class="w" href="/toon/toonDay/toonDayRecent">업데이트순&emsp;</a></td>
-				</p>
-
-				<td><a class="w" href="/toon/toonDay/toonDayAver">별점순</a></td>
-			</tr>
-
-		</table>
+	<table>
+		<tr>
+			<td><button type="button" class="btn btn-outline-primary" onclick="location.href='toonDay'">조회순</button></td>
+			<td><button type="button" class="btn btn-outline-info" onclick="location.href='toonDayRecent'">업데이트순</button></td>
+			<td><button type="button" class="btn btn-outline-dark""	onclick="location.href='toonDayAver'">별점순</button></td>
+		</tr>
+	</table>
 	</div>
 	
 	<br>
 	<br>
 	<br>
 
-	<div class="toon" align="center">
-	 
+ <div class="area-heading">
+                    <h3>이번주 인기 웹툰</h3>
+                    <p>올 여름을 강타할 짜릿짜릿한 에어컨같은 웹툰들을 만나보아요:)</p>
+                </div>
 
 		<!-- 월요일 ------------------------------------------------------>		
-		<div class="mon"><h1>월요일</h1>
+		<div class="mon"><a class="m" href="/toon/toonDay/toonDaySelect"><h1>월요일</h1></a>
 		<br>
 			<ul>
 		<c:forEach items="${mt}" var="mt">

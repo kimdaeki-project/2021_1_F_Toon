@@ -19,20 +19,14 @@
 </sec:authorize>
 
 
-	<div class="view_type">
-		
-		<table>
-			<tr>
-				<td ><a class="w" href="/toon/toonDay/toonDay">조회순&emsp;</a></td>
-
-				<p>
-				<td><a class="w" href="/toon/toonDay/toonDayRecent">업데이트순&emsp;</a></td>
-				</p>
-
-				<td><a class="w" href="/toon/toonDay/toonDayAver">별점순</a></td>
-			</tr>
-
-		</table>
+	<div class="view_type">	
+	<table>
+		<tr>
+			<td><button type="button" class="btn btn-outline-primary" onclick="location.href='toonDay'">조회순</button></td>
+			<td><button type="button" class="btn btn-outline-info" onclick="location.href='toonDayRecent'">업데이트순</button></td>
+			<td><button type="button" class="btn btn-outline-dark""	onclick="location.href='toonDayAver'">별점순</button></td>
+		</tr>
+	</table>
 	</div>
 	
 	<br>
