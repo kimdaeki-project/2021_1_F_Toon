@@ -13,7 +13,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 
-<a href="javascript:history.back();">뒤로가기</a>
+<a href="javascript:history.back();"><span> 뒤로가기 </span></a>
 
     <!-- Bootstrap CSS 5.0 -->
     <title>point charge Page</title>

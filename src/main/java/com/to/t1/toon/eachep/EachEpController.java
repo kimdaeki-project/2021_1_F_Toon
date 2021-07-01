@@ -112,4 +112,75 @@ public class EachEpController {
       FavoritetoonVO favorToon=favoriteToonService.getSelect(favoritetoonVO);
       model.addAttribute("favorToon", favorToon);
    }
+   
+   //여기서부터 완결툰으로 가기 
+   
+   @GetMapping("endEpList")
+   public void geEndtList(@RequestParam Map<String,Object> param ,
+		   Pager pager, Model model, Authentication auth,
+		   MemberVO memberVO, HttpSession httpSession,
+		   TicketBoxVO ticketBoxVO)throws Exception{
+      FavoritetoonVO favoritetoonVO = new FavoritetoonVO();
+      
+      if(auth!=null) {
+    	  memberVO = memberService.myPage((MemberVO) auth.getPrincipal());
+	      param.put("username",memberVO.getUsername());
+	      ticketBoxVO = pointService.checkTicketStock(param, ticketBoxVO);
+	  		//System.out.println(ticketBoxVO);
+	    	model.addAttribute("ticketBox",ticketBoxVO);
+	    	model.addAttribute("memberVO", memberVO); 
+	    	//System.out.println("username"+memberVO.getUsername());
+	      
+	    	favoritetoonVO.setUsername(auth.getName());
+	        
+         
+      }
+    	  FavoritetoonVO favorToon=favoriteToonService.getSelect(favoritetoonVO);
+    	  favoritetoonVO.setToonNum(pager.getToonNum());
+    	  
+          ToonVO list=eachEpService.getList(pager);
+          //model.addAttribute("info",param);
+          model.addAttribute("toonVO", list);
+          model.addAttribute("pager", pager);
+          model.addAttribute("favorToon", favorToon);
+          
+          //return "toon/eachEpList";
+   }
+   
+   @GetMapping("endEpSelect")
+   public void getEndSelect(EachEpVO eachEpVO,Pager pager, Model model, Authentication auth)throws Exception{
+      RecentVO recentVO = new RecentVO();
+      FavoritetoonVO favoritetoonVO = new FavoritetoonVO();
+      if(auth!=null) {
+         recentVO.setUsername(auth.getName());
+         favoritetoonVO.setUsername(auth.getName());
+         favoritetoonVO.setToonNum(pager.getToonNum());
+      }
+      
+      ToonVO list= eachEpService.getSelect(eachEpVO, pager, recentVO);
+      
+      model.addAttribute("toonVO", list);
+      model.addAttribute("listsize", list.getEachEpVO().size());
+      
+      //eachEpNum 가장 큰 값 불러오기 위해서(getTotalCount 사용)
+      model.addAttribute("pager", pager);
+      
+      pager.setEpNum(eachEpVO.getEpNum());
+      pager.setEachEpNum(eachEpVO.getEachEpNum());
+      
+      List<ReviewVO> reviewVO = reviewService.getList(pager);
+
+      list.getEachEpVO().get(0).setReviewVO(reviewVO);
+      System.out.println("if"+(list.getEachEpVO().get(0).getReviewVO().size()==0));
+      
+      //Next code : revNum==0일때 reviewVO!=null 값으로 null이 되지않음 -> setReviewVO==null 
+      if(list.getEachEpVO().get(0).getReviewVO().size()==0) {
+         list.getEachEpVO().get(0).setReviewVO(new ArrayList<ReviewVO>());
+      }
+      
+      //favoriteToon 설정
+      FavoritetoonVO favorToon=favoriteToonService.getSelect(favoritetoonVO);
+      model.addAttribute("favorToon", favorToon);
+   }
+   
 }
