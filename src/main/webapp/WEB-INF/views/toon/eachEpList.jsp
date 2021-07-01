@@ -10,45 +10,83 @@
 <c:import url="../fragments/bootstrap.jsp"></c:import>
 <title>Insert title here</title>
 <link rel="stylesheet" href="../css/header.css">
+<style>
+#left-box {
+    width: 100px;
+/*      background-color: red; */
+    float: left;
+}
+#center-box {
+    text-align: center;
+/*     background-color: yellow; */
+    margin: 0 auto;
+}
+#right-box {
+    width: 100px;
+/*     background-color: blue; */
+    float: right;
+    text-align: right;
+}
+</style>
+
 </head>
 <body>
 <c:import url="../fragments/header.jsp"></c:import>
-   
-<div id="content" class="webtoon">
 
-   <!-- 웹툰 소개 -->
-   <div class="comicinfo">
-      <div class="thumb">
-         <a href="/toon/eachEpList?toonNum=${toonVO.toonNum}">
-            <img src="${toonVO.titleImg}">
-            <span class="mask"></span>
-            </a>
-      </div>
-      <div class="detail">
-         <h2>${toonVO.toonTitle}
-         <span class="wrt_nm">${toonVO.nickname}</span>
-         </h2>
-         <p><h2>${toonVO.toonSum}</h2></p>
-      <p class="detail_info"><span class="genre">장르 : ${toonVO.genre}</span>
-      <span class="totalRating">웹툰별점 : <fmt:formatNumber value="${toonVO.ratingSum/toonVO.ratingPerson}" pattern=".00"/></span></p>
+  <div id='left-box'>
       
-      <ul class="btn_group">
-      
-      <li><a href="#" title="관심웹툰" class="book_maker on" id="check_favorite">
-         <c:choose>
-            <c:when test="${empty favorToon}">
-               <span class="like">관심웹툰등록</span>
-            </c:when>
-            <c:otherwise>
-               <span class="like">관심웹툰해제</span>
-            </c:otherwise>
-         </c:choose>
-      </a></li>
-      
-      <li><a href="/toon/eachEpSelect?toonNum=${toonVO.toonNum}&eachEpNum=1&epNum=1" title="첫회보기" class="first"><span>첫회보기</span></a></li>
-      </ul>
-      </div>
-   </div>
+   </div>    
+    <div id='right-box'>
+    
+    </div>
+  
+
+    <div id='center-box'>
+
+	<table width="70%">
+    <tr>
+       <td rowspan="4" align="right">
+          <div class="thumb">
+               <a href="/toon/eachEpList?toonNum=${toonVO.toonNum}">
+               <img src="${toonVO.titleImg}" width=260px height=230px>
+               
+             </a>
+            </div> 
+         </td>
+         
+       <td align="left"><h2>&emsp;${toonVO.toonTitle} / <span class="wrt_nm">${toonVO.nickname}</span> </h2></td>
+    </tr>
+    
+    <tr>
+       <td align="left"><h4>&emsp;&emsp;  ${toonVO.toonSum} </h4></td>
+
+    </tr>
+    
+     <tr>
+       <td align="left"><h4>&emsp; 장르 : ${toonVO.genre}</h4></td>
+    </tr>
+  
+      <tr>
+       <td align="left">
+       &emsp;
+       <a href="#" title="관심웹툰" class="book_maker on" id="check_favorite">
+            <c:choose>
+               <c:when test="${empty favorToon}">
+                  <button class="like btn-outline-info">관심웹툰등록</button>
+               </c:when>
+               <c:otherwise>
+                  <button class="like btn-info">관심웹툰해제</button>
+               </c:otherwise>
+           </c:choose>
+       </a> 
+       
+      <a href="/toon/eachEpSelect?toonNum=${toonVO.toonNum}&eachEpNum=1&epNum=${toonVO.eachEpVO['0'].epNum}" title="첫회보기" class="first"><button class="btn-outline-primary">첫회보기</button></a>
+       
+       </td>
+    </tr>
+     
+    </table><br>
+
    
    <!-- 리스트 -->
 
@@ -134,6 +172,7 @@
 
 
 </div>
+  </div>   
 
 </body>
 </html>
