@@ -156,7 +156,7 @@
                     </div> 
 
                 </div> 
-&emsp;
+
                 <div class="col-lg-4">
                     <div class="single-blog style-five">
                         <div class="thumb">
@@ -300,7 +300,7 @@
             <div class="row">
                 <div class="area-heading">
                     <h3>GENRE</h3>
-                    <p>Abundantly creeping saw forth spirit can made appear fourth us.</p>
+                    <p>장르장르 </p>
                 </div>
 
             </div>
@@ -317,8 +317,8 @@
                                 <a style="font-size:20px;" href="/toon/eachEpList?toonNum=52">데드퀸</a>
                             </div>
                             <a class="d-block" href="single-blog.html">
-                                <h4>Brought dreepeth youll blessed
-                                from whose signs over</h4>
+                                <h4>절망에 빠져 죽음이 임박했을때, 진짜 여왕이 재림한다!
+하이브 세계관의 장대한 끝, 데드퀸</h4>
                             </a>
                            
                         </div>
@@ -340,8 +340,8 @@
                                         <a style="font-size:20px;" href="/toon/eachEpList?toonNum=39">이두나</a>
                                     </div>
                                     <a class="d-block" href="single-blog.html">
-                                        <h4>Shall for rule whoses
-                                        may heaven to</h4>
+                                        <h4 style="font-size:10px;">(구)아이돌, 첫사랑, 소개팅녀까지 한 집에 모였다!
+<나노리스트> 민송아 작가의 두근두근 누나 리스트!</h4>
                                     </a>
                                     
                                
@@ -360,8 +360,8 @@
                                         <a style="font-size:20px;" href="/toon/eachEpList?toonNum=28">모죠의 일기</a>
                                     </div>
                                     <a class="d-block" href="single-blog.html">
-                                        <h4>Shall for rule whoses
-                                        may heaven to</h4>
+                                        <h4 style="font-size:10px;">소신있는 취향과 내성적인 성향.
+훌륭한 집순이 모죠의 은밀한 비밀들</h4>
                                     </a>
                                    
                             </div> 
@@ -379,8 +379,8 @@
                                         <a style="font-size:20px;" href="/toon/eachEpList?toonNum=37">더 복서</a>
                                     </div>
                                     <a class="d-block" href="single-blog.html">
-                                        <h4>Shall for rule whoses
-                                        may heaven to</h4>
+                                        <h4 style="font-size:10px;">재능있는 복서를 찾던 전설적인 트레이너 K는 기묘한 소년을 발견한다.
+그의 충격적인 재능은 과연 축복일까, 저주일까?!</h4>
                                     </a>
                                  
                             </div> 
@@ -398,8 +398,9 @@
                                         <a style="font-size:20px;" href="/toon/eachEpList?toonNum=15">엽총소년</a>
                                     </div>
                                     <a class="d-block" href="single-blog.html">
-                                        <h4>Shall for rule whoses
-                                        may heaven to</h4>
+                                        <h4 style="font-size:10px;">약자에서 영웅이 될 수밖에 없었던 소년 '한규환',
+그리고 그 소년을 영웅으로 만들어줄 엽총 한 자루가 눈앞에 있다.
+글로벌 누적 조회수 12억 뷰를 기록한 <스위트홈>의 프리퀄 대공개!</h4>
                                     </a>
                                    
                             </div> 
@@ -423,7 +424,7 @@
             <div class="row">
                 <div class="area-heading">
                     <h3> Finished</h3>
-                    <p>Abundantly creeping saw forth spirit can made appear fourth us.</p>
+                    <p>완결 웹툰 </p>
                 </div>
             </div>
             <div class="row">
@@ -439,13 +440,10 @@
                                 <a href="/toon/eachEpList?toonNum=103">유미의 세포들</a>
                             </div>
                             <a class="d-block" href="single-blog.html">
-                                <h4>Created face stars sixth forth
-                                Earth firmament</h4>
+                                <h4>유미는 지금 무슨 생각을 하고 있을까?
+그녀의 머릿속에서 바쁘게 움직이는 세포들 이야기!</h4>
                             </a>
-                            <div class="meta-bottom d-flex" >
-                                <a href="#">March 12 , 2019 . </a>
-                                <a class="dark_font" href="#">By Alen Mark</a>
-                            </div>
+                            
                         </div>
                     </div>    
                 </div>
@@ -457,11 +455,10 @@
                                     <a href="/toon/eachEpList?toonNum=86">고수</a>
                                 </div>
                                 <a class="d-block" href="single-blog.html">
-                                    <h4 class="font-20">Light that hath itself god
-                                        grass herb dark sea on
-                                    the hath dowe </h4>
+                                    <h4 class="font-20"><용비불패> 최강의 콤비가 무협의 전설을 다시 쓰다!
+천하제일의 고수 강룡. 그리고 수많은 다른 고수들의 이야기.</h4>
                                 </a>
-                                <p>Said spirit evening above good twes at  god midst deep a wherein very made he seas male very broug sad forth saying right.</p>
+                                
                             </div>  
                         </div>  
                         <div class="col-12 col-sm-5">
@@ -487,24 +484,16 @@
                                     <a href="/toon/eachEpList?toonNum=88">머니게임</a>
                                 </div>
                                 <a class="d-block" href="single-blog.html">
-                                    <h4 class="font-20">Light that hath itself god
-                                        grass herb dark sea on
-                                    the hath dowe </h4>
+                                    <h4 class="font-20">게임 일수 100일. 총 상금 448억. 적용 물가 1000배.
+당신은 얼마를 벌어 나갈수 있습니까? </h4>
                                 </a>
-                                <p>Said spirit evening above good twes at  god midst deep a wherein very made he seas male very broug sad forth saying right.</p>
+                                
                             </div>  
                         </div>  
                     </div>
                 </div>
             </div>
-            <div class="row">
-                <div class="col-12">
-                    <div class="addvertise">
-                        <a href=""><img src="images/banner/add.jpg" alt=""></a>
-
-                    </div>
-                </div>
-            </div>
+           	
         </div>
     </section>
 
@@ -546,7 +535,7 @@
 
 
     <!-- ================ start footer Area ================= -->
-    <c:import url="./fragments/footer.jsp"></c:import>
+   <c:import url="./fragments/footer.jsp"></c:import>
    <!-- ================ End footer Area ================= -->
 
 <!-- Optional JavaScript -->
@@ -555,7 +544,6 @@
 <script src="js/jquery-2.2.4.min.js"></script>
 <script src="js/popper.js"></script>
 <script src="js/bootstrap.min.js"></script>
-
 <script src="js/stellar.js"></script>
 <script src="js/jquery.magnific-popup.min.js"></script>
 <script src="js/jquery.ajaxchimp.min.js"></script>

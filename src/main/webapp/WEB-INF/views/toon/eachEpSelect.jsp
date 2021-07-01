@@ -73,7 +73,7 @@
       <tr>
        <td>
        
-       <a href="#" title="관심웹툰" class="book_maker on" id="check_favorite">
+     	  <a href="#" title="관심웹툰" class="book_maker on" id="check_favorite">
             <c:choose>
                <c:when test="${empty favorToon}">
                   <button class="like btn-outline-info">관심웹툰등록</button>

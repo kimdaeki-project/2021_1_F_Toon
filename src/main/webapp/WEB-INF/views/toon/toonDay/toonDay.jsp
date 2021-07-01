@@ -34,10 +34,12 @@
    <br>
 
  <div class="area-heading">
-                    <h3>이번주 인기 웹툰</h3>
+                    <h3>요일별 웹툰</h3>
                     <p>올 여름을 강타할 짜릿짜릿한 에어컨같은 웹툰들을 만나보아요:)</p>
                 </div>
-
+		<div align="center">
+		
+		
       <!-- 월요일 ------------------------------------------------------>      
       <div class="mon"><a class="m" href="/toon/toonDay/toonDaySelect"><h1>월요일</h1></a>
       <br>

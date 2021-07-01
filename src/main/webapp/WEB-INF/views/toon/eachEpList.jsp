@@ -92,7 +92,7 @@
                   <a href="/toon/eachEpSelect?toonNum=${toonVO.toonNum}&eachEpNum=${eachEpVO.eachEpNum}&epNum=${eachEpVO.epNum}&username=<sec:authentication property="principal.username"/>" >
                </sec:authorize>
                
-            ${eachEpVO.eachEpNum}화</a>
+            ${eachEpVO.epTitle}화</a>
             </td>
             <td>
                <div class="rating_type">
