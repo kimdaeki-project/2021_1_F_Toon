@@ -17,14 +17,10 @@
 <div id="content" class="webtoon">
 
 	<!-- 웹툰 이미지 -->
-	<div class="detail" align="center">
-	<h2 >${toonVO.toonTitle}</h2>
-	</div>
 	<div class="comicinfo">
-		<div class="thumb" align="center">
+		<div class="thumb">
 			<a class="s" style="font-size:25px;" href="/toon/eachEpList?toonNum=${toonVO.toonNum}">
-				&nbsp;&nbsp;&nbsp;&nbsp;<img width=250px height=250px src="${toonVO.titleImg}"> &nbsp;&nbsp;
-				<br><br>${toonVO.toonSum}
+				&nbsp;&nbsp;&nbsp;&nbsp;<img width=180px height=180px src="${toonVO.titleImg}"> &nbsp;&nbsp;${toonVO.toonSum}
 				<span class="mask"></span>
 			</a>
 		</div>
