@@ -50,5 +50,14 @@ public class ReviewController {
 			model.addAttribute("result", reviewService.delReview(reviewVO));
 		}
 	}
+	
+	@PostMapping("updateReview")
+	public void updateReview(ReviewVO reviewVO, Model model,Authentication auth)throws Exception{
+		if(auth!=null) {
+			reviewVO.setUsername(auth.getName());
+			model.addAttribute("result", reviewService.updateReview(reviewVO));
+
+		}
+	}
 
 }
