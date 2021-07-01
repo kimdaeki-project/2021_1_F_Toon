@@ -40,6 +40,12 @@
 	<br>
 	<br>
 	<br>
+	
+		<div class="area-heading">
+                    <h3> 장르별 웹툰</h3>
+                    <p>올 여름을 강타할 짜릿짜릿한 에어컨같은 장르별 웹툰들을 만나보아요:)</p>
+                </div>
+                
 	<div class="toon" align="center">
 
 

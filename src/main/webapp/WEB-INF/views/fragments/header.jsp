@@ -7,20 +7,20 @@
         <div class="container">
             <div class="row align-items-center justify-content-between">
                 <div class="col-6 col-lg-4" >
-                    <div class="row" >
-                        <ul float:left;>
+                    <div>
+                        <ul>
                         	
-                            <li >
+                            <li class="wong">
                             <a href="${pageContext.request.contextPath}/notice/noticeList">
-                            <img width=68px height=72px src="${pageContext.request.contextPath}/images/notice.png"></a></li>
+                            <img src="${pageContext.request.contextPath}/images/notice.png"></a></li>
                           
-                            <li>
+                            <li class="wong">
                             <a href="${pageContext.request.contextPath}/qna/qnaList">
-                            <img width=63px height=72px src="${pageContext.request.contextPath}/images/QnA.png"></a></li>
+                            <img src="${pageContext.request.contextPath}/images/QnA.png"></a></li>
 
-	                        <li>
+	                        <li class="wong">
 	                        <a href="${pageContext.request.contextPath}/point/charge">
-                            <img width=70px height=70px src="${pageContext.request.contextPath}/images/charge1.png"></a></li>
+                            <img src="${pageContext.request.contextPath}/images/charge1.png"></a></li>
                          	
                          	</ul> 
    

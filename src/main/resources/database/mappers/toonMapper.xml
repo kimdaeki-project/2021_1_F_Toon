@@ -85,27 +85,11 @@
 	</select>
 		
 	<select id="ranking" parameterType="ToonVO" resultType="ToonVO">
-	SELECT
-	RANK() OVER(ORDER BY totalHit DESC) AS SCORE_RANK,
-	toonTitle,
-	totalHit,
-	genre,
-	writerId,
-	toonSum,
-	toonDay,
-	state,
-	titleImg,
-	ratingSum,
-	ratingPerson,
-	toonNum,
-	username,
-	nickname,
-	enabled
-FROM
-	toon t JOIN
+SELECT *
+	FROM toon t JOIN
 	member m ON t.writerId = m.username
-ORDER BY
-	SCORE_RANK asc LIMIT 20;
+	WHERE state=0
+	ORDER BY totalHit DESC LIMIT 21	
 	</select>
 	
 	<select id="rankingAver" parameterType="ToonVO" resultType="ToonVO">
