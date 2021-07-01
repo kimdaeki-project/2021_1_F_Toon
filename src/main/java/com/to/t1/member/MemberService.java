@@ -4,7 +4,6 @@ import java.util.HashMap;
 import java.util.Map;
 
 import javax.servlet.http.HttpSession;
-import javax.tools.JavaFileManager;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -16,7 +15,6 @@ import org.springframework.transaction.annotation.Transactional;
 import org.springframework.validation.Errors;
 import org.springframework.web.multipart.MultipartFile;
 
-import com.to.t1.member.MemberVO;
 import com.to.t1.util.FileManager;
 
 @Service
@@ -31,7 +29,7 @@ public class MemberService implements UserDetailsService {
 	@Autowired
 	private PasswordEncoder passwordEncoder;
 	
-	@Override 
+	@Override //시큐리티에서 세션에 저장해주고 권한부여 해주고 로그인 처리해주는거
 	public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
 		MemberVO memberVO = new MemberVO();
 		memberVO.setUsername(username);
@@ -48,7 +46,6 @@ public class MemberService implements UserDetailsService {
 	public boolean memberError(MemberVO memberVO, Errors errors)throws Exception{
 		boolean result = false;
 
-		System.out.println("앙앙앙앙앙");
 		result = errors.hasErrors();
 //		if(!memberVO.getPassword().equals(memberVO.getPassword1())) {
 //			errors.rejectValue("password1", "memberVO.password.notEqual");
@@ -58,7 +55,7 @@ public class MemberService implements UserDetailsService {
 		MemberVO checkMember = memberMapper.getUsername(memberVO);
 		if(checkMember !=null) {
 			errors.rejectValue("username", "member.id.equal");
-//			errors.rejectValue("username", "member.name.equal");
+
 			result = true;
 		}
 		
@@ -110,21 +107,20 @@ public class MemberService implements UserDetailsService {
 	public int memberUpdate(MemberVO memberVO)throws Exception{
 		return memberMapper.memberUpdate(memberVO);
 	}
-
-	public int memberDelete(String username, HttpSession session, MemberVO memberVO)throws Exception{
+	
+	public int memberDelete( HttpSession session, MemberVO memberVO)throws Exception{
 		JoinFileVO joinFileVO = memberMapper.getJoinFile(memberVO);
-		System.out.println("!!!!!!!!!!!!!!!!!");
 		
+		String filePath= "upload/member/";
 		if(joinFileVO == null) {
 			
 		}else {
-			boolean check = fileManager.delete("member", joinFileVO.getFileName(), session);
+			boolean check = fileManager.delete(filePath, joinFileVO.getFileName(), session);
 		}
-		//이게없음 그러니깐 쿼리를 타도 안되지
 		
-//		System.out.println(memberVO.getUsername());
-		return memberMapper.memberDelete(username);
+		return memberMapper.memberDelete(memberVO);
 	}
+	
 	
 	public MemberVO searchId(MemberVO memberVO)throws Exception{
 		return memberMapper.searchId(memberVO);
@@ -147,6 +143,31 @@ public class MemberService implements UserDetailsService {
 	
 	public MemberVO memberJoinCheck(MemberVO memberVO)throws Exception{
 		return memberMapper.memberJoinCheck(memberVO);
+	}
+	
+	public JoinFileVO selectImage(MemberVO memberVO)throws Exception{
+		return memberMapper.selectImage(memberVO);
+	}
+	
+	public int delImage(JoinFileVO joinFileVO)throws Exception{
+		return memberMapper.delImage(joinFileVO);
+	}
+	
+	
+	@Transactional(rollbackFor = Exception.class)
+	   public int setImage(MemberVO memberVO,MultipartFile avatar)throws Exception {
+	      String filePath= "upload/member/";
+	      
+	            
+	         String fileName= fileManager.save(avatar, filePath); //db에 넣어주고, 경로 설정
+	         System.out.println(fileName);
+	         JoinFileVO joinFileVO = new JoinFileVO();
+	         joinFileVO.setFileName(fileName);
+	         joinFileVO.setOriName(avatar.getOriginalFilename());
+	         joinFileVO.setUsername(memberVO.getUsername());
+	         int result = memberMapper.setImage(joinFileVO);
+	         
+	      return result;
 	}
 	
 }

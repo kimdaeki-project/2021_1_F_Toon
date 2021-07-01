@@ -1,6 +1,7 @@
 package com.to.t1.point;
 
 import java.util.List;
+import java.util.Map;
 
 import org.apache.ibatis.annotations.Mapper;
 
@@ -18,7 +19,23 @@ public interface PointMapper {
 	
 	public int setMyPointList(PointVO pointVO)throws Exception;
 	
-	public List<PointVO> getMyPointList (MemberVO memberVO)throws Exception;
+	//**여기서부터
+	//포인트 충전내역 조회
+	public List<PointVO> getMyChargePointList (Map map)throws Exception;
+	public long getTotalCount1(Map map) throws Exception;
+	
+	//포인트 사용내역 조회
+	public List<PointVO> getMyUsePointList (Map map)throws Exception;
+	public long getTotalCount2(Map map) throws Exception;
+	
+	//소장권 구매내역 조회
+	public List<PointVO> getToonTicktList(Map map)throws Exception;
+	public long getTotalCount3(Map map) throws Exception;
+	
+	//소장권 구매내역 조회
+	public List<PointVO> getUseTicktList(Map map)throws Exception; 	
+	public long getTotalCount4(Map map) throws Exception;
+	//여기까지 성현 손댐** ㅇㅋ?
 	
 	public long checkTicketBox(TicketBoxVO ticketBoxVO)throws Exception;
 	public TicketBoxVO checkTicketStock(TicketBoxVO ticketBoxVO)throws Exception;
@@ -28,11 +45,11 @@ public interface PointMapper {
 	
 	public int setTicketUselist(UseTicketVO useTicketVO)throws Exception;
 	
-	
 	public long getTotalTicketCount (UseTicketVO useTicketVO)throws Exception;
-	public List<UseTicketVO> getUseTicktList(MemberVO memberVO)throws Exception; 
 	
-	public List<UseTicketVO> getToonTicktList(UseTicketVO UseTicketVO)throws Exception;
+	
+	
+	
 	
 	
 }

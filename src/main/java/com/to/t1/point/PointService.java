@@ -1,10 +1,12 @@
 package com.to.t1.point;
 
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.lang.Long;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import com.to.t1.member.MemberVO;
@@ -19,30 +21,33 @@ public class PointService {
 	private PointMapper pointMapper;
 	
 	//포인트 충전 para :pointVO , MAP<string,Object> return : pointVO, eachEpVO , int status 
-	public int chargePoint(@RequestParam Map<String,Object> param) throws Exception {
-		PointVO pointVO = new PointVO();
-		int result = 0;
-		//1. 전달받은 map데이터 파싱하기 
-		//2. 충전이므로, point는 parseInt시키기
-		String username = (String)param.get("username");
-		long point = (long)param.get("point"); //산술 연산을 위해서 양의 long으로 변환
+	public int chargePoint(@RequestBody Map<String,String> param) throws Exception {
 		
+		String username = (String)param.get("username");
+		long point = Long.parseLong(param.get("point"));
+		String contents = (String)param.get("contents");
+		
+		System.out.println("username" + username);
+		System.out.println("point" + point);
+		System.out.println("contents" + contents);
+		
+		PointVO pointVO = new PointVO();
 		pointVO.setUsername(username);
 		pointVO.setPoint(point);
-		pointVO.setContents("포인트충전:" + point +"P");
-		
+		pointVO.setContents(contents);
+		System.out.println(pointVO);
 		//3.포인트 충전하기,내역작성하기 
-		result= pointMapper.setMyPointcount(pointVO);
+		int result= pointMapper.setMyPointcount(pointVO);
 		result=pointMapper.setMyPointList(pointVO); 
 		//4. 성공시 받아 놓은 다음 경로 반환하기  
 		if(result !=0) {
+			
 			return result;
 		}
 		else {
 			System.out.println("입력실패");
 			return result;
 		}
-		
 	}
 	
 	//소장권 구매 == 포인트 사용  
@@ -81,34 +86,75 @@ public class PointService {
 	}
 	//티켓박스 정보 가져오기 
 	public TicketBoxVO checkTicketStock(@RequestParam Map<String,Object> param,TicketBoxVO ticketBoxVO) throws Exception{
-		
+		System.out.println(param);
 		String username= (String)param.get("username");
-		long toonNum = Long.parseLong((String)param.get("toonNum"));
-		
+		long toonNum; 
+		toonNum = Long.parseLong((String)param.get("toonNum"));
 		ticketBoxVO.setUsername(username);
 		ticketBoxVO.setToonNum(toonNum);
 		ticketBoxVO.setSort(1);
 		ticketBoxVO = pointMapper.checkTicketStock(ticketBoxVO);
 		return ticketBoxVO;
 	}
+	//포인트 충전내역 조회
+	public List<PointVO> getMyChargePointList(MemberVO memberVO, Pager pager)throws Exception {
+		HashMap<String, Object> obj = new HashMap<String, Object>();
+		
+		obj.put("memberVO", memberVO);
+		obj.put("pager", pager);
+		
+		pager.makeRow(); 
+		Long totalCount = pointMapper.getTotalCount1(obj);
+		System.out.println("totalcount : "+totalCount);
+		pager.makeNum(totalCount); 
+		
+		return pointMapper.getMyChargePointList(obj);
+	}
+	
 	//포인트 사용내역 조회
-	public List<PointVO> getPointList(MemberVO memberVO)throws Exception {
-		return pointMapper.getMyPointList(memberVO);
+	public List<PointVO> getMyUsePointList(MemberVO memberVO, Pager pager)throws Exception {
+		HashMap<String, Object> obj = new HashMap<String, Object>();
+		
+		obj.put("memberVO", memberVO);
+		obj.put("pager", pager);
+		
+		pager.makeRow(); 
+		Long totalCount = pointMapper.getTotalCount2(obj);
+		System.out.println("totalcount : "+totalCount);
+		pager.makeNum(totalCount); 
+		
+		return pointMapper.getMyUsePointList(obj);
 	}
 	
 	//소장권 사용내역 조회 : toon 상관 없이 조회(리스트)
-	public List<UseTicketVO> getUseTicketList(MemberVO memberVO)throws Exception {
-		return pointMapper.getUseTicktList(memberVO);
-	}
-	//UseTicket을 위한 조회 : toonNum과 username으로 조회
-	public List<UseTicketVO> getToonTicktList(UseTicketVO useTicketVO, Pager pager)throws Exception{
+	public List<PointVO> getUseTicketList(MemberVO memberVO, Pager pager)throws Exception {
+		HashMap<String, Object> obj = new HashMap<String, Object>();
+		
+		obj.put("memberVO", memberVO);
+		obj.put("pager", pager);
 		
 		pager.makeRow();
-		Long totalCount = pointMapper.getTotalTicketCount(useTicketVO);
+		Long totalCount = pointMapper.getTotalCount4(obj);
 		pager.makeNum(totalCount);
 		
-		return pointMapper.getToonTicktList(useTicketVO);
+		return pointMapper.getUseTicktList(obj);
 	}
 	
+	//UseTicket을 위한 조회 : toonNum과 username으로 조회
+	public List<PointVO> getToonTicktList(MemberVO memberVO, Pager pager)throws Exception{
+		
+		HashMap<String, Object> obj = new HashMap<String, Object>();
+		
+		obj.put("memberVO", memberVO);
+		obj.put("pager", pager);
+		
+		pager.makeRow();
+		Long totalCount = pointMapper.getTotalCount3(obj);
+		pager.makeNum(totalCount);
+		
+		return pointMapper.getToonTicktList(obj);
+	}
 	
+	//소장권 구매내역는 pointvo으로 리턴
+	//소장권 사용내역은 useticket으로 리턴
 }

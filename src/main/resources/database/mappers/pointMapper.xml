@@ -12,17 +12,104 @@
 		UPDATE user03.member SET point = (member.point + #{point}) 
 		WHERE username =#{username}
 	</update>
-	<!-- 포인트 내역 작성  : -->
+	<!-- 포인트 내역 작성 -->
 	<insert id="setMyPointList" parameterType="PointVO">
 		INSERT INTO user03.point(username, point, cDate, contents) 
 		VALUES (#{username}, #{point}, NOW(),#{contents})
 	</insert>
-	<!-- 포인트 충전 내역 조회 지출시에는 음수로 들어감 충전시에는 2000(양수로 작성됨)-->
-	<select id="getMyPointList" parameterType="MemberVO" resultType="PointVO">
+	
+	<!-- 성현 수정 포인트 충전 내역 조회 -->
+	<select id="getMyChargePointList" parameterType="java.util.Map" resultMap="pointResult">
 		SELECT * FROM user03.point 
-		WHERE point.username = #{username} 
-		AND point.point > 0
+		WHERE point.username = #{memberVO.username} 
+		AND point.point <![CDATA[>]]> 0
+		limit #{pager.startRow}, #{pager.perPage}
 	</select>
+	
+	<select id="getTotalCount1" parameterType="java.util.Map" resultType="java.lang.Long">
+		SELECT count(*)
+		FROM user03.point 
+		WHERE point.username = #{memberVO.username} 
+		AND point.point <![CDATA[>]]> 0 
+	</select>
+	
+	<!-- 성현 수정 포인트 사용 내역 조회 -->
+	<select id="getMyUsePointList" parameterType="java.util.Map" resultMap="pointResult">
+		SELECT p.username ,ABS(p.point) AS `point`, p. cDate , p.`contents` 
+		FROM USER03.`point` AS p 
+		WHERE username = #{memberVO.username} 
+		AND point <![CDATA[<]]>  0 ORDER BY cDate DESC
+		limit #{pager.startRow}, #{pager.perPage} 
+	</select>
+
+	<select id="getTotalCount2" parameterType="java.util.Map" resultType="java.lang.Long">
+		SELECT count(*)
+		FROM USER03.`point` AS p 
+		WHERE username = #{memberVO.username} 
+		AND point <![CDATA[<]]>  0 ORDER BY cDate DESC 
+	</select>
+	
+	<!-- 조회(List) : 어떤 유저가 소장한 웹툰이력을 최근 사용순으로 조회하기  -->
+	<select id="getToonTicktList"  parameterType="java.util.Map" resultMap="pointResult">
+		SELECT * FROM USER03.point  
+		WHERE username=#{memberVO.username} AND point <![CDATA[<]]> 0 
+		ORDER BY cDate DESC 
+		limit #{pager.startRow}, #{pager.perPage}
+	</select>
+	<!-- 소장권 구매 : n개로 산 것-->
+
+	<select id="getTotalCount3" parameterType="java.util.Map" resultType="java.lang.Long">
+		SELECT count(*)
+		FROM USER03.point  
+		WHERE username=#{memberVO.username} ORDER BY cDate DESC 
+	</select>
+
+	<!-- 3. 사용 내역 조회하기  -->
+	<select id="getUseTicktList" parameterType="java.util.Map" resultMap="pointResult">
+		SELECT * FROM USER03.useticket WHERE username= #{username} 
+		limit #{pager.startRow}, #{pager.perPage}
+	</select>
+	
+	<select id="getTotalCount4" parameterType="java.util.Map" resultType="java.lang.Long">
+		SELECT count(*)
+		FROM USER03.useticket WHERE username= #{username}
+	</select>
+
+	<resultMap type="PointVO" id="pointResult">
+		
+		<result property="username" column="username" />
+		<result property="point" column="point"/>
+		<result property="cDate" column="cDate"/>
+		<result property="contents" column="contents"/>
+		
+		
+		<association property="memberVO" javaType="MemberVO" resultMap="memberResult"></association> 
+		<association property="useTicketVO" javaType="UseTicketVO" resultMap="useTicketResult"></association> 
+	</resultMap>
+	
+		<resultMap type="MemberVO" id="memberResult">
+			<id property="username" column="username" />
+			<result property="nickname" column="nickname"/>
+			<result property="password" column="password"/>
+			<result property="name" column="name"/>
+			<result property="phone" column="phone"/>
+			<result property="email" column="email"/>
+			<result property="point" column="point"/>
+		</resultMap>
+		
+		<resultMap type="UseTicketVO" id="useTicketResult">
+			<id property="toonNum" column="toonNum" />
+			<id property="username" column="username"/>
+			<id property="epNum" column="epNum"/>
+			
+			<result property="username" column="username"/>
+			<result property="epNum" column="epNum"/>
+			<result property="sort" column="sort"/>
+			<result property="epPrice" column="epPrice"/>
+			<result property="utDate" column="utDate"/>
+			
+		</resultMap>
+	
 <!-- 포인트로 소장권  구매 (member02의 경우) -->
 	<!--  1 .이미 구매한 항목인지 확인: 알아서 걸러 -->	
 	<select id="checkTicketBox" parameterType="TicketBoxVO" resultType="java.lang.Long">
@@ -42,24 +129,20 @@
 	<insert id="insertTicketStock" parameterType="TicketBoxVO">
 		INSERT INTO user03.ticketbox (username, toonNum, stock,sort) VALUES (#{username}, #{toonNum}, #{stock},#{sort})
 	</insert>
+	
+	
 <!-- 소장권 사용하기 -->
+	
 	<!-- 1. 소장권 INSERT 하기  -->	
 	<insert id="setTicketUselist" parameterType="UseTicketVO">
 		INSERT INTO user03.useticket (username,epNum,sort,toonNum,utDate) VALUES (#{username}, #{epNum},#{sort}), #{toonNum},NOW())
 	</insert>
-	<!-- 티켓 권한 부여 하기 -->
-	<!-- 3. 사용 내역 조회하기  -->
-	<select id="getUseTicktList" parameterType="MemberVO" resultType="UseTicketVO">
-		SELECT * FROM useticket WHERE username= #{username} 
-	</select>
-	
-	<!-- 총 티켓 갯수 구하기 -->
+	<!-- 조회(Long)  : 어떤 유저가 가진 어떤 웹툰의 총 소장권 갯수 -->
 	<select id="getTotalTicketCount" parameterType="UseTicketVO" resultType="Long">
 		SELECT COUNT(*) FROM useticket  WHERE (username=#{username} AND toonNum = #{toonNum} )AND sort = 1
 	</select>
 	
-	<select id="getToonTicktList" parameterType="UseTicketVO" resultType="UseTicketVO">
-		SELECT * FROM USER03.useticket  
-		WHERE (username=#{username} AND toonNum = #{toonNum} )AND sort = 1 ORDER BY utDate DESC 
-	</select>
+	<!--  Eachep와 useTicket Select가져오기 -->
+	<!--  -->
+	
    </mapper>

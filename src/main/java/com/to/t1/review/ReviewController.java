@@ -1,18 +1,15 @@
 package com.to.t1.review;
 
-import java.util.List;
-
-import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.Authentication;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
-import com.to.t1.member.MemberVO;
 import com.to.t1.toon.ToonService;
-import com.to.t1.toon.eachep.EachEpVO;
+import com.to.t1.toon.eachep.EachEpService;
 import com.to.t1.util.Pager;
 
 @Controller
@@ -23,29 +20,35 @@ public class ReviewController {
 	private ReviewService reviewService;
 	@Autowired
 	private ToonService toonService;
+	@Autowired
+	private EachEpService eachEpService;
 	
-	/*
-	 * @PostMapping("reviewList") public void getList(Pager pager, Model
-	 * model)throws Exception{ List<EachEpVO> list= reviewService.getList(pager);
-	 * model.addAttribute("eachEpVO", list); model.addAttribute("pager", pager); }
-	 */
+
 	
 	@PostMapping("setReview")
-	public void setReview(ReviewVO reviewVO,HttpSession session, Model model)throws Exception{
-		MemberVO memberVO = (MemberVO)session.getAttribute("member");
-		if(memberVO==null) {
-			model.addAttribute("result", 0);
-		}else {
-			reviewVO.setUsername(memberVO.getUsername());
+	public void setReview(ReviewVO reviewVO, Model model,Authentication auth)throws Exception{
+		if(auth!=null) {
+			reviewVO.setUsername(auth.getName());
 			toonService.updateScore(reviewVO);
-			model.addAttribute("result", reviewService.setReview(reviewVO));
+			eachEpService.updateScore(reviewVO);
+			reviewService.setReview(reviewVO);
+			
+			//리뷰리스트를 js에서 리로드하기 위해서 추가 
+			Pager pager = new Pager();
+			pager.setEpNum(reviewVO.getEpNum());
+			pager.setToonNum(reviewVO.getToonNum());
+			model.addAttribute("result", reviewService.getList(pager));
 		}		
 	}
 	
 	@PostMapping("delReview")
-	public void delReview(ReviewVO reviewVO, Model model)throws Exception{
-		toonService.deleteScore(reviewVO);
-		model.addAttribute("result", reviewService.delReview(reviewVO));
+	public void delReview(ReviewVO reviewVO, Model model,Authentication auth)throws Exception{
+		if(auth!=null) {
+			reviewVO.setUsername(auth.getName());
+			toonService.deleteScore(reviewVO);
+			eachEpService.deleteScore(reviewVO);
+			model.addAttribute("result", reviewService.delReview(reviewVO));
+		}
 	}
 
 }

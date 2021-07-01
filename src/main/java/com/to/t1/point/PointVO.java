@@ -3,6 +3,7 @@ package com.to.t1.point;
 import java.sql.Timestamp;
 
 import com.to.t1.member.MemberVO;
+import com.to.t1.ticket.UseTicketVO;
 import com.to.t1.toon.ToonVO;
 import com.to.t1.toon.eachep.EachEpVO;
 
@@ -16,5 +17,6 @@ public class PointVO {
 	private Timestamp cDate; 
 	private String contents;
 	
-	
+	private MemberVO memberVO;
+	private UseTicketVO useTicketVO;
 }

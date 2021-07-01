@@ -13,7 +13,6 @@
    
      <link rel="stylesheet" href="/css/header.css">
      <!-- plugins:css -->
-    <link rel="stylesheet" href="../assets/vendors/iconfonts/mdi/css/materialdesignicons.css">
     <!-- endinject -->
     <!-- vendor css for this page -->
     <!-- End vendor css for this page -->
@@ -25,7 +24,7 @@
 <body>
 	<c:import url="../fragments/header.jsp"></c:import>	
 
-    <!-- partial -->
+   <!-- partial -->
     <div class="page-body">
       <!-- partial:partials/_sidebar.html -->
       <div class="sidebar">
@@ -41,11 +40,22 @@
         </div>
         <ul class="navigation-menu">
           <li class="nav-category-divider">MAIN</li>
-          <li>
-            <a href="/member/myPage">
-              <h4><span class="link-title">내정보 수정</span></h4>
-              <i class="mdi mdi-gauge link-icon"></i>
+          
+           <li>
+            <a href="#sample-pages" data-toggle="collapse" aria-expanded="false">
+              <h4><span class="link-title">내 정보</span></h4>
+              <i class="mdi mdi-flask link-icon"></i>
             </a>
+            <ul class="collapse navigation-submenu" id="sample-pages">
+              <li>
+                <a href="/member/myPage" >내 정보 조회</a>
+              </li>
+              
+               <li>
+                <a href="/member/changePassword" >비밀번호 변경</a>
+              </li>
+              
+            </ul>
           </li>
          
           <li>
@@ -53,6 +63,9 @@
               <h4><span class="link-title">웹툰</span></h4>
               <i class="mdi mdi-bullseye link-icon"></i>
             </a>
+            <ul class="collapse navigation-submenu" id="ui-elements">
+                <li>
+           
             <ul class="collapse navigation-submenu" id="ui-elements">
               <li>
                 <a href="/mypage/recentToon/?username=${memberVO.username}">최근 본 웹툰</a>
@@ -66,30 +79,55 @@
               </li>
             </ul>
           </li>
-          <li>
-            <a href="#sample-pages" data-toggle="collapse" aria-expanded="false">
-              <h4><span class="link-title">댓글</span></h4>
-              <i class="mdi mdi-flask link-icon"></i>
-            </a>
-            <ul class="collapse navigation-submenu" id="sample-pages">
-              <li>
-                <a href="pages/sample-pages/login_1.html" target="_blank">내 댓글 조회</a>
-              </li>
-              
             </ul>
           </li>
+          
+           <li>
+            <a href="#sales_inquiry" data-toggle="collapse" aria-expanded="false">
+             <h4> <span class="link-title">포인트 관리</span></h4> 
+              <i class="mdi mdi-clipboard-outline link-icon"></i>
+            </a>
+             <ul class="collapse navigation-submenu" id="sales_inquiry">
+              <li>
+                <a href="/mypage2/pointCharge/?username=${memberVO.username}">포인트 충전 내역 조회</a>
+           
+              </li>
+              <li>
+                <a href="/mypage2/pointUse/?username=${memberVO.username}">포인트 사용 내역 조회</a>
+              </li>
+            </ul>
+          </li>
+          
           <li>
-            <a href="pages/forms/form-elements.html">
+            <a href="#payment_manage" data-toggle="collapse" aria-expanded="false">
+             <h4>  <span class="link-title">소장권 관리</span></h4>
+              <i class="mdi mdi-clipboard-outline link-icon"></i>
+            </a>
+             <ul class="collapse navigation-submenu" id="payment_manage">
+              <li>
+                <a href="/mypage2/ticketCharge/?username=${memberVO.username}">소장권 구매 내역 조회</a>
+              </li>
+              <li>
+                <a href="/mypage2/ticketUse/?username=${memberVO.username}">소장권 사용 내역 조회</a>
+              </li>
+            </ul>
+          </li>
+          
+            <li>
+            	<a href="/mypage/review/?username=${memberVO.username}">
+             	<h4> <span class="link-title">내 댓글</span></h4>
+            	  <i class="mdi mdi-clipboard-outline link-icon"></i>
+            	</a>
+          	 </li>
+          
+          
+          <li>
+            <a href="${pageContext.request.contextPath}/point/charge">
              <h4> <span class="link-title">충전하기</span></h4>
               <i class="mdi mdi-clipboard-outline link-icon"></i>
             </a>
           </li>
-          <li>
-            <a href="pages/charts/chartjs.html">
-              <h4><span class="link-title">작가등록</span></h4>
-              <i class="mdi mdi-chart-donut link-icon"></i>
-            </a>
-          </li>
+    
  
         </ul>
         
@@ -97,70 +135,60 @@
       <!-- partial -->
       <div class="page-content-wrapper">
            <div class="container">	
-
-		<h2>최근본웹툰</h2>
+		<br>
+		<center><h2>최근 본 웹툰</h2></center>
+		<br>
 
 		<table class="table">
-			<thead class="thead-dark">
+			<thead class="A simple light list group item">
 				<tr>
-					<th></th>
-					<th>웹툰 이름</th>
-					<th>에피소드 이름</th>
-					<th>작가 이름</th>
-					<th>최근 본 날짜</th>
+					<th scope="col"></th>
+					<th scope="col">웹툰 이름</th>
+					<th scope="col">에피소드 이름</th>
+					<th scope="col">작가 이름</th>
+					<th scope="col">최근 본 날짜</th>
+				
+					<th scope="col"><input id="allCheck" type="checkbox" name="allCheck"></th>
 				</tr>
 			</thead>
 			
 			<tbody>
 			<c:forEach items="${list}" var="list" >
 				<tr>
-					<td><img width=50px height=50px src= ${list.eachEpVO.epSumImg}></td>
+					<td class="text_ct"><img width=50px height=50px src= ${list.toonVO.titleImg}></td>
+					<td class="text_ct"><a href="/toon/eachEpList?toonNum=${list.toonVO.toonNum}">${list.toonVO.toonTitle}</a></td>
+					<td class="text_ct">${list.eachEpVO.epTitle}</td>
+					<td class="text_ct">${list.memberVO.nickname}</td>
+					<td class="text_ct">${list.viewDate}</td>
 					
-					<td>${list.toonVO.toonTitle}</td>
-					<td>${list.eachEpVO.epTitle}</td>
-					<td>${list.memberVO.nickname}</td>
-					<td>${list.viewDate}</td>
+					<td class="text_ct"><input name="RowCheck" type="checkbox" value="${list.recNum}"></td>
 				</tr>
 			</c:forEach>
 			
 			</tbody>
 
 		</table>
+		<input type="button" value="선택 삭제" class="btn btn-danger" onclick="deleteValue();"><br>
 	</div>
-           
-  	
+<%-- 			<a href="./recentToon?epNum=${list.eachEpVO.epNum}" id="delete" class="btn btn-danger">삭제</a> --%>
+<%-- 			<input type="hidden" name="epNum" value="${list.eachEpVO.epNum}"> --%>
+           	<br>
+           	
 			<ul class="pagination">
 
 				<c:if test="${pager.pre}">
-					<li class="page-item"><a class="page-link p" href="#" title="${pager.startNum-1}">이전</a></li>
+					<li class="page-item"><a class="page-link p" href="/mypage/recentToon/?username=${memberVO.username}&curPage=${pager.curPage-1}" title="${pager.startNum-1}">이전</a></li>
 				</c:if>
 
 				<c:forEach begin="${pager.startNum}" end="${pager.lastNum}" var="i">
-					<li class="page-item"><a class="page-link p" href="#" title="${i}">${i}</a></li>
+					<li class="page-item"><a class="page-link p" href="/mypage/recentToon/?username=${memberVO.username}&curPage=${i}" title="${i}">${i}</a></li>
 				</c:forEach>
 
 				<c:if test="${pager.next}">
-					<li class="page-item"><a class="page-link p" href="#" title="${pager.lastNum+1}">다음</a></li>
+					<li class="page-item"><a class="page-link p" href="/mypage/recentToon/?username=${memberVO.username}&curPage=${pager.curPage+i+1}" title="${pager.lastNum+1}">다음</a></li>
 				</c:if>
 			</ul>
-  			
-  			<div class="input-group mt-3 mb-3">
-				<form id="frm" action="./#" class="form-inline">
-					<input type="hidden" name="curPage" value="1" id="curPage">
-					<div class="input-group-prepend">
-						<select class="form-control" name="kind" id="kind">
-							<option class="sel">공지종류</option>
-							<option class="sel">제목</option>
-						</select>
-					</div>
-					&nbsp;&nbsp; <input type="text" class="form-control" name="search" id="search" value="${pager.search}" placeholder="입력하세요">
-					&nbsp;&nbsp;
-					<div class="input-group-append">
-						<button class="btn btn-secondary" type="submit">검색</button>
-					</div>
-				</form>
-			</div>
-	
+			</center>
 
 	</p>
         <div class="page-content-wrapper-inner">
@@ -182,26 +210,69 @@
     <script src="../assets/js/dashboard.js"></script>
     <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
     <script type="text/javascript" src="../js/mypage.js"></script>
+    <script type="text/javascript">
     
-    	<script type="text/javascript">
-	let kind= '${pager.kind}';//Title, Writer, Contents
-	$(".sel").each(function() {
-		let t = $(this).text();//Title, Writer, Contents
-		if(t == kind){
-			$(this).prop("selected", true);
+    $(function(){
+		var chkObj = document.getElementsByName("RowCheck");
+		var rowCnt = chkObj.length;
+		
+		$("input[name='allCheck']").click(function(){
+			var chk_listArr = $("input[name='RowCheck']");
+			for (var i=0; i<chk_listArr.length; i++){
+				chk_listArr[i].checked = this.checked;
+			}
+		});
+		$("input[name='RowCheck']").click(function(){
+			if($("input[name='RowCheck']:checked").length == rowCnt){
+				$("input[name='allCheck']")[0].checked = true;
+			}
+			else{
+				$("input[name='allCheck']")[0].checked = false;
+			}
+		});
+	});
+    
+	function deleteValue(){
+		var url = "delete";    // Controller로 보내고자 하는 URL (.dh부분은 자신이 설정한 값으로 변경해야됨)
+		var valueArr = new Array();
+	    var list = $("input[name='RowCheck']");
+	    for(var i = 0; i < list.length; i++){
+	        if(list[i].checked){ //선택되어 있으면 배열에 값을 저장함
+	            valueArr.push(list[i].value);
+	        }
+	    }
+	   if (confirm("정말 삭제하시겠습니까?")==true){
+		   
+	   }else{
+		   return;
+	   }
+	   
+	    if (valueArr.length == 0){
+	    	alert("선택된 글이 없습니다.");
+	    }
+	    else{
+// 			var chk = confirm("정말 삭제하시겠습니까?");				 
+			$.ajax({
+			    url : url,                    // 전송 URL
+			    type : 'GET',                // GET or POST 방식
+			    traditional : true,
+			    data : {	
+			    	valueArr : valueArr        // 보내고자 하는 data 변수 설정
+			    },
+                success: function(jdata){
+                    if(jdata = 1) {
+                        alert("삭제 성공");
+                        location.href="/mypage/recentToon/?username=${memberVO.username}&curPage=${i}"
+                    }
+                    else{
+                        alert("삭제 실패");
+                    }
+                }
+			});
 		}
-	});
-	
-	$(".p").click(function () {
-		let curPage = $(this).attr("title");
-		$("#curPage").val(curPage);
-		let search= '${pager.search}';
-		$("#frm").submit();
-
-	});
-	
-	</script>
-	
+	}
+    
+    </script>
 	
 </body>
 </html>

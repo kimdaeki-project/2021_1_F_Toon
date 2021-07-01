@@ -8,6 +8,7 @@
 <!DOCTYPE html>
 <html>
 <head>
+
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <c:import url="./fragments/bootstrap.jsp"></c:import>  
@@ -15,9 +16,27 @@
 
 <link rel="stylesheet" href="../css/index.css">
 <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+
+ <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <!-- BootStrap -->    
+	<!--     <link rel="icon" href="images/favicon.png" type="image/png">  위에 로고-->
+    <c:import url="./fragments/bootstrap.jsp"></c:import>
+    <title>Wong Toon</title>
+   
+    <link rel="stylesheet" href="/css/header.css">
+    
+<meta charset="UTF-8"> <meta name="viewport" content="width=device-width, initial-scale=1.0"> 
+<meta http-equiv="X-UA-Compatible" content="ie=edge"> <title>부트스트랩Carousel</title>
+ <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" 
+ integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous"> 
+ <style> .carousel-inner > .carousel-item > img{ /* width: 640px; height: 720px; */ } </style>
+
 </head>
 
 <body>
+
 <c:import url="./fragments/header.jsp"></c:import>
   
   <div class="row">
@@ -46,7 +65,7 @@
                                 <h4>신의탑</h4>
                             </a>
                             <div class="meta-bottom d-flex" >
-                                <a href="/toon/eachEpList?toonNum=1""></a>
+                                <a href="/toon/eachEpList?toonNum=1"></a>
                                 <a class="dark_font" href="#">SIU</a>
                             </div>
                         </div>
@@ -548,6 +567,9 @@
     <!-- ================ start footer Area ================= -->
     <c:import url="./fragments/footer.jsp"></c:import>
 	<!-- ================ End footer Area ================= -->
+
+
+
 
 <!-- Optional JavaScript -->
 <!-- jQuery first, then Popper.js, then Bootstrap JS -->

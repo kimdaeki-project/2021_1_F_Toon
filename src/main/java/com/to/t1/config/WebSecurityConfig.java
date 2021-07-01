@@ -9,6 +9,7 @@ import org.springframework.security.config.annotation.web.configuration.WebSecur
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 
+import com.to.t1.member.TestClass1;
 import com.to.t1.security.LoginFail;
 
 @Configuration
@@ -85,8 +86,12 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter{
 			
 			.antMatchers("/toon/eachEpList/**").permitAll()
 			
+
 			.antMatchers("/toon/eachEpSelect/**").permitAll()
 			.antMatchers("/toon/eachEpSelect2/**").hasAnyRole("ADMIN", "MEMBER")
+
+			.antMatchers("/toon/eachEpSelectOpen/**").permitAll()
+			.antMatchers("/toon/eachEpSelectSec/**").hasAnyRole("ADMIN", "MEMBER")
 			
             .antMatchers("/notice/select").hasAnyRole("ADMIN", "MEMBER")
             .antMatchers("/qna/qnaSelect").hasAnyRole("ADMIN", "MEMBER")
@@ -105,13 +110,14 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter{
             .anyRequest().authenticated()
             .and()
          .formLogin()
-            
             //로그인페이지를 따로 만들지 않아도 기본 내장된 폼으로 이동
             //개발자가 만든 로그인폼을 사용하려면 다음과 같이 작성
             .loginPage("/member/login")
-            .defaultSuccessUrl("/member/memberLoginResult")
+            //.defaultSuccessUrl("/member/memberLoginResult")
+            .successHandler(new TestClass1())
             //Login 실패 처리
-//            .failureUrl("/member/memberLoginResult")
+      
+            .failureUrl("/member/loginFail")
 //            .failureHandler(new LoginFail())
             .permitAll()
             .and()
