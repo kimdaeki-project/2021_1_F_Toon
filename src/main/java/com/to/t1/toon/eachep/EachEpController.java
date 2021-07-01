@@ -107,4 +107,8 @@ public class EachEpController {
 		System.out.println(list.getEachEpVO().size());
 	}
 	
+	public void emptyfunction() {
+		System.out.println("test");
+	}
+	
 }
