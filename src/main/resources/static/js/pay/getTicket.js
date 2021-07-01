@@ -2,7 +2,7 @@
 
 let isAlready;
 let curstock = $('#curstock').val();
-let ifstock;
+let ifstock = curstock;
 let stock = 0;
 var curpoint = parseInt($('#curpoint').val());
 
@@ -11,6 +11,14 @@ let toonTitle = $('#toonTitle').val();
 let contents = $('#contents').val();
 
 let nexturl = "/toon/eachEpList?toonNum=" +toonNum;
+
+
+var textp = curpoint;
+textp = textp + ' P';
+$('#textpoint').text(textp);
+
+
+
 $('#nextsuccess').val(nexturl); 
 //alert($('#nextsuccess').val());
 function isEmpty(str){
@@ -38,6 +46,8 @@ if(isEmpty(curstock)){
 //parseInt로 변환
 curstock = parseInt(curstock);
 //alert(typeof curstock);
+$('#textnowstock').text(curstock + ' 개');
+$('#textifStock').text(ifstock + '개');
 
 $('input[name=ifstock]').val(ifstock);
 //radio 버튼 클릭시 결과 나오기  
@@ -65,6 +75,7 @@ $("input[name='point']").click(function(){
 		//contents 작성 ,입력
 		contents = "소장권구매 : " + toonTitle  + " : " + stock + "개";
 		$('#contents').val(contents);
+		$('#textifStock').text(ifstock + '개');
 	}
 	
 });

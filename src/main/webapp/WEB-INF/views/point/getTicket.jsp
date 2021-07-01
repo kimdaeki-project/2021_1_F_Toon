@@ -27,8 +27,11 @@
     	<div class="card" style="width: 54rem;">
 		  <div class="card-body">
 		    <h3 class="card-title">소장권 구입하기</h3>
+		    <P class="text-end fs-4">현재 포인트</P>
 		    <p id="textpoint" class="text-end fs-2"> P </p>
+		    <P class="text-end fs-6">현재 가진 소장권 갯수</P>
 		    <p id="textnowstock" class="text-end fs-4"> 개 </p>
+		    <P class="text-end fs-5">앞으로 가질 소장권 갯수</P>
 		    <p id="textifStock" class="text-end fs-3 fw-bolder"> 개 </p>
 		</div>
     	<form id="ticketBox" action="${pageContext.request.contextPath}/point/getToonTicket" method="post">
@@ -76,6 +79,12 @@
 		    		<div class="form-check card-body">
 			  	 		<input class="form-check-input" id="case1" type="radio" name="point" value="200">
 			  	  		<label class="form-check-label" for="case1"> 1개 :200P</label>
+					</div>
+		    	</li>
+		    	<li class="list-group-item">
+		    		<div class="form-check card-body">
+			  	 		<input class="form-check-input" id="case6" type="radio" name="point" value="1000">
+			  	  		<label class="form-check-label" for="case6"> 5개 :200P</label>
 					</div>
 		    	</li>
 		    	<li class="list-group-item">
