@@ -13,7 +13,7 @@
 </head>
 <body>
 <c:import url="../fragments/header.jsp"></c:import>
-   <br><br>
+   
 <div id="content" class="webtoon">
 
    <!-- 웹툰 소개 -->
@@ -49,9 +49,11 @@
       </ul>
       </div>
    </div>
-   <!-- 소장 form 불러오기 -->
-   <c:import url="./eachEpList.jsp"></c:import>
+   
    <!-- 리스트 -->
+   <!-- 소장 form 불러오기 -->
+   <c:import url="./buyTicketForm.jsp"></c:import>
+   
    
       <table cellpadding="0" cellspacing="0" class="viewList">
       <%-- <caption><span class="blind">회차별 목록</span></caption> --%>
@@ -72,6 +74,10 @@
                <sec:authorize access="isAnonymous()">
                   <a href="/toon/eachEpSelect?toonNum=${toonVO.toonNum}&eachEpNum=${eachEpVO.eachEpNum}&epNum=${eachEpVO.epNum}" >
                </sec:authorize>
+         
+               <sec:authorize access="isAuthenticated()">
+                  <a href="/toon/eachEpSelect?toonNum=${toonVO.toonNum}&eachEpNum=${eachEpVO.eachEpNum}&epNum=${eachEpVO.epNum}&username=<sec:authentication property="principal.username"/>" >
+               </sec:authorize>
                
                <img src="${eachEpVO.epSumImg}"
                   title="${eachEpVO.eachEpNum}화" alt="${eachEpVO.eachEpNum}화" width="71" height="41">
@@ -84,6 +90,11 @@
                <sec:authorize access="isAnonymous()">
                   <a href="/toon/eachEpSelect?toonNum=${toonVO.toonNum}&eachEpNum=${eachEpVO.eachEpNum}&epNum=${eachEpVO.epNum}" >
                </sec:authorize>
+         
+               <sec:authorize access="isAuthenticated()">
+                  <a href="/toon/eachEpSelect?toonNum=${toonVO.toonNum}&eachEpNum=${eachEpVO.eachEpNum}&epNum=${eachEpVO.epNum}&username=<sec:authentication property="principal.username"/>" >
+               </sec:authorize>
+               
             ${eachEpVO.eachEpNum}화</a>
             </td>
             <td>
@@ -122,15 +133,12 @@
          <input type="hidden" id="username" value="${loginUser}">
       </sec:authorize>
       
-      <div>
-      	<input value="test"hidden="hidden">
-      </div>
-      
-      
 <script type="text/javascript" src="../js/toon/favoriteToon.js"></script>
-<!-- test 주석 작성하기 -->
 
+<script type="text/javascript" src="../js/pay/getTicket.js"></script>
+<script type="text/javascript" src="../js/pay/useTicket.js"></script>
 
 </div>
+
 </body>
 </html>

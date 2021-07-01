@@ -65,7 +65,7 @@ public class EachEpController {
 		model.addAttribute("toonVO", list);
 		model.addAttribute("pager", pager);
 		
-		return "toon/endToonEpList";
+		return "toon/eachEpList";
 	}
 
 	@GetMapping("eachEpSelect")

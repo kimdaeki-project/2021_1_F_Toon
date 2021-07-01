@@ -26,5 +26,5 @@ test link
 			<button id="chargeTicket" class="" type="submit">소장권 충전하기</button>		
 		</form>
 	</sec:authorize>	
-	</div>
+	</div>-
 
