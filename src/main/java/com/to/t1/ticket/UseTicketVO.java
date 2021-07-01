@@ -20,4 +20,5 @@ public class UseTicketVO {
 	private ToonVO toonVO;
 	private EachEpVO eachEpVO;
 
+	
 }

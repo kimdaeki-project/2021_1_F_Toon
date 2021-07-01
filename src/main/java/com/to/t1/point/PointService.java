@@ -14,8 +14,6 @@ import com.to.t1.ticket.TicketBoxVO;
 import com.to.t1.ticket.UseTicketVO;
 import com.to.t1.util.Pager;
 
-import ch.qos.logback.core.subst.Token.Type;
-
 @Service
 public class PointService {
 	
@@ -25,10 +23,14 @@ public class PointService {
 	//포인트 충전 para :pointVO , MAP<string,Object> return : pointVO, eachEpVO , int status 
 	public int chargePoint(@RequestBody Map<String,String> param) throws Exception {
 		
-		String username = String.valueOf(param.get("username"));
+		String username = (String)param.get("username");
 		long point = Long.parseLong(param.get("point"));
-		String contents = String.valueOf(param.get("contents"));
-
+		String contents = (String)param.get("contents");
+		
+		System.out.println("username" + username);
+		System.out.println("point" + point);
+		System.out.println("contents" + contents);
+		
 		PointVO pointVO = new PointVO();
 		pointVO.setUsername(username);
 		pointVO.setPoint(point);
@@ -49,21 +51,16 @@ public class PointService {
 	}
 	
 	//소장권 구매 == 포인트 사용  
-	public int getTicket(PointVO pointVO,TicketBoxVO ticketBoxVO ,long isAlready) throws Exception{
-		
+	public int getTicket(PointVO pointVO,TicketBoxVO ticketBoxVO, int isAlready) throws Exception{
 		int result;
 		
 		long negativepoint = pointVO.getPoint();
-		
 		negativepoint = -1 * negativepoint; 
 		pointVO.setPoint(negativepoint);//음수화
-		//point
+		
 		//3.포인트 사용하기,내역작성하기, 티켓 추가하기 
 		result= pointMapper.setMyPointcount(pointVO);
-		System.out.println("result1 :" +result);
 		result= pointMapper.setMyPointList(pointVO);
-		
-		isAlready = pointMapper.checkTicketBox(ticketBoxVO);
 		if(isAlready == 0) {//이력이 없다면 있으면 insert
 			result = pointMapper.insertTicketStock(ticketBoxVO);
 		}else {//이력이 있다면 Update
@@ -72,30 +69,14 @@ public class PointService {
 		return result;
 	}
 	//소장권 사용
-	public int setuseTicket(@RequestBody Map<String,String> param,
-			UseTicketVO useTicketVO, TicketBoxVO ticketBoxVO)throws Exception{
+	public int useTicket(TicketBoxVO ticketBoxVO,UseTicketVO useTicketVO,String NextPath)throws Exception{
 		
 		//소장권 사용 내역 작성 
-		int result = 0;
-		
-		String username = param.get("username");
-		long toonNum =Long.valueOf(param.get("toonNum"));
-		long epNum = Long.valueOf(param.get("epNum"));
-		useTicketVO.setUsername(username);
-		useTicketVO.setToonNum(toonNum);
 		useTicketVO.setSort(1); //일단은 소장권으로
-		useTicketVO.setEpNum(epNum);
-		
-		ticketBoxVO.setUsername(username);
-		ticketBoxVO.setToonNum(toonNum);
 		ticketBoxVO.setStock(-1); //차감하는 티켓 장수 
-		ticketBoxVO.setSort(1);
-		
-		System.out.println("param3 with useTicket"+useTicketVO);
-		System.out.println("param3 with TicketBox"+ticketBoxVO);
-		
-		result = pointMapper.setTicketUselist(useTicketVO);//사용내역 작성
+		int result = pointMapper.setTicketUselist(useTicketVO);//사용내역 작성
 		result = pointMapper.updateTicketStock(ticketBoxVO);//티켓 한개 차감 
+		
 		return result;
 	}
 	//티켓박스 조회 : 
@@ -104,18 +85,15 @@ public class PointService {
 		return pointMapper.checkTicketBox(ticketBoxVO);
 	}
 	//티켓박스 정보 가져오기 
-	public TicketBoxVO checkTicketStock(@RequestParam Map<String,Object> param,
-			TicketBoxVO ticketBoxVO) throws Exception{
-
-		String username= String.valueOf(param.get("username"));
-		long toonNum = ticketBoxVO.getToonNum();
-		
+	public TicketBoxVO checkTicketStock(@RequestParam Map<String,Object> param,TicketBoxVO ticketBoxVO) throws Exception{
+		System.out.println(param);
+		String username= (String)param.get("username");
+		long toonNum; 
+		toonNum = Long.parseLong((String)param.get("toonNum"));
 		ticketBoxVO.setUsername(username);
 		ticketBoxVO.setToonNum(toonNum);
-		
 		ticketBoxVO.setSort(1);
 		ticketBoxVO = pointMapper.checkTicketStock(ticketBoxVO);
-		
 		return ticketBoxVO;
 	}
 	//포인트 충전내역 조회
@@ -176,31 +154,7 @@ public class PointService {
 		
 		return pointMapper.getToonTicktList(obj);
 	}
-	//소장권 보유 여부 조회 (username, epNum으로 조회, long 반환)
-	public long CheckUseTicket(@RequestBody Map<String,Object> param)throws Exception{
-		//1. 
-		System.out.println(param);
-		long result = pointMapper.checkEpGet(param);
-		return result;
-	}
-	//구매한 소장권의 EachEp 알아오기
-	public long SelectEachEpNum(@RequestBody Map<String,String> param)throws Exception{
-		return pointMapper.SelectEachEpNum(param);
-	}
 	
-	
-	//소장권 사용 이력 조회하기 memberVO 로 조회하기
-	public List<UseTicketVO> getTicketUseList(MemberVO memberVO, Pager pager)throws Exception{
-		HashMap<String, Object> obj = new HashMap<String, Object>();
-		
-		obj.put("memberVO", memberVO);
-		obj.put("pager", pager);
-		
-		pager.makeRow();
-		Long totalCount = pointMapper.getTotalCount4(obj);
-		pager.makeNum(totalCount);
-		
-		return pointMapper.getTicketUseList(obj);
-	}
-	
+	//소장권 구매내역는 pointvo으로 리턴
+	//소장권 사용내역은 useticket으로 리턴
 }
