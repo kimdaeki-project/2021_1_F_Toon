@@ -56,7 +56,7 @@
 	<table class="table">
 		<thead>
 			<tr style="text-align: center;">
-	    		<th>작성일 : ${vo.createdDate}</th>
+	    		<th>작성자 : ${vo.username}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;작성일 : ${vo.createdDate}</th>
 	    		<th>조회수 : ${vo.qnaHit}</th>
 	    		
 			</tr>

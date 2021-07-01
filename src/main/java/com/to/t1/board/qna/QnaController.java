@@ -49,7 +49,7 @@ public class QnaController {
 	}
 	
 	@GetMapping("qnaSelect")
-	public ModelAndView getSelect(BoardVO boardVO, MemberVO memberVO, Authentication auth2, Model model)throws Exception{
+	public ModelAndView getSelect (BoardVO boardVO, MemberVO memberVO, Authentication auth2, Model model) throws Exception{
 	     ModelAndView mv = new ModelAndView();
 		
 	     if(auth2 != null) {
@@ -63,8 +63,28 @@ public class QnaController {
 	     
 	     System.out.println(memberVO.getUsername());
 	     
+	     
 		boardVO = qnaService.getSelect(boardVO);
+		QnaVO qnaVO = (QnaVO)boardVO;
 		
+		System.out.println(boardVO.getUsername());
+	
+		if(boardVO.getBoNum() == qnaVO.getRef()) {
+		
+		}else {
+			BoardVO boardVO2 = new BoardVO();
+			boardVO2.setBoNum(qnaVO.getRef());
+			boardVO2 = qnaService.getSelect(boardVO2);
+			
+			if(!boardVO2.getUsername().equals(auth2.getName())) {
+				
+				mv.addObject("path", "qnaList");
+				mv.addObject("msg", "작성자 이외에 열람하실 수 없습니다");
+				mv.setViewName("common/commonResult");
+				
+				return mv;
+			}
+		}
 		mv.addObject("vo", boardVO);
 		mv.setViewName("board/qnaSelect");
 		return mv;
@@ -83,7 +103,7 @@ public class QnaController {
 		
 		return "redirect:./qnaList";
 	}
-
+	
 	@GetMapping("qnaUpdate")
 	public String setUpdate(BoardVO boardVO, Model model)throws Exception{
 		boardVO = qnaService.getSelect(boardVO);

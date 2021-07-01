@@ -61,7 +61,8 @@
 	<table class="table">
 		<thead>
 			<tr style="text-align: center;">
-	    		<th>작성일 : ${vo.freeDate}</th>
+				
+	    		<th>작성자 : ${vo.username}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;작성일 : ${vo.freeDate}</th>
 	    		<th>조회수 : ${vo.freeHit}</th>
 	    		
 			</tr>
