@@ -174,7 +174,7 @@
 <%-- 			<input type="hidden" name="epNum" value="${list.eachEpVO.epNum}"> --%>
            	<br>
            	
-			<ul class="pagination">
+			<ul class="pagination justify-content-center">
 
 				<c:if test="${pager.pre}">
 					<li class="page-item"><a class="page-link p" href="/mypage/recentToon/?username=${memberVO.username}&curPage=${pager.curPage-1}" title="${pager.startNum-1}">이전</a></li>

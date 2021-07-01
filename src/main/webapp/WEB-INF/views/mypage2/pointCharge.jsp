@@ -169,7 +169,7 @@
 		
 	</div>
            
-			<ul class="pagination">
+			<ul class="pagination justify-content-center">
 
 				<c:if test="${pager.pre}">
 					<li class="page-item"><a class="page-link p" href="/mypage2/pointCharge/?username=${memberVO.username}&curPage=${pager.curPage-1}" title="${pager.startNum-1}">이전</a></li>
