@@ -175,9 +175,6 @@ public class PointController {
 	
 	
 
-//	당신 참 잘 있었나
-
-
 	//검증 관련
 //	@Autowired
 //	private IamportClient api;

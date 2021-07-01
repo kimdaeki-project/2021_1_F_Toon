@@ -144,12 +144,9 @@
 	<select id="getTotalTicketCount" parameterType="UseTicketVO" resultType="Long">
 		SELECT COUNT(*) FROM useticket  WHERE (username=#{username} AND toonNum = #{toonNum} )AND sort = 1
 	</select>
-<<<<<<< HEAD
 	
-	<!--  Eachep와 useTicket Select가져오기 -->
-	<!--  -->
-	<!--여기에 마구잡이로 주석은 단다 이거야 -->
-=======
+	
+
 	<!-- 조회(long) : 어떤 유저가 가진 어떤 ep의 소장여부 -->
 	<select id="checkEpGet" parameterType="java.util.Map" resultType="Long">
 		SELECT COUNT(*) FROM useticket WHERE username = #{username} AND epNum = #{epNum}
@@ -180,5 +177,4 @@
 		limit #{pager.startRow}, #{pager.perPage} 
 	</select>
 	
->>>>>>> parent of dbc3548 (Revert "Merge branch 'hyelin_8' into main4")
    </mapper>
