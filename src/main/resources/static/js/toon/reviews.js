@@ -62,7 +62,7 @@ $(function() {
 					result = Number(result.trim());
 					if (result != null) {
 						alert("댓글이 삭제되었습니다.");
-						$("#review_page").load(location.href = location.href);
+						window.location.reload();
 					} else {
 						alert("삭제에 실패하였습니다. 다시 시도해 주세요");
 					}
@@ -101,7 +101,7 @@ $(".modalModBtn").on("click", function() {
 			success: function(result) {
 				alert("댓글이 수정되었습니다.");
 				$("#modifyModal").modal("hide"); //Modal close
-				$("#review_page").load(location.href = location.href);
+				 window.location.reload();
 			},
 			error: function(result) {
 				alert("수정에 실패하였습니다. 다시 시도해 주세요");
