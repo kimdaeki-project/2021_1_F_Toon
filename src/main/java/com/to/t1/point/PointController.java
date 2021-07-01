@@ -90,7 +90,10 @@ public class PointController {
 		//2-3. 소장권의 stock >1 인 경우 : 소장권 구입하고 소장권 구입 URL로 이동하기 
 		
 	}
+
 	
+	
+//	당신 참 잘 있었나
 	//검증 관련
 //	@Autowired
 //	private IamportClient api;
