@@ -17,6 +17,9 @@
 </head>
 <body>
 <div class="container">
+
+<a href="javascript:history.back();">뒤로가기</a>
+
   <div class="row justify-content-md-center">
     <div class="col"></div>
     <!-- col2시작 -->
