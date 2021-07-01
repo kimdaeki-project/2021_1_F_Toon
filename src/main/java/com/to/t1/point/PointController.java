@@ -1,7 +1,5 @@
 package com.to.t1.point;
 
-
-
 import java.util.Map; //jSON 파서용 
 import javax.servlet.http.HttpSession;
 
@@ -176,11 +174,10 @@ public class PointController {
 
 	
 	
-<<<<<<< HEAD
+
 //	당신 참 잘 있었나
-=======
-	
->>>>>>> parent of dbc3548 (Revert "Merge branch 'hyelin_8' into main4")
+
+
 	//검증 관련
 //	@Autowired
 //	private IamportClient api;
