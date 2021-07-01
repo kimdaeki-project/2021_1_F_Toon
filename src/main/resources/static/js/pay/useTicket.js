@@ -105,12 +105,12 @@ function getTicketAjax(){
 		url : '/point/getNuseTicket', //요청 할 내용
 		success: function(res){
 			url = res; //결과 할당
-			alert("소장권을 차감합니다");
+			//alert("소장권을 차감합니다");
 			gotolocation(url);
 			//window.location.href= url;
 		},
 		error : function(request, status, error){
-			var tempPage = "toon/eachEpList?toonNum="+tNum;
+			var tempPage = "toon/endEpList?toonNum="+tNum;
 			url = tempPage;
 		}
 	}).done(function(url){
@@ -139,7 +139,7 @@ function usePointtoGetTicket(){
 		},
 		error : function(request, status, error){
 			alert("ajax통신 실패");
-			var tempPage = "toon/eachEpList?toonNum="+tNum;
+			var tempPage = "endEpList?toonNum="+tNum;
 			alert("작업을 취소했습니다");
 			url = tempPage;
 			gotolocation(url);
