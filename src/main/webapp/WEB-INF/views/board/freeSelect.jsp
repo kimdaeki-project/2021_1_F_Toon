@@ -36,10 +36,10 @@
      	background-color : #3c3c3c;
      }
      #file1 {
-      	background-color: #6C7AE0;
+      	
      	border-style: solid;
      	border-color: #6C7AE0;
-     	border-radius: 15px 15px 15px 15px;
+
      }
      
     </style>
@@ -61,7 +61,8 @@
 	<table class="table">
 		<thead>
 			<tr style="text-align: center;">
-	    		<th>작성일 : ${vo.freeDate}</th>
+				
+	    		<th>작성자 : ${vo.username}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;작성일 : ${vo.freeDate}</th>
 	    		<th>조회수 : ${vo.freeHit}</th>
 	    		
 			</tr>
@@ -82,13 +83,15 @@
 	
 	<div id="file1">
 	<c:forEach items="${vo.freefiles}" var="file">
-		<a href="../upload/${board}/${file.fileName}">${file.oriName}</a>
+		<a href="../upload/${board}/${file.fileName}">&nbsp;${file.oriName}</a>
 	</c:forEach>
 	</div>
+	<br>
 	
+	<c:if test="${memberVO.username eq vo.username}">
 	<a href="./freeUpdate?boNum=${vo.boNum}" class="btn btn-primary">수정</a>
 	<a href="#" id="del" class="btn btn-primary">삭제</a>
-	
+	</c:if>
 	
 	<form action="./freeDelete" id="frm" method="get">
 		<input type="hidden" name="boNum" value="${vo.boNum}">

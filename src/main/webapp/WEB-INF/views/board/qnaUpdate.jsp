@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>    
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags" %>   
 <!DOCTYPE html>
 <html>
 <head>
@@ -11,8 +12,8 @@
 <!--     <link rel="icon" href="images/favicon.png" type="image/png">  위에 로고-->
     <c:import url="../fragments/bootstrap.jsp"></c:import>
     
-   	<link rel="stylesheet" href="${pageContext.request.contextPath}/css/header.css">
-   
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/css/header.css">
+ 
 <title>Insert title here</title>
 
 <!-- summernote  -->
@@ -26,57 +27,52 @@
 	}
 	
 	 .back {
-    	background-image: url('../images/toon-notice5.PNG');
-    	background-size : 6000px;
+    	background-image: url('../images/toon-qna1.PNG');
+    	background-size : 500px;
     	border-style: solid;
-    	border-color: #98DFFF;
+    	border-color: #FFE150;
      }
      #frm {
-        background-color: #F7F7F7;
+    	background-color: #F7F7F7;
      	border-style: solid;
      	border-color: #b4b4b4;
      	border-radius: 15px 15px 15px 15px;
      }
      #dd {
-     	background-color: #b4b4b4;
-
+     	background-color: #F9FFFF;
      }
 	
 </style>
 </head>
 <body>
 <c:import url="../fragments/header.jsp"></c:import>
-
+  	
  <div class="container"><br>
- <h2>
+		<h2>
 			<p>
 				<span
-					style="border-radius: 15px 15px 15px 15px; border: 3px solid #b4b4b4; padding: 0.5em 0.6em; color: black; background-color: #dcdcdc;">공지사항/수정</span>
+					style="border-radius: 15px 15px 15px 15px; border: 3px solid #b4b4b4; padding: 0.5em 0.6em; color: black; background-color: #dcdcdc;">질의응답/수정</span>
 			</p>
 		</h2><br>
-  <form id="frm" action="./update" method="post" enctype="multipart/form-data">
+  <form id="frm" action="./qnaUpdate" method="post" enctype="multipart/form-data">
   	<input type="hidden" name="boNum" value="${param.boNum}">
     <div class="form-group">
       <label for="username">&nbsp;작성자</label>
       <input type="text" readonly="readonly" value="${vo.username}" class="form-control" id="username" name="username">
     </div>
+    
     <div class="form-group">
-      <label for="noticeKinds">&nbsp;공지종류</label>
-      <input type="text" class="form-control" id="noticeKinds" name="noticeKinds" value="${vo.noticeKinds}">
+      <label for="qnaTitle">&nbsp;제목</label>
+      <input type="text" class="form-control" id="qnaTitle" name="qnaTitle" value="${vo.qnaTitle}">
     </div>
     
     <div class="form-group">
-      <label for="noticeTitle">&nbsp;제목</label>
-      <input type="text" class="form-control" id="noticeTitle" name="noticeTitle" value="${vo.noticeTitle}">
-    </div>
-    
-    <div class="form-group">
-				<label for="noticeContents">&nbsp;내용</label>
-				<textarea class="form-control myCheck" rows="5" id="noticeContents"
-					name="noticeContents">${vo.noticeContents}</textarea>
+				<label for="qnaContents">&nbsp;내용</label>
+				<textarea class="form-control myCheck" rows="5" id="qnaContents"
+					name="qnaContents">${vo.qnaContents}</textarea>
 			</div>
     
-    <c:forEach items="${vo.files}" var="file">
+     <c:forEach items="${vo.files}" var="file">
     	<div>
     		<span style="border-radius: 15px 15px 15px 15px; border: 3px solid #b4b4b4; padding: 0.5em 0.6em; color: black; background-color: #dcdcdc;">${file.oriName}</span>
     		&emsp;<span class="fileDelete" title="${file.fileNum}">X</span>
@@ -97,7 +93,6 @@
 				<input type="file"  id="inputGroupFile04"
 					class="form-control-file border" name="files">
 			</div>
-			
 			<div class="input-group-append delete">
 				<input class="btn btn-outline-secondary" type="button"
 					id="inputGroupFileAddon04" value="Delete">
@@ -107,7 +102,7 @@
 
 <script type="text/javascript" src="../js/board/boardUpdate.js"></script>
 <script type="text/javascript" src="../js/board/fileAdd.js"></script>
-<script type="text/javascript" src="../js/board/summerFile.js"></script>
+<script type="text/javascript" src="../js/board/qnaSummerFile.js"></script>
 <script type="text/javascript">
 const btn = document.getElementById("btn");
 
