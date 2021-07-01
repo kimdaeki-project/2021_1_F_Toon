@@ -50,7 +50,7 @@
       </div>
    </div>
    <!-- 소장 -->
-   <c:import url="./eachEpList.jsp"></c:import>
+   <c:import url="./buyTicketForm.jsp"></c:import>
    <!-- 리스트 -->
 
       <table cellpadding="0" cellspacing="0" class="viewList">

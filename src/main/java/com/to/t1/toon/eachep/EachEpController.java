@@ -35,22 +35,23 @@ public class EachEpController {
    @Autowired
    private EachEpService eachEpService;
    @Autowired
-	private ToonService toonService;
+   private ToonService toonService;
    @Autowired
    private ReviewService reviewService;
    @Autowired
    private FavoriteToonService favoriteToonService;
    @Autowired
-	private MemberService memberService;
+   private MemberService memberService;
    @Autowired
-	private PointService pointService;
+   private PointService pointService;
    
    @GetMapping("eachEpList")
-   public String getList(@RequestParam Map<String,Object> param ,
+   public void getList(@RequestParam Map<String,Object> param ,
 		   Pager pager, Model model, Authentication auth,
 		   MemberVO memberVO, HttpSession httpSession,
 		   TicketBoxVO ticketBoxVO)throws Exception{
       FavoritetoonVO favoritetoonVO = new FavoritetoonVO();
+      
       if(auth!=null) {
     	  memberVO = memberService.myPage((MemberVO) auth.getPrincipal());
 	      param.put("username",memberVO.getUsername());
@@ -68,12 +69,12 @@ public class EachEpController {
     	  favoritetoonVO.setToonNum(pager.getToonNum());
     	  
           ToonVO list=eachEpService.getList(pager);
-          model.addAttribute("info",param);
+          //model.addAttribute("info",param);
           model.addAttribute("toonVO", list);
           model.addAttribute("pager", pager);
           model.addAttribute("favorToon", favorToon);
           
-          return "toon/eachEpList";
+          //return "toon/eachEpList";
    }
    
    @GetMapping("eachEpSelect")
