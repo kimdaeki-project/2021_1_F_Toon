@@ -23,11 +23,6 @@
    
 <title>Insert title here</title>
 
-<!-- summernote  -->
-<link href="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote-bs4.min.css" rel="stylesheet">
-<script src="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote-bs4.min.js"></script>
-<!-- ------------ -->
-
 <style type="text/css">
 	#sample {
 		display: none;
@@ -53,7 +48,6 @@
 </head>
 <body>
 <c:import url="../fragments/header.jsp"></c:import>
-
 <div class="row">
   	<div class="col-2">
   		<c:import url="./adminNav.jsp"></c:import>
@@ -67,10 +61,10 @@
 			</p>
 		</h2><br>
   <form id="frm" action="./manageEachEpUpdate" method="post" enctype="multipart/form-data">
-  	<input type="hidden" name="epNum" value="${param.epNum}">
+  	<input type="hidden" name="epNum" value="${eachEpVO.epNum}">
   	
   	<div class="form-group">
-      <label for="toonTitle">&nbsp;회차별번호</label>
+      <label for="eachEpNum">&nbsp;회차별번호</label>
       <input type="number" class="form-control" id="eachEpNum" name="eachEpNum" value="${eachEpVO.eachEpNum}">
     </div>
   	
@@ -93,22 +87,21 @@
   </form>
 </div>
 
-	<div id="sample">
-		<div class="input-group">
-			<div class="custom-file">
-				<input type="file"  id="inputGroupFile04"
-					class="form-control-file border" name="files">
-			</div>
-			
-			<div class="input-group-append delete">
-				<input class="btn btn-outline-secondary" type="button"
-					id="inputGroupFileAddon04" value="Delete">
-			</div>
-		</div>
-	</div>
-
 <script type="text/javascript" src="../js/board/boardUpdate.js"></script>
-<script type="text/javascript" src="../js/board/eachEpSummerFile.js"></script>
 
+<script type="text/javascript">
+const btn = document.getElementById("btn");
+
+btn.addEventListener("click", function(){
+	let result = confirm("수정하시겠습니까?");
+	
+	if(result){
+		
+		frm.setAttribute("method", "post");
+		frm.submit();
+		
+	}
+});
+</script>
 </body>
 </html>

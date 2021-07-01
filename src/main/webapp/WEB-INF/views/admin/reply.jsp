@@ -37,7 +37,6 @@
 
 </head>
 <body>
-<c:import url="../fragments/header.jsp"></c:import>
 
 <div class="row">
   	<div class="col-2">

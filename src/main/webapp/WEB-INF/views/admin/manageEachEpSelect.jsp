@@ -1,118 +1,99 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %> 
+	pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="sec"
+	uri="http://www.springframework.org/security/tags"%>
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
-<c:import url="../fragments/bootstrap.jsp"/>
+<c:import url="../fragments/bootstrap.jsp"></c:import>
 <title>Insert title here</title>
 <link rel="stylesheet" href="../css/header.css">
-<link rel="stylesheet" href="../css/eachEp/star.css">
+
+<!-- plugins:css -->
+<link rel="stylesheet"
+	href="${pageContext.request.contextPath}/assets/vendors/iconfonts/mdi/css/materialdesignicons.css">
+<link rel="stylesheet"
+	href="${pageContext.request.contextPath}/css/mypage/style.css">
+<!-- Layout style -->
+<link rel="shortcut icon"
+	href="${pageContext.request.contextPath}/asssets/images/favicon.ico" />
+
+<style type="text/css">
+.webtoon {
+	text-align: center;
+	position: relative;
+	left: 300px;
+}
+.text {
+	 background-color: #F7F7F7;
+     border-style: solid;
+     border-color: #b4b4b4;
+     border-radius: 15px 15px 15px 15px;
+     color: black;
+    
+}
+</style>
 
 </head>
 <body>
-<c:import url="../fragments/header.jsp"/>
-	<!-- 웹툰 소개 -->
-	<div class="comicinfo">
-		<div class="thumb">
-			<a href="/toon/eachEpList?toonNum=${toonVO.toonNum}">
-				<img src="${toonVO.titleImg}">
-				<span class="mask"></span>
-				</a>
+<c:import url="../fragments/header.jsp"></c:import>
+	<div class="row">
+		<div class="col-2">
+			<c:import url="./adminNav.jsp"></c:import>
 		</div>
-		<div class="detail">
-			<h2>${toonVO.toonTitle}
-			<span class="wrt_nm">${toonVO.nickname}</span>
-			</h2>
-			<p><h2>${toonVO.toonSum}</h2></p>
-		<p class="detail_info"><span class="genre">장르 : ${toonVO.genre}</span></p>
-		<ul class="btn_group">
-		<li><a href="#" title="관심웹툰" class="book_maker on"><span>관심웹툰</span></a></li>
-		<li><a href="/toon/eachEpSelect?toonNum=${toonVO.toonNum}&epNum=1" title="첫회보기" class="first"><span>첫회보기</span></a></li>
-		</ul>
-		</div>
-	</div>
 
-	<div class="tit_area">
-		<div class="view">
-			<h3>${toonVO.eachEpVO['0'].epTitle}</h3>
-			<div class="btn_area">
-				<c:if test="${toonVO.eachEpVO['0'].epNum!=1}">
-				<span class="pre"> 
-				<a href="/toon/eachEpSelect?toonNum=${toonVO.toonNum}&epNum=${toonVO.eachEpVO['0'].epNum-1}">이전화</a>
-				</span>
-				</c:if>
-				<span class="next"> 
-				<a href="/toon/eachEpSelect?toonNum=${toonVO.toonNum}&epNum=${toonVO.eachEpVO['0'].epNum+1}">다음화</a>
-				</span>
+		<div id="content" class="webtoon">
+
+			<!-- 웹툰 소개 -->
+			<div class="container">
+				<br>
+				<h2>
+					<p>
+						<span
+							style="border-radius: 15px 15px 15px 15px; border: 3px solid #b4b4b4; padding: 0.5em 0.6em; color: black; background-color: #dcdcdc;">관리자/회차</span>
+					</p>
+				</h2>
+				<br> <a href="/toon/eachEpList?epNum=${eachEpVO.epNum}">
+					<img src="${eachEpVO.epSumImg}">
+				</a> <br><br>
+				
+				<div class="text">
+				<br>
+				<h2>${eachEpVO.epTitle}<hr class="featurette-divider"></h2>
+				
+				<p><img src="${eachEpVO.epContentImg}"></p>
+				
+				</div>
+				<br>
+				<a href="./manageEachEpUpdate?epNum=${eachEpVO.epNum}" class="btn btn-secondary">수정</a>
+				
+				<a href="#" id="del" class="btn btn-secondary">삭제</a>
+				
+				<form action="./manageEachEpDelete" id="frm" method="get">
+				<input type="hidden" name="epNum" value="${eachEpVO.epNum}">
+				</form>
+
 			</div>
-		</div>
-		<div class="vote_lst">
-			<dl class="lt">
-				<dt>
-					<img src="https://ssl.pstatic.net/static/comic/images/migration/detail/txt_point_all.gif"
-						width="39" height="11" alt="회별별점">
-				</dt>
-				<dd class="total">
-					<div class="rating_type4" id="topTotalStarPoint">
-						<span class="star"><em style="width: 98%">평점</em></span> 
-						<span id="topPointTotalNumber"><strong>${toonVO.eachEpVO['0'].epRatingSum/toonVO.eachEpVO['0'].epRatingPerson}</strong></span> 
-						<span class="pointTotalPerson">(참여 <em>${toonVO.eachEpVO['0'].epRatingSum}</em>)</span>
-					</div>
-				</dd>
 
-				<dt id="topStarLabel">
-					<img
-						src="https://ssl.pstatic.net/static/comic/images/migration/detail/txt_point_click.gif"
-						width="38" height="11" class="starscore_guide_txt" alt="별점주기">
-				</dt>
-			</dl>
-			<dl class="rt">
-				<dt>등록일</dt>
-				<dd class="date">${toonVO.eachEpVO['0'].epDate}</dd>
-			</dl>
-		</div>
-	</div>	
 
-	<!-- content Img  -->
-	<div class="wt_viewer" style="background: #FFFFFF">
-	<img src="${toonVO.eachEpVO['0'].epContentImg}" alt="comic content" id="content_image_0"
-		oncontextmenu="return false" ondragstart="return false" onselectstart="return false" >
-	</div>
-
-	<!-- 리뷰,별점 -->
-	<div class="wrap">
-		<h2>리뷰</h2>
-		
-		<div id="rating" class="rating">
-			<div class="startRadio">
-  				<c:forEach begin="1" end="10" var="i">
-  				<label class="startRadio__box">
-    			<input type="radio" name="star" id="star${i}" value="${i}">
-    			<span class="startRadio__img"><span class="blind">${i}</span></span>
-  				</label>
-  				</c:forEach>
-			</div>
 		</div>
-		
-		<div class="review_contents">
-			<div class="warning_msg">5자 이상으로 작성해 주세요.</div>
-			<textarea rows="10" id="revContent" class="review_textarea"></textarea>
-		</div>
-		<button id="save">등록</button>
-	</div>
-
-	<!-- 댓글 리스트 -->
-	<div id="review_page">
-		
-		
-		
-		
-	</div>
+<script type="text/javascript">
+	const del = document.getElementById("del");
+	const frm = document.getElementById("frm");
 	
-	
-	
-	
+	del.addEventListener("click", function(){
+		let result = confirm("삭제하시겠습니까?");
+		
+		if(result){
+		
+			frm.setAttribute("method", "post");
+			frm.submit();
+	    
+		}
+	});
+</script>
+		
 </body>
 </html>

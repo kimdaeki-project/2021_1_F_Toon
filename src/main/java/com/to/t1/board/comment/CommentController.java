@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.servlet.ModelAndView;
 
 import com.to.t1.member.MemberService;
 import com.to.t1.member.MemberVO;
@@ -30,7 +31,24 @@ public class CommentController {
     
     @RequestMapping("/commentList") //댓글 리스트
     @ResponseBody
-    private List<CommentVO> commentList(CommentVO commentVO, Model model) throws Exception{
+    private List<CommentVO> commentList(CommentVO commentVO, MemberVO memberVO, Authentication auth2, Model model) throws Exception{
+    	
+    	ModelAndView mv = new ModelAndView();
+		
+	     if(auth2 != null) {
+	    	  memberVO = memberService.myPage((MemberVO) auth2.getPrincipal());
+	    	  mv.addObject("memberVO",memberVO);
+	      }
+	     
+	     model.addAttribute("memberVO", memberVO);
+	    
+	     System.out.println("memberVO :"+ memberVO);
+	     
+	     System.out.println(memberVO.getUsername());
+    	
+	     mv.addObject("vo", commentVO);
+		 mv.setViewName("comment/commentList");
+	     
 
         return commentService.commentList(commentVO);
     }
@@ -51,11 +69,20 @@ public class CommentController {
     
     @RequestMapping("/update") //댓글 수정  
     @ResponseBody
-    private long commentUpdate(@RequestParam long coNum, @RequestParam String commentContents, Authentication auth2, MemberVO memberVO) throws Exception{
+    private long commentUpdate(@RequestParam long coNum, @RequestParam String commentContents, Authentication auth2, MemberVO memberVO, CommentVO commentVO, Model model) throws Exception{
+    	ModelAndView mv = new ModelAndView();
     	
-    	memberVO = memberService.myPage((MemberVO) auth2.getPrincipal());
+    	 if(auth2 != null) {
+	    	  memberVO = memberService.myPage((MemberVO) auth2.getPrincipal());
+	    	  mv.addObject("memberVO",memberVO);
+	      }
+	     
+	     model.addAttribute("memberVO", memberVO);
+	    
+	     System.out.println("memberVO :"+ memberVO);
+	     
+	     System.out.println(memberVO.getUsername());
     	
-        CommentVO commentVO = new CommentVO();
         commentVO.setCoNum(coNum);
         commentVO.setCommentContents(commentContents);
 //        commentVO.setUsername(memberVO.getUsername());
