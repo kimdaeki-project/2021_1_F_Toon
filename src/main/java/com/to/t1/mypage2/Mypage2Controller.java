@@ -14,7 +14,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.to.t1.member.MemberService;
 import com.to.t1.member.MemberVO;
-import com.to.t1.mypage.RecentVO;
 import com.to.t1.point.PointService;
 import com.to.t1.point.PointVO;
 import com.to.t1.ticket.UseTicketVO;

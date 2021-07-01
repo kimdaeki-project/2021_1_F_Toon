@@ -157,7 +157,7 @@
 				<tr class="center">
 					<td class="text_ct"> 
 						<div style="width: 3rem;"><img class="rounded" src="${list.toonVO.titleImg}"></div></td>
-					<td class="text_ct ">${list.toonVO.toonTitle}</td>
+					<td class="text_ct">${list.toonVO.toonTitle}</td>
 					<td class="text_ct">${list.eachEpVO.epTitle}</td>
 					<td class="text_ct">&nbsp; &nbsp;</td>
 					<td class="text_ct">&nbsp; &nbsp;</td>
@@ -192,7 +192,7 @@
 			
 			
 
-	</p>
+	<p></p>
         <div class="page-content-wrapper-inner">
           <div class="content-viewport">
             <div class="row">
