@@ -40,7 +40,7 @@
 	
 		<div class="area-heading">
                     <h3> 장르별 웹툰</h3>
-                    <p>올 여름을 강타할 짜릿짜릿한 에어컨같은 장르별 웹툰들을 만나보아요:)</p>
+                    <p>당신의 스타일은 무엇일까요? 웡툰에서 찾아보세요 >.0</p>
                 </div>
                 
 	<div class="toon" align="center">

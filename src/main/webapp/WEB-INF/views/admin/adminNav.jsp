@@ -7,10 +7,13 @@
   <div class="sidebar">
         <div class="user-profile">
           <div class="display-avatar animated-avatar">
-            <img class="profile-img img-lg rounded-circle" src="#" alt="profile image">
+           
           </div>
           <div class="info-wrapper">
-            <p class="user-name"></p>
+            <div class="display-avatar animated-avatar">
+            <c:if test="${memberVO.joinFileVO.fileName eq null}"><img id="image" width=180px height=200px alt="" src="../images/member.jpg"></c:if>
+			<c:if test="${memberVO.joinFileVO.fileName ne null}"><img id="image" width=180px height=200px alt="" src="../upload/member/${memberVO.joinFileVO.fileName}"></c:if>
+          </div>
             <h6 class="display-income">ADMIN</h6>
           </div>
         </div>
@@ -58,32 +61,7 @@
             </ul>
           </li>
           
-          <li>
-            <a href="#payment_manage" data-toggle="collapse" aria-expanded="false">
-              <span class="link-title">결제관리</span>
-              <i class="mdi mdi-clipboard-outline link-icon"></i>
-            </a>
-             <ul class="collapse navigation-submenu" id="payment_manage">
-              <li>
-                <a href="pages/sample-pages/error_2.html" target="_blank">환불 관리</a>
-              </li>
-            </ul>
-          </li>
-          
-          <li>
-            <a href="#select_member" data-toggle="collapse" aria-expanded="false">
-              <span class="link-title">회원 관리</span>
-              <i class="mdi mdi-flask link-icon"></i>
-            </a>
-            <ul class="collapse navigation-submenu" id="select_member">
-              <li>
-                <a href="pages/sample-pages/error_2.html">작가 조회</a>
-              </li>
-              <li>
-                <a href="pages/sample-pages/error_2.html">경고 회원 조회</a>
-              </li>
-            </ul>
-          </li>
+     
           <!-- 새로운 각주  -->
           <li>
             <a href="#notice_qna" data-toggle="collapse" aria-expanded="false">

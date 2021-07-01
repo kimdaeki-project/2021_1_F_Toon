@@ -31,27 +31,27 @@
 		</tr>
 	</table>
 	</div>
+<br><br><br>
 
 
-	 <section class="editors_pick area-padding">
-        <div class="container">
-            <div class="row">
-                <div class="area-heading">
-                    <h3> Finished</h3>
-                    <p>완결 웹툰</p>
-                </div>
-            </div>
+
+
+ <div class="area-heading">
+                   <h3>랭킹 웹툰</h3>
+                    <p>학업, 취업, 직장에서 하는 순위 경쟁은 이제 잊고, 오로지 웡툰에서 Enjoy!</p>
+               </div>
+	 
             <div class="row">
                 <div class="col-lg-5 col-xl-6">
                     <div class="single-blog">
                         <div class="thumb">
-                        <a href="/toon/eachEpList?toonNum=103">
+                        <a href="/toon/eachEpList?toonNum=1">
                             <img width=555px height=594px src="../../images/indeximage/sinsin.jpg" alt="">
                             </a>
                         </div>
                         <div class="short_details pad_25 ">
                             <div class="meta-top d-flex">
-                                <a style="font-size:30px;" href="/toon/eachEpList?toonNum=103">신의탑</a>
+                                <a style="font-size:30px;" href="/toon/eachEpList?toonNum=1">신의탑</a>
                             </div><br>
                             <a class="d-block" href="single-blog.html">
                                 <h4>자신의 모든 것이었던 소녀를 쫓아 탑에 들어온 소년
@@ -66,7 +66,7 @@
                         <div class="col-12 col-sm-7">
                             <div class="short_details padd_left_0">
                                 <div class="meta-top d-flex">
-                                    <a style="font-size:30px;" href="/toon/eachEpList?toonNum=86">호랑이 형님</a>
+                                    <a style="font-size:30px;" href="/toon/eachEpList?toonNum=62">호랑이 형님</a>
                                 </div><br>
                                 <a class="d-block" href="single-blog.html">
                                     <h4 class="font-20">신비한 힘을 가진 아이를 이용하여 세상을 지배하려는 반인반수 흰눈썹!
@@ -79,7 +79,7 @@
                         </div>  
                         <div class="col-12 col-sm-5">
                             <div class="thumb">
-                             <a href="/toon/eachEpList?toonNum=86">
+                             <a href="/toon/eachEpList?toonNum=62">
                                 <img  width=264px height=300px src="../../images/indeximage/tiger.jpg" alt="">
                                 </a>
                             </div>
@@ -89,7 +89,7 @@
                     <div class="single-blog row no-gutters style-four">
                         <div class="col-12 col-sm-5">
                             <div class="thumb">
-                             <a href="/toon/eachEpList?toonNum=88">
+                             <a href="/toon/eachEpList?toonNum=74">
                                 <img  width=264px height=300px src="../../images/indeximage/ssa.jpg" alt="">
                                 </a>
                             </div>
@@ -97,7 +97,7 @@
                         <div class="col-12 col-sm-7">
                             <div class="short_details padd_right_0">
                                 <div class="meta-top d-flex">
-                                    <a style="font-size:30px;" href="/toon/eachEpList?toonNum=88">싸움독학</a>
+                                    <a style="font-size:30px;" href="/toon/eachEpList?toonNum=74">싸움독학</a>
                                 </div><br>
                                 <a class="d-block" href="single-blog.html">
                                     <h4 class="font-20">힘없고 가진거 하나 없이 맞고만 살던 나였는데...
@@ -117,7 +117,7 @@
                     </div>
                 </div>
             </div>
-        </div>
+        
 
 
 		<div class="rank1">		
@@ -133,7 +133,7 @@
 
 	
 	
-	</section>
+
 	
 	
 </body>

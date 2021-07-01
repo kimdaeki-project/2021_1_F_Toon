@@ -31,16 +31,16 @@
 		</tr>
 	</table>
 	</div>
+<br><br><br>
 
 
-	 <section class="editors_pick area-padding">
-        <div class="container">
-            <div class="row">
-                <div class="area-heading">
-                    <h3> Finished</h3>
-                    <p>완결 웹툰</p>
-                </div>
-            </div>
+
+
+ <div class="area-heading">
+                   <h3>랭킹 웹툰</h3>
+                    <p>학업, 취업, 직장에서 하는 순위 경쟁은 이제 잊고, 오로지 웡툰에서 Enjoy!</p>
+               </div>
+	 
             <div class="row">
                 <div class="col-lg-5 col-xl-6">
                     <div class="single-blog">
@@ -117,7 +117,7 @@
                     </div>
                 </div>
             </div>
-        </div>
+        
 
 
 		<div class="rank1">		
@@ -133,7 +133,7 @@
 
 	
 	
-	</section>
+
 	
 	
 </body>

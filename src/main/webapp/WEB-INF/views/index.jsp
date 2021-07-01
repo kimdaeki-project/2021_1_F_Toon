@@ -130,7 +130,7 @@
             <div class="row">
                 <div class="area-heading">
                     <h3>Daily Toon</h3>
-                    <p>요일별 웹툰!</p>
+                    <p>신의탑부터 싸움독학까지 일주일이 심심하지 않아요!</p>
                 </div>
 
             </div>
@@ -300,7 +300,7 @@
             <div class="row">
                 <div class="area-heading">
                     <h3>GENRE</h3>
-                    <p>장르장르 </p>
+                    <p>판타지냐 액션이냐 그것이 문제로다..! </p>
                 </div>
 
             </div>
@@ -314,7 +314,7 @@
                         </div>
                         <div class="short_details">
                             <div class="meta-top d-flex">
-                                <a style="font-size:20px;" href="/toon/eachEpList?toonNum=52">데드퀸</a>
+                                <a style="font-size:20px;" href="/toon/eachEpList?toonNum=52">데드퀸 - Fantasy</a>
                             </div>
                             <a class="d-block" href="single-blog.html">
                                 <h4>절망에 빠져 죽음이 임박했을때, 진짜 여왕이 재림한다!
@@ -337,7 +337,7 @@
                                 </div>
                                 
                                     <div class="meta-top d-flex">
-                                        <a style="font-size:20px;" href="/toon/eachEpList?toonNum=39">이두나</a>
+                                        <a style="font-size:20px;" href="/toon/eachEpList?toonNum=39">이두나 -Romance</a>
                                     </div>
                                     <a class="d-block" href="single-blog.html">
                                         <h4 style="font-size:10px;">(구)아이돌, 첫사랑, 소개팅녀까지 한 집에 모였다!
@@ -357,7 +357,7 @@
                                 </div>
                                 
                                     <div class="meta-top d-flex">
-                                        <a style="font-size:20px;" href="/toon/eachEpList?toonNum=28">모죠의 일기</a>
+                                        <a style="font-size:20px;" href="/toon/eachEpList?toonNum=28">모죠의 일기 - Comedy</a>
                                     </div>
                                     <a class="d-block" href="single-blog.html">
                                         <h4 style="font-size:10px;">소신있는 취향과 내성적인 성향.
@@ -376,7 +376,7 @@
                                 </div>
                                 
                                     <div class="meta-top d-flex">
-                                        <a style="font-size:20px;" href="/toon/eachEpList?toonNum=37">더 복서</a>
+                                        <a style="font-size:20px;" href="/toon/eachEpList?toonNum=37">더 복서 - Action</a>
                                     </div>
                                     <a class="d-block" href="single-blog.html">
                                         <h4 style="font-size:10px;">재능있는 복서를 찾던 전설적인 트레이너 K는 기묘한 소년을 발견한다.
@@ -395,7 +395,7 @@
                                 </div>
                               
                                     <div class="meta-top d-flex">
-                                        <a style="font-size:20px;" href="/toon/eachEpList?toonNum=15">엽총소년</a>
+                                        <a style="font-size:20px;" href="/toon/eachEpList?toonNum=15">엽총소년 - Thriller</a>
                                     </div>
                                     <a class="d-block" href="single-blog.html">
                                         <h4 style="font-size:10px;">약자에서 영웅이 될 수밖에 없었던 소년 '한규환',
@@ -423,8 +423,8 @@
         <div class="container">
             <div class="row">
                 <div class="area-heading">
-                    <h3> Finished</h3>
-                    <p>완결 웹툰 </p>
+                    <h3>Finished</h3>
+                    <p>아닛! 이 웹툰이 벌써 끝나다니?!</p>
                 </div>
             </div>
             <div class="row">

@@ -27,6 +27,7 @@
       <div class="page-body">
           <div class="sidebar">
             <c:import url="./adminNav.jsp"></c:import>
+            
           </div>
           <div class="page-content-wrapper">
               <div class="page-content-wrapper-inner">
