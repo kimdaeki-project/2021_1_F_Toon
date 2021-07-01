@@ -90,9 +90,8 @@
    
    <!-- 리스트 -->
 
-      <table cellpadding="0" cellspacing="0" class="viewList">
+      <table class="table table-borderless viewList">
       <%-- <caption><span class="blind">회차별 목록</span></caption> --%>
-      <col width="99"><col width="*"><col width="141"><col width="76">
       <thead>
       <tr>
          <th scope="col">이미지</th>
@@ -144,8 +143,8 @@
       </tbody>
       </table>
       
-      <div class="paginate">
-          <ul class="pagination">
+      <div class="paginate"  style="margin:0 auto;">
+          <ul class="pagination justify-content-center">
      
            <c:if test="${pager.pre}">   
              <li class="page-item"><a class="page-link p" href="#" title="${pager.startNum-1}">Previous</a></li>

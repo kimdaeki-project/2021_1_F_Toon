@@ -29,6 +29,7 @@
     float: right;
     text-align: right;
 }
+
 </style>
 
 </head>
@@ -135,9 +136,9 @@
 
    <!-- 리뷰,별점 -->
    
-   <table>
+   <table style="margin:0 auto;">
       <tr>
-        <th><h3>별점</h3></th>
+
         <th></th>
         <th><div id="rating" class="rating">
          <div class="startRadio">
@@ -154,29 +155,29 @@
 
       </tr>
       <tr>
-        <td><h3>댓글</h3></td>
+ 
         <td></td>
         <td> <div class="review_contents">
          <textarea rows="2" id="comments" class="review_textarea" style="width: 500px" placeholder="별점과 댓글 모두 입력해주세요."></textarea>
       </div></td>
          <td>&nbsp &nbsp <input type="button" id="save" value="등록"></td>
       </tr>
-      
+     
     </table>
 
    <!-- 댓글 리스트 -->   
 
   <div id="review_page">
-   <table class="table table-hover reviewList">
+   <table class="table table-bordered reviewList" style="width : 80%; margin:0 auto;">
       <c:forEach items="${toonVO.eachEpVO['0'].reviewVO}" var="reviewVO1">
          <tbody>
             <tr>
-               <td>${reviewVO1.username}</td>
+               <td>ID : ${reviewVO1.username}</td>
                <td>${reviewVO1.commentDate}</td>
                <td>${reviewVO1.rating}점</td>
             </tr>
             <tr>
-               <td colspan="2" id="revComment${reviewVO1.revNum}">${reviewVO1.comments}</td>
+               <td colspan="2" id="revComment${reviewVO1.revNum}">댓글&ensp;:&ensp;${reviewVO1.comments}</td>
                
                <sec:authorize access="isAnonymous()">
                   <td> </td>
@@ -200,7 +201,7 @@
 
    <c:if test="${toonVO.eachEpVO['0'].reviewVO['0']!=null}">
       <div class="paginate">
-          <ul class="pagination">
+          <ul class="pagination justify-content-center">
      
            <c:if test="${pager.pre}">   
              <li class="page-item"><a class="page-link p" href="/toon/eachEpSelect?toonNum=${toonVO.toonNum}&eachEpNum=${toonVO.eachEpVO['0'].eachEpNum}&epNum=${toonVO.eachEpVO['0'].epNum}&curPage=${pager.curPage-1}" title="${pager.startNum-1}">Previous</a></li>
