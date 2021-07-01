@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.to.t1.toon.ToonService;
 import com.to.t1.toon.eachep.EachEpService;
+import com.to.t1.util.Pager;
 
 @Controller
 @RequestMapping("/review/**")
@@ -22,11 +23,6 @@ public class ReviewController {
 	@Autowired
 	private EachEpService eachEpService;
 	
-	/*
-	 * @PostMapping("reviewList") public void getList(Pager pager, Model
-	 * model)throws Exception{ List<EachEpVO> list= reviewService.getList(pager);
-	 * model.addAttribute("eachEpVO", list); model.addAttribute("pager", pager); }
-	 */
 	
 	@PostMapping("setReview")
 	public void setReview(ReviewVO reviewVO, Model model,Authentication auth)throws Exception{
@@ -34,7 +30,13 @@ public class ReviewController {
 			reviewVO.setUsername(auth.getName());
 			toonService.updateScore(reviewVO);
 			eachEpService.updateScore(reviewVO);
-			model.addAttribute("result", reviewService.setReview(reviewVO));
+			reviewService.setReview(reviewVO);
+			
+			//리뷰리스트를 js에서 리로드하기 위해서 추가 
+			Pager pager = new Pager();
+			pager.setEpNum(reviewVO.getEpNum());
+			pager.setToonNum(reviewVO.getToonNum());
+			model.addAttribute("result", reviewService.getList(pager));
 		}		
 	}
 	
