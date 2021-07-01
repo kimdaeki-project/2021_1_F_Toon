@@ -17,7 +17,7 @@ public class Pager {
 	//search
 	private String kind;
 	private String search;
-	
+
 	public void makeNum(Long totalCount) {
 		int perBlock=5;
 		//1. totalCount
@@ -186,4 +186,13 @@ public class Pager {
 		this.eachEpNum = eachEpNum;
 	}
 	
+	private long maxEp;
+
+	public long getMaxEp() {
+		return maxEp;
+	}
+
+	public void setMaxEp(long maxEp) {
+		this.maxEp = maxEp;
+	}
 }
