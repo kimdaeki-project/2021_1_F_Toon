@@ -179,10 +179,7 @@ public class PointController {
 		return result2;
 		
 	}
-
 	
-	
-
 	//검증 관련
 //	@Autowired
 //	private IamportClient api;
@@ -201,4 +198,6 @@ public class PointController {
 //	this.api = new IamportClient("8955862071146697",
 //	"cf9f6e33a37773d3792a17d3584428236a9a3fcbbf4998fa8d5c2dfb89730544b2b4df1b4f38a62d");
 //
+	
+	
 }

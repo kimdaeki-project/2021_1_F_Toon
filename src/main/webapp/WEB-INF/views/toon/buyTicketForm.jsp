@@ -32,7 +32,7 @@
 			<!-- point가 작은 경우 소장권 버튼 누르면 alert창 나오고 chargePoint페이지로 이동하기 -->
 			<button id="chargeTicket" class="btn btn-outline-primary" type="submit">소장권 충전하기</button>		
 		</form>
-
+		
 	</sec:authorize>	
 	</div>
 
