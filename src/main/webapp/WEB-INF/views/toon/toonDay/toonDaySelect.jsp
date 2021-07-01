@@ -42,7 +42,8 @@
 	<br>
 
 	<div class="toon" align="center">
-	 
+	 	
+	 	<c:if test="">
 
 		<!-- 월요일 ------------------------------------------------------>		
 		<div class="mon"><a href="/toon/toonDay/toonDaySelect"><h1>월요일</h1></a>
@@ -55,7 +56,10 @@
 		</c:forEach>
 		</ul>
 		</div>
-
+		
+		</c:if>
+		
+		
 		<!-- 화요일 ------------------------------------------------------>
 		<div class="tue"><h1>화요일</h1>
 		<br>
@@ -83,7 +87,7 @@
 		
 		
 		<!-- 목요일 ------------------------------------------------------>
-		<div class="the"><h1>목요일</h1>
+		<div class="thu"><h1>목요일</h1>
 		<br>
 			<ul>
 		<c:forEach items="${tt2}" var="tt2">

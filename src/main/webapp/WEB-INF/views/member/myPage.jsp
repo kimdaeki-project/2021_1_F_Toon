@@ -36,6 +36,7 @@
             <c:if test="${memberVO.joinFileVO.fileName eq null}"><img id="image" width=180px height=200px alt="" src="../images/member.jpg"></c:if>
 			<c:if test="${memberVO.joinFileVO.fileName ne null}"><img id="image" width=180px height=200px alt="" src="../upload/member/${memberVO.joinFileVO.fileName}"></c:if>
           </div>
+          
           <div class="info-wrapper">
           
           	<form id="formId">
@@ -52,6 +53,7 @@
             <p class="user-name">${memberVO.name}님</p>
             <h6 class="display-income">${memberVO.point}point</h6>
           </div>
+
         </div>
         <ul class="navigation-menu">
           <li class="nav-category-divider">MAIN</li>
