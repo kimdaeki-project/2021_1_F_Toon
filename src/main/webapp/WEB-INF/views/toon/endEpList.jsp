@@ -20,7 +20,7 @@
    <!-- 웹툰 소개 -->
    <div class="comicinfo">
       <div class="thumb">
-         <a href="/toon/eachEpList?toonNum=${toonVO.toonNum}">
+         <a href="/toon/endEpList?toonNum=${toonVO.toonNum}">
             <img src="${toonVO.titleImg}">
             <span class="mask"></span>
             </a>
@@ -74,30 +74,31 @@
          
             <td class="imgalign">
                <sec:authorize access="isAnonymous()">
-                  <a href="/toon/eachEpSelect?toonNum=${toonVO.toonNum}&eachEpNum=${eachEpVO.eachEpNum}&epNum=${eachEpVO.epNum}" >
+<%--                   <a href="/toon/eachEpSelect?toonNum=${toonVO.toonNum}&eachEpNum=${eachEpVO.eachEpNum}&epNum=${eachEpVO.epNum}" > --%>
                </sec:authorize>
           
                <sec:authorize access="isAuthenticated()">
-                   <a href="/toon/eachEpSelect?toonNum=${toonVO.toonNum}&eachEpNum=${eachEpVO.eachEpNum}&epNum=${eachEpVO.epNum}&username=<sec:authentication property="principal.username"/>" >
+<%--                    <a href="/toon/eachEpSelect?toonNum=${toonVO.toonNum}&eachEpNum=${eachEpVO.eachEpNum}&epNum=${eachEpVO.epNum}&username=<sec:authentication property="principal.username"/>" > --%>
                </sec:authorize>
                
                <img src="${eachEpVO.epSumImg}"
                   title="${eachEpVO.eachEpNum}화" alt="${eachEpVO.eachEpNum}화" width="71" height="41">
                   <span class="mask"></span>
-               </a>
+<!--                </a> -->
             </td>
            
             <td class="title">
             
                <sec:authorize access="isAnonymous()">
-                 <a href="/toon/eachEpSelect?toonNum=${toonVO.toonNum}&eachEpNum=${eachEpVO.eachEpNum}&epNum=${eachEpVO.epNum}" >
+<%--                  <a href="/toon/eachEpSelect?toonNum=${toonVO.toonNum}&eachEpNum=${eachEpVO.eachEpNum}&epNum=${eachEpVO.epNum}" > --%>
                </sec:authorize>
          
                <sec:authorize access="isAuthenticated()">
-                  <a href="/toon/eachEpSelect?toonNum=${toonVO.toonNum}&eachEpNum=${eachEpVO.eachEpNum}&epNum=${eachEpVO.epNum}&username=<sec:authentication property="principal.username"/>" >
+<%--                   <a href="/toon/eachEpSelect?toonNum=${toonVO.toonNum}&eachEpNum=${eachEpVO.eachEpNum}&epNum=${eachEpVO.epNum}&username=<sec:authentication property="principal.username"/>" > --%>
                </sec:authorize>
                
-            ${eachEpVO.eachEpNum}화</a>
+            ${eachEpVO.eachEpNum}화
+<!--             </a> -->
             </td>
             <td>
                <div class="rating_type">
@@ -106,7 +107,8 @@
                </div>
             </td>
             <td class="num"><span>${eachEpVO.epDate}</span></td>
-           <td><button class="btn btn-primary" type="button" onclick="clickATag(${eachEpVO.epNum},${eachEpVO.eachEpNum});">보러가기</button></td>
+           <td><button class="btn btn-outline-primary" type="button" onclick="clickATag(${eachEpVO.epNum},${eachEpVO.eachEpNum});">보러가기
+           </button></td>
          </tr>
          
          
@@ -140,7 +142,6 @@
       
 <script type="text/javascript" src="../js/toon/favoriteToon.js"></script>
 <script type="text/javascript" src="../js/pay/useTicket.js"></script>
-
 
 </div>
 
