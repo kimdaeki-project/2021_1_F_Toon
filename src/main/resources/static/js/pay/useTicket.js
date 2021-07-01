@@ -1,4 +1,3 @@
-
 //유효성 검사 관련
 //https://fruitdev.tistory.com/200
 
@@ -17,13 +16,6 @@ var url = ""; // 문자열 받기
 
 let eachEpNump;
 let epNump;
-
-let Tpoint = $('#Tpoint').val();
-let TStock = $('#Tstock').val();
-//
-//<div id="Tpoint" class="row"><p>포인트 &nbsp;  <sec:authentication property="principal.point"/>P</p> </div>
-//		<div id="Tstock" class="row"><span>보유 소장권 갯수 &nbsp; </span>${ticketBox.stock} 개</div> 
-
 //유효성 검사
 //빈 단어 검사
 function isEmpty(str){
@@ -39,7 +31,6 @@ function nvl(str, defaultStr){
          
         if(typeof str == "undefined" || str == null || str == "")
             str = defaultStr ;
-            
          
         return str ;
 }
@@ -58,13 +49,6 @@ function checkpoint(text){
 ticketstock = parseInt(checkpoint(ticketstock),10);
 curpoint = parseInt(checkpoint(curpoint),10);
 $('#ticket-stock').val(ticketstock);
-if(isEmpty(TStock)){
-//	var goal = $('#TStock').children('span');
-//	goal.text("0 개");
-//	
-	$('#TStock span').text('Hi, 반갑습니다.');
-
-}
 //alert($('#ticket-stock').val());
 // 변수형 검사하기 -> 둘 다 number
 //alert("curpoint : " + curpoint + " typeOf point :" + typeof curpoint + 
@@ -102,7 +86,7 @@ function comfFunction(text,func){
 		 // 포인트 차감 + 소장권 1 구매
 		executeFunction(func);
     }else {
-    	
+    	alert("아니오선택");
     }
 }
 
@@ -122,7 +106,7 @@ function getTicketAjax(){
 		url : '/point/getNuseTicket', //요청 할 내용
 		success: function(res){
 			url = res; //결과 할당
-			//alert("소장권을 차감합니다");
+			alert("소장권을 차감합니다");
 			gotolocation(url);
 			//window.location.href= url;
 		},
@@ -193,7 +177,7 @@ function checkUseTicket(epNump,eachEpNump){
 			url = result;
 			gotolocation(url);
 		}else{
-			//alert("소장이력 없엉!");
+			alert("소장이력이 없습니다");
 			if(stCheck){ //소장권 충분
 				var text ="재고가있습니다 \n 소장권을 사용하시겠습니까?";
 				comfFunction(text,getTicketAjax);
@@ -222,17 +206,17 @@ function clickATag(epNump1,eachEpNump1){
 	epNump = epNump1;
 	eachEpNump=eachEpNump1;
 	
-	alert(epNump+":::"+eachEpNump);
+	//alert(epNump+":::"+eachEpNump);
 	if(isEmpty(usernamep)){
 		var text = "소장권을 구입하거나 사용할려면 \n 로그인이 필요합니다";
 		if (confirm(text)) {
-			//alert("예 선택"); // 로그인 페이지로 이동하기
+			alert("예 선택"); // 로그인 페이지로 이동하기
 			var path ="/member/login";
 			gotolocation(path);
     	}else { // 현재 페이지 유지
     		
     	}
-	}else{//로그인 시 클릭: 실행
+	}else{
 		checkUseTicket(epNump,eachEpNump);
 	}
 }

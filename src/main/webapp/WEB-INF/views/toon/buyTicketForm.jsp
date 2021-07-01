@@ -13,7 +13,7 @@
 <sec:authorize access="isAuthenticated()">
  	
  	<div class="ticketUI col">
-		<div id="Tpoint" class="row"><p>포인트 &nbsp;  <sec:authentication property="principal.point"/>P</p> </div>
+		<div id="Tpoint" class="row"><p>포인트 &nbsp; ${memberVO.point} P</p> </div>
 		<div id="Tstock" class="row">보유 소장권 갯수 &nbsp;  <span>${ticketBox.stock} 개 </span></div> 
 	</div>
 	<div class="col" id="TIcketform"> 
