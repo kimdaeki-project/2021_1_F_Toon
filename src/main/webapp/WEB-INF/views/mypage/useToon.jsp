@@ -172,7 +172,7 @@
 
 	<input type="button" value="선택 삭제" class="btn btn-danger" onclick="deleteValue();">
 	<br>
-  	<ul class="pagination"> <br>
+  	<ul class="pagination justify-content-center"> <br>
 					 <br>
 				<c:if test="${pager.pre}">
 			
