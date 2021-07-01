@@ -6,40 +6,44 @@ var comments = $("#comments").val();
 
 
 /*별점, 댓글 저장*/
-$(function() {
-	$('#save2').click(function() {
+$('#save').click(function() {
+	var username= $("#username").val();
+		if(username == null){
+			alert("로그인 후 등록이 가능합니다.");
+			return false;
+		}else{
 		/* 댓글 최소 글자수 제한  */
-		if ($('#comments').val().length < 5) {
-			alert("5자 이상 입력해주세요.");
-			$('#comments').val($('#comments').val().substring(0, 5));
-		} else {
-			var rating = Number($('#rating').find("input[name='star']:checked").val());
-			var comments = $("#comments").val();
-
-			if (isNaN(rating) == true) {
-				alert("별점을 입력해주세요.");
+			if ($('#comments').val().length < 5) {
+				alert("5자 이상 입력해주세요.");
+				$('#comments').val($('#comments').val().substring(0, 5));
 			} else {
-				$.ajax({
-					type: "POST",
-					url: '../review/setReview',
-					data: {
-						"toonNum": toonNum,
-						"epNum": epNum,
-						"rating": rating,
-						"comments": comments,
-						"eachEpNum": eachEpNum
-					},
-					success: function(result) {
-						$(".reviewList").html(result);
-						alert("별점과 댓글을 등록하셨습니다. 등록해 주셔서 감사합니다.");
-					},
-					error: function(result) {
-						alert("등록에 실패하셨습니다.");
-					}
-				})
+				var rating = Number($('#rating').find("input[name='star']:checked").val());
+				var comments = $("#comments").val();
+	
+				if (isNaN(rating) == true) {
+					alert("별점을 입력해주세요.");
+				} else {
+					$.ajax({
+						type: "POST",
+						url: '../review/setReview',
+						data: {
+							"toonNum": toonNum,
+							"epNum": epNum,
+							"rating": rating,
+							"comments": comments,
+							"eachEpNum": eachEpNum
+						},
+						success: function(result) {
+							$(".reviewList").html(result);
+							alert("별점과 댓글을 등록하셨습니다. 등록해 주셔서 감사합니다.");
+						},
+						error: function(result) {
+							alert("등록에 실패하셨습니다.");
+						}
+					})
+				}
 			}
 		}
-	})
 });
 
 /* 별점, 댓글 삭제 */

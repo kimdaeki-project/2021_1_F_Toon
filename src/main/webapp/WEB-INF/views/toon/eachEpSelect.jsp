@@ -35,14 +35,15 @@
 <body>
 <c:import url="../fragments/header.jsp"/>
 
-<div>
+
     <div id='left-box'>
 		
 	</div>    
     <div id='right-box'>
     
     </div>
-       
+  
+
     <div id='center-box'>
 
 
@@ -62,6 +63,7 @@
     
     <tr>
     	<td><h4> ${toonVO.toonSum} </h4></td>
+
     </tr>
     
      <tr>
@@ -82,7 +84,7 @@
 	     	</c:choose>
 		 </a> 
 		 
-		 <a href="/toon/eachEpSelect?toonNum=${toonVO.toonNum}&eachEpNum=1&epNum=1" title="첫회보기" class="first"><button class="btn-outline-primary">첫회보기</button></a>
+		<a href="/toon/eachEpSelect?toonNum=${toonVO.toonNum}&eachEpNum=1&epNum=${toonVO.eachEpVO['0'].epNum}" title="첫회보기" class="first"><button class="btn-outline-primary">첫회보기</button></a>
 		 <a href="/toon/eachEpList?toonNum=${toonVO.toonNum}" title="목록보기" class="backToTheList"><button class="btn-outline-secondary">목록보기</button></a>
 		 
 		 </td>
@@ -105,8 +107,8 @@
          &nbsp &nbsp &nbsp &nbsp 
         
          &nbsp &nbsp &nbsp 
-        <c:if test="${toonVO.eachEpVO['0'].eachEpNum!=1}">
-        		<button class="btn-outline-primary">
+            <c:if test="${toonVO.eachEpVO['0'].eachEpNum!=1}">
+               <button class="btn-outline-primary">
                <span class="pre"> 
                <a href="/toon/eachEpSelect?toonNum=${toonVO.toonNum}&eachEpNum=${toonVO.eachEpVO['0'].eachEpNum-1}&epNum=${toonVO.eachEpVO['0'].epNum-1}">이전화</a>
                </span></button>
@@ -116,18 +118,20 @@
                <span class="next"> 
                <a href="/toon/eachEpSelect?toonNum=${toonVO.toonNum}&eachEpNum=${toonVO.eachEpVO['0'].eachEpNum+1}&epNum=${toonVO.eachEpVO['0'].epNum+1}">다음화</a>
                </span></button>
-            </c:if>         
-	</div></center>
+            </c:if>
+         </div></center>         
+	
 
    <div class="tit_area">
-     
-  
+
 
    <!-- content Img  -->
    <div class="wt_viewer" style="background: #FFFFFF">
    <img src="${toonVO.eachEpVO['0'].epContentImg}" alt="comic content" id="content_image_0"
-      oncontextmenu="return false" ondragstart="return false" onselectstart="return false" >
+	oncontextmenu="return false" ondragstart="return false">
    </div> <br><br>
+
+   </div>
 
    <!-- 리뷰,별점 -->
    
@@ -147,6 +151,7 @@
       </div></th>
       	<th></th>
       
+
       </tr>
       <tr>
         <td><h3>댓글</h3></td>
@@ -158,8 +163,6 @@
       </tr>
       
     </table>
-   
-  
 
    <!-- 댓글 리스트 -->   
 
@@ -168,23 +171,19 @@
       <c:forEach items="${toonVO.eachEpVO['0'].reviewVO}" var="reviewVO1">
          <tbody>
             <tr>
-               <td></td>
                <td>${reviewVO1.username}</td>
                <td>${reviewVO1.commentDate}</td>
                <td>${reviewVO1.rating}점</td>
-               <td></td>
             </tr>
             <tr>
-               <td></td>
-               <td id="revComment${reviewVO1.revNum}">${reviewVO1.comments}</td>
+               <td colspan="2" id="revComment${reviewVO1.revNum}">${reviewVO1.comments}</td>
                
                <sec:authorize access="isAnonymous()">
-                  <td></td>
+                  <td> </td>
                </sec:authorize>
                
                <sec:authorize access="isAuthenticated()">
                <sec:authentication property="principal.username" var="loginUser"/>
-               	<td></td><td></td>
                   <c:if test="${reviewVO1.username == loginUser}">
                      <td>
                         <button class="updateReview btn-outline-primary" title="${reviewVO1.revNum}" value="${reviewVO1.revNum}"
@@ -255,4 +254,4 @@
    <script type="text/javascript" src="../js/toon/reviews.js"></script>
    
 </body>
-</html>
+</html> 
