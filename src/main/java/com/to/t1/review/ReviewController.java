@@ -56,6 +56,7 @@ public class ReviewController {
 		if(auth!=null) {
 			reviewVO.setUsername(auth.getName());
 			model.addAttribute("result", reviewService.updateReview(reviewVO));
+
 		}
 	}
 

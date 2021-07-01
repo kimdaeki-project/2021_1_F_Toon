@@ -125,7 +125,7 @@
                <td>${reviewVO1.rating}점</td>
             </tr>
             <tr>
-               <td colspan="2">${reviewVO1.comments}</td>
+               <td colspan="2" id="revComment${reviewVO1.revNum}">${reviewVO1.comments}</td>
                
                <sec:authorize access="isAnonymous()">
                   <td></td>
@@ -135,7 +135,8 @@
                <sec:authentication property="principal.username" var="loginUser"/>
                   <c:if test="${reviewVO1.username == loginUser}">
                      <td>
-                     	<button class="updateReview" title="${reviewVO1.revNum}" value="${reviewVO1.revNum}">수정</button>
+                     	<button class="updateReview" title="${reviewVO1.revNum}" value="${reviewVO1.revNum}"
+                     		data-toggle='modal' data-target='#modifyModal'>수정</button>
                      	<button class="delReview" title="${reviewVO1.revNum}" value="${reviewVO1.revNum}">삭제</button>
                      </td>
                   </c:if>
@@ -167,6 +168,28 @@
    </c:if>
    
    </div>   
+   
+   <div class="modal fade" id="modifyModal" role="dialog">
+	  <div class="modal-dialog">
+	    <div class="modal-content">
+	      <div class="modal-header"> <button type="button" class="close" data-dismiss="modal">&times;</button>
+	        <h4 class="modal-title">댓글 수정</h4>
+	      </div>
+	      <div class="modal-body">
+	        <div class="form-group">
+	         <label for="reply_no">댓글 번호</label> <input class="form-control" id="reply_no" name="reply_no" readonly> </div>
+	        <div class="form-group">
+	         <label for="reply_text">댓글 내용</label> <input class="form-control" id="reply_text" name="reply_text" placeholder="댓글 내용을 입력해주세요."> </div>
+	        <div class="form-group">
+	         <label for="reply_writer">댓글 작성자</label> <input class="form-control" id="reply_writer" name="reply_writer" readonly> </div>
+	      </div>
+	      <div class="modal-footer"> 
+	      	<button type="button" class="btn btn-success modalModBtn">수정</button>
+	      	<button type="button" class="btn btn-default pull-left" data-dismiss="modal">닫기</button> 
+	      </div>
+	    </div>
+	  </div>
+	</div>
    
    <input type="hidden" id="toonNum" value="${toonVO.toonNum}">
    <input type="hidden" id="epNum" value="${toonVO.eachEpVO['0'].epNum}">
