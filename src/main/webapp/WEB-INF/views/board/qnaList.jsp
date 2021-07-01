@@ -74,18 +74,19 @@
 					<tbody class="tbody">
 						 <c:forEach items="${qnaList}" var="vo" >
             <tr>
-   
-               <td class="cell100 column1"><a href="./qnaSelect?boNum=${vo.boNum}">
-               
-               
+   			
+               <td id="dd" class="cell100 column1"><a href="./qnaSelect?boNum=${vo.boNum}&?username=${memberVO.username}">
                
                <c:catch>
-               <c:forEach begin="1" end="${vo.depth}">
-               &#x279C;
-               </c:forEach>
+               <c:forEach begin="1" end="${vo.depth}">&#x279C;</c:forEach>
                </c:catch>
+               
+               
                ${vo.qnaTitle}
-               </a></td>
+               </a>
+               </td>
+          
+               
                <td class="cell100 column2">${vo.username}</td>
                <td class="cell100 column3">${vo.createdDate}</td>
                <td class="cell100 column4">${vo.qnaHit}</td>
@@ -131,8 +132,8 @@
 					</div>
 				</form>
 			</div>
-			<a href="./qnaInsert" class="btn btn-secondary" role="button">작성</a>
-		</div>
+				<a href="./qnaInsert" class="btn btn-secondary" role="button">작성</a>
+			</div>
 
 	</div>
 

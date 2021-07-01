@@ -45,8 +45,7 @@
 
 </head>
 <body>
-	<c:import url="../fragments/header.jsp"></c:import>
-
+<c:import url="../fragments/header.jsp"></c:import>
 	<div class="container"><br>
 		<h2>
 			<p>

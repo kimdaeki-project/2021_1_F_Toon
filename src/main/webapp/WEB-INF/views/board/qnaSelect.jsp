@@ -56,7 +56,7 @@
 	<table class="table">
 		<thead>
 			<tr style="text-align: center;">
-	    		<th>작성일 : ${vo.createdDate}</th>
+	    		<th>작성자 : ${vo.username}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;작성일 : ${vo.createdDate}</th>
 	    		<th>조회수 : ${vo.qnaHit}</th>
 	    		
 			</tr>
@@ -66,7 +66,7 @@
 			<tr>
 			
 				<td colspan="2"><h3>${vo.qnaTitle}</h3><hr class="featurette-divider">${vo.qnaContents}</td>
-					
+				
 	    	</tr>
 	    
 		</tbody>
@@ -77,9 +77,39 @@
 	
 	<div id="file1">
 	<c:forEach items="${vo.files}" var="file">
-		<a href="../upload/${board}/${file.fileName}">${file.oriName}</a>
+		<a href="../upload/${board}/${file.fileName}">&nbsp;${file.oriName}</a>
 	</c:forEach>
 	</div>
+	
+	<c:if test="${memberVO.username eq vo.username}">
+	<a href="./qnaUpdate?boNum=${vo.boNum}" class="btn btn-secondary">수정</a>
+	
+	<a href="#" id="del" class="btn btn-secondary">삭제</a>
+	</c:if>
+	
+	<form action="./qnaDelete" id="frm" method="get">
+		<input type="hidden" name="boNum" value="${vo.boNum}">
+	</form>
+	</div>
+	
+	<script type="text/javascript">
+	const del = document.getElementById("del");
+	const frm = document.getElementById("frm");
+	
+	del.addEventListener("click", function(){
+		let result = confirm("삭제하시겠습니까?");
+		
+		if(result){
+			
+			frm.setAttribute("method", "post");
+			frm.submit();
+			
+		}
+	});
+	
+	
+	
+</script>
 	
 <c:import url="../fragments/footer.jsp"></c:import>
 </body>

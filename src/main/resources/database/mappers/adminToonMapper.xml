@@ -28,10 +28,6 @@
          </where>
          </sql>
          
-         <select id="getFileSelect" parameterType="AdminFileVO" resultType="AdminFileVO">
-      select * from toonFiles where fileNum=#{fileNum}
-      </select>
-         
          <select id="getManageToonList" resultType="ToonVO" parameterType="Pager">
          select * from toon
          <include refid="searcher"></include>
@@ -46,10 +42,7 @@
          </select>
          
          <select id="getManageToonSelect" resultMap="selectResult" parameterType="ToonVO">
-         SELECT T.*, TF.* from
-         toon T left join toonFiles TF
-         on T.toonNum = TF.toonNum
-         WHERE T.toonNum=#{toonNum}
+      		 SELECT * from toon WHERE toonNum= #{toonNum}
          </select>
 
          <resultMap type="ToonVO" id="selectResult">
@@ -70,16 +63,7 @@
          <insert id="setManageToonInsert" parameterType="ToonVO" useGeneratedKeys="true" keyProperty="toonNum">
             insert into toon values(#{toonNum}, #{toonTitle}, #{genre}, #{writerID}, #{toonSum}, 0, #{toonDay}, #{state}, #{titleImg}, #{ratingSum}, #{ratingPerson})
          </insert>
-         
-         <insert id="setFileInsert" parameterType="AdminFileVO">
-            insert into toonFiles (fileNum, toonNum, fileName, oriName)
-            values (#{fileNum}, #{toonNum}, #{fileName}, #{oriName})
-         </insert>
-         
-         <delete id="setToonFileDelete" parameterType="AdminFileVO">
-         delete from toonFiles where fileNum=#{fileNum}
-         </delete>
-         
+        
          <update id="setManageToonUpdate" parameterType="ToonVO">
             update toon set toonTitle=#{toonTitle}, genre=#{genre}, writerId=#{writerID}, toonSum=#{toonSum}, toonDay=#{toonDay}, titleImg=#{titleImg} where toonNum=#{toonNum}
          </update>
