@@ -60,7 +60,8 @@
 			<ul>
 		<c:forEach items="${tt}" var="tt">
 			<li><a href="/toon/eachEpList?toonNum=${tt.toonNum}"> <img width=100px height=100px src="${tt.titleImg}"></a></li>
-			<li>${tt.toonTitle} </li>	
+			<li>${tt.toonTitle} </li>
+			<p>	
 		</c:forEach>
 		</ul>
 		</div>	
