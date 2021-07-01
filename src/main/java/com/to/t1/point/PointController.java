@@ -89,7 +89,6 @@ public class PointController {
 		return "redirect:../" + path ;
 	}
 	
-v	
 	//소장권 가지고 있는지 확인하기 있다면 페이지 이동
 	@PostMapping("checkTicket")
 	@ResponseBody

@@ -104,6 +104,7 @@ function getTicketAjax(){
 		dataType : 'text',
 		url : '/point/getNuseTicket', //요청 할 내용
 		success: function(res){
+			var url = "";
 			url = res; //결과 할당
 			//alert("소장권을 차감합니다");
 			gotolocation(url);
@@ -129,9 +130,12 @@ function usePointtoGetTicket(){
 		dataType : 'text',
 		url : '/point/directGetTicket', //요청 할 내용
 		success: function(res){
+			url = "";
 			url = res; //결과 할당
+			
 			if(url == '1'){
 				//alert("ajax 통신 성공");
+				alert(url);
 				alert("소장권 구입 성공");
 				var text ="소장권을 바로 사용하시겠습니까?";
 				comfFunction(text,getTicketAjax);
