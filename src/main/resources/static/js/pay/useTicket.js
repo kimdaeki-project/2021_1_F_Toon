@@ -17,6 +17,13 @@ var url = ""; // 문자열 받기
 
 let eachEpNump;
 let epNump;
+
+let Tpoint = $('#Tpoint').val();
+let TStock = $('#Tstock').val();
+//
+//<div id="Tpoint" class="row"><p>포인트 &nbsp;  <sec:authentication property="principal.point"/>P</p> </div>
+//		<div id="Tstock" class="row"><span>보유 소장권 갯수 &nbsp; </span>${ticketBox.stock} 개</div> 
+
 //유효성 검사
 //빈 단어 검사
 function isEmpty(str){
@@ -32,6 +39,7 @@ function nvl(str, defaultStr){
          
         if(typeof str == "undefined" || str == null || str == "")
             str = defaultStr ;
+            
          
         return str ;
 }
@@ -50,6 +58,13 @@ function checkpoint(text){
 ticketstock = parseInt(checkpoint(ticketstock),10);
 curpoint = parseInt(checkpoint(curpoint),10);
 $('#ticket-stock').val(ticketstock);
+if(isEmpty(TStock)){
+//	var goal = $('#TStock').children('span');
+//	goal.text("0 개");
+//	
+	$('#TStock span').text('Hi, 반갑습니다.');
+
+}
 //alert($('#ticket-stock').val());
 // 변수형 검사하기 -> 둘 다 number
 //alert("curpoint : " + curpoint + " typeOf point :" + typeof curpoint + 

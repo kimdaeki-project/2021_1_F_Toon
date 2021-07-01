@@ -9,13 +9,14 @@
 <!-- 		<input name ="eachEpNum" value="3" readonly="readonly"/>		 -->
 <!-- 	</a> -->
 
-<div id="getTicketButton">
-
+<div id="getTicketButton container">
 <sec:authorize access="isAuthenticated()">
- 	<div class="ticketUI">
-		<div id="Tpoint" class=""><sec:authentication property="principal.point"/></div>
-		<div id="Tstock" class="">${ticketBox.stock}</div> 
+ 	
+ 	<div class="ticketUI col">
+		<div id="Tpoint" class="row"><p>포인트 &nbsp;  <sec:authentication property="principal.point"/>P</p> </div>
+		<div id="Tstock" class="row">보유 소장권 갯수 &nbsp;  <span>${ticketBox.stock} 개 </span></div> 
 	</div>
+	<div class="col" id="TIcketform"> 
 		<form id="goto-ticket" action="${pageContext.request.contextPath}/point/ticketCharge" method="post" >
 <!-- 			<span>stock</span> -->
 			<input id="ticket-stock" name="stock" value="${ticketBox.stock}" readonly="readonly" hidden="hidden"/>
@@ -31,6 +32,6 @@
 			<!-- point가 작은 경우 소장권 버튼 누르면 alert창 나오고 chargePoint페이지로 이동하기 -->
 			<button id="chargeTicket" class="btn btn-outline-primary" type="submit">소장권 충전하기</button>		
 		</form>
-		
-	</sec:authorize>	
 	</div>
+</sec:authorize>	
+</div>

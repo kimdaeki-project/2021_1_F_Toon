@@ -72,10 +72,11 @@ public class PointController {
 	//티켓 뭉텅이나 한두개 구입하기
 	@PostMapping("getToonTicket")
 	public String getToonTicket(PointVO pointVO, TicketBoxVO ticketBoxVO,
-			@RequestParam long isAlready, NextSuccessVO nextSuccessVO,
+			NextSuccessVO nextSuccessVO,
 			HttpSession httpSession)throws Exception {
 		String path = "toon/eachEpList?toonNum=";
 		System.out.println("nextsuccess : "+ nextSuccessVO.getNextsuccess());
+		long isAlready = pointservice.checkTicketBox(ticketBoxVO);
 		
 		int result = pointservice.getTicket(pointVO, ticketBoxVO, isAlready);
 		//경로 처리하기 
@@ -179,10 +180,7 @@ public class PointController {
 		return result2;
 		
 	}
-
 	
-	
-
 	//검증 관련
 //	@Autowired
 //	private IamportClient api;
@@ -201,4 +199,6 @@ public class PointController {
 //	this.api = new IamportClient("8955862071146697",
 //	"cf9f6e33a37773d3792a17d3584428236a9a3fcbbf4998fa8d5c2dfb89730544b2b4df1b4f38a62d");
 //
+	
+	
 }
