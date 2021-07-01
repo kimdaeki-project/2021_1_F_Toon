@@ -36,19 +36,10 @@
 <c:import url="../fragments/header.jsp"/>
 
 <div>
-    <div id='left-box'>
-		 <c:if test="${toonVO.eachEpVO['0'].eachEpNum!=1}">
-               <span class="pre"> 
-               <a href="/toon/eachEpSelect?toonNum=${toonVO.toonNum}&eachEpNum=${toonVO.eachEpVO['0'].eachEpNum-1}&epNum=${toonVO.eachEpVO['0'].epNum-1}">이전화</a>
-               </span>
-            </c:if>	
+    <div id='left-box'> 	
 	</div>    
     <div id='right-box'>
-    		<c:if test="${toonVO.eachEpVO['0'].eachEpNum<pager.maxEp}">
-               <span class="next"> 
-               <a href="/toon/eachEpSelect?toonNum=${toonVO.toonNum}&eachEpNum=${toonVO.eachEpVO['0'].eachEpNum+1}&epNum=${toonVO.eachEpVO['0'].epNum+1}">다음화</a>
-               </span>
-            </c:if></div>   
+    </div>   
     <div id='center-box'>
 
 
@@ -67,7 +58,7 @@
     </tr>
     
     <tr>
-    	<td><h4>요약 : ${toonVO.toonSum} </h4></td>
+    	<td><h4>${toonVO.toonSum} </h4></td>
     </tr>
     
      <tr>
@@ -98,10 +89,6 @@
 
     
      <!-- 웹툰 소개 -->
-
-
-
-
 
    <div class="tit_area">
       <div class="view">
@@ -143,7 +130,7 @@
    <!-- content Img  -->
    <div class="wt_viewer" style="background: #FFFFFF">
    <img src="${toonVO.eachEpVO['0'].epContentImg}" alt="comic content" id="content_image_0"
-      oncontextmenu="return false" ondragstart="return false" onselectstart="return false" >
+      oncontextmenu="return false" ondragstart="return false" >
    </div>
 
    <!-- 리뷰,별점 -->
@@ -172,17 +159,7 @@
 
    <div id="review_page">
    <table class="table table-hover reviewList">
-	 <c:forEach items="${toonVO.eachEpVO['0'].reviewVO}" var="reviewVO1">
-    	<thead class="A simple light list group item">
-				<tr>
-					<th scope="col">작성자</th>
-					<th scope="col">작성날짜</th>
-					<th scope="col">평점</th>
-					<th scope="col">내용</th>	
-				</tr>
-		</thead>
-	 </c:forEach>
-		
+
       <c:forEach items="${toonVO.eachEpVO['0'].reviewVO}" var="reviewVO1">
          <tbody>
             <tr>
