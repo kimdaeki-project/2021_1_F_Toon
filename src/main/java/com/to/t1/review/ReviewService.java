@@ -18,6 +18,8 @@ public class ReviewService {
 	
 		Long totalCount = reviewMapper.getTotalCount(pager);
 		pager.makeNum(totalCount);
+		System.out.println("sn : "+pager.getStartNum());
+		System.out.println("per : "+pager.getPerPage());
 		
 		return reviewMapper.getList(pager);
 	}

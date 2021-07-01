@@ -30,7 +30,7 @@
     		<input type="number" id="curpoint" name="curpoint" value="${info.point}" readonly="readonly" disabled="disabled"/>
     		
     		<label > 구입하려는 ToonNum </label>
-    		<input id="toonNum" name="toonNum" value="${info.toonNum}" readonly="readonly"/>
+    		<input type="number" id="toonNum" name="toonNum" value="${info.toonNum}" readonly="readonly"/>
     		
     		<label > ToonNum으로 조회한 웹툰 타이틀 </label> //전송 X
     		<input type="text" id="toonTitle" name="toonTitle" value="${info.toonTitle}" readonly="readonly" disabled="disabled"/>
@@ -52,11 +52,10 @@
     		<input id="sort" name="sort" value="1" readonly="readonly"/>
     		
     		<label> isAlready </label>
-    		<input type="number" id="isAlready" name="isAlready" value="" readonly="readonly"/>
+    		<input type="number" id="isAlready" name="isAlready" value="${isAlready}" readonly="readonly"/>
     		
     		<label> 티켓 사용 성공할 경우 가는 페이지 URL</label>
     		<input id="next-location" name="next-location" value="" readonly="readonly" disabled="disabled"/>
-    		
     		</div>
     		
     		<!-- 구입할 소장권 갯수 선택 -->
