@@ -1,3 +1,4 @@
+
 let isAlready;
 let curstock = $('#curstock').val();
 let ifstock;
@@ -8,8 +9,7 @@ let toonNum = $('#toonNum').val()
 let toonTitle = $('#toonTitle').val();
 let contents = $('#contents').val();
 
-let nexturl = "toon/eachEpList?toonNum="+toonNum;
-
+let nexturl = "toon/eachEpList?toonNum=" +toonNum;
 $('#nextsuccess').val(nexturl); 
 alert($('#nextsuccess').val());
 function isEmpty(str){
