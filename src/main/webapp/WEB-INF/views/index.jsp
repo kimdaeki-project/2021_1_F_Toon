@@ -8,6 +8,7 @@
 <!DOCTYPE html>
 <html>
 <head>
+
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <c:import url="./fragments/bootstrap.jsp"></c:import>  
@@ -15,11 +16,29 @@
 
 <link rel="stylesheet" href="../css/index.css">
 <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+
+ <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <!-- BootStrap -->    
+	<!--     <link rel="icon" href="images/favicon.png" type="image/png">  위에 로고-->
+    <c:import url="./fragments/bootstrap.jsp"></c:import>
+    <title>Wong Toon</title>
+   
+    <link rel="stylesheet" href="/css/header.css">
+    
+<meta charset="UTF-8"> <meta name="viewport" content="width=device-width, initial-scale=1.0"> 
+<meta http-equiv="X-UA-Compatible" content="ie=edge"> <title>부트스트랩Carousel</title>
+ <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" 
+ integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous"> 
+ <style> .carousel-inner > .carousel-item > img{ /* width: 640px; height: 720px; */ } </style>
+
 </head>
 
 <body>
 <c:import url="./fragments/header.jsp"></c:import>
   
+
   <div class="row">
                 <div class="area-heading">
                     <h3>이번주 인기 웹툰</h3>
@@ -52,6 +71,13 @@
                         </div>
                     </div>    
                 </div>
+
+  
+ 
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous">
+</script> <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script> 
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script> <script> $('.carousel').carousel({ interval: 2000 //기본 5초 }) </script> 
+
 
                 <div class="col-md-6 col-lg-6 col-xl-4">
                     <div class="single-blog style_two">

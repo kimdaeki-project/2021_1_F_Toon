@@ -2,6 +2,10 @@
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %> 
 <%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags" %>
+
+
+<!-- 현재 날짜 넣기 -->
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -24,6 +28,7 @@
 				<span class="mask"></span>
 			</a>
 		</div>
+
 		<br>
 		
 	<!-- 웹툰 제목과 소개 --> <!-- 관심웹툰과 첫회보기 -->	
@@ -60,11 +65,25 @@
 	
 	<br><br>
 	
+
 	
 	<!-- 리스트 -->
 
 		<table border="3" align="center" cellpadding="10"  class="viewList"  >
 	
+
+	<div>${toonVO.toonTitle}</div>
+	<div>${toonVO.nickname}</div>
+	<div>${memberVO.username}</div>
+	<div>${eachEpVO.epTitle}</div>
+
+	
+	<!-- 리스트 -->
+
+		<table class="viewList">
+		<%-- <caption><span class="blind">회차별 목록</span></caption> --%>
+		<col width="99"><col width="*"><col width="141"><col width="76">
+
 		<thead>
 		<tr>
 			<th scope="col" class="a" ><h2>이미지</h2></th>
@@ -76,14 +95,22 @@
 			<th scope="col" class="d"><h2>등록일</h2></th>
 		</tr>			
 		</thead>
-		
+
 		
 		<!-- -------------------------유료-------------------------------------- -->
 	
 		<tbody style="font-size:30px;">
 	
 
-		<c:forEach items="${toonVO.eachEpVO}" var="eachEpVO">
+		
+
+		<!-- forEach : 시작 -->
+		<!-- -------------------------유료-------------------------------------- -->
+	
+		<tbody>
+
+		<c:forEach items="${toonVO.eachEpVO}" var="eachEpVO" begin="0" end="2">
+
 			<tr>
 			
 				<td class="imgalign"  >
@@ -94,6 +121,28 @@
 					</a>
 				</td>
 				<td class="title">
+
+				<a href="#" class="pay" data-toonNum="${toonVO.toonNum}" data-eachEpNum="${eachEpVO.eachEpNum}" >
+				${eachEpVO.eachEpNum}화</a>
+				</td>
+				<td>
+					<div class="rating_type">
+						<span class="star"><em>평점</em></span>
+						<strong>${eachEpVO.epRatingSum/eachEpVO.epRatingPerson}</strong>
+					</div>
+				</td>
+				<td class="num"><span>${eachEpVO.epDate}</span></td>
+			</tr>
+		</c:forEach>
+		</tbody>
+		
+		
+		<!-- -------------------------무료-------------------------------------- -->
+		<tbody>
+		<c:forEach items="${toonVO.eachEpVO}" var="eachEpVO" begin="3">
+			<tr>
+				<td class="imgalign" >
+
 				
 				<a href="/toon/eachEpSelect?toonNum=${toonVO.toonNum}&eachEpNum=${eachEpVO.eachEpNum}&epNum=${eachEpVO.epNum}" class="pay" data-toonNum="${toonVO.toonNum}" data-eachEpNum="${eachEpVO.eachEpNum}" >
 				${eachEpVO.epTitle}</a>
@@ -113,7 +162,43 @@
 		</table>
 		
 		
+
+
+
+		</tbody>
 		
+<!-- 		<tbody> -->
+<%-- 		<c:forEach items="${toonVO.eachEpVO}" var="eachEpVO" begin="0" end="2"> --%>
+<!-- 			<tr onclick="pay"> -->
+<!-- 				<td class="imgalign" > -->
+<%-- 					<a href="/toon/eachEpSelect?toonNum=${toonVO.toonNum}&eachEpNum=${eachEpVO.eachEpNum}" > --%>
+<%-- 					<img src="${eachEpVO.epSumImg}" --%>
+<%-- 						title="${eachEpVO.eachEpNum}화" alt="${eachEpVO.eachEpNum}화" width="71" height="41"> --%>
+<!-- 						<span class="mask"></span> -->
+<!-- 					</a> -->
+<!-- 				</td> -->
+<!-- 				<td class="title"> -->
+<%-- 				<a href="/toon/eachEpSelect?toonNum=${toonVO.toonNum}&eachEpNum=${eachEpVO.eachEpNum}"> --%>
+<%-- 				${eachEpVO.eachEpNum}화</a> --%>
+<!-- 				</td> -->
+<!-- 				<td> -->
+<!-- 					<div class="rating_type"> -->
+<!-- 						<span class="star"><em>평점</em></span> -->
+<%-- 						<strong>${eachEpVO.epRatingSum/eachEpVO.epRatingPerson}</strong> --%>
+<!-- 					</div> -->
+<!-- 				</td> -->
+<%-- 				<td class="num"><span>${eachEpVO.epDate}</span></td> --%>
+<!-- 			</tr> -->
+<%-- 		</c:forEach> --%>
+<!-- 		</tbody> -->
+
+		<!-- forEach : tbody END -->
+</table>
+		
+		
+
+		<!-- pager 처리 -->
+
 		<div class="paginate">
 		 	<ul  class="pagination" >
 	  

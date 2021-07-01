@@ -2,9 +2,13 @@ package com.to.t1.board.qna;
 
 import java.util.List;
 
+import javax.servlet.http.HttpSession;
+
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.Authentication;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -13,6 +17,8 @@ import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.to.t1.board.BoardVO;
+import com.to.t1.member.MemberService;
+import com.to.t1.member.MemberVO;
 import com.to.t1.util.Pager;
 
 @Controller
@@ -21,10 +27,14 @@ public class QnaController {
 	@Autowired
 	private QnaService qnaService;
 	
+	@Autowired
+	 private MemberService memberService;
+	
 	@ModelAttribute("board")
 	public String getQnaBoard() {
 		return "qna";
 	}
+
 	
 	@GetMapping("qnaList")
 	public String getList(Pager pager, Model model)throws Exception{
@@ -39,9 +49,42 @@ public class QnaController {
 	}
 	
 	@GetMapping("qnaSelect")
-	public ModelAndView getSelect(BoardVO boardVO)throws Exception{
-		ModelAndView mv = new ModelAndView();
+	public ModelAndView getSelect (BoardVO boardVO, MemberVO memberVO, Authentication auth2, Model model) throws Exception{
+	     ModelAndView mv = new ModelAndView();
+		
+	     if(auth2 != null) {
+	    	  memberVO = memberService.myPage((MemberVO) auth2.getPrincipal());
+	    	  mv.addObject("memberVO",memberVO);
+	      }
+	     
+	     model.addAttribute("memberVO", memberVO);
+	    
+	     System.out.println("memberVO :"+ memberVO);
+	     
+	     System.out.println(memberVO.getUsername());
+	     
+	     
 		boardVO = qnaService.getSelect(boardVO);
+		QnaVO qnaVO = (QnaVO)boardVO;
+		
+		System.out.println(boardVO.getUsername());
+	
+		if(boardVO.getBoNum() == qnaVO.getRef()) {
+		
+		}else {
+			BoardVO boardVO2 = new BoardVO();
+			boardVO2.setBoNum(qnaVO.getRef());
+			boardVO2 = qnaService.getSelect(boardVO2);
+			
+			if(!boardVO2.getUsername().equals(auth2.getName())) {
+				
+				mv.addObject("path", "qnaList");
+				mv.addObject("msg", "작성자 이외에 열람하실 수 없습니다");
+				mv.setViewName("common/commonResult");
+				
+				return mv;
+			}
+		}
 		mv.addObject("vo", boardVO);
 		mv.setViewName("board/qnaSelect");
 		return mv;
@@ -60,7 +103,32 @@ public class QnaController {
 		
 		return "redirect:./qnaList";
 	}
-
+	
+	@GetMapping("qnaUpdate")
+	public String setUpdate(BoardVO boardVO, Model model)throws Exception{
+		boardVO = qnaService.getSelect(boardVO);
+		model.addAttribute("vo", boardVO);
+		model.addAttribute("action", "qnaUpdate");
+		return "board/qnaUpdate";
+		
+	}
+	
+	@PostMapping("qnaUpdate")
+	public String setUpdate(BoardVO boardVO, MultipartFile [] files)throws Exception{
+		
+		int result = qnaService.setUpdate(boardVO, files);
+		
+		return "redirect:./qnaList";
+	}
+	
+	@PostMapping("qnaDelete")
+	public String setQnaDelete(BoardVO boardVO) throws Exception{
+		
+		int result = qnaService.setQnaDelete(boardVO);
+		
+		return "redirect:./qnaList";
+	}
+	
 	@PostMapping("summerFileDelete")
 	public ModelAndView setSummerFileDelete(String fileName)throws Exception{
 		ModelAndView mv = new ModelAndView();

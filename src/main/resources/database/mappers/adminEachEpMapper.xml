@@ -27,7 +27,7 @@
          <select id="getManageEachEpList" resultType="EachEpVO" parameterType="Pager">
          select * from eachep
          <include refid="searcher"></include>
-         order by eachEpNum desc
+         order by epNum desc
          limit #{startRow}, #{perPage}
          <!-- limit 시작index번호(0부터시작), 갯수 --> 
          </select>

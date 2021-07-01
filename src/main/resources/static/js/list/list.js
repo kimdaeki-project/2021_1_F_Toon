@@ -3,7 +3,12 @@
  */
 
 
+<<<<<<< HEAD
 /*$(function(){ 
+=======
+
+$(function(){ 
+>>>>>>> origin/Seokjun7
 			$('.pay').click(function() {
 				let toonNum=$(this).attr("data-toonNum");		
 				let eachEpNum=$(this).attr("data-eachEpNum");
@@ -36,3 +41,26 @@ $('#pay').click(function(){
 
 
 
+
+$(document).ready(function(){ 
+			$('#pay').click(function() {
+				var result = confirm('200p가 소모됩니다 열람하시겠습니까?'); 
+				if(result) {  
+					
+					
+					
+					
+						
+				} else { 
+					
+					
+					
+					
+				alert("no");
+					
+					
+					
+					
+		} }); 
+		});
+		

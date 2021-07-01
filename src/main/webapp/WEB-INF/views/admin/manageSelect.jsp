@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>    
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags" %>  
 <!DOCTYPE html>
 <html>
 <head>
@@ -12,6 +13,13 @@
     <c:import url="../fragments/bootstrap.jsp"></c:import>
    
    <link rel="stylesheet" href="${pageContext.request.contextPath}/css/header.css">
+   
+   <!-- plugins:css -->
+<link rel="stylesheet" href="${pageContext.request.contextPath}/assets/vendors/iconfonts/mdi/css/materialdesignicons.css">
+<link rel="stylesheet" href="${pageContext.request.contextPath}/css/mypage/style.css">
+<!-- Layout style -->
+<link rel="shortcut icon" href="${pageContext.request.contextPath}/asssets/images/favicon.ico" />
+   
     
     <style type="text/css">
      .back {
@@ -44,6 +52,11 @@
 </head>
 <body>
 <c:import url="../fragments/header.jsp"></c:import>
+	
+	<div class="row">
+  	<div class="col-2">
+  		<c:import url="./adminNav.jsp"></c:import>
+  	</div>
 
 <div class="container"><br>
 	<h2>
@@ -77,7 +90,7 @@
 	
 	<div id="file1">
 	<c:forEach items="${vo.files}" var="file">
-		<a href="../upload/${board}/${file.fileName}">${file.oriName}</a>
+		<a href="../upload/${board}/${file.fileName}">&nbsp;${file.oriName}</a>
 	</c:forEach>
 	</div>
 	 
@@ -92,7 +105,7 @@
 
 
 
-<script type="text/javascript" src="../resources/js/board/comments.js"></script>
+
 <script type="text/javascript">
 	const del = document.getElementById("del");
 	const frm = document.getElementById("frm");
@@ -101,13 +114,12 @@
 		let result = confirm("삭제하시겠습니까?");
 		
 		if(result){
-			//frm.method="post";
+		
 			frm.setAttribute("method", "post");
 			frm.submit();
-			//location.href="./${board}Delete?num=${dto.num}";
+		
 		}
 	});
 </script>
-<c:import url="../fragments/footer.jsp"></c:import>
 </body>
 </html>

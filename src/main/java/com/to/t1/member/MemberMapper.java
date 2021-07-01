@@ -3,6 +3,9 @@ package com.to.t1.member;
 import java.util.Map;
 
 import org.apache.ibatis.annotations.Mapper;
+import org.apache.ibatis.annotations.Param;
+
+import com.to.t1.member.MemberVO;
 
 @Mapper
 public interface MemberMapper {
@@ -17,7 +20,9 @@ public interface MemberMapper {
 	
 	public int memberUpdate(MemberVO memberVO)throws Exception;
 	
-	public int memberDelete(String username)throws Exception;
+//	public int memberDelete(String username)throws Exception;
+	
+	public int memberDelete(MemberVO memberVO)throws Exception;
 	
 	public MemberVO searchId(MemberVO memberVO)throws Exception;
 	
@@ -33,5 +38,10 @@ public interface MemberMapper {
 	
 	public MemberVO memberJoinCheck(MemberVO memberVO)throws Exception;
 	
-
+	public JoinFileVO selectImage(MemberVO memberVO)throws Exception; //사진 선택
+	
+	public int setImage(JoinFileVO joinFileVO) ;//사진 등록
+	
+	public int delImage(JoinFileVO joinFileVO);//사진 삭제
+	
 }

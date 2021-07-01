@@ -1,4 +1,4 @@
-
+<?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper
     PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
     "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
@@ -40,64 +40,65 @@
          </select>
          
          
-<!--          <select id="getList" resultType="NoticeVO" parameterType="Pager"> -->
-<!--          select * from notice -->
-<!--          <include refid="searcher"></include> -->
-<!--          order by boNum desc -->
-<!--          limit #{startRow}, #{perPage} -->
-<!--          limit 시작index번호(0부터시작), 갯수  -->
-<!--          </select> -->
+         <select id="getList" resultType="NoticeVO" parameterType="Pager">
+         select * from notice
+         <include refid="searcher"></include>
+         order by boNum desc
+         limit #{startRow}, #{perPage}
+         <!-- limit 시작index번호(0부터시작), 갯수 --> 
+         </select>
          
-<!--       <select id="getTotalCount" parameterType="Pager" resultType="java.lang.Long"> -->
-<!--             select count(boNum) from notice -->
-<!--             <include refid="searcher"></include> -->
-<!--          </select> -->
+      <select id="getTotalCount" parameterType="Pager" resultType="java.lang.Long">
+            select count(boNum) from notice
+            <include refid="searcher"></include>
+         </select>
          
-<!--          <select id="getSelect" resultMap="selectResult" parameterType="BoardVO"> -->
-<!--          SELECT N.*, NF.* from -->
-<!--          notice N left join noticeFiles NF -->
-<!--          on N.boNum = NF.boNum -->
-<!--          WHERE N.boNum=#{boNum} -->
-<!--          </select> -->
+         <select id="getSelect" resultMap="selectResult" parameterType="BoardVO">
+         SELECT N.*, NF.* from
+         notice N left join noticeFiles NF
+         on N.boNum = NF.boNum
+         WHERE N.boNum=#{boNum}
+         </select>
 
-<!--          <resultMap type="NoticeVO" id="selectResult"> -->
-<!--             <id column="boNum" property="boNum"/> -->
-<!--             <result column="noticeKinds" property="noticeKinds"/> -->
-<!--             <result column="noticeTitle" property="noticeTitle"/> -->
-<!--             <result column="username" property="username"/> -->
-<!--             <result column="noticeContents" property="noticeContents"/> -->
-<!--             <result column="createdDate" property="createdDate"/> -->
-<!--             <result column="noticeHit" property="noticeHit"/> -->
-<!--             <collection property="files" javaType="java.util.List" ofType="BoardFileVO"> -->
-<!--                <id column="fileNum" property="fileNum"/> -->
-<!--                <result column="fileName" property="fileName"/> -->
-<!--                <result column="oriName" property="oriName"/> -->
-<!--             </collection> -->
-<!--          </resultMap> -->
+         <resultMap type="NoticeVO" id="selectResult">
+            <id column="boNum" property="boNum"/>
+            <result column="noticeKinds" property="noticeKinds"/>
+            <result column="noticeTitle" property="noticeTitle"/>
+            <result column="username" property="username"/>
+            <result column="noticeContents" property="noticeContents"/>
+            <result column="createdDate" property="createdDate"/>
+            <result column="noticeHit" property="noticeHit"/>
+            <collection property="files" javaType="java.util.List" ofType="BoardFileVO">
+               <id column="fileNum" property="fileNum"/>
+               <result column="fileName" property="fileName"/>
+               <result column="oriName" property="oriName"/>
+            </collection>
+         </resultMap>
          
-<!--          <update id="setHitUpdate" parameterType="BoardVO"> -->
-<!--             update notice set noticeHit=noticeHit+1 where boNum=#{boNum} -->
-<!--          </update> -->
+         <update id="setHitUpdate" parameterType="BoardVO">
+            update notice set noticeHit=noticeHit+1 where boNum=#{boNum}
+         </update>
          
-<!--          <insert id="setInsert" parameterType="BoardVO" useGeneratedKeys="true" keyProperty="boNum"> -->
-<!--             insert into notice values(#{boNum}, #{noticeKinds}, #{noticeTitle}, #{username},#{noticeContents}, now(), 0) -->
-<!--          </insert> -->
+         <insert id="setInsert" parameterType="BoardVO" useGeneratedKeys="true" keyProperty="boNum">
+            insert into notice values(#{boNum}, #{noticeKinds}, #{noticeTitle}, #{username},#{noticeContents}, now(), 0)
+         </insert>
          
-<!--          <insert id="setFileInsert" parameterType="BoardFileVO"> -->
-<!--             insert into noticeFiles (fileNum, boNum, fileName, oriName) -->
-<!--             values (#{fileNum}, #{boNum}, #{fileName}, #{oriName}) -->
-<!--          </insert> -->
+         <insert id="setFileInsert" parameterType="BoardFileVO">
+            insert into noticeFiles (fileNum, boNum, fileName, oriName)
+            values (#{fileNum}, #{boNum}, #{fileName}, #{oriName})
+         </insert>
          
-<!--          <delete id="setFileDelete" parameterType="BoardFileVO"> -->
-<!--          delete from noticeFiles where fileNum=#{fileNum} -->
-<!--       </delete> -->
+         <delete id="setFileDelete" parameterType="BoardFileVO">
+         delete from noticeFiles where fileNum=#{fileNum}
+      </delete>
          
-<!--          <update id="setUpdate" parameterType="BoardVO"> -->
-<!--             update notice set noticeKinds=#{noticeKinds}, noticeTitle=#{noticeTitle}, noticeContents=#{noticeContents} where boNum=#{boNum} -->
-<!--          </update> -->
+         <update id="setUpdate" parameterType="BoardVO">
+            update notice set noticeKinds=#{noticeKinds}, noticeTitle=#{noticeTitle}, noticeContents=#{noticeContents} where boNum=#{boNum}
+         </update>
          
-<!--          <delete id="setDelete" parameterType="BoardVO"> -->
-<!--             delete from notice where boNum=#{boNum} -->
-<!--          </delete>  -->
+         <delete id="setDelete" parameterType="BoardVO">
+            delete from notice where boNum=#{boNum}
+         </delete> 
+         
    
    </mapper>

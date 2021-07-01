@@ -47,6 +47,7 @@ public class MemberController {
 	@GetMapping("login")
 	public String getLogin()throws Exception{
 		System.out.println("로그인");
+		System.out.println("진짜");
 		return "member/memberLogin";
 	}
 	
@@ -64,9 +65,13 @@ public class MemberController {
 	}
 	
 	@GetMapping("memberLoginResult")
-	public String memberLoginResult(HttpSession session, Authentication auth2)throws Exception{
+	public String memberLoginResult(HttpSession session, Authentication auth2, Model model)throws Exception{
 		System.out.println("!!!!!!!!!!!!!!!!!!!!!");
+		MemberVO memberVO =new MemberVO();
 		//session의 속성명들 꺼내오기 
+		
+		memberVO = memberService.myPage(memberVO);	
+		
 		Enumeration<String> en = session.getAttributeNames();
 		
 		while(en.hasMoreElements()) {
@@ -94,10 +99,10 @@ public class MemberController {
 		System.out.println("===================================");
 		
 		
-		
 		System.out.println(obj);
 		
 		System.out.println("Login 성공");
+		
 		return "redirect:/";
 	}
 
@@ -114,12 +119,12 @@ public class MemberController {
 //	}
 
 	//@GetMapping("logout")
-	public String logout(HttpSession session)throws Exception{
-
-		session.invalidate();
-
-		return "redirect:../";
-	}
+//	public String logout(HttpSession session)throws Exception{
+//
+//		session.invalidate();
+//
+//		return "redirect:../";
+//	}
 
 	@GetMapping("myPage") 
 	public String myPage(MemberVO memberVO, HttpSession session, Authentication auth2, Model model)throws Exception{
@@ -138,21 +143,23 @@ public class MemberController {
 	@PostMapping("changePassword")
 	@ResponseBody
 	public String changePassword(MemberVO memberVO, Authentication auth2, String newpassword, String newpassword2, Model model)throws Exception{
-		UserDetails userDetails = (UserDetails) auth2.getPrincipal(); //세션에 있는 유스디테일을 갖고옴
-		memberVO.setUsername(userDetails.getUsername());
 		
 		String message = "";
 		
+		UserDetails userDetails = (UserDetails)auth2.getPrincipal(); //세션에 있는 유스디테일을 갖고옴
+		memberVO.setUsername(userDetails.getUsername());
+		
 		boolean result = passwordEncoder.matches(memberVO.getPassword(), userDetails.getPassword()); //matches : 왼쪽값 오른쪽 비번 비교하느거
+		
 		if(result) {
 			if(newpassword.equals(newpassword2)) {
 				memberVO.setPassword(newpassword); 
 				int result2 = memberService.pwUpdate(memberVO);
 				if(result2>0) {
-					message="비밀번호가 변경되었습니다.";
+					message="비밀번호가 성공적으로 변경되었습니다.";
 				}
 			}else {
-				message="비밀번호가 일치하지않습니다.";
+				message="변경된 비밀번호가 일치하지않습니다.";
 			}
 		}else {
 			message="현재 비밀번호가 일치하지않습니다.";
@@ -164,8 +171,9 @@ public class MemberController {
 		memberVO = memberService.myPage((MemberVO) auth2.getPrincipal());
 		model.addAttribute("memberVO", memberVO);
 		
-		System.out.println(message);
+		model.addAttribute("msg", message);
 		
+		System.out.println(message);
 
 		return message;
 	}
@@ -183,7 +191,6 @@ public class MemberController {
 
 		return  "member/changePassword";
 	}
-
 
 
 	@PostMapping("getJoinFile") 
@@ -213,6 +220,7 @@ public class MemberController {
 		System.out.println(message);
 
 		return message;
+		
 	}
 
 	@GetMapping("memberIdCheck")
@@ -289,7 +297,7 @@ public class MemberController {
 		String path="./memberJoin";
 		
 		if(result>0) {
-			message ="회원 가입 성공";
+			message ="축)회원 가입 성공";
 			path="../";
 		}
 		
@@ -330,27 +338,24 @@ public class MemberController {
 		return "common/commonResult";
 	}
 	
-	@RequestMapping("memberDelete")
-	public ModelAndView memberDelete(HttpSession session, String username)throws Exception{
-		MemberVO memberVo =(MemberVO)session.getAttribute("member"); 
-		ModelAndView mv = new ModelAndView();
-		
-		int result = memberService.memberDelete(username, session, memberVo);
-		session.invalidate();
-		
-		String message="회원 탈퇴 실패";
-		String path = "../";
-		
-		if(result>0) {
-			message="회원 탈퇴 성공";
-			
-		}
-		mv.addObject("msg", message);
-		mv.addObject("path", "./logout");
-		mv.setViewName("common/commonResult");
-		
-		
-		return mv;
+	@GetMapping("memberDelete")
+	   @ResponseBody
+	   public String memberDelete(MemberVO memberVO ,Authentication authentication,HttpSession session)throws Exception{
+		  ModelAndView mv = new ModelAndView();
+	      String message ="";
+	      UserDetails userDetails = (UserDetails) authentication.getPrincipal();
+	      memberVO.setUsername(userDetails.getUsername());
+	      boolean result = passwordEncoder.matches(memberVO.getPassword(), userDetails.getPassword());
+	      System.out.println(memberVO);
+	      System.out.println(result);
+	      if(result) {
+	         memberService.memberDelete(session,memberVO);
+	         message="탈퇴 되었습니다.";
+	         mv.addObject("path", "./logout");
+	      }else {
+	         message="비밀번호가 일치하지않습니다.";
+	      }
+	  		return message;
 	}
 
 	   @GetMapping("CheckMail")
@@ -378,5 +383,52 @@ public class MemberController {
 	      return key;
 	   }
 	  
+	   @PostMapping("setImage")
+	   @ResponseBody
+	   public String setImage(@Valid MemberVO memberVO,Errors errors, MultipartFile avatar,Authentication authentication) throws Exception{
+	      System.out.println(avatar);
+	      String message="";
+		   if(avatar.getSize()==0) {
+	         message= "파일이없습니다.";
+	      }
+	      UserDetails userDetails = (UserDetails) authentication.getPrincipal();
+	      memberVO.setUsername(userDetails.getUsername()); //시큐리티에 있는 유저네임을 멤버브이오 유저네임에 집어넣음
+	      System.out.println(memberVO);
+	      JoinFileVO joinFileVO = memberService.selectImage(memberVO); //이미지가 있는지 없는지 찾음
+	      System.out.println(joinFileVO);
+	      if(joinFileVO==null) { //값이없으면 세팅
+	         int result1 = memberService.setImage(memberVO, avatar);
+	         System.out.println(result1);
+	      }else { //값이 있으면 삭제하고 세팅
+	         int result = memberService.delImage(joinFileVO);
+	         int result1 = memberService.setImage(memberVO, avatar);
+	         System.out.println(result1);
+	      }
+	      message="업로드 되었습니다.";   
+	      System.out.println(message);
+	      return message;
+	   }
+
+	   @PostMapping("delImage")
+	   @ResponseBody
+	   public String delImage(MemberVO memberVO,Authentication authentication)throws Exception{
+	      String message= "";
+	      UserDetails userDetails = (UserDetails) authentication.getPrincipal();
+	      memberVO.setUsername(userDetails.getUsername());
+	      System.out.println(memberVO);
+	      JoinFileVO joinFileVO = memberService.selectImage(memberVO);
+	      if(joinFileVO==null) {
+	         message="삭제할 사진이없습니다.";
+	      }else {
+	         
+	         int result = memberService.delImage(joinFileVO);
+	         message="사진이 삭제되었습니다.";
+	      }
+	      
+	      
+	      return message;
+	   }
+	  
+	   
 }
 

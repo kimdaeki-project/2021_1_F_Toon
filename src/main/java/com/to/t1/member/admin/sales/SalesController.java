@@ -1,11 +1,12 @@
 package com.to.t1.member.admin.sales;
 
 import java.util.List;
-import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
@@ -17,35 +18,55 @@ public class SalesController {
 	
 	//1. 오늘 조회
 	
-	@GetMapping("today")
-	@ResponseBody 
+	@PostMapping("today")
+	@ResponseBody
 	public DaySaleVO getDaySaleVO() throws Exception{
 		System.out.println(saleService.getDaySale());
 		return saleService.getDaySale();
 		//json 형식으로 돌려주는 요청
 	}
-	@GetMapping("week")
+	
+	@PostMapping("week")
 	@ResponseBody
 	//2. 주 조회
 	public List<MonthSaleVO> getWeekSale() throws Exception{
 		return saleService.getWeekSale();
 	}
-	@GetMapping("month")
+	
+	@PostMapping("month")
 	@ResponseBody
 	public  List<WeekSaleVO> getMonthSale()throws Exception{
 		return saleService.getMonthSale();
 	}
-	@GetMapping("length")
+	
+	@PostMapping("length")
 	@ResponseBody
 	//4. 기간 조회
 	public   List<DaySaleVO> getLengthSale(MonthSaleVO weekSaleVO)throws Exception{
 		return saleService.getLengthSale(weekSaleVO);
 	}
-	@GetMapping("perToon")
+	
+	@PostMapping("perToon")
 	@ResponseBody
 	//5. 웹툰 별 매출 조회
 	public  List<ToonSaleVO> getToonSale() throws Exception{
 		System.out.println(saleService.getToonSale());
 		return saleService.getToonSale();
+	}
+	
+	@GetMapping("income")
+	public String GetIncomeList( DaySaleVO daySaleVO,
+			MonthSaleVO monthSaleVO,ToonSaleVO toonSaleVO, Model model) throws Exception {
+		
+		daySaleVO = saleService.getDaySale();
+		
+		model.addAttribute("daySaleVO",daySaleVO);
+		model.addAttribute("weekSaleVO",saleService.getWeekSale());
+		model.addAttribute("monthSaleVO",saleService.getMonthSale());
+		model.addAttribute("toonSaleVO",saleService.getToonSale());
+		
+		
+		return "admin/adminUtil/SaleSelect";
+		
 	}
 }

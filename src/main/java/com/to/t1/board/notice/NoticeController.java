@@ -53,7 +53,7 @@ public class NoticeController {
 	@GetMapping("select")
 	public ModelAndView getSelect(BoardVO boardVO)throws Exception{
 		ModelAndView mv = new ModelAndView();
-		//boardVO = noticeService.getSelect(boardVO);
+		boardVO = noticeService.getSelect(boardVO);
 		mv.addObject("vo", boardVO);
 		mv.setViewName("board/select");
 		return mv;

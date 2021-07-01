@@ -26,7 +26,7 @@
 <body>
 	<c:import url="../fragments/header.jsp"></c:import>	
 
-    <!-- partial -->
+     <!-- partial -->
     <div class="page-body">
       <!-- partial:partials/_sidebar.html -->
       <div class="sidebar">
@@ -36,17 +36,28 @@
 			<c:if test="${memberVO.joinFileVO.fileName ne null}"><img width=180px height=200px alt="" src="../upload/member/${memberVO.joinFileVO.fileName}"></c:if>
           </div>
           <div class="info-wrapper">
-            <p class="user-name"><sec:authentication property="principal.name"/>님</p>
+            <p class="user-name">${memberVO.name}님</p>
             <h6 class="display-income">${memberVO.point}point</h6>
           </div>
         </div>
         <ul class="navigation-menu">
           <li class="nav-category-divider">MAIN</li>
-          <li>
-            <a href="/member/myPage">
-              <h4><span class="link-title">내정보 수정</span></h4>
-              <i class="mdi mdi-gauge link-icon"></i>
+          
+           <li>
+            <a href="#sample-pages" data-toggle="collapse" aria-expanded="false">
+              <h4><span class="link-title">내 정보</span></h4>
+              <i class="mdi mdi-flask link-icon"></i>
             </a>
+            <ul class="collapse navigation-submenu" id="sample-pages">
+              <li>
+                <a href="/member/myPage" >내 정보 조회</a>
+              </li>
+              
+               <li>
+                <a href="/member/changePassword" >비밀번호 변경</a>
+              </li>
+              
+            </ul>
           </li>
          
           <li>
@@ -56,32 +67,28 @@
             </a>
             <ul class="collapse navigation-submenu" id="ui-elements">
               <li>
-                <a href="pages/ui-components/buttons.html">최근 본 웹툰</a>
+                <a href="${pageContext.request.contextPath}../mypage/recentToon/?username=${memberVO.username}">최근 본 웹툰</a>
+                
               </li>
               <li>
-                <a href="../mypage/favoriteToon">관심 웹툰</a>
+                <a href="${pageContext.request.contextPath}../mypage/favoriteToon/?username=${memberVO.username}">관심 웹툰</a>
               </li>
               <li>
-                <a href="pages/ui-components/typography.html">소장 웹툰</a>
+                <a href="${pageContext.request.contextPath}../mypage/useToon/?username=${memberVO.username}">소장 웹툰</a>
               </li>
             </ul>
           </li>
+          
+            <li>
+            	<a href="${pageContext.request.contextPath}../mypage/review/?username=${memberVO.username}">
+             	<h4> <span class="link-title">내 댓글</span></h4>
+            	  <i class="mdi mdi-clipboard-outline link-icon"></i>
+            	</a>
+          	 </li>
+          
+          
           <li>
-            <a href="#sample-pages" data-toggle="collapse" aria-expanded="false">
-              <h4><span class="link-title">댓글</span></h4>
-              <i class="mdi mdi-flask link-icon"></i>
-            </a>
-            <ul class="collapse navigation-submenu" id="sample-pages">
-              <li>
-                <a href="pages/sample-pages/login_1.html" target="_blank">내 댓글 조회</a>
-              </li>
-              <li>
-                <a href="pages/sample-pages/error_2.html" target="_blank">신고한 댓글 조회</a>
-              </li>
-            </ul>
-          </li>
-          <li>
-            <a href="pages/forms/form-elements.html">
+            <a href="${pageContext.request.contextPath}/point/charge">
              <h4> <span class="link-title">충전하기</span></h4>
               <i class="mdi mdi-clipboard-outline link-icon"></i>
             </a>
@@ -98,15 +105,35 @@
       </div>
       <!-- partial -->
       <div class="page-content-wrapper">
-      <h2>수정ㅋ</h2>
+      <center><h2><회원 정보 수정></h2></center>
 	<form action="memberUpdate" method="post">
-		ID <input type="text" name="username" readonly="readonly" value="<sec:authentication property="principal.username"/>"><br>
-		Name <input type="text" name="name" value= "${memberVO.name}"><br>
-		닉네임 <input type="text" name="nickname" value="${memberVO.nickname}"><br>
-		Phone <input type="text" name="phone" value= "${memberVO.phone}"><br>
-		Email <input type="text" name="email" value= "${memberVO.email}"><br>
+		
+		 <div class="form-group">
+     	 <label for="disabledTextInput">아이디</label>
+    	  <input type="text" id="disabledTextInput" readonly="readonly" class="form-control" placeholder=<sec:authentication property="principal.username"/>>
+   		 </div>
+		
+		 <div class="form-group">
+      		<label for="Input">이름</label>
+      		<input type="text" id="disabledTextInput" name="name" class="form-control" value= "${memberVO.name}">
+ 		  </div>
+ 		  
+ 		  <div class="form-group">
+      		<label for="Input">닉네임</label>
+      		<input type="text" id="disabledTextInput" name="nickname" class="form-control" value="${memberVO.nickname}">
+ 		  </div>
+ 		  
+ 		  <div class="form-group">
+      		<label for="Input">핸드폰</label>
+      		<input type="text" id="disabledTextInput" name="phone" class="form-control" value="${memberVO.phone}">
+ 		  </div>
+ 		  
+ 		  <div class="form-group">
+      		<label for="Input">E-mail</label>
+      		<input type="text" id="disabledTextInput" name="email" class="form-control" value="${memberVO.email}">
+ 		  </div><br>
 
-		<button class="btn btn-info">Update</button>
+		<center><button class="btn btn-info">Update</button></center>
 	</form>
         <div class="page-content-wrapper-inner">
           <div class="content-viewport">

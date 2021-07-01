@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>    
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags" %>   
 <!DOCTYPE html>
 <html>
 <head>
@@ -12,6 +13,13 @@
     <c:import url="../fragments/bootstrap.jsp"></c:import>
     
     <link rel="stylesheet" href="${pageContext.request.contextPath}/css/header.css">
+    
+    <!-- plugins:css -->
+<link rel="stylesheet" href="${pageContext.request.contextPath}/assets/vendors/iconfonts/mdi/css/materialdesignicons.css">
+<link rel="stylesheet" href="${pageContext.request.contextPath}/css/mypage/style.css">
+<!-- Layout style -->
+<link rel="shortcut icon" href="${pageContext.request.contextPath}/asssets/images/favicon.ico" />
+    
     
 <title>Insert title here</title>
 
@@ -39,7 +47,6 @@
      }
      #dd {
      	background-color: #F9FFFF;
-
      }
 	
 </style>
@@ -47,6 +54,11 @@
 <body>
 <c:import url="../fragments/header.jsp"></c:import>
 
+<div class="row">
+  	<div class="col-2">
+  		<c:import url="./adminNav.jsp"></c:import>
+  	</div>
+  	
  <div class="container"><br>
 		<h2>
 			<p>
@@ -54,7 +66,7 @@
 					style="border-radius: 15px 15px 15px 15px; border: 3px solid #b4b4b4; padding: 0.5em 0.6em; color: black; background-color: #dcdcdc;">관리자/질의응답/수정</span>
 			</p>
 		</h2><br>
-  <form id="frm" action="./update" method="post" enctype="multipart/form-data">
+  <form id="frm" action="./qnaUpdate" method="post" enctype="multipart/form-data">
   	<input type="hidden" name="boNum" value="${param.boNum}">
     <div class="form-group">
       <label for="username">&nbsp;작성자</label>
@@ -103,6 +115,19 @@
 <script type="text/javascript" src="../js/board/boardUpdate.js"></script>
 <script type="text/javascript" src="../js/board/fileAdd.js"></script>
 <script type="text/javascript" src="../js/board/qnaSummerFile.js"></script>
-<c:import url="../fragments/footer.jsp"></c:import>
+<script type="text/javascript">
+const btn = document.getElementById("btn");
+
+btn.addEventListener("click", function(){
+	let result = confirm("수정하시겠습니까?");
+	
+	if(result){
+		
+		frm.setAttribute("method", "post");
+		frm.submit();
+		
+	}
+});
+</script>
 </body>
 </html>

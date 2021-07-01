@@ -22,6 +22,7 @@
     <link rel="stylesheet" href="/css/mypage/style.css">
     <!-- Layout style -->
     <link rel="shortcut icon" href="../asssets/images/favicon.ico" />
+    <link rel="stylesheet" href="/css/myPage.css">
 </head>
 <body>
 	<c:import url="../fragments/header.jsp"></c:import>	
@@ -32,11 +33,23 @@
       <div class="sidebar">
         <div class="user-profile">
           <div class="display-avatar animated-avatar">
-            <c:if test="${memberVO.joinFileVO.fileName eq null}"><img width=180px height=200px alt="" src="../images/member.jpg"></c:if>
-			<c:if test="${memberVO.joinFileVO.fileName ne null}"><img width=180px height=200px alt="" src="../upload/member/${memberVO.joinFileVO.fileName}"></c:if>
+            <c:if test="${memberVO.joinFileVO.fileName eq null}"><img id="image" width=180px height=200px alt="" src="../images/member.jpg"></c:if>
+			<c:if test="${memberVO.joinFileVO.fileName ne null}"><img id="image" width=180px height=200px alt="" src="../upload/member/${memberVO.joinFileVO.fileName}"></c:if>
           </div>
           
           <div class="info-wrapper">
+          
+          	<form id="formId">
+      		
+          	<div class="filebox"> 
+          	<label for="avatar">사진 선택</label> 
+          	<input id="avatar" name="avatar" type="file">
+          	</div>
+          	
+          	<button onclick="upload()" class="btn btn-outline-info">업로드</button>
+          	<button onclick="delete1()" class="btn btn-outline-danger">삭제</button>
+          	</form>
+          	
             <p class="user-name">${memberVO.name}님</p>
             <h6 class="display-income">${memberVO.point}point</h6>
           </div>
@@ -44,18 +57,22 @@
         </div>
         <ul class="navigation-menu">
           <li class="nav-category-divider">MAIN</li>
-          <li>
-            <a href="/member/myPage">
-              <h4><span class="link-title">내 정보</span></h4>
-              <i class="mdi mdi-gauge link-icon"></i>
-            </a>
-          </li>
           
-          <li>
-            <a href="/member/changePassword">
-              <h4><span class="link-title">비밀번호 변경</span></h4>
-              <i class="mdi mdi-gauge link-icon"></i>
+           <li>
+            <a href="#sample-pages" data-toggle="collapse" aria-expanded="false">
+              <h4><span class="link-title">내 정보</span></h4>
+              <i class="mdi mdi-flask link-icon"></i>
             </a>
+            <ul class="collapse navigation-submenu" id="sample-pages">
+              <li>
+                <a href="/member/myPage">내 정보 조회</a>
+              </li>
+              
+               <li>
+                <a href="/member/changePassword">비밀번호 변경</a>
+              </li>
+              
+            </ul>
           </li>
          
           <li>
@@ -76,55 +93,103 @@
               </li>
             </ul>
           </li>
-          <li>
-            <a href="#sample-pages" data-toggle="collapse" aria-expanded="false">
-              <h4><span class="link-title">댓글</span></h4>
-              <i class="mdi mdi-flask link-icon"></i>
+          
+      	 <li>
+            <a href="#sales_inquiry" data-toggle="collapse" aria-expanded="false">
+             <h4> <span class="link-title">포인트 관리</span></h4> 
+              <i class="mdi mdi-clipboard-outline link-icon"></i>
             </a>
-            <ul class="collapse navigation-submenu" id="sample-pages">
+             <ul class="collapse navigation-submenu" id="sales_inquiry">
               <li>
-                <a href="pages/sample-pages/login_1.html" target="_blank">내 댓글 조회</a>
+                <a href="/mypage2/pointCharge">포인트 충전 내역 조회</a>
               </li>
-              
+              <li>
+                <a href="mypage2/pointUse">포인트 사용 내역 조회</a>
+              </li>
             </ul>
           </li>
+          
+          <li>
+            <a href="#payment_manage" data-toggle="collapse" aria-expanded="false">
+             <h4>  <span class="link-title">소장권 관리</span></h4>
+              <i class="mdi mdi-clipboard-outline link-icon"></i>
+            </a>
+             <ul class="collapse navigation-submenu" id="payment_manage">
+              <li>
+                <a href="pages/sample-pages/login_1.html">소장권 구매 내역 조회</a>
+              </li>
+              <li>
+                <a href="pages/sample-pages/error_2.html">소장권 사용 내역 조회</a>
+              </li>
+            </ul>
+          </li>
+          
+            <li>
+            	<a href="${pageContext.request.contextPath}../mypage/review/?username=${memberVO.username}">
+             	<h4> <span class="link-title">내 댓글</span></h4>
+            	  <i class="mdi mdi-clipboard-outline link-icon"></i>
+            	</a>
+          	 </li>
+          
+          
           <li>
             <a href="${pageContext.request.contextPath}/point/charge">
              <h4> <span class="link-title">충전하기</span></h4>
               <i class="mdi mdi-clipboard-outline link-icon"></i>
             </a>
           </li>
-          <li>
-            <a href="pages/charts/chartjs.html">
-              <h4><span class="link-title">작가등록</span></h4>
-              <i class="mdi mdi-chart-donut link-icon"></i>
-            </a>
-          </li>
+          
  
         </ul>
         
       </div>
       <!-- partial -->
       <div class="page-content-wrapper">
-           <h1>회원정보</h1>
+           <center><h2><회원정보></h2></center>
     <sec:authorize access="isAuthenticated()">       	
 	
-	<h3>아이디: <sec:authentication property="principal.username"/></h3>
-	<h3>이름: ${memberVO.name}</h3>
-	<h3>닉네임: ${memberVO.nickname}</h3>
-	<h3>핸드폰: ${memberVO.phone}</h3>
-	<h3>이메일: ${memberVO.email}</h3>
-	<h3>내 포인트: ${memberVO.point}</h3>
+	<fieldset disabled>
+    
+    <div class="form-group">
+      <label for="disabledTextInput">아이디</label>
+      <input type="text" id="disabledTextInput" class="form-control" placeholder=<sec:authentication property="principal.username"/>>
+    </div>
+    
+     <div class="form-group">
+      <label for="disabledTextInput">이름</label>
+      <input type="text" id="disabledTextInput" class="form-control" placeholder=${memberVO.name}>
+    </div>
+    
+     <div class="form-group">
+      <label for="disabledTextInput">닉네임</label>
+      <input type="text" id="disabledTextInput" class="form-control" placeholder=${memberVO.nickname}>
+    </div>
+    
+     <div class="form-group">
+      <label for="disabledTextInput">핸드폰</label>
+      <input type="text" id="disabledTextInput" class="form-control" placeholder=${memberVO.phone}>
+    </div>
+    
+    <div class="form-group">
+      <label for="disabledTextInput">E-mail</label>
+      <input type="text" id="disabledTextInput" class="form-control" placeholder=${memberVO.email}>
+    </div>
+    
+    <div class="form-group">
+      <label for="disabledTextInput">내 포인트</label>
+      <input type="text" id="disabledTextInput" class="form-control" placeholder=${memberVO.point}point>
+    </div>
+    
+    
+  </fieldset>
+  <br><br>
+	
 	</sec:authorize>
 	
 
-	
 	<sec:authorize access="isAuthenticated()">
-		<a href="./memberUpdate" class="btn btn-info" 
-		role="button" onclick="if(!confirm('내 정보를 수정 하시겠습니까?')){return false;}">내 정보 수정</a>
-		
-		<a href="./memberDelete?username=<sec:authentication property="principal.username"/>" class="btn btn-danger" 
-		id="sunghyun" role="button" onclick="if(!confirm('정말 탈퇴 하시겠습니까?')){return false;}">회원 탈퇴</a>
+		<center><a href="./memberUpdate" class="btn btn-info" 
+		role="button" onclick="if(!confirm('내 정보를 수정 하시겠습니까?')){return false;}">내 정보 수정</a></center>
 	</sec:authorize>
 	</p>
         <div class="page-content-wrapper-inner">
@@ -146,6 +211,77 @@
     <script src="../assets/js/dashboard.js"></script>
     <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
     <script type="text/javascript" src="../js/mypage.js"></script>
+    <script type="text/javascript">
+    $(function() {
+    	
+        $("#avatar").on('change', function(){
+            readURL(this);
+        });
+    });
+    
+    function readURL(input) {
+        if (input.files && input.files[0]) {
+           var reader = new FileReader();
+           reader.onload = function (e) {
+              $('#image').attr('src', e.target.result);
+           }
+           reader.readAsDataURL(input.files[0]);
+        }
+        
+    }
+
+    function delete1(){
+       if(confirm("사진을 삭제하시겠습니까?") == true){
+       $.ajax({
+          type : 'POST',
+          url : '../member/delImage',
+          data : {
+             
+          },
+       
+          dataType :'text',
+
+          success : function(message) {
+                 alert(message);
+                location.href="../member/myPage";
+              },
+              error:function(requeest, status, error){
+                 alert(error);
+              },
+       })
+    }
+   }
+
+
+    //왜 여기안타지?
+    function upload(){
+    	   var form = $('#formId')[0];
+    	   var formData = new FormData(form);
+;
+    	   $.ajax({
+    	      type:"post",
+    	      enctype:'multipart/form-data',
+    	       url:'../member/setImage',
+    	       data:formData,
+    	       dataType :'text',
+    	       processData:false,
+    	       contentType:false,
+    	       cache:false,
+    	       success : function(message) {
+    	            alert(message);
+
+			          location.href="../member/myPage";
+    	          },
+    	       error:function(e){
+    	           alert("error : ", e);
+    	       },
+    	   });
+    	}
+       
+    function check(){
+    	location.reload(); 
+    }
+    </script>
 	
 	
 </body>

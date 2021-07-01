@@ -37,12 +37,18 @@ public class EachEpController {
 	private ReviewService reviewService;
 	@Autowired
 	private MemberService memberService;
+
+
+	//결제
+
+
 	@Autowired
 	private PointService pointService;
 	//결제
 	
 	
 	@GetMapping("eachEpList")
+
 	public void getList(@RequestParam Map<String,Object> param,Pager pager,Model model,HttpSession httpSession,MemberVO memberVO,Authentication auth2, UseTicketVO useTicketVO,TicketBoxVO ticketBoxVO)throws Exception{
 
 		if(auth2 != null) {
@@ -52,11 +58,13 @@ public class EachEpController {
 	    	model.addAttribute("useTicketVO", utl); 
 	    }
 		
-		ticketBoxVO = pointService.checkTicketStock(param, ticketBoxVO);
+		/* ticketBoxVO = pointService.checkTicketStock(param, ticketBoxVO); */
 		ToonVO list=eachEpService.getList(pager);	
 		
-		model.addAttribute("info",param);
-		model.addAttribute("ticketBox",ticketBoxVO);
+		/*
+		 * model.addAttribute("info",param);
+		 * model.addAttribute("ticketBox",ticketBoxVO);
+		 */
 		model.addAttribute("memberVO", memberVO); 
 		model.addAttribute("toonVO", list);
 		model.addAttribute("pager", pager);
@@ -65,26 +73,51 @@ public class EachEpController {
 		}
 
 	@GetMapping("eachEpSelect")
-	public void getSelect(EachEpVO eachEpVO,Pager pager, Model model,ModelAndView modelAndView,MemberVO memberVO,Authentication auth2)throws Exception{
-		ToonVO list= eachEpService.getSelect(eachEpVO);
-		ModelAndView mv = new ModelAndView();
+	public void getSelect(EachEpVO eachEpVO,Pager pager, Model model,ModelAndView modelAndView,MemberVO memberVO, UseTicketVO useTicketVO, Authentication auth2)throws Exception{
+
+		
 		if(auth2 != null) {
-	    	  memberVO = memberService.myPage((MemberVO) auth2.getPrincipal());
-	    	  mv.addObject("memberVO",memberVO);
-	      }
+			
+			memberVO = memberService.myPage((MemberVO) auth2.getPrincipal());
+	    	useTicketVO.setUsername(memberVO.getUsername());
+	    	System.out.println(useTicketVO);
+	    	List<UseTicketVO> utl = pointService.getToonTicktList(useTicketVO, pager);
+	    	model.addAttribute("useTicketVO", utl); 
+	    }
+		
+		ToonVO list=eachEpService.getList(pager);
+
+		model.addAttribute("memberVO", memberVO); 
 		
 		model.addAttribute("toonVO", list);
-		model.addAttribute("listsize", list.getEachEpVO().size());
-		
-		pager.setEpNum(eachEpVO.getEachEpNum());
-		pager.setEachEpNum(eachEpVO.getEachEpNum());
-		
-		List<ReviewVO> reviewVO = reviewService.getList(pager);
-		list.getEachEpVO().get(0).setReviewVO(reviewVO);
-		
-		System.out.println(list.getEachEpVO().size());
+		model.addAttribute("pager", pager);
+		System.out.println("username"+memberVO.getUsername());
+	    
 	}
 	
+//	@GetMapping("eachEpSelect")
+//	public void getSelect(EachEpVO eachEpVO,Pager pager, Model model, MemberVO memberVO, Authentication auth2)throws Exception{
+//		
+//		ToonVO list= eachEpService.getSelect(eachEpVO);
+//		ModelAndView mv = new ModelAndView();
+//		if(auth2 != null) {
+//	    	  memberVO = memberService.myPage((MemberVO) auth2.getPrincipal());
+//	    	  mv.addObject("memberVO",memberVO);
+//	      }
+//		
+//		model.addAttribute("toonVO", list);
+//		model.addAttribute("listsize", list.getEachEpVO().size());
+//		
+//		pager.setEpNum(eachEpVO.getEachEpNum());
+//		pager.setEachEpNum(eachEpVO.getEachEpNum());
+//		
+//		List<ReviewVO> reviewVO = reviewService.getList(pager);
+//		list.getEachEpVO().get(0).setReviewVO(reviewVO);
+//		
+//		System.out.println(list.getEachEpVO().size());
+//	}
+	
+
 	@GetMapping("eachEpSelect2")
 	public void getSelect2(EachEpVO eachEpVO,Pager pager, Model model,ModelAndView modelAndView,MemberVO memberVO,Authentication auth2)throws Exception{
 		ToonVO list= eachEpService.getSelect(eachEpVO);
