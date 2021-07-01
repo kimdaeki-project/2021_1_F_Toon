@@ -26,5 +26,10 @@
 		DELETE FROM review WHERE
 		revNum= #{revNum}
 	</delete>
+	
+	<update id="updateReview" parameterType="ReviewVO">
+		UPDATE review SET comments=#{comments}, commentDate=NOW()
+		WHERE revNum=#{revNum}
+	</update>
 
 </mapper>

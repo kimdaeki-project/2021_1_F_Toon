@@ -14,5 +14,5 @@ public interface ReviewMapper {
 	public long getTotalCount(Pager pager) throws Exception;
 	public int setReview(ReviewVO reviewVO) throws Exception;
 	public int delReview(ReviewVO reviewVO) throws Exception;
-	
+	public int updateReview(ReviewVO reviewVO)throws Exception;
 }

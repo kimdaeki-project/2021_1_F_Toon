@@ -30,4 +30,8 @@ public class ReviewService {
 		return reviewMapper.delReview(reviewVO);
 	}
 	
+	public int updateReview(ReviewVO reviewVO) throws Exception {
+		return reviewMapper.updateReview(reviewVO);
+	}
+	
 }
