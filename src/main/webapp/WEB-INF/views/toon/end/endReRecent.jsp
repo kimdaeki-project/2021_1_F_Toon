@@ -44,7 +44,7 @@
 		<c:set var="i" value="0" /> <c:set var="j" value="3" />			
 			<ul>
 				<c:forEach items="${end}" var="end">
-					<li style="float: left; margin: 30px;"><a href="/toon/eachEpList?toonNum=${end.toonNum}">
+					<li style="float: left; margin: 30px;"><a href="/toon/endToonEpList?toonNum=${end.toonNum}">
 					<img width=150px height=150px src=${end.titleImg}></a><br><br><h3>${end.toonTitle}</h3></li>
 				</c:forEach>
 
