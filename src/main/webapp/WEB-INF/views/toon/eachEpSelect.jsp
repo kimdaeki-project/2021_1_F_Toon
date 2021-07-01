@@ -61,7 +61,7 @@
     </tr>
     
     <tr>
-    	<td><h4>요약 : ${toonVO.toonSum} </h4></td>
+    	<td><h4> ${toonVO.toonSum} </h4></td>
     </tr>
     
      <tr>
@@ -161,6 +161,7 @@
                <td>${reviewVO1.username}</td>
                <td>${reviewVO1.commentDate}</td>
                <td>${reviewVO1.rating}점</td>
+               <td></td>
             </tr>
             <tr>
                <td colspan="2" id="revComment${reviewVO1.revNum}">${reviewVO1.comments}</td>
@@ -171,6 +172,7 @@
                
                <sec:authorize access="isAuthenticated()">
                <sec:authentication property="principal.username" var="loginUser"/>
+               	<td></td>
                   <c:if test="${reviewVO1.username == loginUser}">
                      <td>
                         <button class="updateReview btn-outline-primary" title="${reviewVO1.revNum}" value="${reviewVO1.revNum}"
