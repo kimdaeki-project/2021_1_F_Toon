@@ -88,7 +88,7 @@ SELECT *
 	FROM toon t JOIN
 	member m ON t.writerId = m.username
 	WHERE state=0
-	ORDER BY totalHit DESC LIMIT 21	
+	ORDER BY totalHit DESC LIMIT 20
 	</select>
 	
 	<select id="rankingAver" parameterType="ToonVO" resultType="ToonVO">
@@ -96,7 +96,7 @@ SELECT *
 	FROM toon t JOIN
 	member m ON t.writerId = m.username
 	WHERE state=0
-	ORDER BY ratingSum/ratingPerson DESC LIMIT 21	
+	ORDER BY ratingSum/ratingPerson DESC LIMIT 20	
 	</select>
 	
 	<select id="rankingRecent" parameterType="ToonVO" resultType="ToonVO">
@@ -107,7 +107,7 @@ SELECT *
 	JOIN eachep e ON t.toonNum = e.toonNum
 	WHERE state=0
 	GROUP BY t.toonNum 
-	ORDER BY max(e.epDate) DESC LIMIT 21
+	ORDER BY max(e.epDate) DESC LIMIT 20
 	</select>
 	
 	<select id="endRe" parameterType="ToonVO" resultType="ToonVO">

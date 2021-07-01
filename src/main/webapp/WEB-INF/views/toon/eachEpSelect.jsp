@@ -12,90 +12,134 @@
 <title>Insert title here</title>
 <link rel="stylesheet" href="../css/header.css">
 <link rel="stylesheet" href="../css/eachEp/star.css">
+<style>
+#left-box {
+    width: 100px;
+/*      background-color: red; */
+    float: left;
+}
+#center-box {
+    text-align: center;
+/*     background-color: yellow; */
+    margin: 0 auto;
+}
+#right-box {
+    width: 100px;
+/*     background-color: blue; */
+    float: right;
+    text-align: right;
+}
+</style>
 
 </head>
 <body>
 <c:import url="../fragments/header.jsp"/>
-   <!-- 웹툰 소개 -->
-   <div class="comicinfo">
-      <div class="thumb">
-         <a href="/toon/eachEpList?toonNum=${toonVO.toonNum}">
-            <img src="${toonVO.titleImg}">
-            <span class="mask"></span>
-            </a>
-      </div>
-      <div class="detail">
-         <h2>${toonVO.toonTitle}
-         <span class="wrt_nm">${toonVO.nickname}</span>
-         </h2>
-         <p><h2>${toonVO.toonSum}</h2></p>
-      <p class="detail_info"><span class="genre">장르 : ${toonVO.genre}</span></p>
-      <ul class="btn_group">
-         <li><a href="#" title="관심웹툰" class="book_maker on" id="check_favorite">
-         	<c:choose>
-	      		<c:when test="${empty favorToon}">
-	     		 	<span class="like">관심웹툰등록</span>
-	      		</c:when>
-	      		<c:otherwise>
-	      			<span class="like">관심웹툰해제</span>
-	      		</c:otherwise>
-	     	</c:choose>
-		 </a></li>
-         <li><a href="/toon/eachEpSelect?toonNum=${toonVO.toonNum}&eachEpNum=1&epNum=1" title="첫회보기" class="first"><span>첫회보기</span></a></li>
-         <li><a href="/toon/eachEpList?toonNum=${toonVO.toonNum}" title="목록보기" class="backToTheList"><span>목록보기</span></a></li>
-      </ul>
-      </div>
-   </div>
 
-   <div class="tit_area">
-      <div class="view">
-         <h3>${toonVO.eachEpVO['0'].epTitle}</h3>
-         <div class="btn_area">
-            <c:if test="${toonVO.eachEpVO['0'].eachEpNum!=1}">
-               <span class="pre"> 
-               <a href="/toon/eachEpSelect?toonNum=${toonVO.toonNum}&eachEpNum=${toonVO.eachEpVO['0'].eachEpNum-1}&epNum=${toonVO.eachEpVO['0'].epNum-1}">이전화</a>
-               </span>
-            </c:if>
-            <c:if test="${toonVO.eachEpVO['0'].eachEpNum<pager.maxEp}">
-               <span class="next"> 
-               <a href="/toon/eachEpSelect?toonNum=${toonVO.toonNum}&eachEpNum=${toonVO.eachEpVO['0'].eachEpNum+1}&epNum=${toonVO.eachEpVO['0'].epNum+1}">다음화</a>
-               </span>
-            </c:if>
-         </div>
-      </div>
-      <div class="vote_lst">
-         <dl class="lt">
-            <dt>
-               <img src="https://ssl.pstatic.net/static/comic/images/migration/detail/txt_point_all.gif"
-                  width="39" height="11" alt="회별별점">
-            </dt>
-            <dd class="total">
-               <div class="rating_type4" id="topTotalStarPoint">
-                  <span class="star"><em style="width: 98%">평점</em></span> 
+
+    <div id='left-box'>
+      
+   </div>    
+    <div id='right-box'>
+    
+    </div>
+  
+
+    <div id='center-box'>
+
+
+    <table width="70%">
+    <tr>
+       <td rowspan="4" align="right">
+          <div class="thumb">
+               <a href="/toon/eachEpList?toonNum=${toonVO.toonNum}">
+               <img src="${toonVO.titleImg}" width=260px height=230px>
+               <span class="mask"></span>
+             </a>
+            </div> 
+         </td>
+         
+       <td><h2>${toonVO.toonTitle} / <span class="wrt_nm">${toonVO.nickname}</span> </h2></td>
+    </tr>
+    
+    <tr>
+       <td><h4> ${toonVO.toonSum} </h4></td>
+
+    </tr>
+    
+     <tr>
+       <td><h4>장르 : ${toonVO.genre}</h4></td>
+    </tr>
+  
+      <tr>
+       <td>
+       
+     	  <a href="#" title="관심웹툰" class="book_maker on" id="check_favorite">
+            <c:choose>
+               <c:when test="${empty favorToon}">
+                  <button class="like btn-outline-info">관심웹툰등록</button>
+               </c:when>
+               <c:otherwise>
+                  <button class="like btn-info">관심웹툰해제</button>
+               </c:otherwise>
+           </c:choose>
+       </a> 
+       
+      <a href="/toon/eachEpSelect?toonNum=${toonVO.toonNum}&eachEpNum=1&epNum=${toonVO.eachEpVO['0'].epNum}" title="첫회보기" class="first"><button class="btn-outline-primary">첫회보기</button></a>
+       <a href="/toon/eachEpList?toonNum=${toonVO.toonNum}" title="목록보기" class="backToTheList"><button class="btn-outline-secondary">목록보기</button></a>
+       
+       </td>
+    </tr>
+     
+    </table><br>
+       
+     <!-- 웹툰 소개 -->
+   <center><div style="width:1010px; height:50px; text-align: center; ">
+      <h3 style="color: black">${toonVO.eachEpVO['0'].epTitle}</h3>
+   </div></center>
+   
+   <center><div style="width:1010px; height:50px;">
+      회별 별점 :  <span class="star"><em style="width: 98%">평점</em></span> 
                   <span id="topPointTotalNumber"><strong><fmt:formatNumber value="${toonVO.eachEpVO['0'].epRatingSum/toonVO.eachEpVO['0'].epRatingPerson}" pattern=".00"/></strong></span> 
                   <span class="pointTotalPerson">(참여 <em>${toonVO.eachEpVO['0'].epRatingPerson}</em>)</span>
-               </div>
-            </dd>
+         &nbsp &nbsp &nbsp &nbsp &nbsp 
+         
+        등록일 : ${toonVO.eachEpVO['0'].epDate}  
+         &nbsp &nbsp &nbsp &nbsp 
+        
+         &nbsp &nbsp &nbsp 
+            <c:if test="${toonVO.eachEpVO['0'].eachEpNum!=1}">
+               <button class="btn-outline-primary">
+               <span class="pre"> 
+               <a href="/toon/eachEpSelect?toonNum=${toonVO.toonNum}&eachEpNum=${toonVO.eachEpVO['0'].eachEpNum-1}&epNum=${toonVO.eachEpVO['0'].epNum-1}">이전화</a>
+               </span></button>
+            </c:if>
+            <c:if test="${toonVO.eachEpVO['0'].eachEpNum<pager.maxEp}">
+               <button class="btn-outline-primary">
+               <span class="next"> 
+               <a href="/toon/eachEpSelect?toonNum=${toonVO.toonNum}&eachEpNum=${toonVO.eachEpVO['0'].eachEpNum+1}&epNum=${toonVO.eachEpVO['0'].epNum+1}">다음화</a>
+               </span></button>
+            </c:if>
+         </div></center>         
+   
 
-         </dl>
-         <dl class="rt">
-            <dt>등록일</dt>
-            <dd class="date">${toonVO.eachEpVO['0'].epDate}</dd>
-         </dl>
-      </div>
-   </div>   
+   <div class="tit_area">
+
 
    <!-- content Img  -->
    <div class="wt_viewer" style="background: #FFFFFF">
    <img src="${toonVO.eachEpVO['0'].epContentImg}" alt="comic content" id="content_image_0"
-      oncontextmenu="return false" ondragstart="return false" onselectstart="return false" >
+   oncontextmenu="return false" ondragstart="return false">
+   </div> <br><br>
+
    </div>
 
    <!-- 리뷰,별점 -->
-   <div class="wrap">
-      <h2>별점 & 댓글</h2>
-      
-      <div id="rating" class="rating">
+   
+   <table>
+      <tr>
+        <th><h3>별점</h3></th>
+        <th></th>
+        <th><div id="rating" class="rating">
          <div class="startRadio">
               <c:forEach begin="1" end="10" var="i">
               <label class="startRadio__box">
@@ -104,18 +148,25 @@
               </label>
               </c:forEach>
          </div>
-      </div>
+      </div></th>
+         <th></th>
       
-      <div class="review_contents">
-         <div class="warning_msg">별점과 댓글 모두 입력해주세요.</div>
-         <textarea rows="10" id="comments" class="review_textarea" ></textarea>
-      </div>
-      <input type="button" id="save2" value="등록">
-   </div>
+
+      </tr>
+      <tr>
+        <td><h3>댓글</h3></td>
+        <td></td>
+        <td> <div class="review_contents">
+         <textarea rows="2" id="comments" class="review_textarea" style="width: 500px" placeholder="별점과 댓글 모두 입력해주세요."></textarea>
+      </div></td>
+         <td>&nbsp &nbsp <input type="button" id="save" value="등록"></td>
+      </tr>
+      
+    </table>
 
    <!-- 댓글 리스트 -->   
 
-   <div id="review_page">
+  <div id="review_page">
    <table class="table table-hover reviewList">
       <c:forEach items="${toonVO.eachEpVO['0'].reviewVO}" var="reviewVO1">
          <tbody>
@@ -125,16 +176,20 @@
                <td>${reviewVO1.rating}점</td>
             </tr>
             <tr>
-               <td colspan="2">${reviewVO1.comments}</td>
+               <td colspan="2" id="revComment${reviewVO1.revNum}">${reviewVO1.comments}</td>
                
                <sec:authorize access="isAnonymous()">
-                  <td></td>
+                  <td> </td>
                </sec:authorize>
                
                <sec:authorize access="isAuthenticated()">
                <sec:authentication property="principal.username" var="loginUser"/>
                   <c:if test="${reviewVO1.username == loginUser}">
-                     <td><button class="delReview" title="${reviewVO1.revNum}" value="${reviewVO1.revNum}">삭제</button></td>
+                     <td>
+                        <button class="updateReview btn-outline-primary" title="${reviewVO1.revNum}" value="${reviewVO1.revNum}"
+                           data-toggle='modal' data-target='#modifyModal'>수정</button>
+                        <button class="delReview btn-outline-success" title="${reviewVO1.revNum}" value="${reviewVO1.revNum}">삭제</button>
+                     </td>
                   </c:if>
                </sec:authorize>
             </tr>
@@ -165,17 +220,38 @@
    
    </div>   
    
+   <div class="modal fade" id="modifyModal" role="dialog">
+     <div class="modal-dialog">
+       <div class="modal-content">
+         <div class="modal-header"> <button type="button" class="close" data-dismiss="modal">&times;</button>
+           <h4 class="modal-title">댓글 수정</h4>
+         </div>
+         <div class="modal-body">
+           <div class="form-group">
+            <label for="reply_no">댓글 번호</label> <input class="form-control" id="reply_no" name="reply_no" readonly> </div>
+           <div class="form-group">
+            <label for="reply_text">댓글 내용</label> <input class="form-control" id="reply_text" name="reply_text" placeholder="댓글 내용을 입력해주세요."> </div>
+           <div class="form-group">
+            <label for="reply_writer">댓글 작성자</label> <input class="form-control" id="reply_writer" name="reply_writer" readonly> </div>
+         </div>
+         <div class="modal-footer"> 
+            <button type="button" class="btn btn-success modalModBtn">수정</button>
+            <button type="button" class="btn btn-default pull-left" data-dismiss="modal">닫기</button> 
+         </div>
+       </div>
+     </div>
+   </div>
+   
    <input type="hidden" id="toonNum" value="${toonVO.toonNum}">
    <input type="hidden" id="epNum" value="${toonVO.eachEpVO['0'].epNum}">
    <input type="hidden" id="eachEpNum" value="${toonVO.eachEpVO['0'].eachEpNum}">
-	<sec:authorize access="isAuthenticated()">
+   <sec:authorize access="isAuthenticated()">
         <sec:authentication property="principal.username" var="loginUser"/>
         <input type="hidden" id="username" value="${loginUser}">
-	</sec:authorize>
-	
+   </sec:authorize>
 
    <script type="text/javascript" src="../js/toon/favoriteToon.js"></script>
    <script type="text/javascript" src="../js/toon/reviews.js"></script>
    
 </body>
-</html>
+</html> 

@@ -21,7 +21,10 @@
 			<sec:authorize access="isAuthenticated()">
 				<sec:authentication property="principal.username" var="loginUser" />
 				<c:if test="${reviewVO1.username == loginUser}">
-					<td><button class="delReview" title="${reviewVO1.revNum}"
+					<td>
+					<button class="updateReview" title="${reviewVO1.revNum}" value="${reviewVO1.revNum}"
+                     		data-toggle='modal' data-target='#modifyModal'>수정</button>
+					<button class="delReview" title="${reviewVO1.revNum}"
 							value="${reviewVO1.revNum}">삭제</button></td>
 				</c:if>
 			</sec:authorize>
