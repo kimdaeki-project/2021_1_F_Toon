@@ -49,7 +49,7 @@
 		AND point <![CDATA[<]]>  0 ORDER BY cDate DESC 
 	</select>
 	
-	<!-- 조회(List) : 어떤 유저가 소장한 웹툰이력을 최근 사용순으로 조회하기  -->
+	<!-- 조회(List) : 어떤 유저가 구입한 웹툰관련 이력을 최근 사용순으로 조회하기  -->
 	<select id="getToonTicktList"  parameterType="java.util.Map" resultMap="pointResult">
 		SELECT * FROM USER03.point  
 		WHERE username=#{memberVO.username} AND point <![CDATA[<]]> 0 
@@ -112,8 +112,8 @@
 	
 <!-- 포인트로 소장권  구매 (member02의 경우) -->
 	<!--  1 .이미 구매한 항목인지 확인: 알아서 걸러 -->	
-	<select id="checkTicketBox" parameterType="TicketBoxVO" resultType="java.lang.Long">
-		SELECT COUNT(*) FROM ticketbox WHERE toonNum = #{toonNum} AND username= #{username}
+	<select id="checkTicketBox" parameterType="TicketBoxVO" resultType="Long">
+		SELECT COUNT(*) FROM ticketbox WHERE( toonNum = #{toonNum} AND username= #{username} )
 	</select>
 	<!--  2.재고 사항 확인하기  -->
 	<select id="checkTicketStock" parameterType="TicketBoxVO" resultType="TicketBoxVO">
@@ -122,7 +122,7 @@
 	</select>
 	<!--  2. 소장권  UPDATE 하거나 INSERT 하기  -->
 	<update id="updateTicketStock" parameterType="TicketBoxVO">
-		UPDATE user03.ticketbox SET stock =(ticketbox.stock+ #{stock}) 
+		UPDATE user03.ticketbox SET stock =(stock+ #{stock}) 
 		WHERE  username= #{username} AND (toonNum= #{toonNum} AND sort=#{sort})
 	</update> 
 	<!--  INSERT -->
@@ -135,14 +135,43 @@
 	
 	<!-- 1. 소장권 INSERT 하기  -->	
 	<insert id="setTicketUselist" parameterType="UseTicketVO">
-		INSERT INTO user03.useticket (username,epNum,sort,toonNum,utDate) VALUES (#{username}, #{epNum},#{sort}), #{toonNum},NOW())
+		INSERT INTO user03.useticket (username, epNum,sort,toonNum,utDate) VALUES (#{username}, #{epNum},#{sort}, #{toonNum},NOW())
 	</insert>
+	<update id="setTicketCount" parameterType="java.util.Map">
+		UPDATE ticketbox SET stock = (ticketbox.stock- 1) WHERE  username='member02' AND `toonNum`=1
+	</update>
 	<!-- 조회(Long)  : 어떤 유저가 가진 어떤 웹툰의 총 소장권 갯수 -->
 	<select id="getTotalTicketCount" parameterType="UseTicketVO" resultType="Long">
 		SELECT COUNT(*) FROM useticket  WHERE (username=#{username} AND toonNum = #{toonNum} )AND sort = 1
 	</select>
-	
-	<!--  Eachep와 useTicket Select가져오기 -->
-	<!--  -->
+	<!-- 조회(long) : 어떤 유저가 가진 어떤 ep의 소장여부 -->
+	<select id="checkEpGet" parameterType="java.util.Map" resultType="Long">
+		SELECT COUNT(*) FROM useticket WHERE username = #{username} AND epNum = #{epNum}
+	</select>
+	<select id="SelectEachEpNum" parameterType="java.util.Map" resultType="Long">
+		SELECT eachep.eachEpNum FROM eachep WHERE epNum = #{epNum} 
+	</select>
+<!-- UseTicket 조회하기 -->
+	<resultMap type="UseTicketVO" id="UseTWEpNToon">
+		<result property="utDate" column="utDate"/>
+		<association property="toonVO" javaType="ToonVO">
+			<id property="toonNum" column="toonNum"/>
+			<result property="toonTitle" column="toonTitle"/>
+			<result property="titleImg" column="titleImg"/>
+		</association>
+		<association property="eachEpVO" javaType="EachEpVO">
+			<id property="eachEpNum" column="eachEpNum"/>
+			<result property="epTitle" column="epTitle"/>
+		</association>
+	</resultMap>
+	<!-- 페이징 처리용 id는 getTotalCount4 , useTicketList 작성하기-->
+	<select id="getTicketUseList" parameterType="java.util.Map" resultMap="UseTWEpNToon">
+		SELECT ut.utDate,ep.epTitle,ep.eachEpNum,tt.titleImg,tt.toonTitle,tt.toonNum 
+		FROM useticket AS ut,eachep AS ep ,toon AS tt 
+		WHERE ep.epNum = ut.epNum AND tt.toonNum = ut.toonNum 
+		AND ut.username =#{memberVO.username} 
+		ORDER BY ut.utDate DESC 
+		limit #{pager.startRow}, #{pager.perPage} 
+	</select>
 	
    </mapper>

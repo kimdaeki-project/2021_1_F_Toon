@@ -17,20 +17,19 @@ $('#check_favorite').click(function() {
 		alert("로그인 후 관심웹툰 설정이 가능합니다.");
 		return false;
 	} else {
-
 		$.ajax({
 			type: "POST",
-			url: '../favorite/delFavorite',
+			url: '../favorite/setFavorite',
 			data: {
 				"toonNum":toonNum,
 				"username":username
 			},
 			success: function(result) {
+				result = Number(result.trim());
 				if (result > 0) {
 					alert("관심웹툰을 등록하셨습니다.");
-					$(".like").html("관심웹툰해제")	//<-like class html문을 대체
-				}else{alert("관심웹툰을 삭제하셨습니다.")
-					$(".like").html("관심웹툰등록")}
+					$("#check_favorite").load(location.href=location.href);
+				}else{alert("등록 실패")}
 			}
 		})
 	}

@@ -1,19 +1,4 @@
-/**
- * 1. json 형식 : 
- {
-	username : "username",
-	toonNum : "toonNum", 
- 	toonTitle : "toonTitle"
- 	cur_point : "cur_point" , 
- 	stock: "stock"
- 	price : "200" 
- 	sort :  1	
- 	point   point
- 	isAlready : "isAlready" // Ticket insert,update 구분 구별 
-}
- */
- 
-//1. getTICKET.jsp 페이지에서 바로 가져오기 
+
 let isAlready;
 let curstock = $('#curstock').val();
 let ifstock;
@@ -23,22 +8,32 @@ let curpoint = parseInt($('#curpoint').val());
 let toonTitle = $('#toonTitle').val();
 let contents = $('#contents').val();
 
-if(curstock == ""){ 
-	//값이 없음 
-	isAlready = 0;
-	curstock = 0;
-	document.getElementsByName('curstock').value = 0; 
-	isAlready = $('#isAlready').val(isAlready);
-	$('input[name=curstock]').val(0);
-	$('input[name=stock]').val(0);
-	//alert("stock :"+ stock + "  curpoint : " + curpoint + " typeOf point :" + typeof curpoint + " typeOf stock :" + typeof stock);
-}else{
-	isAlready = 1;
-	//alert(isAlready);
-	curstock = parseInt($('#curstock').val());
-	ifstock = curstock;
-	isAlready = $('#isAlready').val(isAlready);
+function isEmpty(str){
+	if(typeof str == "undefined" || str == null || str == ""){
+		 return true;
+	}else{
+		 return false ;
+	}
+           
 }
+//빈 곳에 값 넣기
+function nvl(str, defaultStr){
+         
+        if(typeof str == "undefined" || str == null || str == "")
+            str = defaultStr ;
+         
+        return str ;
+}
+if(isEmpty(curstock)){
+	nvl(curstock, '0');
+	alert(curstock);
+}else{
+	
+}
+//parseInt로 변환
+curstock = parseInt(curstock);
+alert(typeof curstock);
+
 $('input[name=ifstock]').val(ifstock);
 //radio 버튼 클릭시 결과 나오기  
 $("input[name='point']").click(function(){

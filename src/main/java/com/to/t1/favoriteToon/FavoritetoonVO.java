@@ -2,6 +2,10 @@ package com.to.t1.favoriteToon;
 
 import java.sql.Timestamp;
 
+import com.to.t1.member.MemberVO;
+import com.to.t1.toon.ToonVO;
+import com.to.t1.toon.eachep.EachEpVO;
+
 import lombok.Data;
 
 @Data
