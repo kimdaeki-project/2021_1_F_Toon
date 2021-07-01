@@ -54,7 +54,7 @@
                         </div>
                         <div class="short_details">
                             <div class="meta-top d-flex">
-                                <a style="font-size:20px;" href="/toon/eachEpList?toonNum=52">유미의 세포들</a>
+                                <a style="font-size:20px;" href="/toon/endEpList?toonNum=52">유미의 세포들</a>
                             </div>
                                 <h4>유미소개</h4>
                             

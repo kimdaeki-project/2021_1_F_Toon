@@ -1,9 +1,4 @@
-//유효성 검사 관련
-//https://fruitdev.tistory.com/200
 
-//전역변수
-
-alert("java연결"); 
 let defaultStr = 0; //기본 소장권 갯수
 let curpoint = $('#cur-point').val();
 let ticketstock = $('#ticket-stock').val();
@@ -159,7 +154,7 @@ function usePointtoGetTicket(){
 function checkUseTicket(epNump,eachEpNump){
 	
 	//보낼 데이터 : username , epNum ,toonNum
-	var send = { username: usernamep, toonNum : tNum,epNum: epNump, echEpNum : eachEpNump};
+	var send = { username: usernamep, toonNum : tNum, epNum: epNump, eachEpNum : eachEpNump};
 	$.ajax({
 		type : 'POST',
 		data : JSON.stringify(send),
@@ -176,45 +171,43 @@ function checkUseTicket(epNump,eachEpNump){
 		}
 	}).done(function(result){
 		
-		if(result != 0){
-			alert("소장권이 있습니다 페이지를 이동합니다");
-			url = result;
-			gotolocation(url);
-		}else{
+		if(result == '0'){
 			alert("소장이력이 없습니다");
 			if(stCheck){ //소장권 충분
 				var text ="재고가있습니다 \n 소장권을 사용하시겠습니까?";
 				comfFunction(text,getTicketAjax);
-				
 			}else{ //소장권 안충분
 				if(pCheck){
-					var text = "포인트가 있습니다\n소장권구입후 바로 보시겠습니까?";
+					var text = "포인트 구입할수 있습니다\n소장권구입후 바로 보시겠습니까?";
 					comfFunction(text,usePointtoGetTicket);
 				}else{
-					if (!confirm("포인트가 부족합니다 \n포인트충전 페이지로 이동합니다 ")) {
-						gotolocation("/point/charge");
+					if (confirm("포인트가 부족합니다 \n포인트충전 페이지로 이동합니다")) {
+						 window.location.href = "point/charge";
     				}else { 
-	
  					}
 				}
 			}
+				
+		}else{
+			alert("소장권이 있습니다 페이지를 이동합니다");
+			url = result;
+			gotolocation(url);
 		}
 	}); 
 }/*end*/
 
 
 function clickATag(epNump1,eachEpNump1){
-	alert("함수실행");
-	alert(epNump1 + ':::'+eachEpNump1);
+	//alert("함수실행");
+	//alert(epNump1 + ':::'+eachEpNump1);
 	//전역변수 할당
 	epNump = epNump1;
 	eachEpNump=eachEpNump1;
-	
 	//alert(epNump+":::"+eachEpNump);
 	if(isEmpty(usernamep)){
 		var text = "소장권을 구입하거나 사용할려면 \n 로그인이 필요합니다";
 		if (confirm(text)) {
-			alert("예 선택"); // 로그인 페이지로 이동하기
+			//alert("예 선택"); // 로그인 페이지로 이동하기
 			var path ="/member/login";
 			gotolocation(path);
     	}else { // 현재 페이지 유지

@@ -48,13 +48,13 @@
                 <div class="col-lg-6">
                     <div class="single-blog style-five">
                         <div class="thumb">
-                         <a href="/toon/eachEpList?toonNum=103">
+                         <a href="/toon/endEpList?toonNum=103">
                             <img width=555px height=602px src="../../images/indeximage/yumi.jpg" alt="">
                             </a>
                         </div>
                         <div class="short_details">
                             <div class="meta-top d-flex">
-                                <a style="font-size:20px;" href="/toon/eachEpList?toonNum=103">유미의 세포들</a>
+                                <a style="font-size:20px;" href="/toon/endEpList?toonNum=103">유미의 세포들</a>
                             </div>
                                 <h4>유미소개</h4>
                             
@@ -69,13 +69,13 @@
                         <div class="col-lg-6">
                             <div class="single-blog style-five small">
                                 <div class="thumb">
-                                  <a href="/toon/eachEpList?toonNum=86">
+                                  <a href="/toon/endEpList?toonNum=86">
                                     <img width=262px height=212px src="../../images/indeximage/gosu.jpg" alt="">
                                     </a>
                                 </div>
                                 
                                     <div class="meta-top d-flex">
-                                        <a style="font-size:20px;" href="/toon/eachEpList?toonNum=86">고수</a>
+                                        <a style="font-size:20px;" href="/toon/endEpList?toonNum=86">고수</a>
                                     </div>
                                         <h4>고수 소개</h4>
                                    
@@ -87,13 +87,13 @@
                         <div class="col-lg-6">
                             <div class="single-blog style-five small">
                                 <div class="thumb">
-                                  <a href="/toon/eachEpList?toonNum=88">
+                                  <a href="/toon/endEpList?toonNum=88">
                                     <img width=262px height=212px src="../../images/indeximage/money.jpg" alt="">
                                     </a>
                                 </div>
                                 
                                     <div class="meta-top d-flex">
-                                        <a style="font-size:20px;" href="/toon/eachEpList?toonNum=88">머니 게임</a>
+                                        <a style="font-size:20px;" href="/toon/endEpList?toonNum=88">머니 게임</a>
                                     </div>
                                         <h4>머니게임 소개</h4>
                                     
@@ -104,13 +104,13 @@
                         <div class="col-lg-6">
                             <div class="single-blog style-five small">
                                 <div class="thumb">
-                                  <a href="/toon/eachEpList?toonNum=89">
+                                  <a href="/toon/endEpList?toonNum=89">
                                     <img width=262px height=212px src="../../images/indeximage/min.jpg" alt="">
                                     </a>
                                 </div>
                                 
                                     <div class="meta-top d-flex">
-                                        <a style="font-size:20px;" href="/toon/eachEpList?toonNum=89">민간인 통제구역</a>
+                                        <a style="font-size:20px;" href="/toon/endEpList?toonNum=89">민간인 통제구역</a>
                                     </div>
                                         <h4>민간인 소개</h4>
                                     
@@ -121,13 +121,13 @@
                         <div class="col-lg-6">
                             <div class="single-blog style-five small">
                                 <div class="thumb">
-                                  <a href="/toon/eachEpList?toonNum=93">
+                                  <a href="/toon/endEpList?toonNum=93">
                                     <img width=262px height=212px src="../../images/indeximage/dorong.jpg" alt="">
                                     </a>
                                 </div>
                               
                                     <div class="meta-top d-flex">
-                                        <a style="font-size:20px;" href="/toon/eachEpList?toonNum=93">도롱이</a>
+                                        <a style="font-size:20px;" href="/toon/endEpList?toonNum=93">도롱이</a>
                                     </div>
                                         <h4>도롱이 소개</h4>
                                     
@@ -145,7 +145,7 @@
 		<c:set var="i" value="0" /> <c:set var="j" value="3" />			
 			<ul>
 				<c:forEach items="${end}" var="end" >
-					<li style="float: left; margin: 30px;"><a href="/toon/eachEpList?toonNum=${end.toonNum}">
+					<li style="float: left; margin: 30px;"><a href="/toon/endEpList?toonNum=${end.toonNum}">
 					<img width=130px height=130px src=${end.titleImg}></a><br><br><h3>${end.toonTitle}</h3></li>
 				</c:forEach>
 

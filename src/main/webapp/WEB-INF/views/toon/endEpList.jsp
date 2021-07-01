@@ -7,6 +7,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
+<script type="text/javascript" src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
 <c:import url="../fragments/bootstrap.jsp"></c:import>
 <title>Insert title here</title>
 <link rel="stylesheet" href="../css/header.css">
@@ -62,19 +63,22 @@
          <th scope="col">제목</th>
          <th scope="col">별점</th>
          <th scope="col">등록일</th>
+         <th scope="col"></th>
       </tr>         
       </thead>
       
       <tbody>
       <c:forEach items="${toonVO.eachEpVO}" var="eachEpVO">
+     
          <tr>
+         
             <td class="imgalign">
                <sec:authorize access="isAnonymous()">
                   <a href="/toon/eachEpSelect?toonNum=${toonVO.toonNum}&eachEpNum=${eachEpVO.eachEpNum}&epNum=${eachEpVO.epNum}" >
                </sec:authorize>
-         
+          
                <sec:authorize access="isAuthenticated()">
-                  <a href="/toon/eachEpSelect?toonNum=${toonVO.toonNum}&eachEpNum=${eachEpVO.eachEpNum}&epNum=${eachEpVO.epNum}&username=<sec:authentication property="principal.username"/>" >
+                   <a href="/toon/eachEpSelect?toonNum=${toonVO.toonNum}&eachEpNum=${eachEpVO.eachEpNum}&epNum=${eachEpVO.epNum}&username=<sec:authentication property="principal.username"/>" >
                </sec:authorize>
                
                <img src="${eachEpVO.epSumImg}"
@@ -86,7 +90,7 @@
             <td class="title">
             
                <sec:authorize access="isAnonymous()">
-                  <a href="/toon/eachEpSelect?toonNum=${toonVO.toonNum}&eachEpNum=${eachEpVO.eachEpNum}&epNum=${eachEpVO.epNum}" >
+                 <a href="/toon/eachEpSelect?toonNum=${toonVO.toonNum}&eachEpNum=${eachEpVO.eachEpNum}&epNum=${eachEpVO.epNum}" >
                </sec:authorize>
          
                <sec:authorize access="isAuthenticated()">
@@ -102,7 +106,10 @@
                </div>
             </td>
             <td class="num"><span>${eachEpVO.epDate}</span></td>
+           <td><button class="btn btn-primary" type="button" onclick="clickATag(${eachEpVO.epNum},${eachEpVO.eachEpNum});">보러가기</button></td>
          </tr>
+         
+         
       </c:forEach>
       </tbody>
       </table>
@@ -133,7 +140,6 @@
       
 <script type="text/javascript" src="../js/toon/favoriteToon.js"></script>
 <script type="text/javascript" src="../js/pay/useTicket.js"></script>
-<script type="text/javascript" src="../js/pay/getTicket.js"></script>
 
 
 </div>

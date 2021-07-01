@@ -7,6 +7,8 @@
 <html>
 <head>
 <meta charset="UTF-8">
+<!-- ajax 사용하기 위한 것 -->
+<script type="text/javascript" src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
 <c:import url="../fragments/bootstrap.jsp"></c:import>
 <title>Insert title here</title>
 <link rel="stylesheet" href="../css/header.css">
@@ -87,7 +89,7 @@
      
     </table><br>
 
-   
+     <c:import url="./buyTicketForm.jsp"></c:import>
    <!-- 리스트 -->
 
       <table cellpadding="0" cellspacing="0" class="viewList">
@@ -104,6 +106,7 @@
       
       <tbody>
       <c:forEach items="${toonVO.eachEpVO}" var="eachEpVO">
+     
          <tr>
             <td class="imgalign">
                <sec:authorize access="isAnonymous()">
@@ -140,6 +143,7 @@
             </td>
             <td class="num"><span>${eachEpVO.epDate}</span></td>
          </tr>
+        </a>
       </c:forEach>
       </tbody>
       </table>
@@ -167,12 +171,11 @@
          <sec:authentication property="principal.username" var="loginUser"/>
          <input type="hidden" id="username" value="${loginUser}">
       </sec:authorize>
-      
+
 <script type="text/javascript" src="../js/toon/favoriteToon.js"></script>
-
-
+<script type="text/javascript" src="../js/pay/useTicket.js"></script>
 </div>
   </div>   
-
+ 
 </body>
 </html>

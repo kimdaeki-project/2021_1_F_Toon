@@ -54,7 +54,7 @@
                         </div>
                         <div class="short_details">
                             <div class="meta-top d-flex">
-                                <a style="font-size:20px;" href="/toon/eachEpList?toonNum=52">유미의 세포들</a>
+                                <a style="font-size:20px;" href="/toon/endEpList?toonNum=52">유미의 세포들</a>
                             </div>
                                 <h4>유미소개</h4>
                             
@@ -75,7 +75,7 @@
                                 </div>
                                 
                                     <div class="meta-top d-flex">
-                                        <a style="font-size:20px;" href="/toon/eachEpList?toonNum=39">고수</a>
+                                        <a style="font-size:20px;" href="/toon/endEpList?toonNum=39">고수</a>
                                     </div>
                                         <h4>고수 소개</h4>
                                    
@@ -93,7 +93,7 @@
                                 </div>
                                 
                                     <div class="meta-top d-flex">
-                                        <a style="font-size:20px;" href="/toon/eachEpList?toonNum=28">머니 게임</a>
+                                        <a style="font-size:20px;" href="/toon/endEpList?toonNum=28">머니 게임</a>
                                     </div>
                                         <h4>머니게임 소개</h4>
                                     
@@ -110,7 +110,7 @@
                                 </div>
                                 
                                     <div class="meta-top d-flex">
-                                        <a style="font-size:20px;" href="/toon/eachEpList?toonNum=37">민간인 통제구역</a>
+                                        <a style="font-size:20px;" href="/toon/endEpList?toonNum=37">민간인 통제구역</a>
                                     </div>
                                         <h4>민간인 소개</h4>
                                     
@@ -127,7 +127,7 @@
                                 </div>
                               
                                     <div class="meta-top d-flex">
-                                        <a style="font-size:20px;" href="/toon/eachEpList?toonNum=15">도롱이</a>
+                                        <a style="font-size:20px;" href="/toon/endEpList?toonNum=15">도롱이</a>
                                     </div>
                                         <h4>도롱이 소개</h4>
                                     
@@ -145,7 +145,7 @@
 		<c:set var="i" value="0" /> <c:set var="j" value="3" />			
 			<ul>
 				<c:forEach items="${end}" var="end" >
-					<li style="float: left; margin: 30px;"><a href="/toon/eachEpList?toonNum=${end.toonNum}">
+					<li style="float: left; margin: 30px;"><a href="/toon/endEpList?toonNum=${end.toonNum}">
 					<img width=130px height=130px src=${end.titleImg}></a><br><br><h3>${end.toonTitle}</h3></li>
 				</c:forEach>
 
@@ -156,15 +156,6 @@
         
     </div>
 
-
-	
-		
-
-	
-	
-	
-	
-	
 
 </body>
 </html>

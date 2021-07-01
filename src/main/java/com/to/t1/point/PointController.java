@@ -95,10 +95,11 @@ public class PointController {
 	@ResponseBody
 	public String checkUseTicket(@RequestBody Map<String,Object> param) throws Exception{
 		String url = "0";
-		System.out.println("param:" + param);
+		//System.out.println("param:" + param);
 		
 		String toonNum = String.valueOf(param.get("toonNum"));
 		String eachEpNum = String.valueOf(param.get("eachEpNum"));
+		String username = String.valueOf(param.get("username"));
 		System.out.println(toonNum + ":" + eachEpNum);
 		
 		long result = pointservice.CheckUseTicket(param);
@@ -107,9 +108,7 @@ public class PointController {
 		
 		if(result != 0) {
 			//해당 post전송하기
-			url = "/toon/eachEpSelect?toonNum="+toonNum+"&eachEpNum="+eachEpNum;
-		}else {
-			url = "0";
+			url = "toon/eachEpSelect?toonNum="+toonNum+"&eachEpNum="+eachEpNum+"&username="+username;
 		}
 		
 		return url;
@@ -128,17 +127,19 @@ public class PointController {
 		//티켓 쓰기...
 		int result = pointservice.setuseTicket(param, useTicketVO, ticketBoxVO);
 		//eachepNum 찾기
-		long toonNum = Long.parseLong(param.get("toonNum"));
+		long toonNum = Long.valueOf(param.get("toonNum"));
 		long eachEpNum = pointservice.SelectEachEpNum(param);
+		String username = param.get("username");
 		
 		//System.out.println(eachEpNum);
 		//3. 모두 성공하면 0 or 1 return 하기
 		if(result != 0) {
 			//해당 post전송하기
-			url = "/toon/eachEpSelect?toonNum="+toonNum+"&eachEpNum="+eachEpNum;
+			url = "toon/eachEpSelect?toonNum="+toonNum+"&eachEpNum="+eachEpNum+"&username="+username;
 		}else {
-			url = "/toon/eachEpList?toonNum="+toonNum;
+			url = "toon/endEpList?toonNum="+toonNum;
 		}
+		System.out.println(url);
 		return url;
 	}
 	//포인트로 티켓 1개 구매하기 

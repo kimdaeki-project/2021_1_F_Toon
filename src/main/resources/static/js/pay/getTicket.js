@@ -1,9 +1,10 @@
 
+
 let isAlready;
 let curstock = $('#curstock').val();
 let ifstock;
 let stock = 0;
-let curpoint = parseInt($('#curpoint').val());
+var curpoint = parseInt($('#curpoint').val());
 
 let toonNum = $('#toonNum').val()
 let toonTitle = $('#toonTitle').val();
@@ -47,10 +48,10 @@ $("input[name='point']").click(function(){
 	if(totalPoint < 0 ){
 		{
 		if (confirm("포인트가 모자랍니다 \n 충전페이지로 이동하시겠습니까?")) {
-			 location.href = "/point/charge";
+			 window.location.href = "/point/charge";
 	    }else {
 			alert("티켓구입을취소합니다");
-	    	location.href = nexturl;
+	    	window.location.href = nexturl;
 	    }
     }
 		
