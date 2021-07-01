@@ -84,7 +84,7 @@ function executeFunction(func){
 
 function comfFunction(text,func){
 	if (confirm(text)) {
-		alert("예선택"); // 포인트 차감 + 소장권 1 구매
+		 // 포인트 차감 + 소장권 1 구매
 		executeFunction(func);
     }else {
     	alert("아니오선택");

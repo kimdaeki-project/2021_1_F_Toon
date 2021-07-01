@@ -69,16 +69,24 @@ public class PointController {
 		
 		return "point/getTicket";
 	}
+	//티켓 뭉텅이나 한두개 구입하기
 	@PostMapping("getToonTicket")
-	public String getToonTicket(PointVO pointVO, TicketBoxVO ticketBoxVO,@RequestParam long isAlready, HttpSession httpSession)throws Exception {
+	public String getToonTicket(PointVO pointVO, TicketBoxVO ticketBoxVO,
+			@RequestParam long isAlready, NextSuccessVO nextSuccessVO,
+			HttpSession httpSession)throws Exception {
+		String path = "toon/eachEpList?toonNum=";
+		System.out.println("nextsuccess : "+ nextSuccessVO.getNextsuccess());
 		
-		//System.out.println("isA : "+isAlready);
-		pointservice.getTicket(pointVO, ticketBoxVO, isAlready);
+		int result = pointservice.getTicket(pointVO, ticketBoxVO, isAlready);
 		//경로 처리하기 
-		
-		return "toon/eachEpList";
+		System.out.println("get Ticket Result"+ result);
+		if(result != 0) {
+			path = path+ticketBoxVO.getToonNum();
+		}else {//소장권 구입 실패 시 , 그래도다음 페이지 갈 것 
+			path = path+ticketBoxVO.getToonNum();
+		}
+		return "redirect:../" + path ;
 	}
-	
 	
 	
 	//소장권 가지고 있는지 확인하기 있다면 페이지 이동

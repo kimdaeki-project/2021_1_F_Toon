@@ -5,9 +5,13 @@ let ifstock;
 let stock = 0;
 let curpoint = parseInt($('#curpoint').val());
 
+let toonNum = $('#toonNum').val()
 let toonTitle = $('#toonTitle').val();
 let contents = $('#contents').val();
 
+let nexturl = "toon/eachEpList?toonNum=" +toonNum;
+$('#nextsuccess').val(nexturl); 
+alert($('#nextsuccess').val());
 function isEmpty(str){
 	if(typeof str == "undefined" || str == null || str == ""){
 		 return true;
@@ -26,7 +30,7 @@ function nvl(str, defaultStr){
 }
 if(isEmpty(curstock)){
 	nvl(curstock, '0');
-	alert(curstock);
+	//alert(curstock);
 }else{
 	
 }
@@ -54,4 +58,6 @@ $("input[name='point']").click(function(){
 		contents = "소장권구매 : " + toonTitle  + " : " + stock + "개";
 		$('#contents').val(contents);
 	}
+	
 });
+//성공시 다음 url 가져오기 

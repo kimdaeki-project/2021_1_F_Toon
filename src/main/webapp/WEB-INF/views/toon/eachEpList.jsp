@@ -49,9 +49,10 @@
       </ul>
       </div>
    </div>
-   
+   <!-- 소장 form 불러오기 -->
+   <c:import url="./eachEpList.jsp"></c:import>
    <!-- 리스트 -->
-
+   
       <table cellpadding="0" cellspacing="0" class="viewList">
       <%-- <caption><span class="blind">회차별 목록</span></caption> --%>
       <col width="99"><col width="*"><col width="141"><col width="76">
@@ -71,10 +72,6 @@
                <sec:authorize access="isAnonymous()">
                   <a href="/toon/eachEpSelect?toonNum=${toonVO.toonNum}&eachEpNum=${eachEpVO.eachEpNum}&epNum=${eachEpVO.epNum}" >
                </sec:authorize>
-         
-               <sec:authorize access="isAuthenticated()">
-                  <a href="/toon/eachEpSelect?toonNum=${toonVO.toonNum}&eachEpNum=${eachEpVO.eachEpNum}&epNum=${eachEpVO.epNum}&username=<sec:authentication property="principal.username"/>" >
-               </sec:authorize>
                
                <img src="${eachEpVO.epSumImg}"
                   title="${eachEpVO.eachEpNum}화" alt="${eachEpVO.eachEpNum}화" width="71" height="41">
@@ -87,11 +84,6 @@
                <sec:authorize access="isAnonymous()">
                   <a href="/toon/eachEpSelect?toonNum=${toonVO.toonNum}&eachEpNum=${eachEpVO.eachEpNum}&epNum=${eachEpVO.epNum}" >
                </sec:authorize>
-         
-               <sec:authorize access="isAuthenticated()">
-                  <a href="/toon/eachEpSelect?toonNum=${toonVO.toonNum}&eachEpNum=${eachEpVO.eachEpNum}&epNum=${eachEpVO.epNum}&username=<sec:authentication property="principal.username"/>" >
-               </sec:authorize>
-               
             ${eachEpVO.eachEpNum}화</a>
             </td>
             <td>
@@ -139,6 +131,5 @@
 <!-- test 주석 작성하기 -->
 
 </div>
-
 </body>
 </html>

@@ -55,7 +55,7 @@
     		<input type="number" id="isAlready" name="isAlready" value="${isAlready}" readonly="readonly"/>
     		
     		<label> 티켓 사용 성공할 경우 가는 페이지 URL</label>
-    		<input id="next-location" name="next-location" value="" readonly="readonly" disabled="disabled"/>
+    		<input id="nextsuccess" name="nextsuccess" value="" readonly="readonly" disabled="disabled"/>
     		</div>
     		
     		<!-- 구입할 소장권 갯수 선택 -->
