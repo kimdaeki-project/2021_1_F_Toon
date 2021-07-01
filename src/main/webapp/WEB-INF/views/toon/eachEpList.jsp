@@ -130,8 +130,13 @@
          <input type="hidden" id="username" value="${loginUser}">
       </sec:authorize>
       
+      <div>
+      	<input value="test"hidden="hidden">
+      </div>
+      
+      
 <script type="text/javascript" src="../js/toon/favoriteToon.js"></script>
-
+<!-- test 주석 작성하기 -->
 
 </div>
 
