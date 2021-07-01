@@ -102,25 +102,22 @@
          &nbsp &nbsp &nbsp &nbsp &nbsp 
          
         등록일 : ${toonVO.eachEpVO['0'].epDate}  
-         &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp
+         &nbsp &nbsp &nbsp &nbsp 
         
          &nbsp &nbsp &nbsp 
         <c:if test="${toonVO.eachEpVO['0'].eachEpNum!=1}">
-        		<button>
+        		<button class="btn-outline-primary">
                <span class="pre"> 
                <a href="/toon/eachEpSelect?toonNum=${toonVO.toonNum}&eachEpNum=${toonVO.eachEpVO['0'].eachEpNum-1}&epNum=${toonVO.eachEpVO['0'].epNum-1}">이전화</a>
                </span></button>
             </c:if>
             <c:if test="${toonVO.eachEpVO['0'].eachEpNum<pager.maxEp}">
-            	<button>
+            	<button class="btn-outline-primary">
                <span class="next"> 
                <a href="/toon/eachEpSelect?toonNum=${toonVO.toonNum}&eachEpNum=${toonVO.eachEpVO['0'].eachEpNum+1}&epNum=${toonVO.eachEpVO['0'].epNum+1}">다음화</a>
                </span></button>
             </c:if>         
 	</div></center>
-		
-
-
 
    <div class="tit_area">
      
