@@ -152,7 +152,7 @@
          <div class="warning_msg">별점과 댓글 모두 입력해주세요.</div>
          <textarea rows="10" id="comments" class="review_textarea" ></textarea>
       </div>
-      <input type="button" id="save2" value="등록">
+      <input type="button" id="save" value="등록">
    </div>
 
    <!-- 댓글 리스트 -->   
