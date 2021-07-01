@@ -24,42 +24,51 @@
     <div class="col"></div>
     <!-- col2시작 -->
     <div class="col-6">
+    	<div class="card" style="width: 54rem;">
+		  <div class="card-body">
+		    <h3 class="card-title">소장권 구입하기</h3>
+		    <h4 class="card-subtitle mb-2 text-muted"><span>P</h4>
+		    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+		    <a href="#" class="card-link">Card link</a>
+		    <a href="#" class="card-link">Another link</a>
+		  
+		</div>
     	<form id="ticketBox" action="${pageContext.request.contextPath}/point/getToonTicket" method="post">
     		<div class="card">
     		
-    		<label> 사용자 username </label>
-    		<input id="username" name="username" value="${info.username}" readonly="readonly"/>
+<!--     		<label> 사용자 username </label> -->
+    		<input id="username" name="username" value="${info.username}" hidden="hidden"readonly="readonly"/>
     		
-    		<label> 사용자 보유 point </label>
-    		<input type="number" id="curpoint" name="curpoint" value="${info.point}" readonly="readonly" disabled="disabled"/>
+<!--     		<label> 사용자 보유 point </label> -->
+    		<input type="number" id="curpoint" name="curpoint" value="${info.point}" hidden="hidden" readonly="readonly" disabled="disabled"/>
     		
-    		<label > 구입하려는 ToonNum </label>
-    		<input type="number" id="toonNum" name="toonNum" value="${info.toonNum}" readonly="readonly"/>
+<!--     		<label > 구입하려는 ToonNum </label> -->
+    		<input type="number" id="toonNum" name="toonNum" value="${info.toonNum}" hidden="hidden" readonly="readonly"/>
     		
-    		<label > ToonNum으로 조회한 웹툰 타이틀 </label> //전송 X
-    		<input type="text" id="toonTitle" name="toonTitle" value="${info.toonTitle}" readonly="readonly" disabled="disabled"/>
+<!--     		<label > ToonNum으로 조회한 웹툰 타이틀 </label> //전송 X -->
+    		<input type="text" id="toonTitle" name="toonTitle" value="${info.toonTitle}" hidden="hidden" readonly="readonly" disabled="disabled"/>
     		
-    		<label> 현재 가지고 있는 웹툰 소장권 갯수 </label>
-    		<input type="number" id="curstock" name="curstock" value="${ticketBox.stock}" readonly="readonly" disabled="disabled"/>
+<!--     		<label> 현재 가지고 있는 웹툰 소장권 갯수 </label> -->
+    		<input type="number" id="curstock" name="curstock" value="${ticketBox.stock}" hidden="hidden" readonly="readonly" disabled="disabled"/>
     		
-    		<label> 충전할 소장권 갯수 </label>
-    		<input id="stock" name="stock" value="0" readonly="readonly"/>
+<!--     		<label> 충전할 소장권 갯수 </label> -->
+    		<input id="stock" name="stock" value="0" readonly="readonly" hidden="hidden"/>
     		
-    		<label> 포인트 사용 뒤 보유할 소장권 갯수 </label>
-    		<input  type="number" id="ifstock" name="ifstock" value="" readonly="readonly" disabled="disabled"/>
+<!--     		<label> 포인트 사용 뒤 보유할 소장권 갯수 </label> -->
+    		<input  type="number" id="ifstock" name="ifstock" value=""hidden="hidden"  readonly="readonly" disabled="disabled"/>
     		
     		
-    		<label> contents에 담길 내용</label>
-    		<input id="contents" name="contents" value="" readonly="readonly"/>
+<!--     		<label> contents에 담길 내용</label> -->
+    		<input id="contents" name="contents" value="" readonly="readonly" hidden="hidden"/>
     		
-    		<label> sort</label>
-    		<input id="sort" name="sort" value="1" readonly="readonly"/>
+<!--     		<label> sort</label> -->
+    		<input id="sort" name="sort" value="1" readonly="readonly" hidden="hidden"/>
     		
-    		<label> isAlready </label>
-    		<input type="number" id="isAlready" name="isAlready" value="${isAlready}" readonly="readonly"/>
+<!--     		<label> isAlready </label> -->
+    		<input type="number" id="isAlready" name="isAlready" value="${isAlready}" readonly="readonly" hidden="hidden"/>
     		
-    		<label> 티켓 사용 성공할 경우 가는 페이지 URL</label>
-    		<input id="nextsuccess" name="nextsuccess" value="" readonly="readonly" disabled="disabled"/>
+<!--     		<label> 티켓 사용 성공할 경우 가는 페이지 URL</label> -->
+    		<input id="nextsuccess" name="nextsuccess" value="" readonly="readonly" disabled="disabled" hidden="hidden"/>
     		</div>
     		
     		<!-- 구입할 소장권 갯수 선택 -->
@@ -91,8 +100,9 @@
 		    	</li>
 		    </ul><!--END CHARGE CHECKBOX -->
     		<!-- 결제 버튼 -->
+    		<button class="btn btn-success" type="submit" id="getTicketButton">소장권 구매하기</button>
     		</div>
-    		<button type="submit" id="getTicketButton">소장권 구매하기</button>
+    		</div>
     	</form>
     </div><!-- 2col 끝 -->
     <div class="col"></div><!-- 3번째 col END-->
