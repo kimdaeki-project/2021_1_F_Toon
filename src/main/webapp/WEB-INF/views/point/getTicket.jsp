@@ -27,11 +27,9 @@
     	<div class="card" style="width: 54rem;">
 		  <div class="card-body">
 		    <h3 class="card-title">소장권 구입하기</h3>
-		    <h4 class="card-subtitle mb-2 text-muted"><span>P</h4>
-		    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-		    <a href="#" class="card-link">Card link</a>
-		    <a href="#" class="card-link">Another link</a>
-		  
+		    <p id="textpoint" class="text-end fs-2"> P </p>
+		    <p id="textnowstock" class="text-end fs-4"> 개 </p>
+		    <p id="textifStock" class="text-end fs-3 fw-bolder"> 개 </p>
 		</div>
     	<form id="ticketBox" action="${pageContext.request.contextPath}/point/getToonTicket" method="post">
     		<div class="card">
