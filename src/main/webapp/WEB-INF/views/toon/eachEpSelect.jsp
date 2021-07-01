@@ -127,13 +127,15 @@
    <div class="wt_viewer" style="background: #FFFFFF">
    <img src="${toonVO.eachEpVO['0'].epContentImg}" alt="comic content" id="content_image_0"
       oncontextmenu="return false" ondragstart="return false" onselectstart="return false" >
-   </div>
+   </div> <br><br>
 
    <!-- 리뷰,별점 -->
-   <div class="wrap">
-      <h2>별점 & 댓글</h2>
-      
-      <div id="rating" class="rating">
+   
+   <table>
+      <tr>
+        <th><h3>별점</h3></th>
+        <th></th>
+        <th><div id="rating" class="rating">
          <div class="startRadio">
               <c:forEach begin="1" end="10" var="i">
               <label class="startRadio__box">
@@ -142,14 +144,22 @@
               </label>
               </c:forEach>
          </div>
-      </div>
+      </div></th>
+      	<th></th>
       
-      <div class="review_contents">
-         <div class="warning_msg">별점과 댓글 모두 입력해주세요.</div>
-         <textarea rows="10" id="comments" class="review_textarea" ></textarea>
-      </div>
-      <input type="button"  class="btn btn-secondary" id="save2" value="등록">
-   </div>
+      </tr>
+      <tr>
+        <td><h3>댓글</h3></td>
+        <td></td>
+        <td> <div class="review_contents">
+         <textarea rows="2" id="comments" class="review_textarea" style="width: 500px" placeholder="별점과 댓글 모두 입력해주세요."></textarea>
+      </div></td>
+      	<td>&nbsp &nbsp <input type="button" id="save" value="등록"></td>
+      </tr>
+      
+    </table>
+   
+  
 
    <!-- 댓글 리스트 -->   
 
@@ -158,13 +168,15 @@
       <c:forEach items="${toonVO.eachEpVO['0'].reviewVO}" var="reviewVO1">
          <tbody>
             <tr>
+               <td></td>
                <td>${reviewVO1.username}</td>
                <td>${reviewVO1.commentDate}</td>
                <td>${reviewVO1.rating}점</td>
                <td></td>
             </tr>
             <tr>
-               <td colspan="2" id="revComment${reviewVO1.revNum}">${reviewVO1.comments}</td>
+               <td></td>
+               <td id="revComment${reviewVO1.revNum}">${reviewVO1.comments}</td>
                
                <sec:authorize access="isAnonymous()">
                   <td></td>
@@ -172,7 +184,7 @@
                
                <sec:authorize access="isAuthenticated()">
                <sec:authentication property="principal.username" var="loginUser"/>
-               	<td></td>
+               	<td></td><td></td>
                   <c:if test="${reviewVO1.username == loginUser}">
                      <td>
                         <button class="updateReview btn-outline-primary" title="${reviewVO1.revNum}" value="${reviewVO1.revNum}"
