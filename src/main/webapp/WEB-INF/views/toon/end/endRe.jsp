@@ -31,8 +31,6 @@
 		</tr>
 	</table>
 	</div>
-
-
 		<br><br><br>
 		
 	<div class="latest-news  area-padding-bottom">
@@ -43,7 +41,6 @@
                     <p>오늘뭐하지? 여유로운일상에 정주행으로 Jump!
 </p>
                 </div>
-
             </div>
             <div class="row">
                 <div class="col-lg-6">
@@ -63,9 +60,7 @@
                            
                         </div>
                     </div> 
-
                 </div> 
-
                 <div class="col-lg-6">
                     <div class="row">
                         <div class="col-lg-6">
@@ -86,7 +81,6 @@
                                
                             </div> 
                         </div>
-
                         <div class="col-lg-6">
                             <div class="single-blog style-five small">
                                 <div class="thumb">
@@ -104,7 +98,6 @@
                                    
                             </div> 
                         </div>
-
                         <div class="col-lg-6">
                             <div class="single-blog style-five small">
                                 <div class="thumb">
@@ -122,7 +115,6 @@
                                  
                             </div> 
                         </div>
-
                         <div class="col-lg-6">
                             <div class="single-blog style-five small">
                                 <div class="thumb">
@@ -143,7 +135,6 @@
                         </div>          
                     </div>               
                 </div> 
-
             </div>
         </div>
         
@@ -154,23 +145,18 @@
 					<li style="float: left; margin: 30px;"><a href="/toon/eachEpList?toonNum=${end.toonNum}">
 					<img width=130px height=130px src=${end.titleImg}></a><br><br><h3>${end.toonTitle}</h3></li>
 				</c:forEach>
-
 			</ul>
 	</div>
         
         
         
     </div>
-
-
 	
 		
-
 	
 	
 	
 	
 	
-
 </body>
 </html>

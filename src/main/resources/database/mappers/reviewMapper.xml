@@ -6,14 +6,15 @@
 <mapper namespace="com.to.t1.review.ReviewMapper">
 
 	<select id="getList" parameterType="Pager" resultType="ReviewVO">
-		SELECT*FROM review 
-		WHERE EpNum=#{epNum} AND toonNum=#{toonNum} order BY revNum DESC
+		SELECT*FROM eachep e LEFT JOIN review r
+		ON e.toonNum=r.toonNum AND e.epNum=r.epNum
+		WHERE e.eachEpNum=#{eachEpNum} ORDER BY r.revNum DESC
 		LIMIT #{startRow},#{perPage}
 	</select>
 
 	<select id="getTotalCount" parameterType="Pager"
 		resultType="Long">
-		SELECT COUNT(revNum) FROM review WHERE toonNum=#{toonNum} and epNum=#{epNum}
+		SELECT COUNT(revNum) FROM review WHERE epNum=#{epNum}
 	</select>
 
 	<insert id="setReview" parameterType="ReviewVO">
