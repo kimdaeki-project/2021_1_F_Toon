@@ -49,4 +49,9 @@ public interface PointMapper {
 	
 	public long checkEpGet (Map param)throws Exception;
 	public long SelectEachEpNum(Map param)throws Exception;
+	
+	
+	//소장권 사용 이력 조회 paging 처리 관련은 count4 이용하기
+	public List<UseTicketVO> getTicketUseList(Map param) throws Exception;
+	
 }

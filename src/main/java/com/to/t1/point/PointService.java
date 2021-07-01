@@ -188,4 +188,19 @@ public class PointService {
 		return pointMapper.SelectEachEpNum(param);
 	}
 	
+	
+	//소장권 사용 이력 조회하기 memberVO 로 조회하기
+	public List<UseTicketVO> getTicketUseList(MemberVO memberVO, Pager pager)throws Exception{
+		HashMap<String, Object> obj = new HashMap<String, Object>();
+		
+		obj.put("memberVO", memberVO);
+		obj.put("pager", pager);
+		
+		pager.makeRow();
+		Long totalCount = pointMapper.getTotalCount4(obj);
+		pager.makeNum(totalCount);
+		
+		return pointMapper.getTicketUseList(obj);
+	}
+	
 }
