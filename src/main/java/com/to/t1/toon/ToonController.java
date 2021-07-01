@@ -110,7 +110,7 @@ public class ToonController {
 	      toonVO.setToonDay("wen");
 	      List<ToonVO> wt = toonService.toonDay(toonVO,memberVO);
 	      
-	      toonVO.setToonDay("the");
+	      toonVO.setToonDay("thu");
 	      List<ToonVO> tt2 = toonService.toonDay(toonVO,memberVO);
 	      
 	      toonVO.setToonDay("fri");
@@ -156,7 +156,7 @@ public class ToonController {
 		toonVO.setToonDay("wen");
 		List<ToonVO> wt = toonService.toonDayAver(toonVO,memberVO);
 		
-		toonVO.setToonDay("the");
+		toonVO.setToonDay("thu");
 		List<ToonVO> tt2 = toonService.toonDayAver(toonVO,memberVO);
 		
 		toonVO.setToonDay("fri");
@@ -198,7 +198,7 @@ public class ToonController {
 		toonVO.setToonDay("wen");
 		List<ToonVO> wt = toonService.toonDayRecent(toonVO,memberVO);
 		
-		toonVO.setToonDay("the");
+		toonVO.setToonDay("thu");
 		List<ToonVO> tt2 = toonService.toonDayRecent(toonVO,memberVO);
 		
 		toonVO.setToonDay("fri");
@@ -240,7 +240,7 @@ public class ToonController {
 		toonVO.setToonDay("wen");
 		List<ToonVO> wt = toonService.toonDayRecent(toonVO,memberVO);
 		
-		toonVO.setToonDay("the");
+		toonVO.setToonDay("thu");
 		List<ToonVO> tt2 = toonService.toonDayRecent(toonVO,memberVO);
 		
 		toonVO.setToonDay("fri");

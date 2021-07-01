@@ -19,125 +19,536 @@
 
 <body>
 <c:import url="./fragments/header.jsp"></c:import>
-<br>
+  
+  <div class="row">
+                <div class="area-heading">
+                    <h3>이번주 인기 웹툰</h3>
+                    <p>올 여름을 강타할 짜릿짜릿한 에어컨같은 웹툰들을 만나보아요:)</p>
+                </div>
+            </div>
+    <!--================Fullwidth block Area =================-->
 
-<div align="center">
-	<ul>
-		<li>
-		<br>
-		<h1>
-		<%= cal.get(Calendar.YEAR) %>년
-		<%= cal.get(Calendar.MONTH)+1 %>월
-		<%= cal.get(Calendar.DATE) %>일
-		</h1>
-		<h1>오늘의 웹툰</h1>
-		</li>		
-	</ul>
-</div>
+    <section class="fullwidth-block area-padding-bottom">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-md-6 col-lg-6 col-xl-5">
+                    <div class="single-blog">
+                        <div class="thumb">
+                            <a href="/toon/eachEpList?toonNum=1">
+                            <img width=770px height=780px src="images/indeximage/sinsin.jpg" alt="">
+                            </a>
+                        </div>
+                        <div class="short_details">
+                            <div class="meta-top d-flex">
+                                <a href="#" style="font-size:20px;">인기웹툰<1></a>
+                            </div>
+                            <a class="d-block" href="single-blog.html">
+                                <h4>신의탑</h4>
+                            </a>
+                            <div class="meta-bottom d-flex" >
+                                <a href="/toon/eachEpList?toonNum=1""></a>
+                                <a class="dark_font" href="#">SIU</a>
+                            </div>
+                        </div>
+                    </div>    
+                </div>
 
-<!-- 슬라이드  -->
-<!-- <h1 align="center" style="font-size:60px;"><img width=60px height=60px src="https://ifh.cc/g/rqDzQL.png"> 추천 웹툰 </h1> -->
-<div class="w3-container">
-</div>
-<div class="w3-content" style="max-width:1000px">
-  <a class="r" href="/toon/eachEpList?toonNum=25"><img class="mySlides" src="https://ifh.cc/g/mjYvgV.png" style="width:100%;" height=600px></a>
-  <a class="r" href="/toon/eachEpList?toonNum=26"><img class="mySlides" src="https://ifh.cc/g/KsccWZ.jpg" style="width:100%" height=600px></a>
-  <a class="r" href="/toon/eachEpList?toonNum=16"><img class="mySlides" src=https://ifh.cc/g/wu584q.jpg style="width:100%;" height=600px></a>
-  	
-  <div class="w3-row-padding w3-section">
-    <div class="w3-col s4">
-      <img class="demo w3-opacity w3-hover-opacity-off" src="https://ifh.cc/g/mjYvgV.png" style="width:100%; cursor:pointer" height=300px onclick="currentDiv(1)">
+                <div class="col-md-6 col-lg-6 col-xl-4">
+                    <div class="single-blog style_two">
+                        <div class="thumb">
+                        <a href="/toon/eachEpList?toonNum=13">
+                            <img width=552px height=780px src="images/indeximage/여신강림.jpg" alt="">
+                            </a>
+                        </div>
+                        <div class="short_details text-center ">
+<br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+                            <div class="meta-top d-flex justify-content-center">
+                                <a href="#">인기웹툰<2></a>
+                            </div>
+                            <a class="d-block" href="single-blog.html">
+                                <h4>여신강림</h4>
+                            </a>
+                            <div class="meta-bottom d-flex justify-content-center">
+                                <a href="#"></a>
+                                <a href="#">야옹이</a>
+                            </div>
+                        </div>
+                    </div>    
+                </div>
+
+                <div class="col-lg-12 col-xl-3">
+                    <div class="row">
+                        <div class="col-12 col-md-6 col-lg-6 col-xl-12">
+                            <div class="single-blog style-three m_b_30">
+                                <div class="thumb">
+                                <a href="/toon/eachEpList?toonNum=27">
+                                    <img width=458px height=359px src="images/indeximage/king.jpg" alt="">
+                                    </a>
+                                </div>
+                                
+
+                                    <div class="meta-top d-flex justify-content-center">
+                                        <a href="#" style="font-size:20px; color: grey;">복학왕</a>
+                                    </div>
+                                    <a class="d-block" href="single-blog.html">
+                                     
+                                    </a>
+                                
+                            </div>
+					
+                        </div>
+                        <div class="col-12 col-md-6 col-lg-6 col-xl-12">
+                            <div class="single-blog style-three">
+                                <div class="thumb">
+                                <a href="/toon/eachEpList?toonNum=49">
+                                    <img width=458px height=359px src="images/indeximage/독립.jpg" alt="">
+                                    </a>
+                                </div>
+                              
+
+                                    <div class="meta-top d-flex justify-content-center">
+                                        <a href="#" style="font-size:20px; color: grey;">독립일기</a>
+                                    </div>
+                                    <a class="d-block" href="single-blog.html">
+                    
+                                    </a>
+                              
+                            </div>    
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+  <!--================ Daily section start =================-->  
+
+    <div class="three-block  area-padding">
+        <div class="container">
+            <div class="row">
+                <div class="area-heading">
+                    <h3>Daily Toon</h3>
+                    <p>요일별 웹툰!</p>
+                </div>
+
+            </div>
+            <div class="row">
+                <div class="col-lg-4">
+                    <div class="single-blog style-five">
+                        <div class="thumb">
+                        <h2>MON</h2>
+                        <a href="/toon/eachEpList?toonNum=1">
+                            <img class="img-fluid" src="https://shared-comic.pstatic.net/thumb/webtoon/183559/thumbnail/thumbnail_IMAG10_9a752bec-9ebd-4214-9449-28cf4defc650.jpg" alt="">
+                            <a href="/toon/eachEpList?toonNum=1">
+                        </div>
+                      
+                            <div class="meta-top d-flex">
+                                <a href="https://shared-comic.pstatic.net/thumb/webtoon/183559/thumbnail/thumbnail_IMAG10_9a752bec-9ebd-4214-9449-28cf4defc650.jpg" style="font-size:20px;">신의탑</a>
+                              
+                            </div>
+                            <a class="d-block" href="single-blog.html">
+                                
+                            </a>
+                           
+                        
+                    </div> 
+
+                </div> 
+&emsp;
+                <div class="col-lg-4">
+                    <div class="single-blog style-five">
+                        <div class="thumb">
+                        <h2>TUE</h2>
+                        <a href="/toon/eachEpList?toonNum=16">
+                            <img class="img-fluid" src="https://shared-comic.pstatic.net/thumb/webtoon/743139/thumbnail/thumbnail_IMAG10_df1a8c2f-63c4-44e1-b1f5-907c41c13243.jpg" alt="">
+                            </a>
+                        </div>
+                      
+                            <div class="meta-top d-flex">
+                                <a href="https://shared-comic.pstatic.net/thumb/webtoon/743139/thumbnail/thumbnail_IMAG10_df1a8c2f-63c4-44e1-b1f5-907c41c13243.jpg" style="font-size:20px;">한림체육관</a>
+                             
+                            </div>
+                            <a class="d-block" href="single-blog.html">
+                                
+                            </a>
+                          
+                       
+                    </div> 
+
+                </div> 
+&emsp;
+                <div class="col-lg-4">
+                    <div class="single-blog style-five">
+                        <div class="thumb">
+                         <h2>WEN</h2>
+                         <a href="/toon/eachEpList?toonNum=25">
+                            <img class="img-fluid" src="https://shared-comic.pstatic.net/thumb/webtoon/670143/thumbnail/thumbnail_IMAG10_d2f956f7-2541-4b97-b933-e4aaa2564d14.jpg" alt="">
+                            </a>
+                        </div>
+                        
+                            <div class="meta-top d-flex">
+                                <a href="https://shared-comic.pstatic.net/thumb/webtoon/670143/thumbnail/thumbnail_IMAG10_d2f956f7-2541-4b97-b933-e4aaa2564d14.jpg" style="font-size:20px;">헬퍼2: 킬베로스</a>
+                               
+                            </div>
+                            <a class="d-block" href="single-blog.html">
+                               
+                            </a>
+                          
+
+                       
+                    </div> 
+                </div> 
+ &emsp;              
+ 				 <div class="col-lg-4">
+                    <div class="single-blog style-five">
+                        <div class="thumb">
+                         <h2>THU</h2>
+                         <a href="/toon/eachEpList?toonNum=38">
+                            <img class="img-fluid" src="https://shared-comic.pstatic.net/thumb/webtoon/570503/thumbnail/thumbnail_IMAG10_023d23be-91f9-46c5-a1ff-152d6238e892.jpg" alt="">
+                            </a>
+                        </div>
+                       
+                            <div class="meta-top d-flex">
+                                <a href="https://shared-comic.pstatic.net/thumb/webtoon/570503/thumbnail/thumbnail_IMAG10_023d23be-91f9-46c5-a1ff-152d6238e892.jpg" style="font-size:20px;">연애혁명</a>
+                              
+                            </div>
+                            <a class="d-block" href="single-blog.html">
+                               
+                            </a>
+                          
+                        
+                    </div> 
+&emsp;
+                </div> 
+                 <div class="col-lg-4">
+                    <div class="single-blog style-five">
+                        <div class="thumb">
+                         <h2>FRI</h2>
+                         <a href="/toon/eachEpList?toonNum=50">
+                            <img class="img-fluid" src="https://shared-comic.pstatic.net/thumb/webtoon/641253/thumbnail/thumbnail_IMAG10_d4d1a799-d193-4e5a-9b46-6dffcead862a.jpg" alt="">
+                            </a>
+                        </div>
+                        
+                            <div class="meta-top d-flex">
+                                <a href="#" style="font-size:20px;">외모지상주의</a>
+                                
+                            </div>
+                            <a class="d-block" href="single-blog.html">
+                               
+                            </a>
+                           
+                       
+                    </div> 
+				&emsp;
+                </div> 
+                 <div class="col-lg-4">
+                    <div class="single-blog style-five">
+                        <div class="thumb">
+                         <h2>SAT</h2>
+                         <a href="/toon/eachEpList?toonNum=62">
+                            <img class="img-fluid" src="https://shared-comic.pstatic.net/thumb/webtoon/650305/thumbnail/title_thumbnail_20161209212128_t83x90.jpg" alt="">
+                            </a>
+                        </div>
+                        
+                            <div class="meta-top d-flex">
+                                <a href="#" style="font-size:20px;">호랑이형님</a>
+                    
+                            </div>
+                            <a class="d-block" href="single-blog.html">
+                            </a>
+                        
+                    </div> 
+				&emsp;
+                </div> 
+                 <div class="col-lg-4">
+                    <div class="single-blog style-five">
+                        <div class="thumb">
+                          <h2>SUN</h2>
+                          <a href="/toon/eachEpList?toonNum=74">
+                            <img class="img-fluid" src="https://shared-comic.pstatic.net/thumb/webtoon/736277/thumbnail/thumbnail_IMAG10_3ff8475e-6085-4188-a359-920a8801b419.jpg" alt="">
+                          </a>
+                        </div>
+                        
+                            <div class="meta-top d-flex">
+                                <a href="https://shared-comic.pstatic.net/thumb/webtoon/736277/thumbnail/thumbnail_IMAG10_3ff8475e-6085-4188-a359-920a8801b419.jpg" style="font-size:20px;">싸움독학</a>
+                               
+                            </div>
+                            <a class="d-block" href="single-blog.html">
+                              
+                            </a>
+                           
+                        
+                    </div> 
+
+                </div>                
+            </div>
+        </div>
     </div>
-    <div class="w3-col s4">
-      <img class="demo w3-opacity w3-hover-opacity-off" src="https://ifh.cc/g/KsccWZ.jpg" style="width:100%;cursor:pointer" height=300px onclick="currentDiv(2)">
+
+
+    <!--================ daily  section end =================-->  
+
+
+
+
+	<!--================ Genre section start =================-->  
+
+    <div class="latest-news  area-padding-bottom">
+        <div class="container">
+            <div class="row">
+                <div class="area-heading">
+                    <h3>GENRE</h3>
+                    <p>Abundantly creeping saw forth spirit can made appear fourth us.</p>
+                </div>
+
+            </div>
+            <div class="row">
+                <div class="col-lg-6">
+                    <div class="single-blog style-five">
+                        <div class="thumb">
+                         <a href="/toon/eachEpList?toonNum=52">
+                            <img width=555px height=602px src="images/indeximage/dead.jpg" alt="">
+                            </a>
+                        </div>
+                        <div class="short_details">
+                            <div class="meta-top d-flex">
+                                <a style="font-size:20px;" href="/toon/eachEpList?toonNum=52">데드퀸</a>
+                            </div>
+                            <a class="d-block" href="single-blog.html">
+                                <h4>Brought dreepeth youll blessed
+                                from whose signs over</h4>
+                            </a>
+                           
+                        </div>
+                    </div> 
+
+                </div> 
+
+                <div class="col-lg-6">
+                    <div class="row">
+                        <div class="col-lg-6">
+                            <div class="single-blog style-five small">
+                                <div class="thumb">
+                                  <a href="/toon/eachEpList?toonNum=39">
+                                    <img width=262px height=212px src="images/indeximage/duna.jpg" alt="">
+                                    </a>
+                                </div>
+                                
+                                    <div class="meta-top d-flex">
+                                        <a style="font-size:20px;" href="/toon/eachEpList?toonNum=39">이두나</a>
+                                    </div>
+                                    <a class="d-block" href="single-blog.html">
+                                        <h4>Shall for rule whoses
+                                        may heaven to</h4>
+                                    </a>
+                                    
+                               
+                            </div> 
+                        </div>
+
+                        <div class="col-lg-6">
+                            <div class="single-blog style-five small">
+                                <div class="thumb">
+                                  <a href="/toon/eachEpList?toonNum=28">
+                                    <img width=262px height=212px src="images/indeximage/mojyo.jpg" alt="">
+                                    </a>
+                                </div>
+                                
+                                    <div class="meta-top d-flex">
+                                        <a style="font-size:20px;" href="/toon/eachEpList?toonNum=28">모죠의 일기</a>
+                                    </div>
+                                    <a class="d-block" href="single-blog.html">
+                                        <h4>Shall for rule whoses
+                                        may heaven to</h4>
+                                    </a>
+                                   
+                            </div> 
+                        </div>
+
+                        <div class="col-lg-6">
+                            <div class="single-blog style-five small">
+                                <div class="thumb">
+                                  <a href="/toon/eachEpList?toonNum=37">
+                                    <img width=262px height=212px src="images/indeximage/boxer.jpg" alt="">
+                                    </a>
+                                </div>
+                                
+                                    <div class="meta-top d-flex">
+                                        <a style="font-size:20px;" href="/toon/eachEpList?toonNum=37">더 복서</a>
+                                    </div>
+                                    <a class="d-block" href="single-blog.html">
+                                        <h4>Shall for rule whoses
+                                        may heaven to</h4>
+                                    </a>
+                                 
+                            </div> 
+                        </div>
+
+                        <div class="col-lg-6">
+                            <div class="single-blog style-five small">
+                                <div class="thumb">
+                                  <a href="/toon/eachEpList?toonNum=15">
+                                    <img width=262px height=212px src="images/indeximage/gun.png" alt="">
+                                    </a>
+                                </div>
+                              
+                                    <div class="meta-top d-flex">
+                                        <a style="font-size:20px;" href="/toon/eachEpList?toonNum=15">엽총소년</a>
+                                    </div>
+                                    <a class="d-block" href="single-blog.html">
+                                        <h4>Shall for rule whoses
+                                        may heaven to</h4>
+                                    </a>
+                                   
+                            </div> 
+                            
+                        </div>          
+                    </div>               
+                </div> 
+
+            </div>
+        </div>
     </div>
-    <div class="w3-col s4">
-      <img class="demo w3-opacity w3-hover-opacity-off" src="https://ifh.cc/g/wu584q.jpg" style="width:100%;cursor:pointer" height=300px onclick="currentDiv(3)">
-    </div>
-  </div>
-</div>
-<!-- 슬라이드 끝 --> 
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
- 
-<!-- 웹툰 페이지 이동 -->
-
-<table align="center">
-<tr>
-<td><h3>요일별 웹툰</h3><p><a class="ddd" href="/toon/toonDay/toonDay"> 
-<img width=400px height=400px src="https://ifh.cc/g/K7Pxnu.webp"></a></td>
-<td><h3>장르별 웹툰</h3><p><a class="ggg" href="/toon/genre/genre">
-<img width=400px height=400px src="https://ifh.cc/g/KLjfiT.jpg"></a></td>
-</tr>
-</table>
-<br>
-<br>
-
-<table align="center">
-<tr>
-<td><h3>랭킹별 웹툰</h3><p><a class="rrr" href="/toon/ranking/ranking">
-<img width=400px height=400px src="https://ifh.cc/g/K7Pxnu.webp"><p></a></td>
-<td><h3>완결웹툰</h3><p><a class="eee" href="/toon/end/endRe">
-<img width=400px height=400px src="https://ifh.cc/g/K7Pxnu.webp"><p></a></td>
-</tr>
-</table>
-<!-- 웹툰 페이지 이동  끝-->
-
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
 
 
-<div><h2>툰</h2>
-		<br>
-			<ul>
-		<c:forEach items="${toonIndex}" var="index">
-			<li><a href="/toon/eachEpList?toonNum=${index.toonNum}">
-			<img width=100px height=100px src=${index.titleImg}></a></li>
-			<li>${index.toonTitle}</li>
-			<p>	
-		</c:forEach>
-		</ul>
-		</div>
+    <!--================ Genre section end =================--> 
+
+
+    <!--================ Finished section start ================-->  
+
+    <section class="editors_pick area-padding">
+        <div class="container">
+            <div class="row">
+                <div class="area-heading">
+                    <h3> Finished</h3>
+                    <p>Abundantly creeping saw forth spirit can made appear fourth us.</p>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-lg-5 col-xl-6">
+                    <div class="single-blog">
+                        <div class="thumb">
+                        <a href="/toon/eachEpList?toonNum=103">
+                            <img width=555px height=594px src="images/indeximage/yumi.jpg" alt="">
+                            </a>
+                        </div>
+                        <div class="short_details pad_25 ">
+                            <div class="meta-top d-flex">
+                                <a href="/toon/eachEpList?toonNum=103">유미의 세포들</a>
+                            </div>
+                            <a class="d-block" href="single-blog.html">
+                                <h4>Created face stars sixth forth
+                                Earth firmament</h4>
+                            </a>
+                            <div class="meta-bottom d-flex" >
+                                <a href="#">March 12 , 2019 . </a>
+                                <a class="dark_font" href="#">By Alen Mark</a>
+                            </div>
+                        </div>
+                    </div>    
+                </div>
+                <div class="col-lg-7 col-xl-6">
+                    <div class="single-blog row no-gutters style-four m_b_30">
+                        <div class="col-12 col-sm-7">
+                            <div class="short_details padd_left_0">
+                                <div class="meta-top d-flex">
+                                    <a href="/toon/eachEpList?toonNum=86">고수</a>
+                                </div>
+                                <a class="d-block" href="single-blog.html">
+                                    <h4 class="font-20">Light that hath itself god
+                                        grass herb dark sea on
+                                    the hath dowe </h4>
+                                </a>
+                                <p>Said spirit evening above good twes at  god midst deep a wherein very made he seas male very broug sad forth saying right.</p>
+                            </div>  
+                        </div>  
+                        <div class="col-12 col-sm-5">
+                            <div class="thumb">
+                             <a href="/toon/eachEpList?toonNum=86">
+                                <img  width=264px height=300px src="images/indeximage/gosu.jpg" alt="">
+                                </a>
+                            </div>
+                        </div>
+                    </div> 
+
+                    <div class="single-blog row no-gutters style-four">
+                        <div class="col-12 col-sm-5">
+                            <div class="thumb">
+                             <a href="/toon/eachEpList?toonNum=88">
+                                <img  width=264px height=300px src="images/indeximage/money.jpg" alt="">
+                                </a>
+                            </div>
+                        </div>
+                        <div class="col-12 col-sm-7">
+                            <div class="short_details padd_right_0">
+                                <div class="meta-top d-flex">
+                                    <a href="/toon/eachEpList?toonNum=88">머니게임</a>
+                                </div>
+                                <a class="d-block" href="single-blog.html">
+                                    <h4 class="font-20">Light that hath itself god
+                                        grass herb dark sea on
+                                    the hath dowe </h4>
+                                </a>
+                                <p>Said spirit evening above good twes at  god midst deep a wherein very made he seas male very broug sad forth saying right.</p>
+                            </div>  
+                        </div>  
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-12">
+                    <div class="addvertise">
+                        <a href=""><img src="images/banner/add.jpg" alt=""></a>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+    <!--================ Finished section end ================-->    
 
 
 
 
-<script src="js/index.js"></script>
-<script>
-var slideIndex = 1;
-showDivs(slideIndex);
+    <!-- ================ 나머지 Starts ================= -->  
 
-function plusDivs(n) {
-  showDivs(slideIndex += n);
-}
+  <%--   <section class="instagram">
+        <div class="row no-gutters">
+            <div class="col-2">
+                <a href=""><img width=220px height=200px src="images/instagram/1.jpg" alt=""></a>
+            </div>
+            <div class="col-2">
+                <a href=""><img width=220px height=200px src="images/instagram/2.jpg" alt=""></a>
+            </div>
+            <div class="col-2">
+                <a href=""><img width=220px height=200px src="images/instagram/3.jpg" alt=""></a>
+            </div>
+            <div class="col-2">
+                <a href=""><img width=220px height=200px src="images/instagram/4.jpg" alt=""></a>
+            </div>
+            <div class="col-2">
+                <a href=""><img width=220px height=200px src="images/instagram/5.jpg" alt=""></a>
+            </div>
+            <div class="col-2">
+                <a href=""><img width=220px height=200px src="images/instagram/6.jpg" alt=""></a>
+            </div>
+            <div class="col-2">
+                <a href=""><img width=220px height=200px src="images/instagram/6.jpg" alt=""></a>
+            </div>
+        </div>
+    </section> --%>
 
-function showDivs(n) {
-  var i;
-  var x = document.getElementsByClassName("mySlides");
-  if (n > x.length) {slideIndex = 1}
-  if (n < 1) {slideIndex = x.length}
-  for (i = 0; i < x.length; i++) {
-    x[i].style.display = "none";  
-  }
-  x[slideIndex-1].style.display = "block";  
-}
-</script>
+    <!-- ================ 나머지 Area End ================= -->  
 
 
-<!-- ================ End footer Area ================= -->
-<c:import url="./fragments/footer.jsp"></c:import>
-<c:import url="./fragments/footer.jsp"></c:import>
+    <!-- ================ start footer Area ================= -->
+    <c:import url="./fragments/footer.jsp"></c:import>
+	<!-- ================ End footer Area ================= -->
+
 <!-- Optional JavaScript -->
 <!-- jQuery first, then Popper.js, then Bootstrap JS -->
 
