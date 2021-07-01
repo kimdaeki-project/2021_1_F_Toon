@@ -30,11 +30,6 @@
 
 <title>작품 등록</title>
 
-
-<!-- summernote  -->
-<link href="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote-bs4.min.css" rel="stylesheet">
-<script src="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote-bs4.min.js"></script>
-<!-- ------------ -->
 <style type="text/css">
 #sample {
 	display: none;
@@ -44,6 +39,12 @@
 </head>
 <body>
 	<c:import url="../fragments/header.jsp"></c:import>
+
+<div class="row">
+  	<div class="col-2">
+  		<c:import url="./adminNav.jsp"></c:import>
+  	</div>
+
 
 	<div class="container"><br>
 	<h2>
@@ -118,7 +119,6 @@
 
 	<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
 	<script type="text/javascript" src="../js/board/boardInsert.js"></script>
-	<script type="text/javascript" src="../js/board/toonSummerFile.js"></script>
-	<c:import url="../fragments/footer.jsp"></c:import>
+
 </body>
 </html>

@@ -11,28 +11,6 @@
 		WHERE e.eachEpNum=#{eachEpNum} ORDER BY r.revNum DESC
 		LIMIT #{startRow},#{perPage}
 	</select>
-	
-	<!-- <resultMap type="EachEpVO" id="getReviewVO">
-		<id property="toonNum" column="toonNum"/>
-		<result property="epNum" column="epNum"/>
-      	<result property="eachEpNum" column="eachEpNum"/>
-      	<result property="epSumImg" column="epSumImg"/>
-      	<result property="epTitle" column="epTitle"/>
-      	<result property="epDate" column="epDate"/>
-      	<result property="epContentImg" column="epContentImg"/>
-      	<result property="epHit" column="epHit"/>
-      	<result property="epRatingSum" column="epRatingSum"/>
-      	<result property="epRatingPerson" column="epRatingPerson"/>
-      	<collection property="ReviewVO" javaType="java.util.List" ofType="ReviewVO">
-      		<id column="revNum" property="revNum"/>
-      		<result property="username" column="username"/>
-      		<result property="rating" column="rating"/>
-      		<result property="comments" column="comments"/>
-      		<result property="rating" column="rating"/>
-      		<result property="comments" column="comments"/>
-      		<result property="commentDate" column="commentDate"/>
-      	</collection>
-	</resultMap> -->
 
 	<select id="getTotalCount" parameterType="Pager"
 		resultType="Long">

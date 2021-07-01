@@ -1,14 +1,123 @@
 let id = document.getElementById("id");
 let pw = document.getElementById("pw");
 let pw2 = document.getElementById("pw2");
+let name = document.getElementById("name");
+let phone = document.getElementById("phone");
+let email = document.getElementById("email");
 let btn = document.getElementById("btn");
 let etc = document.getElementsByClassName("etc");
 var isCertification = false;
 let idCheckResult = false; // id check 결과
 let pwCheckResult = false; 
 let pwEqualResult = false; 
+let phoneCheckResult = false;
 let etcResult=true		   // name, email, phone 결과
 
+
+$("#id").keyup(function(event){
+
+	if (!(event.keyCode >=37 && event.keyCode<=40)) {
+
+	var inputVal = $(this).val();
+
+	$(this).val(inputVal.replace(/[^a-z0-9]/gi,''));
+
+	}
+
+});
+
+$("#pw").keyup(function(event){
+
+	if (!(event.keyCode >=37 && event.keyCode<=40)) {
+
+	var inputVal = $(this).val();
+
+	$(this).val(inputVal.replace(/[^a-z0-9*]/gi,''));
+
+	}
+
+});
+
+
+
+function inputPhoneNumber(obj) {
+	
+    var number = obj.value.replace(/[^0-9]/g, "");
+    var phone = "";
+    
+    if(number.length < 4) {
+        return number;
+    } else if(number.length < 7) {
+        phone += number.substr(0, 3);
+        phone += "-";
+        phone += number.substr(3);
+    } else if(number.length < 11) {
+        phone += number.substr(0, 3);
+        phone += "-";
+        phone += number.substr(3, 3);
+        phone += "-";
+        phone += number.substr(6);
+    } else {
+        phone += number.substr(0, 3);
+        phone += "-";
+        phone += number.substr(3, 4);
+        phone += "-";
+        phone += number.substr(7);
+        
+    }
+
+    obj.value = phone;
+}
+
+	 $( "#phone").on("blur keyup", function() {
+		$(phone).val( $(this).val().replace( /[ㄱ-ㅎ|ㅏ-ㅣ|가-힣]/g, '' ) );
+	});
+
+
+function  handlerNum(){
+ E = window.event;
+ if(E.keyCode >47 && E.keyCode <58){   
+  if(E.keyCode == 48){
+   if(document.eduReg.ATTENDANT.value == "" ) E.returnValue=false;
+   else return;
+   }else return;
+ }else{
+  E.returnValue=false;
+ }
+}
+
+name.addEventListener("blur", function(){
+		
+	let message  = "이름은 한글로만 입력가능합니다.";
+	let c = "r3";
+		
+	nameResult.innerHTML=message;
+	nameResult.setAttribute("class", c);
+	
+});
+
+phone.addEventListener("blur", function(){
+	let message  = "폰 번호는 숫자만 입력가능합니다.";
+	let c = "r3";
+	
+	let phone = $("#phone").val();
+	let phoneTrim = $.trim(phone);
+	
+	if(phoneTrim.length==13){
+		message = "올바르게 입력되었습니다.";
+		c = "r2";
+		phoneCheckResult=true;
+	} else {
+		message = "010-0000-0000 형식으로 작성하세요";
+		c = "r1";
+		phoneCheckResult = false;
+	}
+	
+	let phoneResult = document.getElementById("phoneResult");
+	phoneResult.innerHTML=message;
+	phoneResult.setAttribute("class", c);
+	
+});
 
 
 // PW EQUAL CHECK **********************************
@@ -31,6 +140,31 @@ pw2.addEventListener("blur", function(){
 pw.addEventListener("change", function(){
 	pw2.value="";
 });
+
+$("#name").keyup(function(event){
+
+	if (!(event.keyCode >=37 && event.keyCode<=40)) {
+
+		var inputVal = $(this).val();
+
+		$(this).val(inputVal.replace(/[a-z0-9]/gi,''));
+
+	}
+
+});
+
+$("#email").keyup(function(event){
+
+if (!(event.keyCode >=37 && event.keyCode<=40)) {
+
+var inputVal = $(this).val();
+
+$(this).val(inputVal.replace(/[^a-z0-9@.]/gi,''));
+
+}
+
+});
+
 
 // **** PW CHECK *********************************
 
@@ -111,9 +245,21 @@ function id11(){
 	  dataType :'text',
       
       success : function(message) {
-        
+        	
          swal(message);
-           
+         
+         if(message=="아이디가 사용가능합니다."){
+			
+			let idResult = document.getElementById("idResult");
+			idResult.innerHTML="멋진 아이디 군요!";
+			} 
+		 if(message=="아이디가 중복됩니다."){
+			let idResult = document.getElementById("idResult");
+			idResult.innerHTML="다른 멋진 아이디를 입력하세요!";
+			c = "r1";
+			idResult.setAttribute("class", c);
+		}
+		 	
        }
 
    })

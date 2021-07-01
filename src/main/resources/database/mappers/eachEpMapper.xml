@@ -52,20 +52,25 @@
 	</select>
 	
 	<update id="setHitUpdate" parameterType="EachEpVO">
-		update eachEp set epHit=epHit+1 where toonNum=#{toonNum} AND epNum=#{epNum}
+		update eachEp set epHit=epHit+1 where toonNum=#{toonNum} AND eachEpNum=#{eachEpNum}
 	</update>
+	
+	<insert id="setRecentToon" parameterType="RecentVO">
+		INSERT INTO recenttoon (username, toonNum, epNum, viewDate)
+		VALUES(#{username}, #{toonNum}, #{epNum}, NOW())
+	</insert>
 	
 	<update id="updateScore" parameterType="ReviewVO">
 		update eachep e left JOIN review r 
 		ON e.toonNum=r.toonNum AND e.epNum=r.epNum
-		SET e.epRatingSum=e.epRatingSum+r.rating, e.epRatingPerson=e.epRatingPerson+1
+		SET e.epRatingSum=e.epRatingSum+#{rating}, e.epRatingPerson=e.epRatingPerson+1
 		WHERE e.toonNum=#{toonNum} AND e.eachEpNum=#{eachEpNum}
 	</update>
 	
 	<update id="deleteScore" parameterType="ReviewVO">
 		update eachep e left JOIN review r 
 		ON e.toonNum=r.toonNum AND e.epNum=r.epNum
-		SET e.epRatingSum=e.epRatingSum-r.rating, e.epRatingPerson=e.epRatingPerson-1
+		SET e.epRatingSum=e.epRatingSum-#{rating}, e.epRatingPerson=e.epRatingPerson-1
 		WHERE e.toonNum=#{toonNum} AND e.eachEpNum=#{eachEpNum}
 	</update>
 	

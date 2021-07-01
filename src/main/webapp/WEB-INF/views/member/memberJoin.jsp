@@ -37,8 +37,10 @@
                         <button type="button"  onclick="id11()" style="border: 1px solid black;float: right;width: 50px;">확인</button>
                         <br>
                         <form:errors path="username" class="c1"></form:errors>
-                      	<center><h5 id="idCheckResult"></h5></center>
-						<center><h5 id="idResult"></h5></center>
+<!--                         <div class="form-group" id= idCheckResult></div> -->
+                        <div class="form-group" id= idResult></div>
+<%--                       	<center><h5 id="idCheckResult"></h5></center> --%>
+<%-- 						<center><h5 id="idResult"></h5></center> --%>
 						
                     </div>
                     
@@ -47,25 +49,28 @@
                         <input placeholder="Password" type="password" id="pw" path="password" />
                         <br>
                         <form:errors path="password" class="c1"></form:errors>
-                        <center><h5 id="pwResult"></h5></center>
+                        <div class="form-group" id= pwResult></div>
+<%--                         <center><h5 id="pwResult"></h5></center> --%>
 						
                     </div>
                     
                      <div class="login-input-wrap input-password">
                         <i class="fas fa-key"></i>
                         <form:password placeholder="Password" id="pw2" path="password"/>
-                        <center><h5 id="pwResult2"></h5></center>
+                         <div class="form-group" id= pwResult2></div>
+<%--                         <center><h5 id="pwResult2"></h5></center> --%>
                     </div>
                     
                     <div class="login-input-wrap input-password">
                         <i class="fas fa-user-circle"></i>
-                        <form:input placeholder="name" id="name" path="name"/>
+                        <form:input placeholder="name" id="name" maxlength="5" path="name"/>
+                         <div class="form-group" id= nameResult></div>
                         <br>
-                        <form:errors path="name" class="c1"></form:errors>
+                        <form:errors path="name" class="c"></form:errors>
                     </div>	
                     
                 </div>
-                <p>.</p>
+                <p></p>
                 <P></P>
             </div>
             
@@ -79,22 +84,25 @@
             
                     <div class="login-input-wrap input-id">
                         <i class="far fa-id-badge"></i>
-                        <form:input placeholder="NickName" type="text" id="nickname" path="nickname"/>
+                        <form:input placeholder="NickName" type="text" id="nickname" path="nickname" maxlength="13"/>
                         <br>
                         <form:errors path="nickname" class="c1"></form:errors>
                     </div>
       
                     <div class="login-input-wrap input-password">
-                        <i class="fas fa-phone"></i>
-                        <form:input placeholder="Phone" id="phone" path="phone"/>
+                        <i class="fas fa-phone"></i> 
+                        <form:input placeholder="Phone" id="phone" path="phone" type="tell" onKeyup="inputPhoneNumber(this);" onkeypress='handlerNum();' maxlength="13" />
                         <br>
                         <form:errors path="phone" class="c1"></form:errors>
+                        <div class="form-group" id= phoneResult></div>
+
                     </div>
                         
                     <div class="login-input-wrap input-password">
                         <i class="fas fa-indent"></i>
                         <form:input placeholder="E-mail" id="email" path="email"/> <button id = "CheckMail" type="button" class="sendMail" onclick="sendMail()"style="border: 1px solid black;float: right;width: 50px;">전송</button>
                         <form:errors path="email" class="c1"></form:errors>
+                        <div class="form-group" id= emailResult></div>
                     </div>
                     
                     <div class="login-input-wrap input-password">
