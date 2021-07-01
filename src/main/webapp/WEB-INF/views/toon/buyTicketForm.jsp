@@ -2,7 +2,6 @@
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %> 
 <%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags" %>
-<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <!-- <a onclick="clickATag(3, 3);"> -->
 <!-- test link  -->
 <!-- 		<input name ="epNum" value="3" readonly="readonly"/> -->
@@ -17,7 +16,7 @@
 		<div id="Tstock" class="row">보유 소장권 갯수 &nbsp;  <span>${ticketBox.stock} 개 </span></div> 
 	</div>
 	<div class="col" id="TIcketform"> 
-		<form id="goto-ticket" action="${pageContext.request.contextPath}/point/ticketCharge" method="post" >
+		<form id="goto-ticket" action="${pageContext.request.contextPath}/point/ticketCharge" method="post">
 <!-- 			<span>stock</span> -->
 			<input id="ticket-stock" name="stock" value="${ticketBox.stock}" readonly="readonly" hidden="hidden"/>
 <!-- 			<span>유저이름</span> -->

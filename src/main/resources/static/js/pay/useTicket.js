@@ -1,7 +1,9 @@
 //유효성 검사 관련
 //https://fruitdev.tistory.com/200
 
-//전역변수 
+//전역변수
+
+alert("java연결"); 
 let defaultStr = 0; //기본 소장권 갯수
 let curpoint = $('#cur-point').val();
 let ticketstock = $('#ticket-stock').val();
@@ -16,6 +18,8 @@ var url = ""; // 문자열 받기
 
 let eachEpNump;
 let epNump;
+
+
 //유효성 검사
 //빈 단어 검사
 function isEmpty(str){
@@ -200,7 +204,7 @@ function checkUseTicket(epNump,eachEpNump){
 
 
 function clickATag(epNump1,eachEpNump1){
-	
+	alert("함수실행");
 	alert(epNump1 + ':::'+eachEpNump1);
 	//전역변수 할당
 	epNump = epNump1;
