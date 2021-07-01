@@ -169,7 +169,7 @@ public class AdminController {
 		}else {
 			//실패하면 수정실패 , 리스트로 이동
 			mv.addObject("msg", "수정 실패");
-			mv.addObject("path", "./manageToonList");
+			mv.addObject("path", "./manageToonUpdate");
 			mv.setViewName("common/commonResult");
 		}
 		
@@ -286,16 +286,18 @@ public class AdminController {
 	
 	@PostMapping("manageEachEpUpdate")
 	public ModelAndView setManageEachEpUpdate(EachEpVO eachEpVO, ModelAndView mv, MultipartFile [] files) throws Exception{
-		
+		System.out.println("되니");
 		int result = adminService.setManageEachEpUpdate(eachEpVO, files);
 		
+		
+		
 		if(result>0) {
-			//성공하면 리스트로 이동
+			
 			mv.setViewName("redirect:./manageEachEpList");
 		}else {
-			//실패하면 수정실패 , 리스트로 이동
+			
 			mv.addObject("msg", "수정 실패");
-			mv.addObject("path", "./manageEachEpList");
+			mv.addObject("path", "./manageEachEpUpdate");
 			mv.setViewName("common/commonResult");
 		}
 		
@@ -485,16 +487,16 @@ public class AdminController {
 		return "redirect:./manageQnaList";
 	}
 
-	@GetMapping("qnaUpdate")
+	@GetMapping("manageQnaUpdate")
 	public String setUpdate(BoardVO boardVO, Model model)throws Exception{
 		boardVO = qnaService.getSelect(boardVO);
 		model.addAttribute("vo", boardVO);
-		model.addAttribute("action", "qnaUpdate");
-		return "admin/qnaUpdate";
+		model.addAttribute("action", "manageQnaUpdate");
+		return "admin/manageQnaUpdate";
 		
 	}
 	
-	@PostMapping("qnaUpdate")
+	@PostMapping("manageQnaUpdate")
 	public String setUpdate(BoardVO boardVO, MultipartFile [] files)throws Exception{
 		
 		int result = qnaService.setUpdate(boardVO, files);
@@ -502,7 +504,7 @@ public class AdminController {
 		return "redirect:./manageQnaList";
 	}
 	
-	@PostMapping("QnaDelete")
+	@PostMapping("manageQnaDelete")
 	public String setQnaDelete(BoardVO boardVO) throws Exception{
 		
 		int result = qnaService.setQnaDelete(boardVO);

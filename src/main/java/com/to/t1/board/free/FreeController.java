@@ -7,6 +7,7 @@ import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.security.core.Authentication;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -18,6 +19,7 @@ import org.springframework.web.servlet.ModelAndView;
 
 import com.to.t1.board.BoardFileVO;
 import com.to.t1.board.BoardVO;
+import com.to.t1.member.MemberService;
 import com.to.t1.member.MemberVO;
 import com.to.t1.util.Pager;
 
@@ -30,6 +32,8 @@ public class FreeController {
 	//Unsatified dependency 
 	@Autowired
 	private FreeService freeService;
+	@Autowired
+	private MemberService memberService;
 	
 	@Value("${board.free.filePath}")
 	private String filePath;
@@ -80,8 +84,20 @@ public class FreeController {
 	}
 	
 	@GetMapping("freeSelect")
-	public ModelAndView getSelect(FreeVO freeVO)throws Exception{
+	public ModelAndView getSelect(FreeVO freeVO, MemberVO memberVO, Authentication auth2, Model model)throws Exception{
 		ModelAndView mv = new ModelAndView();
+		
+		 if(auth2 != null) {
+	    	  memberVO = memberService.myPage((MemberVO) auth2.getPrincipal());
+	    	  mv.addObject("memberVO",memberVO);
+	      }
+	     
+	     model.addAttribute("memberVO", memberVO);
+	    
+	     System.out.println("memberVO :"+ memberVO);
+	     
+	     System.out.println(memberVO.getUsername());
+		
 		freeVO = freeService.getSelect(freeVO);
 		mv.addObject("vo", freeVO);
 		mv.setViewName("board/freeSelect");
