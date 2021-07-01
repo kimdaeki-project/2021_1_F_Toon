@@ -1,6 +1,0 @@
-/**
- * 
- */
- 
-// alert("goto Ticket Box");
-

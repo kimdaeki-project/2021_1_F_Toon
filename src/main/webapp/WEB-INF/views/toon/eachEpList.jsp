@@ -49,7 +49,8 @@
       </ul>
       </div>
    </div>
-   
+   <!-- 소장 -->
+   <c:import url="./eachEpList.jsp"></c:import>
    <!-- 리스트 -->
 
       <table cellpadding="0" cellspacing="0" class="viewList">
@@ -131,7 +132,8 @@
       </sec:authorize>
       
 <script type="text/javascript" src="../js/toon/favoriteToon.js"></script>
-
+<script type="text/javascript" src="../js/pay/useTicket.js"></script>
+<script type="text/javascript" src="../js/pay/getTicket.js"></script>
 
 
 </div>

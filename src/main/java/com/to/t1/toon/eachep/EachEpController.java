@@ -1,7 +1,11 @@
 package com.to.t1.toon.eachep;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
+
+import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.Authentication;
@@ -9,12 +13,18 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import com.to.t1.favoriteToon.FavoriteToonService;
 import com.to.t1.favoriteToon.FavoritetoonVO;
+import com.to.t1.member.MemberService;
+import com.to.t1.member.MemberVO;
 import com.to.t1.mypage.RecentVO;
+import com.to.t1.point.PointService;
 import com.to.t1.review.ReviewService;
 import com.to.t1.review.ReviewVO;
+import com.to.t1.ticket.TicketBoxVO;
+import com.to.t1.toon.ToonService;
 import com.to.t1.toon.ToonVO;
 import com.to.t1.util.Pager;
 
@@ -24,26 +34,46 @@ public class EachEpController {
 
    @Autowired
    private EachEpService eachEpService;
-   
+   @Autowired
+	private ToonService toonService;
    @Autowired
    private ReviewService reviewService;
    @Autowired
    private FavoriteToonService favoriteToonService;
+   @Autowired
+	private MemberService memberService;
+   @Autowired
+	private PointService pointService;
    
    @GetMapping("eachEpList")
-   public void getList(Pager pager, Model model, Authentication auth)throws Exception{
+   public String getList(@RequestParam Map<String,Object> param ,
+		   Pager pager, Model model, Authentication auth,
+		   MemberVO memberVO, HttpSession httpSession,
+		   TicketBoxVO ticketBoxVO)throws Exception{
       FavoritetoonVO favoritetoonVO = new FavoritetoonVO();
       if(auth!=null) {
-         favoritetoonVO.setUsername(auth.getName());
-         favoritetoonVO.setToonNum(pager.getToonNum());
+    	  memberVO = memberService.myPage((MemberVO) auth.getPrincipal());
+	      param.put("username",memberVO.getUsername());
+	      ticketBoxVO = pointService.checkTicketStock(param, ticketBoxVO);
+	  		//System.out.println(ticketBoxVO);
+	    	model.addAttribute("ticketBox",ticketBoxVO);
+	    	model.addAttribute("memberVO", memberVO); 
+	    	//System.out.println("username"+memberVO.getUsername());
+	      
+	    	favoritetoonVO.setUsername(auth.getName());
+	        
+         
       }
-      ToonVO list=eachEpService.getList(pager);
-      model.addAttribute("toonVO", list);
-      model.addAttribute("pager", pager);
-      
-      FavoritetoonVO favorToon=favoriteToonService.getSelect(favoritetoonVO);
-      
-      model.addAttribute("favorToon", favorToon);
+    	  FavoritetoonVO favorToon=favoriteToonService.getSelect(favoritetoonVO);
+    	  favoritetoonVO.setToonNum(pager.getToonNum());
+    	  
+          ToonVO list=eachEpService.getList(pager);
+          model.addAttribute("info",param);
+          model.addAttribute("toonVO", list);
+          model.addAttribute("pager", pager);
+          model.addAttribute("favorToon", favorToon);
+          
+          return "toon/eachEpList";
    }
    
    @GetMapping("eachEpSelect")
