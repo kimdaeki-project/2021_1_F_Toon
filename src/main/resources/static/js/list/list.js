@@ -4,7 +4,11 @@
 
 
 
+/*$(function(){ 
+
+
 $(function(){ 
+
 			$('.pay').click(function() {
 				let toonNum=$(this).attr("data-toonNum");		
 				let eachEpNum=$(this).attr("data-eachEpNum");
@@ -23,7 +27,7 @@ $(function(){
 				return false;				
 		} }); 
 		});
-		
+		*/
 		
 		
 		

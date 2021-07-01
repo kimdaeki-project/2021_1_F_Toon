@@ -31,6 +31,24 @@
 }
 
 </style>
+<script type="text/javascript"> 
+// F12 버튼 방지 
+$(document).ready(function(){ 
+	$(document).bind('keydown',function(e){ 
+		if ( e.keyCode == 123 /* F12 */) { 
+			e.preventDefault(); e.returnValue = false; 
+	    }  
+	}); 
+}); 
+// 우측 클릭 방지 
+document.onmousedown=disableclick; status="우클릭을 금지합니다"; 
+function disableclick(event){ 
+	if (event.button==2) { 
+		alert(status); 
+		return false; 
+	} 
+} 
+</script>
 
 </head>
 <body>
