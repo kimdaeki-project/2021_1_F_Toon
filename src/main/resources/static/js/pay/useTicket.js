@@ -102,7 +102,7 @@ function comfFunction(text,func){
 		 // 포인트 차감 + 소장권 1 구매
 		executeFunction(func);
     }else {
-    	alert("아니오선택");
+    	
     }
 }
 
@@ -122,7 +122,7 @@ function getTicketAjax(){
 		url : '/point/getNuseTicket', //요청 할 내용
 		success: function(res){
 			url = res; //결과 할당
-			alert("소장권을 차감합니다");
+			//alert("소장권을 차감합니다");
 			gotolocation(url);
 			//window.location.href= url;
 		},
@@ -193,7 +193,7 @@ function checkUseTicket(epNump,eachEpNump){
 			url = result;
 			gotolocation(url);
 		}else{
-			alert("소장이력 없엉!");
+			//alert("소장이력 없엉!");
 			if(stCheck){ //소장권 충분
 				var text ="재고가있습니다 \n 소장권을 사용하시겠습니까?";
 				comfFunction(text,getTicketAjax);
@@ -226,13 +226,13 @@ function clickATag(epNump1,eachEpNump1){
 	if(isEmpty(usernamep)){
 		var text = "소장권을 구입하거나 사용할려면 \n 로그인이 필요합니다";
 		if (confirm(text)) {
-			alert("예 선택"); // 로그인 페이지로 이동하기
+			//alert("예 선택"); // 로그인 페이지로 이동하기
 			var path ="/member/login";
 			gotolocation(path);
     	}else { // 현재 페이지 유지
     		
     	}
-	}else{
+	}else{//로그인 시 클릭: 실행
 		checkUseTicket(epNump,eachEpNump);
 	}
 }

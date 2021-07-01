@@ -178,7 +178,6 @@ public class PointController {
 		System.out.println("result2 :" + result2);
 		
 		return result2;
-		
 	}
 	
 	//검증 관련

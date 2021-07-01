@@ -9,9 +9,9 @@ let toonNum = $('#toonNum').val()
 let toonTitle = $('#toonTitle').val();
 let contents = $('#contents').val();
 
-let nexturl = "toon/eachEpList?toonNum=" +toonNum;
+let nexturl = "/toon/eachEpList?toonNum=" +toonNum;
 $('#nextsuccess').val(nexturl); 
-alert($('#nextsuccess').val());
+//alert($('#nextsuccess').val());
 function isEmpty(str){
 	if(typeof str == "undefined" || str == null || str == ""){
 		 return true;
@@ -36,7 +36,7 @@ if(isEmpty(curstock)){
 }
 //parseInt로 변환
 curstock = parseInt(curstock);
-alert(typeof curstock);
+//alert(typeof curstock);
 
 $('input[name=ifstock]').val(ifstock);
 //radio 버튼 클릭시 결과 나오기  
@@ -45,7 +45,14 @@ $("input[name='point']").click(function(){
 	var totalPoint = curpoint - point;
 	
 	if(totalPoint < 0 ){
-		alert("금액 모잘라 충전할래?");
+		{
+		if (confirm("포인트가 모자랍니다 \n 충전페이지로 이동하시겠습니까?")) {
+			 location.href = "/point/charge";
+	    }else {
+			alert("티켓구입을취소합니다");
+	    	location.href = nexturl;
+	    }
+    }
 		
 	}else{
 		//document.getElementById("total-point").innerText = totalPoint + ' P';
