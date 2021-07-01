@@ -28,10 +28,6 @@
          </where>
          </sql>
          
-         <select id="getFileSelect" parameterType="AdminFileVO" resultType="AdminFileVO">
-      select * from toonFiles where fileNum=#{fileNum}
-      </select>
-         
          <select id="getManageToonList" resultType="ToonVO" parameterType="Pager">
          select * from toon
          <include refid="searcher"></include>
