@@ -123,42 +123,8 @@
 
 
    <div class="tit_area">
-      <div class="view">
-        
-         <div class="btn_area">
-<%--             <c:if test="${toonVO.eachEpVO['0'].eachEpNum!=1}"> --%>
-<!--                <span class="pre">  -->
-<%--                <a href="/toon/eachEpSelect?toonNum=${toonVO.toonNum}&eachEpNum=${toonVO.eachEpVO['0'].eachEpNum-1}&epNum=${toonVO.eachEpVO['0'].epNum-1}">이전화</a> --%>
-<!--                </span> -->
-<%--             </c:if> --%>
-<%--             <c:if test="${toonVO.eachEpVO['0'].eachEpNum<pager.maxEp}"> --%>
-<!--                <span class="next">  -->
-<%--                <a href="/toon/eachEpSelect?toonNum=${toonVO.toonNum}&eachEpNum=${toonVO.eachEpVO['0'].eachEpNum+1}&epNum=${toonVO.eachEpVO['0'].epNum+1}">다음화</a> --%>
-<!--                </span> -->
-<%--             </c:if> --%>
-         </div>
-      </div>
-      
-      <div class="vote_lst">
-         <dl class="lt">
-            <dt>
-<!--                <img src="https://ssl.pstatic.net/static/comic/images/migration/detail/txt_point_all.gif" width="39" height="11" alt="회별별점"> -->
-            </dt>
-<!--             <dd class="total"> -->
-<!--                <div class="rating_type4" id="topTotalStarPoint"> -->
-<!--                   <span class="star"><em style="width: 98%">평점</em></span>  -->
-<%--                   <span id="topPointTotalNumber"><strong><fmt:formatNumber value="${toonVO.eachEpVO['0'].epRatingSum/toonVO.eachEpVO['0'].epRatingPerson}" pattern=".00"/></strong></span>  --%>
-<%--                   <span class="pointTotalPerson">(참여 <em>${toonVO.eachEpVO['0'].epRatingPerson}</em>)</span> --%>
-<!--                </div> -->
-<!--             </dd> -->
-
-         </dl>
-         <dl class="rt">
-<!--             <dt>등록일</dt> -->
-<%--             <dd class="date">${toonVO.eachEpVO['0'].epDate}</dd> --%>
-         </dl>
-      </div>
-   </div>   
+     
+  
 
    <!-- content Img  -->
    <div class="wt_viewer" style="background: #FFFFFF">
