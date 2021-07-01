@@ -8,7 +8,6 @@
 <!DOCTYPE html>
 <html>
 <head>
-<<<<<<< HEAD
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <c:import url="./fragments/bootstrap.jsp"></c:import>  
@@ -16,27 +15,9 @@
 
 <link rel="stylesheet" href="../css/index.css">
 <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
-=======
- <!-- Required meta tags -->
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <!-- BootStrap -->    
-	<!--     <link rel="icon" href="images/favicon.png" type="image/png">  위에 로고-->
-    <c:import url="./fragments/bootstrap.jsp"></c:import>
-    <title>Wong Toon</title>
-   
-    <link rel="stylesheet" href="/css/header.css">
-    
-<meta charset="UTF-8"> <meta name="viewport" content="width=device-width, initial-scale=1.0"> 
-<meta http-equiv="X-UA-Compatible" content="ie=edge"> <title>부트스트랩Carousel</title>
- <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" 
- integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous"> 
- <style> .carousel-inner > .carousel-item > img{ /* width: 640px; height: 720px; */ } </style>
->>>>>>> hyelin_9
 </head>
 
 <body>
-<<<<<<< HEAD
 <c:import url="./fragments/header.jsp"></c:import>
   
   <div class="row">
@@ -71,7 +52,6 @@
                         </div>
                     </div>    
                 </div>
-
                 <div class="col-md-6 col-lg-6 col-xl-4">
                     <div class="single-blog style_two">
                         <div class="thumb">
@@ -94,7 +74,6 @@
                         </div>
                     </div>    
                 </div>
-
                 <div class="col-lg-12 col-xl-3">
                     <div class="row">
                         <div class="col-12 col-md-6 col-lg-6 col-xl-12">
@@ -105,7 +84,6 @@
                                     </a>
                                 </div>
                                 
-
                                     <div class="meta-top d-flex justify-content-center">
                                         <a href="#" style="font-size:20px; color: grey;">복학왕</a>
                                     </div>
@@ -114,7 +92,7 @@
                                     </a>
                                 
                             </div>
-					
+               
                         </div>
                         <div class="col-12 col-md-6 col-lg-6 col-xl-12">
                             <div class="single-blog style-three">
@@ -124,7 +102,6 @@
                                     </a>
                                 </div>
                               
-
                                     <div class="meta-top d-flex justify-content-center">
                                         <a href="#" style="font-size:20px; color: grey;">독립일기</a>
                                     </div>
@@ -135,23 +112,18 @@
                             </div>    
                         </div>
                     </div>
-
                 </div>
             </div>
         </div>
     </section>
-
-
   <!--================ Daily section start =================-->  
-
     <div class="three-block  area-padding">
         <div class="container">
             <div class="row">
                 <div class="area-heading">
                     <h3>Daily Toon</h3>
-                    <p>요일별 웹툰!</p>
+                    <p>신의탑부터 싸움독학까지 일주일이 심심하지 않아요!</p>
                 </div>
-
             </div>
             <div class="row">
                 <div class="col-lg-4">
@@ -173,9 +145,7 @@
                            
                         
                     </div> 
-
                 </div> 
-&emsp;
                 <div class="col-lg-4">
                     <div class="single-blog style-five">
                         <div class="thumb">
@@ -195,7 +165,6 @@
                           
                        
                     </div> 
-
                 </div> 
 &emsp;
                 <div class="col-lg-4">
@@ -215,12 +184,11 @@
                                
                             </a>
                           
-
                        
                     </div> 
                 </div> 
  &emsp;              
- 				 <div class="col-lg-4">
+              <div class="col-lg-4">
                     <div class="single-blog style-five">
                         <div class="thumb">
                          <h2>THU</h2>
@@ -260,7 +228,7 @@
                            
                        
                     </div> 
-				&emsp;
+            &emsp;
                 </div> 
                  <div class="col-lg-4">
                     <div class="single-blog style-five">
@@ -279,7 +247,7 @@
                             </a>
                         
                     </div> 
-				&emsp;
+            &emsp;
                 </div> 
                  <div class="col-lg-4">
                     <div class="single-blog style-five">
@@ -300,28 +268,19 @@
                            
                         
                     </div> 
-
                 </div>                
             </div>
         </div>
     </div>
-
-
     <!--================ daily  section end =================-->  
-
-
-
-
-	<!--================ Genre section start =================-->  
-
+   <!--================ Genre section start =================-->  
     <div class="latest-news  area-padding-bottom">
         <div class="container">
             <div class="row">
                 <div class="area-heading">
                     <h3>GENRE</h3>
-                    <p>Abundantly creeping saw forth spirit can made appear fourth us.</p>
+                    <p>판타지냐 액션이냐 그것이 문제로다..! </p>
                 </div>
-
             </div>
             <div class="row">
                 <div class="col-lg-6">
@@ -333,18 +292,16 @@
                         </div>
                         <div class="short_details">
                             <div class="meta-top d-flex">
-                                <a style="font-size:20px;" href="/toon/eachEpList?toonNum=52">데드퀸</a>
+                                <a style="font-size:20px;" href="/toon/eachEpList?toonNum=52">데드퀸 - Fantasy</a>
                             </div>
                             <a class="d-block" href="single-blog.html">
-                                <h4>Brought dreepeth youll blessed
-                                from whose signs over</h4>
+                                <h4>절망에 빠져 죽음이 임박했을때, 진짜 여왕이 재림한다!
+하이브 세계관의 장대한 끝, 데드퀸</h4>
                             </a>
                            
                         </div>
                     </div> 
-
                 </div> 
-
                 <div class="col-lg-6">
                     <div class="row">
                         <div class="col-lg-6">
@@ -356,17 +313,16 @@
                                 </div>
                                 
                                     <div class="meta-top d-flex">
-                                        <a style="font-size:20px;" href="/toon/eachEpList?toonNum=39">이두나</a>
+                                        <a style="font-size:20px;" href="/toon/eachEpList?toonNum=39">이두나 -Romance</a>
                                     </div>
                                     <a class="d-block" href="single-blog.html">
-                                        <h4>Shall for rule whoses
-                                        may heaven to</h4>
+                                        <h4 style="font-size:10px;">(구)아이돌, 첫사랑, 소개팅녀까지 한 집에 모였다!
+<나노리스트> 민송아 작가의 두근두근 누나 리스트!</h4>
                                     </a>
                                     
                                
                             </div> 
                         </div>
-
                         <div class="col-lg-6">
                             <div class="single-blog style-five small">
                                 <div class="thumb">
@@ -376,16 +332,15 @@
                                 </div>
                                 
                                     <div class="meta-top d-flex">
-                                        <a style="font-size:20px;" href="/toon/eachEpList?toonNum=28">모죠의 일기</a>
+                                        <a style="font-size:20px;" href="/toon/eachEpList?toonNum=28">모죠의 일기 - Comedy</a>
                                     </div>
                                     <a class="d-block" href="single-blog.html">
-                                        <h4>Shall for rule whoses
-                                        may heaven to</h4>
+                                        <h4 style="font-size:10px;">소신있는 취향과 내성적인 성향.
+훌륭한 집순이 모죠의 은밀한 비밀들</h4>
                                     </a>
                                    
                             </div> 
                         </div>
-
                         <div class="col-lg-6">
                             <div class="single-blog style-five small">
                                 <div class="thumb">
@@ -395,16 +350,15 @@
                                 </div>
                                 
                                     <div class="meta-top d-flex">
-                                        <a style="font-size:20px;" href="/toon/eachEpList?toonNum=37">더 복서</a>
+                                        <a style="font-size:20px;" href="/toon/eachEpList?toonNum=37">더 복서 - Action</a>
                                     </div>
                                     <a class="d-block" href="single-blog.html">
-                                        <h4>Shall for rule whoses
-                                        may heaven to</h4>
+                                        <h4 style="font-size:10px;">재능있는 복서를 찾던 전설적인 트레이너 K는 기묘한 소년을 발견한다.
+그의 충격적인 재능은 과연 축복일까, 저주일까?!</h4>
                                     </a>
                                  
                             </div> 
                         </div>
-
                         <div class="col-lg-6">
                             <div class="single-blog style-five small">
                                 <div class="thumb">
@@ -414,11 +368,12 @@
                                 </div>
                               
                                     <div class="meta-top d-flex">
-                                        <a style="font-size:20px;" href="/toon/eachEpList?toonNum=15">엽총소년</a>
+                                        <a style="font-size:20px;" href="/toon/eachEpList?toonNum=15">엽총소년 - Thriller</a>
                                     </div>
                                     <a class="d-block" href="single-blog.html">
-                                        <h4>Shall for rule whoses
-                                        may heaven to</h4>
+                                        <h4 style="font-size:10px;">약자에서 영웅이 될 수밖에 없었던 소년 '한규환',
+그리고 그 소년을 영웅으로 만들어줄 엽총 한 자루가 눈앞에 있다.
+글로벌 누적 조회수 12억 뷰를 기록한 <스위트홈>의 프리퀄 대공개!</h4>
                                     </a>
                                    
                             </div> 
@@ -426,23 +381,17 @@
                         </div>          
                     </div>               
                 </div> 
-
             </div>
         </div>
     </div>
-
-
     <!--================ Genre section end =================--> 
-
-
     <!--================ Finished section start ================-->  
-
     <section class="editors_pick area-padding">
         <div class="container">
             <div class="row">
                 <div class="area-heading">
-                    <h3> Finished</h3>
-                    <p>Abundantly creeping saw forth spirit can made appear fourth us.</p>
+                    <h3>Finished</h3>
+                    <p>아닛! 이 웹툰이 벌써 끝나다니?!</p>
                 </div>
             </div>
             <div class="row">
@@ -458,13 +407,10 @@
                                 <a href="/toon/eachEpList?toonNum=103">유미의 세포들</a>
                             </div>
                             <a class="d-block" href="single-blog.html">
-                                <h4>Created face stars sixth forth
-                                Earth firmament</h4>
+                                <h4>유미는 지금 무슨 생각을 하고 있을까?
+그녀의 머릿속에서 바쁘게 움직이는 세포들 이야기!</h4>
                             </a>
-                            <div class="meta-bottom d-flex" >
-                                <a href="#">March 12 , 2019 . </a>
-                                <a class="dark_font" href="#">By Alen Mark</a>
-                            </div>
+                            
                         </div>
                     </div>    
                 </div>
@@ -476,11 +422,10 @@
                                     <a href="/toon/eachEpList?toonNum=86">고수</a>
                                 </div>
                                 <a class="d-block" href="single-blog.html">
-                                    <h4 class="font-20">Light that hath itself god
-                                        grass herb dark sea on
-                                    the hath dowe </h4>
+                                    <h4 class="font-20"><용비불패> 최강의 콤비가 무협의 전설을 다시 쓰다!
+천하제일의 고수 강룡. 그리고 수많은 다른 고수들의 이야기.</h4>
                                 </a>
-                                <p>Said spirit evening above good twes at  god midst deep a wherein very made he seas male very broug sad forth saying right.</p>
+                                
                             </div>  
                         </div>  
                         <div class="col-12 col-sm-5">
@@ -491,7 +436,6 @@
                             </div>
                         </div>
                     </div> 
-
                     <div class="single-blog row no-gutters style-four">
                         <div class="col-12 col-sm-5">
                             <div class="thumb">
@@ -506,35 +450,20 @@
                                     <a href="/toon/eachEpList?toonNum=88">머니게임</a>
                                 </div>
                                 <a class="d-block" href="single-blog.html">
-                                    <h4 class="font-20">Light that hath itself god
-                                        grass herb dark sea on
-                                    the hath dowe </h4>
+                                    <h4 class="font-20">게임 일수 100일. 총 상금 448억. 적용 물가 1000배.
+당신은 얼마를 벌어 나갈수 있습니까? </h4>
                                 </a>
-                                <p>Said spirit evening above good twes at  god midst deep a wherein very made he seas male very broug sad forth saying right.</p>
+                                
                             </div>  
                         </div>  
                     </div>
                 </div>
             </div>
-            <div class="row">
-                <div class="col-12">
-                    <div class="addvertise">
-                        <a href=""><img src="images/banner/add.jpg" alt=""></a>
-
-                    </div>
-                </div>
-            </div>
+           	
         </div>
     </section>
-
-
     <!--================ Finished section end ================-->    
-
-
-
-
     <!-- ================ 나머지 Starts ================= -->  
-
   <%--   <section class="instagram">
         <div class="row no-gutters">
             <div class="col-2">
@@ -560,68 +489,15 @@
             </div>
         </div>
     </section> --%>
-
     <!-- ================ 나머지 Area End ================= -->  
-
-
     <!-- ================ start footer Area ================= -->
-    <c:import url="./fragments/footer.jsp"></c:import>
-	<!-- ================ End footer Area ================= -->
-
-=======
-	<c:import url="./fragments/header.jsp"></c:import>
-  
-  
- 
-<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous">
-</script> <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script> 
-<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script> <script> $('.carousel').carousel({ interval: 2000 //기본 5초 }) </script> 
-
-
-<h2 class="w3-center">Manual Slideshow</h2>
-
-<div class="w3-content w3-display-container">
-  <img class="mySlides" src="https://ifh.cc/g/EwbQVh.jpg" style="width:80%">
-  <img class="mySlides" src="https://ifh.cc/g/vJwutX.jpg" style="width:80%">
-  <img class="mySlides" src="https://ifh.cc/g/14MTyP.jpg" style="width:80%">
-  <img class="mySlides" src="https://ifh.cc/g/EwbQVh.jpg" style="width:80%">
-
-  <button class="w3-button w3-black w3-display-left" onclick="plusDivs(-1)">&#10094;</button>
-  <button class="w3-button w3-black w3-display-right" onclick="plusDivs(1)">&#10095;</button>
-</div>
-
-<script>
-var slideIndex = 1;
-showDivs(slideIndex);
-
-function plusDivs(n) {
-  showDivs(slideIndex += n);
-}
-
-function showDivs(n) {
-  var i;
-  var x = document.getElementsByClassName("mySlides");
-  if (n > x.length) {slideIndex = 1}
-  if (n < 1) {slideIndex = x.length}
-  for (i = 0; i < x.length; i++) {
-    x[i].style.display = "none";  
-  }
-  x[slideIndex-1].style.display = "block";  
-}
-</script>
-
-
-  
-<!-- ================ End footer Area ================= -->
-<c:import url="./fragments/footer.jsp"></c:import>
->>>>>>> hyelin_9
+   <c:import url="./fragments/footer.jsp"></c:import>
+   <!-- ================ End footer Area ================= -->
 <!-- Optional JavaScript -->
 <!-- jQuery first, then Popper.js, then Bootstrap JS -->
-
 <script src="js/jquery-2.2.4.min.js"></script>
 <script src="js/popper.js"></script>
 <script src="js/bootstrap.min.js"></script>
-
 <script src="js/stellar.js"></script>
 <script src="js/jquery.magnific-popup.min.js"></script>
 <script src="js/jquery.ajaxchimp.min.js"></script>
@@ -632,7 +508,5 @@ function showDivs(n) {
 <script src="js/jquery.validate.min.js"></script>
 <script src="js/mail-script.js"></script>
 <script src="js/theme.js"></script>
-
-
 </body>
 </html>
