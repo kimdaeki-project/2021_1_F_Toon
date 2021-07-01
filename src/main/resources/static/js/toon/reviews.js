@@ -6,9 +6,12 @@ var comments = $("#comments").val();
 
 
 /*별점, 댓글 저장*/
-$(function() {
-	$('#save').click(function() {
-		
+$('#save').click(function() {
+	var username= $("#username").val();
+		if(username == null){
+			alert("로그인 후 등록이 가능합니다.");
+			return false;
+		}else{
 		/* 댓글 최소 글자수 제한  */
 			if ($('#comments').val().length < 5) {
 				alert("5자 이상 입력해주세요.");
@@ -40,7 +43,7 @@ $(function() {
 					})
 				}
 			}
-	})
+		}
 });
 
 /* 별점, 댓글 삭제 */
