@@ -135,16 +135,16 @@ function usePointtoGetTicket(){
 			
 			if(url != '0'){
 				//alert("ajax 통신 성공");
-				alert(url);
-				alert("소장권 구입 성공");
-				var text ="소장권을 바로 사용하시겠습니까?";
+				//alert(url);
+				//alert("소장권 구입 성공");
+				var text ="소장권을 구입했습니다\n바로 열람하시겠습니까?";
 				comfFunction(text,getTicketAjax);
 			}
 		},
 		error : function(request, status, error){
-			alert("ajax통신 실패");
+			//alert("ajax통신 실패");
 			var tempPage = "endEpList?toonNum="+tNum;
-			alert("작업을 취소했습니다");
+			alert("구매에 실패했습니다\n관리자에게 문의바랍니다.");
 			url = tempPage;
 			gotolocation(url);
 		}
@@ -172,18 +172,19 @@ function checkUseTicket(epNump,eachEpNump){
 			
 		},
 		error : function(request, status, error){
-			alert("ajax통신 실패");
+			//alert("ajax통신 실패");
+			alert("구입에 실패했습니다");
 		}
 	}).done(function(result){
-		alert(result);
+		//alert(result);
 		if(result == '0'){
-			alert("소장이력이 없습니다");
+			alert("열람이력이 없습니다");
 			if(stCheck){ //소장권 충분
-				var text ="재고가있습니다 \n 소장권을 사용하시겠습니까?";
+				var text ="소장권을 사용하시겠습니까?";
 				comfFunction(text,getTicketAjax);
 			}else{ //소장권 안충분
 				if(pCheck){
-					var text = "포인트 구입할수 있습니다\n소장권구입후 바로 보시겠습니까?";
+					var text = "포인트로 구입할수 있습니다\n 소장권을 하나 구입할까요?";
 					comfFunction(text,usePointtoGetTicket);
 				}else{
 					if (confirm("포인트가 부족합니다 \n포인트충전 페이지로 이동합니다")) {
@@ -195,7 +196,7 @@ function checkUseTicket(epNump,eachEpNump){
 		}else{
 			alert("소장권이 있습니다 페이지를 이동합니다");
 			url = result;
-			alert(url);
+			//alert(url);
 			gotolocation(url);
 		}
 	}); 
