@@ -187,7 +187,7 @@ function checkUseTicket(epNump,eachEpNump){
 					var text = "포인트로 구입할수 있습니다\n 소장권을 하나 구입할까요?";
 					comfFunction(text,usePointtoGetTicket);
 				}else{
-					if (confirm("포인트가 부족합니다 \n포인트충전 페이지로 이동합니다")) {
+					if (confirm("포인트가 부족합니다 \n충전 페이지로 이동합니다")) {
 						 window.location.href = "point/charge";
     				}else { 
  					}
