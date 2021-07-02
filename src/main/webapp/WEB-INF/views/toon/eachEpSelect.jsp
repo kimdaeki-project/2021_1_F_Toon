@@ -31,7 +31,7 @@
 }
 
 </style>
-<script type="text/javascript"> 
+<!--  <script type="text/javascript"> 
 // F12 버튼 방지 
 $(document).ready(function(){ 
 	$(document).bind('keydown',function(e){ 
@@ -48,7 +48,7 @@ function disableclick(event){
 		return false; 
 	} 
 } 
-</script>
+</script>-->
 
 </head>
 <body>

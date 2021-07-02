@@ -191,8 +191,8 @@ function disableclick(event){
         <input type="hidden" id="username" value="${loginUser}">
 	</sec:authorize>
 	
-   <script type="text/javascript" src="../js/toon/favoriteToon.js"></script>
-   <script type="text/javascript" src="../js/toon/reviews.js"></script>
+<!--    <script type="text/javascript" src="../js/toon/favoriteToon.js"></script> -->
+<!--    <script type="text/javascript" src="../js/toon/reviews.js"></script> -->
    
 </body>
 </html>

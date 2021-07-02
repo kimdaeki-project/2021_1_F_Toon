@@ -140,8 +140,8 @@
          <input type="hidden" id="username" value="${loginUser}">
       </sec:authorize>
       
-<script type="text/javascript" src="../js/toon/favoriteToon.js"></script>
-<script type="text/javascript" src="../js/pay/useTicket.js"></script>
+<!-- <script type="text/javascript" src="../js/toon/favoriteToon.js"></script> -->
+<!-- <script type="text/javascript" src="../js/pay/useTicket.js"></script> -->
 
 </div>
 
