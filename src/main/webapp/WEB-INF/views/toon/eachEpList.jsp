@@ -46,7 +46,7 @@
 
     <div id='center-box'>
 
-	<table width="70%">
+	<table width="100%">
     <tr>
        <td rowspan="4" align="right">
           <div class="thumb">
