@@ -85,7 +85,7 @@ function comfFunction(text,func){
 		 // 포인트 차감 + 소장권 1 구매
 		executeFunction(func);
     }else {
-    	alert("작업을 취소합니다");
+    	alert("아니오선택");
     }
 }
 
