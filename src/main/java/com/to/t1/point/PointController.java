@@ -98,8 +98,9 @@ public class PointController {
 		
 		String toonNum = String.valueOf(param.get("toonNum"));
 		String eachEpNum = String.valueOf(param.get("eachEpNum"));
+		String epNum = String.valueOf(param.get("epNum"));
 		String username = String.valueOf(param.get("username"));
-		System.out.println(toonNum + ":" + eachEpNum);
+		System.out.println(toonNum + ":::" + eachEpNum);
 		
 		long result = pointservice.CheckUseTicket(param);
 		
@@ -107,9 +108,9 @@ public class PointController {
 		
 		if(result != 0) {
 			//해당 post전송하기
-			url = "toon/eachEpSelect?toonNum="+toonNum+"&eachEpNum="+eachEpNum+"&username="+username;
+			url = "endEpSelect?toonNum="+toonNum+"&eachEpNum="+eachEpNum+"&epNum="+epNum+"&username="+username;
 		}
-		
+		System.out.println("returnUrl1 : "+url);
 		return url;
 				
 	}
@@ -122,23 +123,25 @@ public class PointController {
 		System.out.println("param3 : "+param);
 		System.out.println(ticketBoxVO);
 		System.out.println(useTicketVO);
-		String url = "/";
+		String url = "";
 		//티켓 쓰기...
 		int result = pointservice.setuseTicket(param, useTicketVO, ticketBoxVO);
 		//eachepNum 찾기
 		long toonNum = Long.valueOf(param.get("toonNum"));
 		long eachEpNum = pointservice.SelectEachEpNum(param);
+		String epNum = param.get("epNum");
 		String username = param.get("username");
 		
 		//System.out.println(eachEpNum);
 		//3. 모두 성공하면 0 or 1 return 하기
 		if(result != 0) {
 			//해당 post전송하기
-			url = "toon/eachEpSelect?toonNum="+toonNum+"&eachEpNum="+eachEpNum+"&username="+username;
+			url = "eachEpSelect?toonNum="+toonNum+"&eachEpNum="+eachEpNum+"&epNum="+epNum+"&username="+username;
 		}else {
-			url = "toon/endEpList?toonNum="+toonNum;
+			url = "endEpList?toonNum="+toonNum;
 		}
-		System.out.println(url);
+		
+		System.out.println("returnUrl2 : "+url);
 		return url;
 	}
 	//포인트로 티켓 1개 구매하기 

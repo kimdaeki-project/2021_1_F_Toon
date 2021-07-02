@@ -83,6 +83,10 @@ public class EachEpController {
       FavoritetoonVO favoritetoonVO = new FavoritetoonVO();
       if(auth!=null) {
          recentVO.setUsername(auth.getName());
+         System.out.println(recentVO);
+         
+         System.out.println(eachEpVO);
+       
          favoritetoonVO.setUsername(auth.getName());
          favoritetoonVO.setToonNum(pager.getToonNum());
       }

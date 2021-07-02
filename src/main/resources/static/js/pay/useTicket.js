@@ -72,7 +72,7 @@ let stCheck = countCheck(ticketstock,1);
 
 function gotolocation(path){
 	//window.location.href="/point/charge";
-	window.location.href=path;
+	location.href=path;
 }
 
 //함수 가동 prg
@@ -104,7 +104,7 @@ function getTicketAjax(){
 		dataType : 'text',
 		url : '/point/getNuseTicket', //요청 할 내용
 		success: function(res){
-			var url = "";
+			url = "";
 			url = res; //결과 할당
 			//alert("소장권을 차감합니다");
 			gotolocation(url);
@@ -133,7 +133,7 @@ function usePointtoGetTicket(){
 			url = "";
 			url = res; //결과 할당
 			
-			if(url == '1'){
+			if(url != '0'){
 				//alert("ajax 통신 성공");
 				alert(url);
 				alert("소장권 구입 성공");
@@ -167,14 +167,15 @@ function checkUseTicket(epNump,eachEpNump){
 		dataType : 'text',
 		url : '/point/checkTicket', //요청 할 내용
 		success: function(res){
-			alert("ajax 통신 성공");
+			//alert("ajax 통신 성공");
 			result = res; //결과 할당
+			
 		},
 		error : function(request, status, error){
 			alert("ajax통신 실패");
 		}
 	}).done(function(result){
-		
+		alert(result);
 		if(result == '0'){
 			alert("소장이력이 없습니다");
 			if(stCheck){ //소장권 충분
@@ -190,11 +191,11 @@ function checkUseTicket(epNump,eachEpNump){
     				}else { 
  					}
 				}
-			}
-				
+			}	
 		}else{
 			alert("소장권이 있습니다 페이지를 이동합니다");
 			url = result;
+			alert(url);
 			gotolocation(url);
 		}
 	}); 
