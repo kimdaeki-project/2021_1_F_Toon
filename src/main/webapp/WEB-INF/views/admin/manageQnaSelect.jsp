@@ -46,8 +46,7 @@
 
 </head>
 <body>
-<c:import url="../fragments/header.jsp"></c:import>
-	
+	<c:import url="../fragments/header.jsp"></c:import>
 	<div class="row">
   	<div class="col-2">
   		<c:import url="./adminNav.jsp"></c:import>
@@ -88,13 +87,13 @@
 	</c:forEach>
 	</div>
 	
-	<a href="./qnaUpdate?boNum=${vo.boNum}" class="btn btn-secondary">수정</a>
+	<a href="./manangeQnaUpdate?boNum=${vo.boNum}" class="btn btn-secondary">수정</a>
 	
 	<a href="#" id="del" class="btn btn-secondary">삭제</a>
 	
 	<a href="./reply?boNum=${vo.boNum}" class="btn btn-secondary">답변</a>
 	
-	<form action="./QnaDelete" id="frm" method="get">
+	<form action="./manangeQnaDelete" id="frm" method="get">
 		<input type="hidden" name="boNum" value="${vo.boNum}">
 	</form>
 	</div>
@@ -109,10 +108,10 @@
 		let result = confirm("삭제하시겠습니까?");
 		
 		if(result){
-			//frm.method="post";
+			
 			frm.setAttribute("method", "post");
 			frm.submit();
-			//location.href="./${board}Delete?num=${dto.num}";
+			
 		}
 	});
 </script>

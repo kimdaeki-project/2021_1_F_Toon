@@ -171,7 +171,7 @@
 		<input type="button" value="선택 삭제" class="btn btn-danger" onclick="deleteValue();">
 	</div>
            <br>
-  	<ul class="pagination">
+  	<ul class="pagination justify-content-center">
 
 				<c:if test="${pager.pre}">
 					<li class="page-item"><a class="page-link p" href="/mypage/favoriteToon/?username=${memberVO.username}&curPage=${pager.curPage-1}" title="${pager.startNum-1}">이전</a></li>

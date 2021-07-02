@@ -51,8 +51,7 @@
 
 </head>
 <body>
-<c:import url="../fragments/header.jsp"></c:import>
-	
+	<c:import url="../fragments/header.jsp"></c:import>
 	<div class="row">
   	<div class="col-2">
   		<c:import url="./adminNav.jsp"></c:import>
@@ -90,7 +89,7 @@
 	
 	<div id="file1">
 	<c:forEach items="${vo.files}" var="file">
-		<a href="../upload/${board}/${file.fileName}">${file.oriName}</a>
+		<a href="../upload/${board}/${file.fileName}">&nbsp;${file.oriName}</a>
 	</c:forEach>
 	</div>
 	 
