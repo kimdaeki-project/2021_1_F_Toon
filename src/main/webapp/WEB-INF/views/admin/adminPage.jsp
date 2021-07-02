@@ -19,8 +19,8 @@
     <link rel="shortcut icon" href="../asssets/images/favicon.ico"/>
 </head>
 
-<body class="header-fixed">
-<%-- 	<c:import url="../fragments/header.jsp"></c:import>	  --%>
+<body>
+	<c:import url="../fragments/header.jsp"></c:import>	 
       <nav class="t-header">
         <!-- theader 달기 -->
       </nav>
