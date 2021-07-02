@@ -63,7 +63,7 @@
     </tr>
     
      <tr>
-       <td align="left"><h4>&emsp; 장르 : ${toonVO.genre}</h4></td>
+       <td align="left"><h4>&emsp; 장르 : ${toonVO.genre} / <span class="totalRating">웹툰별점 : <fmt:formatNumber value="${toonVO.ratingSum/toonVO.ratingPerson}" pattern=".00"/></span></h4></td>
     </tr>
   
       <tr>
