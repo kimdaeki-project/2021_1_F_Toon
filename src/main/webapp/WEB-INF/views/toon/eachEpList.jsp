@@ -33,6 +33,7 @@
 
 </head>
 <body>
+
 <c:import url="../fragments/header.jsp"></c:import>
 
   <div id='left-box'>
@@ -89,7 +90,6 @@
      
     </table><br>
 
-     <c:import url="./buyTicketForm.jsp"></c:import>
    <!-- 리스트 -->
 
       <table class="table table-borderless viewList">
