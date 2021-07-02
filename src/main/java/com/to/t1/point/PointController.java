@@ -1,7 +1,5 @@
 package com.to.t1.point;
 
-
-
 import java.util.Map; //jSON 파서용 
 import javax.servlet.http.HttpSession;
 
@@ -17,6 +15,9 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.to.t1.ticket.TicketBoxVO;
+import com.to.t1.ticket.UseTicketVO;
+
+import retrofit2.http.POST;
 
 @Controller
 @RequestMapping("**/point/**")
@@ -41,7 +42,7 @@ public class PointController {
 	@ResponseBody
 	public String setPoint(@RequestBody Map<String, String> param,Model model,HttpSession httpSession) throws Exception{
 		
-		System.out.println(param);
+		//System.out.println(param);
 		int result = pointservice.chargePoint(param);
 		if(result == 0 ) {
 			return "../member/myPage";
@@ -52,43 +53,134 @@ public class PointController {
 	//소장권 구입  
 	//파라미터 값 : 1. user정보 , 2.(사용 할)EP정보
 	//리턴 : 진행상황,(int로 반환) 
-	
 	@PostMapping("ticketCharge")
-	public String getTicket(@RequestParam Map<String,Object> param, HttpSession httpSession,Model model, TicketBoxVO ticketBoxVO)throws Exception{
+	public String getTicket(@RequestParam Map<String,Object> param, HttpSession httpSession,Model model, 
+			TicketBoxVO ticketBoxVO)throws Exception{
 		//TicktBox조회 
-		ticketBoxVO = pointservice.checkTicketStock(param, ticketBoxVO);
-		System.out.println(ticketBoxVO);
-		System.out.println(ticketBoxVO);
+		
+		long isAlready = pointservice.checkTicketBox(ticketBoxVO);
+		param.put("isAlredy",isAlready);
+		
 		model.addAttribute("info",param);
 		model.addAttribute("ticketBox",ticketBoxVO);
+		model.addAttribute("isAlready",isAlready);
+		System.out.println("info" + param);
+		System.out.println("ticketBox "+ ticketBoxVO);
 		
 		return "point/getTicket";
 	}
+	//티켓 뭉텅이나 한두개 구입하기
 	@PostMapping("getToonTicket")
-	public String getToonTicket(PointVO pointVO, TicketBoxVO ticketBoxVO,int isAlready, HttpSession httpSession)throws Exception {
+	public String getToonTicket(PointVO pointVO, TicketBoxVO ticketBoxVO,
+			NextSuccessVO nextSuccessVO,
+			HttpSession httpSession)throws Exception {
+		String path = "toon/eachEpList?toonNum=";
+		System.out.println("nextsuccess : "+ nextSuccessVO.getNextsuccess());
+		long isAlready = pointservice.checkTicketBox(ticketBoxVO);
 		
-		
-		pointservice.getTicket(pointVO, ticketBoxVO, isAlready);
+		int result = pointservice.getTicket(pointVO, ticketBoxVO, isAlready);
 		//경로 처리하기 
-		
-		
-		return "toon/eachEpList";
-	}
-	@GetMapping("useTicket")
-	public String useTicket(Model model, HttpSession httpSession) throws Exception{
-		
-		
-		return "point/useTicket";
+		System.out.println("get Ticket Result"+ result);
+		if(result != 0) {
+			path = path+ticketBoxVO.getToonNum();
+		}else {//소장권 구입 실패 시 , 그래도다음 페이지 갈 것 
+			path = path+ticketBoxVO.getToonNum();
+		}
+		return "redirect:../" + path ;
 	}
 	
-	//소장권 사용 (1개 사용 )
-	@PostMapping("useTicket")
-	public void useTicket() throws Exception{
-		//1. 소장권 조회 
-		//2-1. 소장권의 컬럼이 없거나 stock ==0 이고 포인트가 200 이상인 경우, -> 소장권 구입 이동
-		//2-2. 소장권의 컬럼이 없거나 stock ==0 이고 포인트가 200 미만인 경우  -> 포인트 충전 이동
-		//2-3. 소장권의 stock >1 인 경우 : 소장권 구입하고 소장권 구입 URL로 이동하기 
+	//소장권 가지고 있는지 확인하기 있다면 페이지 이동
+	@PostMapping("checkTicket")
+	@ResponseBody
+	public String checkUseTicket(@RequestBody Map<String,Object> param) throws Exception{
+		String url = "0";
+		//System.out.println("param:" + param);
 		
+		String toonNum = String.valueOf(param.get("toonNum"));
+		String eachEpNum = String.valueOf(param.get("eachEpNum"));
+		String epNum = String.valueOf(param.get("epNum"));
+		String username = String.valueOf(param.get("username"));
+		System.out.println(toonNum + ":::" + eachEpNum);
+		
+		long result = pointservice.CheckUseTicket(param);
+		
+		System.out.println("result : "+result);
+		
+		if(result != 0) {
+			//해당 post전송하기
+			url = "endEpSelect?toonNum="+toonNum+"&eachEpNum="+eachEpNum+"&epNum="+epNum+"&username="+username;
+		}
+		System.out.println("returnUrl1 : "+url);
+		return url;
+				
+	}
+	//소장권 사용 (1개 차감 및 페이지 이동하기)
+	@PostMapping("getNuseTicket")
+	@ResponseBody
+	public String useTicket(@RequestBody Map<String,String> param,
+		TicketBoxVO ticketBoxVO,UseTicketVO useTicketVO) throws Exception{
+		
+		System.out.println("param3 : "+param);
+		System.out.println(ticketBoxVO);
+		System.out.println(useTicketVO);
+		String url = "";
+		//티켓 쓰기...
+		int result = pointservice.setuseTicket(param, useTicketVO, ticketBoxVO);
+		//eachepNum 찾기
+		long toonNum = Long.valueOf(param.get("toonNum"));
+		long eachEpNum = pointservice.SelectEachEpNum(param);
+		String epNum = param.get("epNum");
+		String username = param.get("username");
+		
+		//System.out.println(eachEpNum);
+		//3. 모두 성공하면 0 or 1 return 하기
+		if(result != 0) {
+			//해당 post전송하기
+			url = "eachEpSelect?toonNum="+toonNum+"&eachEpNum="+eachEpNum+"&epNum="+epNum+"&username="+username;
+		}else {
+			url = "endEpList?toonNum="+toonNum;
+		}
+		
+		System.out.println("returnUrl2 : "+url);
+		return url;
+	}
+	//포인트로 티켓 1개 구매하기 
+	@PostMapping("directGetTicket")
+	@ResponseBody
+	public String directgetTicket(@RequestBody Map<String,Object> param, 
+			PointVO pointVO , TicketBoxVO ticketBoxVO
+			)throws Exception {
+		
+		int result =0;
+		
+		System.out.println("param :"+param);
+		String username= String.valueOf(param.get("username"));
+		
+		String contents= String.valueOf(param.get("contents"));
+		
+		String tnum = String.valueOf(param.get("toonNum"));
+		long toonNum = Long.parseLong(tnum);
+		
+		pointVO.setUsername(username);
+		pointVO.setPoint(200);
+		pointVO.setContents(contents);
+		
+		ticketBoxVO.setUsername(username);
+		ticketBoxVO.setToonNum(toonNum);
+		ticketBoxVO.setSort(1);
+		ticketBoxVO.setStock(1);;
+		
+		System.out.println(ticketBoxVO);
+		System.out.println(pointVO);
+		
+		pointservice.checkTicketStock(param,ticketBoxVO); // stock의 갯수 가져오기
+		
+		long isAlready = pointservice.checkTicketBox(ticketBoxVO);
+		result = pointservice.getTicket(pointVO, ticketBoxVO, isAlready);
+		String result2 =  Integer.toString(result);
+		System.out.println("result2 :" + result2);
+		
+		return result2;
 	}
 	
 	//검증 관련
@@ -109,4 +201,6 @@ public class PointController {
 //	this.api = new IamportClient("8955862071146697",
 //	"cf9f6e33a37773d3792a17d3584428236a9a3fcbbf4998fa8d5c2dfb89730544b2b4df1b4f38a62d");
 //
+	
+	
 }

@@ -139,34 +139,37 @@
 		<center><h2>소장권 사용 내역</h2></center>
 		<br>
 
-			<table class="table">
-			<thead class="A simple light list group item">
+			<table class="table align-middle">
+			<thead class="A simple light list group item ">
 				<tr>
-					<th scope="col">제목</th>
-					<th scope="col">소장권 사용 날짜</th>
-				
+					
+					<th scope="col"> &nbsp; &nbsp;</th>
+					<th scope="col"> &nbsp; &nbsp;</th>
+					<th scope="col"> &nbsp; &nbsp;</th>
+					<th scope="col"> &nbsp; &nbsp;</th>
+					<th scope="col"> &nbsp; &nbsp;</th>
+					<th scope="col"> &nbsp; &nbsp;</th>
 				</tr>
 			</thead>
 			
 			<tbody>
-			<c:forEach items="${list}" var="list" >
-				<tr>
-					<td class="text_ct">${list.utDate}</td>
-					
-					<td class="text_ct">${list.username}</td>
-					
+			<c:forEach items="${list}" var="list">
+				<tr class="center">
+					<td class="text_ct"> 
+						<div style="width: 3rem;"><img class="rounded" src="${list.toonVO.titleImg}"></div></td>
+					<td class="text_ct ">${list.toonVO.toonTitle}</td>
+					<td class="text_ct">${list.eachEpVO.epTitle}</td>
+					<td class="text_ct">&nbsp; &nbsp;</td>
+					<td class="text_ct">&nbsp; &nbsp;</td>
+					<td class="text_ct"><P class="text-end">${list.utDate}</P></td>
 				</tr>
 			</c:forEach>
 			
 			</tbody>
 
 		</table>
-		</div>
-	</div>
-<%-- 			<a href="./recentToon?epNum=${list.eachEpVO.epNum}" id="delete" class="btn btn-danger">삭제</a> --%>
-<%-- 			<input type="hidden" name="epNum" value="${list.eachEpVO.epNum}"> --%>
-           
-			<ul class="pagination justify-content-center">
+		<div >
+			<ul class="pagination">
 
 				<c:if test="${pager.pre}">
 					<li class="page-item"><a class="page-link p" href="/mypage2/ticketUse/?username=${memberVO.username}&curPage=${pager.curPage-1}" title="${pager.startNum-1}">이전</a></li>
@@ -180,6 +183,13 @@
 					<li class="page-item"><a class="page-link p" href="/mypage2/ticketUse/?username=${memberVO.username}&curPage=${pager.curPage+i+1}" title="${pager.lastNum+1}">다음</a></li>
 				</c:if>
 			</ul>
+		</div>
+		</div>
+	</div>
+<%-- 			<a href="./recentToon?epNum=${list.eachEpVO.epNum}" id="delete" class="btn btn-danger">삭제</a> --%>
+<%-- 			<input type="hidden" name="epNum" value="${list.eachEpVO.epNum}"> --%>
+           
+			
 			
 
 	</p>

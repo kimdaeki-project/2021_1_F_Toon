@@ -12,5 +12,5 @@ public class TicketBoxVO {
 	private long stock;
 	
 	private long sort;
-	private MemberVO memberVO;
+	//private MemberVO memberVO;
 }

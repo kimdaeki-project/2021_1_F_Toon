@@ -9,6 +9,7 @@ import org.springframework.security.core.Authentication;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.to.t1.member.MemberService;
@@ -80,17 +81,14 @@ public class Mypage2Controller {
 	
 	@GetMapping("ticketUse") 
 	public String ticketUse(Model model, MemberVO memberVO, Pager pager)throws Exception{
-		List<PointVO> ar = pointService.getUseTicketList(memberVO, pager);
 		
-		memberVO = memberService.myPage(memberVO);
-
-		model.addAttribute("list", ar);
-		model.addAttribute("pager", pager);
-		model.addAttribute("memberVO", memberVO);
-		
-		System.out.println("소장권 사용 내역 조회");
-//
+			memberVO = memberService.myPage(memberVO);
+			List <UseTicketVO> ar = pointService.getTicketUseList(memberVO, pager);
+			
+			model.addAttribute("list", ar);
+			model.addAttribute("pager", pager);
+			model.addAttribute("memberVO", memberVO);
+	    
 		return  "mypage2/ticketUse";
 	}
-	
 }
